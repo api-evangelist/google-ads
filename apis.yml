@@ -1,0 +1,64 @@
+name: Google Ads API
+description: The Google Ads API is the modern programmatic interface to Google Ads and the next generation of the AdWords API. It enables developers to interact directly with the Google Ads platform, vastly increasing the efficiency of managing large or complex Google Ads accounts and campaigns.
+image: https://www.gstatic.com/images/branding/product/1x/google_ads_64dp.png
+created: '2024'
+modified: '2024'
+specificationVersion: '0.18'
+url: https://developers.google.com/google-ads/api/docs/start
+apis:
+- name: Google Ads API
+  description: RESTful API for managing Google Ads campaigns, ad groups, ads, keywords, and more
+  image: https://www.gstatic.com/images/branding/product/1x/google_ads_64dp.png
+  humanURL: https://developers.google.com/google-ads/api
+  baseURL: https://googleads.googleapis.com
+  tags:
+  - Advertising
+  - PPC
+  - Marketing
+  - Campaigns
+  - Analytics
+  properties:
+  - type: Documentation
+    url: https://developers.google.com/google-ads/api/docs/start
+  - type: OpenAPI
+    url: https://developers.google.com/google-ads/api/reference/rpc
+  - type: Authentication
+    url: https://developers.google.com/google-ads/api/docs/oauth/overview
+  - type: SDKs
+    url: https://developers.google.com/google-ads/api/docs/client-libs
+  - type: Migration Guide
+    url: https://developers.google.com/google-ads/api/docs/migration
+  - type: Best Practices
+    url: https://developers.google.com/google-ads/api/docs/best-practices
+  - type: Rate Limits
+    url: https://developers.google.com/google-ads/api/docs/rate-limits
+  - type: Release Notes
+    url: https://developers.google.com/google-ads/api/docs/release-notes
+  - type: Support
+    url: https://developers.google.com/google-ads/api/support
+  - type: Forum
+    url: https://groups.google.com/g/adwords-api
+common:
+- type: Portal
+  url: https://developers.google.com/google-ads/api
+- type: Getting Started
+  url: https://developers.google.com/google-ads/api/docs/first-call/overview
+- type: Authentication
+  url: https://developers.google.com/google-ads/api/docs/oauth/overview
+- type: Terms of Service
+  url: https://developers.google.com/terms
+- type: Privacy Policy
+  url: https://policies.google.com/privacy
+- type: Status Page
+  url: https://status.cloud.google.com/
+maintainers:
+- FN: Google
+  email: google-ads-api-support@google.com
+  url: https://developers.google.com/google-ads
+tags:
+- Advertising
+- PPC
+- Google
+- Marketing
+- Digital Advertising
+- Campaign Management
