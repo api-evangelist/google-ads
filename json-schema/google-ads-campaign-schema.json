@@ -1,0 +1,456 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://raw.githubusercontent.com/api-evangelist/google-ads/refs/heads/main/json-schema/google-ads-campaign-schema.json",
+  "title": "Google Ads Campaign",
+  "description": "Schema for a Google Ads campaign resource. A campaign is the top-level organizational unit in Google Ads that groups ad groups and sets budgets, bidding strategies, targeting criteria, and advertising channel types. Campaigns control how and where ads are shown across Google Search, Display Network, YouTube, Shopping, and other channels.",
+  "type": "object",
+  "required": ["name", "advertisingChannelType"],
+  "properties": {
+    "resourceName": {
+      "type": "string",
+      "pattern": "^customers/\\d+/campaigns/\\d+$",
+      "description": "The resource name of the campaign in the format customers/{customerId}/campaigns/{campaignId}."
+    },
+    "id": {
+      "type": "integer",
+      "format": "int64",
+      "description": "The unique ID of the campaign. Assigned by Google Ads upon creation."
+    },
+    "name": {
+      "type": "string",
+      "maxLength": 255,
+      "description": "The name of the campaign. Must be unique across all active and paused campaigns within the account. Maximum 255 characters."
+    },
+    "status": {
+      "type": "string",
+      "enum": ["ENABLED", "PAUSED", "REMOVED", "UNKNOWN", "UNSPECIFIED"],
+      "description": "The serving status of the campaign. ENABLED campaigns are actively serving ads. PAUSED campaigns retain their configuration but do not serve. REMOVED campaigns are permanently deleted."
+    },
+    "advertisingChannelType": {
+      "type": "string",
+      "enum": [
+        "SEARCH",
+        "DISPLAY",
+        "SHOPPING",
+        "VIDEO",
+        "MULTI_CHANNEL",
+        "LOCAL",
+        "SMART",
+        "PERFORMANCE_MAX",
+        "DEMAND_GEN",
+        "TRAVEL",
+        "LOCAL_SERVICES",
+        "UNKNOWN",
+        "UNSPECIFIED"
+      ],
+      "description": "The primary advertising channel type that determines where ads can appear. SEARCH serves text ads on Google Search. DISPLAY serves image and text ads across the Google Display Network. PERFORMANCE_MAX uses automation across all Google channels."
+    },
+    "advertisingChannelSubType": {
+      "type": "string",
+      "enum": [
+        "SEARCH_MOBILE_APP",
+        "DISPLAY_MOBILE_APP",
+        "SEARCH_EXPRESS",
+        "DISPLAY_EXPRESS",
+        "SHOPPING_SMART_ADS",
+        "DISPLAY_GMAIL_AD",
+        "DISPLAY_SMART_CAMPAIGN",
+        "VIDEO_OUTSTREAM",
+        "VIDEO_ACTION",
+        "VIDEO_NON_SKIPPABLE",
+        "VIDEO_REACH_TARGET_FREQUENCY",
+        "APP_CAMPAIGN",
+        "APP_CAMPAIGN_FOR_ENGAGEMENT",
+        "LOCAL_CAMPAIGN",
+        "SHOPPING_COMPARISON_LISTING_ADS",
+        "SMART_CAMPAIGN",
+        "VIDEO_SEQUENCE",
+        "APP_CAMPAIGN_FOR_PRE_REGISTRATION",
+        "TRAVEL_ACTIVITIES",
+        "UNKNOWN",
+        "UNSPECIFIED"
+      ],
+      "description": "Optional refinement of the advertising channel type providing more specific campaign behavior."
+    },
+    "campaignBudget": {
+      "type": "string",
+      "pattern": "^customers/\\d+/campaignBudgets/\\d+$",
+      "description": "Resource name of the campaign budget in the format customers/{customerId}/campaignBudgets/{budgetId}."
+    },
+    "biddingStrategyType": {
+      "type": "string",
+      "enum": [
+        "TARGET_CPA",
+        "TARGET_ROAS",
+        "TARGET_SPEND",
+        "MAXIMIZE_CONVERSIONS",
+        "MAXIMIZE_CONVERSION_VALUE",
+        "MANUAL_CPC",
+        "MANUAL_CPM",
+        "MANUAL_CPV",
+        "TARGET_IMPRESSION_SHARE",
+        "ENHANCED_CPC",
+        "UNKNOWN",
+        "UNSPECIFIED"
+      ],
+      "description": "The type of bidding strategy used by the campaign. TARGET_CPA optimizes for a target cost per acquisition. MAXIMIZE_CONVERSIONS uses machine learning to maximize total conversions. MANUAL_CPC gives full control over individual keyword bids."
+    },
+    "biddingStrategy": {
+      "type": "string",
+      "pattern": "^customers/\\d+/biddingStrategies/\\d+$",
+      "description": "Resource name of a portfolio bidding strategy shared across campaigns."
+    },
+    "startDate": {
+      "type": "string",
+      "pattern": "^\\d{4}-\\d{2}-\\d{2}$",
+      "description": "The start date of the campaign in yyyy-MM-dd format. If not set, the campaign starts immediately upon enabling."
+    },
+    "endDate": {
+      "type": "string",
+      "pattern": "^\\d{4}-\\d{2}-\\d{2}$",
+      "description": "The end date of the campaign in yyyy-MM-dd format. If not set, the campaign runs indefinitely."
+    },
+    "servingStatus": {
+      "type": "string",
+      "enum": [
+        "SERVING",
+        "NONE",
+        "ENDED",
+        "PENDING",
+        "SUSPENDED",
+        "UNKNOWN",
+        "UNSPECIFIED"
+      ],
+      "description": "The actual serving status of the campaign taking into account budget, schedule, and approval status."
+    },
+    "networkSettings": {
+      "type": "object",
+      "description": "Network targeting settings that determine which Google networks the ads appear on.",
+      "properties": {
+        "targetGoogleSearch": {
+          "type": "boolean",
+          "description": "Whether ads are served on the Google Search Network (google.com and search partners)."
+        },
+        "targetSearchNetwork": {
+          "type": "boolean",
+          "description": "Whether ads are served on Google search partner sites."
+        },
+        "targetContentNetwork": {
+          "type": "boolean",
+          "description": "Whether ads are served on the Google Display Network."
+        },
+        "targetPartnerSearchNetwork": {
+          "type": "boolean",
+          "description": "Whether ads are served on the Google Partner Search Network."
+        }
+      }
+    },
+    "targetCpa": {
+      "type": "object",
+      "description": "Target CPA (cost per acquisition) bidding strategy settings.",
+      "properties": {
+        "targetCpaMicros": {
+          "type": "integer",
+          "format": "int64",
+          "minimum": 0,
+          "description": "Target CPA amount in micros. One million micros equals one unit of currency (e.g., 1,500,000 micros = $1.50 USD)."
+        },
+        "cpcBidCeilingMicros": {
+          "type": "integer",
+          "format": "int64",
+          "description": "Maximum CPC bid ceiling in micros for the strategy."
+        },
+        "cpcBidFloorMicros": {
+          "type": "integer",
+          "format": "int64",
+          "description": "Minimum CPC bid floor in micros for the strategy."
+        }
+      }
+    },
+    "targetRoas": {
+      "type": "object",
+      "description": "Target ROAS (return on ad spend) bidding strategy settings.",
+      "properties": {
+        "targetRoas": {
+          "type": "number",
+          "minimum": 0,
+          "description": "Target return on ad spend as a ratio. For example, 3.5 means a 350% return on ad spend."
+        },
+        "cpcBidCeilingMicros": {
+          "type": "integer",
+          "format": "int64",
+          "description": "Maximum CPC bid ceiling in micros."
+        },
+        "cpcBidFloorMicros": {
+          "type": "integer",
+          "format": "int64",
+          "description": "Minimum CPC bid floor in micros."
+        }
+      }
+    },
+    "maximizeConversions": {
+      "type": "object",
+      "description": "Maximize Conversions bidding strategy settings.",
+      "properties": {
+        "targetCpaMicros": {
+          "type": "integer",
+          "format": "int64",
+          "description": "Optional target CPA in micros when using maximize conversions with a CPA goal."
+        },
+        "cpcBidCeilingMicros": {
+          "type": "integer",
+          "format": "int64",
+          "description": "Maximum CPC bid ceiling in micros."
+        },
+        "cpcBidFloorMicros": {
+          "type": "integer",
+          "format": "int64",
+          "description": "Minimum CPC bid floor in micros."
+        }
+      }
+    },
+    "maximizeConversionValue": {
+      "type": "object",
+      "description": "Maximize Conversion Value bidding strategy settings.",
+      "properties": {
+        "targetRoas": {
+          "type": "number",
+          "description": "Optional target ROAS when using maximize conversion value."
+        },
+        "cpcBidCeilingMicros": {
+          "type": "integer",
+          "format": "int64",
+          "description": "Maximum CPC bid ceiling in micros."
+        },
+        "cpcBidFloorMicros": {
+          "type": "integer",
+          "format": "int64",
+          "description": "Minimum CPC bid floor in micros."
+        }
+      }
+    },
+    "manualCpc": {
+      "type": "object",
+      "description": "Manual CPC (cost per click) bidding strategy settings.",
+      "properties": {
+        "enhancedCpcEnabled": {
+          "type": "boolean",
+          "description": "Whether Enhanced CPC is enabled, allowing Google to automatically adjust bids for clicks more likely to convert."
+        }
+      }
+    },
+    "targetSpend": {
+      "type": "object",
+      "description": "Target Spend bidding strategy settings for maximizing clicks within a budget.",
+      "properties": {
+        "targetSpendMicros": {
+          "type": "integer",
+          "format": "int64",
+          "description": "Target spend amount in micros."
+        },
+        "cpcBidCeilingMicros": {
+          "type": "integer",
+          "format": "int64",
+          "description": "Maximum CPC bid ceiling in micros."
+        }
+      }
+    },
+    "targetImpressionShare": {
+      "type": "object",
+      "description": "Target Impression Share bidding strategy settings.",
+      "properties": {
+        "location": {
+          "type": "string",
+          "enum": [
+            "ANYWHERE_ON_PAGE",
+            "TOP_OF_PAGE",
+            "ABSOLUTE_TOP_OF_PAGE",
+            "UNKNOWN",
+            "UNSPECIFIED"
+          ],
+          "description": "Target location on the search results page."
+        },
+        "locationFractionMicros": {
+          "type": "integer",
+          "format": "int64",
+          "description": "Target fraction of impressions in the chosen location (in micros, e.g., 700000 = 70%)."
+        },
+        "cpcBidCeilingMicros": {
+          "type": "integer",
+          "format": "int64",
+          "description": "Maximum CPC bid ceiling in micros."
+        }
+      }
+    },
+    "geoTargetTypeSetting": {
+      "type": "object",
+      "description": "Settings for geographic targeting behavior.",
+      "properties": {
+        "positiveGeoTargetType": {
+          "type": "string",
+          "enum": ["PRESENCE_OR_INTEREST", "SEARCH_INTEREST", "PRESENCE"],
+          "description": "How positive geo targeting is applied. PRESENCE targets users physically in the location. SEARCH_INTEREST targets users searching for the location. PRESENCE_OR_INTEREST targets both."
+        },
+        "negativeGeoTargetType": {
+          "type": "string",
+          "enum": ["PRESENCE_OR_INTEREST", "PRESENCE"],
+          "description": "How negative geo targeting is applied to exclude locations."
+        }
+      }
+    },
+    "labels": {
+      "type": "array",
+      "items": {
+        "type": "string"
+      },
+      "description": "Resource names of labels applied to this campaign for organization and filtering."
+    },
+    "optimizationScore": {
+      "type": "number",
+      "minimum": 0,
+      "maximum": 1,
+      "description": "Optimization score as a value between 0 and 1 indicating how well the campaign is set up relative to Google's best practices."
+    },
+    "urlCustomParameters": {
+      "type": "array",
+      "description": "Custom URL parameters for tracking.",
+      "items": {
+        "type": "object",
+        "properties": {
+          "key": {
+            "type": "string",
+            "description": "The custom parameter key."
+          },
+          "value": {
+            "type": "string",
+            "description": "The custom parameter value."
+          }
+        }
+      }
+    },
+    "trackingUrlTemplate": {
+      "type": "string",
+      "description": "URL template for constructing tracking URLs with ValueTrack parameters."
+    },
+    "finalUrlSuffix": {
+      "type": "string",
+      "description": "Suffix appended to final URLs for additional tracking parameters."
+    },
+    "paymentMode": {
+      "type": "string",
+      "enum": [
+        "CLICKS",
+        "CONVERSION_VALUE",
+        "CONVERSIONS",
+        "GUEST_STAY",
+        "UNKNOWN",
+        "UNSPECIFIED"
+      ],
+      "description": "The payment mode for the campaign determining what is billed."
+    },
+    "experimentType": {
+      "type": "string",
+      "enum": [
+        "BASE",
+        "DRAFT",
+        "EXPERIMENT",
+        "UNKNOWN",
+        "UNSPECIFIED"
+      ],
+      "description": "Whether this is a base campaign, draft, or experiment."
+    },
+    "baseCampaign": {
+      "type": "string",
+      "description": "Resource name of the base campaign for drafts and experiments."
+    }
+  },
+  "$defs": {
+    "CampaignBudget": {
+      "type": "object",
+      "description": "A budget that defines spending limits for one or more campaigns.",
+      "properties": {
+        "resourceName": {
+          "type": "string",
+          "description": "Resource name of the campaign budget."
+        },
+        "id": {
+          "type": "integer",
+          "format": "int64",
+          "description": "The unique ID of the campaign budget."
+        },
+        "name": {
+          "type": "string",
+          "description": "Name of the campaign budget."
+        },
+        "amountMicros": {
+          "type": "integer",
+          "format": "int64",
+          "minimum": 0,
+          "description": "Daily budget amount in micros. One million micros equals one unit of currency."
+        },
+        "totalAmountMicros": {
+          "type": "integer",
+          "format": "int64",
+          "description": "Lifetime total budget amount in micros."
+        },
+        "deliveryMethod": {
+          "type": "string",
+          "enum": ["STANDARD", "ACCELERATED", "UNKNOWN", "UNSPECIFIED"],
+          "description": "How the budget is spent. STANDARD distributes spending evenly. ACCELERATED spends budget as quickly as possible."
+        },
+        "explicitlyShared": {
+          "type": "boolean",
+          "description": "Whether this budget is shared across multiple campaigns."
+        },
+        "status": {
+          "type": "string",
+          "enum": ["ENABLED", "REMOVED", "UNKNOWN", "UNSPECIFIED"],
+          "description": "The status of the campaign budget."
+        }
+      }
+    },
+    "AdGroup": {
+      "type": "object",
+      "description": "An ad group within the campaign containing a set of ads and targeting criteria.",
+      "properties": {
+        "resourceName": {
+          "type": "string",
+          "description": "Resource name of the ad group."
+        },
+        "id": {
+          "type": "integer",
+          "format": "int64",
+          "description": "The unique ID of the ad group."
+        },
+        "name": {
+          "type": "string",
+          "description": "The name of the ad group."
+        },
+        "status": {
+          "type": "string",
+          "enum": ["ENABLED", "PAUSED", "REMOVED", "UNKNOWN", "UNSPECIFIED"],
+          "description": "The status of the ad group."
+        },
+        "type": {
+          "type": "string",
+          "enum": [
+            "SEARCH_STANDARD",
+            "DISPLAY_STANDARD",
+            "SHOPPING_PRODUCT_ADS",
+            "VIDEO_TRUE_VIEW_IN_STREAM",
+            "VIDEO_BUMPER",
+            "HOTEL_ADS",
+            "UNKNOWN",
+            "UNSPECIFIED"
+          ],
+          "description": "The type of the ad group."
+        },
+        "cpcBidMicros": {
+          "type": "integer",
+          "format": "int64",
+          "description": "Maximum CPC bid in micros at the ad group level."
+        }
+      }
+    }
+  }
+}

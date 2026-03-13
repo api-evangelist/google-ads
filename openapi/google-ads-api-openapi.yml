@@ -1,0 +1,1824 @@
+openapi: 3.1.0
+info:
+  title: Google Ads API
+  description: |
+    The Google Ads API is the modern programmatic interface to Google Ads and the
+    next generation of the AdWords API. It enables developers to interact directly
+    with the Google Ads platform, vastly increasing the efficiency of managing
+    large or complex Google Ads accounts and campaigns. The API allows for
+    creating, reading, updating, and removing campaigns, ad groups, ads, keywords,
+    and retrieving performance reports using Google Ads Query Language (GAQL).
+  version: v18
+  contact:
+    name: Google Ads API Support
+    url: https://developers.google.com/google-ads/api/support
+  license:
+    name: Google APIs Terms of Service
+    url: https://developers.google.com/terms
+
+servers:
+  - url: https://googleads.googleapis.com
+    description: Google Ads API Production Server
+
+security:
+  - oauth2Auth: []
+
+tags:
+  - name: Campaigns
+    description: Create, read, update, and remove advertising campaigns
+  - name: Ad Groups
+    description: Manage ad groups within campaigns
+  - name: Ads
+    description: Create and manage individual ads within ad groups
+  - name: Keywords
+    description: Manage keyword targeting criteria for ad groups
+  - name: Reporting
+    description: Query performance data using Google Ads Query Language (GAQL)
+  - name: Customers
+    description: Access and manage Google Ads customer account information
+  - name: Bidding Strategies
+    description: Manage bidding strategies for campaigns
+
+paths:
+  /v18/customers/{customerId}/googleAds:search:
+    post:
+      summary: Search Using Google Ads Query Language
+      description: |
+        Returns all rows that match the search query. Use Google Ads Query
+        Language (GAQL) to query resources, metrics, and segments across
+        campaigns, ad groups, ads, keywords, and more. This is the primary
+        method for retrieving reporting data and resource details.
+      operationId: searchGoogleAds
+      tags:
+        - Reporting
+      parameters:
+        - $ref: '#/components/parameters/CustomerIdPath'
+        - $ref: '#/components/parameters/AuthorizationHeader'
+        - $ref: '#/components/parameters/DeveloperTokenHeader'
+        - $ref: '#/components/parameters/LoginCustomerIdHeader'
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/SearchGoogleAdsRequest'
+            examples:
+              CampaignPerformanceQuery:
+                $ref: '#/components/examples/CampaignPerformanceQueryExample'
+              KeywordPerformanceQuery:
+                $ref: '#/components/examples/KeywordPerformanceQueryExample'
+      responses:
+        '200':
+          description: Successful Response
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/SearchGoogleAdsResponse'
+              examples:
+                CampaignPerformanceResponse:
+                  $ref: '#/components/examples/CampaignPerformanceResponseExample'
+        '400':
+          description: Bad Request
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/GoogleAdsFailure'
+        '401':
+          description: Unauthorized
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/GoogleAdsFailure'
+        '403':
+          description: Forbidden
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/GoogleAdsFailure'
+        '500':
+          description: Internal Server Error
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/GoogleAdsFailure'
+
+  /v18/customers/{customerId}/googleAds:searchStream:
+    post:
+      summary: Search Stream Using Google Ads Query Language
+      description: |
+        Returns all rows that match the search query as a streamed response.
+        Identical to the search method but returns results as a stream,
+        which is more efficient for large result sets.
+      operationId: searchStreamGoogleAds
+      tags:
+        - Reporting
+      parameters:
+        - $ref: '#/components/parameters/CustomerIdPath'
+        - $ref: '#/components/parameters/AuthorizationHeader'
+        - $ref: '#/components/parameters/DeveloperTokenHeader'
+        - $ref: '#/components/parameters/LoginCustomerIdHeader'
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/SearchGoogleAdsStreamRequest'
+      responses:
+        '200':
+          description: Successful Streamed Response
+          content:
+            application/json:
+              schema:
+                type: array
+                items:
+                  $ref: '#/components/schemas/SearchGoogleAdsStreamResponse'
+        '400':
+          description: Bad Request
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/GoogleAdsFailure'
+        '401':
+          description: Unauthorized
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/GoogleAdsFailure'
+
+  /v18/customers/{customerId}/campaigns:mutate:
+    post:
+      summary: Create, Update, or Remove Campaigns
+      description: |
+        Creates, updates, or removes campaigns. Operation statuses are returned.
+        Supports partial failure where some operations succeed while others fail.
+      operationId: mutateCampaigns
+      tags:
+        - Campaigns
+      parameters:
+        - $ref: '#/components/parameters/CustomerIdPath'
+        - $ref: '#/components/parameters/AuthorizationHeader'
+        - $ref: '#/components/parameters/DeveloperTokenHeader'
+        - $ref: '#/components/parameters/LoginCustomerIdHeader'
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/MutateCampaignsRequest'
+            examples:
+              CreateCampaign:
+                $ref: '#/components/examples/CreateCampaignExample'
+      responses:
+        '200':
+          description: Successful Response
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/MutateCampaignsResponse'
+              examples:
+                CreateCampaignResponse:
+                  $ref: '#/components/examples/CreateCampaignResponseExample'
+        '400':
+          description: Bad Request
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/GoogleAdsFailure'
+        '401':
+          description: Unauthorized
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/GoogleAdsFailure'
+        '403':
+          description: Forbidden
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/GoogleAdsFailure'
+
+  /v18/customers/{customerId}/adGroups:mutate:
+    post:
+      summary: Create, Update, or Remove Ad Groups
+      description: |
+        Creates, updates, or removes ad groups. An ad group is a set of ads
+        that share the same targeting criteria. Each ad group belongs to
+        exactly one campaign.
+      operationId: mutateAdGroups
+      tags:
+        - Ad Groups
+      parameters:
+        - $ref: '#/components/parameters/CustomerIdPath'
+        - $ref: '#/components/parameters/AuthorizationHeader'
+        - $ref: '#/components/parameters/DeveloperTokenHeader'
+        - $ref: '#/components/parameters/LoginCustomerIdHeader'
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/MutateAdGroupsRequest'
+            examples:
+              CreateAdGroup:
+                $ref: '#/components/examples/CreateAdGroupExample'
+      responses:
+        '200':
+          description: Successful Response
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/MutateAdGroupsResponse'
+        '400':
+          description: Bad Request
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/GoogleAdsFailure'
+        '401':
+          description: Unauthorized
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/GoogleAdsFailure'
+
+  /v18/customers/{customerId}/adGroupAds:mutate:
+    post:
+      summary: Create, Update, or Remove Ads
+      description: |
+        Creates, updates, or removes ads within ad groups. Ads are the
+        creative content shown to users. Supports responsive search ads,
+        expanded text ads, display ads, and other ad formats.
+      operationId: mutateAdGroupAds
+      tags:
+        - Ads
+      parameters:
+        - $ref: '#/components/parameters/CustomerIdPath'
+        - $ref: '#/components/parameters/AuthorizationHeader'
+        - $ref: '#/components/parameters/DeveloperTokenHeader'
+        - $ref: '#/components/parameters/LoginCustomerIdHeader'
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/MutateAdGroupAdsRequest'
+            examples:
+              CreateResponsiveSearchAd:
+                $ref: '#/components/examples/CreateResponsiveSearchAdExample'
+      responses:
+        '200':
+          description: Successful Response
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/MutateAdGroupAdsResponse'
+        '400':
+          description: Bad Request
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/GoogleAdsFailure'
+        '401':
+          description: Unauthorized
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/GoogleAdsFailure'
+
+  /v18/customers/{customerId}/adGroupCriteria:mutate:
+    post:
+      summary: Create, Update, or Remove Keywords and Criteria
+      description: |
+        Creates, updates, or removes ad group criteria (keywords and other
+        targeting criteria). Keywords are words or phrases that trigger your
+        ads to appear in search results. Supports broad match, phrase match,
+        and exact match types.
+      operationId: mutateAdGroupCriteria
+      tags:
+        - Keywords
+      parameters:
+        - $ref: '#/components/parameters/CustomerIdPath'
+        - $ref: '#/components/parameters/AuthorizationHeader'
+        - $ref: '#/components/parameters/DeveloperTokenHeader'
+        - $ref: '#/components/parameters/LoginCustomerIdHeader'
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/MutateAdGroupCriteriaRequest'
+            examples:
+              AddKeywords:
+                $ref: '#/components/examples/AddKeywordsExample'
+      responses:
+        '200':
+          description: Successful Response
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/MutateAdGroupCriteriaResponse'
+        '400':
+          description: Bad Request
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/GoogleAdsFailure'
+        '401':
+          description: Unauthorized
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/GoogleAdsFailure'
+
+  /v18/customers/{customerId}/campaignBudgets:mutate:
+    post:
+      summary: Create, Update, or Remove Campaign Budgets
+      description: |
+        Creates, updates, or removes campaign budgets. Campaign budgets
+        define the daily or total spending limits for one or more campaigns.
+      operationId: mutateCampaignBudgets
+      tags:
+        - Campaigns
+      parameters:
+        - $ref: '#/components/parameters/CustomerIdPath'
+        - $ref: '#/components/parameters/AuthorizationHeader'
+        - $ref: '#/components/parameters/DeveloperTokenHeader'
+        - $ref: '#/components/parameters/LoginCustomerIdHeader'
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/MutateCampaignBudgetsRequest'
+      responses:
+        '200':
+          description: Successful Response
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/MutateCampaignBudgetsResponse'
+        '400':
+          description: Bad Request
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/GoogleAdsFailure'
+        '401':
+          description: Unauthorized
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/GoogleAdsFailure'
+
+  /v18/customers/{customerId}/biddingStrategies:mutate:
+    post:
+      summary: Create, Update, or Remove Bidding Strategies
+      description: |
+        Creates, updates, or removes bidding strategies. Bidding strategies
+        determine how bids are set for your ads. Supports strategies such as
+        Target CPA, Target ROAS, Maximize Conversions, and Manual CPC.
+      operationId: mutateBiddingStrategies
+      tags:
+        - Bidding Strategies
+      parameters:
+        - $ref: '#/components/parameters/CustomerIdPath'
+        - $ref: '#/components/parameters/AuthorizationHeader'
+        - $ref: '#/components/parameters/DeveloperTokenHeader'
+        - $ref: '#/components/parameters/LoginCustomerIdHeader'
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/MutateBiddingStrategiesRequest'
+      responses:
+        '200':
+          description: Successful Response
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/MutateBiddingStrategiesResponse'
+        '400':
+          description: Bad Request
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/GoogleAdsFailure'
+
+  /v18/customers/{customerId}:
+    get:
+      summary: Get Customer Account Details
+      description: |
+        Returns the requested customer account in full detail. A customer
+        represents a Google Ads account or a manager account.
+      operationId: getCustomer
+      tags:
+        - Customers
+      parameters:
+        - $ref: '#/components/parameters/CustomerIdPath'
+        - $ref: '#/components/parameters/AuthorizationHeader'
+        - $ref: '#/components/parameters/DeveloperTokenHeader'
+        - $ref: '#/components/parameters/LoginCustomerIdHeader'
+      responses:
+        '200':
+          description: Successful Response
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Customer'
+        '401':
+          description: Unauthorized
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/GoogleAdsFailure'
+        '403':
+          description: Forbidden
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/GoogleAdsFailure'
+
+  /v18/customers:listAccessibleCustomers:
+    get:
+      summary: List Accessible Customer Accounts
+      description: |
+        Returns resource names of customers directly accessible by the user
+        authenticating the call. Does not require a customer ID in the path,
+        as it operates at the OAuth credential level.
+      operationId: listAccessibleCustomers
+      tags:
+        - Customers
+      parameters:
+        - $ref: '#/components/parameters/AuthorizationHeader'
+        - $ref: '#/components/parameters/DeveloperTokenHeader'
+      responses:
+        '200':
+          description: Successful Response
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ListAccessibleCustomersResponse'
+        '401':
+          description: Unauthorized
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/GoogleAdsFailure'
+
+components:
+  securitySchemes:
+    oauth2Auth:
+      type: oauth2
+      description: |
+        Google Ads API uses OAuth 2.0 for authentication. Requires a developer
+        token, OAuth 2.0 client ID and secret, and a refresh token.
+      flows:
+        authorizationCode:
+          authorizationUrl: https://accounts.google.com/o/oauth2/auth
+          tokenUrl: https://oauth2.googleapis.com/token
+          scopes:
+            https://www.googleapis.com/auth/adwords: Full access to Google Ads accounts
+
+  parameters:
+    CustomerIdPath:
+      name: customerId
+      in: path
+      required: true
+      description: The Google Ads customer ID (without dashes), e.g. 1234567890.
+      schema:
+        type: string
+        pattern: '^\d{10}$'
+
+    AuthorizationHeader:
+      name: Authorization
+      in: header
+      required: true
+      description: OAuth 2.0 Bearer token for authentication.
+      schema:
+        type: string
+
+    DeveloperTokenHeader:
+      name: developer-token
+      in: header
+      required: true
+      description: |
+        Developer token for API access. Obtain from the Google Ads API Center
+        in your manager account.
+      schema:
+        type: string
+
+    LoginCustomerIdHeader:
+      name: login-customer-id
+      in: header
+      required: false
+      description: |
+        The customer ID of the manager account making the request on behalf
+        of a client account. Required when authenticating as a manager account.
+      schema:
+        type: string
+
+  schemas:
+    # Search / Reporting Schemas
+    SearchGoogleAdsRequest:
+      type: object
+      required:
+        - query
+      properties:
+        query:
+          type: string
+          description: |
+            Google Ads Query Language (GAQL) query string. Specifies the
+            resources, segments, metrics, and filtering criteria for the data
+            to retrieve.
+        pageToken:
+          type: string
+          description: Token for pagination to retrieve the next page of results.
+        pageSize:
+          type: integer
+          minimum: 1
+          maximum: 10000
+          description: Number of results per page. Default is 10000.
+        validateOnly:
+          type: boolean
+          description: If true, the query is validated but not executed.
+        returnTotalResultsCount:
+          type: boolean
+          description: If true, includes the total number of results in the response.
+        summaryRowSetting:
+          type: string
+          enum:
+            - NO_SUMMARY_ROW
+            - SUMMARY_ROW_WITH_RESULTS
+            - SUMMARY_ROW_ONLY
+          description: Determines whether a summary row is returned.
+
+    SearchGoogleAdsResponse:
+      type: object
+      properties:
+        results:
+          type: array
+          description: List of rows matching the query.
+          items:
+            $ref: '#/components/schemas/GoogleAdsRow'
+        nextPageToken:
+          type: string
+          description: Token for retrieving the next page of results.
+        totalResultsCount:
+          type: integer
+          format: int64
+          description: Total number of results matching the query.
+        fieldMask:
+          type: string
+          description: Fields requested in the query.
+        summaryRow:
+          $ref: '#/components/schemas/GoogleAdsRow'
+
+    SearchGoogleAdsStreamRequest:
+      type: object
+      required:
+        - query
+      properties:
+        query:
+          type: string
+          description: Google Ads Query Language (GAQL) query string.
+        summaryRowSetting:
+          type: string
+          enum:
+            - NO_SUMMARY_ROW
+            - SUMMARY_ROW_WITH_RESULTS
+            - SUMMARY_ROW_ONLY
+          description: Determines whether a summary row is returned.
+
+    SearchGoogleAdsStreamResponse:
+      type: object
+      properties:
+        results:
+          type: array
+          items:
+            $ref: '#/components/schemas/GoogleAdsRow'
+        fieldMask:
+          type: string
+        summaryRow:
+          $ref: '#/components/schemas/GoogleAdsRow'
+        requestId:
+          type: string
+          description: Unique ID of the request for debugging.
+
+    GoogleAdsRow:
+      type: object
+      description: A single row returned from a GAQL query containing resource fields, segments, and metrics.
+      properties:
+        campaign:
+          $ref: '#/components/schemas/Campaign'
+        adGroup:
+          $ref: '#/components/schemas/AdGroup'
+        adGroupAd:
+          $ref: '#/components/schemas/AdGroupAd'
+        adGroupCriterion:
+          $ref: '#/components/schemas/AdGroupCriterion'
+        customer:
+          $ref: '#/components/schemas/Customer'
+        metrics:
+          $ref: '#/components/schemas/Metrics'
+        segments:
+          $ref: '#/components/schemas/Segments'
+
+    # Campaign Schemas
+    Campaign:
+      type: object
+      description: A Google Ads campaign. Campaigns group ad groups and set budgets, bidding strategies, and targeting.
+      properties:
+        resourceName:
+          type: string
+          description: 'Resource name of the campaign, e.g. customers/{customerId}/campaigns/{campaignId}.'
+        id:
+          type: integer
+          format: int64
+          description: The unique ID of the campaign.
+        name:
+          type: string
+          description: The name of the campaign. Must be unique within the account.
+        status:
+          type: string
+          enum:
+            - ENABLED
+            - PAUSED
+            - REMOVED
+            - UNKNOWN
+            - UNSPECIFIED
+          description: The status of the campaign.
+        advertisingChannelType:
+          type: string
+          enum:
+            - SEARCH
+            - DISPLAY
+            - SHOPPING
+            - VIDEO
+            - MULTI_CHANNEL
+            - LOCAL
+            - SMART
+            - PERFORMANCE_MAX
+            - DEMAND_GEN
+            - TRAVEL
+            - LOCAL_SERVICES
+            - UNKNOWN
+            - UNSPECIFIED
+          description: The primary channel type for serving ads in this campaign.
+        advertisingChannelSubType:
+          type: string
+          description: Optional refinement of the advertising channel type.
+        biddingStrategyType:
+          type: string
+          enum:
+            - TARGET_CPA
+            - TARGET_ROAS
+            - TARGET_SPEND
+            - MAXIMIZE_CONVERSIONS
+            - MAXIMIZE_CONVERSION_VALUE
+            - MANUAL_CPC
+            - MANUAL_CPM
+            - MANUAL_CPV
+            - TARGET_IMPRESSION_SHARE
+            - ENHANCED_CPC
+            - UNKNOWN
+            - UNSPECIFIED
+          description: The type of bidding strategy used by the campaign.
+        campaignBudget:
+          type: string
+          description: Resource name of the campaign budget.
+        startDate:
+          type: string
+          description: Start date of the campaign in yyyy-MM-dd format.
+        endDate:
+          type: string
+          description: End date of the campaign in yyyy-MM-dd format.
+        networkSettings:
+          $ref: '#/components/schemas/NetworkSettings'
+        targetCpa:
+          $ref: '#/components/schemas/TargetCpa'
+        targetRoas:
+          $ref: '#/components/schemas/TargetRoas'
+        maximizeConversions:
+          $ref: '#/components/schemas/MaximizeConversions'
+        manualCpc:
+          $ref: '#/components/schemas/ManualCpc'
+        geoTargetTypeSetting:
+          $ref: '#/components/schemas/GeoTargetTypeSetting'
+
+    NetworkSettings:
+      type: object
+      description: Network targeting settings for a campaign.
+      properties:
+        targetGoogleSearch:
+          type: boolean
+          description: Whether ads are served on the Google Search Network.
+        targetSearchNetwork:
+          type: boolean
+          description: Whether ads are served on Google search partner sites.
+        targetContentNetwork:
+          type: boolean
+          description: Whether ads are served on the Google Display Network.
+        targetPartnerSearchNetwork:
+          type: boolean
+          description: Whether ads are served on the Google Partner Network.
+
+    TargetCpa:
+      type: object
+      description: Target CPA (cost per acquisition) bidding strategy configuration.
+      properties:
+        targetCpaMicros:
+          type: integer
+          format: int64
+          description: Target CPA amount in micros (1,000,000 micros = 1 unit of currency).
+
+    TargetRoas:
+      type: object
+      description: Target ROAS (return on ad spend) bidding strategy configuration.
+      properties:
+        targetRoas:
+          type: number
+          description: Target return on ad spend as a ratio, e.g. 3.5 means 350% ROAS.
+
+    MaximizeConversions:
+      type: object
+      description: Maximize Conversions bidding strategy configuration.
+      properties:
+        targetCpaMicros:
+          type: integer
+          format: int64
+          description: Optional target CPA in micros when using maximize conversions.
+
+    ManualCpc:
+      type: object
+      description: Manual CPC (cost per click) bidding strategy configuration.
+      properties:
+        enhancedCpcEnabled:
+          type: boolean
+          description: Whether Enhanced CPC is enabled for automatic bid adjustments.
+
+    GeoTargetTypeSetting:
+      type: object
+      description: Geographic targeting settings for a campaign.
+      properties:
+        positiveGeoTargetType:
+          type: string
+          enum:
+            - PRESENCE_OR_INTEREST
+            - SEARCH_INTEREST
+            - PRESENCE
+          description: How positive geo targeting is applied.
+        negativeGeoTargetType:
+          type: string
+          enum:
+            - PRESENCE_OR_INTEREST
+            - PRESENCE
+          description: How negative geo targeting is applied.
+
+    CampaignBudget:
+      type: object
+      description: A campaign budget that defines spending limits for one or more campaigns.
+      properties:
+        resourceName:
+          type: string
+          description: Resource name of the campaign budget.
+        id:
+          type: integer
+          format: int64
+          description: The unique ID of the campaign budget.
+        name:
+          type: string
+          description: Name of the campaign budget.
+        amountMicros:
+          type: integer
+          format: int64
+          description: Daily budget amount in micros (1,000,000 micros = 1 unit of currency).
+        totalAmountMicros:
+          type: integer
+          format: int64
+          description: Total lifetime budget amount in micros.
+        deliveryMethod:
+          type: string
+          enum:
+            - STANDARD
+            - ACCELERATED
+            - UNKNOWN
+            - UNSPECIFIED
+          description: How the budget is spent over the course of the day.
+        status:
+          type: string
+          enum:
+            - ENABLED
+            - REMOVED
+            - UNKNOWN
+            - UNSPECIFIED
+          description: The status of the campaign budget.
+        explicitlyShared:
+          type: boolean
+          description: Whether this budget is shared across multiple campaigns.
+
+    # Ad Group Schemas
+    AdGroup:
+      type: object
+      description: An ad group containing a set of ads and targeting criteria within a campaign.
+      properties:
+        resourceName:
+          type: string
+          description: 'Resource name of the ad group, e.g. customers/{customerId}/adGroups/{adGroupId}.'
+        id:
+          type: integer
+          format: int64
+          description: The unique ID of the ad group.
+        name:
+          type: string
+          description: The name of the ad group.
+        status:
+          type: string
+          enum:
+            - ENABLED
+            - PAUSED
+            - REMOVED
+            - UNKNOWN
+            - UNSPECIFIED
+          description: The status of the ad group.
+        campaign:
+          type: string
+          description: Resource name of the campaign this ad group belongs to.
+        type:
+          type: string
+          enum:
+            - SEARCH_STANDARD
+            - DISPLAY_STANDARD
+            - SHOPPING_PRODUCT_ADS
+            - VIDEO_TRUE_VIEW_IN_STREAM
+            - VIDEO_BUMPER
+            - HOTEL_ADS
+            - SHOPPING_SMART_ADS
+            - SMART_CAMPAIGN_ADS
+            - UNKNOWN
+            - UNSPECIFIED
+          description: The type of the ad group.
+        cpcBidMicros:
+          type: integer
+          format: int64
+          description: Maximum CPC bid in micros at the ad group level.
+        cpmBidMicros:
+          type: integer
+          format: int64
+          description: Maximum CPM bid in micros at the ad group level.
+        targetCpaMicros:
+          type: integer
+          format: int64
+          description: Target CPA in micros at the ad group level.
+        effectiveTargetCpaMicros:
+          type: integer
+          format: int64
+          description: Effective target CPA considering campaign-level settings.
+        effectiveTargetRoas:
+          type: number
+          description: Effective target ROAS considering campaign-level settings.
+        adRotationMode:
+          type: string
+          enum:
+            - OPTIMIZE
+            - ROTATE_FOREVER
+            - UNKNOWN
+            - UNSPECIFIED
+          description: Ad rotation mode for ads within this ad group.
+
+    # Ad Schemas
+    AdGroupAd:
+      type: object
+      description: An ad within an ad group.
+      properties:
+        resourceName:
+          type: string
+          description: 'Resource name of the ad group ad.'
+        status:
+          type: string
+          enum:
+            - ENABLED
+            - PAUSED
+            - REMOVED
+            - UNKNOWN
+            - UNSPECIFIED
+          description: The status of the ad.
+        adGroup:
+          type: string
+          description: Resource name of the ad group this ad belongs to.
+        ad:
+          $ref: '#/components/schemas/Ad'
+        policySummary:
+          $ref: '#/components/schemas/PolicySummary'
+        adStrength:
+          type: string
+          enum:
+            - EXCELLENT
+            - GOOD
+            - AVERAGE
+            - POOR
+            - NO_ADS
+            - UNKNOWN
+            - UNSPECIFIED
+          description: Overall ad strength rating for responsive search ads.
+
+    Ad:
+      type: object
+      description: The creative content of an ad.
+      properties:
+        resourceName:
+          type: string
+          description: Resource name of the ad.
+        id:
+          type: integer
+          format: int64
+          description: The unique ID of the ad.
+        finalUrls:
+          type: array
+          items:
+            type: string
+            format: uri
+          description: The list of landing page URLs for the ad.
+        finalMobileUrls:
+          type: array
+          items:
+            type: string
+            format: uri
+          description: Landing page URLs for mobile devices.
+        trackingUrlTemplate:
+          type: string
+          description: URL template for tracking clicks.
+        type:
+          type: string
+          enum:
+            - RESPONSIVE_SEARCH_AD
+            - EXPANDED_TEXT_AD
+            - RESPONSIVE_DISPLAY_AD
+            - IMAGE_AD
+            - VIDEO_AD
+            - CALL_AD
+            - APP_AD
+            - SHOPPING_PRODUCT_AD
+            - UNKNOWN
+            - UNSPECIFIED
+          description: The type of ad.
+        responsiveSearchAd:
+          $ref: '#/components/schemas/ResponsiveSearchAdInfo'
+        responsiveDisplayAd:
+          $ref: '#/components/schemas/ResponsiveDisplayAdInfo'
+
+    ResponsiveSearchAdInfo:
+      type: object
+      description: A responsive search ad composed of multiple headlines and descriptions that Google optimizes.
+      properties:
+        headlines:
+          type: array
+          description: List of headline assets (minimum 3, maximum 15).
+          items:
+            $ref: '#/components/schemas/AdTextAsset'
+        descriptions:
+          type: array
+          description: List of description assets (minimum 2, maximum 4).
+          items:
+            $ref: '#/components/schemas/AdTextAsset'
+        path1:
+          type: string
+          description: First part of the display URL path appended to the domain.
+        path2:
+          type: string
+          description: Second part of the display URL path.
+
+    ResponsiveDisplayAdInfo:
+      type: object
+      description: A responsive display ad that automatically adjusts size, appearance, and format.
+      properties:
+        headlines:
+          type: array
+          items:
+            $ref: '#/components/schemas/AdTextAsset'
+        longHeadline:
+          $ref: '#/components/schemas/AdTextAsset'
+        descriptions:
+          type: array
+          items:
+            $ref: '#/components/schemas/AdTextAsset'
+        businessName:
+          type: string
+          description: The advertiser business name.
+
+    AdTextAsset:
+      type: object
+      description: A text asset used in responsive ads.
+      properties:
+        text:
+          type: string
+          description: The text content of the asset.
+        pinnedField:
+          type: string
+          enum:
+            - HEADLINE_1
+            - HEADLINE_2
+            - HEADLINE_3
+            - DESCRIPTION_1
+            - DESCRIPTION_2
+            - UNSPECIFIED
+          description: Pin position for this text asset in ad rendering.
+
+    PolicySummary:
+      type: object
+      description: Policy review status and approval information.
+      properties:
+        approvalStatus:
+          type: string
+          enum:
+            - APPROVED
+            - APPROVED_LIMITED
+            - AREA_OF_INTEREST_ONLY
+            - DISAPPROVED
+            - UNKNOWN
+            - UNSPECIFIED
+          description: Overall approval status of the ad.
+        reviewStatus:
+          type: string
+          enum:
+            - REVIEW_IN_PROGRESS
+            - REVIEWED
+            - UNDER_APPEAL
+            - ELIGIBLE_MAY_SERVE
+            - UNKNOWN
+            - UNSPECIFIED
+          description: Current review status of the ad.
+        policyTopicEntries:
+          type: array
+          items:
+            type: object
+            properties:
+              type:
+                type: string
+                description: The policy topic type.
+              topic:
+                type: string
+                description: The policy topic name.
+
+    # Keyword / Criterion Schemas
+    AdGroupCriterion:
+      type: object
+      description: A targeting criterion within an ad group, such as a keyword.
+      properties:
+        resourceName:
+          type: string
+          description: Resource name of the ad group criterion.
+        criterionId:
+          type: integer
+          format: int64
+          description: The unique ID of the criterion.
+        adGroup:
+          type: string
+          description: Resource name of the ad group this criterion belongs to.
+        status:
+          type: string
+          enum:
+            - ENABLED
+            - PAUSED
+            - REMOVED
+            - UNKNOWN
+            - UNSPECIFIED
+          description: The status of the criterion.
+        type:
+          type: string
+          enum:
+            - KEYWORD
+            - PLACEMENT
+            - TOPIC
+            - AGE_RANGE
+            - GENDER
+            - INCOME_RANGE
+            - PARENTAL_STATUS
+            - LISTING_GROUP
+            - WEBPAGE
+            - CUSTOM_AUDIENCE
+            - AUDIENCE
+            - UNKNOWN
+            - UNSPECIFIED
+          description: The type of criterion.
+        keyword:
+          $ref: '#/components/schemas/KeywordInfo'
+        qualityInfo:
+          $ref: '#/components/schemas/QualityInfo'
+        cpcBidMicros:
+          type: integer
+          format: int64
+          description: CPC bid override in micros for this criterion.
+        effectiveCpcBidMicros:
+          type: integer
+          format: int64
+          description: Effective CPC bid in micros after applying all adjustments.
+        finalUrls:
+          type: array
+          items:
+            type: string
+            format: uri
+          description: Override landing page URLs for this keyword.
+        negative:
+          type: boolean
+          description: Whether this is a negative criterion (excluded from targeting).
+
+    KeywordInfo:
+      type: object
+      description: Keyword targeting information.
+      properties:
+        text:
+          type: string
+          description: The keyword text.
+        matchType:
+          type: string
+          enum:
+            - EXACT
+            - PHRASE
+            - BROAD
+            - UNKNOWN
+            - UNSPECIFIED
+          description: The match type of the keyword.
+
+    QualityInfo:
+      type: object
+      description: Quality score and component metrics for a keyword.
+      properties:
+        qualityScore:
+          type: integer
+          minimum: 1
+          maximum: 10
+          description: Quality Score on a 1-10 scale.
+        creativeQualityScore:
+          type: string
+          enum:
+            - ABOVE_AVERAGE
+            - AVERAGE
+            - BELOW_AVERAGE
+            - UNKNOWN
+            - UNSPECIFIED
+          description: Ad relevance quality component.
+        postClickQualityScore:
+          type: string
+          enum:
+            - ABOVE_AVERAGE
+            - AVERAGE
+            - BELOW_AVERAGE
+            - UNKNOWN
+            - UNSPECIFIED
+          description: Landing page experience quality component.
+        searchPredictedCtr:
+          type: string
+          enum:
+            - ABOVE_AVERAGE
+            - AVERAGE
+            - BELOW_AVERAGE
+            - UNKNOWN
+            - UNSPECIFIED
+          description: Expected click-through rate quality component.
+
+    # Metrics Schema
+    Metrics:
+      type: object
+      description: Performance metrics returned in query results.
+      properties:
+        impressions:
+          type: integer
+          format: int64
+          description: Number of times the ad was shown.
+        clicks:
+          type: integer
+          format: int64
+          description: Number of clicks on the ad.
+        costMicros:
+          type: integer
+          format: int64
+          description: Total cost in micros (1,000,000 micros = 1 unit of currency).
+        conversions:
+          type: number
+          description: Number of conversions.
+        conversionsValue:
+          type: number
+          description: Total value of conversions.
+        ctr:
+          type: number
+          description: Click-through rate (clicks / impressions).
+        averageCpc:
+          type: integer
+          format: int64
+          description: Average cost per click in micros.
+        averageCpm:
+          type: number
+          description: Average cost per thousand impressions in micros.
+        costPerConversion:
+          type: number
+          description: Cost per conversion in micros.
+        conversionRate:
+          type: number
+          description: Conversion rate (conversions / clicks).
+        searchImpressionShare:
+          type: number
+          description: Search impression share as a fraction.
+        searchRankLostImpressionShare:
+          type: number
+          description: Search impression share lost due to ad rank.
+        searchBudgetLostImpressionShare:
+          type: number
+          description: Search impression share lost due to budget.
+        allConversions:
+          type: number
+          description: Total of all conversions including cross-device.
+        viewThroughConversions:
+          type: integer
+          format: int64
+          description: View-through conversions from display and video ads.
+        interactionRate:
+          type: number
+          description: Interaction rate (interactions / impressions).
+        averageCost:
+          type: integer
+          format: int64
+          description: Average cost per interaction in micros.
+
+    # Segments Schema
+    Segments:
+      type: object
+      description: Segment dimensions for slicing report data.
+      properties:
+        date:
+          type: string
+          description: Date in yyyy-MM-dd format.
+        dayOfWeek:
+          type: string
+          enum:
+            - MONDAY
+            - TUESDAY
+            - WEDNESDAY
+            - THURSDAY
+            - FRIDAY
+            - SATURDAY
+            - SUNDAY
+            - UNKNOWN
+            - UNSPECIFIED
+          description: Day of the week.
+        device:
+          type: string
+          enum:
+            - MOBILE
+            - TABLET
+            - DESKTOP
+            - CONNECTED_TV
+            - OTHER
+            - UNKNOWN
+            - UNSPECIFIED
+          description: Device type.
+        adNetworkType:
+          type: string
+          enum:
+            - SEARCH
+            - SEARCH_PARTNERS
+            - CONTENT
+            - YOUTUBE_SEARCH
+            - YOUTUBE_WATCH
+            - MIXED
+            - UNKNOWN
+            - UNSPECIFIED
+          description: Ad network type.
+        conversionAction:
+          type: string
+          description: Resource name of the conversion action.
+        conversionActionCategory:
+          type: string
+          description: Category of the conversion action.
+        quarter:
+          type: string
+          description: Quarter in yyyy-MM-dd format (first day of the quarter).
+        month:
+          type: string
+          description: Month in yyyy-MM-dd format (first day of the month).
+        week:
+          type: string
+          description: Week in yyyy-MM-dd format (Monday of the week).
+        year:
+          type: integer
+          description: Year as a four-digit integer.
+        hour:
+          type: integer
+          description: Hour of the day (0-23).
+        keyword:
+          type: object
+          properties:
+            info:
+              $ref: '#/components/schemas/KeywordInfo'
+            adGroupCriterion:
+              type: string
+              description: Resource name of the keyword criterion.
+
+    # Customer Schema
+    Customer:
+      type: object
+      description: A Google Ads customer account.
+      properties:
+        resourceName:
+          type: string
+          description: Resource name of the customer.
+        id:
+          type: integer
+          format: int64
+          description: The customer account ID.
+        descriptiveName:
+          type: string
+          description: The descriptive name of the customer account.
+        currencyCode:
+          type: string
+          description: ISO 4217 three-letter currency code for the account.
+        timeZone:
+          type: string
+          description: IANA time zone ID for the account.
+        manager:
+          type: boolean
+          description: Whether this is a manager account (MCC).
+        testAccount:
+          type: boolean
+          description: Whether this is a test account.
+        autoTaggingEnabled:
+          type: boolean
+          description: Whether auto-tagging is enabled for the account.
+        hasPartnersBadge:
+          type: boolean
+          description: Whether the account has a Google Partners badge.
+
+    ListAccessibleCustomersResponse:
+      type: object
+      properties:
+        resourceNames:
+          type: array
+          items:
+            type: string
+          description: List of resource names of accessible customer accounts.
+
+    # Bidding Strategy Schema
+    BiddingStrategy:
+      type: object
+      description: A portfolio bidding strategy shared across multiple campaigns.
+      properties:
+        resourceName:
+          type: string
+          description: Resource name of the bidding strategy.
+        id:
+          type: integer
+          format: int64
+          description: The unique ID of the bidding strategy.
+        name:
+          type: string
+          description: Name of the bidding strategy.
+        type:
+          type: string
+          enum:
+            - TARGET_CPA
+            - TARGET_ROAS
+            - TARGET_SPEND
+            - MAXIMIZE_CONVERSIONS
+            - MAXIMIZE_CONVERSION_VALUE
+            - UNKNOWN
+            - UNSPECIFIED
+          description: The type of bidding strategy.
+        status:
+          type: string
+          enum:
+            - ENABLED
+            - REMOVED
+            - UNKNOWN
+            - UNSPECIFIED
+          description: The status of the bidding strategy.
+        campaignCount:
+          type: integer
+          format: int64
+          description: Number of campaigns using this bidding strategy.
+
+    # Mutation Request/Response Schemas
+    MutateCampaignsRequest:
+      type: object
+      required:
+        - operations
+      properties:
+        operations:
+          type: array
+          items:
+            $ref: '#/components/schemas/CampaignOperation'
+        partialFailure:
+          type: boolean
+          description: If true, successful operations are performed even when some fail.
+        validateOnly:
+          type: boolean
+          description: If true, the request is validated but not executed.
+
+    CampaignOperation:
+      type: object
+      properties:
+        create:
+          $ref: '#/components/schemas/Campaign'
+        update:
+          $ref: '#/components/schemas/Campaign'
+        remove:
+          type: string
+          description: Resource name of the campaign to remove.
+        updateMask:
+          type: string
+          description: FieldMask specifying which fields to update.
+
+    MutateCampaignsResponse:
+      type: object
+      properties:
+        results:
+          type: array
+          items:
+            type: object
+            properties:
+              resourceName:
+                type: string
+                description: Resource name of the mutated campaign.
+        partialFailureError:
+          $ref: '#/components/schemas/Status'
+
+    MutateAdGroupsRequest:
+      type: object
+      required:
+        - operations
+      properties:
+        operations:
+          type: array
+          items:
+            $ref: '#/components/schemas/AdGroupOperation'
+        partialFailure:
+          type: boolean
+        validateOnly:
+          type: boolean
+
+    AdGroupOperation:
+      type: object
+      properties:
+        create:
+          $ref: '#/components/schemas/AdGroup'
+        update:
+          $ref: '#/components/schemas/AdGroup'
+        remove:
+          type: string
+        updateMask:
+          type: string
+
+    MutateAdGroupsResponse:
+      type: object
+      properties:
+        results:
+          type: array
+          items:
+            type: object
+            properties:
+              resourceName:
+                type: string
+        partialFailureError:
+          $ref: '#/components/schemas/Status'
+
+    MutateAdGroupAdsRequest:
+      type: object
+      required:
+        - operations
+      properties:
+        operations:
+          type: array
+          items:
+            $ref: '#/components/schemas/AdGroupAdOperation'
+        partialFailure:
+          type: boolean
+        validateOnly:
+          type: boolean
+
+    AdGroupAdOperation:
+      type: object
+      properties:
+        create:
+          $ref: '#/components/schemas/AdGroupAd'
+        update:
+          $ref: '#/components/schemas/AdGroupAd'
+        remove:
+          type: string
+        updateMask:
+          type: string
+
+    MutateAdGroupAdsResponse:
+      type: object
+      properties:
+        results:
+          type: array
+          items:
+            type: object
+            properties:
+              resourceName:
+                type: string
+        partialFailureError:
+          $ref: '#/components/schemas/Status'
+
+    MutateAdGroupCriteriaRequest:
+      type: object
+      required:
+        - operations
+      properties:
+        operations:
+          type: array
+          items:
+            $ref: '#/components/schemas/AdGroupCriterionOperation'
+        partialFailure:
+          type: boolean
+        validateOnly:
+          type: boolean
+
+    AdGroupCriterionOperation:
+      type: object
+      properties:
+        create:
+          $ref: '#/components/schemas/AdGroupCriterion'
+        update:
+          $ref: '#/components/schemas/AdGroupCriterion'
+        remove:
+          type: string
+        updateMask:
+          type: string
+
+    MutateAdGroupCriteriaResponse:
+      type: object
+      properties:
+        results:
+          type: array
+          items:
+            type: object
+            properties:
+              resourceName:
+                type: string
+        partialFailureError:
+          $ref: '#/components/schemas/Status'
+
+    MutateCampaignBudgetsRequest:
+      type: object
+      required:
+        - operations
+      properties:
+        operations:
+          type: array
+          items:
+            $ref: '#/components/schemas/CampaignBudgetOperation'
+        partialFailure:
+          type: boolean
+        validateOnly:
+          type: boolean
+
+    CampaignBudgetOperation:
+      type: object
+      properties:
+        create:
+          $ref: '#/components/schemas/CampaignBudget'
+        update:
+          $ref: '#/components/schemas/CampaignBudget'
+        remove:
+          type: string
+        updateMask:
+          type: string
+
+    MutateCampaignBudgetsResponse:
+      type: object
+      properties:
+        results:
+          type: array
+          items:
+            type: object
+            properties:
+              resourceName:
+                type: string
+        partialFailureError:
+          $ref: '#/components/schemas/Status'
+
+    MutateBiddingStrategiesRequest:
+      type: object
+      required:
+        - operations
+      properties:
+        operations:
+          type: array
+          items:
+            $ref: '#/components/schemas/BiddingStrategyOperation'
+        partialFailure:
+          type: boolean
+        validateOnly:
+          type: boolean
+
+    BiddingStrategyOperation:
+      type: object
+      properties:
+        create:
+          $ref: '#/components/schemas/BiddingStrategy'
+        update:
+          $ref: '#/components/schemas/BiddingStrategy'
+        remove:
+          type: string
+        updateMask:
+          type: string
+
+    MutateBiddingStrategiesResponse:
+      type: object
+      properties:
+        results:
+          type: array
+          items:
+            type: object
+            properties:
+              resourceName:
+                type: string
+        partialFailureError:
+          $ref: '#/components/schemas/Status'
+
+    # Error Schemas
+    GoogleAdsFailure:
+      type: object
+      description: Error response from the Google Ads API.
+      properties:
+        errors:
+          type: array
+          items:
+            $ref: '#/components/schemas/GoogleAdsError'
+
+    GoogleAdsError:
+      type: object
+      properties:
+        errorCode:
+          type: object
+          description: The error code with a specific error enum and value.
+          additionalProperties:
+            type: string
+        message:
+          type: string
+          description: Human-readable error message.
+        trigger:
+          type: object
+          description: The value that triggered the error.
+        location:
+          type: object
+          description: Location of the error in the request.
+          properties:
+            fieldPathElements:
+              type: array
+              items:
+                type: object
+                properties:
+                  fieldName:
+                    type: string
+                  index:
+                    type: integer
+
+    Status:
+      type: object
+      description: Standard gRPC status for partial failure errors.
+      properties:
+        code:
+          type: integer
+          description: gRPC status code.
+        message:
+          type: string
+          description: Error message.
+        details:
+          type: array
+          items:
+            type: object
+
+  examples:
+    CampaignPerformanceQueryExample:
+      summary: Query campaign performance metrics
+      value:
+        query: >-
+          SELECT campaign.id, campaign.name, campaign.status,
+          metrics.impressions, metrics.clicks, metrics.cost_micros,
+          metrics.conversions, metrics.ctr, metrics.average_cpc
+          FROM campaign
+          WHERE campaign.status != 'REMOVED'
+          AND segments.date DURING LAST_30_DAYS
+          ORDER BY metrics.impressions DESC
+          LIMIT 50
+
+    KeywordPerformanceQueryExample:
+      summary: Query keyword performance metrics
+      value:
+        query: >-
+          SELECT ad_group_criterion.keyword.text,
+          ad_group_criterion.keyword.match_type,
+          ad_group_criterion.quality_info.quality_score,
+          metrics.impressions, metrics.clicks, metrics.cost_micros,
+          metrics.conversions, metrics.ctr
+          FROM keyword_view
+          WHERE campaign.status = 'ENABLED'
+          AND ad_group.status = 'ENABLED'
+          AND segments.date DURING LAST_7_DAYS
+          ORDER BY metrics.impressions DESC
+
+    CampaignPerformanceResponseExample:
+      summary: Campaign performance response
+      value:
+        results:
+          - campaign:
+              resourceName: customers/1234567890/campaigns/111111
+              id: 111111
+              name: "Brand Awareness Campaign"
+              status: ENABLED
+            metrics:
+              impressions: 125000
+              clicks: 4500
+              costMicros: 2250000000
+              conversions: 180
+              ctr: 0.036
+              averageCpc: 500000
+        nextPageToken: null
+        totalResultsCount: 1
+
+    CreateCampaignExample:
+      summary: Create a new search campaign
+      value:
+        operations:
+          - create:
+              name: "New Search Campaign"
+              status: PAUSED
+              advertisingChannelType: SEARCH
+              campaignBudget: customers/1234567890/campaignBudgets/222222
+              networkSettings:
+                targetGoogleSearch: true
+                targetSearchNetwork: true
+                targetContentNetwork: false
+              manualCpc:
+                enhancedCpcEnabled: true
+              startDate: "2026-04-01"
+        partialFailure: false
+
+    CreateCampaignResponseExample:
+      summary: Successful campaign creation
+      value:
+        results:
+          - resourceName: customers/1234567890/campaigns/333333
+
+    CreateAdGroupExample:
+      summary: Create a new ad group
+      value:
+        operations:
+          - create:
+              name: "Product Keywords Ad Group"
+              campaign: customers/1234567890/campaigns/111111
+              status: ENABLED
+              type: SEARCH_STANDARD
+              cpcBidMicros: 1500000
+        partialFailure: false
+
+    CreateResponsiveSearchAdExample:
+      summary: Create a responsive search ad
+      value:
+        operations:
+          - create:
+              adGroup: customers/1234567890/adGroups/444444
+              status: ENABLED
+              ad:
+                finalUrls:
+                  - "https://www.example.com/products"
+                responsiveSearchAd:
+                  headlines:
+                    - text: "Buy Products Online"
+                    - text: "Free Shipping Available"
+                    - text: "Shop the Best Deals"
+                  descriptions:
+                    - text: "Browse our wide selection of quality products with fast, free shipping."
+                    - text: "Save big on your favorite brands. Shop now and get exclusive deals."
+                  path1: "products"
+                  path2: "deals"
+        partialFailure: false
+
+    AddKeywordsExample:
+      summary: Add keywords to an ad group
+      value:
+        operations:
+          - create:
+              adGroup: customers/1234567890/adGroups/444444
+              status: ENABLED
+              keyword:
+                text: "buy products online"
+                matchType: BROAD
+              cpcBidMicros: 1000000
+          - create:
+              adGroup: customers/1234567890/adGroups/444444
+              status: ENABLED
+              keyword:
+                text: "best deals online"
+                matchType: PHRASE
+              cpcBidMicros: 1200000
+          - create:
+              adGroup: customers/1234567890/adGroups/444444
+              status: ENABLED
+              keyword:
+                text: "discount products"
+                matchType: EXACT
+              cpcBidMicros: 1500000
+              negative: false
+        partialFailure: false
