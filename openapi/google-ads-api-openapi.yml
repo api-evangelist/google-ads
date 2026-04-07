@@ -24,21 +24,21 @@ security:
   - oauth2Auth: []
 
 tags:
-  - name: Campaigns
-    description: Create, read, update, and remove advertising campaigns
   - name: Ad Groups
     description: Manage ad groups within campaigns
   - name: Ads
     description: Create and manage individual ads within ad groups
+  - name: Bidding Strategies
+    description: Manage bidding strategies for campaigns
+
+  - name: Campaigns
+    description: Create, read, update, and remove advertising campaigns
+  - name: Customers
+    description: Access and manage Google Ads customer account information
   - name: Keywords
     description: Manage keyword targeting criteria for ad groups
   - name: Reporting
     description: Query performance data using Google Ads Query Language (GAQL)
-  - name: Customers
-    description: Access and manage Google Ads customer account information
-  - name: Bidding Strategies
-    description: Manage bidding strategies for campaigns
-
 paths:
   /v18/customers/{customerId}/googleAds:search:
     post:

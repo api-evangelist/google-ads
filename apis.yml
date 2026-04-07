@@ -1,8 +1,5 @@
 name: Google Ads
-description: The Google Ads API is the modern programmatic interface to Google 
-  Ads and the next generation of the AdWords API. It enables developers to 
-  interact directly with the Google Ads platform, vastly increasing the 
-  efficiency of managing large or complex Google Ads accounts and campaigns.
+description: The Google Ads API is the modern programmatic interface to Google Ads and the next generation of the AdWords API. It enables developers to interact directly with the Google Ads platform, vastly increasing the efficiency of managing large or complex Google Ads accounts and campaigns.
 image: https://www.gstatic.com/images/branding/product/1x/google_ads_64dp.png
 created: '2024'
 modified: '2025-03-04'
@@ -13,16 +10,15 @@ apis:
     description: >-
       RESTful API for managing Google Ads campaigns, ad groups, ads, keywords, and
       more.
-    image: 
-      https://www.gstatic.com/images/branding/product/1x/google_ads_64dp.png
+    image: https://www.gstatic.com/images/branding/product/1x/google_ads_64dp.png
     humanURL: https://developers.google.com/google-ads/api
     baseURL: https://googleads.googleapis.com
     tags:
       - Advertising
-      - PPC
-      - Marketing
-      - Campaigns
       - Analytics
+      - Campaigns
+      - Marketing
+      - PPC
     properties:
       - type: Documentation
         url: https://developers.google.com/google-ads/api/docs/start
@@ -49,29 +45,26 @@ apis:
       - type: Change Log
         url: https://developers.google.com/google-ads/api/docs/release-notes
       - type: Getting Started
-        url: 
-          https://developers.google.com/google-ads/api/docs/first-call/overview
+        url: https://developers.google.com/google-ads/api/docs/first-call/overview
   - name: Google Ads Scripts
     description: >-
       JavaScript-based scripting interface for programmatically managing and
       querying Google Ads data directly in a browser-based IDE. Scripts enable
       automated changes to campaigns, ad groups, and reporting without requiring
       a full API integration.
-    image: 
-      https://www.gstatic.com/images/branding/product/1x/google_ads_64dp.png
+    image: https://www.gstatic.com/images/branding/product/1x/google_ads_64dp.png
     humanURL: https://developers.google.com/google-ads/scripts/docs/start
     baseURL: https://googleads.googleapis.com
     tags:
-      - Scripts
       - Automation
-      - JavaScript
       - Campaign Management
+      - JavaScript
+      - Scripts
     properties:
       - type: Documentation
         url: https://developers.google.com/google-ads/scripts/docs/start
       - type: Getting Started
-        url: 
-          https://developers.google.com/google-ads/scripts/docs/getting-started
+        url: https://developers.google.com/google-ads/scripts/docs/getting-started
       - type: Reference
         url: https://developers.google.com/google-ads/scripts/docs/examples
 common:
@@ -104,8 +97,7 @@ common:
   - type: Sign Up
     url: https://ads.google.com/signup
   - type: Developer Tools
-    url: 
-      https://developers.google.com/google-ads/api/docs/developer-toolkit/ai-assistant
+    url: https://developers.google.com/google-ads/api/docs/developer-toolkit/ai-assistant
   - type: JSONSchema
     url: json-schema/google-ads-campaign-schema.json
   - type: JSON-LD
@@ -116,8 +108,8 @@ maintainers:
     url: https://apievangelist.com
 tags:
   - Advertising
-  - PPC
+  - Campaign Management
+  - Digital Advertising
   - Google
   - Marketing
-  - Digital Advertising
-  - Campaign Management
+  - PPC
