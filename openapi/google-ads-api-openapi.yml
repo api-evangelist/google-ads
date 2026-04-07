@@ -147,7 +147,7 @@ paths:
 
   /v18/customers/{customerId}/campaigns:mutate:
     post:
-      summary: Create, Update, or Remove Campaigns
+      summary: Google Ads Create, Update, or Remove Campaigns
       description: |
         Creates, updates, or removes campaigns. Operation statuses are returned.
         Supports partial failure where some operations succeed while others fail.
@@ -199,7 +199,7 @@ paths:
 
   /v18/customers/{customerId}/adGroups:mutate:
     post:
-      summary: Create, Update, or Remove Ad Groups
+      summary: Google Ads Create, Update, or Remove Ad Groups
       description: |
         Creates, updates, or removes ad groups. An ad group is a set of ads
         that share the same targeting criteria. Each ad group belongs to
@@ -243,7 +243,7 @@ paths:
 
   /v18/customers/{customerId}/adGroupAds:mutate:
     post:
-      summary: Create, Update, or Remove Ads
+      summary: Google Ads Create, Update, or Remove Ads
       description: |
         Creates, updates, or removes ads within ad groups. Ads are the
         creative content shown to users. Supports responsive search ads,
@@ -287,7 +287,7 @@ paths:
 
   /v18/customers/{customerId}/adGroupCriteria:mutate:
     post:
-      summary: Create, Update, or Remove Keywords and Criteria
+      summary: Google Ads Create, Update, or Remove Keywords and Criteria
       description: |
         Creates, updates, or removes ad group criteria (keywords and other
         targeting criteria). Keywords are words or phrases that trigger your
@@ -332,7 +332,7 @@ paths:
 
   /v18/customers/{customerId}/campaignBudgets:mutate:
     post:
-      summary: Create, Update, or Remove Campaign Budgets
+      summary: Google Ads Create, Update, or Remove Campaign Budgets
       description: |
         Creates, updates, or removes campaign budgets. Campaign budgets
         define the daily or total spending limits for one or more campaigns.
@@ -372,7 +372,7 @@ paths:
 
   /v18/customers/{customerId}/biddingStrategies:mutate:
     post:
-      summary: Create, Update, or Remove Bidding Strategies
+      summary: Google Ads Create, Update, or Remove Bidding Strategies
       description: |
         Creates, updates, or removes bidding strategies. Bidding strategies
         determine how bids are set for your ads. Supports strategies such as
@@ -407,7 +407,7 @@ paths:
 
   /v18/customers/{customerId}:
     get:
-      summary: Get Customer Account Details
+      summary: Google Ads Get Customer Account Details
       description: |
         Returns the requested customer account in full detail. A customer
         represents a Google Ads account or a manager account.
@@ -441,7 +441,7 @@ paths:
 
   /v18/customers:listAccessibleCustomers:
     get:
-      summary: List Accessible Customer Accounts
+      summary: Google Ads List Accessible Customer Accounts
       description: |
         Returns resource names of customers directly accessible by the user
         authenticating the call. Does not require a customer ID in the path,
@@ -1734,7 +1734,7 @@ components:
               conversions: 180
               ctr: 0.036
               averageCpc: 500000
-        nextPageToken: null
+        nextPageToken:
         totalResultsCount: 1
 
     CreateCampaignExample:
