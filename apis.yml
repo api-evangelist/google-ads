@@ -1,15 +1,29 @@
+aid: google-ads
 name: Google Ads
-description: The Google Ads API is the modern programmatic interface to Google Ads and the next generation of the AdWords API. It enables developers to interact directly with the Google Ads platform, vastly increasing the efficiency of managing large or complex Google Ads accounts and campaigns.
+description: >-
+  The Google Ads API is the modern programmatic interface to Google Ads and the
+  next generation of the AdWords API. It enables developers to interact directly
+  with the Google Ads platform, vastly increasing the efficiency of managing
+  large or complex Google Ads accounts and campaigns.
+type: Index
 image: https://www.gstatic.com/images/branding/product/1x/google_ads_64dp.png
-created: '2024'
-modified: '2025-03-04'
-specificationVersion: '0.18'
-url: https://developers.google.com/google-ads/api/docs/start
+url: https://raw.githubusercontent.com/api-evangelist/google-ads/refs/heads/main/apis.yml
+created: '2024-01-01'
+modified: '2026-04-28'
+specificationVersion: '0.19'
+tags:
+  - Advertising
+  - Campaign Management
+  - Digital Advertising
+  - Google
+  - Marketing
+  - PPC
 apis:
-  - name: Google Ads API
+  - aid: google-ads:google-ads-api
+    name: Google Ads API
     description: >-
-      RESTful API for managing Google Ads campaigns, ad groups, ads, keywords, and
-      more.
+      RESTful API for managing Google Ads campaigns, ad groups, ads, keywords,
+      and more.
     image: https://www.gstatic.com/images/branding/product/1x/google_ads_64dp.png
     humanURL: https://developers.google.com/google-ads/api
     baseURL: https://googleads.googleapis.com
@@ -46,7 +60,8 @@ apis:
         url: https://developers.google.com/google-ads/api/docs/release-notes
       - type: Getting Started
         url: https://developers.google.com/google-ads/api/docs/first-call/overview
-  - name: Google Ads Scripts
+  - aid: google-ads:google-ads-scripts
+    name: Google Ads Scripts
     description: >-
       JavaScript-based scripting interface for programmatically managing and
       querying Google Ads data directly in a browser-based IDE. Scripts enable
@@ -106,10 +121,3 @@ maintainers:
   - FN: Kin Lane
     email: kin@apievangelist.com
     url: https://apievangelist.com
-tags:
-  - Advertising
-  - Campaign Management
-  - Digital Advertising
-  - Google
-  - Marketing
-  - PPC
