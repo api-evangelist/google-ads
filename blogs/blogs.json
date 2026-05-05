@@ -1,0 +1,13 @@
+{
+  "repo": "google-ads",
+  "feeds": [
+    {
+      "source": "https://ads-developers.googleblog.com/",
+      "feed_url": "http://ads-developers.googleblog.com/feeds/posts/default",
+      "saved": 10,
+      "title": "Google Ads Developer Blog"
+    }
+  ],
+  "post_count": 10,
+  "fetched": "2026-05-03T23:28:21Z"
+}
