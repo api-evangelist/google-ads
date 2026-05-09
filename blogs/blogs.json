@@ -3,11 +3,11 @@
   "feeds": [
     {
       "source": "https://ads-developers.googleblog.com/",
-      "feed_url": "http://ads-developers.googleblog.com/feeds/posts/default",
-      "saved": 10,
-      "title": "Google Ads Developer Blog"
+      "feed_url": "https://ads-developers.googleblog.com/atom.xml",
+      "title": "Google Ads Developer Blog",
+      "saved": 3
     }
   ],
-  "post_count": 10,
-  "fetched": "2026-05-03T23:28:21Z"
+  "post_count": 13,
+  "fetched": "2026-05-09T20:17:51Z"
 }
