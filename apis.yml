@@ -46,9 +46,9 @@ apis:
         url: https://developers.google.com/google-ads/api/docs/migration
       - type: Best Practices
         url: https://developers.google.com/google-ads/api/docs/best-practices
-      - type: Rate Limits
+      - type: RateLimits
         url: https://developers.google.com/google-ads/api/docs/rate-limits
-      - type: Release Notes
+      - type: ReleaseNotes
         url: https://developers.google.com/google-ads/api/docs/release-notes
       - type: Support
         url: https://developers.google.com/google-ads/api/support
@@ -56,9 +56,9 @@ apis:
         url: https://groups.google.com/g/adwords-api
       - type: Client Libraries
         url: https://developers.google.com/google-ads/api/docs/client-libs
-      - type: Change Log
+      - type: ChangeLog
         url: https://developers.google.com/google-ads/api/docs/release-notes
-      - type: Getting Started
+      - type: GettingStarted
         url: https://developers.google.com/google-ads/api/docs/first-call/overview
   - aid: google-ads:google-ads-scripts
     name: Google Ads Scripts
@@ -78,22 +78,22 @@ apis:
     properties:
       - type: Documentation
         url: https://developers.google.com/google-ads/scripts/docs/start
-      - type: Getting Started
+      - type: GettingStarted
         url: https://developers.google.com/google-ads/scripts/docs/getting-started
       - type: Reference
         url: https://developers.google.com/google-ads/scripts/docs/examples
 common:
   - type: Portal
     url: https://developers.google.com/google-ads/api
-  - type: Getting Started
+  - type: GettingStarted
     url: https://developers.google.com/google-ads/api/docs/first-call/overview
   - type: Authentication
     url: https://developers.google.com/google-ads/api/docs/oauth/overview
-  - type: Terms of Service
+  - type: TermsOfService
     url: https://developers.google.com/terms
-  - type: Privacy Policy
+  - type: PrivacyPolicy
     url: https://policies.google.com/privacy
-  - type: Status Page
+  - type: StatusPage
     url: https://status.cloud.google.com/
   - type: Blog
     url: https://ads-developers.googleblog.com/
@@ -101,21 +101,21 @@ common:
     url: https://developers.google.com/google-ads/api/support
   - type: SDKs
     url: https://developers.google.com/google-ads/api/docs/client-libs
-  - type: GitHub Organization
+  - type: GitHubOrganization
     url: https://github.com/googleads
-  - type: Stack Overflow
+  - type: StackOverflow
     url: https://stackoverflow.com/questions/tagged/google-ads-api
   - type: Community
     url: https://groups.google.com/g/adwords-api
   - type: Console
     url: https://ads.google.com/
-  - type: Sign Up
+  - type: SignUp
     url: https://ads.google.com/signup
   - type: Developer Tools
     url: https://developers.google.com/google-ads/api/docs/developer-toolkit/ai-assistant
   - type: JSONSchema
     url: json-schema/google-ads-campaign-schema.json
-  - type: JSON-LD
+  - type: JSONLD
     url: json-ld/google-ads-context.jsonld
 maintainers:
   - FN: Kin Lane
