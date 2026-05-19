@@ -9,7 +9,7 @@ type: Index
 image: https://www.gstatic.com/images/branding/product/1x/google_ads_64dp.png
 url: https://raw.githubusercontent.com/api-evangelist/google-ads/refs/heads/main/apis.yml
 created: '2024-01-01'
-modified: '2026-04-28'
+modified: '2026-05-19'
 specificationVersion: '0.19'
 tags:
   - Advertising
@@ -117,6 +117,9 @@ common:
     url: json-schema/google-ads-campaign-schema.json
   - type: JSONLD
     url: json-ld/google-ads-context.jsonld
+  - name: MCP Server
+    url: https://github.com/googleads/google-ads-mcp
+    type: MCPServer
 maintainers:
   - FN: Kin Lane
     email: kin@apievangelist.com
