@@ -1,0 +1,80 @@
+naftiko: 1.0.0-alpha2
+info:
+  label: Google Ads API — Ad Groups
+  description: 'Google Ads API — Ad Groups. 1 operations. Lead operation: Google Ads Create, Update, or Remove Ad Groups.
+    Self-contained Naftiko capability covering one Google Ads business surface.'
+  tags:
+  - Google Ads
+  - Ad Groups
+  created: '2026-05-19'
+  modified: '2026-05-19'
+binds:
+- namespace: env
+  keys:
+    GOOGLE_ADS_API_KEY: GOOGLE_ADS_API_KEY
+capability:
+  consumes:
+  - type: http
+    namespace: google-ads-ad-groups
+    baseUri: https://googleads.googleapis.com
+    description: Google Ads API — Ad Groups business capability. Self-contained, no shared references.
+    resources:
+    - name: v18-customers-customerId-adGroups:mutate
+      path: /v18/customers/{customerId}/adGroups:mutate
+      operations:
+      - name: mutateadgroups
+        method: POST
+        description: Google Ads Create, Update, or Remove Ad Groups
+        outputRawFormat: json
+        outputParameters:
+        - name: result
+          type: object
+          value: $.
+        inputParameters:
+        - name: body
+          in: body
+          type: object
+          description: Request body (JSON).
+          required: true
+    authentication:
+      type: bearer
+      token: '{{env.GOOGLE_ADS_API_KEY}}'
+  exposes:
+  - type: rest
+    namespace: google-ads-ad-groups-rest
+    port: 8080
+    description: REST adapter for Google Ads API — Ad Groups. One Spectral-compliant resource per consumed operation, prefixed
+      with /v1.
+    resources:
+    - path: /v1/v18/customers/{customerid}/adgroups-mutate
+      name: v18-customers-customerid-adgroups-mutate
+      description: REST surface for v18-customers-customerId-adGroups:mutate.
+      operations:
+      - method: POST
+        name: mutateadgroups
+        description: Google Ads Create, Update, or Remove Ad Groups
+        call: google-ads-ad-groups.mutateadgroups
+        with:
+          body: rest.body
+        outputParameters:
+        - type: object
+          mapping: $.
+  - type: mcp
+    namespace: google-ads-ad-groups-mcp
+    port: 9090
+    transport: http
+    description: MCP adapter for Google Ads API — Ad Groups. One tool per consumed operation, routed inline through this capability's
+      consumes block.
+    tools:
+    - name: google-ads-create-update-remove
+      description: Google Ads Create, Update, or Remove Ad Groups
+      hints:
+        readOnly: false
+        destructive: false
+        idempotent: false
+      call: google-ads-ad-groups.mutateadgroups
+      with:
+        body: tools.body
+      outputParameters:
+      - type: object
+        mapping: $.

@@ -1,0 +1,80 @@
+naftiko: 1.0.0-alpha2
+info:
+  label: Google Ads API — Ads
+  description: 'Google Ads API — Ads. 1 operations. Lead operation: Google Ads Create, Update, or Remove Ads. Self-contained
+    Naftiko capability covering one Google Ads business surface.'
+  tags:
+  - Google Ads
+  - Ads
+  created: '2026-05-19'
+  modified: '2026-05-19'
+binds:
+- namespace: env
+  keys:
+    GOOGLE_ADS_API_KEY: GOOGLE_ADS_API_KEY
+capability:
+  consumes:
+  - type: http
+    namespace: google-ads-ads
+    baseUri: https://googleads.googleapis.com
+    description: Google Ads API — Ads business capability. Self-contained, no shared references.
+    resources:
+    - name: v18-customers-customerId-adGroupAds:mutate
+      path: /v18/customers/{customerId}/adGroupAds:mutate
+      operations:
+      - name: mutateadgroupads
+        method: POST
+        description: Google Ads Create, Update, or Remove Ads
+        outputRawFormat: json
+        outputParameters:
+        - name: result
+          type: object
+          value: $.
+        inputParameters:
+        - name: body
+          in: body
+          type: object
+          description: Request body (JSON).
+          required: true
+    authentication:
+      type: bearer
+      token: '{{env.GOOGLE_ADS_API_KEY}}'
+  exposes:
+  - type: rest
+    namespace: google-ads-ads-rest
+    port: 8080
+    description: REST adapter for Google Ads API — Ads. One Spectral-compliant resource per consumed operation, prefixed with
+      /v1.
+    resources:
+    - path: /v1/v18/customers/{customerid}/adgroupads-mutate
+      name: v18-customers-customerid-adgroupads-mutate
+      description: REST surface for v18-customers-customerId-adGroupAds:mutate.
+      operations:
+      - method: POST
+        name: mutateadgroupads
+        description: Google Ads Create, Update, or Remove Ads
+        call: google-ads-ads.mutateadgroupads
+        with:
+          body: rest.body
+        outputParameters:
+        - type: object
+          mapping: $.
+  - type: mcp
+    namespace: google-ads-ads-mcp
+    port: 9090
+    transport: http
+    description: MCP adapter for Google Ads API — Ads. One tool per consumed operation, routed inline through this capability's
+      consumes block.
+    tools:
+    - name: google-ads-create-update-remove
+      description: Google Ads Create, Update, or Remove Ads
+      hints:
+        readOnly: false
+        destructive: false
+        idempotent: false
+      call: google-ads-ads.mutateadgroupads
+      with:
+        body: tools.body
+      outputParameters:
+      - type: object
+        mapping: $.

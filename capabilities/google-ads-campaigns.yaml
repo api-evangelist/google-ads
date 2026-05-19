@@ -1,0 +1,122 @@
+naftiko: 1.0.0-alpha2
+info:
+  label: Google Ads API — Campaigns
+  description: 'Google Ads API — Campaigns. 2 operations. Lead operation: Google Ads Create, Update, or Remove Campaign Budgets.
+    Self-contained Naftiko capability covering one Google Ads business surface.'
+  tags:
+  - Google Ads
+  - Campaigns
+  created: '2026-05-19'
+  modified: '2026-05-19'
+binds:
+- namespace: env
+  keys:
+    GOOGLE_ADS_API_KEY: GOOGLE_ADS_API_KEY
+capability:
+  consumes:
+  - type: http
+    namespace: google-ads-campaigns
+    baseUri: https://googleads.googleapis.com
+    description: Google Ads API — Campaigns business capability. Self-contained, no shared references.
+    resources:
+    - name: v18-customers-customerId-campaignBudgets:mutate
+      path: /v18/customers/{customerId}/campaignBudgets:mutate
+      operations:
+      - name: mutatecampaignbudgets
+        method: POST
+        description: Google Ads Create, Update, or Remove Campaign Budgets
+        outputRawFormat: json
+        outputParameters:
+        - name: result
+          type: object
+          value: $.
+        inputParameters:
+        - name: body
+          in: body
+          type: object
+          description: Request body (JSON).
+          required: true
+    - name: v18-customers-customerId-campaigns:mutate
+      path: /v18/customers/{customerId}/campaigns:mutate
+      operations:
+      - name: mutatecampaigns
+        method: POST
+        description: Google Ads Create, Update, or Remove Campaigns
+        outputRawFormat: json
+        outputParameters:
+        - name: result
+          type: object
+          value: $.
+        inputParameters:
+        - name: body
+          in: body
+          type: object
+          description: Request body (JSON).
+          required: true
+    authentication:
+      type: bearer
+      token: '{{env.GOOGLE_ADS_API_KEY}}'
+  exposes:
+  - type: rest
+    namespace: google-ads-campaigns-rest
+    port: 8080
+    description: REST adapter for Google Ads API — Campaigns. One Spectral-compliant resource per consumed operation, prefixed
+      with /v1.
+    resources:
+    - path: /v1/v18/customers/{customerid}/campaignbudgets-mutate
+      name: v18-customers-customerid-campaignbudgets-mutate
+      description: REST surface for v18-customers-customerId-campaignBudgets:mutate.
+      operations:
+      - method: POST
+        name: mutatecampaignbudgets
+        description: Google Ads Create, Update, or Remove Campaign Budgets
+        call: google-ads-campaigns.mutatecampaignbudgets
+        with:
+          body: rest.body
+        outputParameters:
+        - type: object
+          mapping: $.
+    - path: /v1/v18/customers/{customerid}/campaigns-mutate
+      name: v18-customers-customerid-campaigns-mutate
+      description: REST surface for v18-customers-customerId-campaigns:mutate.
+      operations:
+      - method: POST
+        name: mutatecampaigns
+        description: Google Ads Create, Update, or Remove Campaigns
+        call: google-ads-campaigns.mutatecampaigns
+        with:
+          body: rest.body
+        outputParameters:
+        - type: object
+          mapping: $.
+  - type: mcp
+    namespace: google-ads-campaigns-mcp
+    port: 9090
+    transport: http
+    description: MCP adapter for Google Ads API — Campaigns. One tool per consumed operation, routed inline through this capability's
+      consumes block.
+    tools:
+    - name: google-ads-create-update-remove
+      description: Google Ads Create, Update, or Remove Campaign Budgets
+      hints:
+        readOnly: false
+        destructive: false
+        idempotent: false
+      call: google-ads-campaigns.mutatecampaignbudgets
+      with:
+        body: tools.body
+      outputParameters:
+      - type: object
+        mapping: $.
+    - name: google-ads-create-update-remove-2
+      description: Google Ads Create, Update, or Remove Campaigns
+      hints:
+        readOnly: false
+        destructive: false
+        idempotent: false
+      call: google-ads-campaigns.mutatecampaigns
+      with:
+        body: tools.body
+      outputParameters:
+      - type: object
+        mapping: $.

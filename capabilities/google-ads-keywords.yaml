@@ -1,0 +1,80 @@
+naftiko: 1.0.0-alpha2
+info:
+  label: Google Ads API — Keywords
+  description: 'Google Ads API — Keywords. 1 operations. Lead operation: Google Ads Create, Update, or Remove Keywords and
+    Criteria. Self-contained Naftiko capability covering one Google Ads business surface.'
+  tags:
+  - Google Ads
+  - Keywords
+  created: '2026-05-19'
+  modified: '2026-05-19'
+binds:
+- namespace: env
+  keys:
+    GOOGLE_ADS_API_KEY: GOOGLE_ADS_API_KEY
+capability:
+  consumes:
+  - type: http
+    namespace: google-ads-keywords
+    baseUri: https://googleads.googleapis.com
+    description: Google Ads API — Keywords business capability. Self-contained, no shared references.
+    resources:
+    - name: v18-customers-customerId-adGroupCriteria:mutate
+      path: /v18/customers/{customerId}/adGroupCriteria:mutate
+      operations:
+      - name: mutateadgroupcriteria
+        method: POST
+        description: Google Ads Create, Update, or Remove Keywords and Criteria
+        outputRawFormat: json
+        outputParameters:
+        - name: result
+          type: object
+          value: $.
+        inputParameters:
+        - name: body
+          in: body
+          type: object
+          description: Request body (JSON).
+          required: true
+    authentication:
+      type: bearer
+      token: '{{env.GOOGLE_ADS_API_KEY}}'
+  exposes:
+  - type: rest
+    namespace: google-ads-keywords-rest
+    port: 8080
+    description: REST adapter for Google Ads API — Keywords. One Spectral-compliant resource per consumed operation, prefixed
+      with /v1.
+    resources:
+    - path: /v1/v18/customers/{customerid}/adgroupcriteria-mutate
+      name: v18-customers-customerid-adgroupcriteria-mutate
+      description: REST surface for v18-customers-customerId-adGroupCriteria:mutate.
+      operations:
+      - method: POST
+        name: mutateadgroupcriteria
+        description: Google Ads Create, Update, or Remove Keywords and Criteria
+        call: google-ads-keywords.mutateadgroupcriteria
+        with:
+          body: rest.body
+        outputParameters:
+        - type: object
+          mapping: $.
+  - type: mcp
+    namespace: google-ads-keywords-mcp
+    port: 9090
+    transport: http
+    description: MCP adapter for Google Ads API — Keywords. One tool per consumed operation, routed inline through this capability's
+      consumes block.
+    tools:
+    - name: google-ads-create-update-remove
+      description: Google Ads Create, Update, or Remove Keywords and Criteria
+      hints:
+        readOnly: false
+        destructive: false
+        idempotent: false
+      call: google-ads-keywords.mutateadgroupcriteria
+      with:
+        body: tools.body
+      outputParameters:
+      - type: object
+        mapping: $.

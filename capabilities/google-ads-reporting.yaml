@@ -1,0 +1,122 @@
+naftiko: 1.0.0-alpha2
+info:
+  label: Google Ads API — Reporting
+  description: 'Google Ads API — Reporting. 2 operations. Lead operation: Search Using Google Ads Query Language. Self-contained
+    Naftiko capability covering one Google Ads business surface.'
+  tags:
+  - Google Ads
+  - Reporting
+  created: '2026-05-19'
+  modified: '2026-05-19'
+binds:
+- namespace: env
+  keys:
+    GOOGLE_ADS_API_KEY: GOOGLE_ADS_API_KEY
+capability:
+  consumes:
+  - type: http
+    namespace: google-ads-reporting
+    baseUri: https://googleads.googleapis.com
+    description: Google Ads API — Reporting business capability. Self-contained, no shared references.
+    resources:
+    - name: v18-customers-customerId-googleAds:search
+      path: /v18/customers/{customerId}/googleAds:search
+      operations:
+      - name: searchgoogleads
+        method: POST
+        description: Search Using Google Ads Query Language
+        outputRawFormat: json
+        outputParameters:
+        - name: result
+          type: object
+          value: $.
+        inputParameters:
+        - name: body
+          in: body
+          type: object
+          description: Request body (JSON).
+          required: true
+    - name: v18-customers-customerId-googleAds:searchStream
+      path: /v18/customers/{customerId}/googleAds:searchStream
+      operations:
+      - name: searchstreamgoogleads
+        method: POST
+        description: Search Stream Using Google Ads Query Language
+        outputRawFormat: json
+        outputParameters:
+        - name: result
+          type: object
+          value: $.
+        inputParameters:
+        - name: body
+          in: body
+          type: object
+          description: Request body (JSON).
+          required: true
+    authentication:
+      type: bearer
+      token: '{{env.GOOGLE_ADS_API_KEY}}'
+  exposes:
+  - type: rest
+    namespace: google-ads-reporting-rest
+    port: 8080
+    description: REST adapter for Google Ads API — Reporting. One Spectral-compliant resource per consumed operation, prefixed
+      with /v1.
+    resources:
+    - path: /v1/v18/customers/{customerid}/googleads-search
+      name: v18-customers-customerid-googleads-search
+      description: REST surface for v18-customers-customerId-googleAds:search.
+      operations:
+      - method: POST
+        name: searchgoogleads
+        description: Search Using Google Ads Query Language
+        call: google-ads-reporting.searchgoogleads
+        with:
+          body: rest.body
+        outputParameters:
+        - type: object
+          mapping: $.
+    - path: /v1/v18/customers/{customerid}/googleads-searchstream
+      name: v18-customers-customerid-googleads-searchstream
+      description: REST surface for v18-customers-customerId-googleAds:searchStream.
+      operations:
+      - method: POST
+        name: searchstreamgoogleads
+        description: Search Stream Using Google Ads Query Language
+        call: google-ads-reporting.searchstreamgoogleads
+        with:
+          body: rest.body
+        outputParameters:
+        - type: object
+          mapping: $.
+  - type: mcp
+    namespace: google-ads-reporting-mcp
+    port: 9090
+    transport: http
+    description: MCP adapter for Google Ads API — Reporting. One tool per consumed operation, routed inline through this capability's
+      consumes block.
+    tools:
+    - name: search-using-google-ads-query
+      description: Search Using Google Ads Query Language
+      hints:
+        readOnly: true
+        destructive: false
+        idempotent: false
+      call: google-ads-reporting.searchgoogleads
+      with:
+        body: tools.body
+      outputParameters:
+      - type: object
+        mapping: $.
+    - name: search-stream-using-google-ads
+      description: Search Stream Using Google Ads Query Language
+      hints:
+        readOnly: true
+        destructive: false
+        idempotent: false
+      call: google-ads-reporting.searchstreamgoogleads
+      with:
+        body: tools.body
+      outputParameters:
+      - type: object
+        mapping: $.

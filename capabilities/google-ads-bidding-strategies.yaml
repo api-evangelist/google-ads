@@ -1,0 +1,80 @@
+naftiko: 1.0.0-alpha2
+info:
+  label: Google Ads API — Bidding Strategies
+  description: 'Google Ads API — Bidding Strategies. 1 operations. Lead operation: Google Ads Create, Update, or Remove Bidding
+    Strategies. Self-contained Naftiko capability covering one Google Ads business surface.'
+  tags:
+  - Google Ads
+  - Bidding Strategies
+  created: '2026-05-19'
+  modified: '2026-05-19'
+binds:
+- namespace: env
+  keys:
+    GOOGLE_ADS_API_KEY: GOOGLE_ADS_API_KEY
+capability:
+  consumes:
+  - type: http
+    namespace: google-ads-bidding-strategies
+    baseUri: https://googleads.googleapis.com
+    description: Google Ads API — Bidding Strategies business capability. Self-contained, no shared references.
+    resources:
+    - name: v18-customers-customerId-biddingStrategies:mutate
+      path: /v18/customers/{customerId}/biddingStrategies:mutate
+      operations:
+      - name: mutatebiddingstrategies
+        method: POST
+        description: Google Ads Create, Update, or Remove Bidding Strategies
+        outputRawFormat: json
+        outputParameters:
+        - name: result
+          type: object
+          value: $.
+        inputParameters:
+        - name: body
+          in: body
+          type: object
+          description: Request body (JSON).
+          required: true
+    authentication:
+      type: bearer
+      token: '{{env.GOOGLE_ADS_API_KEY}}'
+  exposes:
+  - type: rest
+    namespace: google-ads-bidding-strategies-rest
+    port: 8080
+    description: REST adapter for Google Ads API — Bidding Strategies. One Spectral-compliant resource per consumed operation,
+      prefixed with /v1.
+    resources:
+    - path: /v1/v18/customers/{customerid}/biddingstrategies-mutate
+      name: v18-customers-customerid-biddingstrategies-mutate
+      description: REST surface for v18-customers-customerId-biddingStrategies:mutate.
+      operations:
+      - method: POST
+        name: mutatebiddingstrategies
+        description: Google Ads Create, Update, or Remove Bidding Strategies
+        call: google-ads-bidding-strategies.mutatebiddingstrategies
+        with:
+          body: rest.body
+        outputParameters:
+        - type: object
+          mapping: $.
+  - type: mcp
+    namespace: google-ads-bidding-strategies-mcp
+    port: 9090
+    transport: http
+    description: MCP adapter for Google Ads API — Bidding Strategies. One tool per consumed operation, routed inline through
+      this capability's consumes block.
+    tools:
+    - name: google-ads-create-update-remove
+      description: Google Ads Create, Update, or Remove Bidding Strategies
+      hints:
+        readOnly: false
+        destructive: false
+        idempotent: false
+      call: google-ads-bidding-strategies.mutatebiddingstrategies
+      with:
+        body: tools.body
+      outputParameters:
+      - type: object
+        mapping: $.

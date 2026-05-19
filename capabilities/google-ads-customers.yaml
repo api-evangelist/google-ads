@@ -1,0 +1,102 @@
+naftiko: 1.0.0-alpha2
+info:
+  label: Google Ads API — Customers
+  description: 'Google Ads API — Customers. 2 operations. Lead operation: Google Ads Get Customer Account Details. Self-contained
+    Naftiko capability covering one Google Ads business surface.'
+  tags:
+  - Google Ads
+  - Customers
+  created: '2026-05-19'
+  modified: '2026-05-19'
+binds:
+- namespace: env
+  keys:
+    GOOGLE_ADS_API_KEY: GOOGLE_ADS_API_KEY
+capability:
+  consumes:
+  - type: http
+    namespace: google-ads-customers
+    baseUri: https://googleads.googleapis.com
+    description: Google Ads API — Customers business capability. Self-contained, no shared references.
+    resources:
+    - name: v18-customers-customerId
+      path: /v18/customers/{customerId}
+      operations:
+      - name: getcustomer
+        method: GET
+        description: Google Ads Get Customer Account Details
+        outputRawFormat: json
+        outputParameters:
+        - name: result
+          type: object
+          value: $.
+    - name: v18-customers:listAccessibleCustomers
+      path: /v18/customers:listAccessibleCustomers
+      operations:
+      - name: listaccessiblecustomers
+        method: GET
+        description: Google Ads List Accessible Customer Accounts
+        outputRawFormat: json
+        outputParameters:
+        - name: result
+          type: object
+          value: $.
+    authentication:
+      type: bearer
+      token: '{{env.GOOGLE_ADS_API_KEY}}'
+  exposes:
+  - type: rest
+    namespace: google-ads-customers-rest
+    port: 8080
+    description: REST adapter for Google Ads API — Customers. One Spectral-compliant resource per consumed operation, prefixed
+      with /v1.
+    resources:
+    - path: /v1/v18/customers/{customerid}
+      name: v18-customers-customerid
+      description: REST surface for v18-customers-customerId.
+      operations:
+      - method: GET
+        name: getcustomer
+        description: Google Ads Get Customer Account Details
+        call: google-ads-customers.getcustomer
+        outputParameters:
+        - type: object
+          mapping: $.
+    - path: /v1/v18/customers-listaccessiblecustomers
+      name: v18-customers-listaccessiblecustomers
+      description: REST surface for v18-customers:listAccessibleCustomers.
+      operations:
+      - method: GET
+        name: listaccessiblecustomers
+        description: Google Ads List Accessible Customer Accounts
+        call: google-ads-customers.listaccessiblecustomers
+        outputParameters:
+        - type: object
+          mapping: $.
+  - type: mcp
+    namespace: google-ads-customers-mcp
+    port: 9090
+    transport: http
+    description: MCP adapter for Google Ads API — Customers. One tool per consumed operation, routed inline through this capability's
+      consumes block.
+    tools:
+    - name: google-ads-get-customer-account
+      description: Google Ads Get Customer Account Details
+      hints:
+        readOnly: true
+        destructive: false
+        idempotent: true
+      call: google-ads-customers.getcustomer
+      outputParameters:
+      - type: object
+        mapping: $.
+    - name: google-ads-list-accessible-customer
+      description: Google Ads List Accessible Customer Accounts
+      hints:
+        readOnly: true
+        destructive: false
+        idempotent: true
+      call: google-ads-customers.listaccessiblecustomers
+      outputParameters:
+      - type: object
+        mapping: $.
