@@ -1,0 +1,8 @@
+---
+title: "Announcing new Display & Video 360 API Discord channels and a documentation update!"
+url: "http://ads-developers.googleblog.com/2026/03/announcing-new-display-video-360-api.html"
+date: "2026-03-23T10:04:00.000-07:00"
+author: "Google Ads Developer Advisor (noreply@blogger.com)"
+feed_url: "https://ads-developers.googleblog.com/atom.xml"
+---
+Today we’re announcing two huge improvements for Display & Video 360 bulk tools. First, we are launching support for Display & Video 360 API , Structured Data Files , and Bid Manager API products in the existing “Google Advertising and Measurement Community” Discord server! To join, just click this invite link and follow the onboarding guide.
