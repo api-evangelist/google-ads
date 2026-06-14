@@ -1,0 +1,2457 @@
+"""
+Google Ads GraphQL Schema
+Conceptual schema derived from the Google Ads API v19 (REST + Proto/gRPC services).
+Reference: https://developers.google.com/google-ads/api/reference/rpc
+"""
+
+# ─── Scalars ───────────────────────────────────────────────────────────────────
+
+scalar DateTime
+scalar Date
+scalar Long
+scalar Micros       # money amounts stored as micro-units (1/1,000,000 of the currency unit)
+scalar JSON
+
+# ─── Enums ─────────────────────────────────────────────────────────────────────
+
+enum CampaignStatus {
+  UNSPECIFIED
+  UNKNOWN
+  ENABLED
+  PAUSED
+  REMOVED
+}
+
+enum AdGroupStatus {
+  UNSPECIFIED
+  UNKNOWN
+  ENABLED
+  PAUSED
+  REMOVED
+}
+
+enum AdStatus {
+  UNSPECIFIED
+  UNKNOWN
+  ENABLED
+  PAUSED
+  REMOVED
+  DISCONTINUED
+}
+
+enum BiddingStrategyType {
+  UNSPECIFIED
+  UNKNOWN
+  COMMISSION
+  ENHANCED_CPC
+  INVALID
+  MANUAL_CPA
+  MANUAL_CPC
+  MANUAL_CPM
+  MANUAL_CPV
+  MAXIMIZE_CONVERSIONS
+  MAXIMIZE_CONVERSION_VALUE
+  PAGE_ONE_PROMOTED
+  PERCENT_CPC
+  TARGET_CPA
+  TARGET_CPM
+  TARGET_IMPRESSION_SHARE
+  TARGET_OUTRANK_SHARE
+  TARGET_ROAS
+  TARGET_SPEND
+}
+
+enum AssetType {
+  UNSPECIFIED
+  UNKNOWN
+  YOUTUBE_VIDEO
+  MEDIA_BUNDLE
+  IMAGE
+  TEXT
+  LEAD_FORM
+  BOOK_ON_GOOGLE
+  PROMOTION
+  CALLOUT
+  STRUCTURED_SNIPPET
+  SITELINK
+  PAGE_FEED
+  DYNAMIC_EDUCATION
+  MOBILE_APP
+  HOTEL_CALLOUT
+  CALL
+  PRICE
+  CALL_TO_ACTION
+  DYNAMIC_REAL_ESTATE
+  DYNAMIC_CUSTOM
+  DYNAMIC_HOTELS_AND_RENTALS
+  DYNAMIC_FLIGHTS
+  DYNAMIC_TRAVEL
+  DYNAMIC_LOCAL
+  DYNAMIC_JOBS
+}
+
+enum ConversionActionType {
+  UNSPECIFIED
+  UNKNOWN
+  AD_CALL
+  CLICK_TO_CALL
+  GOOGLE_PLAY_DOWNLOAD
+  GOOGLE_PLAY_IN_APP_PURCHASE
+  UPLOAD_CALLS
+  UPLOAD_CLICKS
+  WEBPAGE
+  WEBSITE_CALL
+  STORE_SALES_DIRECT_UPLOAD
+  STORE_SALES
+  FIREBASE_ANDROID_FIRST_OPEN
+  FIREBASE_ANDROID_IN_APP_PURCHASE
+  FIREBASE_ANDROID_CUSTOM
+  FIREBASE_IOS_FIRST_OPEN
+  FIREBASE_IOS_IN_APP_PURCHASE
+  FIREBASE_IOS_CUSTOM
+  THIRD_PARTY_APP_ANALYTICS_ANDROID_FIRST_OPEN
+  THIRD_PARTY_APP_ANALYTICS_ANDROID_IN_APP_PURCHASE
+  THIRD_PARTY_APP_ANALYTICS_ANDROID_CUSTOM
+  THIRD_PARTY_APP_ANALYTICS_IOS_FIRST_OPEN
+  THIRD_PARTY_APP_ANALYTICS_IOS_IN_APP_PURCHASE
+  THIRD_PARTY_APP_ANALYTICS_IOS_CUSTOM
+  ANDROID_APP_PRE_REGISTRATION
+  ANDROID_INSTALLS_ALL_OTHER_APPS
+  FLOODLIGHT_ACTION
+  FLOODLIGHT_TRANSACTION
+  GOOGLE_HOSTED
+  LEAD_FORM_SUBMIT
+  SALESFORCE
+  SEARCH_ADS_360
+  SMART_CAMPAIGN_AD_CLICKS_TO_CALL
+  SMART_CAMPAIGN_MAP_CLICKS_TO_CALL
+  SMART_CAMPAIGN_MAP_DIRECTIONS
+  SMART_CAMPAIGN_TRACKED_CALLS
+  STORE_VISITS
+  WEBPAGE_CODELESS
+}
+
+enum UserListType {
+  UNSPECIFIED
+  UNKNOWN
+  REMARKETING
+  LOGICAL
+  EXTERNAL_REMARKETING
+  RULE_BASED
+  SIMILAR
+  CRM_BASED
+}
+
+enum KeywordMatchType {
+  UNSPECIFIED
+  UNKNOWN
+  EXACT
+  PHRASE
+  BROAD
+}
+
+enum AdvertisingChannelType {
+  UNSPECIFIED
+  UNKNOWN
+  SEARCH
+  DISPLAY
+  SHOPPING
+  HOTEL
+  VIDEO
+  MULTI_CHANNEL
+  LOCAL
+  SMART
+  PERFORMANCE_MAX
+  LOCAL_SERVICES
+  DISCOVERY
+  TRAVEL
+}
+
+# ─── Account & Billing ─────────────────────────────────────────────────────────
+
+type Customer {
+  id: ID!
+  resourceName: String!
+  descriptiveName: String
+  currencyCode: String
+  timeZone: String
+  trackingUrlTemplate: String
+  finalUrlSuffix: String
+  autoTaggingEnabled: Boolean
+  hasPartnersBadge: Boolean
+  manager: Boolean
+  testAccount: Boolean
+  callReportingSetting: CallReportingSetting
+  conversionTrackingSetting: ConversionTrackingSetting
+  remarketingSetting: RemarketingSetting
+  payPerConversionEligibilityFailureReasons: [String]
+  optimizationScore: Float
+  optimizationScoreWeight: Float
+  status: String
+  customerAgreementSetting: CustomerAgreementSetting
+}
+
+type CustomerSummary {
+  id: ID!
+  descriptiveName: String
+  currencyCode: String
+  timeZone: String
+  manager: Boolean
+  testAccount: Boolean
+  status: String
+  optimizationScore: Float
+}
+
+type CallReportingSetting {
+  callReportingEnabled: Boolean
+  callConversionReportingEnabled: Boolean
+  callConversionAction: String
+}
+
+type ConversionTrackingSetting {
+  conversionTrackingId: Long
+  crossAccountConversionTrackingId: Long
+  accepted: Boolean
+  conversionTrackingStatus: String
+  enhancedConversionsForLeadsEnabled: Boolean
+  googleAdsConversionCustomer: String
+}
+
+type RemarketingSetting {
+  googleGlobalSiteTag: String
+}
+
+type CustomerAgreementSetting {
+  acceptedLeadFormTerms: Boolean
+}
+
+type AccountBudget {
+  resourceName: String!
+  id: ID!
+  billingSetup: String
+  status: String
+  name: String
+  proposedStartDateTime: DateTime
+  approvedStartDateTime: DateTime
+  proposedEndTimeType: String
+  proposedEndDateTime: DateTime
+  approvedEndTimeType: String
+  approvedEndDateTime: DateTime
+  proposedSpendingLimitMicros: Micros
+  proposedSpendingLimitType: String
+  approvedSpendingLimitMicros: Micros
+  approvedSpendingLimitType: String
+  adjustedSpendingLimitMicros: Micros
+  adjustedSpendingLimitType: String
+  totalAdjustmentsMicros: Micros
+  amountServedMicros: Micros
+  purchaseOrderNumber: String
+  notes: String
+  pendingProposal: AccountBudgetProposalSummary
+}
+
+type AccountBudgetProposalSummary {
+  accountBudgetProposal: String
+  proposalType: String
+  name: String
+  startDateTime: DateTime
+  purchaseOrderNumber: String
+  notes: String
+  endDateTime: DateTime
+}
+
+type AccountBudgetProposal {
+  resourceName: String!
+  id: ID!
+  billingSetup: String
+  accountBudget: String
+  proposalType: String
+  status: String
+  name: String
+  startDateTime: DateTime
+  purchaseOrderNumber: String
+  notes: String
+  creationDateTime: DateTime
+  approvalDateTime: DateTime
+  proposedSpendingLimitMicros: Micros
+  proposedSpendingLimitType: String
+  approvedSpendingLimitMicros: Micros
+  approvedSpendingLimitType: String
+  proposedEndDateTime: DateTime
+  proposedEndTimeType: String
+  approvedEndDateTime: DateTime
+  approvedEndTimeType: String
+}
+
+type BillingSetup {
+  resourceName: String!
+  id: ID!
+  status: String
+  paymentsAccount: String
+  paymentsAccountInfo: PaymentsAccountInfo
+  startDateTime: DateTime
+  startTimeType: String
+  endDateTime: DateTime
+  endTimeType: String
+}
+
+type PaymentsAccountInfo {
+  paymentsAccountId: String
+  paymentsAccountName: String
+  paymentsProfileId: String
+  paymentsProfileName: String
+  secondaryPaymentsProfileId: String
+}
+
+type PaymentsAccount {
+  resourceName: String!
+  paymentsAccountId: String
+  name: String
+  currencyCode: String
+  paymentsProfileId: String
+  paymentsProfileName: String
+  payingManagerCustomer: String
+}
+
+type Invoice {
+  resourceName: String!
+  id: ID!
+  type: String
+  billingSetup: String
+  paymentsAccountId: String
+  paymentsProfileId: String
+  paymentsProfileName: String
+  paymentsSourceName: String
+  issueDate: Date
+  dueDate: Date
+  serviceDateRange: DateRange
+  currencyCode: String
+  adjustmentsSubtotalAmountMicros: Micros
+  adjustmentsTaxAmountMicros: Micros
+  adjustmentsTotalAmountMicros: Micros
+  regulatoryCreditsSubtotalAmountMicros: Micros
+  regulatoryCreditsSubtotalAmountMicros2: Micros
+  regulatoryCreditsTotal: Micros
+  exportChargeSubtotalAmountMicros: Micros
+  exportChargeTaxAmountMicros: Micros
+  exportChargeTotalAmountMicros: Micros
+  subtotalAmountMicros: Micros
+  taxAmountMicros: Micros
+  totalAmountMicros: Micros
+  correctedInvoice: String
+  replacedInvoices: [String]
+  pdfUrl: String
+  accountBudgetSummaries: [AccountBudgetSummary]
+}
+
+type DateRange {
+  startDate: Date
+  endDate: Date
+}
+
+type AccountBudgetSummary {
+  accountBudget: String
+  accountBudgetName: String
+  purchaseOrderNumber: String
+  subtotalAmountMicros: Micros
+  taxAmountMicros: Micros
+  totalAmountMicros: Micros
+  servedAmountMicros: Micros
+  billedAmountMicros: Micros
+  overdeliveryAmountMicros: Micros
+  invalidActivityAmountMicros: Micros
+  serviceDateRange: DateRange
+  billableActivityDateRange: DateRange
+}
+
+# ─── Campaigns ─────────────────────────────────────────────────────────────────
+
+type Campaign {
+  resourceName: String!
+  id: ID!
+  name: String
+  status: CampaignStatus
+  servingStatus: String
+  adServingOptimizationStatus: String
+  advertisingChannelType: AdvertisingChannelType
+  advertisingChannelSubType: String
+  trackingUrlTemplate: String
+  urlCustomParameters: [CustomParameter]
+  localServicesCampaignSettings: LocalServicesCampaignSettings
+  realTimeBiddingSetting: RealTimeBiddingSetting
+  networkSettings: NetworkSettings
+  hotelSetting: HotelSettingInfo
+  dynamicSearchAdsSetting: DynamicSearchAdsSetting
+  shoppingSetting: ShoppingSetting
+  targetingSetting: TargetingSetting
+  geoTargetTypeSetting: GeoTargetTypeSetting
+  campaignBudget: String
+  biddingStrategyType: BiddingStrategyType
+  biddingStrategy: String
+  manualCpc: ManualCPC
+  manualCpm: ManualCPM
+  manualCpv: ManualCPV
+  maximizeConversions: MaximizeConversions
+  maximizeConversionValue: MaximizeConversionValue
+  targetCpa: TargetCPA
+  targetImpressionShare: TargetImpressionShare
+  targetRoas: TargetRoas
+  targetSpend: TargetSpend
+  percentCpc: PercentCpc
+  commission: Commission
+  startDate: Date
+  endDate: Date
+  finalUrlSuffix: String
+  urlExpansionOptOut: Boolean
+  optimizationGoalSetting: OptimizationGoalSetting
+  campaignPerformanceMaxUpgradeSetting: CampaignPerformanceMaxUpgradeSetting
+}
+
+type CustomParameter {
+  key: String
+  value: String
+}
+
+type LocalServicesCampaignSettings {
+  categoryBids: [CategoryBid]
+}
+
+type CategoryBid {
+  categoryId: String
+  manualCpaBidMicros: Micros
+}
+
+type RealTimeBiddingSetting {
+  optIn: Boolean
+}
+
+type NetworkSettings {
+  targetGoogleSearch: Boolean
+  targetSearchNetwork: Boolean
+  targetContentNetwork: Boolean
+  targetPartnerSearchNetwork: Boolean
+}
+
+type HotelSettingInfo {
+  hotelCenterId: Long
+}
+
+type DynamicSearchAdsSetting {
+  domainName: String
+  languageCode: String
+  useSuppliedUrlsOnly: Boolean
+  feeds: [String]
+}
+
+type ShoppingSetting {
+  merchantId: Long
+  feedLabel: String
+  campaignPriority: Int
+  enableLocal: Boolean
+  useVehicleInventory: Boolean
+}
+
+type TargetingSetting {
+  targetRestrictions: [TargetRestriction]
+  targetRestrictionOperations: [TargetRestrictionOperation]
+}
+
+type TargetRestriction {
+  targetingDimension: String
+  bidOnly: Boolean
+}
+
+type TargetRestrictionOperation {
+  operator: String
+  value: TargetRestriction
+}
+
+type GeoTargetTypeSetting {
+  positiveGeoTargetType: String
+  negativeGeoTargetType: String
+}
+
+type OptimizationGoalSetting {
+  optimizationGoalTypes: [String]
+}
+
+type CampaignPerformanceMaxUpgradeSetting {
+  performanceMaxCampaign: String
+  preUpgradeCampaign: String
+  status: String
+}
+
+type CampaignBudget {
+  resourceName: String!
+  id: ID!
+  name: String
+  amountMicros: Micros
+  totalAmountMicros: Micros
+  status: String
+  deliveryMethod: String
+  explicitlyShared: Boolean
+  referenceCount: Long
+  hasRecommendedBudget: Boolean
+  recommendedBudgetAmountMicros: Micros
+  period: String
+  recommendedBudgetEstimatedChangeWeeklyClicks: Long
+  recommendedBudgetEstimatedChangeWeeklyCostMicros: Micros
+  recommendedBudgetEstimatedChangeWeeklyInteractions: Long
+  recommendedBudgetEstimatedChangeWeeklyViews: Long
+}
+
+type CampaignCriterion {
+  resourceName: String!
+  campaign: String
+  criterionId: Long
+  displayName: String
+  bidModifier: Float
+  negative: Boolean
+  type: String
+  keyword: KeywordInfo
+  placement: PlacementInfo
+  mobileAppCategory: MobileAppCategoryInfo
+  location: LocationInfo
+  device: DeviceInfo
+  adSchedule: AdScheduleInfo
+  ageRange: AgeRangeInfo
+  gender: GenderInfo
+  incomeRange: IncomeRangeInfo
+  parentalStatus: ParentalStatusInfo
+  userList: UserListInfo
+  youTubeVideo: YouTubeVideoInfo
+  youTubeChannel: YouTubeChannelInfo
+  proximity: ProximityInfo
+  topicInfo: TopicInfo
+  listingScope: ListingScopeInfo
+  language: LanguageInfo
+  ipBlock: IpBlockInfo
+  contentLabel: ContentLabelInfo
+  carrier: CarrierInfo
+  userInterest: UserInterestInfo
+  webpageInfo: WebpageInfo
+  operatingSystemVersion: OperatingSystemVersionInfo
+  mobileDevice: MobileDeviceInfo
+  locationGroup: LocationGroupInfo
+}
+
+type KeywordInfo {
+  text: String
+  matchType: KeywordMatchType
+}
+
+type PlacementInfo {
+  url: String
+}
+
+type MobileAppCategoryInfo {
+  mobileAppCategoryConstant: String
+}
+
+type LocationInfo {
+  geoTargetConstant: String
+}
+
+type DeviceInfo {
+  type: String
+}
+
+type AdScheduleInfo {
+  dayOfWeek: String
+  startHour: Int
+  startMinute: String
+  endHour: Int
+  endMinute: String
+}
+
+type AgeRangeInfo {
+  type: String
+}
+
+type GenderInfo {
+  type: String
+}
+
+type IncomeRangeInfo {
+  type: String
+}
+
+type ParentalStatusInfo {
+  type: String
+}
+
+type UserListInfo {
+  userList: String
+}
+
+type YouTubeVideoInfo {
+  videoId: String
+}
+
+type YouTubeChannelInfo {
+  channelId: String
+}
+
+type ProximityInfo {
+  geoPoint: GeoPointInfo
+  radius: Float
+  radiusUnits: String
+  address: AddressInfo
+}
+
+type GeoPointInfo {
+  longitudeInMicroDegrees: Int
+  latitudeInMicroDegrees: Int
+}
+
+type AddressInfo {
+  postalCode: String
+  provinceCode: String
+  countryCode: String
+  provinceName: String
+  streetAddress: String
+  streetAddress2: String
+  cityName: String
+}
+
+type TopicInfo {
+  topicConstant: String
+  path: [String]
+}
+
+type ListingScopeInfo {
+  dimensions: [ListingDimensionInfo]
+}
+
+type ListingDimensionInfo {
+  hotel: HotelIdInfo
+  listingBrand: ListingBrandInfo
+  hotelClass: HotelClassInfo
+  productBiddingCategory: ProductBiddingCategoryInfo
+  productChannel: ProductChannelInfo
+  productChannelExclusivity: ProductChannelExclusivityInfo
+  productCondition: ProductConditionInfo
+  productCustomAttribute: ProductCustomAttributeInfo
+  productItemId: ProductItemIdInfo
+  productType: ProductTypeInfo
+}
+
+type HotelIdInfo { value: String }
+type ListingBrandInfo { value: String }
+type HotelClassInfo { value: Long }
+type ProductBiddingCategoryInfo { id: Long; level: String; country: String }
+type ProductChannelInfo { channel: String }
+type ProductChannelExclusivityInfo { channelExclusivity: String }
+type ProductConditionInfo { condition: String }
+type ProductCustomAttributeInfo { value: String; index: String }
+type ProductItemIdInfo { value: String }
+type ProductTypeInfo { value: String; level: String }
+
+type LanguageInfo {
+  languageConstant: String
+}
+
+type IpBlockInfo {
+  ipAddress: String
+}
+
+type ContentLabelInfo {
+  type: String
+}
+
+type CarrierInfo {
+  carrierConstant: String
+}
+
+type UserInterestInfo {
+  userInterestCategory: String
+}
+
+type WebpageInfo {
+  criterionName: String
+  conditions: [WebpageConditionInfo]
+  coveragePercentage: Float
+  criterionDescription: String
+}
+
+type WebpageConditionInfo {
+  operand: String
+  operator: String
+  argument: String
+}
+
+type OperatingSystemVersionInfo {
+  operatingSystemVersionConstant: String
+}
+
+type MobileDeviceInfo {
+  mobileDeviceConstant: String
+}
+
+type LocationGroupInfo {
+  feed: String
+  geoTargetConstants: [String]
+  radius: Long
+  radiusUnits: String
+  feedItemSets: [String]
+  enableCustomerLevelLocationAssetSet: Boolean
+  locationGroupAssetSets: [String]
+}
+
+type CampaignConversionGoal {
+  resourceName: String!
+  campaign: String
+  category: String
+  origin: String
+  biddable: Boolean
+}
+
+type CampaignAsset {
+  resourceName: String!
+  campaign: String
+  asset: String
+  fieldType: String
+  source: String
+  status: String
+  primaryStatus: String
+  primaryStatusReasons: [String]
+}
+
+# ─── Ad Groups ─────────────────────────────────────────────────────────────────
+
+type AdGroup {
+  resourceName: String!
+  id: ID!
+  name: String
+  status: AdGroupStatus
+  type: String
+  adRotationMode: String
+  baseAdGroup: String
+  trackingUrlTemplate: String
+  urlCustomParameters: [CustomParameter]
+  campaign: String
+  cpaBidMicros: Micros
+  cpcBidMicros: Micros
+  cpmBidMicros: Micros
+  targetCpaMicros: Micros
+  cpvBidMicros: Micros
+  targetCpmMicros: Micros
+  targetRoas: Float
+  percentCpcBidMicros: Micros
+  optimizedTargetingEnabled: Boolean
+  audienceSetting: AudienceSetting
+  effectiveCpcBidMicros: Micros
+  effectiveTargetCpaMicros: Micros
+  effectiveTargetCpaSource: String
+  effectiveTargetRoas: Float
+  effectiveTargetRoasSource: String
+  labels: [String]
+  excludedParentAssetFieldTypes: [String]
+  excludedParentAssetSetTypes: [String]
+}
+
+type AudienceSetting {
+  useAudienceGroupedBidding: Boolean
+}
+
+type AdGroupAd {
+  resourceName: String!
+  adGroup: String
+  ad: Ad
+  status: AdStatus
+  policySummary: AdGroupAdPolicySummary
+  adStrength: String
+  actionItems: [String]
+  labels: [String]
+}
+
+type AdGroupAdPolicySummary {
+  policyTopicEntries: [PolicyTopicEntry]
+  reviewStatus: String
+  approvalStatus: String
+}
+
+type PolicyTopicEntry {
+  topic: String
+  type: String
+  evidences: [PolicyTopicEvidence]
+  constraints: [PolicyTopicConstraint]
+}
+
+type PolicyTopicEvidence {
+  websiteList: PolicyTopicEvidenceWebsiteList
+  textList: PolicyTopicEvidenceTextList
+  languageCode: String
+  destinationTextList: PolicyTopicEvidenceDestinationTextList
+  destinationMismatch: PolicyTopicEvidenceDestinationMismatch
+  destinationNotWorking: PolicyTopicEvidenceDestinationNotWorking
+}
+
+type PolicyTopicEvidenceWebsiteList { websites: [String] }
+type PolicyTopicEvidenceTextList { texts: [String] }
+type PolicyTopicEvidenceDestinationTextList { destinationTexts: [String] }
+type PolicyTopicEvidenceDestinationMismatch { urlTypes: [String] }
+type PolicyTopicEvidenceDestinationNotWorking {
+  expandedUrl: String
+  device: String
+  lastCheckedDateTime: DateTime
+  reason: String
+  dnsErrorType: String
+  httpErrorCode: Long
+}
+
+type PolicyTopicConstraint {
+  countryConstraintList: PolicyTopicConstraintCountryConstraintList
+  resellerConstraint: PolicyTopicConstraintResellerConstraint
+  certificationMissingInCountryList: PolicyTopicConstraintCertificationMissingInCountryList
+}
+
+type PolicyTopicConstraintCountryConstraintList {
+  totalTargetedCountries: Int
+  countries: [PolicyTopicConstraintCountryConstraint]
+}
+
+type PolicyTopicConstraintCountryConstraint { countryCriterion: String }
+type PolicyTopicConstraintResellerConstraint { dummy: Boolean }
+type PolicyTopicConstraintCertificationMissingInCountryList {
+  countries: [PolicyTopicConstraintCountryConstraint]
+  certification: PolicyTopicConstraintCertification
+}
+type PolicyTopicConstraintCertification { certificationStatus: String }
+
+type AdGroupAdAssetCombination {
+  resourceName: String!
+  adGroupAd: String
+  assetCombinationServedAssets: [AssetUsage]
+}
+
+type AssetUsage {
+  asset: String
+  servedAssetFieldType: String
+}
+
+type AdGroupCriterion {
+  resourceName: String!
+  criterionId: Long
+  displayName: String
+  status: String
+  qualityInfo: AdGroupCriterionQualityInfo
+  adGroup: String
+  type: String
+  negative: Boolean
+  bidModifier: Float
+  cpcBidMicros: Micros
+  cpmBidMicros: Micros
+  cpvBidMicros: Micros
+  percentCpcBidMicros: Micros
+  effectiveCpcBidMicros: Micros
+  effectiveCpmBidMicros: Micros
+  effectiveCpvBidMicros: Micros
+  effectivePercentCpcBidMicros: Micros
+  effectiveCpcBidSource: String
+  effectiveCpmBidSource: String
+  effectiveCpvBidSource: String
+  effectivePercentCpcBidSource: String
+  positionEstimates: AdGroupCriterionPositionEstimates
+  finalUrls: [String]
+  finalMobileUrls: [String]
+  finalUrlSuffix: String
+  trackingUrlTemplate: String
+  urlCustomParameters: [CustomParameter]
+  labels: [String]
+  keyword: KeywordInfo
+  placement: PlacementInfo
+  mobileAppCategory: MobileAppCategoryInfo
+  location: LocationInfo
+  device: DeviceInfo
+  adSchedule: AdScheduleInfo
+  ageRange: AgeRangeInfo
+  gender: GenderInfo
+  incomeRange: IncomeRangeInfo
+  parentalStatus: ParentalStatusInfo
+  userList: UserListInfo
+  youTubeVideo: YouTubeVideoInfo
+  youTubeChannel: YouTubeChannelInfo
+  topic: TopicInfo
+  userInterest: UserInterestInfo
+  webpage: WebpageInfo
+  appPaymentModel: AppPaymentModelInfo
+  customAffinity: CustomAffinityInfo
+  customIntent: CustomIntentInfo
+  customAudience: CustomAudienceInfo
+  combinedAudience: CombinedAudienceInfo2
+  audience: AudienceInfo
+}
+
+type AdGroupCriterionQualityInfo {
+  qualityScore: Int
+  creativeQualityScore: String
+  postClickQualityScore: String
+  searchPredictedCtr: String
+}
+
+type AdGroupCriterionPositionEstimates {
+  firstPageCpcMicros: Micros
+  firstPositionCpcMicros: Micros
+  topOfPageCpcMicros: Micros
+  estimatedAddClicksAtFirstPositionCpc: Long
+  estimatedAddCostAtFirstPositionCpc: Micros
+}
+
+type AppPaymentModelInfo { type: String }
+type CustomAffinityInfo { customAffinity: String }
+type CustomIntentInfo { customIntent: String }
+type CustomAudienceInfo { customAudience: String }
+type CombinedAudienceInfo2 { combinedAudience: String }
+type AudienceInfo { audience: String }
+
+type AdGroupBidModifier {
+  resourceName: String!
+  adGroup: String
+  criterionId: Long
+  bidModifier: Float
+  baseAdGroup: String
+  bidModifierSource: String
+  device: DeviceInfo
+  hotel: HotelGroupInfo
+  hotelAdvanceBookingWindow: HotelAdvanceBookingWindowInfo
+  hotelCheckInDay: HotelCheckInDayInfo
+  hotelDateSelectionType: HotelDateSelectionTypeInfo
+  hotelLengthOfStay: HotelLengthOfStayInfo
+  hotelCheckInDateRange: HotelCheckInDateRangeInfo
+}
+
+type HotelGroupInfo { dummy: Boolean }
+type HotelAdvanceBookingWindowInfo { minDays: Long; maxDays: Long }
+type HotelCheckInDayInfo { dayOfWeek: String }
+type HotelDateSelectionTypeInfo { type: String }
+type HotelLengthOfStayInfo { minNights: Long; maxNights: Long }
+type HotelCheckInDateRangeInfo { startDate: Date; endDate: Date }
+
+type AdGroupAsset {
+  resourceName: String!
+  adGroup: String
+  asset: String
+  fieldType: String
+  source: String
+  status: String
+  primaryStatus: String
+  primaryStatusReasons: [String]
+}
+
+# ─── Ads ───────────────────────────────────────────────────────────────────────
+
+type Ad {
+  resourceName: String!
+  id: ID!
+  finalUrls: [String]
+  finalAppUrls: [AppUrl]
+  finalMobileUrls: [String]
+  trackingUrlTemplate: String
+  urlCustomParameters: [CustomParameter]
+  displayUrl: String
+  type: String
+  addedByGoogleAds: Boolean
+  devicePreference: String
+  urlCollections: [UrlCollection]
+  name: String
+  systemManagedResourceSource: String
+  expandedTextAd: ExpandedTextAd
+  callAd: CallAd
+  expandedDynamicSearchAd: ExpandedDynamicSearchAd
+  responsiveSearchAd: ResponsiveSearchAd
+  legacyResponsiveDisplayAd: LegacyResponsiveDisplayAd
+  appAd: AppAd
+  legacyAppInstallAd: LegacyAppInstallAd
+  responsiveDisplayAd: ResponsiveDisplayAd
+  localAd: LocalAd
+  displayUploadAd: DisplayUploadAd
+  appEngagementAd: AppEngagementAd
+  shoppingComparisonListingAd: ShoppingComparisonListingAd
+  smartCampaignAd: SmartCampaignAd
+  appPreRegistrationAd: AppPreRegistrationAd
+  discoveryMultiAssetAd: DiscoveryMultiAssetAd
+  discoveryCarouselAd: DiscoveryCarouselAd
+  discoveryVideoResponsiveAd: DiscoveryVideoResponsiveAd
+  videoAd: VideoAd
+  videoResponsiveAd: VideoResponsiveAd
+  dynamicSearchAd: DynamicSearchAd
+  shoppingProductAd: ShoppingProductAd
+  shoppingSmartAd: ShoppingSmartAd
+  gmailAd: GmailAd
+  imageAd: ImageAd
+}
+
+type AppUrl { url: String; osType: String }
+type UrlCollection { finalUrls: [String]; finalMobileUrls: [String]; trackingUrlTemplate: String; urlCustomParameters: [CustomParameter]; id: String }
+
+type ExpandedTextAd {
+  headlinePart1: String
+  headlinePart2: String
+  headlinePart3: String
+  description: String
+  description2: String
+  path1: String
+  path2: String
+}
+
+type CallAd {
+  countryCode: String
+  phoneNumber: String
+  businessName: String
+  headline1: String
+  headline2: String
+  description1: String
+  description2: String
+  callTracked: Boolean
+  disableCallConversion: Boolean
+  phoneNumberVerificationUrl: String
+  conversionAction: String
+  conversionReportingState: String
+}
+
+type ExpandedDynamicSearchAd {
+  description: String
+  description2: String
+}
+
+type ResponsiveSearchAd {
+  headlines: [AdTextAsset]
+  descriptions: [AdTextAsset]
+  path1: String
+  path2: String
+}
+
+type AdTextAsset {
+  text: String
+  pinnedField: String
+  assetPerformanceLabel: String
+  policySummaryInfo: AdAssetPolicySummary
+}
+
+type AdAssetPolicySummary {
+  policyTopicEntries: [PolicyTopicEntry]
+  reviewStatus: String
+  approvalStatus: String
+}
+
+type LegacyResponsiveDisplayAd {
+  formatSetting: String
+  shortHeadline: String
+  longHeadline: String
+  description: String
+  businessName: String
+  allowFlexibleColor: Boolean
+  accentColor: String
+  mainColor: String
+  callToActionText: String
+  logoImage: String
+  squareLogoImage: String
+  marketingImage: String
+  squareMarketingImage: String
+  pricePrefix: String
+  promoText: String
+}
+
+type AppAd {
+  mandatoryAdText: AdTextAsset
+  headlines: [AdTextAsset]
+  descriptions: [AdTextAsset]
+  images: [AdImageAsset]
+  youtubeVideos: [AdVideoAsset]
+  html5MediaBundles: [AdMediaBundleAsset]
+}
+
+type AdImageAsset { asset: String }
+type AdVideoAsset { asset: String }
+type AdMediaBundleAsset { asset: String }
+
+type LegacyAppInstallAd {
+  appId: String
+  appStore: String
+  headlines: [String]
+  descriptions: [String]
+}
+
+type ResponsiveDisplayAd {
+  marketingImages: [AdImageAsset]
+  squareMarketingImages: [AdImageAsset]
+  logoImages: [AdImageAsset]
+  squareLogoImages: [AdImageAsset]
+  headlines: [AdTextAsset]
+  longHeadline: AdTextAsset
+  descriptions: [AdTextAsset]
+  youtubeVideos: [AdVideoAsset]
+  businessName: String
+  mainColor: String
+  accentColor: String
+  allowFlexibleColor: Boolean
+  callToActionText: String
+  pricePrefix: String
+  promoText: String
+  formatSetting: String
+  controlSpec: ResponsiveDisplayAdControlSpec
+}
+
+type ResponsiveDisplayAdControlSpec {
+  enableAssetEnhancements: Boolean
+  enableAutogenVideo: Boolean
+}
+
+type LocalAd {
+  headlines: [AdTextAsset]
+  descriptions: [AdTextAsset]
+  callToActions: [AdTextAsset]
+  marketingImages: [AdImageAsset]
+  logoImages: [AdImageAsset]
+  videos: [AdVideoAsset]
+  path1: String
+  path2: String
+}
+
+type DisplayUploadAd {
+  displayUploadProductType: String
+  mediaBundle: AdMediaBundleAsset
+}
+
+type AppEngagementAd {
+  headlines: [AdTextAsset]
+  descriptions: [AdTextAsset]
+  images: [AdImageAsset]
+  videos: [AdVideoAsset]
+}
+
+type ShoppingComparisonListingAd {
+  headline: String
+}
+
+type SmartCampaignAd {
+  headlines: [AdTextAsset]
+  descriptions: [AdTextAsset]
+}
+
+type AppPreRegistrationAd {
+  headlines: [AdTextAsset]
+  descriptions: [AdTextAsset]
+  images: [AdImageAsset]
+  youtubeVideos: [AdVideoAsset]
+}
+
+type DiscoveryMultiAssetAd {
+  marketingImages: [AdImageAsset]
+  squareMarketingImages: [AdImageAsset]
+  portraitMarketingImages: [AdImageAsset]
+  logoImages: [AdImageAsset]
+  headlines: [AdTextAsset]
+  descriptions: [AdTextAsset]
+  businessName: String
+  callToActionText: String
+  leadFormOnly: Boolean
+}
+
+type DiscoveryCarouselAd {
+  businessName: String
+  logoImage: AdImageAsset
+  headline: AdTextAsset
+  description: AdTextAsset
+  callToActionText: String
+  carouselCards: [DiscoveryCarouselCardAsset]
+}
+
+type DiscoveryCarouselCardAsset { asset: String }
+
+type DiscoveryVideoResponsiveAd {
+  headlines: [AdTextAsset]
+  longHeadlines: [AdTextAsset]
+  descriptions: [AdTextAsset]
+  youtubeVideos: [AdVideoAsset]
+  logoImages: [AdImageAsset]
+  breadcrumb1: String
+  breadcrumb2: String
+  businessName: AdTextAsset
+  callToActions: [AdVideoAsset]
+}
+
+type VideoAd {
+  video: AdVideoAsset
+  inStream: VideoTrueViewInStreamAdInfo
+  bumper: VideoBumperInStreamAdInfo
+  outStream: VideoOutstreamAdInfo
+  nonSkippableInStream: VideoNonSkippableInStreamAdInfo
+  inFeed: InFeedVideoAdInfo
+}
+
+type VideoTrueViewInStreamAdInfo {
+  actionButtonLabel: String
+  actionHeadline: String
+  companionBanner: AdImageAsset
+}
+
+type VideoBumperInStreamAdInfo {
+  companionBanner: AdImageAsset
+  actionButtonLabel: String
+  actionHeadline: String
+}
+
+type VideoOutstreamAdInfo {
+  headline: String
+  description: String
+}
+
+type VideoNonSkippableInStreamAdInfo {
+  companionBanner: AdImageAsset
+  actionButtonLabel: String
+  actionHeadline: String
+}
+
+type InFeedVideoAdInfo {
+  headline: String
+  description1: String
+  description2: String
+  thumbnail: String
+}
+
+type VideoResponsiveAd {
+  headlines: [AdTextAsset]
+  longHeadlines: [AdTextAsset]
+  descriptions: [AdTextAsset]
+  callToActions: [AdTextAsset]
+  youtubeVideos: [AdVideoAsset]
+  companionBanners: [AdImageAsset]
+  breadcrumb1: String
+  breadcrumb2: String
+}
+
+type DynamicSearchAd {
+  description: String
+  description2: String
+}
+
+type ShoppingProductAd { dummy: Boolean }
+type ShoppingSmartAd { dummy: Boolean }
+
+type GmailAd {
+  header: GmailHeaderImage
+  marketingImages: [AdImageAsset]
+  marketingVideoId: String
+  marketingVideoDisplayCallToAction: String
+  marketingVideoPreviewImage: AdImageAsset
+  productImages: [AdImageAsset]
+  productVideoList: [AdVideoAsset]
+  teaser: GmailTeaser
+}
+
+type GmailHeaderImage { logoImage: AdImageAsset; landscapeLogoImage: AdImageAsset }
+type GmailTeaser { headline: String; description: String; businessName: String; logoImage: AdImageAsset }
+
+type ImageAd {
+  pixelWidth: Long
+  pixelHeight: Long
+  imageUrl: String
+  mimeType: String
+  previewPixelWidth: Long
+  previewPixelHeight: Long
+  previewImageUrl: String
+  name: String
+  adIdToCopyImageFrom: Long
+  data: String
+  mediaFile: String
+}
+
+# ─── Assets ────────────────────────────────────────────────────────────────────
+
+type Asset {
+  resourceName: String!
+  id: ID!
+  name: String
+  type: AssetType
+  finalUrls: [String]
+  finalMobileUrls: [String]
+  trackingUrlTemplate: String
+  urlCustomParameters: [CustomParameter]
+  finalUrlSuffix: String
+  source: String
+  policySummary: AssetPolicySummary
+  fieldTypePolicySummaries: [AssetFieldTypePolicySummary]
+  textAsset: TextAsset
+  youtubeVideoAsset: YoutubeVideoAsset
+  mediaBundleAsset: MediaBundleAsset
+  imageAsset: ImageAsset
+  mobileAppAsset: MobileAppAsset
+  leadFormAsset: LeadFormAsset
+  bookOnGoogleAsset: BookOnGoogleAsset
+  promotionAsset: PromotionAsset
+  calloutAsset: CalloutAsset
+  structuredSnippetAsset: StructuredSnippetAsset
+  sitelinkAsset: SitelinkAsset
+  pageFeedAsset: PageFeedAsset
+  dynamicEducationAsset: DynamicEducationAsset
+  hotelCalloutAsset: HotelCalloutAsset
+  callAsset: CallAsset
+  priceAsset: PriceAsset
+  callToActionAsset: CallToActionAsset
+}
+
+type AssetPolicySummary {
+  policyTopicEntries: [PolicyTopicEntry]
+  reviewStatus: String
+  approvalStatus: String
+}
+
+type AssetFieldTypePolicySummary {
+  assetFieldType: String
+  assetSource: String
+  policySummary: AssetPolicySummary
+}
+
+type TextAsset {
+  text: String
+  assetPerformanceLabelInfo: AssetPerformanceLabelInfo
+}
+
+type AssetPerformanceLabelInfo { dummy: Boolean }
+
+type YoutubeVideoAsset {
+  youtubeVideoId: String
+  youtubeVideoTitle: String
+}
+
+type MediaBundleAsset {
+  data: String
+}
+
+type ImageAsset {
+  data: String
+  fileSize: Long
+  mimeType: String
+  fullSize: ImageDimension
+}
+
+type ImageDimension {
+  widthPixels: Long
+  heightPixels: Long
+  url: String
+}
+
+type MobileAppAsset {
+  appId: String
+  appStore: String
+  linkText: String
+  startDate: Date
+  endDate: Date
+}
+
+type LeadFormAsset {
+  businessName: String
+  callToActionType: String
+  callToActionDescription: String
+  headline: String
+  description: String
+  privacyPolicyUrl: String
+  postSubmitHeadline: String
+  postSubmitDescription: String
+  postSubmitCallToActionType: String
+  backgroundImageAsset: String
+  deliveryMethods: [LeadFormDeliveryMethod]
+  fields: [LeadFormField]
+  customQuestionFields: [LeadFormCustomQuestionField]
+}
+
+type LeadFormDeliveryMethod { webhook: LeadFormWebhookDelivery }
+type LeadFormWebhookDelivery { advertiserWebhookUrl: String; googleSecret: String; payloadSchemaVersion: Long }
+type LeadFormField { inputType: String; singleChoiceAnswers: LeadFormSingleChoiceAnswers; hasLocationAnswer: Boolean }
+type LeadFormSingleChoiceAnswers { answers: [String] }
+type LeadFormCustomQuestionField { customQuestionText: String; singleChoiceAnswers: LeadFormSingleChoiceAnswers; hasLocationAnswer: Boolean }
+
+type BookOnGoogleAsset { dummy: Boolean }
+
+type PromotionAsset {
+  promotionTarget: String
+  discountModifier: String
+  redemptionStartDate: Date
+  redemptionEndDate: Date
+  occasion: String
+  languageCode: String
+  startDate: Date
+  endDate: Date
+  adScheduleTargets: [AdScheduleInfo]
+  percentOff: Long
+  moneyAmountOff: Money
+  promotionCode: String
+  ordersOverAmount: Money
+}
+
+type Money { amountMicros: Micros; currencyCode: String }
+
+type CalloutAsset {
+  calloutText: String
+  startDate: Date
+  endDate: Date
+  adScheduleTargets: [AdScheduleInfo]
+}
+
+type StructuredSnippetAsset {
+  header: String
+  values: [String]
+}
+
+type SitelinkAsset {
+  linkText: String
+  description1: String
+  description2: String
+  startDate: Date
+  endDate: Date
+  adScheduleTargets: [AdScheduleInfo]
+}
+
+type PageFeedAsset {
+  pageUrl: String
+  labels: [String]
+}
+
+type DynamicEducationAsset {
+  programId: String
+  locationId: String
+  programName: String
+  subject: String
+  programDescription: String
+  schoolName: String
+  address: String
+  contextualKeywords: [String]
+  androidAppLink: String
+  similarProgramIds: [String]
+  iosAppLink: String
+  iosAppStoreId: Long
+  thumbnailImageUrl: String
+  imageUrl: String
+  finalUrls: [String]
+  finalMobileUrls: [String]
+  trackingUrl: String
+}
+
+type HotelCalloutAsset {
+  text: String
+  languageCode: String
+}
+
+type CallAsset {
+  countryCode: String
+  phoneNumber: String
+  callConversionReportingState: String
+  callConversionAction: String
+  adScheduleTargets: [AdScheduleInfo]
+}
+
+type PriceAsset {
+  type: String
+  priceQualifier: String
+  languageCode: String
+  priceOfferings: [PriceOffer]
+}
+
+type PriceOffer {
+  header: String
+  description: String
+  price: Money
+  unit: String
+  finalUrl: String
+  finalMobileUrl: String
+}
+
+type CallToActionAsset {
+  callToAction: String
+}
+
+type VideoAsset {
+  youtubeVideoId: String
+  youtubeVideoTitle: String
+  advertisingIdCode: String
+  isrcCode: String
+}
+
+# ─── Keywords & Search ─────────────────────────────────────────────────────────
+
+type KeywordPlanCampaign {
+  resourceName: String!
+  keywordPlan: String
+  id: Long
+  name: String
+  cpcBidMicros: Micros
+  languageConstants: [String]
+  keywordPlanCampaignKeywords: [KeywordPlanCampaignKeyword]
+  negativeKeywords: [KeywordPlanNegativeKeyword]
+  keywordPlanAdGroups: [KeywordPlanAdGroup]
+  geoTargets: [KeywordPlanGeoTarget]
+  networkSettings: KeywordPlanNetworkSetting
+}
+
+type KeywordPlanCampaignKeyword {
+  resourceName: String!
+  keywordPlanCampaign: String
+  id: Long
+  text: String
+  matchType: KeywordMatchType
+  negative: Boolean
+}
+
+type KeywordPlanNegativeKeyword {
+  text: String
+  matchType: KeywordMatchType
+}
+
+type KeywordPlanAdGroup {
+  resourceName: String!
+  keywordPlanCampaign: String
+  id: Long
+  name: String
+  cpcBidMicros: Micros
+}
+
+type KeywordPlanGeoTarget {
+  geoTargetConstant: String
+}
+
+type KeywordPlanNetworkSetting {
+  targetedNetworks: [String]
+}
+
+type Keyword {
+  text: String
+  matchType: KeywordMatchType
+  adGroup: String
+  status: String
+  cpcBidMicros: Micros
+  qualityScore: Int
+}
+
+type NegativeKeyword {
+  text: String
+  matchType: KeywordMatchType
+  campaign: String
+  adGroup: String
+}
+
+type SearchTermView {
+  resourceName: String!
+  searchTerm: String
+  adGroup: String
+  status: String
+}
+
+type SmartCampaignSearchTermView {
+  resourceName: String!
+  searchTerm: String
+  campaign: String
+}
+
+# ─── Audiences & Targeting ─────────────────────────────────────────────────────
+
+type AudienceInsightsAttribute {
+  ageRange: AgeRangeInfo
+  gender: GenderInfo
+  location: LocationInfo
+  userInterest: UserInterestInfo
+  entity: AudienceInsightsEntity
+  category: AudienceInsightsCategory
+  dynamicLineup: AudienceInsightsDynamicLineup
+  parentalStatus: ParentalStatusInfo
+  incomeRange: IncomeRangeInfo
+  youtubeChannel: YouTubeChannelInfo
+  youtubeVideo: YouTubeVideoInfo
+}
+
+type AudienceInsightsEntity { knowledgeGraphMachineId: String }
+type AudienceInsightsCategory { categoryId: String }
+type AudienceInsightsDynamicLineup { dynamicLineupId: String }
+
+type UserList {
+  resourceName: String!
+  id: ID!
+  name: String
+  description: String
+  membershipStatus: String
+  integrationCode: String
+  membershipLifeSpan: Long
+  sizeForDisplay: Long
+  sizeForSearch: Long
+  sizeRangeForDisplay: String
+  sizeRangeForSearch: String
+  type: UserListType
+  closingReason: String
+  accessReason: String
+  accountUserListStatus: String
+  eligibleForSearch: Boolean
+  eligibleForDisplay: Boolean
+  matchRatePercentage: Int
+  ruleBasedUserList: RuleBasedUserListInfo
+  logicalUserList: LogicalUserListInfo
+  basicUserList: BasicUserListInfo
+  crmBasedUserList: CrmBasedUserListInfo
+  similarUserList: SimilarUserListInfo
+}
+
+type RuleBasedUserListInfo { prepopulationStatus: String; flexibleRuleUserList: FlexibleRuleUserListInfo }
+type FlexibleRuleUserListInfo { inclusiveRuleOperator: String; inclusiveOperands: [FlexibleRuleOperand]; exclusiveOperands: [UserListRuleItemGroupInfo] }
+type FlexibleRuleOperand { rule: UserListRuleItemGroupInfo; lookbackWindowDays: Long }
+type UserListRuleItemGroupInfo { ruleItems: [UserListRuleItemInfo] }
+type UserListRuleItemInfo {
+  name: String
+  numberRuleItem: UserListNumberRuleItemInfo
+  stringRuleItem: UserListStringRuleItemInfo
+  dateRuleItem: UserListDateRuleItemInfo
+}
+type UserListNumberRuleItemInfo { operator: String; value: Float }
+type UserListStringRuleItemInfo { operator: String; value: String }
+type UserListDateRuleItemInfo { operator: String; value: String; offsetInDays: Long }
+type LogicalUserListInfo { rules: [UserListLogicalRuleInfo] }
+type UserListLogicalRuleInfo { operator: String; ruleOperands: [LogicalUserListOperandInfo] }
+type LogicalUserListOperandInfo { userList: String }
+type BasicUserListInfo { actions: [UserListActionInfo] }
+type UserListActionInfo { conversionAction: String; remarketingAction: String }
+type CrmBasedUserListInfo { appId: String; uploadKeyType: String; dataSourceType: String }
+type SimilarUserListInfo { seedUserList: String }
+
+type Audience {
+  resourceName: String!
+  id: ID!
+  name: String
+  description: String
+  status: String
+  dimensions: [AudienceDimension]
+  exclusionDimension: AudienceExclusionDimension
+}
+
+type AudienceDimension {
+  age: AgeDimension
+  gender: GenderDimension
+  householdIncome: HouseholdIncomeDimension
+  parentalStatus: ParentalStatusDimension
+  audienceSegments: AudienceSegmentDimension
+}
+
+type AgeDimension { ageRanges: [AgeSegment]; includeUndetermined: Boolean }
+type AgeSegment { minAge: Int; maxAge: Int }
+type GenderDimension { genders: [String]; includeUndetermined: Boolean }
+type HouseholdIncomeDimension { incomeRanges: [String]; includeUndetermined: Boolean }
+type ParentalStatusDimension { parentalStatuses: [String]; includeUndetermined: Boolean }
+type AudienceSegmentDimension { segments: [AudienceSegment] }
+type AudienceSegment {
+  userList: UserListSegment
+  userInterest: UserInterestSegment
+  lifeEvent: LifeEventSegment
+  detailedDemographic: DetailedDemographicSegment
+  customAudience: CustomAudienceSegment
+}
+type UserListSegment { userList: String }
+type UserInterestSegment { userInterestCategory: String }
+type LifeEventSegment { lifeEvent: String }
+type DetailedDemographicSegment { detailedDemographic: String }
+type CustomAudienceSegment { customAudience: String }
+type AudienceExclusionDimension { exclusions: [AudienceSegment] }
+
+type CombinedAudience {
+  resourceName: String!
+  id: ID!
+  status: String
+  name: String
+  description: String
+}
+
+type GeoTargetConstant {
+  resourceName: String!
+  id: Long
+  name: String
+  countryCode: String
+  targetType: String
+  status: String
+  canonicalName: String
+  parentGeoTarget: String
+}
+
+type LanguageConstant {
+  resourceName: String!
+  id: Long
+  code: String
+  name: String
+  targetable: Boolean
+}
+
+# ─── Bidding Strategies ────────────────────────────────────────────────────────
+
+type BiddingStrategy {
+  resourceName: String!
+  id: ID!
+  name: String
+  status: String
+  type: BiddingStrategyType
+  currencyCode: String
+  effectiveCurrencyCode: String
+  campaignCount: Long
+  nonRemovedCampaignCount: Long
+  enhancedCpc: EnhancedCpc
+  maximizeConversionValue: MaximizeConversionValue
+  maximizeConversions: MaximizeConversions
+  targetCpa: TargetCPA
+  targetImpressionShare: TargetImpressionShare
+  targetOutrankShare: TargetOutrankShare
+  targetRoas: TargetRoas
+  targetSpend: TargetSpend
+}
+
+type AutomatedBid { dummy: Boolean }
+
+type EnhancedCpc { dummy: Boolean }
+
+type ManualCPC {
+  enhancedCpcEnabled: Boolean
+}
+
+type ManualCPM { dummy: Boolean }
+type ManualCPV { dummy: Boolean }
+
+type MaximizeClicks {
+  targetSpendMicros: Micros
+  maxCpcBidCeilingMicros: Micros
+}
+
+type MaximizeConversions {
+  targetCpaMicros: Micros
+  targetCpaSource: String
+}
+
+type MaximizeConversionValue {
+  targetRoas: Float
+  targetRoasSource: String
+}
+
+type TargetCPA {
+  targetCpaMicros: Micros
+  cpcBidCeilingMicros: Micros
+  cpcBidFloorMicros: Micros
+}
+
+type TargetImpressionShare {
+  location: String
+  locationFractionMicros: Long
+  cpcBidCeilingMicros: Micros
+}
+
+type TargetOutrankShare {
+  cpcBidCeilingMicros: Micros
+}
+
+type TargetRoas {
+  targetRoas: Float
+  cpcBidCeilingMicros: Micros
+  cpcBidFloorMicros: Micros
+}
+
+type TargetSpend {
+  targetSpendMicros: Micros
+  cpcBidCeilingMicros: Micros
+}
+
+type PercentCpc {
+  cpcBidCeilingMicros: Micros
+  enhancedCpcEnabled: Boolean
+}
+
+type Commission {
+  commissionRateMicros: Long
+}
+
+# ─── Conversions ───────────────────────────────────────────────────────────────
+
+type ConversionAction {
+  resourceName: String!
+  id: ID!
+  name: String
+  status: String
+  type: ConversionActionType
+  origin: String
+  primary: Boolean
+  viewThroughLookbackWindowDays: Long
+  clickThroughLookbackWindowDays: Long
+  valueSettings: ConversionActionValueSettings
+  countingType: String
+  attributionModelSettings: AttributionModelSettings
+  tagSnippets: [TagSnippet]
+  phoneCallDurationSeconds: Long
+  appId: String
+  mobileAppVendor: String
+  firebaseSettings: FirebaseConversionActionSettings
+  thirdPartyAppAnalyticsSettings: ThirdPartyAppAnalyticsConversionActionSettings
+  googleAnalytics4Settings: GoogleAnalytics4ConversionActionSettings
+}
+
+type ConversionActionValueSettings {
+  defaultValueMicros: Long
+  defaultCurrencyCode: String
+  alwaysUseDefaultValue: Boolean
+}
+
+type AttributionModelSettings {
+  attributionModel: String
+  dataTerms: String
+}
+
+type TagSnippet {
+  type: String
+  pageFormat: String
+  globalSiteTag: String
+  eventSnippet: String
+}
+
+type FirebaseConversionActionSettings {
+  appId: String
+  firebaseProjectId: String
+  propertyName: String
+}
+
+type ThirdPartyAppAnalyticsConversionActionSettings {
+  eventName: String
+  providerName: String
+}
+
+type GoogleAnalytics4ConversionActionSettings {
+  conversionEvent: String
+  property: String
+  propertyName: String
+  customVariableId: Long
+}
+
+type ConversionGoal {
+  resourceName: String!
+  customerId: Long
+  category: String
+  origin: String
+  name: String
+  campaignConversionGoals: [CampaignConversionGoalSummary]
+}
+
+type CampaignConversionGoalSummary {
+  campaign: String
+  biddable: Boolean
+}
+
+type ConversionProductGoal {
+  resourceName: String!
+  conversionActionCategories: [ConversionActionCategory]
+}
+
+type ConversionActionCategory {
+  category: String
+  origin: String
+}
+
+# ─── Reporting ─────────────────────────────────────────────────────────────────
+
+type Report {
+  query: String
+  totalResultsCount: Long
+  nextPageToken: String
+  results: [ReportRow]
+  fieldMask: String
+  summaryRow: ReportRow
+}
+
+type ReportRow {
+  campaign: Campaign
+  adGroup: AdGroup
+  adGroupAd: AdGroupAd
+  adGroupCriterion: AdGroupCriterion
+  keyword: KeywordInfo
+  searchTermView: SearchTermView
+  metrics: Metrics
+  segments: Segments
+  customer: Customer
+  campaignBudget: CampaignBudget
+  biddingStrategy: BiddingStrategy
+  asset: Asset
+  assetGroup: AssetGroup
+  conversionAction: ConversionAction
+  geoTargetConstant: GeoTargetConstant
+  userList: UserList
+}
+
+type AssetGroup {
+  resourceName: String!
+  id: ID!
+  campaign: String
+  name: String
+  finalUrls: [String]
+  finalMobileUrls: [String]
+  status: String
+  path1: String
+  path2: String
+  adStrength: String
+}
+
+type Metrics {
+  absoluteTopImpressionPercentage: Float
+  activeViewCpm: Float
+  activeViewCtr: Float
+  activeViewImpressions: Long
+  activeViewMeasurability: Float
+  activeViewMeasurableCostMicros: Micros
+  activeViewMeasurableImpressions: Long
+  activeViewViewability: Float
+  allConversions: Float
+  allConversionsFromInteractionsRate: Float
+  allConversionsByConversionDate: Float
+  allConversionsFromInteractionsValuePerInteraction: Float
+  allConversionsValue: Float
+  allConversionsValueByConversionDate: Float
+  allConversionsValuePerCost: Float
+  averageCost: Float
+  averageCpc: Float
+  averageCpe: Float
+  averageCpm: Float
+  averageCpv: Float
+  averagePageViews: Float
+  averageTimeOnSite: Float
+  benchmarkAverageMaxCpc: Float
+  biddableAppInstallConversions: Float
+  biddableAppPostInstallConversions: Float
+  bounceRate: Float
+  clicks: Long
+  combinedClicks: Long
+  combinedClicksPerQuery: Float
+  combinedQueries: Long
+  contentBudgetLostImpressionShare: Float
+  contentImpressionShare: Float
+  contentRankLostImpressionShare: Float
+  conversionLastConversionDate: Date
+  conversionLastReceivedRequestDateTime: DateTime
+  conversions: Float
+  conversionsFromInteractionsRate: Float
+  conversionsFromInteractionsValuePerInteraction: Float
+  conversionsValue: Float
+  conversionsValuePerCost: Float
+  costMicros: Micros
+  costPerAllConversions: Float
+  costPerConversion: Float
+  costPerCurrentModelAttributedConversion: Float
+  crossDeviceConversions: Float
+  ctr: Float
+  currentModelAttributedConversions: Float
+  currentModelAttributedConversionsFromInteractionsRate: Float
+  currentModelAttributedConversionsFromInteractionsValuePerInteraction: Float
+  currentModelAttributedConversionsValue: Float
+  currentModelAttributedConversionsValuePerCost: Float
+  engagementRate: Float
+  engagements: Long
+  hotelAverageLeadValueMicros: Long
+  hotelCommissionRateMicros: Long
+  hotelExpectedCommissionCost: Float
+  hotelPriceDifferencePercentage: Float
+  hotelEligibleImpressionsCount: Long
+  historicalQualityScore: Long
+  historicalCreativeQualityScore: String
+  historicalLandingPageQualityScore: String
+  historicalSearchPredictedCtr: String
+  gmailForwards: Long
+  gmailSaves: Long
+  gmailSecondaryClicks: Long
+  impressions: Long
+  interactionEventTypes: [String]
+  interactionRate: Float
+  interactions: Long
+  invalidClickRate: Float
+  invalidClicks: Long
+  messageChats: Long
+  messageChatRate: Float
+  messageImpressions: Long
+  mobileFriendlyClicksPercentage: Float
+  optimizationScoreUplift: Float
+  optimizationScoreUrl: String
+  organicClicks: Long
+  organicClicksPerQuery: Float
+  organicImpressions: Long
+  organicImpressionsPerQuery: Float
+  organicQueries: Long
+  percentNewVisitors: Float
+  phoneCalls: Long
+  phoneImpressions: Long
+  phoneThroughRate: Float
+  relativeCtr: Float
+  searchAbsoluteTopImpressionShare: Float
+  searchBudgetLostAbsoluteTopImpressionShare: Float
+  searchBudgetLostImpressionShare: Float
+  searchBudgetLostTopImpressionShare: Float
+  searchClickShare: Float
+  searchExactMatchImpressionShare: Float
+  searchImpressionShare: Float
+  searchRankLostAbsoluteTopImpressionShare: Float
+  searchRankLostImpressionShare: Float
+  searchRankLostTopImpressionShare: Float
+  searchTopImpressionShare: Float
+  searchVolumeHighRange: Long
+  searchVolumeLowRange: Long
+  speedScore: Long
+  topImpressionPercentage: Float
+  validAcceleratedMobilePagesClicksPercentage: Float
+  valuePerAllConversions: Float
+  valuePerAllConversionsByConversionDate: Float
+  valuePerConversion: Float
+  valuePerConversionsByConversionDate: Float
+  valuePerCurrentModelAttributedConversion: Float
+  videoQuartileP100Rate: Float
+  videoQuartileP25Rate: Float
+  videoQuartileP50Rate: Float
+  videoQuartileP75Rate: Float
+  videoViewRate: Float
+  videoViews: Long
+  viewThroughConversions: Long
+  allConversionsFromLocationAssetClickToCall: Float
+  allConversionsFromLocationAssetDirections: Float
+  allConversionsFromLocationAssetMenu: Float
+  allConversionsFromLocationAssetOrder: Float
+  allConversionsFromLocationAssetOtherEngagement: Float
+  allConversionsFromLocationAssetWebsite: Float
+  allConversionsFromLocationAssetDrivingDirections: Float
+}
+
+type Segments {
+  adDestinationType: String
+  adNetworkType: String
+  budgetCampaignAssociationStatus: BudgetCampaignAssociationStatus
+  clickType: String
+  conversionAction: String
+  conversionActionCategory: String
+  conversionActionName: String
+  conversionAdjustment: Boolean
+  conversionAttributionEventType: String
+  conversionLagBucket: String
+  conversionOrAdjustmentLagBucket: String
+  conversionValueRulePrimaryDimension: String
+  date: Date
+  dayOfWeek: String
+  device: String
+  externalActivitySource: String
+  hour: Int
+  interactionOnThisExtension: Boolean
+  keyword: KeywordSegment
+  month: Date
+  monthOfYear: String
+  newVersusReturningCustomers: String
+  partnerHotelId: String
+  placeholderType: String
+  productAggregatorId: Long
+  productBiddingCategoryLevel1: String
+  productBiddingCategoryLevel2: String
+  productBiddingCategoryLevel3: String
+  productBiddingCategoryLevel4: String
+  productBiddingCategoryLevel5: String
+  productBrand: String
+  productChannel: String
+  productChannelExclusivity: String
+  productCondition: String
+  productCountry: String
+  productCustomAttribute0: String
+  productCustomAttribute1: String
+  productCustomAttribute2: String
+  productCustomAttribute3: String
+  productCustomAttribute4: String
+  productItemId: String
+  productLanguage: String
+  productMerchantId: Long
+  productStoreId: String
+  productTitle: String
+  productTypeL1: String
+  productTypeL2: String
+  productTypeL3: String
+  productTypeL4: String
+  productTypeL5: String
+  quarter: Date
+  searchSubcategory: String
+  searchTerm: String
+  searchTermMatchType: String
+  slot: String
+  week: Date
+  year: Int
+}
+
+type BudgetCampaignAssociationStatus {
+  campaignBudget: String
+  status: String
+}
+
+type KeywordSegment {
+  adGroupCriterion: String
+  info: KeywordInfo
+}
+
+# ─── Auth ──────────────────────────────────────────────────────────────────────
+
+type APIKey {
+  keyId: ID!
+  developerToken: String
+  createdAt: DateTime
+  lastUsedAt: DateTime
+}
+
+type Token {
+  accessToken: String!
+  tokenType: String
+  expiresIn: Int
+  refreshToken: String
+  scope: String
+}
+
+# ─── Queries ───────────────────────────────────────────────────────────────────
+
+type Query {
+  """Retrieve a customer account by ID."""
+  customer(customerId: ID!): Customer
+
+  """List all accessible customer accounts."""
+  customers: [CustomerSummary]
+
+  """Retrieve an account budget."""
+  accountBudget(resourceName: String!): AccountBudget
+
+  """List account budgets for a customer."""
+  accountBudgets(customerId: ID!): [AccountBudget]
+
+  """Retrieve a billing setup."""
+  billingSetup(resourceName: String!): BillingSetup
+
+  """Retrieve invoices for a customer."""
+  invoices(customerId: ID!, billingSetup: String!, issueYear: String!, issueMonth: Int!): [Invoice]
+
+  """Retrieve a campaign."""
+  campaign(resourceName: String!): Campaign
+
+  """List campaigns for a customer."""
+  campaigns(customerId: ID!, status: CampaignStatus): [Campaign]
+
+  """Retrieve a campaign budget."""
+  campaignBudget(resourceName: String!): CampaignBudget
+
+  """List campaign budgets for a customer."""
+  campaignBudgets(customerId: ID!): [CampaignBudget]
+
+  """Retrieve an ad group."""
+  adGroup(resourceName: String!): AdGroup
+
+  """List ad groups for a customer or campaign."""
+  adGroups(customerId: ID!, campaignId: ID, status: AdGroupStatus): [AdGroup]
+
+  """Retrieve an ad group ad."""
+  adGroupAd(resourceName: String!): AdGroupAd
+
+  """List ads in an ad group."""
+  adGroupAds(customerId: ID!, adGroupId: ID, status: AdStatus): [AdGroupAd]
+
+  """Retrieve an ad group criterion (keyword, placement, etc.)."""
+  adGroupCriterion(resourceName: String!): AdGroupCriterion
+
+  """List ad group criteria."""
+  adGroupCriteria(customerId: ID!, adGroupId: ID, type: String): [AdGroupCriterion]
+
+  """Retrieve an asset."""
+  asset(resourceName: String!): Asset
+
+  """List assets for a customer."""
+  assets(customerId: ID!, type: AssetType): [Asset]
+
+  """Retrieve a keyword plan campaign."""
+  keywordPlanCampaign(resourceName: String!): KeywordPlanCampaign
+
+  """Retrieve a user list."""
+  userList(resourceName: String!): UserList
+
+  """List user lists for a customer."""
+  userLists(customerId: ID!): [UserList]
+
+  """Retrieve an audience."""
+  audience(resourceName: String!): Audience
+
+  """List audiences for a customer."""
+  audiences(customerId: ID!): [Audience]
+
+  """Retrieve a geo target constant."""
+  geoTargetConstant(resourceName: String!): GeoTargetConstant
+
+  """Search geo target constants."""
+  geoTargetConstants(query: String, countryCode: String): [GeoTargetConstant]
+
+  """Retrieve a language constant."""
+  languageConstant(resourceName: String!): LanguageConstant
+
+  """List all language constants."""
+  languageConstants: [LanguageConstant]
+
+  """Retrieve a bidding strategy."""
+  biddingStrategy(resourceName: String!): BiddingStrategy
+
+  """List bidding strategies for a customer."""
+  biddingStrategies(customerId: ID!): [BiddingStrategy]
+
+  """Retrieve a conversion action."""
+  conversionAction(resourceName: String!): ConversionAction
+
+  """List conversion actions for a customer."""
+  conversionActions(customerId: ID!): [ConversionAction]
+
+  """Retrieve a search term view."""
+  searchTermView(resourceName: String!): SearchTermView
+
+  """Execute a Google Ads Query Language (GAQL) report query."""
+  report(customerId: ID!, query: String!, pageToken: String, pageSize: Int): Report
+}
+
+# ─── Mutations ─────────────────────────────────────────────────────────────────
+
+type Mutation {
+  """Create or update a campaign."""
+  mutateCampaign(customerId: ID!, operation: CampaignOperation!): MutateCampaignsResponse
+
+  """Create or update a campaign budget."""
+  mutateCampaignBudget(customerId: ID!, operation: CampaignBudgetOperation!): MutateCampaignBudgetsResponse
+
+  """Create or update an ad group."""
+  mutateAdGroup(customerId: ID!, operation: AdGroupOperation!): MutateAdGroupsResponse
+
+  """Create or update an ad group ad."""
+  mutateAdGroupAd(customerId: ID!, operation: AdGroupAdOperation!): MutateAdGroupAdsResponse
+
+  """Create or update an ad group criterion."""
+  mutateAdGroupCriterion(customerId: ID!, operation: AdGroupCriterionOperation!): MutateAdGroupCriteriaResponse
+
+  """Create or update an asset."""
+  mutateAsset(customerId: ID!, operation: AssetOperation!): MutateAssetsResponse
+
+  """Create or update a user list."""
+  mutateUserList(customerId: ID!, operation: UserListOperation!): MutateUserListsResponse
+
+  """Create or update a conversion action."""
+  mutateConversionAction(customerId: ID!, operation: ConversionActionOperation!): MutateConversionActionsResponse
+
+  """Create or update a bidding strategy."""
+  mutateBiddingStrategy(customerId: ID!, operation: BiddingStrategyOperation!): MutateBiddingStrategiesResponse
+}
+
+# ─── Operation Inputs ──────────────────────────────────────────────────────────
+
+input CampaignOperation {
+  create: CampaignInput
+  update: CampaignInput
+  remove: String
+  updateMask: String
+}
+
+input CampaignInput {
+  resourceName: String
+  name: String
+  status: CampaignStatus
+  advertisingChannelType: AdvertisingChannelType
+  campaignBudget: String
+  startDate: Date
+  endDate: Date
+  trackingUrlTemplate: String
+  finalUrlSuffix: String
+}
+
+input CampaignBudgetOperation {
+  create: CampaignBudgetInput
+  update: CampaignBudgetInput
+  remove: String
+  updateMask: String
+}
+
+input CampaignBudgetInput {
+  resourceName: String
+  name: String
+  amountMicros: Micros
+  deliveryMethod: String
+  explicitlyShared: Boolean
+}
+
+input AdGroupOperation {
+  create: AdGroupInput
+  update: AdGroupInput
+  remove: String
+  updateMask: String
+}
+
+input AdGroupInput {
+  resourceName: String
+  campaign: String
+  name: String
+  status: AdGroupStatus
+  cpcBidMicros: Micros
+  cpmBidMicros: Micros
+  targetCpaMicros: Micros
+  targetRoas: Float
+}
+
+input AdGroupAdOperation {
+  create: AdGroupAdInput
+  update: AdGroupAdInput
+  remove: String
+  updateMask: String
+}
+
+input AdGroupAdInput {
+  resourceName: String
+  adGroup: String
+  status: AdStatus
+  ad: AdInput
+}
+
+input AdInput {
+  finalUrls: [String]
+  displayUrl: String
+  responsiveSearchAd: ResponsiveSearchAdInput
+  expandedTextAd: ExpandedTextAdInput
+}
+
+input ResponsiveSearchAdInput {
+  headlines: [AdTextAssetInput]
+  descriptions: [AdTextAssetInput]
+  path1: String
+  path2: String
+}
+
+input ExpandedTextAdInput {
+  headlinePart1: String
+  headlinePart2: String
+  headlinePart3: String
+  description: String
+  description2: String
+  path1: String
+  path2: String
+}
+
+input AdTextAssetInput {
+  text: String!
+  pinnedField: String
+}
+
+input AdGroupCriterionOperation {
+  create: AdGroupCriterionInput
+  update: AdGroupCriterionInput
+  remove: String
+  updateMask: String
+}
+
+input AdGroupCriterionInput {
+  resourceName: String
+  adGroup: String
+  status: String
+  keyword: KeywordInput
+  cpcBidMicros: Micros
+  negative: Boolean
+}
+
+input KeywordInput {
+  text: String!
+  matchType: KeywordMatchType!
+}
+
+input AssetOperation {
+  create: AssetInput
+  update: AssetInput
+  remove: String
+  updateMask: String
+}
+
+input AssetInput {
+  resourceName: String
+  name: String
+  type: AssetType
+  finalUrls: [String]
+  textAsset: TextAssetInput
+  imageAsset: ImageAssetInput
+  sitelinkAsset: SitelinkAssetInput
+  callAsset: CallAssetInput
+}
+
+input TextAssetInput { text: String! }
+input ImageAssetInput { data: String; mimeType: String }
+input SitelinkAssetInput { linkText: String!; description1: String; description2: String; finalUrls: [String] }
+input CallAssetInput { countryCode: String!; phoneNumber: String! }
+
+input UserListOperation {
+  create: UserListInput
+  update: UserListInput
+  remove: String
+  updateMask: String
+}
+
+input UserListInput {
+  resourceName: String
+  name: String
+  description: String
+  membershipLifeSpan: Long
+  membershipStatus: String
+}
+
+input ConversionActionOperation {
+  create: ConversionActionInput
+  update: ConversionActionInput
+  remove: String
+  updateMask: String
+}
+
+input ConversionActionInput {
+  resourceName: String
+  name: String
+  type: ConversionActionType
+  status: String
+  viewThroughLookbackWindowDays: Long
+  clickThroughLookbackWindowDays: Long
+}
+
+input BiddingStrategyOperation {
+  create: BiddingStrategyInput
+  update: BiddingStrategyInput
+  remove: String
+  updateMask: String
+}
+
+input BiddingStrategyInput {
+  resourceName: String
+  name: String
+  type: BiddingStrategyType
+  targetCpa: TargetCPAInput
+  targetRoas: TargetRoasInput
+  maximizeConversions: MaximizeConversionsInput
+  maximizeConversionValue: MaximizeConversionValueInput
+}
+
+input TargetCPAInput { targetCpaMicros: Micros; cpcBidCeilingMicros: Micros; cpcBidFloorMicros: Micros }
+input TargetRoasInput { targetRoas: Float!; cpcBidCeilingMicros: Micros; cpcBidFloorMicros: Micros }
+input MaximizeConversionsInput { targetCpaMicros: Micros }
+input MaximizeConversionValueInput { targetRoas: Float }
+
+# ─── Mutation Responses ────────────────────────────────────────────────────────
+
+type MutateCampaignsResponse { results: [MutateCampaignResult]; partialFailureError: String }
+type MutateCampaignResult { resourceName: String; campaign: Campaign }
+
+type MutateCampaignBudgetsResponse { results: [MutateCampaignBudgetResult]; partialFailureError: String }
+type MutateCampaignBudgetResult { resourceName: String; campaignBudget: CampaignBudget }
+
+type MutateAdGroupsResponse { results: [MutateAdGroupResult]; partialFailureError: String }
+type MutateAdGroupResult { resourceName: String; adGroup: AdGroup }
+
+type MutateAdGroupAdsResponse { results: [MutateAdGroupAdResult]; partialFailureError: String }
+type MutateAdGroupAdResult { resourceName: String; adGroupAd: AdGroupAd }
+
+type MutateAdGroupCriteriaResponse { results: [MutateAdGroupCriterionResult]; partialFailureError: String }
+type MutateAdGroupCriterionResult { resourceName: String; adGroupCriterion: AdGroupCriterion }
+
+type MutateAssetsResponse { results: [MutateAssetResult]; partialFailureError: String }
+type MutateAssetResult { resourceName: String; asset: Asset }
+
+type MutateUserListsResponse { results: [MutateUserListResult]; partialFailureError: String }
+type MutateUserListResult { resourceName: String; userList: UserList }
+
+type MutateConversionActionsResponse { results: [MutateConversionActionResult]; partialFailureError: String }
+type MutateConversionActionResult { resourceName: String; conversionAction: ConversionAction }
+
+type MutateBiddingStrategiesResponse { results: [MutateBiddingStrategyResult]; partialFailureError: String }
+type MutateBiddingStrategyResult { resourceName: String; biddingStrategy: BiddingStrategy }
