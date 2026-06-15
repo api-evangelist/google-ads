@@ -2,10 +2,10 @@
   "repo": "google-ads",
   "feeds": [
     {
-      "source": "https://ads-developers.googleblog.com/atom.xml",
-      "feed_url": "https://ads-developers.googleblog.com/atom.xml",
+      "source": "https://feeds.feedburner.com/GoogleAdsDeveloperBlog",
+      "feed_url": "https://feeds.feedburner.com/GoogleAdsDeveloperBlog",
       "title": "",
-      "saved": 0,
+      "saved": 4,
       "method": "feed"
     },
     {
@@ -16,6 +16,6 @@
       "method": "none"
     }
   ],
-  "post_count": 33,
-  "fetched": "2026-06-01T23:35:02Z"
+  "post_count": 37,
+  "fetched": "2026-06-14T20:42:17Z"
 }

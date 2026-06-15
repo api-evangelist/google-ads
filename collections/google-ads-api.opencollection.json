@@ -1,0 +1,428 @@
+{
+  "opencollection": "1.0.0",
+  "info": {
+    "name": "Google Ads API",
+    "version": "v18"
+  },
+  "request": {
+    "auth": {
+      "type": "oauth2",
+      "flow": "authorization_code",
+      "authorizationUrl": "https://accounts.google.com/o/oauth2/auth",
+      "accessTokenUrl": "https://oauth2.googleapis.com/token",
+      "credentials": {
+        "clientId": "{{clientId}}",
+        "clientSecret": "{{clientSecret}}"
+      }
+    }
+  },
+  "items": [
+    {
+      "info": {
+        "name": "Reporting",
+        "type": "folder"
+      },
+      "items": [
+        {
+          "info": {
+            "name": "Search Using Google Ads Query Language",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "https://googleads.googleapis.com/v18/customers/:customerId/googleAds:search",
+            "headers": [
+              {
+                "name": "Authorization",
+                "value": ""
+              },
+              {
+                "name": "developer-token",
+                "value": ""
+              },
+              {
+                "name": "login-customer-id",
+                "value": ""
+              }
+            ],
+            "params": [
+              {
+                "name": "customerId",
+                "value": "",
+                "type": "path",
+                "description": "The Google Ads customer ID (without dashes), e.g. 1234567890."
+              }
+            ],
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "Returns all rows that match the search query. Use Google Ads Query\nLanguage (GAQL) to query resources, metrics, and segments across\ncampaigns, ad groups, ads, keywords, and more. This is the primary\nmethod for retrieving reporting data and resource details.\n"
+        },
+        {
+          "info": {
+            "name": "Search Stream Using Google Ads Query Language",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "https://googleads.googleapis.com/v18/customers/:customerId/googleAds:searchStream",
+            "headers": [
+              {
+                "name": "Authorization",
+                "value": ""
+              },
+              {
+                "name": "developer-token",
+                "value": ""
+              },
+              {
+                "name": "login-customer-id",
+                "value": ""
+              }
+            ],
+            "params": [
+              {
+                "name": "customerId",
+                "value": "",
+                "type": "path",
+                "description": "The Google Ads customer ID (without dashes), e.g. 1234567890."
+              }
+            ],
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "Returns all rows that match the search query as a streamed response.\nIdentical to the search method but returns results as a stream,\nwhich is more efficient for large result sets.\n"
+        }
+      ]
+    },
+    {
+      "info": {
+        "name": "Campaigns",
+        "type": "folder"
+      },
+      "items": [
+        {
+          "info": {
+            "name": "Google Ads Create, Update, or Remove Campaigns",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "https://googleads.googleapis.com/v18/customers/:customerId/campaigns:mutate",
+            "headers": [
+              {
+                "name": "Authorization",
+                "value": ""
+              },
+              {
+                "name": "developer-token",
+                "value": ""
+              },
+              {
+                "name": "login-customer-id",
+                "value": ""
+              }
+            ],
+            "params": [
+              {
+                "name": "customerId",
+                "value": "",
+                "type": "path",
+                "description": "The Google Ads customer ID (without dashes), e.g. 1234567890."
+              }
+            ],
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "Creates, updates, or removes campaigns. Operation statuses are returned.\nSupports partial failure where some operations succeed while others fail.\n"
+        },
+        {
+          "info": {
+            "name": "Google Ads Create, Update, or Remove Campaign Budgets",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "https://googleads.googleapis.com/v18/customers/:customerId/campaignBudgets:mutate",
+            "headers": [
+              {
+                "name": "Authorization",
+                "value": ""
+              },
+              {
+                "name": "developer-token",
+                "value": ""
+              },
+              {
+                "name": "login-customer-id",
+                "value": ""
+              }
+            ],
+            "params": [
+              {
+                "name": "customerId",
+                "value": "",
+                "type": "path",
+                "description": "The Google Ads customer ID (without dashes), e.g. 1234567890."
+              }
+            ],
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "Creates, updates, or removes campaign budgets. Campaign budgets\ndefine the daily or total spending limits for one or more campaigns.\n"
+        }
+      ]
+    },
+    {
+      "info": {
+        "name": "Ad Groups",
+        "type": "folder"
+      },
+      "items": [
+        {
+          "info": {
+            "name": "Google Ads Create, Update, or Remove Ad Groups",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "https://googleads.googleapis.com/v18/customers/:customerId/adGroups:mutate",
+            "headers": [
+              {
+                "name": "Authorization",
+                "value": ""
+              },
+              {
+                "name": "developer-token",
+                "value": ""
+              },
+              {
+                "name": "login-customer-id",
+                "value": ""
+              }
+            ],
+            "params": [
+              {
+                "name": "customerId",
+                "value": "",
+                "type": "path",
+                "description": "The Google Ads customer ID (without dashes), e.g. 1234567890."
+              }
+            ],
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "Creates, updates, or removes ad groups. An ad group is a set of ads\nthat share the same targeting criteria. Each ad group belongs to\nexactly one campaign.\n"
+        }
+      ]
+    },
+    {
+      "info": {
+        "name": "Ads",
+        "type": "folder"
+      },
+      "items": [
+        {
+          "info": {
+            "name": "Google Ads Create, Update, or Remove Ads",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "https://googleads.googleapis.com/v18/customers/:customerId/adGroupAds:mutate",
+            "headers": [
+              {
+                "name": "Authorization",
+                "value": ""
+              },
+              {
+                "name": "developer-token",
+                "value": ""
+              },
+              {
+                "name": "login-customer-id",
+                "value": ""
+              }
+            ],
+            "params": [
+              {
+                "name": "customerId",
+                "value": "",
+                "type": "path",
+                "description": "The Google Ads customer ID (without dashes), e.g. 1234567890."
+              }
+            ],
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "Creates, updates, or removes ads within ad groups. Ads are the\ncreative content shown to users. Supports responsive search ads,\nexpanded text ads, display ads, and other ad formats.\n"
+        }
+      ]
+    },
+    {
+      "info": {
+        "name": "Keywords",
+        "type": "folder"
+      },
+      "items": [
+        {
+          "info": {
+            "name": "Google Ads Create, Update, or Remove Keywords and Criteria",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "https://googleads.googleapis.com/v18/customers/:customerId/adGroupCriteria:mutate",
+            "headers": [
+              {
+                "name": "Authorization",
+                "value": ""
+              },
+              {
+                "name": "developer-token",
+                "value": ""
+              },
+              {
+                "name": "login-customer-id",
+                "value": ""
+              }
+            ],
+            "params": [
+              {
+                "name": "customerId",
+                "value": "",
+                "type": "path",
+                "description": "The Google Ads customer ID (without dashes), e.g. 1234567890."
+              }
+            ],
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "Creates, updates, or removes ad group criteria (keywords and other\ntargeting criteria). Keywords are words or phrases that trigger your\nads to appear in search results. Supports broad match, phrase match,\nand exact match types.\n"
+        }
+      ]
+    },
+    {
+      "info": {
+        "name": "Bidding Strategies",
+        "type": "folder"
+      },
+      "items": [
+        {
+          "info": {
+            "name": "Google Ads Create, Update, or Remove Bidding Strategies",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "https://googleads.googleapis.com/v18/customers/:customerId/biddingStrategies:mutate",
+            "headers": [
+              {
+                "name": "Authorization",
+                "value": ""
+              },
+              {
+                "name": "developer-token",
+                "value": ""
+              },
+              {
+                "name": "login-customer-id",
+                "value": ""
+              }
+            ],
+            "params": [
+              {
+                "name": "customerId",
+                "value": "",
+                "type": "path",
+                "description": "The Google Ads customer ID (without dashes), e.g. 1234567890."
+              }
+            ],
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "Creates, updates, or removes bidding strategies. Bidding strategies\ndetermine how bids are set for your ads. Supports strategies such as\nTarget CPA, Target ROAS, Maximize Conversions, and Manual CPC.\n"
+        }
+      ]
+    },
+    {
+      "info": {
+        "name": "Customers",
+        "type": "folder"
+      },
+      "items": [
+        {
+          "info": {
+            "name": "Google Ads Get Customer Account Details",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://googleads.googleapis.com/v18/customers/:customerId",
+            "headers": [
+              {
+                "name": "Authorization",
+                "value": ""
+              },
+              {
+                "name": "developer-token",
+                "value": ""
+              },
+              {
+                "name": "login-customer-id",
+                "value": ""
+              }
+            ],
+            "params": [
+              {
+                "name": "customerId",
+                "value": "",
+                "type": "path",
+                "description": "The Google Ads customer ID (without dashes), e.g. 1234567890."
+              }
+            ]
+          },
+          "docs": "Returns the requested customer account in full detail. A customer\nrepresents a Google Ads account or a manager account.\n"
+        },
+        {
+          "info": {
+            "name": "Google Ads List Accessible Customer Accounts",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://googleads.googleapis.com/v18/customers:listAccessibleCustomers",
+            "headers": [
+              {
+                "name": "Authorization",
+                "value": ""
+              },
+              {
+                "name": "developer-token",
+                "value": ""
+              }
+            ]
+          },
+          "docs": "Returns resource names of customers directly accessible by the user\nauthenticating the call. Does not require a customer ID in the path,\nas it operates at the OAuth credential level.\n"
+        }
+      ]
+    }
+  ],
+  "bundled": true
+}
