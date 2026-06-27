@@ -50,7 +50,7 @@ apis:
     url: https://developers.google.com/google-ads/api/docs/release-notes
   - type: Support
     url: https://developers.google.com/google-ads/api/support
-  - type: Forum
+  - type: Forums
     url: https://groups.google.com/g/adwords-api
   - type: Client Libraries
     url: https://developers.google.com/google-ads/api/docs/client-libs
@@ -109,7 +109,7 @@ common:
   url: https://groups.google.com/g/adwords-api
 - type: Console
   url: https://ads.google.com/
-- type: SignUp
+- type: Signup
   url: https://ads.google.com/signup
 - type: Developer Tools
   url: https://developers.google.com/google-ads/api/docs/developer-toolkit/ai-assistant
