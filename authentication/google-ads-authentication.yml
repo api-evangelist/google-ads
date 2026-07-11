@@ -1,0 +1,21 @@
+generated: '2026-07-11'
+method: derived
+source: openapi/google-ads-api-openapi.yml
+summary:
+  types:
+  - oauth2
+  oauth2_flows:
+  - authorizationCode
+schemes:
+- name: oauth2Auth
+  type: oauth2
+  flows:
+  - flow: authorizationCode
+    authorizationUrl: https://accounts.google.com/o/oauth2/auth
+    tokenUrl: https://oauth2.googleapis.com/token
+    scopes: 1
+  description: |-
+    Google Ads API uses OAuth 2.0 for authentication. Requires a developer
+    token, OAuth 2.0 client ID and secret, and a refresh token.
+  sources:
+  - openapi/google-ads-api-openapi.yml

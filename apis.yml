@@ -81,6 +81,12 @@ apis:
   - type: Reference
     url: https://developers.google.com/google-ads/scripts/docs/examples
 common:
+- type: VulnerabilityDisclosure
+  url: security/google-ads-vulnerability-disclosure.yml
+- type: DomainSecurity
+  url: security/google-ads-domain-security.yml
+- type: Authentication
+  url: authentication/google-ads-authentication.yml
 - type: OAuthScopes
   url: scopes/google-ads-scopes.yml
 - type: LinkedIn
