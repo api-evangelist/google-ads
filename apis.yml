@@ -81,6 +81,8 @@ apis:
   - type: Reference
     url: https://developers.google.com/google-ads/scripts/docs/examples
 common:
+- type: AgenticAccess
+  url: agentic-access/google-ads-agentic-access.yml
 - type: VulnerabilityDisclosure
   url: security/google-ads-vulnerability-disclosure.yml
 - type: DomainSecurity
