@@ -1,0 +1,225 @@
+openapi: 3.1.0
+info:
+  title: Google Ads Ad Groups Customers API
+  description: 'The Google Ads API is the modern programmatic interface to Google Ads and the
+
+    next generation of the AdWords API. It enables developers to interact directly
+
+    with the Google Ads platform, vastly increasing the efficiency of managing
+
+    large or complex Google Ads accounts and campaigns. The API allows for
+
+    creating, reading, updating, and removing campaigns, ad groups, ads, keywords,
+
+    and retrieving performance reports using Google Ads Query Language (GAQL).
+
+    '
+  version: v18
+  contact:
+    name: Google Ads API Support
+    url: https://developers.google.com/google-ads/api/support
+  license:
+    name: Google APIs Terms of Service
+    url: https://developers.google.com/terms
+servers:
+- url: https://googleads.googleapis.com
+  description: Google Ads API Production Server
+security:
+- oauth2Auth: []
+tags:
+- name: Customers
+  description: Access and manage Google Ads customer account information
+paths:
+  /v18/customers/{customerId}:
+    get:
+      summary: Google Ads Get Customer Account Details
+      description: 'Returns the requested customer account in full detail. A customer
+
+        represents a Google Ads account or a manager account.
+
+        '
+      operationId: getCustomer
+      tags:
+      - Customers
+      parameters:
+      - $ref: '#/components/parameters/CustomerIdPath'
+      - $ref: '#/components/parameters/AuthorizationHeader'
+      - $ref: '#/components/parameters/DeveloperTokenHeader'
+      - $ref: '#/components/parameters/LoginCustomerIdHeader'
+      responses:
+        '200':
+          description: Successful Response
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Customer'
+        '401':
+          description: Unauthorized
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/GoogleAdsFailure'
+        '403':
+          description: Forbidden
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/GoogleAdsFailure'
+  /v18/customers:listAccessibleCustomers:
+    get:
+      summary: Google Ads List Accessible Customer Accounts
+      description: 'Returns resource names of customers directly accessible by the user
+
+        authenticating the call. Does not require a customer ID in the path,
+
+        as it operates at the OAuth credential level.
+
+        '
+      operationId: listAccessibleCustomers
+      tags:
+      - Customers
+      parameters:
+      - $ref: '#/components/parameters/AuthorizationHeader'
+      - $ref: '#/components/parameters/DeveloperTokenHeader'
+      responses:
+        '200':
+          description: Successful Response
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ListAccessibleCustomersResponse'
+        '401':
+          description: Unauthorized
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/GoogleAdsFailure'
+components:
+  schemas:
+    Customer:
+      type: object
+      description: A Google Ads customer account.
+      properties:
+        resourceName:
+          type: string
+          description: Resource name of the customer.
+        id:
+          type: integer
+          format: int64
+          description: The customer account ID.
+        descriptiveName:
+          type: string
+          description: The descriptive name of the customer account.
+        currencyCode:
+          type: string
+          description: ISO 4217 three-letter currency code for the account.
+        timeZone:
+          type: string
+          description: IANA time zone ID for the account.
+        manager:
+          type: boolean
+          description: Whether this is a manager account (MCC).
+        testAccount:
+          type: boolean
+          description: Whether this is a test account.
+        autoTaggingEnabled:
+          type: boolean
+          description: Whether auto-tagging is enabled for the account.
+        hasPartnersBadge:
+          type: boolean
+          description: Whether the account has a Google Partners badge.
+    GoogleAdsFailure:
+      type: object
+      description: Error response from the Google Ads API.
+      properties:
+        errors:
+          type: array
+          items:
+            $ref: '#/components/schemas/GoogleAdsError'
+    ListAccessibleCustomersResponse:
+      type: object
+      properties:
+        resourceNames:
+          type: array
+          items:
+            type: string
+          description: List of resource names of accessible customer accounts.
+    GoogleAdsError:
+      type: object
+      properties:
+        errorCode:
+          type: object
+          description: The error code with a specific error enum and value.
+          additionalProperties:
+            type: string
+        message:
+          type: string
+          description: Human-readable error message.
+        trigger:
+          type: object
+          description: The value that triggered the error.
+        location:
+          type: object
+          description: Location of the error in the request.
+          properties:
+            fieldPathElements:
+              type: array
+              items:
+                type: object
+                properties:
+                  fieldName:
+                    type: string
+                  index:
+                    type: integer
+  parameters:
+    LoginCustomerIdHeader:
+      name: login-customer-id
+      in: header
+      required: false
+      description: 'The customer ID of the manager account making the request on behalf
+
+        of a client account. Required when authenticating as a manager account.
+
+        '
+      schema:
+        type: string
+    CustomerIdPath:
+      name: customerId
+      in: path
+      required: true
+      description: The Google Ads customer ID (without dashes), e.g. 1234567890.
+      schema:
+        type: string
+        pattern: ^\d{10}$
+    AuthorizationHeader:
+      name: Authorization
+      in: header
+      required: true
+      description: OAuth 2.0 Bearer token for authentication.
+      schema:
+        type: string
+    DeveloperTokenHeader:
+      name: developer-token
+      in: header
+      required: true
+      description: 'Developer token for API access. Obtain from the Google Ads API Center
+
+        in your manager account.
+
+        '
+      schema:
+        type: string
+  securitySchemes:
+    oauth2Auth:
+      type: oauth2
+      description: 'Google Ads API uses OAuth 2.0 for authentication. Requires a developer
+
+        token, OAuth 2.0 client ID and secret, and a refresh token.
+
+        '
+      flows:
+        authorizationCode:
+          authorizationUrl: https://accounts.google.com/o/oauth2/auth
+          tokenUrl: https://oauth2.googleapis.com/token
+          scopes:
+            https://www.googleapis.com/auth/adwords: Full access to Google Ads accounts

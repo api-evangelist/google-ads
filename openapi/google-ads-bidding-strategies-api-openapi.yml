@@ -1,0 +1,245 @@
+openapi: 3.1.0
+info:
+  title: Google Ads Ad Groups Bidding Strategies API
+  description: 'The Google Ads API is the modern programmatic interface to Google Ads and the
+
+    next generation of the AdWords API. It enables developers to interact directly
+
+    with the Google Ads platform, vastly increasing the efficiency of managing
+
+    large or complex Google Ads accounts and campaigns. The API allows for
+
+    creating, reading, updating, and removing campaigns, ad groups, ads, keywords,
+
+    and retrieving performance reports using Google Ads Query Language (GAQL).
+
+    '
+  version: v18
+  contact:
+    name: Google Ads API Support
+    url: https://developers.google.com/google-ads/api/support
+  license:
+    name: Google APIs Terms of Service
+    url: https://developers.google.com/terms
+servers:
+- url: https://googleads.googleapis.com
+  description: Google Ads API Production Server
+security:
+- oauth2Auth: []
+tags:
+- name: Bidding Strategies
+  description: Manage bidding strategies for campaigns
+paths:
+  /v18/customers/{customerId}/biddingStrategies:mutate:
+    post:
+      summary: Google Ads Create, Update, or Remove Bidding Strategies
+      description: 'Creates, updates, or removes bidding strategies. Bidding strategies
+
+        determine how bids are set for your ads. Supports strategies such as
+
+        Target CPA, Target ROAS, Maximize Conversions, and Manual CPC.
+
+        '
+      operationId: mutateBiddingStrategies
+      tags:
+      - Bidding Strategies
+      parameters:
+      - $ref: '#/components/parameters/CustomerIdPath'
+      - $ref: '#/components/parameters/AuthorizationHeader'
+      - $ref: '#/components/parameters/DeveloperTokenHeader'
+      - $ref: '#/components/parameters/LoginCustomerIdHeader'
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/MutateBiddingStrategiesRequest'
+      responses:
+        '200':
+          description: Successful Response
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/MutateBiddingStrategiesResponse'
+        '400':
+          description: Bad Request
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/GoogleAdsFailure'
+components:
+  parameters:
+    LoginCustomerIdHeader:
+      name: login-customer-id
+      in: header
+      required: false
+      description: 'The customer ID of the manager account making the request on behalf
+
+        of a client account. Required when authenticating as a manager account.
+
+        '
+      schema:
+        type: string
+    CustomerIdPath:
+      name: customerId
+      in: path
+      required: true
+      description: The Google Ads customer ID (without dashes), e.g. 1234567890.
+      schema:
+        type: string
+        pattern: ^\d{10}$
+    AuthorizationHeader:
+      name: Authorization
+      in: header
+      required: true
+      description: OAuth 2.0 Bearer token for authentication.
+      schema:
+        type: string
+    DeveloperTokenHeader:
+      name: developer-token
+      in: header
+      required: true
+      description: 'Developer token for API access. Obtain from the Google Ads API Center
+
+        in your manager account.
+
+        '
+      schema:
+        type: string
+  schemas:
+    GoogleAdsFailure:
+      type: object
+      description: Error response from the Google Ads API.
+      properties:
+        errors:
+          type: array
+          items:
+            $ref: '#/components/schemas/GoogleAdsError'
+    MutateBiddingStrategiesResponse:
+      type: object
+      properties:
+        results:
+          type: array
+          items:
+            type: object
+            properties:
+              resourceName:
+                type: string
+        partialFailureError:
+          $ref: '#/components/schemas/Status'
+    MutateBiddingStrategiesRequest:
+      type: object
+      required:
+      - operations
+      properties:
+        operations:
+          type: array
+          items:
+            $ref: '#/components/schemas/BiddingStrategyOperation'
+        partialFailure:
+          type: boolean
+        validateOnly:
+          type: boolean
+    BiddingStrategyOperation:
+      type: object
+      properties:
+        create:
+          $ref: '#/components/schemas/BiddingStrategy'
+        update:
+          $ref: '#/components/schemas/BiddingStrategy'
+        remove:
+          type: string
+        updateMask:
+          type: string
+    GoogleAdsError:
+      type: object
+      properties:
+        errorCode:
+          type: object
+          description: The error code with a specific error enum and value.
+          additionalProperties:
+            type: string
+        message:
+          type: string
+          description: Human-readable error message.
+        trigger:
+          type: object
+          description: The value that triggered the error.
+        location:
+          type: object
+          description: Location of the error in the request.
+          properties:
+            fieldPathElements:
+              type: array
+              items:
+                type: object
+                properties:
+                  fieldName:
+                    type: string
+                  index:
+                    type: integer
+    Status:
+      type: object
+      description: Standard gRPC status for partial failure errors.
+      properties:
+        code:
+          type: integer
+          description: gRPC status code.
+        message:
+          type: string
+          description: Error message.
+        details:
+          type: array
+          items:
+            type: object
+    BiddingStrategy:
+      type: object
+      description: A portfolio bidding strategy shared across multiple campaigns.
+      properties:
+        resourceName:
+          type: string
+          description: Resource name of the bidding strategy.
+        id:
+          type: integer
+          format: int64
+          description: The unique ID of the bidding strategy.
+        name:
+          type: string
+          description: Name of the bidding strategy.
+        type:
+          type: string
+          enum:
+          - TARGET_CPA
+          - TARGET_ROAS
+          - TARGET_SPEND
+          - MAXIMIZE_CONVERSIONS
+          - MAXIMIZE_CONVERSION_VALUE
+          - UNKNOWN
+          - UNSPECIFIED
+          description: The type of bidding strategy.
+        status:
+          type: string
+          enum:
+          - ENABLED
+          - REMOVED
+          - UNKNOWN
+          - UNSPECIFIED
+          description: The status of the bidding strategy.
+        campaignCount:
+          type: integer
+          format: int64
+          description: Number of campaigns using this bidding strategy.
+  securitySchemes:
+    oauth2Auth:
+      type: oauth2
+      description: 'Google Ads API uses OAuth 2.0 for authentication. Requires a developer
+
+        token, OAuth 2.0 client ID and secret, and a refresh token.
+
+        '
+      flows:
+        authorizationCode:
+          authorizationUrl: https://accounts.google.com/o/oauth2/auth
+          tokenUrl: https://oauth2.googleapis.com/token
+          scopes:
+            https://www.googleapis.com/auth/adwords: Full access to Google Ads accounts

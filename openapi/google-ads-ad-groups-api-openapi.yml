@@ -1,0 +1,296 @@
+openapi: 3.1.0
+info:
+  title: Google Ads Ad Groups API
+  description: 'The Google Ads API is the modern programmatic interface to Google Ads and the
+
+    next generation of the AdWords API. It enables developers to interact directly
+
+    with the Google Ads platform, vastly increasing the efficiency of managing
+
+    large or complex Google Ads accounts and campaigns. The API allows for
+
+    creating, reading, updating, and removing campaigns, ad groups, ads, keywords,
+
+    and retrieving performance reports using Google Ads Query Language (GAQL).
+
+    '
+  version: v18
+  contact:
+    name: Google Ads API Support
+    url: https://developers.google.com/google-ads/api/support
+  license:
+    name: Google APIs Terms of Service
+    url: https://developers.google.com/terms
+servers:
+- url: https://googleads.googleapis.com
+  description: Google Ads API Production Server
+security:
+- oauth2Auth: []
+tags:
+- name: Ad Groups
+  description: Manage ad groups within campaigns
+paths:
+  /v18/customers/{customerId}/adGroups:mutate:
+    post:
+      summary: Google Ads Create, Update, or Remove Ad Groups
+      description: 'Creates, updates, or removes ad groups. An ad group is a set of ads
+
+        that share the same targeting criteria. Each ad group belongs to
+
+        exactly one campaign.
+
+        '
+      operationId: mutateAdGroups
+      tags:
+      - Ad Groups
+      parameters:
+      - $ref: '#/components/parameters/CustomerIdPath'
+      - $ref: '#/components/parameters/AuthorizationHeader'
+      - $ref: '#/components/parameters/DeveloperTokenHeader'
+      - $ref: '#/components/parameters/LoginCustomerIdHeader'
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/MutateAdGroupsRequest'
+            examples:
+              CreateAdGroup:
+                $ref: '#/components/examples/CreateAdGroupExample'
+      responses:
+        '200':
+          description: Successful Response
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/MutateAdGroupsResponse'
+        '400':
+          description: Bad Request
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/GoogleAdsFailure'
+        '401':
+          description: Unauthorized
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/GoogleAdsFailure'
+components:
+  parameters:
+    LoginCustomerIdHeader:
+      name: login-customer-id
+      in: header
+      required: false
+      description: 'The customer ID of the manager account making the request on behalf
+
+        of a client account. Required when authenticating as a manager account.
+
+        '
+      schema:
+        type: string
+    CustomerIdPath:
+      name: customerId
+      in: path
+      required: true
+      description: The Google Ads customer ID (without dashes), e.g. 1234567890.
+      schema:
+        type: string
+        pattern: ^\d{10}$
+    AuthorizationHeader:
+      name: Authorization
+      in: header
+      required: true
+      description: OAuth 2.0 Bearer token for authentication.
+      schema:
+        type: string
+    DeveloperTokenHeader:
+      name: developer-token
+      in: header
+      required: true
+      description: 'Developer token for API access. Obtain from the Google Ads API Center
+
+        in your manager account.
+
+        '
+      schema:
+        type: string
+  schemas:
+    GoogleAdsFailure:
+      type: object
+      description: Error response from the Google Ads API.
+      properties:
+        errors:
+          type: array
+          items:
+            $ref: '#/components/schemas/GoogleAdsError'
+    MutateAdGroupsRequest:
+      type: object
+      required:
+      - operations
+      properties:
+        operations:
+          type: array
+          items:
+            $ref: '#/components/schemas/AdGroupOperation'
+        partialFailure:
+          type: boolean
+        validateOnly:
+          type: boolean
+    AdGroupOperation:
+      type: object
+      properties:
+        create:
+          $ref: '#/components/schemas/AdGroup'
+        update:
+          $ref: '#/components/schemas/AdGroup'
+        remove:
+          type: string
+        updateMask:
+          type: string
+    MutateAdGroupsResponse:
+      type: object
+      properties:
+        results:
+          type: array
+          items:
+            type: object
+            properties:
+              resourceName:
+                type: string
+        partialFailureError:
+          $ref: '#/components/schemas/Status'
+    AdGroup:
+      type: object
+      description: An ad group containing a set of ads and targeting criteria within a campaign.
+      properties:
+        resourceName:
+          type: string
+          description: Resource name of the ad group, e.g. customers/{customerId}/adGroups/{adGroupId}.
+        id:
+          type: integer
+          format: int64
+          description: The unique ID of the ad group.
+        name:
+          type: string
+          description: The name of the ad group.
+        status:
+          type: string
+          enum:
+          - ENABLED
+          - PAUSED
+          - REMOVED
+          - UNKNOWN
+          - UNSPECIFIED
+          description: The status of the ad group.
+        campaign:
+          type: string
+          description: Resource name of the campaign this ad group belongs to.
+        type:
+          type: string
+          enum:
+          - SEARCH_STANDARD
+          - DISPLAY_STANDARD
+          - SHOPPING_PRODUCT_ADS
+          - VIDEO_TRUE_VIEW_IN_STREAM
+          - VIDEO_BUMPER
+          - HOTEL_ADS
+          - SHOPPING_SMART_ADS
+          - SMART_CAMPAIGN_ADS
+          - UNKNOWN
+          - UNSPECIFIED
+          description: The type of the ad group.
+        cpcBidMicros:
+          type: integer
+          format: int64
+          description: Maximum CPC bid in micros at the ad group level.
+        cpmBidMicros:
+          type: integer
+          format: int64
+          description: Maximum CPM bid in micros at the ad group level.
+        targetCpaMicros:
+          type: integer
+          format: int64
+          description: Target CPA in micros at the ad group level.
+        effectiveTargetCpaMicros:
+          type: integer
+          format: int64
+          description: Effective target CPA considering campaign-level settings.
+        effectiveTargetRoas:
+          type: number
+          description: Effective target ROAS considering campaign-level settings.
+        adRotationMode:
+          type: string
+          enum:
+          - OPTIMIZE
+          - ROTATE_FOREVER
+          - UNKNOWN
+          - UNSPECIFIED
+          description: Ad rotation mode for ads within this ad group.
+    GoogleAdsError:
+      type: object
+      properties:
+        errorCode:
+          type: object
+          description: The error code with a specific error enum and value.
+          additionalProperties:
+            type: string
+        message:
+          type: string
+          description: Human-readable error message.
+        trigger:
+          type: object
+          description: The value that triggered the error.
+        location:
+          type: object
+          description: Location of the error in the request.
+          properties:
+            fieldPathElements:
+              type: array
+              items:
+                type: object
+                properties:
+                  fieldName:
+                    type: string
+                  index:
+                    type: integer
+    Status:
+      type: object
+      description: Standard gRPC status for partial failure errors.
+      properties:
+        code:
+          type: integer
+          description: gRPC status code.
+        message:
+          type: string
+          description: Error message.
+        details:
+          type: array
+          items:
+            type: object
+  examples:
+    CreateAdGroupExample:
+      summary: Create a new ad group
+      value:
+        operations:
+        - create:
+            name: Product Keywords Ad Group
+            campaign: customers/1234567890/campaigns/111111
+            status: ENABLED
+            type: SEARCH_STANDARD
+            cpcBidMicros: 1500000
+        partialFailure: false
+  securitySchemes:
+    oauth2Auth:
+      type: oauth2
+      description: 'Google Ads API uses OAuth 2.0 for authentication. Requires a developer
+
+        token, OAuth 2.0 client ID and secret, and a refresh token.
+
+        '
+      flows:
+        authorizationCode:
+          authorizationUrl: https://accounts.google.com/o/oauth2/auth
+          tokenUrl: https://oauth2.googleapis.com/token
+          scopes:
+            https://www.googleapis.com/auth/adwords: Full access to Google Ads accounts

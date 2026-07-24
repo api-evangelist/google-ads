@@ -1,0 +1,360 @@
+openapi: 3.1.0
+info:
+  title: Google Ads Ad Groups Keywords API
+  description: 'The Google Ads API is the modern programmatic interface to Google Ads and the
+
+    next generation of the AdWords API. It enables developers to interact directly
+
+    with the Google Ads platform, vastly increasing the efficiency of managing
+
+    large or complex Google Ads accounts and campaigns. The API allows for
+
+    creating, reading, updating, and removing campaigns, ad groups, ads, keywords,
+
+    and retrieving performance reports using Google Ads Query Language (GAQL).
+
+    '
+  version: v18
+  contact:
+    name: Google Ads API Support
+    url: https://developers.google.com/google-ads/api/support
+  license:
+    name: Google APIs Terms of Service
+    url: https://developers.google.com/terms
+servers:
+- url: https://googleads.googleapis.com
+  description: Google Ads API Production Server
+security:
+- oauth2Auth: []
+tags:
+- name: Keywords
+  description: Manage keyword targeting criteria for ad groups
+paths:
+  /v18/customers/{customerId}/adGroupCriteria:mutate:
+    post:
+      summary: Google Ads Create, Update, or Remove Keywords and Criteria
+      description: 'Creates, updates, or removes ad group criteria (keywords and other
+
+        targeting criteria). Keywords are words or phrases that trigger your
+
+        ads to appear in search results. Supports broad match, phrase match,
+
+        and exact match types.
+
+        '
+      operationId: mutateAdGroupCriteria
+      tags:
+      - Keywords
+      parameters:
+      - $ref: '#/components/parameters/CustomerIdPath'
+      - $ref: '#/components/parameters/AuthorizationHeader'
+      - $ref: '#/components/parameters/DeveloperTokenHeader'
+      - $ref: '#/components/parameters/LoginCustomerIdHeader'
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/MutateAdGroupCriteriaRequest'
+            examples:
+              AddKeywords:
+                $ref: '#/components/examples/AddKeywordsExample'
+      responses:
+        '200':
+          description: Successful Response
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/MutateAdGroupCriteriaResponse'
+        '400':
+          description: Bad Request
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/GoogleAdsFailure'
+        '401':
+          description: Unauthorized
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/GoogleAdsFailure'
+components:
+  parameters:
+    LoginCustomerIdHeader:
+      name: login-customer-id
+      in: header
+      required: false
+      description: 'The customer ID of the manager account making the request on behalf
+
+        of a client account. Required when authenticating as a manager account.
+
+        '
+      schema:
+        type: string
+    CustomerIdPath:
+      name: customerId
+      in: path
+      required: true
+      description: The Google Ads customer ID (without dashes), e.g. 1234567890.
+      schema:
+        type: string
+        pattern: ^\d{10}$
+    AuthorizationHeader:
+      name: Authorization
+      in: header
+      required: true
+      description: OAuth 2.0 Bearer token for authentication.
+      schema:
+        type: string
+    DeveloperTokenHeader:
+      name: developer-token
+      in: header
+      required: true
+      description: 'Developer token for API access. Obtain from the Google Ads API Center
+
+        in your manager account.
+
+        '
+      schema:
+        type: string
+  schemas:
+    GoogleAdsFailure:
+      type: object
+      description: Error response from the Google Ads API.
+      properties:
+        errors:
+          type: array
+          items:
+            $ref: '#/components/schemas/GoogleAdsError'
+    AdGroupCriterionOperation:
+      type: object
+      properties:
+        create:
+          $ref: '#/components/schemas/AdGroupCriterion'
+        update:
+          $ref: '#/components/schemas/AdGroupCriterion'
+        remove:
+          type: string
+        updateMask:
+          type: string
+    KeywordInfo:
+      type: object
+      description: Keyword targeting information.
+      properties:
+        text:
+          type: string
+          description: The keyword text.
+        matchType:
+          type: string
+          enum:
+          - EXACT
+          - PHRASE
+          - BROAD
+          - UNKNOWN
+          - UNSPECIFIED
+          description: The match type of the keyword.
+    MutateAdGroupCriteriaRequest:
+      type: object
+      required:
+      - operations
+      properties:
+        operations:
+          type: array
+          items:
+            $ref: '#/components/schemas/AdGroupCriterionOperation'
+        partialFailure:
+          type: boolean
+        validateOnly:
+          type: boolean
+    MutateAdGroupCriteriaResponse:
+      type: object
+      properties:
+        results:
+          type: array
+          items:
+            type: object
+            properties:
+              resourceName:
+                type: string
+        partialFailureError:
+          $ref: '#/components/schemas/Status'
+    QualityInfo:
+      type: object
+      description: Quality score and component metrics for a keyword.
+      properties:
+        qualityScore:
+          type: integer
+          minimum: 1
+          maximum: 10
+          description: Quality Score on a 1-10 scale.
+        creativeQualityScore:
+          type: string
+          enum:
+          - ABOVE_AVERAGE
+          - AVERAGE
+          - BELOW_AVERAGE
+          - UNKNOWN
+          - UNSPECIFIED
+          description: Ad relevance quality component.
+        postClickQualityScore:
+          type: string
+          enum:
+          - ABOVE_AVERAGE
+          - AVERAGE
+          - BELOW_AVERAGE
+          - UNKNOWN
+          - UNSPECIFIED
+          description: Landing page experience quality component.
+        searchPredictedCtr:
+          type: string
+          enum:
+          - ABOVE_AVERAGE
+          - AVERAGE
+          - BELOW_AVERAGE
+          - UNKNOWN
+          - UNSPECIFIED
+          description: Expected click-through rate quality component.
+    AdGroupCriterion:
+      type: object
+      description: A targeting criterion within an ad group, such as a keyword.
+      properties:
+        resourceName:
+          type: string
+          description: Resource name of the ad group criterion.
+        criterionId:
+          type: integer
+          format: int64
+          description: The unique ID of the criterion.
+        adGroup:
+          type: string
+          description: Resource name of the ad group this criterion belongs to.
+        status:
+          type: string
+          enum:
+          - ENABLED
+          - PAUSED
+          - REMOVED
+          - UNKNOWN
+          - UNSPECIFIED
+          description: The status of the criterion.
+        type:
+          type: string
+          enum:
+          - KEYWORD
+          - PLACEMENT
+          - TOPIC
+          - AGE_RANGE
+          - GENDER
+          - INCOME_RANGE
+          - PARENTAL_STATUS
+          - LISTING_GROUP
+          - WEBPAGE
+          - CUSTOM_AUDIENCE
+          - AUDIENCE
+          - UNKNOWN
+          - UNSPECIFIED
+          description: The type of criterion.
+        keyword:
+          $ref: '#/components/schemas/KeywordInfo'
+        qualityInfo:
+          $ref: '#/components/schemas/QualityInfo'
+        cpcBidMicros:
+          type: integer
+          format: int64
+          description: CPC bid override in micros for this criterion.
+        effectiveCpcBidMicros:
+          type: integer
+          format: int64
+          description: Effective CPC bid in micros after applying all adjustments.
+        finalUrls:
+          type: array
+          items:
+            type: string
+            format: uri
+          description: Override landing page URLs for this keyword.
+        negative:
+          type: boolean
+          description: Whether this is a negative criterion (excluded from targeting).
+    GoogleAdsError:
+      type: object
+      properties:
+        errorCode:
+          type: object
+          description: The error code with a specific error enum and value.
+          additionalProperties:
+            type: string
+        message:
+          type: string
+          description: Human-readable error message.
+        trigger:
+          type: object
+          description: The value that triggered the error.
+        location:
+          type: object
+          description: Location of the error in the request.
+          properties:
+            fieldPathElements:
+              type: array
+              items:
+                type: object
+                properties:
+                  fieldName:
+                    type: string
+                  index:
+                    type: integer
+    Status:
+      type: object
+      description: Standard gRPC status for partial failure errors.
+      properties:
+        code:
+          type: integer
+          description: gRPC status code.
+        message:
+          type: string
+          description: Error message.
+        details:
+          type: array
+          items:
+            type: object
+  examples:
+    AddKeywordsExample:
+      summary: Add keywords to an ad group
+      value:
+        operations:
+        - create:
+            adGroup: customers/1234567890/adGroups/444444
+            status: ENABLED
+            keyword:
+              text: buy products online
+              matchType: BROAD
+            cpcBidMicros: 1000000
+        - create:
+            adGroup: customers/1234567890/adGroups/444444
+            status: ENABLED
+            keyword:
+              text: best deals online
+              matchType: PHRASE
+            cpcBidMicros: 1200000
+        - create:
+            adGroup: customers/1234567890/adGroups/444444
+            status: ENABLED
+            keyword:
+              text: discount products
+              matchType: EXACT
+            cpcBidMicros: 1500000
+            negative: false
+        partialFailure: false
+  securitySchemes:
+    oauth2Auth:
+      type: oauth2
+      description: 'Google Ads API uses OAuth 2.0 for authentication. Requires a developer
+
+        token, OAuth 2.0 client ID and secret, and a refresh token.
+
+        '
+      flows:
+        authorizationCode:
+          authorizationUrl: https://accounts.google.com/o/oauth2/auth
+          tokenUrl: https://oauth2.googleapis.com/token
+          scopes:
+            https://www.googleapis.com/auth/adwords: Full access to Google Ads accounts
