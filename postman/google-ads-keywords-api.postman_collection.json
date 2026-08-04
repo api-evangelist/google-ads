@@ -1,0 +1,369 @@
+{
+  "info": {
+    "_postman_id": "9c5dfee9-0449-43e9-8ce6-70ec26521302",
+    "name": "Google Ads Ad Groups Keywords API",
+    "description": "The Google Ads API is the modern programmatic interface to Google Ads and the\nnext generation of the AdWords API. It enables developers to interact directly\nwith the Google Ads platform, vastly increasing the efficiency of managing\nlarge or complex Google Ads accounts and campaigns. The API allows for\ncreating, reading, updating, and removing campaigns, ad groups, ads, keywords,\nand retrieving performance reports using Google Ads Query Language (GAQL).\n\n\nContact Support:\n Name: Google Ads API Support",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+    "createdAt": "2026-07-28T01:45:05.000Z",
+    "updatedAt": "2026-07-28T01:45:05.000Z",
+    "lastUpdatedBy": "35240",
+    "uid": "35240-9c5dfee9-0449-43e9-8ce6-70ec26521302"
+  },
+  "item": [
+    {
+      "name": "v18",
+      "item": [
+        {
+          "name": "customers",
+          "item": [
+            {
+              "name": "{customerId}",
+              "item": [
+                {
+                  "name": "adGroupCriteria:mutate",
+                  "item": [
+                    {
+                      "name": "Google Ads Create, Update, or Remove Keywords and Criteria",
+                      "id": "4ec26bba-53b3-4580-8c08-d8e68995ab6d",
+                      "protocolProfileBehavior": {
+                        "disableBodyPruning": true
+                      },
+                      "request": {
+                        "method": "POST",
+                        "header": [
+                          {
+                            "description": "(Required) Developer token for API access. Obtain from the Google Ads API Center\nin your manager account.\n",
+                            "key": "developer-token",
+                            "value": "<string>"
+                          },
+                          {
+                            "description": "The customer ID of the manager account making the request on behalf\nof a client account. Required when authenticating as a manager account.\n",
+                            "key": "login-customer-id",
+                            "value": "<string>"
+                          },
+                          {
+                            "key": "Content-Type",
+                            "value": "application/json"
+                          },
+                          {
+                            "key": "Accept",
+                            "value": "application/json"
+                          }
+                        ],
+                        "body": {
+                          "mode": "raw",
+                          "raw": "{\n  \"operations\": [\n    {\n      \"create\": {\n        \"resourceName\": \"<string>\",\n        \"criterionId\": \"<long>\",\n        \"adGroup\": \"<string>\",\n        \"status\": \"UNKNOWN\",\n        \"type\": \"LISTING_GROUP\",\n        \"keyword\": {\n          \"text\": \"<string>\",\n          \"matchType\": \"BROAD\"\n        },\n        \"qualityInfo\": {\n          \"qualityScore\": \"<integer>\",\n          \"creativeQualityScore\": \"AVERAGE\",\n          \"postClickQualityScore\": \"UNKNOWN\",\n          \"searchPredictedCtr\": \"UNKNOWN\"\n        },\n        \"cpcBidMicros\": \"<long>\",\n        \"effectiveCpcBidMicros\": \"<long>\",\n        \"finalUrls\": [\n          \"<uri>\",\n          \"<uri>\"\n        ],\n        \"negative\": \"<boolean>\"\n      },\n      \"update\": {\n        \"resourceName\": \"<string>\",\n        \"criterionId\": \"<long>\",\n        \"adGroup\": \"<string>\",\n        \"status\": \"ENABLED\",\n        \"type\": \"CUSTOM_AUDIENCE\",\n        \"keyword\": {\n          \"text\": \"<string>\",\n          \"matchType\": \"UNKNOWN\"\n        },\n        \"qualityInfo\": {\n          \"qualityScore\": \"<integer>\",\n          \"creativeQualityScore\": \"BELOW_AVERAGE\",\n          \"postClickQualityScore\": \"AVERAGE\",\n          \"searchPredictedCtr\": \"BELOW_AVERAGE\"\n        },\n        \"cpcBidMicros\": \"<long>\",\n        \"effectiveCpcBidMicros\": \"<long>\",\n        \"finalUrls\": [\n          \"<uri>\",\n          \"<uri>\"\n        ],\n        \"negative\": \"<boolean>\"\n      },\n      \"remove\": \"<string>\",\n      \"updateMask\": \"<string>\"\n    },\n    {\n      \"create\": {\n        \"resourceName\": \"<string>\",\n        \"criterionId\": \"<long>\",\n        \"adGroup\": \"<string>\",\n        \"status\": \"REMOVED\",\n        \"type\": \"PLACEMENT\",\n        \"keyword\": {\n          \"text\": \"<string>\",\n          \"matchType\": \"EXACT\"\n        },\n        \"qualityInfo\": {\n          \"qualityScore\": \"<integer>\",\n          \"creativeQualityScore\": \"UNKNOWN\",\n          \"postClickQualityScore\": \"AVERAGE\",\n          \"searchPredictedCtr\": \"ABOVE_AVERAGE\"\n        },\n        \"cpcBidMicros\": \"<long>\",\n        \"effectiveCpcBidMicros\": \"<long>\",\n        \"finalUrls\": [\n          \"<uri>\",\n          \"<uri>\"\n        ],\n        \"negative\": \"<boolean>\"\n      },\n      \"update\": {\n        \"resourceName\": \"<string>\",\n        \"criterionId\": \"<long>\",\n        \"adGroup\": \"<string>\",\n        \"status\": \"REMOVED\",\n        \"type\": \"AGE_RANGE\",\n        \"keyword\": {\n          \"text\": \"<string>\",\n          \"matchType\": \"UNKNOWN\"\n        },\n        \"qualityInfo\": {\n          \"qualityScore\": \"<integer>\",\n          \"creativeQualityScore\": \"UNKNOWN\",\n          \"postClickQualityScore\": \"UNSPECIFIED\",\n          \"searchPredictedCtr\": \"UNSPECIFIED\"\n        },\n        \"cpcBidMicros\": \"<long>\",\n        \"effectiveCpcBidMicros\": \"<long>\",\n        \"finalUrls\": [\n          \"<uri>\",\n          \"<uri>\"\n        ],\n        \"negative\": \"<boolean>\"\n      },\n      \"remove\": \"<string>\",\n      \"updateMask\": \"<string>\"\n    }\n  ],\n  \"partialFailure\": \"<boolean>\",\n  \"validateOnly\": \"<boolean>\"\n}",
+                          "options": {
+                            "raw": {
+                              "headerFamily": "json",
+                              "language": "json"
+                            }
+                          }
+                        },
+                        "url": {
+                          "raw": "{{baseUrl}}/v18/customers/:customerId/adGroupCriteria:mutate",
+                          "host": [
+                            "{{baseUrl}}"
+                          ],
+                          "path": [
+                            "v18",
+                            "customers",
+                            ":customerId",
+                            "adGroupCriteria:mutate"
+                          ],
+                          "variable": [
+                            {
+                              "id": "97c089d3-a947-4c47-a972-c368b0e7d5c2",
+                              "key": "customerId",
+                              "value": "1115107724",
+                              "description": "(Required) The Google Ads customer ID (without dashes), e.g. 1234567890."
+                            }
+                          ]
+                        },
+                        "description": "Creates, updates, or removes ad group criteria (keywords and other\ntargeting criteria). Keywords are words or phrases that trigger your\nads to appear in search results. Supports broad match, phrase match,\nand exact match types.\n"
+                      },
+                      "response": [
+                        {
+                          "id": "ad5eaf6b-7622-4099-8bae-21863a2a6dad",
+                          "name": "Successful Response",
+                          "originalRequest": {
+                            "method": "POST",
+                            "header": [
+                              {
+                                "description": "(Required) Developer token for API access. Obtain from the Google Ads API Center\nin your manager account.\n",
+                                "key": "developer-token",
+                                "value": "<string>"
+                              },
+                              {
+                                "description": "The customer ID of the manager account making the request on behalf\nof a client account. Required when authenticating as a manager account.\n",
+                                "key": "login-customer-id",
+                                "value": "<string>"
+                              },
+                              {
+                                "key": "Content-Type",
+                                "value": "application/json"
+                              },
+                              {
+                                "key": "Accept",
+                                "value": "application/json"
+                              },
+                              {
+                                "description": "Added as a part of security scheme: oauth2",
+                                "key": "Authorization",
+                                "value": "<token>"
+                              }
+                            ],
+                            "body": {
+                              "mode": "raw",
+                              "raw": "{\n  \"operations\": [\n    {\n      \"create\": {\n        \"resourceName\": \"<string>\",\n        \"criterionId\": \"<long>\",\n        \"adGroup\": \"<string>\",\n        \"status\": \"UNKNOWN\",\n        \"type\": \"LISTING_GROUP\",\n        \"keyword\": {\n          \"text\": \"<string>\",\n          \"matchType\": \"BROAD\"\n        },\n        \"qualityInfo\": {\n          \"qualityScore\": \"<integer>\",\n          \"creativeQualityScore\": \"AVERAGE\",\n          \"postClickQualityScore\": \"UNKNOWN\",\n          \"searchPredictedCtr\": \"UNKNOWN\"\n        },\n        \"cpcBidMicros\": \"<long>\",\n        \"effectiveCpcBidMicros\": \"<long>\",\n        \"finalUrls\": [\n          \"<uri>\",\n          \"<uri>\"\n        ],\n        \"negative\": \"<boolean>\"\n      },\n      \"update\": {\n        \"resourceName\": \"<string>\",\n        \"criterionId\": \"<long>\",\n        \"adGroup\": \"<string>\",\n        \"status\": \"ENABLED\",\n        \"type\": \"CUSTOM_AUDIENCE\",\n        \"keyword\": {\n          \"text\": \"<string>\",\n          \"matchType\": \"UNKNOWN\"\n        },\n        \"qualityInfo\": {\n          \"qualityScore\": \"<integer>\",\n          \"creativeQualityScore\": \"BELOW_AVERAGE\",\n          \"postClickQualityScore\": \"AVERAGE\",\n          \"searchPredictedCtr\": \"BELOW_AVERAGE\"\n        },\n        \"cpcBidMicros\": \"<long>\",\n        \"effectiveCpcBidMicros\": \"<long>\",\n        \"finalUrls\": [\n          \"<uri>\",\n          \"<uri>\"\n        ],\n        \"negative\": \"<boolean>\"\n      },\n      \"remove\": \"<string>\",\n      \"updateMask\": \"<string>\"\n    },\n    {\n      \"create\": {\n        \"resourceName\": \"<string>\",\n        \"criterionId\": \"<long>\",\n        \"adGroup\": \"<string>\",\n        \"status\": \"REMOVED\",\n        \"type\": \"PLACEMENT\",\n        \"keyword\": {\n          \"text\": \"<string>\",\n          \"matchType\": \"EXACT\"\n        },\n        \"qualityInfo\": {\n          \"qualityScore\": \"<integer>\",\n          \"creativeQualityScore\": \"UNKNOWN\",\n          \"postClickQualityScore\": \"AVERAGE\",\n          \"searchPredictedCtr\": \"ABOVE_AVERAGE\"\n        },\n        \"cpcBidMicros\": \"<long>\",\n        \"effectiveCpcBidMicros\": \"<long>\",\n        \"finalUrls\": [\n          \"<uri>\",\n          \"<uri>\"\n        ],\n        \"negative\": \"<boolean>\"\n      },\n      \"update\": {\n        \"resourceName\": \"<string>\",\n        \"criterionId\": \"<long>\",\n        \"adGroup\": \"<string>\",\n        \"status\": \"REMOVED\",\n        \"type\": \"AGE_RANGE\",\n        \"keyword\": {\n          \"text\": \"<string>\",\n          \"matchType\": \"UNKNOWN\"\n        },\n        \"qualityInfo\": {\n          \"qualityScore\": \"<integer>\",\n          \"creativeQualityScore\": \"UNKNOWN\",\n          \"postClickQualityScore\": \"UNSPECIFIED\",\n          \"searchPredictedCtr\": \"UNSPECIFIED\"\n        },\n        \"cpcBidMicros\": \"<long>\",\n        \"effectiveCpcBidMicros\": \"<long>\",\n        \"finalUrls\": [\n          \"<uri>\",\n          \"<uri>\"\n        ],\n        \"negative\": \"<boolean>\"\n      },\n      \"remove\": \"<string>\",\n      \"updateMask\": \"<string>\"\n    }\n  ],\n  \"partialFailure\": \"<boolean>\",\n  \"validateOnly\": \"<boolean>\"\n}",
+                              "options": {
+                                "raw": {
+                                  "headerFamily": "json",
+                                  "language": "json"
+                                }
+                              }
+                            },
+                            "url": {
+                              "raw": "{{baseUrl}}/v18/customers/:customerId/adGroupCriteria:mutate",
+                              "host": [
+                                "{{baseUrl}}"
+                              ],
+                              "path": [
+                                "v18",
+                                "customers",
+                                ":customerId",
+                                "adGroupCriteria:mutate"
+                              ],
+                              "variable": [
+                                {
+                                  "key": "customerId"
+                                }
+                              ]
+                            }
+                          },
+                          "status": "OK",
+                          "code": 200,
+                          "_postman_previewlanguage": "json",
+                          "header": [
+                            {
+                              "key": "Content-Type",
+                              "value": "application/json"
+                            }
+                          ],
+                          "cookie": [],
+                          "responseTime": null,
+                          "body": "{\n  \"results\": [\n    {\n      \"resourceName\": \"<string>\"\n    },\n    {\n      \"resourceName\": \"<string>\"\n    }\n  ],\n  \"partialFailureError\": {\n    \"code\": \"<integer>\",\n    \"message\": \"<string>\"\n  }\n}",
+                          "createdAt": "2026-07-28T01:45:06.000Z",
+                          "updatedAt": "2026-07-28T01:45:06.000Z",
+                          "uid": "35240-ad5eaf6b-7622-4099-8bae-21863a2a6dad"
+                        },
+                        {
+                          "id": "072ba707-9041-4bdc-8905-d1b42ece539f",
+                          "name": "Bad Request",
+                          "originalRequest": {
+                            "method": "POST",
+                            "header": [
+                              {
+                                "description": "(Required) Developer token for API access. Obtain from the Google Ads API Center\nin your manager account.\n",
+                                "key": "developer-token",
+                                "value": "<string>"
+                              },
+                              {
+                                "description": "The customer ID of the manager account making the request on behalf\nof a client account. Required when authenticating as a manager account.\n",
+                                "key": "login-customer-id",
+                                "value": "<string>"
+                              },
+                              {
+                                "key": "Content-Type",
+                                "value": "application/json"
+                              },
+                              {
+                                "key": "Accept",
+                                "value": "application/json"
+                              },
+                              {
+                                "description": "Added as a part of security scheme: oauth2",
+                                "key": "Authorization",
+                                "value": "<token>"
+                              }
+                            ],
+                            "body": {
+                              "mode": "raw",
+                              "raw": "{\n  \"operations\": [\n    {\n      \"create\": {\n        \"resourceName\": \"<string>\",\n        \"criterionId\": \"<long>\",\n        \"adGroup\": \"<string>\",\n        \"status\": \"UNKNOWN\",\n        \"type\": \"LISTING_GROUP\",\n        \"keyword\": {\n          \"text\": \"<string>\",\n          \"matchType\": \"BROAD\"\n        },\n        \"qualityInfo\": {\n          \"qualityScore\": \"<integer>\",\n          \"creativeQualityScore\": \"AVERAGE\",\n          \"postClickQualityScore\": \"UNKNOWN\",\n          \"searchPredictedCtr\": \"UNKNOWN\"\n        },\n        \"cpcBidMicros\": \"<long>\",\n        \"effectiveCpcBidMicros\": \"<long>\",\n        \"finalUrls\": [\n          \"<uri>\",\n          \"<uri>\"\n        ],\n        \"negative\": \"<boolean>\"\n      },\n      \"update\": {\n        \"resourceName\": \"<string>\",\n        \"criterionId\": \"<long>\",\n        \"adGroup\": \"<string>\",\n        \"status\": \"ENABLED\",\n        \"type\": \"CUSTOM_AUDIENCE\",\n        \"keyword\": {\n          \"text\": \"<string>\",\n          \"matchType\": \"UNKNOWN\"\n        },\n        \"qualityInfo\": {\n          \"qualityScore\": \"<integer>\",\n          \"creativeQualityScore\": \"BELOW_AVERAGE\",\n          \"postClickQualityScore\": \"AVERAGE\",\n          \"searchPredictedCtr\": \"BELOW_AVERAGE\"\n        },\n        \"cpcBidMicros\": \"<long>\",\n        \"effectiveCpcBidMicros\": \"<long>\",\n        \"finalUrls\": [\n          \"<uri>\",\n          \"<uri>\"\n        ],\n        \"negative\": \"<boolean>\"\n      },\n      \"remove\": \"<string>\",\n      \"updateMask\": \"<string>\"\n    },\n    {\n      \"create\": {\n        \"resourceName\": \"<string>\",\n        \"criterionId\": \"<long>\",\n        \"adGroup\": \"<string>\",\n        \"status\": \"REMOVED\",\n        \"type\": \"PLACEMENT\",\n        \"keyword\": {\n          \"text\": \"<string>\",\n          \"matchType\": \"EXACT\"\n        },\n        \"qualityInfo\": {\n          \"qualityScore\": \"<integer>\",\n          \"creativeQualityScore\": \"UNKNOWN\",\n          \"postClickQualityScore\": \"AVERAGE\",\n          \"searchPredictedCtr\": \"ABOVE_AVERAGE\"\n        },\n        \"cpcBidMicros\": \"<long>\",\n        \"effectiveCpcBidMicros\": \"<long>\",\n        \"finalUrls\": [\n          \"<uri>\",\n          \"<uri>\"\n        ],\n        \"negative\": \"<boolean>\"\n      },\n      \"update\": {\n        \"resourceName\": \"<string>\",\n        \"criterionId\": \"<long>\",\n        \"adGroup\": \"<string>\",\n        \"status\": \"REMOVED\",\n        \"type\": \"AGE_RANGE\",\n        \"keyword\": {\n          \"text\": \"<string>\",\n          \"matchType\": \"UNKNOWN\"\n        },\n        \"qualityInfo\": {\n          \"qualityScore\": \"<integer>\",\n          \"creativeQualityScore\": \"UNKNOWN\",\n          \"postClickQualityScore\": \"UNSPECIFIED\",\n          \"searchPredictedCtr\": \"UNSPECIFIED\"\n        },\n        \"cpcBidMicros\": \"<long>\",\n        \"effectiveCpcBidMicros\": \"<long>\",\n        \"finalUrls\": [\n          \"<uri>\",\n          \"<uri>\"\n        ],\n        \"negative\": \"<boolean>\"\n      },\n      \"remove\": \"<string>\",\n      \"updateMask\": \"<string>\"\n    }\n  ],\n  \"partialFailure\": \"<boolean>\",\n  \"validateOnly\": \"<boolean>\"\n}",
+                              "options": {
+                                "raw": {
+                                  "headerFamily": "json",
+                                  "language": "json"
+                                }
+                              }
+                            },
+                            "url": {
+                              "raw": "{{baseUrl}}/v18/customers/:customerId/adGroupCriteria:mutate",
+                              "host": [
+                                "{{baseUrl}}"
+                              ],
+                              "path": [
+                                "v18",
+                                "customers",
+                                ":customerId",
+                                "adGroupCriteria:mutate"
+                              ],
+                              "variable": [
+                                {
+                                  "key": "customerId"
+                                }
+                              ]
+                            }
+                          },
+                          "status": "Bad Request",
+                          "code": 400,
+                          "_postman_previewlanguage": "json",
+                          "header": [
+                            {
+                              "key": "Content-Type",
+                              "value": "application/json"
+                            }
+                          ],
+                          "cookie": [],
+                          "responseTime": null,
+                          "body": "{\n  \"errors\": [\n    {\n      \"errorCode\": {\n        \"deserunt_07\": \"<string>\",\n        \"ea6\": \"<string>\"\n      },\n      \"message\": \"<string>\",\n      \"trigger\": {},\n      \"location\": {\n        \"fieldPathElements\": [\n          {\n            \"fieldName\": \"<string>\",\n            \"index\": \"<integer>\"\n          },\n          {\n            \"fieldName\": \"<string>\",\n            \"index\": \"<integer>\"\n          }\n        ]\n      }\n    },\n    {\n      \"errorCode\": {\n        \"Ut2\": \"<string>\"\n      },\n      \"message\": \"<string>\",\n      \"trigger\": {},\n      \"location\": {\n        \"fieldPathElements\": [\n          {\n            \"fieldName\": \"<string>\",\n            \"index\": \"<integer>\"\n          },\n          {\n            \"fieldName\": \"<string>\",\n            \"index\": \"<integer>\"\n          }\n        ]\n      }\n    }\n  ]\n}",
+                          "createdAt": "2026-07-28T01:45:06.000Z",
+                          "updatedAt": "2026-07-28T01:45:06.000Z",
+                          "uid": "35240-072ba707-9041-4bdc-8905-d1b42ece539f"
+                        },
+                        {
+                          "id": "80e84f65-bfec-4fcf-aaba-d0636d0cae92",
+                          "name": "Unauthorized",
+                          "originalRequest": {
+                            "method": "POST",
+                            "header": [
+                              {
+                                "description": "(Required) Developer token for API access. Obtain from the Google Ads API Center\nin your manager account.\n",
+                                "key": "developer-token",
+                                "value": "<string>"
+                              },
+                              {
+                                "description": "The customer ID of the manager account making the request on behalf\nof a client account. Required when authenticating as a manager account.\n",
+                                "key": "login-customer-id",
+                                "value": "<string>"
+                              },
+                              {
+                                "key": "Content-Type",
+                                "value": "application/json"
+                              },
+                              {
+                                "key": "Accept",
+                                "value": "application/json"
+                              },
+                              {
+                                "description": "Added as a part of security scheme: oauth2",
+                                "key": "Authorization",
+                                "value": "<token>"
+                              }
+                            ],
+                            "body": {
+                              "mode": "raw",
+                              "raw": "{\n  \"operations\": [\n    {\n      \"create\": {\n        \"resourceName\": \"<string>\",\n        \"criterionId\": \"<long>\",\n        \"adGroup\": \"<string>\",\n        \"status\": \"UNKNOWN\",\n        \"type\": \"LISTING_GROUP\",\n        \"keyword\": {\n          \"text\": \"<string>\",\n          \"matchType\": \"BROAD\"\n        },\n        \"qualityInfo\": {\n          \"qualityScore\": \"<integer>\",\n          \"creativeQualityScore\": \"AVERAGE\",\n          \"postClickQualityScore\": \"UNKNOWN\",\n          \"searchPredictedCtr\": \"UNKNOWN\"\n        },\n        \"cpcBidMicros\": \"<long>\",\n        \"effectiveCpcBidMicros\": \"<long>\",\n        \"finalUrls\": [\n          \"<uri>\",\n          \"<uri>\"\n        ],\n        \"negative\": \"<boolean>\"\n      },\n      \"update\": {\n        \"resourceName\": \"<string>\",\n        \"criterionId\": \"<long>\",\n        \"adGroup\": \"<string>\",\n        \"status\": \"ENABLED\",\n        \"type\": \"CUSTOM_AUDIENCE\",\n        \"keyword\": {\n          \"text\": \"<string>\",\n          \"matchType\": \"UNKNOWN\"\n        },\n        \"qualityInfo\": {\n          \"qualityScore\": \"<integer>\",\n          \"creativeQualityScore\": \"BELOW_AVERAGE\",\n          \"postClickQualityScore\": \"AVERAGE\",\n          \"searchPredictedCtr\": \"BELOW_AVERAGE\"\n        },\n        \"cpcBidMicros\": \"<long>\",\n        \"effectiveCpcBidMicros\": \"<long>\",\n        \"finalUrls\": [\n          \"<uri>\",\n          \"<uri>\"\n        ],\n        \"negative\": \"<boolean>\"\n      },\n      \"remove\": \"<string>\",\n      \"updateMask\": \"<string>\"\n    },\n    {\n      \"create\": {\n        \"resourceName\": \"<string>\",\n        \"criterionId\": \"<long>\",\n        \"adGroup\": \"<string>\",\n        \"status\": \"REMOVED\",\n        \"type\": \"PLACEMENT\",\n        \"keyword\": {\n          \"text\": \"<string>\",\n          \"matchType\": \"EXACT\"\n        },\n        \"qualityInfo\": {\n          \"qualityScore\": \"<integer>\",\n          \"creativeQualityScore\": \"UNKNOWN\",\n          \"postClickQualityScore\": \"AVERAGE\",\n          \"searchPredictedCtr\": \"ABOVE_AVERAGE\"\n        },\n        \"cpcBidMicros\": \"<long>\",\n        \"effectiveCpcBidMicros\": \"<long>\",\n        \"finalUrls\": [\n          \"<uri>\",\n          \"<uri>\"\n        ],\n        \"negative\": \"<boolean>\"\n      },\n      \"update\": {\n        \"resourceName\": \"<string>\",\n        \"criterionId\": \"<long>\",\n        \"adGroup\": \"<string>\",\n        \"status\": \"REMOVED\",\n        \"type\": \"AGE_RANGE\",\n        \"keyword\": {\n          \"text\": \"<string>\",\n          \"matchType\": \"UNKNOWN\"\n        },\n        \"qualityInfo\": {\n          \"qualityScore\": \"<integer>\",\n          \"creativeQualityScore\": \"UNKNOWN\",\n          \"postClickQualityScore\": \"UNSPECIFIED\",\n          \"searchPredictedCtr\": \"UNSPECIFIED\"\n        },\n        \"cpcBidMicros\": \"<long>\",\n        \"effectiveCpcBidMicros\": \"<long>\",\n        \"finalUrls\": [\n          \"<uri>\",\n          \"<uri>\"\n        ],\n        \"negative\": \"<boolean>\"\n      },\n      \"remove\": \"<string>\",\n      \"updateMask\": \"<string>\"\n    }\n  ],\n  \"partialFailure\": \"<boolean>\",\n  \"validateOnly\": \"<boolean>\"\n}",
+                              "options": {
+                                "raw": {
+                                  "headerFamily": "json",
+                                  "language": "json"
+                                }
+                              }
+                            },
+                            "url": {
+                              "raw": "{{baseUrl}}/v18/customers/:customerId/adGroupCriteria:mutate",
+                              "host": [
+                                "{{baseUrl}}"
+                              ],
+                              "path": [
+                                "v18",
+                                "customers",
+                                ":customerId",
+                                "adGroupCriteria:mutate"
+                              ],
+                              "variable": [
+                                {
+                                  "key": "customerId"
+                                }
+                              ]
+                            }
+                          },
+                          "status": "Unauthorized",
+                          "code": 401,
+                          "_postman_previewlanguage": "json",
+                          "header": [
+                            {
+                              "key": "Content-Type",
+                              "value": "application/json"
+                            }
+                          ],
+                          "cookie": [],
+                          "responseTime": null,
+                          "body": "{\n  \"errors\": [\n    {\n      \"errorCode\": {\n        \"deserunt_07\": \"<string>\",\n        \"ea6\": \"<string>\"\n      },\n      \"message\": \"<string>\",\n      \"trigger\": {},\n      \"location\": {\n        \"fieldPathElements\": [\n          {\n            \"fieldName\": \"<string>\",\n            \"index\": \"<integer>\"\n          },\n          {\n            \"fieldName\": \"<string>\",\n            \"index\": \"<integer>\"\n          }\n        ]\n      }\n    },\n    {\n      \"errorCode\": {\n        \"Ut2\": \"<string>\"\n      },\n      \"message\": \"<string>\",\n      \"trigger\": {},\n      \"location\": {\n        \"fieldPathElements\": [\n          {\n            \"fieldName\": \"<string>\",\n            \"index\": \"<integer>\"\n          },\n          {\n            \"fieldName\": \"<string>\",\n            \"index\": \"<integer>\"\n          }\n        ]\n      }\n    }\n  ]\n}",
+                          "createdAt": "2026-07-28T01:45:06.000Z",
+                          "updatedAt": "2026-07-28T01:45:06.000Z",
+                          "uid": "35240-80e84f65-bfec-4fcf-aaba-d0636d0cae92"
+                        }
+                      ],
+                      "createdAt": "2026-07-28T01:45:06.000Z",
+                      "updatedAt": "2026-07-28T01:45:06.000Z",
+                      "uid": "35240-4ec26bba-53b3-4580-8c08-d8e68995ab6d"
+                    }
+                  ],
+                  "id": "628d5080-b4a8-4769-8438-6aa8fc4ce16c",
+                  "createdAt": "2026-07-28T01:45:06.000Z",
+                  "updatedAt": "2026-07-28T01:45:06.000Z",
+                  "uid": "35240-628d5080-b4a8-4769-8438-6aa8fc4ce16c"
+                }
+              ],
+              "id": "24aff0b4-2cf3-4e89-9179-9fc2905b4353",
+              "createdAt": "2026-07-28T01:45:06.000Z",
+              "updatedAt": "2026-07-28T01:45:06.000Z",
+              "uid": "35240-24aff0b4-2cf3-4e89-9179-9fc2905b4353"
+            }
+          ],
+          "id": "e568c044-1dfc-42f6-895e-d395cde96502",
+          "createdAt": "2026-07-28T01:45:06.000Z",
+          "updatedAt": "2026-07-28T01:45:06.000Z",
+          "uid": "35240-e568c044-1dfc-42f6-895e-d395cde96502"
+        }
+      ],
+      "id": "ff21c805-468a-42d0-b797-31277f985ae0",
+      "createdAt": "2026-07-28T01:45:06.000Z",
+      "updatedAt": "2026-07-28T01:45:06.000Z",
+      "uid": "35240-ff21c805-468a-42d0-b797-31277f985ae0"
+    }
+  ],
+  "auth": {
+    "type": "oauth2",
+    "oauth2": [
+      {
+        "key": "scope",
+        "value": "https://www.googleapis.com/auth/adwords",
+        "type": "string"
+      },
+      {
+        "key": "accessTokenUrl",
+        "value": "https://oauth2.googleapis.com/token",
+        "type": "string"
+      },
+      {
+        "key": "authUrl",
+        "value": "https://accounts.google.com/o/oauth2/auth",
+        "type": "string"
+      },
+      {
+        "key": "grant_type",
+        "value": "authorization_code",
+        "type": "string"
+      }
+    ]
+  },
+  "variable": [
+    {
+      "key": "baseUrl",
+      "value": "https://googleads.googleapis.com"
+    }
+  ]
+}

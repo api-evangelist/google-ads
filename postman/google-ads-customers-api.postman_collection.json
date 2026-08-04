@@ -1,0 +1,442 @@
+{
+  "info": {
+    "_postman_id": "7659b688-54c4-4288-94ab-9a34d9ea82f5",
+    "name": "Google Ads Ad Groups Customers API",
+    "description": "The Google Ads API is the modern programmatic interface to Google Ads and the\nnext generation of the AdWords API. It enables developers to interact directly\nwith the Google Ads platform, vastly increasing the efficiency of managing\nlarge or complex Google Ads accounts and campaigns. The API allows for\ncreating, reading, updating, and removing campaigns, ad groups, ads, keywords,\nand retrieving performance reports using Google Ads Query Language (GAQL).\n\n\nContact Support:\n Name: Google Ads API Support",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+    "createdAt": "2026-07-28T01:45:04.000Z",
+    "updatedAt": "2026-07-28T01:45:05.000Z",
+    "lastUpdatedBy": "35240",
+    "uid": "35240-7659b688-54c4-4288-94ab-9a34d9ea82f5"
+  },
+  "item": [
+    {
+      "name": "v18",
+      "item": [
+        {
+          "name": "customers",
+          "item": [
+            {
+              "name": "{customerId}",
+              "item": [
+                {
+                  "name": "Google Ads Get Customer Account Details",
+                  "id": "2e796696-17dd-47d7-abfc-35f4cf4c7cbf",
+                  "protocolProfileBehavior": {
+                    "disableBodyPruning": true
+                  },
+                  "request": {
+                    "method": "GET",
+                    "header": [
+                      {
+                        "description": "(Required) Developer token for API access. Obtain from the Google Ads API Center\nin your manager account.\n",
+                        "key": "developer-token",
+                        "value": "<string>"
+                      },
+                      {
+                        "description": "The customer ID of the manager account making the request on behalf\nof a client account. Required when authenticating as a manager account.\n",
+                        "key": "login-customer-id",
+                        "value": "<string>"
+                      },
+                      {
+                        "key": "Accept",
+                        "value": "application/json"
+                      }
+                    ],
+                    "url": {
+                      "raw": "{{baseUrl}}/v18/customers/:customerId",
+                      "host": [
+                        "{{baseUrl}}"
+                      ],
+                      "path": [
+                        "v18",
+                        "customers",
+                        ":customerId"
+                      ],
+                      "variable": [
+                        {
+                          "id": "0cdfb688-c6b8-43a4-a7da-c8c13058575f",
+                          "key": "customerId",
+                          "value": "0008643591",
+                          "description": "(Required) The Google Ads customer ID (without dashes), e.g. 1234567890."
+                        }
+                      ]
+                    },
+                    "description": "Returns the requested customer account in full detail. A customer\nrepresents a Google Ads account or a manager account.\n"
+                  },
+                  "response": [
+                    {
+                      "id": "01d4e899-aaeb-4c53-9069-1a84bd3a1ca6",
+                      "name": "Successful Response",
+                      "originalRequest": {
+                        "method": "GET",
+                        "header": [
+                          {
+                            "description": "(Required) Developer token for API access. Obtain from the Google Ads API Center\nin your manager account.\n",
+                            "key": "developer-token",
+                            "value": "<string>"
+                          },
+                          {
+                            "description": "The customer ID of the manager account making the request on behalf\nof a client account. Required when authenticating as a manager account.\n",
+                            "key": "login-customer-id",
+                            "value": "<string>"
+                          },
+                          {
+                            "key": "Accept",
+                            "value": "application/json"
+                          },
+                          {
+                            "description": "Added as a part of security scheme: oauth2",
+                            "key": "Authorization",
+                            "value": "<token>"
+                          }
+                        ],
+                        "url": {
+                          "raw": "{{baseUrl}}/v18/customers/:customerId",
+                          "host": [
+                            "{{baseUrl}}"
+                          ],
+                          "path": [
+                            "v18",
+                            "customers",
+                            ":customerId"
+                          ],
+                          "variable": [
+                            {
+                              "key": "customerId"
+                            }
+                          ]
+                        }
+                      },
+                      "status": "OK",
+                      "code": 200,
+                      "_postman_previewlanguage": "json",
+                      "header": [
+                        {
+                          "key": "Content-Type",
+                          "value": "application/json"
+                        }
+                      ],
+                      "cookie": [],
+                      "responseTime": null,
+                      "body": "{\n  \"resourceName\": \"<string>\",\n  \"id\": \"<long>\",\n  \"descriptiveName\": \"<string>\",\n  \"currencyCode\": \"<string>\",\n  \"timeZone\": \"<string>\",\n  \"manager\": \"<boolean>\",\n  \"testAccount\": \"<boolean>\",\n  \"autoTaggingEnabled\": \"<boolean>\",\n  \"hasPartnersBadge\": \"<boolean>\"\n}",
+                      "createdAt": "2026-07-28T01:45:05.000Z",
+                      "updatedAt": "2026-07-28T01:45:05.000Z",
+                      "uid": "35240-01d4e899-aaeb-4c53-9069-1a84bd3a1ca6"
+                    },
+                    {
+                      "id": "470178a0-67fa-4452-9732-511e639fd183",
+                      "name": "Unauthorized",
+                      "originalRequest": {
+                        "method": "GET",
+                        "header": [
+                          {
+                            "description": "(Required) Developer token for API access. Obtain from the Google Ads API Center\nin your manager account.\n",
+                            "key": "developer-token",
+                            "value": "<string>"
+                          },
+                          {
+                            "description": "The customer ID of the manager account making the request on behalf\nof a client account. Required when authenticating as a manager account.\n",
+                            "key": "login-customer-id",
+                            "value": "<string>"
+                          },
+                          {
+                            "key": "Accept",
+                            "value": "application/json"
+                          },
+                          {
+                            "description": "Added as a part of security scheme: oauth2",
+                            "key": "Authorization",
+                            "value": "<token>"
+                          }
+                        ],
+                        "url": {
+                          "raw": "{{baseUrl}}/v18/customers/:customerId",
+                          "host": [
+                            "{{baseUrl}}"
+                          ],
+                          "path": [
+                            "v18",
+                            "customers",
+                            ":customerId"
+                          ],
+                          "variable": [
+                            {
+                              "key": "customerId"
+                            }
+                          ]
+                        }
+                      },
+                      "status": "Unauthorized",
+                      "code": 401,
+                      "_postman_previewlanguage": "json",
+                      "header": [
+                        {
+                          "key": "Content-Type",
+                          "value": "application/json"
+                        }
+                      ],
+                      "cookie": [],
+                      "responseTime": null,
+                      "body": "{\n  \"errors\": [\n    {\n      \"errorCode\": {\n        \"adipisicing_3\": \"<string>\",\n        \"minimc\": \"<string>\",\n        \"Lorem8\": \"<string>\"\n      },\n      \"message\": \"<string>\",\n      \"trigger\": {},\n      \"location\": {\n        \"fieldPathElements\": [\n          {\n            \"fieldName\": \"<string>\",\n            \"index\": \"<integer>\"\n          },\n          {\n            \"fieldName\": \"<string>\",\n            \"index\": \"<integer>\"\n          }\n        ]\n      }\n    },\n    {\n      \"errorCode\": {\n        \"Excepteur_87\": \"<string>\",\n        \"proident_992\": \"<string>\",\n        \"Ut_aea\": \"<string>\"\n      },\n      \"message\": \"<string>\",\n      \"trigger\": {},\n      \"location\": {\n        \"fieldPathElements\": [\n          {\n            \"fieldName\": \"<string>\",\n            \"index\": \"<integer>\"\n          },\n          {\n            \"fieldName\": \"<string>\",\n            \"index\": \"<integer>\"\n          }\n        ]\n      }\n    }\n  ]\n}",
+                      "createdAt": "2026-07-28T01:45:05.000Z",
+                      "updatedAt": "2026-07-28T01:45:05.000Z",
+                      "uid": "35240-470178a0-67fa-4452-9732-511e639fd183"
+                    },
+                    {
+                      "id": "f9f5372f-af4a-4994-877f-062d09a9daa2",
+                      "name": "Forbidden",
+                      "originalRequest": {
+                        "method": "GET",
+                        "header": [
+                          {
+                            "description": "(Required) Developer token for API access. Obtain from the Google Ads API Center\nin your manager account.\n",
+                            "key": "developer-token",
+                            "value": "<string>"
+                          },
+                          {
+                            "description": "The customer ID of the manager account making the request on behalf\nof a client account. Required when authenticating as a manager account.\n",
+                            "key": "login-customer-id",
+                            "value": "<string>"
+                          },
+                          {
+                            "key": "Accept",
+                            "value": "application/json"
+                          },
+                          {
+                            "description": "Added as a part of security scheme: oauth2",
+                            "key": "Authorization",
+                            "value": "<token>"
+                          }
+                        ],
+                        "url": {
+                          "raw": "{{baseUrl}}/v18/customers/:customerId",
+                          "host": [
+                            "{{baseUrl}}"
+                          ],
+                          "path": [
+                            "v18",
+                            "customers",
+                            ":customerId"
+                          ],
+                          "variable": [
+                            {
+                              "key": "customerId"
+                            }
+                          ]
+                        }
+                      },
+                      "status": "Forbidden",
+                      "code": 403,
+                      "_postman_previewlanguage": "json",
+                      "header": [
+                        {
+                          "key": "Content-Type",
+                          "value": "application/json"
+                        }
+                      ],
+                      "cookie": [],
+                      "responseTime": null,
+                      "body": "{\n  \"errors\": [\n    {\n      \"errorCode\": {\n        \"adipisicing_3\": \"<string>\",\n        \"minimc\": \"<string>\",\n        \"Lorem8\": \"<string>\"\n      },\n      \"message\": \"<string>\",\n      \"trigger\": {},\n      \"location\": {\n        \"fieldPathElements\": [\n          {\n            \"fieldName\": \"<string>\",\n            \"index\": \"<integer>\"\n          },\n          {\n            \"fieldName\": \"<string>\",\n            \"index\": \"<integer>\"\n          }\n        ]\n      }\n    },\n    {\n      \"errorCode\": {\n        \"Excepteur_87\": \"<string>\",\n        \"proident_992\": \"<string>\",\n        \"Ut_aea\": \"<string>\"\n      },\n      \"message\": \"<string>\",\n      \"trigger\": {},\n      \"location\": {\n        \"fieldPathElements\": [\n          {\n            \"fieldName\": \"<string>\",\n            \"index\": \"<integer>\"\n          },\n          {\n            \"fieldName\": \"<string>\",\n            \"index\": \"<integer>\"\n          }\n        ]\n      }\n    }\n  ]\n}",
+                      "createdAt": "2026-07-28T01:45:05.000Z",
+                      "updatedAt": "2026-07-28T01:45:05.000Z",
+                      "uid": "35240-f9f5372f-af4a-4994-877f-062d09a9daa2"
+                    }
+                  ],
+                  "createdAt": "2026-07-28T01:45:05.000Z",
+                  "updatedAt": "2026-07-28T01:45:05.000Z",
+                  "uid": "35240-2e796696-17dd-47d7-abfc-35f4cf4c7cbf"
+                }
+              ],
+              "id": "7811b1ab-b472-4e34-ba57-13c97754cb60",
+              "createdAt": "2026-07-28T01:45:05.000Z",
+              "updatedAt": "2026-07-28T01:45:05.000Z",
+              "uid": "35240-7811b1ab-b472-4e34-ba57-13c97754cb60"
+            }
+          ],
+          "id": "487c3e6b-14fa-4eba-a7f5-0afad927b002",
+          "createdAt": "2026-07-28T01:45:05.000Z",
+          "updatedAt": "2026-07-28T01:45:05.000Z",
+          "uid": "35240-487c3e6b-14fa-4eba-a7f5-0afad927b002"
+        },
+        {
+          "name": "customers:listAccessibleCustomers",
+          "item": [
+            {
+              "name": "Google Ads List Accessible Customer Accounts",
+              "id": "7b14b83f-735d-44cb-9929-ec2071ee53d5",
+              "protocolProfileBehavior": {
+                "disableBodyPruning": true
+              },
+              "request": {
+                "method": "GET",
+                "header": [
+                  {
+                    "description": "(Required) Developer token for API access. Obtain from the Google Ads API Center\nin your manager account.\n",
+                    "key": "developer-token",
+                    "value": "<string>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "url": {
+                  "raw": "{{baseUrl}}/v18/customers:listAccessibleCustomers",
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "path": [
+                    "v18",
+                    "customers:listAccessibleCustomers"
+                  ]
+                },
+                "description": "Returns resource names of customers directly accessible by the user\nauthenticating the call. Does not require a customer ID in the path,\nas it operates at the OAuth credential level.\n"
+              },
+              "response": [
+                {
+                  "id": "eb75c07c-334d-4b88-9845-8febf905e7cb",
+                  "name": "Successful Response",
+                  "originalRequest": {
+                    "method": "GET",
+                    "header": [
+                      {
+                        "description": "(Required) Developer token for API access. Obtain from the Google Ads API Center\nin your manager account.\n",
+                        "key": "developer-token",
+                        "value": "<string>"
+                      },
+                      {
+                        "key": "Accept",
+                        "value": "application/json"
+                      },
+                      {
+                        "description": "Added as a part of security scheme: oauth2",
+                        "key": "Authorization",
+                        "value": "<token>"
+                      }
+                    ],
+                    "url": {
+                      "raw": "{{baseUrl}}/v18/customers:listAccessibleCustomers",
+                      "host": [
+                        "{{baseUrl}}"
+                      ],
+                      "path": [
+                        "v18",
+                        "customers:listAccessibleCustomers"
+                      ]
+                    }
+                  },
+                  "status": "OK",
+                  "code": 200,
+                  "_postman_previewlanguage": "json",
+                  "header": [
+                    {
+                      "key": "Content-Type",
+                      "value": "application/json"
+                    }
+                  ],
+                  "cookie": [],
+                  "responseTime": null,
+                  "body": "{\n  \"resourceNames\": [\n    \"<string>\",\n    \"<string>\"\n  ]\n}",
+                  "createdAt": "2026-07-28T01:45:05.000Z",
+                  "updatedAt": "2026-07-28T01:45:05.000Z",
+                  "uid": "35240-eb75c07c-334d-4b88-9845-8febf905e7cb"
+                },
+                {
+                  "id": "920a676d-8636-476c-94e1-1c0d58c9a45d",
+                  "name": "Unauthorized",
+                  "originalRequest": {
+                    "method": "GET",
+                    "header": [
+                      {
+                        "description": "(Required) Developer token for API access. Obtain from the Google Ads API Center\nin your manager account.\n",
+                        "key": "developer-token",
+                        "value": "<string>"
+                      },
+                      {
+                        "key": "Accept",
+                        "value": "application/json"
+                      },
+                      {
+                        "description": "Added as a part of security scheme: oauth2",
+                        "key": "Authorization",
+                        "value": "<token>"
+                      }
+                    ],
+                    "url": {
+                      "raw": "{{baseUrl}}/v18/customers:listAccessibleCustomers",
+                      "host": [
+                        "{{baseUrl}}"
+                      ],
+                      "path": [
+                        "v18",
+                        "customers:listAccessibleCustomers"
+                      ]
+                    }
+                  },
+                  "status": "Unauthorized",
+                  "code": 401,
+                  "_postman_previewlanguage": "json",
+                  "header": [
+                    {
+                      "key": "Content-Type",
+                      "value": "application/json"
+                    }
+                  ],
+                  "cookie": [],
+                  "responseTime": null,
+                  "body": "{\n  \"errors\": [\n    {\n      \"errorCode\": {\n        \"adipisicing_3\": \"<string>\",\n        \"minimc\": \"<string>\",\n        \"Lorem8\": \"<string>\"\n      },\n      \"message\": \"<string>\",\n      \"trigger\": {},\n      \"location\": {\n        \"fieldPathElements\": [\n          {\n            \"fieldName\": \"<string>\",\n            \"index\": \"<integer>\"\n          },\n          {\n            \"fieldName\": \"<string>\",\n            \"index\": \"<integer>\"\n          }\n        ]\n      }\n    },\n    {\n      \"errorCode\": {\n        \"Excepteur_87\": \"<string>\",\n        \"proident_992\": \"<string>\",\n        \"Ut_aea\": \"<string>\"\n      },\n      \"message\": \"<string>\",\n      \"trigger\": {},\n      \"location\": {\n        \"fieldPathElements\": [\n          {\n            \"fieldName\": \"<string>\",\n            \"index\": \"<integer>\"\n          },\n          {\n            \"fieldName\": \"<string>\",\n            \"index\": \"<integer>\"\n          }\n        ]\n      }\n    }\n  ]\n}",
+                  "createdAt": "2026-07-28T01:45:05.000Z",
+                  "updatedAt": "2026-07-28T01:45:05.000Z",
+                  "uid": "35240-920a676d-8636-476c-94e1-1c0d58c9a45d"
+                }
+              ],
+              "createdAt": "2026-07-28T01:45:05.000Z",
+              "updatedAt": "2026-07-28T01:45:05.000Z",
+              "uid": "35240-7b14b83f-735d-44cb-9929-ec2071ee53d5"
+            }
+          ],
+          "id": "f5dd23c0-b37e-4636-b85f-b6b68fad17c9",
+          "createdAt": "2026-07-28T01:45:05.000Z",
+          "updatedAt": "2026-07-28T01:45:05.000Z",
+          "uid": "35240-f5dd23c0-b37e-4636-b85f-b6b68fad17c9"
+        }
+      ],
+      "id": "a260f3e1-2d32-4fd3-be46-eee64f05df95",
+      "createdAt": "2026-07-28T01:45:05.000Z",
+      "updatedAt": "2026-07-28T01:45:05.000Z",
+      "uid": "35240-a260f3e1-2d32-4fd3-be46-eee64f05df95"
+    }
+  ],
+  "auth": {
+    "type": "oauth2",
+    "oauth2": [
+      {
+        "key": "scope",
+        "value": "https://www.googleapis.com/auth/adwords",
+        "type": "string"
+      },
+      {
+        "key": "accessTokenUrl",
+        "value": "https://oauth2.googleapis.com/token",
+        "type": "string"
+      },
+      {
+        "key": "authUrl",
+        "value": "https://accounts.google.com/o/oauth2/auth",
+        "type": "string"
+      },
+      {
+        "key": "grant_type",
+        "value": "authorization_code",
+        "type": "string"
+      }
+    ]
+  },
+  "variable": [
+    {
+      "key": "baseUrl",
+      "value": "https://googleads.googleapis.com"
+    }
+  ]
+}

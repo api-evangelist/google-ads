@@ -1,0 +1,740 @@
+{
+  "info": {
+    "_postman_id": "40d2af5d-799f-42db-bb5f-aa50b463e21d",
+    "name": "Google Ads Ad Groups Campaigns API",
+    "description": "The Google Ads API is the modern programmatic interface to Google Ads and the\nnext generation of the AdWords API. It enables developers to interact directly\nwith the Google Ads platform, vastly increasing the efficiency of managing\nlarge or complex Google Ads accounts and campaigns. The API allows for\ncreating, reading, updating, and removing campaigns, ad groups, ads, keywords,\nand retrieving performance reports using Google Ads Query Language (GAQL).\n\n\nContact Support:\n Name: Google Ads API Support",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+    "createdAt": "2026-07-28T01:45:03.000Z",
+    "updatedAt": "2026-07-28T01:45:04.000Z",
+    "lastUpdatedBy": "35240",
+    "uid": "35240-40d2af5d-799f-42db-bb5f-aa50b463e21d"
+  },
+  "item": [
+    {
+      "name": "v18",
+      "item": [
+        {
+          "name": "customers",
+          "item": [
+            {
+              "name": "{customerId}",
+              "item": [
+                {
+                  "name": "campaigns:mutate",
+                  "item": [
+                    {
+                      "name": "Google Ads Create, Update, or Remove Campaigns",
+                      "id": "18730c9d-44fe-4fbd-9e0d-82a4b35e3399",
+                      "protocolProfileBehavior": {
+                        "disableBodyPruning": true
+                      },
+                      "request": {
+                        "method": "POST",
+                        "header": [
+                          {
+                            "description": "(Required) Developer token for API access. Obtain from the Google Ads API Center\nin your manager account.\n",
+                            "key": "developer-token",
+                            "value": "<string>"
+                          },
+                          {
+                            "description": "The customer ID of the manager account making the request on behalf\nof a client account. Required when authenticating as a manager account.\n",
+                            "key": "login-customer-id",
+                            "value": "<string>"
+                          },
+                          {
+                            "key": "Content-Type",
+                            "value": "application/json"
+                          },
+                          {
+                            "key": "Accept",
+                            "value": "application/json"
+                          }
+                        ],
+                        "body": {
+                          "mode": "raw",
+                          "raw": "{\n  \"operations\": [\n    {\n      \"create\": {\n        \"resourceName\": \"<string>\",\n        \"id\": \"<long>\",\n        \"name\": \"<string>\",\n        \"status\": \"UNSPECIFIED\",\n        \"advertisingChannelType\": \"SEARCH\",\n        \"advertisingChannelSubType\": \"<string>\",\n        \"biddingStrategyType\": \"MAXIMIZE_CONVERSIONS\",\n        \"campaignBudget\": \"<string>\",\n        \"startDate\": \"<string>\",\n        \"endDate\": \"<string>\",\n        \"networkSettings\": {\n          \"targetGoogleSearch\": \"<boolean>\",\n          \"targetSearchNetwork\": \"<boolean>\",\n          \"targetContentNetwork\": \"<boolean>\",\n          \"targetPartnerSearchNetwork\": \"<boolean>\"\n        },\n        \"targetCpa\": {\n          \"targetCpaMicros\": \"<long>\"\n        },\n        \"targetRoas\": {\n          \"targetRoas\": \"<number>\"\n        },\n        \"maximizeConversions\": {\n          \"targetCpaMicros\": \"<long>\"\n        },\n        \"manualCpc\": {\n          \"enhancedCpcEnabled\": \"<boolean>\"\n        },\n        \"geoTargetTypeSetting\": {\n          \"positiveGeoTargetType\": \"PRESENCE\",\n          \"negativeGeoTargetType\": \"PRESENCE_OR_INTEREST\"\n        }\n      },\n      \"update\": {\n        \"resourceName\": \"<string>\",\n        \"id\": \"<long>\",\n        \"name\": \"<string>\",\n        \"status\": \"PAUSED\",\n        \"advertisingChannelType\": \"DEMAND_GEN\",\n        \"advertisingChannelSubType\": \"<string>\",\n        \"biddingStrategyType\": \"TARGET_ROAS\",\n        \"campaignBudget\": \"<string>\",\n        \"startDate\": \"<string>\",\n        \"endDate\": \"<string>\",\n        \"networkSettings\": {\n          \"targetGoogleSearch\": \"<boolean>\",\n          \"targetSearchNetwork\": \"<boolean>\",\n          \"targetContentNetwork\": \"<boolean>\",\n          \"targetPartnerSearchNetwork\": \"<boolean>\"\n        },\n        \"targetCpa\": {\n          \"targetCpaMicros\": \"<long>\"\n        },\n        \"targetRoas\": {\n          \"targetRoas\": \"<number>\"\n        },\n        \"maximizeConversions\": {\n          \"targetCpaMicros\": \"<long>\"\n        },\n        \"manualCpc\": {\n          \"enhancedCpcEnabled\": \"<boolean>\"\n        },\n        \"geoTargetTypeSetting\": {\n          \"positiveGeoTargetType\": \"PRESENCE_OR_INTEREST\",\n          \"negativeGeoTargetType\": \"PRESENCE\"\n        }\n      },\n      \"remove\": \"<string>\",\n      \"updateMask\": \"<string>\"\n    },\n    {\n      \"create\": {\n        \"resourceName\": \"<string>\",\n        \"id\": \"<long>\",\n        \"name\": \"<string>\",\n        \"status\": \"UNSPECIFIED\",\n        \"advertisingChannelType\": \"VIDEO\",\n        \"advertisingChannelSubType\": \"<string>\",\n        \"biddingStrategyType\": \"MANUAL_CPC\",\n        \"campaignBudget\": \"<string>\",\n        \"startDate\": \"<string>\",\n        \"endDate\": \"<string>\",\n        \"networkSettings\": {\n          \"targetGoogleSearch\": \"<boolean>\",\n          \"targetSearchNetwork\": \"<boolean>\",\n          \"targetContentNetwork\": \"<boolean>\",\n          \"targetPartnerSearchNetwork\": \"<boolean>\"\n        },\n        \"targetCpa\": {\n          \"targetCpaMicros\": \"<long>\"\n        },\n        \"targetRoas\": {\n          \"targetRoas\": \"<number>\"\n        },\n        \"maximizeConversions\": {\n          \"targetCpaMicros\": \"<long>\"\n        },\n        \"manualCpc\": {\n          \"enhancedCpcEnabled\": \"<boolean>\"\n        },\n        \"geoTargetTypeSetting\": {\n          \"positiveGeoTargetType\": \"SEARCH_INTEREST\",\n          \"negativeGeoTargetType\": \"PRESENCE\"\n        }\n      },\n      \"update\": {\n        \"resourceName\": \"<string>\",\n        \"id\": \"<long>\",\n        \"name\": \"<string>\",\n        \"status\": \"REMOVED\",\n        \"advertisingChannelType\": \"SHOPPING\",\n        \"advertisingChannelSubType\": \"<string>\",\n        \"biddingStrategyType\": \"TARGET_CPA\",\n        \"campaignBudget\": \"<string>\",\n        \"startDate\": \"<string>\",\n        \"endDate\": \"<string>\",\n        \"networkSettings\": {\n          \"targetGoogleSearch\": \"<boolean>\",\n          \"targetSearchNetwork\": \"<boolean>\",\n          \"targetContentNetwork\": \"<boolean>\",\n          \"targetPartnerSearchNetwork\": \"<boolean>\"\n        },\n        \"targetCpa\": {\n          \"targetCpaMicros\": \"<long>\"\n        },\n        \"targetRoas\": {\n          \"targetRoas\": \"<number>\"\n        },\n        \"maximizeConversions\": {\n          \"targetCpaMicros\": \"<long>\"\n        },\n        \"manualCpc\": {\n          \"enhancedCpcEnabled\": \"<boolean>\"\n        },\n        \"geoTargetTypeSetting\": {\n          \"positiveGeoTargetType\": \"PRESENCE_OR_INTEREST\",\n          \"negativeGeoTargetType\": \"PRESENCE_OR_INTEREST\"\n        }\n      },\n      \"remove\": \"<string>\",\n      \"updateMask\": \"<string>\"\n    }\n  ],\n  \"partialFailure\": \"<boolean>\",\n  \"validateOnly\": \"<boolean>\"\n}",
+                          "options": {
+                            "raw": {
+                              "headerFamily": "json",
+                              "language": "json"
+                            }
+                          }
+                        },
+                        "url": {
+                          "raw": "{{baseUrl}}/v18/customers/:customerId/campaigns:mutate",
+                          "host": [
+                            "{{baseUrl}}"
+                          ],
+                          "path": [
+                            "v18",
+                            "customers",
+                            ":customerId",
+                            "campaigns:mutate"
+                          ],
+                          "variable": [
+                            {
+                              "id": "1bf34e34-b771-49c9-b989-3b4119efabf7",
+                              "key": "customerId",
+                              "value": "2189211542",
+                              "description": "(Required) The Google Ads customer ID (without dashes), e.g. 1234567890."
+                            }
+                          ]
+                        },
+                        "description": "Creates, updates, or removes campaigns. Operation statuses are returned.\nSupports partial failure where some operations succeed while others fail.\n"
+                      },
+                      "response": [
+                        {
+                          "id": "3ab0d37d-b91b-4a25-b3af-0ecdd9cf3dc1",
+                          "name": "Successful Response",
+                          "originalRequest": {
+                            "method": "POST",
+                            "header": [
+                              {
+                                "description": "(Required) Developer token for API access. Obtain from the Google Ads API Center\nin your manager account.\n",
+                                "key": "developer-token",
+                                "value": "<string>"
+                              },
+                              {
+                                "description": "The customer ID of the manager account making the request on behalf\nof a client account. Required when authenticating as a manager account.\n",
+                                "key": "login-customer-id",
+                                "value": "<string>"
+                              },
+                              {
+                                "key": "Content-Type",
+                                "value": "application/json"
+                              },
+                              {
+                                "key": "Accept",
+                                "value": "application/json"
+                              },
+                              {
+                                "description": "Added as a part of security scheme: oauth2",
+                                "key": "Authorization",
+                                "value": "<token>"
+                              }
+                            ],
+                            "body": {
+                              "mode": "raw",
+                              "raw": "{\n  \"operations\": [\n    {\n      \"create\": {\n        \"resourceName\": \"<string>\",\n        \"id\": \"<long>\",\n        \"name\": \"<string>\",\n        \"status\": \"UNSPECIFIED\",\n        \"advertisingChannelType\": \"SEARCH\",\n        \"advertisingChannelSubType\": \"<string>\",\n        \"biddingStrategyType\": \"MAXIMIZE_CONVERSIONS\",\n        \"campaignBudget\": \"<string>\",\n        \"startDate\": \"<string>\",\n        \"endDate\": \"<string>\",\n        \"networkSettings\": {\n          \"targetGoogleSearch\": \"<boolean>\",\n          \"targetSearchNetwork\": \"<boolean>\",\n          \"targetContentNetwork\": \"<boolean>\",\n          \"targetPartnerSearchNetwork\": \"<boolean>\"\n        },\n        \"targetCpa\": {\n          \"targetCpaMicros\": \"<long>\"\n        },\n        \"targetRoas\": {\n          \"targetRoas\": \"<number>\"\n        },\n        \"maximizeConversions\": {\n          \"targetCpaMicros\": \"<long>\"\n        },\n        \"manualCpc\": {\n          \"enhancedCpcEnabled\": \"<boolean>\"\n        },\n        \"geoTargetTypeSetting\": {\n          \"positiveGeoTargetType\": \"PRESENCE\",\n          \"negativeGeoTargetType\": \"PRESENCE_OR_INTEREST\"\n        }\n      },\n      \"update\": {\n        \"resourceName\": \"<string>\",\n        \"id\": \"<long>\",\n        \"name\": \"<string>\",\n        \"status\": \"PAUSED\",\n        \"advertisingChannelType\": \"DEMAND_GEN\",\n        \"advertisingChannelSubType\": \"<string>\",\n        \"biddingStrategyType\": \"TARGET_ROAS\",\n        \"campaignBudget\": \"<string>\",\n        \"startDate\": \"<string>\",\n        \"endDate\": \"<string>\",\n        \"networkSettings\": {\n          \"targetGoogleSearch\": \"<boolean>\",\n          \"targetSearchNetwork\": \"<boolean>\",\n          \"targetContentNetwork\": \"<boolean>\",\n          \"targetPartnerSearchNetwork\": \"<boolean>\"\n        },\n        \"targetCpa\": {\n          \"targetCpaMicros\": \"<long>\"\n        },\n        \"targetRoas\": {\n          \"targetRoas\": \"<number>\"\n        },\n        \"maximizeConversions\": {\n          \"targetCpaMicros\": \"<long>\"\n        },\n        \"manualCpc\": {\n          \"enhancedCpcEnabled\": \"<boolean>\"\n        },\n        \"geoTargetTypeSetting\": {\n          \"positiveGeoTargetType\": \"PRESENCE_OR_INTEREST\",\n          \"negativeGeoTargetType\": \"PRESENCE\"\n        }\n      },\n      \"remove\": \"<string>\",\n      \"updateMask\": \"<string>\"\n    },\n    {\n      \"create\": {\n        \"resourceName\": \"<string>\",\n        \"id\": \"<long>\",\n        \"name\": \"<string>\",\n        \"status\": \"UNSPECIFIED\",\n        \"advertisingChannelType\": \"VIDEO\",\n        \"advertisingChannelSubType\": \"<string>\",\n        \"biddingStrategyType\": \"MANUAL_CPC\",\n        \"campaignBudget\": \"<string>\",\n        \"startDate\": \"<string>\",\n        \"endDate\": \"<string>\",\n        \"networkSettings\": {\n          \"targetGoogleSearch\": \"<boolean>\",\n          \"targetSearchNetwork\": \"<boolean>\",\n          \"targetContentNetwork\": \"<boolean>\",\n          \"targetPartnerSearchNetwork\": \"<boolean>\"\n        },\n        \"targetCpa\": {\n          \"targetCpaMicros\": \"<long>\"\n        },\n        \"targetRoas\": {\n          \"targetRoas\": \"<number>\"\n        },\n        \"maximizeConversions\": {\n          \"targetCpaMicros\": \"<long>\"\n        },\n        \"manualCpc\": {\n          \"enhancedCpcEnabled\": \"<boolean>\"\n        },\n        \"geoTargetTypeSetting\": {\n          \"positiveGeoTargetType\": \"SEARCH_INTEREST\",\n          \"negativeGeoTargetType\": \"PRESENCE\"\n        }\n      },\n      \"update\": {\n        \"resourceName\": \"<string>\",\n        \"id\": \"<long>\",\n        \"name\": \"<string>\",\n        \"status\": \"REMOVED\",\n        \"advertisingChannelType\": \"SHOPPING\",\n        \"advertisingChannelSubType\": \"<string>\",\n        \"biddingStrategyType\": \"TARGET_CPA\",\n        \"campaignBudget\": \"<string>\",\n        \"startDate\": \"<string>\",\n        \"endDate\": \"<string>\",\n        \"networkSettings\": {\n          \"targetGoogleSearch\": \"<boolean>\",\n          \"targetSearchNetwork\": \"<boolean>\",\n          \"targetContentNetwork\": \"<boolean>\",\n          \"targetPartnerSearchNetwork\": \"<boolean>\"\n        },\n        \"targetCpa\": {\n          \"targetCpaMicros\": \"<long>\"\n        },\n        \"targetRoas\": {\n          \"targetRoas\": \"<number>\"\n        },\n        \"maximizeConversions\": {\n          \"targetCpaMicros\": \"<long>\"\n        },\n        \"manualCpc\": {\n          \"enhancedCpcEnabled\": \"<boolean>\"\n        },\n        \"geoTargetTypeSetting\": {\n          \"positiveGeoTargetType\": \"PRESENCE_OR_INTEREST\",\n          \"negativeGeoTargetType\": \"PRESENCE_OR_INTEREST\"\n        }\n      },\n      \"remove\": \"<string>\",\n      \"updateMask\": \"<string>\"\n    }\n  ],\n  \"partialFailure\": \"<boolean>\",\n  \"validateOnly\": \"<boolean>\"\n}",
+                              "options": {
+                                "raw": {
+                                  "headerFamily": "json",
+                                  "language": "json"
+                                }
+                              }
+                            },
+                            "url": {
+                              "raw": "{{baseUrl}}/v18/customers/:customerId/campaigns:mutate",
+                              "host": [
+                                "{{baseUrl}}"
+                              ],
+                              "path": [
+                                "v18",
+                                "customers",
+                                ":customerId",
+                                "campaigns:mutate"
+                              ],
+                              "variable": [
+                                {
+                                  "key": "customerId"
+                                }
+                              ]
+                            }
+                          },
+                          "status": "OK",
+                          "code": 200,
+                          "_postman_previewlanguage": "json",
+                          "header": [
+                            {
+                              "key": "Content-Type",
+                              "value": "application/json"
+                            }
+                          ],
+                          "cookie": [],
+                          "responseTime": null,
+                          "body": "{\n  \"results\": [\n    {\n      \"resourceName\": \"<string>\"\n    },\n    {\n      \"resourceName\": \"<string>\"\n    }\n  ],\n  \"partialFailureError\": {\n    \"code\": \"<integer>\",\n    \"message\": \"<string>\"\n  }\n}",
+                          "createdAt": "2026-07-28T01:45:04.000Z",
+                          "updatedAt": "2026-07-28T01:45:04.000Z",
+                          "uid": "35240-3ab0d37d-b91b-4a25-b3af-0ecdd9cf3dc1"
+                        },
+                        {
+                          "id": "7a5dc475-a99b-4db9-8d41-29e39eca585c",
+                          "name": "Bad Request",
+                          "originalRequest": {
+                            "method": "POST",
+                            "header": [
+                              {
+                                "description": "(Required) Developer token for API access. Obtain from the Google Ads API Center\nin your manager account.\n",
+                                "key": "developer-token",
+                                "value": "<string>"
+                              },
+                              {
+                                "description": "The customer ID of the manager account making the request on behalf\nof a client account. Required when authenticating as a manager account.\n",
+                                "key": "login-customer-id",
+                                "value": "<string>"
+                              },
+                              {
+                                "key": "Content-Type",
+                                "value": "application/json"
+                              },
+                              {
+                                "key": "Accept",
+                                "value": "application/json"
+                              },
+                              {
+                                "description": "Added as a part of security scheme: oauth2",
+                                "key": "Authorization",
+                                "value": "<token>"
+                              }
+                            ],
+                            "body": {
+                              "mode": "raw",
+                              "raw": "{\n  \"operations\": [\n    {\n      \"create\": {\n        \"resourceName\": \"<string>\",\n        \"id\": \"<long>\",\n        \"name\": \"<string>\",\n        \"status\": \"UNSPECIFIED\",\n        \"advertisingChannelType\": \"SEARCH\",\n        \"advertisingChannelSubType\": \"<string>\",\n        \"biddingStrategyType\": \"MAXIMIZE_CONVERSIONS\",\n        \"campaignBudget\": \"<string>\",\n        \"startDate\": \"<string>\",\n        \"endDate\": \"<string>\",\n        \"networkSettings\": {\n          \"targetGoogleSearch\": \"<boolean>\",\n          \"targetSearchNetwork\": \"<boolean>\",\n          \"targetContentNetwork\": \"<boolean>\",\n          \"targetPartnerSearchNetwork\": \"<boolean>\"\n        },\n        \"targetCpa\": {\n          \"targetCpaMicros\": \"<long>\"\n        },\n        \"targetRoas\": {\n          \"targetRoas\": \"<number>\"\n        },\n        \"maximizeConversions\": {\n          \"targetCpaMicros\": \"<long>\"\n        },\n        \"manualCpc\": {\n          \"enhancedCpcEnabled\": \"<boolean>\"\n        },\n        \"geoTargetTypeSetting\": {\n          \"positiveGeoTargetType\": \"PRESENCE\",\n          \"negativeGeoTargetType\": \"PRESENCE_OR_INTEREST\"\n        }\n      },\n      \"update\": {\n        \"resourceName\": \"<string>\",\n        \"id\": \"<long>\",\n        \"name\": \"<string>\",\n        \"status\": \"PAUSED\",\n        \"advertisingChannelType\": \"DEMAND_GEN\",\n        \"advertisingChannelSubType\": \"<string>\",\n        \"biddingStrategyType\": \"TARGET_ROAS\",\n        \"campaignBudget\": \"<string>\",\n        \"startDate\": \"<string>\",\n        \"endDate\": \"<string>\",\n        \"networkSettings\": {\n          \"targetGoogleSearch\": \"<boolean>\",\n          \"targetSearchNetwork\": \"<boolean>\",\n          \"targetContentNetwork\": \"<boolean>\",\n          \"targetPartnerSearchNetwork\": \"<boolean>\"\n        },\n        \"targetCpa\": {\n          \"targetCpaMicros\": \"<long>\"\n        },\n        \"targetRoas\": {\n          \"targetRoas\": \"<number>\"\n        },\n        \"maximizeConversions\": {\n          \"targetCpaMicros\": \"<long>\"\n        },\n        \"manualCpc\": {\n          \"enhancedCpcEnabled\": \"<boolean>\"\n        },\n        \"geoTargetTypeSetting\": {\n          \"positiveGeoTargetType\": \"PRESENCE_OR_INTEREST\",\n          \"negativeGeoTargetType\": \"PRESENCE\"\n        }\n      },\n      \"remove\": \"<string>\",\n      \"updateMask\": \"<string>\"\n    },\n    {\n      \"create\": {\n        \"resourceName\": \"<string>\",\n        \"id\": \"<long>\",\n        \"name\": \"<string>\",\n        \"status\": \"UNSPECIFIED\",\n        \"advertisingChannelType\": \"VIDEO\",\n        \"advertisingChannelSubType\": \"<string>\",\n        \"biddingStrategyType\": \"MANUAL_CPC\",\n        \"campaignBudget\": \"<string>\",\n        \"startDate\": \"<string>\",\n        \"endDate\": \"<string>\",\n        \"networkSettings\": {\n          \"targetGoogleSearch\": \"<boolean>\",\n          \"targetSearchNetwork\": \"<boolean>\",\n          \"targetContentNetwork\": \"<boolean>\",\n          \"targetPartnerSearchNetwork\": \"<boolean>\"\n        },\n        \"targetCpa\": {\n          \"targetCpaMicros\": \"<long>\"\n        },\n        \"targetRoas\": {\n          \"targetRoas\": \"<number>\"\n        },\n        \"maximizeConversions\": {\n          \"targetCpaMicros\": \"<long>\"\n        },\n        \"manualCpc\": {\n          \"enhancedCpcEnabled\": \"<boolean>\"\n        },\n        \"geoTargetTypeSetting\": {\n          \"positiveGeoTargetType\": \"SEARCH_INTEREST\",\n          \"negativeGeoTargetType\": \"PRESENCE\"\n        }\n      },\n      \"update\": {\n        \"resourceName\": \"<string>\",\n        \"id\": \"<long>\",\n        \"name\": \"<string>\",\n        \"status\": \"REMOVED\",\n        \"advertisingChannelType\": \"SHOPPING\",\n        \"advertisingChannelSubType\": \"<string>\",\n        \"biddingStrategyType\": \"TARGET_CPA\",\n        \"campaignBudget\": \"<string>\",\n        \"startDate\": \"<string>\",\n        \"endDate\": \"<string>\",\n        \"networkSettings\": {\n          \"targetGoogleSearch\": \"<boolean>\",\n          \"targetSearchNetwork\": \"<boolean>\",\n          \"targetContentNetwork\": \"<boolean>\",\n          \"targetPartnerSearchNetwork\": \"<boolean>\"\n        },\n        \"targetCpa\": {\n          \"targetCpaMicros\": \"<long>\"\n        },\n        \"targetRoas\": {\n          \"targetRoas\": \"<number>\"\n        },\n        \"maximizeConversions\": {\n          \"targetCpaMicros\": \"<long>\"\n        },\n        \"manualCpc\": {\n          \"enhancedCpcEnabled\": \"<boolean>\"\n        },\n        \"geoTargetTypeSetting\": {\n          \"positiveGeoTargetType\": \"PRESENCE_OR_INTEREST\",\n          \"negativeGeoTargetType\": \"PRESENCE_OR_INTEREST\"\n        }\n      },\n      \"remove\": \"<string>\",\n      \"updateMask\": \"<string>\"\n    }\n  ],\n  \"partialFailure\": \"<boolean>\",\n  \"validateOnly\": \"<boolean>\"\n}",
+                              "options": {
+                                "raw": {
+                                  "headerFamily": "json",
+                                  "language": "json"
+                                }
+                              }
+                            },
+                            "url": {
+                              "raw": "{{baseUrl}}/v18/customers/:customerId/campaigns:mutate",
+                              "host": [
+                                "{{baseUrl}}"
+                              ],
+                              "path": [
+                                "v18",
+                                "customers",
+                                ":customerId",
+                                "campaigns:mutate"
+                              ],
+                              "variable": [
+                                {
+                                  "key": "customerId"
+                                }
+                              ]
+                            }
+                          },
+                          "status": "Bad Request",
+                          "code": 400,
+                          "_postman_previewlanguage": "json",
+                          "header": [
+                            {
+                              "key": "Content-Type",
+                              "value": "application/json"
+                            }
+                          ],
+                          "cookie": [],
+                          "responseTime": null,
+                          "body": "{\n  \"errors\": [\n    {\n      \"errorCode\": {\n        \"ut_8\": \"<string>\",\n        \"culpa_f\": \"<string>\"\n      },\n      \"message\": \"<string>\",\n      \"trigger\": {},\n      \"location\": {\n        \"fieldPathElements\": [\n          {\n            \"fieldName\": \"<string>\",\n            \"index\": \"<integer>\"\n          },\n          {\n            \"fieldName\": \"<string>\",\n            \"index\": \"<integer>\"\n          }\n        ]\n      }\n    },\n    {\n      \"errorCode\": {\n        \"incididunt_111\": \"<string>\"\n      },\n      \"message\": \"<string>\",\n      \"trigger\": {},\n      \"location\": {\n        \"fieldPathElements\": [\n          {\n            \"fieldName\": \"<string>\",\n            \"index\": \"<integer>\"\n          },\n          {\n            \"fieldName\": \"<string>\",\n            \"index\": \"<integer>\"\n          }\n        ]\n      }\n    }\n  ]\n}",
+                          "createdAt": "2026-07-28T01:45:04.000Z",
+                          "updatedAt": "2026-07-28T01:45:04.000Z",
+                          "uid": "35240-7a5dc475-a99b-4db9-8d41-29e39eca585c"
+                        },
+                        {
+                          "id": "b1ab9718-0dff-41f8-9865-1a484518777d",
+                          "name": "Unauthorized",
+                          "originalRequest": {
+                            "method": "POST",
+                            "header": [
+                              {
+                                "description": "(Required) Developer token for API access. Obtain from the Google Ads API Center\nin your manager account.\n",
+                                "key": "developer-token",
+                                "value": "<string>"
+                              },
+                              {
+                                "description": "The customer ID of the manager account making the request on behalf\nof a client account. Required when authenticating as a manager account.\n",
+                                "key": "login-customer-id",
+                                "value": "<string>"
+                              },
+                              {
+                                "key": "Content-Type",
+                                "value": "application/json"
+                              },
+                              {
+                                "key": "Accept",
+                                "value": "application/json"
+                              },
+                              {
+                                "description": "Added as a part of security scheme: oauth2",
+                                "key": "Authorization",
+                                "value": "<token>"
+                              }
+                            ],
+                            "body": {
+                              "mode": "raw",
+                              "raw": "{\n  \"operations\": [\n    {\n      \"create\": {\n        \"resourceName\": \"<string>\",\n        \"id\": \"<long>\",\n        \"name\": \"<string>\",\n        \"status\": \"UNSPECIFIED\",\n        \"advertisingChannelType\": \"SEARCH\",\n        \"advertisingChannelSubType\": \"<string>\",\n        \"biddingStrategyType\": \"MAXIMIZE_CONVERSIONS\",\n        \"campaignBudget\": \"<string>\",\n        \"startDate\": \"<string>\",\n        \"endDate\": \"<string>\",\n        \"networkSettings\": {\n          \"targetGoogleSearch\": \"<boolean>\",\n          \"targetSearchNetwork\": \"<boolean>\",\n          \"targetContentNetwork\": \"<boolean>\",\n          \"targetPartnerSearchNetwork\": \"<boolean>\"\n        },\n        \"targetCpa\": {\n          \"targetCpaMicros\": \"<long>\"\n        },\n        \"targetRoas\": {\n          \"targetRoas\": \"<number>\"\n        },\n        \"maximizeConversions\": {\n          \"targetCpaMicros\": \"<long>\"\n        },\n        \"manualCpc\": {\n          \"enhancedCpcEnabled\": \"<boolean>\"\n        },\n        \"geoTargetTypeSetting\": {\n          \"positiveGeoTargetType\": \"PRESENCE\",\n          \"negativeGeoTargetType\": \"PRESENCE_OR_INTEREST\"\n        }\n      },\n      \"update\": {\n        \"resourceName\": \"<string>\",\n        \"id\": \"<long>\",\n        \"name\": \"<string>\",\n        \"status\": \"PAUSED\",\n        \"advertisingChannelType\": \"DEMAND_GEN\",\n        \"advertisingChannelSubType\": \"<string>\",\n        \"biddingStrategyType\": \"TARGET_ROAS\",\n        \"campaignBudget\": \"<string>\",\n        \"startDate\": \"<string>\",\n        \"endDate\": \"<string>\",\n        \"networkSettings\": {\n          \"targetGoogleSearch\": \"<boolean>\",\n          \"targetSearchNetwork\": \"<boolean>\",\n          \"targetContentNetwork\": \"<boolean>\",\n          \"targetPartnerSearchNetwork\": \"<boolean>\"\n        },\n        \"targetCpa\": {\n          \"targetCpaMicros\": \"<long>\"\n        },\n        \"targetRoas\": {\n          \"targetRoas\": \"<number>\"\n        },\n        \"maximizeConversions\": {\n          \"targetCpaMicros\": \"<long>\"\n        },\n        \"manualCpc\": {\n          \"enhancedCpcEnabled\": \"<boolean>\"\n        },\n        \"geoTargetTypeSetting\": {\n          \"positiveGeoTargetType\": \"PRESENCE_OR_INTEREST\",\n          \"negativeGeoTargetType\": \"PRESENCE\"\n        }\n      },\n      \"remove\": \"<string>\",\n      \"updateMask\": \"<string>\"\n    },\n    {\n      \"create\": {\n        \"resourceName\": \"<string>\",\n        \"id\": \"<long>\",\n        \"name\": \"<string>\",\n        \"status\": \"UNSPECIFIED\",\n        \"advertisingChannelType\": \"VIDEO\",\n        \"advertisingChannelSubType\": \"<string>\",\n        \"biddingStrategyType\": \"MANUAL_CPC\",\n        \"campaignBudget\": \"<string>\",\n        \"startDate\": \"<string>\",\n        \"endDate\": \"<string>\",\n        \"networkSettings\": {\n          \"targetGoogleSearch\": \"<boolean>\",\n          \"targetSearchNetwork\": \"<boolean>\",\n          \"targetContentNetwork\": \"<boolean>\",\n          \"targetPartnerSearchNetwork\": \"<boolean>\"\n        },\n        \"targetCpa\": {\n          \"targetCpaMicros\": \"<long>\"\n        },\n        \"targetRoas\": {\n          \"targetRoas\": \"<number>\"\n        },\n        \"maximizeConversions\": {\n          \"targetCpaMicros\": \"<long>\"\n        },\n        \"manualCpc\": {\n          \"enhancedCpcEnabled\": \"<boolean>\"\n        },\n        \"geoTargetTypeSetting\": {\n          \"positiveGeoTargetType\": \"SEARCH_INTEREST\",\n          \"negativeGeoTargetType\": \"PRESENCE\"\n        }\n      },\n      \"update\": {\n        \"resourceName\": \"<string>\",\n        \"id\": \"<long>\",\n        \"name\": \"<string>\",\n        \"status\": \"REMOVED\",\n        \"advertisingChannelType\": \"SHOPPING\",\n        \"advertisingChannelSubType\": \"<string>\",\n        \"biddingStrategyType\": \"TARGET_CPA\",\n        \"campaignBudget\": \"<string>\",\n        \"startDate\": \"<string>\",\n        \"endDate\": \"<string>\",\n        \"networkSettings\": {\n          \"targetGoogleSearch\": \"<boolean>\",\n          \"targetSearchNetwork\": \"<boolean>\",\n          \"targetContentNetwork\": \"<boolean>\",\n          \"targetPartnerSearchNetwork\": \"<boolean>\"\n        },\n        \"targetCpa\": {\n          \"targetCpaMicros\": \"<long>\"\n        },\n        \"targetRoas\": {\n          \"targetRoas\": \"<number>\"\n        },\n        \"maximizeConversions\": {\n          \"targetCpaMicros\": \"<long>\"\n        },\n        \"manualCpc\": {\n          \"enhancedCpcEnabled\": \"<boolean>\"\n        },\n        \"geoTargetTypeSetting\": {\n          \"positiveGeoTargetType\": \"PRESENCE_OR_INTEREST\",\n          \"negativeGeoTargetType\": \"PRESENCE_OR_INTEREST\"\n        }\n      },\n      \"remove\": \"<string>\",\n      \"updateMask\": \"<string>\"\n    }\n  ],\n  \"partialFailure\": \"<boolean>\",\n  \"validateOnly\": \"<boolean>\"\n}",
+                              "options": {
+                                "raw": {
+                                  "headerFamily": "json",
+                                  "language": "json"
+                                }
+                              }
+                            },
+                            "url": {
+                              "raw": "{{baseUrl}}/v18/customers/:customerId/campaigns:mutate",
+                              "host": [
+                                "{{baseUrl}}"
+                              ],
+                              "path": [
+                                "v18",
+                                "customers",
+                                ":customerId",
+                                "campaigns:mutate"
+                              ],
+                              "variable": [
+                                {
+                                  "key": "customerId"
+                                }
+                              ]
+                            }
+                          },
+                          "status": "Unauthorized",
+                          "code": 401,
+                          "_postman_previewlanguage": "json",
+                          "header": [
+                            {
+                              "key": "Content-Type",
+                              "value": "application/json"
+                            }
+                          ],
+                          "cookie": [],
+                          "responseTime": null,
+                          "body": "{\n  \"errors\": [\n    {\n      \"errorCode\": {\n        \"ut_8\": \"<string>\",\n        \"culpa_f\": \"<string>\"\n      },\n      \"message\": \"<string>\",\n      \"trigger\": {},\n      \"location\": {\n        \"fieldPathElements\": [\n          {\n            \"fieldName\": \"<string>\",\n            \"index\": \"<integer>\"\n          },\n          {\n            \"fieldName\": \"<string>\",\n            \"index\": \"<integer>\"\n          }\n        ]\n      }\n    },\n    {\n      \"errorCode\": {\n        \"incididunt_111\": \"<string>\"\n      },\n      \"message\": \"<string>\",\n      \"trigger\": {},\n      \"location\": {\n        \"fieldPathElements\": [\n          {\n            \"fieldName\": \"<string>\",\n            \"index\": \"<integer>\"\n          },\n          {\n            \"fieldName\": \"<string>\",\n            \"index\": \"<integer>\"\n          }\n        ]\n      }\n    }\n  ]\n}",
+                          "createdAt": "2026-07-28T01:45:04.000Z",
+                          "updatedAt": "2026-07-28T01:45:04.000Z",
+                          "uid": "35240-b1ab9718-0dff-41f8-9865-1a484518777d"
+                        },
+                        {
+                          "id": "ad3002f6-6704-4b8f-a6dd-0149c69222e8",
+                          "name": "Forbidden",
+                          "originalRequest": {
+                            "method": "POST",
+                            "header": [
+                              {
+                                "description": "(Required) Developer token for API access. Obtain from the Google Ads API Center\nin your manager account.\n",
+                                "key": "developer-token",
+                                "value": "<string>"
+                              },
+                              {
+                                "description": "The customer ID of the manager account making the request on behalf\nof a client account. Required when authenticating as a manager account.\n",
+                                "key": "login-customer-id",
+                                "value": "<string>"
+                              },
+                              {
+                                "key": "Content-Type",
+                                "value": "application/json"
+                              },
+                              {
+                                "key": "Accept",
+                                "value": "application/json"
+                              },
+                              {
+                                "description": "Added as a part of security scheme: oauth2",
+                                "key": "Authorization",
+                                "value": "<token>"
+                              }
+                            ],
+                            "body": {
+                              "mode": "raw",
+                              "raw": "{\n  \"operations\": [\n    {\n      \"create\": {\n        \"resourceName\": \"<string>\",\n        \"id\": \"<long>\",\n        \"name\": \"<string>\",\n        \"status\": \"UNSPECIFIED\",\n        \"advertisingChannelType\": \"SEARCH\",\n        \"advertisingChannelSubType\": \"<string>\",\n        \"biddingStrategyType\": \"MAXIMIZE_CONVERSIONS\",\n        \"campaignBudget\": \"<string>\",\n        \"startDate\": \"<string>\",\n        \"endDate\": \"<string>\",\n        \"networkSettings\": {\n          \"targetGoogleSearch\": \"<boolean>\",\n          \"targetSearchNetwork\": \"<boolean>\",\n          \"targetContentNetwork\": \"<boolean>\",\n          \"targetPartnerSearchNetwork\": \"<boolean>\"\n        },\n        \"targetCpa\": {\n          \"targetCpaMicros\": \"<long>\"\n        },\n        \"targetRoas\": {\n          \"targetRoas\": \"<number>\"\n        },\n        \"maximizeConversions\": {\n          \"targetCpaMicros\": \"<long>\"\n        },\n        \"manualCpc\": {\n          \"enhancedCpcEnabled\": \"<boolean>\"\n        },\n        \"geoTargetTypeSetting\": {\n          \"positiveGeoTargetType\": \"PRESENCE\",\n          \"negativeGeoTargetType\": \"PRESENCE_OR_INTEREST\"\n        }\n      },\n      \"update\": {\n        \"resourceName\": \"<string>\",\n        \"id\": \"<long>\",\n        \"name\": \"<string>\",\n        \"status\": \"PAUSED\",\n        \"advertisingChannelType\": \"DEMAND_GEN\",\n        \"advertisingChannelSubType\": \"<string>\",\n        \"biddingStrategyType\": \"TARGET_ROAS\",\n        \"campaignBudget\": \"<string>\",\n        \"startDate\": \"<string>\",\n        \"endDate\": \"<string>\",\n        \"networkSettings\": {\n          \"targetGoogleSearch\": \"<boolean>\",\n          \"targetSearchNetwork\": \"<boolean>\",\n          \"targetContentNetwork\": \"<boolean>\",\n          \"targetPartnerSearchNetwork\": \"<boolean>\"\n        },\n        \"targetCpa\": {\n          \"targetCpaMicros\": \"<long>\"\n        },\n        \"targetRoas\": {\n          \"targetRoas\": \"<number>\"\n        },\n        \"maximizeConversions\": {\n          \"targetCpaMicros\": \"<long>\"\n        },\n        \"manualCpc\": {\n          \"enhancedCpcEnabled\": \"<boolean>\"\n        },\n        \"geoTargetTypeSetting\": {\n          \"positiveGeoTargetType\": \"PRESENCE_OR_INTEREST\",\n          \"negativeGeoTargetType\": \"PRESENCE\"\n        }\n      },\n      \"remove\": \"<string>\",\n      \"updateMask\": \"<string>\"\n    },\n    {\n      \"create\": {\n        \"resourceName\": \"<string>\",\n        \"id\": \"<long>\",\n        \"name\": \"<string>\",\n        \"status\": \"UNSPECIFIED\",\n        \"advertisingChannelType\": \"VIDEO\",\n        \"advertisingChannelSubType\": \"<string>\",\n        \"biddingStrategyType\": \"MANUAL_CPC\",\n        \"campaignBudget\": \"<string>\",\n        \"startDate\": \"<string>\",\n        \"endDate\": \"<string>\",\n        \"networkSettings\": {\n          \"targetGoogleSearch\": \"<boolean>\",\n          \"targetSearchNetwork\": \"<boolean>\",\n          \"targetContentNetwork\": \"<boolean>\",\n          \"targetPartnerSearchNetwork\": \"<boolean>\"\n        },\n        \"targetCpa\": {\n          \"targetCpaMicros\": \"<long>\"\n        },\n        \"targetRoas\": {\n          \"targetRoas\": \"<number>\"\n        },\n        \"maximizeConversions\": {\n          \"targetCpaMicros\": \"<long>\"\n        },\n        \"manualCpc\": {\n          \"enhancedCpcEnabled\": \"<boolean>\"\n        },\n        \"geoTargetTypeSetting\": {\n          \"positiveGeoTargetType\": \"SEARCH_INTEREST\",\n          \"negativeGeoTargetType\": \"PRESENCE\"\n        }\n      },\n      \"update\": {\n        \"resourceName\": \"<string>\",\n        \"id\": \"<long>\",\n        \"name\": \"<string>\",\n        \"status\": \"REMOVED\",\n        \"advertisingChannelType\": \"SHOPPING\",\n        \"advertisingChannelSubType\": \"<string>\",\n        \"biddingStrategyType\": \"TARGET_CPA\",\n        \"campaignBudget\": \"<string>\",\n        \"startDate\": \"<string>\",\n        \"endDate\": \"<string>\",\n        \"networkSettings\": {\n          \"targetGoogleSearch\": \"<boolean>\",\n          \"targetSearchNetwork\": \"<boolean>\",\n          \"targetContentNetwork\": \"<boolean>\",\n          \"targetPartnerSearchNetwork\": \"<boolean>\"\n        },\n        \"targetCpa\": {\n          \"targetCpaMicros\": \"<long>\"\n        },\n        \"targetRoas\": {\n          \"targetRoas\": \"<number>\"\n        },\n        \"maximizeConversions\": {\n          \"targetCpaMicros\": \"<long>\"\n        },\n        \"manualCpc\": {\n          \"enhancedCpcEnabled\": \"<boolean>\"\n        },\n        \"geoTargetTypeSetting\": {\n          \"positiveGeoTargetType\": \"PRESENCE_OR_INTEREST\",\n          \"negativeGeoTargetType\": \"PRESENCE_OR_INTEREST\"\n        }\n      },\n      \"remove\": \"<string>\",\n      \"updateMask\": \"<string>\"\n    }\n  ],\n  \"partialFailure\": \"<boolean>\",\n  \"validateOnly\": \"<boolean>\"\n}",
+                              "options": {
+                                "raw": {
+                                  "headerFamily": "json",
+                                  "language": "json"
+                                }
+                              }
+                            },
+                            "url": {
+                              "raw": "{{baseUrl}}/v18/customers/:customerId/campaigns:mutate",
+                              "host": [
+                                "{{baseUrl}}"
+                              ],
+                              "path": [
+                                "v18",
+                                "customers",
+                                ":customerId",
+                                "campaigns:mutate"
+                              ],
+                              "variable": [
+                                {
+                                  "key": "customerId"
+                                }
+                              ]
+                            }
+                          },
+                          "status": "Forbidden",
+                          "code": 403,
+                          "_postman_previewlanguage": "json",
+                          "header": [
+                            {
+                              "key": "Content-Type",
+                              "value": "application/json"
+                            }
+                          ],
+                          "cookie": [],
+                          "responseTime": null,
+                          "body": "{\n  \"errors\": [\n    {\n      \"errorCode\": {\n        \"ut_8\": \"<string>\",\n        \"culpa_f\": \"<string>\"\n      },\n      \"message\": \"<string>\",\n      \"trigger\": {},\n      \"location\": {\n        \"fieldPathElements\": [\n          {\n            \"fieldName\": \"<string>\",\n            \"index\": \"<integer>\"\n          },\n          {\n            \"fieldName\": \"<string>\",\n            \"index\": \"<integer>\"\n          }\n        ]\n      }\n    },\n    {\n      \"errorCode\": {\n        \"incididunt_111\": \"<string>\"\n      },\n      \"message\": \"<string>\",\n      \"trigger\": {},\n      \"location\": {\n        \"fieldPathElements\": [\n          {\n            \"fieldName\": \"<string>\",\n            \"index\": \"<integer>\"\n          },\n          {\n            \"fieldName\": \"<string>\",\n            \"index\": \"<integer>\"\n          }\n        ]\n      }\n    }\n  ]\n}",
+                          "createdAt": "2026-07-28T01:45:04.000Z",
+                          "updatedAt": "2026-07-28T01:45:04.000Z",
+                          "uid": "35240-ad3002f6-6704-4b8f-a6dd-0149c69222e8"
+                        }
+                      ],
+                      "createdAt": "2026-07-28T01:45:04.000Z",
+                      "updatedAt": "2026-07-28T01:45:04.000Z",
+                      "uid": "35240-18730c9d-44fe-4fbd-9e0d-82a4b35e3399"
+                    }
+                  ],
+                  "id": "e5ab1324-5568-4fd5-85a3-cdf11061fc79",
+                  "createdAt": "2026-07-28T01:45:04.000Z",
+                  "updatedAt": "2026-07-28T01:45:04.000Z",
+                  "uid": "35240-e5ab1324-5568-4fd5-85a3-cdf11061fc79"
+                },
+                {
+                  "name": "campaignBudgets:mutate",
+                  "item": [
+                    {
+                      "name": "Google Ads Create, Update, or Remove Campaign Budgets",
+                      "id": "c962ccfa-8c69-4162-b4ea-a5ead0fefcca",
+                      "protocolProfileBehavior": {
+                        "disableBodyPruning": true
+                      },
+                      "request": {
+                        "method": "POST",
+                        "header": [
+                          {
+                            "description": "(Required) Developer token for API access. Obtain from the Google Ads API Center\nin your manager account.\n",
+                            "key": "developer-token",
+                            "value": "<string>"
+                          },
+                          {
+                            "description": "The customer ID of the manager account making the request on behalf\nof a client account. Required when authenticating as a manager account.\n",
+                            "key": "login-customer-id",
+                            "value": "<string>"
+                          },
+                          {
+                            "key": "Content-Type",
+                            "value": "application/json"
+                          },
+                          {
+                            "key": "Accept",
+                            "value": "application/json"
+                          }
+                        ],
+                        "body": {
+                          "mode": "raw",
+                          "raw": "{\n  \"operations\": [\n    {\n      \"create\": {\n        \"resourceName\": \"<string>\",\n        \"id\": \"<long>\",\n        \"name\": \"<string>\",\n        \"amountMicros\": \"<long>\",\n        \"totalAmountMicros\": \"<long>\",\n        \"deliveryMethod\": \"UNSPECIFIED\",\n        \"status\": \"ENABLED\",\n        \"explicitlyShared\": \"<boolean>\"\n      },\n      \"update\": {\n        \"resourceName\": \"<string>\",\n        \"id\": \"<long>\",\n        \"name\": \"<string>\",\n        \"amountMicros\": \"<long>\",\n        \"totalAmountMicros\": \"<long>\",\n        \"deliveryMethod\": \"ACCELERATED\",\n        \"status\": \"ENABLED\",\n        \"explicitlyShared\": \"<boolean>\"\n      },\n      \"remove\": \"<string>\",\n      \"updateMask\": \"<string>\"\n    },\n    {\n      \"create\": {\n        \"resourceName\": \"<string>\",\n        \"id\": \"<long>\",\n        \"name\": \"<string>\",\n        \"amountMicros\": \"<long>\",\n        \"totalAmountMicros\": \"<long>\",\n        \"deliveryMethod\": \"ACCELERATED\",\n        \"status\": \"UNKNOWN\",\n        \"explicitlyShared\": \"<boolean>\"\n      },\n      \"update\": {\n        \"resourceName\": \"<string>\",\n        \"id\": \"<long>\",\n        \"name\": \"<string>\",\n        \"amountMicros\": \"<long>\",\n        \"totalAmountMicros\": \"<long>\",\n        \"deliveryMethod\": \"STANDARD\",\n        \"status\": \"REMOVED\",\n        \"explicitlyShared\": \"<boolean>\"\n      },\n      \"remove\": \"<string>\",\n      \"updateMask\": \"<string>\"\n    }\n  ],\n  \"partialFailure\": \"<boolean>\",\n  \"validateOnly\": \"<boolean>\"\n}",
+                          "options": {
+                            "raw": {
+                              "headerFamily": "json",
+                              "language": "json"
+                            }
+                          }
+                        },
+                        "url": {
+                          "raw": "{{baseUrl}}/v18/customers/:customerId/campaignBudgets:mutate",
+                          "host": [
+                            "{{baseUrl}}"
+                          ],
+                          "path": [
+                            "v18",
+                            "customers",
+                            ":customerId",
+                            "campaignBudgets:mutate"
+                          ],
+                          "variable": [
+                            {
+                              "id": "ce00a4c4-4db4-4aae-9a1d-6a1c41223b91",
+                              "key": "customerId",
+                              "value": "2189211542",
+                              "description": "(Required) The Google Ads customer ID (without dashes), e.g. 1234567890."
+                            }
+                          ]
+                        },
+                        "description": "Creates, updates, or removes campaign budgets. Campaign budgets\ndefine the daily or total spending limits for one or more campaigns.\n"
+                      },
+                      "response": [
+                        {
+                          "id": "b182b140-e421-4357-8952-4aba776f3244",
+                          "name": "Successful Response",
+                          "originalRequest": {
+                            "method": "POST",
+                            "header": [
+                              {
+                                "description": "(Required) Developer token for API access. Obtain from the Google Ads API Center\nin your manager account.\n",
+                                "key": "developer-token",
+                                "value": "<string>"
+                              },
+                              {
+                                "description": "The customer ID of the manager account making the request on behalf\nof a client account. Required when authenticating as a manager account.\n",
+                                "key": "login-customer-id",
+                                "value": "<string>"
+                              },
+                              {
+                                "key": "Content-Type",
+                                "value": "application/json"
+                              },
+                              {
+                                "key": "Accept",
+                                "value": "application/json"
+                              },
+                              {
+                                "description": "Added as a part of security scheme: oauth2",
+                                "key": "Authorization",
+                                "value": "<token>"
+                              }
+                            ],
+                            "body": {
+                              "mode": "raw",
+                              "raw": "{\n  \"operations\": [\n    {\n      \"create\": {\n        \"resourceName\": \"<string>\",\n        \"id\": \"<long>\",\n        \"name\": \"<string>\",\n        \"amountMicros\": \"<long>\",\n        \"totalAmountMicros\": \"<long>\",\n        \"deliveryMethod\": \"UNSPECIFIED\",\n        \"status\": \"ENABLED\",\n        \"explicitlyShared\": \"<boolean>\"\n      },\n      \"update\": {\n        \"resourceName\": \"<string>\",\n        \"id\": \"<long>\",\n        \"name\": \"<string>\",\n        \"amountMicros\": \"<long>\",\n        \"totalAmountMicros\": \"<long>\",\n        \"deliveryMethod\": \"ACCELERATED\",\n        \"status\": \"ENABLED\",\n        \"explicitlyShared\": \"<boolean>\"\n      },\n      \"remove\": \"<string>\",\n      \"updateMask\": \"<string>\"\n    },\n    {\n      \"create\": {\n        \"resourceName\": \"<string>\",\n        \"id\": \"<long>\",\n        \"name\": \"<string>\",\n        \"amountMicros\": \"<long>\",\n        \"totalAmountMicros\": \"<long>\",\n        \"deliveryMethod\": \"ACCELERATED\",\n        \"status\": \"UNKNOWN\",\n        \"explicitlyShared\": \"<boolean>\"\n      },\n      \"update\": {\n        \"resourceName\": \"<string>\",\n        \"id\": \"<long>\",\n        \"name\": \"<string>\",\n        \"amountMicros\": \"<long>\",\n        \"totalAmountMicros\": \"<long>\",\n        \"deliveryMethod\": \"STANDARD\",\n        \"status\": \"REMOVED\",\n        \"explicitlyShared\": \"<boolean>\"\n      },\n      \"remove\": \"<string>\",\n      \"updateMask\": \"<string>\"\n    }\n  ],\n  \"partialFailure\": \"<boolean>\",\n  \"validateOnly\": \"<boolean>\"\n}",
+                              "options": {
+                                "raw": {
+                                  "headerFamily": "json",
+                                  "language": "json"
+                                }
+                              }
+                            },
+                            "url": {
+                              "raw": "{{baseUrl}}/v18/customers/:customerId/campaignBudgets:mutate",
+                              "host": [
+                                "{{baseUrl}}"
+                              ],
+                              "path": [
+                                "v18",
+                                "customers",
+                                ":customerId",
+                                "campaignBudgets:mutate"
+                              ],
+                              "variable": [
+                                {
+                                  "key": "customerId"
+                                }
+                              ]
+                            }
+                          },
+                          "status": "OK",
+                          "code": 200,
+                          "_postman_previewlanguage": "json",
+                          "header": [
+                            {
+                              "key": "Content-Type",
+                              "value": "application/json"
+                            }
+                          ],
+                          "cookie": [],
+                          "responseTime": null,
+                          "body": "{\n  \"results\": [\n    {\n      \"resourceName\": \"<string>\"\n    },\n    {\n      \"resourceName\": \"<string>\"\n    }\n  ],\n  \"partialFailureError\": {\n    \"code\": \"<integer>\",\n    \"message\": \"<string>\"\n  }\n}",
+                          "createdAt": "2026-07-28T01:45:04.000Z",
+                          "updatedAt": "2026-07-28T01:45:04.000Z",
+                          "uid": "35240-b182b140-e421-4357-8952-4aba776f3244"
+                        },
+                        {
+                          "id": "ab14df45-1748-4fc5-9acb-983d9d2a6980",
+                          "name": "Bad Request",
+                          "originalRequest": {
+                            "method": "POST",
+                            "header": [
+                              {
+                                "description": "(Required) Developer token for API access. Obtain from the Google Ads API Center\nin your manager account.\n",
+                                "key": "developer-token",
+                                "value": "<string>"
+                              },
+                              {
+                                "description": "The customer ID of the manager account making the request on behalf\nof a client account. Required when authenticating as a manager account.\n",
+                                "key": "login-customer-id",
+                                "value": "<string>"
+                              },
+                              {
+                                "key": "Content-Type",
+                                "value": "application/json"
+                              },
+                              {
+                                "key": "Accept",
+                                "value": "application/json"
+                              },
+                              {
+                                "description": "Added as a part of security scheme: oauth2",
+                                "key": "Authorization",
+                                "value": "<token>"
+                              }
+                            ],
+                            "body": {
+                              "mode": "raw",
+                              "raw": "{\n  \"operations\": [\n    {\n      \"create\": {\n        \"resourceName\": \"<string>\",\n        \"id\": \"<long>\",\n        \"name\": \"<string>\",\n        \"amountMicros\": \"<long>\",\n        \"totalAmountMicros\": \"<long>\",\n        \"deliveryMethod\": \"UNSPECIFIED\",\n        \"status\": \"ENABLED\",\n        \"explicitlyShared\": \"<boolean>\"\n      },\n      \"update\": {\n        \"resourceName\": \"<string>\",\n        \"id\": \"<long>\",\n        \"name\": \"<string>\",\n        \"amountMicros\": \"<long>\",\n        \"totalAmountMicros\": \"<long>\",\n        \"deliveryMethod\": \"ACCELERATED\",\n        \"status\": \"ENABLED\",\n        \"explicitlyShared\": \"<boolean>\"\n      },\n      \"remove\": \"<string>\",\n      \"updateMask\": \"<string>\"\n    },\n    {\n      \"create\": {\n        \"resourceName\": \"<string>\",\n        \"id\": \"<long>\",\n        \"name\": \"<string>\",\n        \"amountMicros\": \"<long>\",\n        \"totalAmountMicros\": \"<long>\",\n        \"deliveryMethod\": \"ACCELERATED\",\n        \"status\": \"UNKNOWN\",\n        \"explicitlyShared\": \"<boolean>\"\n      },\n      \"update\": {\n        \"resourceName\": \"<string>\",\n        \"id\": \"<long>\",\n        \"name\": \"<string>\",\n        \"amountMicros\": \"<long>\",\n        \"totalAmountMicros\": \"<long>\",\n        \"deliveryMethod\": \"STANDARD\",\n        \"status\": \"REMOVED\",\n        \"explicitlyShared\": \"<boolean>\"\n      },\n      \"remove\": \"<string>\",\n      \"updateMask\": \"<string>\"\n    }\n  ],\n  \"partialFailure\": \"<boolean>\",\n  \"validateOnly\": \"<boolean>\"\n}",
+                              "options": {
+                                "raw": {
+                                  "headerFamily": "json",
+                                  "language": "json"
+                                }
+                              }
+                            },
+                            "url": {
+                              "raw": "{{baseUrl}}/v18/customers/:customerId/campaignBudgets:mutate",
+                              "host": [
+                                "{{baseUrl}}"
+                              ],
+                              "path": [
+                                "v18",
+                                "customers",
+                                ":customerId",
+                                "campaignBudgets:mutate"
+                              ],
+                              "variable": [
+                                {
+                                  "key": "customerId"
+                                }
+                              ]
+                            }
+                          },
+                          "status": "Bad Request",
+                          "code": 400,
+                          "_postman_previewlanguage": "json",
+                          "header": [
+                            {
+                              "key": "Content-Type",
+                              "value": "application/json"
+                            }
+                          ],
+                          "cookie": [],
+                          "responseTime": null,
+                          "body": "{\n  \"errors\": [\n    {\n      \"errorCode\": {\n        \"ut_8\": \"<string>\",\n        \"culpa_f\": \"<string>\"\n      },\n      \"message\": \"<string>\",\n      \"trigger\": {},\n      \"location\": {\n        \"fieldPathElements\": [\n          {\n            \"fieldName\": \"<string>\",\n            \"index\": \"<integer>\"\n          },\n          {\n            \"fieldName\": \"<string>\",\n            \"index\": \"<integer>\"\n          }\n        ]\n      }\n    },\n    {\n      \"errorCode\": {\n        \"incididunt_111\": \"<string>\"\n      },\n      \"message\": \"<string>\",\n      \"trigger\": {},\n      \"location\": {\n        \"fieldPathElements\": [\n          {\n            \"fieldName\": \"<string>\",\n            \"index\": \"<integer>\"\n          },\n          {\n            \"fieldName\": \"<string>\",\n            \"index\": \"<integer>\"\n          }\n        ]\n      }\n    }\n  ]\n}",
+                          "createdAt": "2026-07-28T01:45:04.000Z",
+                          "updatedAt": "2026-07-28T01:45:04.000Z",
+                          "uid": "35240-ab14df45-1748-4fc5-9acb-983d9d2a6980"
+                        },
+                        {
+                          "id": "7836c75f-9df7-419a-9216-e65e1aeed392",
+                          "name": "Unauthorized",
+                          "originalRequest": {
+                            "method": "POST",
+                            "header": [
+                              {
+                                "description": "(Required) Developer token for API access. Obtain from the Google Ads API Center\nin your manager account.\n",
+                                "key": "developer-token",
+                                "value": "<string>"
+                              },
+                              {
+                                "description": "The customer ID of the manager account making the request on behalf\nof a client account. Required when authenticating as a manager account.\n",
+                                "key": "login-customer-id",
+                                "value": "<string>"
+                              },
+                              {
+                                "key": "Content-Type",
+                                "value": "application/json"
+                              },
+                              {
+                                "key": "Accept",
+                                "value": "application/json"
+                              },
+                              {
+                                "description": "Added as a part of security scheme: oauth2",
+                                "key": "Authorization",
+                                "value": "<token>"
+                              }
+                            ],
+                            "body": {
+                              "mode": "raw",
+                              "raw": "{\n  \"operations\": [\n    {\n      \"create\": {\n        \"resourceName\": \"<string>\",\n        \"id\": \"<long>\",\n        \"name\": \"<string>\",\n        \"amountMicros\": \"<long>\",\n        \"totalAmountMicros\": \"<long>\",\n        \"deliveryMethod\": \"UNSPECIFIED\",\n        \"status\": \"ENABLED\",\n        \"explicitlyShared\": \"<boolean>\"\n      },\n      \"update\": {\n        \"resourceName\": \"<string>\",\n        \"id\": \"<long>\",\n        \"name\": \"<string>\",\n        \"amountMicros\": \"<long>\",\n        \"totalAmountMicros\": \"<long>\",\n        \"deliveryMethod\": \"ACCELERATED\",\n        \"status\": \"ENABLED\",\n        \"explicitlyShared\": \"<boolean>\"\n      },\n      \"remove\": \"<string>\",\n      \"updateMask\": \"<string>\"\n    },\n    {\n      \"create\": {\n        \"resourceName\": \"<string>\",\n        \"id\": \"<long>\",\n        \"name\": \"<string>\",\n        \"amountMicros\": \"<long>\",\n        \"totalAmountMicros\": \"<long>\",\n        \"deliveryMethod\": \"ACCELERATED\",\n        \"status\": \"UNKNOWN\",\n        \"explicitlyShared\": \"<boolean>\"\n      },\n      \"update\": {\n        \"resourceName\": \"<string>\",\n        \"id\": \"<long>\",\n        \"name\": \"<string>\",\n        \"amountMicros\": \"<long>\",\n        \"totalAmountMicros\": \"<long>\",\n        \"deliveryMethod\": \"STANDARD\",\n        \"status\": \"REMOVED\",\n        \"explicitlyShared\": \"<boolean>\"\n      },\n      \"remove\": \"<string>\",\n      \"updateMask\": \"<string>\"\n    }\n  ],\n  \"partialFailure\": \"<boolean>\",\n  \"validateOnly\": \"<boolean>\"\n}",
+                              "options": {
+                                "raw": {
+                                  "headerFamily": "json",
+                                  "language": "json"
+                                }
+                              }
+                            },
+                            "url": {
+                              "raw": "{{baseUrl}}/v18/customers/:customerId/campaignBudgets:mutate",
+                              "host": [
+                                "{{baseUrl}}"
+                              ],
+                              "path": [
+                                "v18",
+                                "customers",
+                                ":customerId",
+                                "campaignBudgets:mutate"
+                              ],
+                              "variable": [
+                                {
+                                  "key": "customerId"
+                                }
+                              ]
+                            }
+                          },
+                          "status": "Unauthorized",
+                          "code": 401,
+                          "_postman_previewlanguage": "json",
+                          "header": [
+                            {
+                              "key": "Content-Type",
+                              "value": "application/json"
+                            }
+                          ],
+                          "cookie": [],
+                          "responseTime": null,
+                          "body": "{\n  \"errors\": [\n    {\n      \"errorCode\": {\n        \"ut_8\": \"<string>\",\n        \"culpa_f\": \"<string>\"\n      },\n      \"message\": \"<string>\",\n      \"trigger\": {},\n      \"location\": {\n        \"fieldPathElements\": [\n          {\n            \"fieldName\": \"<string>\",\n            \"index\": \"<integer>\"\n          },\n          {\n            \"fieldName\": \"<string>\",\n            \"index\": \"<integer>\"\n          }\n        ]\n      }\n    },\n    {\n      \"errorCode\": {\n        \"incididunt_111\": \"<string>\"\n      },\n      \"message\": \"<string>\",\n      \"trigger\": {},\n      \"location\": {\n        \"fieldPathElements\": [\n          {\n            \"fieldName\": \"<string>\",\n            \"index\": \"<integer>\"\n          },\n          {\n            \"fieldName\": \"<string>\",\n            \"index\": \"<integer>\"\n          }\n        ]\n      }\n    }\n  ]\n}",
+                          "createdAt": "2026-07-28T01:45:04.000Z",
+                          "updatedAt": "2026-07-28T01:45:04.000Z",
+                          "uid": "35240-7836c75f-9df7-419a-9216-e65e1aeed392"
+                        }
+                      ],
+                      "createdAt": "2026-07-28T01:45:04.000Z",
+                      "updatedAt": "2026-07-28T01:45:04.000Z",
+                      "uid": "35240-c962ccfa-8c69-4162-b4ea-a5ead0fefcca"
+                    }
+                  ],
+                  "id": "bff1982d-db7f-4f7e-ba5a-613abf68dbc1",
+                  "createdAt": "2026-07-28T01:45:04.000Z",
+                  "updatedAt": "2026-07-28T01:45:04.000Z",
+                  "uid": "35240-bff1982d-db7f-4f7e-ba5a-613abf68dbc1"
+                }
+              ],
+              "id": "73af95df-e046-4574-a36c-39d14867d42a",
+              "createdAt": "2026-07-28T01:45:04.000Z",
+              "updatedAt": "2026-07-28T01:45:04.000Z",
+              "uid": "35240-73af95df-e046-4574-a36c-39d14867d42a"
+            }
+          ],
+          "id": "83000332-fba2-4bd3-bfe3-28a1dc9f3174",
+          "createdAt": "2026-07-28T01:45:04.000Z",
+          "updatedAt": "2026-07-28T01:45:04.000Z",
+          "uid": "35240-83000332-fba2-4bd3-bfe3-28a1dc9f3174"
+        }
+      ],
+      "id": "5691e59c-657f-4cc1-a1a2-0d0f9a0ecb8f",
+      "createdAt": "2026-07-28T01:45:04.000Z",
+      "updatedAt": "2026-07-28T01:45:04.000Z",
+      "uid": "35240-5691e59c-657f-4cc1-a1a2-0d0f9a0ecb8f"
+    }
+  ],
+  "auth": {
+    "type": "oauth2",
+    "oauth2": [
+      {
+        "key": "scope",
+        "value": "https://www.googleapis.com/auth/adwords",
+        "type": "string"
+      },
+      {
+        "key": "accessTokenUrl",
+        "value": "https://oauth2.googleapis.com/token",
+        "type": "string"
+      },
+      {
+        "key": "authUrl",
+        "value": "https://accounts.google.com/o/oauth2/auth",
+        "type": "string"
+      },
+      {
+        "key": "grant_type",
+        "value": "authorization_code",
+        "type": "string"
+      }
+    ]
+  },
+  "variable": [
+    {
+      "key": "baseUrl",
+      "value": "https://googleads.googleapis.com"
+    }
+  ]
+}

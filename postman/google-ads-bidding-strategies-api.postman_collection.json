@@ -1,0 +1,295 @@
+{
+  "info": {
+    "_postman_id": "8287a323-4df6-4836-83c0-2b4a65129a2f",
+    "name": "Google Ads Ad Groups Bidding Strategies API",
+    "description": "The Google Ads API is the modern programmatic interface to Google Ads and the\nnext generation of the AdWords API. It enables developers to interact directly\nwith the Google Ads platform, vastly increasing the efficiency of managing\nlarge or complex Google Ads accounts and campaigns. The API allows for\ncreating, reading, updating, and removing campaigns, ad groups, ads, keywords,\nand retrieving performance reports using Google Ads Query Language (GAQL).\n\n\nContact Support:\n Name: Google Ads API Support",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+    "createdAt": "2026-07-28T01:45:02.000Z",
+    "updatedAt": "2026-07-28T01:45:02.000Z",
+    "lastUpdatedBy": "35240",
+    "uid": "35240-8287a323-4df6-4836-83c0-2b4a65129a2f"
+  },
+  "item": [
+    {
+      "name": "v18",
+      "item": [
+        {
+          "name": "customers",
+          "item": [
+            {
+              "name": "{customerId}",
+              "item": [
+                {
+                  "name": "biddingStrategies:mutate",
+                  "item": [
+                    {
+                      "name": "Google Ads Create, Update, or Remove Bidding Strategies",
+                      "id": "955d33a0-7931-4c0a-ae62-beda2a7f8d42",
+                      "protocolProfileBehavior": {
+                        "disableBodyPruning": true
+                      },
+                      "request": {
+                        "method": "POST",
+                        "header": [
+                          {
+                            "description": "(Required) Developer token for API access. Obtain from the Google Ads API Center\nin your manager account.\n",
+                            "key": "developer-token",
+                            "value": "<string>"
+                          },
+                          {
+                            "description": "The customer ID of the manager account making the request on behalf\nof a client account. Required when authenticating as a manager account.\n",
+                            "key": "login-customer-id",
+                            "value": "<string>"
+                          },
+                          {
+                            "key": "Content-Type",
+                            "value": "application/json"
+                          },
+                          {
+                            "key": "Accept",
+                            "value": "application/json"
+                          }
+                        ],
+                        "body": {
+                          "mode": "raw",
+                          "raw": "{\n  \"operations\": [\n    {\n      \"create\": {\n        \"resourceName\": \"<string>\",\n        \"id\": \"<long>\",\n        \"name\": \"<string>\",\n        \"type\": \"TARGET_CPA\",\n        \"status\": \"REMOVED\",\n        \"campaignCount\": \"<long>\"\n      },\n      \"update\": {\n        \"resourceName\": \"<string>\",\n        \"id\": \"<long>\",\n        \"name\": \"<string>\",\n        \"type\": \"UNKNOWN\",\n        \"status\": \"REMOVED\",\n        \"campaignCount\": \"<long>\"\n      },\n      \"remove\": \"<string>\",\n      \"updateMask\": \"<string>\"\n    },\n    {\n      \"create\": {\n        \"resourceName\": \"<string>\",\n        \"id\": \"<long>\",\n        \"name\": \"<string>\",\n        \"type\": \"MAXIMIZE_CONVERSION_VALUE\",\n        \"status\": \"UNKNOWN\",\n        \"campaignCount\": \"<long>\"\n      },\n      \"update\": {\n        \"resourceName\": \"<string>\",\n        \"id\": \"<long>\",\n        \"name\": \"<string>\",\n        \"type\": \"MAXIMIZE_CONVERSIONS\",\n        \"status\": \"UNSPECIFIED\",\n        \"campaignCount\": \"<long>\"\n      },\n      \"remove\": \"<string>\",\n      \"updateMask\": \"<string>\"\n    }\n  ],\n  \"partialFailure\": \"<boolean>\",\n  \"validateOnly\": \"<boolean>\"\n}",
+                          "options": {
+                            "raw": {
+                              "headerFamily": "json",
+                              "language": "json"
+                            }
+                          }
+                        },
+                        "url": {
+                          "raw": "{{baseUrl}}/v18/customers/:customerId/biddingStrategies:mutate",
+                          "host": [
+                            "{{baseUrl}}"
+                          ],
+                          "path": [
+                            "v18",
+                            "customers",
+                            ":customerId",
+                            "biddingStrategies:mutate"
+                          ],
+                          "variable": [
+                            {
+                              "id": "fb62f356-2f48-45dd-beef-8522be1e557c",
+                              "key": "customerId",
+                              "value": "8616115141",
+                              "description": "(Required) The Google Ads customer ID (without dashes), e.g. 1234567890."
+                            }
+                          ]
+                        },
+                        "description": "Creates, updates, or removes bidding strategies. Bidding strategies\ndetermine how bids are set for your ads. Supports strategies such as\nTarget CPA, Target ROAS, Maximize Conversions, and Manual CPC.\n"
+                      },
+                      "response": [
+                        {
+                          "id": "f0860252-0a4d-4cec-b3c3-1c1fae71949b",
+                          "name": "Successful Response",
+                          "originalRequest": {
+                            "method": "POST",
+                            "header": [
+                              {
+                                "description": "(Required) Developer token for API access. Obtain from the Google Ads API Center\nin your manager account.\n",
+                                "key": "developer-token",
+                                "value": "<string>"
+                              },
+                              {
+                                "description": "The customer ID of the manager account making the request on behalf\nof a client account. Required when authenticating as a manager account.\n",
+                                "key": "login-customer-id",
+                                "value": "<string>"
+                              },
+                              {
+                                "key": "Content-Type",
+                                "value": "application/json"
+                              },
+                              {
+                                "key": "Accept",
+                                "value": "application/json"
+                              },
+                              {
+                                "description": "Added as a part of security scheme: oauth2",
+                                "key": "Authorization",
+                                "value": "<token>"
+                              }
+                            ],
+                            "body": {
+                              "mode": "raw",
+                              "raw": "{\n  \"operations\": [\n    {\n      \"create\": {\n        \"resourceName\": \"<string>\",\n        \"id\": \"<long>\",\n        \"name\": \"<string>\",\n        \"type\": \"TARGET_CPA\",\n        \"status\": \"REMOVED\",\n        \"campaignCount\": \"<long>\"\n      },\n      \"update\": {\n        \"resourceName\": \"<string>\",\n        \"id\": \"<long>\",\n        \"name\": \"<string>\",\n        \"type\": \"UNKNOWN\",\n        \"status\": \"REMOVED\",\n        \"campaignCount\": \"<long>\"\n      },\n      \"remove\": \"<string>\",\n      \"updateMask\": \"<string>\"\n    },\n    {\n      \"create\": {\n        \"resourceName\": \"<string>\",\n        \"id\": \"<long>\",\n        \"name\": \"<string>\",\n        \"type\": \"MAXIMIZE_CONVERSION_VALUE\",\n        \"status\": \"UNKNOWN\",\n        \"campaignCount\": \"<long>\"\n      },\n      \"update\": {\n        \"resourceName\": \"<string>\",\n        \"id\": \"<long>\",\n        \"name\": \"<string>\",\n        \"type\": \"MAXIMIZE_CONVERSIONS\",\n        \"status\": \"UNSPECIFIED\",\n        \"campaignCount\": \"<long>\"\n      },\n      \"remove\": \"<string>\",\n      \"updateMask\": \"<string>\"\n    }\n  ],\n  \"partialFailure\": \"<boolean>\",\n  \"validateOnly\": \"<boolean>\"\n}",
+                              "options": {
+                                "raw": {
+                                  "headerFamily": "json",
+                                  "language": "json"
+                                }
+                              }
+                            },
+                            "url": {
+                              "raw": "{{baseUrl}}/v18/customers/:customerId/biddingStrategies:mutate",
+                              "host": [
+                                "{{baseUrl}}"
+                              ],
+                              "path": [
+                                "v18",
+                                "customers",
+                                ":customerId",
+                                "biddingStrategies:mutate"
+                              ],
+                              "variable": [
+                                {
+                                  "key": "customerId"
+                                }
+                              ]
+                            }
+                          },
+                          "status": "OK",
+                          "code": 200,
+                          "_postman_previewlanguage": "json",
+                          "header": [
+                            {
+                              "key": "Content-Type",
+                              "value": "application/json"
+                            }
+                          ],
+                          "cookie": [],
+                          "responseTime": null,
+                          "body": "{\n  \"results\": [\n    {\n      \"resourceName\": \"<string>\"\n    },\n    {\n      \"resourceName\": \"<string>\"\n    }\n  ],\n  \"partialFailureError\": {\n    \"code\": \"<integer>\",\n    \"message\": \"<string>\"\n  }\n}",
+                          "createdAt": "2026-07-28T01:45:02.000Z",
+                          "updatedAt": "2026-07-28T01:45:02.000Z",
+                          "uid": "35240-f0860252-0a4d-4cec-b3c3-1c1fae71949b"
+                        },
+                        {
+                          "id": "79c13c92-9b01-4bb4-ab23-4414ece0a5e0",
+                          "name": "Bad Request",
+                          "originalRequest": {
+                            "method": "POST",
+                            "header": [
+                              {
+                                "description": "(Required) Developer token for API access. Obtain from the Google Ads API Center\nin your manager account.\n",
+                                "key": "developer-token",
+                                "value": "<string>"
+                              },
+                              {
+                                "description": "The customer ID of the manager account making the request on behalf\nof a client account. Required when authenticating as a manager account.\n",
+                                "key": "login-customer-id",
+                                "value": "<string>"
+                              },
+                              {
+                                "key": "Content-Type",
+                                "value": "application/json"
+                              },
+                              {
+                                "key": "Accept",
+                                "value": "application/json"
+                              },
+                              {
+                                "description": "Added as a part of security scheme: oauth2",
+                                "key": "Authorization",
+                                "value": "<token>"
+                              }
+                            ],
+                            "body": {
+                              "mode": "raw",
+                              "raw": "{\n  \"operations\": [\n    {\n      \"create\": {\n        \"resourceName\": \"<string>\",\n        \"id\": \"<long>\",\n        \"name\": \"<string>\",\n        \"type\": \"TARGET_CPA\",\n        \"status\": \"REMOVED\",\n        \"campaignCount\": \"<long>\"\n      },\n      \"update\": {\n        \"resourceName\": \"<string>\",\n        \"id\": \"<long>\",\n        \"name\": \"<string>\",\n        \"type\": \"UNKNOWN\",\n        \"status\": \"REMOVED\",\n        \"campaignCount\": \"<long>\"\n      },\n      \"remove\": \"<string>\",\n      \"updateMask\": \"<string>\"\n    },\n    {\n      \"create\": {\n        \"resourceName\": \"<string>\",\n        \"id\": \"<long>\",\n        \"name\": \"<string>\",\n        \"type\": \"MAXIMIZE_CONVERSION_VALUE\",\n        \"status\": \"UNKNOWN\",\n        \"campaignCount\": \"<long>\"\n      },\n      \"update\": {\n        \"resourceName\": \"<string>\",\n        \"id\": \"<long>\",\n        \"name\": \"<string>\",\n        \"type\": \"MAXIMIZE_CONVERSIONS\",\n        \"status\": \"UNSPECIFIED\",\n        \"campaignCount\": \"<long>\"\n      },\n      \"remove\": \"<string>\",\n      \"updateMask\": \"<string>\"\n    }\n  ],\n  \"partialFailure\": \"<boolean>\",\n  \"validateOnly\": \"<boolean>\"\n}",
+                              "options": {
+                                "raw": {
+                                  "headerFamily": "json",
+                                  "language": "json"
+                                }
+                              }
+                            },
+                            "url": {
+                              "raw": "{{baseUrl}}/v18/customers/:customerId/biddingStrategies:mutate",
+                              "host": [
+                                "{{baseUrl}}"
+                              ],
+                              "path": [
+                                "v18",
+                                "customers",
+                                ":customerId",
+                                "biddingStrategies:mutate"
+                              ],
+                              "variable": [
+                                {
+                                  "key": "customerId"
+                                }
+                              ]
+                            }
+                          },
+                          "status": "Bad Request",
+                          "code": 400,
+                          "_postman_previewlanguage": "json",
+                          "header": [
+                            {
+                              "key": "Content-Type",
+                              "value": "application/json"
+                            }
+                          ],
+                          "cookie": [],
+                          "responseTime": null,
+                          "body": "{\n  \"errors\": [\n    {\n      \"errorCode\": {\n        \"dolore_c\": \"<string>\",\n        \"doloree\": \"<string>\"\n      },\n      \"message\": \"<string>\",\n      \"trigger\": {},\n      \"location\": {\n        \"fieldPathElements\": [\n          {\n            \"fieldName\": \"<string>\",\n            \"index\": \"<integer>\"\n          },\n          {\n            \"fieldName\": \"<string>\",\n            \"index\": \"<integer>\"\n          }\n        ]\n      }\n    },\n    {\n      \"errorCode\": {\n        \"aliqua_42\": \"<string>\"\n      },\n      \"message\": \"<string>\",\n      \"trigger\": {},\n      \"location\": {\n        \"fieldPathElements\": [\n          {\n            \"fieldName\": \"<string>\",\n            \"index\": \"<integer>\"\n          },\n          {\n            \"fieldName\": \"<string>\",\n            \"index\": \"<integer>\"\n          }\n        ]\n      }\n    }\n  ]\n}",
+                          "createdAt": "2026-07-28T01:45:02.000Z",
+                          "updatedAt": "2026-07-28T01:45:02.000Z",
+                          "uid": "35240-79c13c92-9b01-4bb4-ab23-4414ece0a5e0"
+                        }
+                      ],
+                      "createdAt": "2026-07-28T01:45:02.000Z",
+                      "updatedAt": "2026-07-28T01:45:02.000Z",
+                      "uid": "35240-955d33a0-7931-4c0a-ae62-beda2a7f8d42"
+                    }
+                  ],
+                  "id": "4122e927-2d3d-4fe1-815c-453a5f3f0f88",
+                  "createdAt": "2026-07-28T01:45:02.000Z",
+                  "updatedAt": "2026-07-28T01:45:02.000Z",
+                  "uid": "35240-4122e927-2d3d-4fe1-815c-453a5f3f0f88"
+                }
+              ],
+              "id": "1c9398fe-69b7-4e84-bfe5-e7828b075e10",
+              "createdAt": "2026-07-28T01:45:02.000Z",
+              "updatedAt": "2026-07-28T01:45:02.000Z",
+              "uid": "35240-1c9398fe-69b7-4e84-bfe5-e7828b075e10"
+            }
+          ],
+          "id": "f1e9658a-acdd-4162-bf96-235254dc9f88",
+          "createdAt": "2026-07-28T01:45:02.000Z",
+          "updatedAt": "2026-07-28T01:45:02.000Z",
+          "uid": "35240-f1e9658a-acdd-4162-bf96-235254dc9f88"
+        }
+      ],
+      "id": "b032457d-8600-446b-a6c7-61d389a2c302",
+      "createdAt": "2026-07-28T01:45:02.000Z",
+      "updatedAt": "2026-07-28T01:45:02.000Z",
+      "uid": "35240-b032457d-8600-446b-a6c7-61d389a2c302"
+    }
+  ],
+  "auth": {
+    "type": "oauth2",
+    "oauth2": [
+      {
+        "key": "scope",
+        "value": "https://www.googleapis.com/auth/adwords",
+        "type": "string"
+      },
+      {
+        "key": "accessTokenUrl",
+        "value": "https://oauth2.googleapis.com/token",
+        "type": "string"
+      },
+      {
+        "key": "authUrl",
+        "value": "https://accounts.google.com/o/oauth2/auth",
+        "type": "string"
+      },
+      {
+        "key": "grant_type",
+        "value": "authorization_code",
+        "type": "string"
+      }
+    ]
+  },
+  "variable": [
+    {
+      "key": "baseUrl",
+      "value": "https://googleads.googleapis.com"
+    }
+  ]
+}

@@ -1,0 +1,26 @@
+{
+  "provider": "google-ads",
+  "sources": [
+    "google-ads-ad-groups-api-openapi.yml",
+    "google-ads-ads-api-openapi.yml",
+    "google-ads-bidding-strategies-api-openapi.yml",
+    "google-ads-campaigns-api-openapi.yml",
+    "google-ads-customers-api-openapi.yml",
+    "google-ads-keywords-api-openapi.yml",
+    "google-ads-reporting-api-openapi.yml"
+  ],
+  "outputs": [
+    "google-ads-ad-groups-api-openapi.yml",
+    "google-ads-ads-api-openapi.yml",
+    "google-ads-bidding-strategies-api-openapi.yml",
+    "google-ads-campaigns-api-openapi.yml",
+    "google-ads-customers-api-openapi.yml",
+    "google-ads-keywords-api-openapi.yml",
+    "google-ads-reporting-api-openapi.yml"
+  ],
+  "archived": [],
+  "errors": [],
+  "warnings": [],
+  "notes": [],
+  "skipped": []
+}

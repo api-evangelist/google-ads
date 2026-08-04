@@ -1,0 +1,369 @@
+{
+  "info": {
+    "_postman_id": "8d769c37-bd05-4455-8bff-f81cfa32ac08",
+    "name": "Google Ads Ad Groups API",
+    "description": "The Google Ads API is the modern programmatic interface to Google Ads and the\nnext generation of the AdWords API. It enables developers to interact directly\nwith the Google Ads platform, vastly increasing the efficiency of managing\nlarge or complex Google Ads accounts and campaigns. The API allows for\ncreating, reading, updating, and removing campaigns, ad groups, ads, keywords,\nand retrieving performance reports using Google Ads Query Language (GAQL).\n\n\nContact Support:\n Name: Google Ads API Support",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+    "createdAt": "2026-07-28T01:44:59.000Z",
+    "updatedAt": "2026-07-28T01:45:00.000Z",
+    "lastUpdatedBy": "35240",
+    "uid": "35240-8d769c37-bd05-4455-8bff-f81cfa32ac08"
+  },
+  "item": [
+    {
+      "name": "v18",
+      "item": [
+        {
+          "name": "customers",
+          "item": [
+            {
+              "name": "{customerId}",
+              "item": [
+                {
+                  "name": "adGroups:mutate",
+                  "item": [
+                    {
+                      "name": "Google Ads Create, Update, or Remove Ad Groups",
+                      "id": "49a8290e-7336-42b9-9513-7545130fb9fc",
+                      "protocolProfileBehavior": {
+                        "disableBodyPruning": true
+                      },
+                      "request": {
+                        "method": "POST",
+                        "header": [
+                          {
+                            "description": "(Required) Developer token for API access. Obtain from the Google Ads API Center\nin your manager account.\n",
+                            "key": "developer-token",
+                            "value": "<string>"
+                          },
+                          {
+                            "description": "The customer ID of the manager account making the request on behalf\nof a client account. Required when authenticating as a manager account.\n",
+                            "key": "login-customer-id",
+                            "value": "<string>"
+                          },
+                          {
+                            "key": "Content-Type",
+                            "value": "application/json"
+                          },
+                          {
+                            "key": "Accept",
+                            "value": "application/json"
+                          }
+                        ],
+                        "body": {
+                          "mode": "raw",
+                          "raw": "{\n  \"operations\": [\n    {\n      \"create\": {\n        \"resourceName\": \"<string>\",\n        \"id\": \"<long>\",\n        \"name\": \"<string>\",\n        \"status\": \"PAUSED\",\n        \"campaign\": \"<string>\",\n        \"type\": \"UNSPECIFIED\",\n        \"cpcBidMicros\": \"<long>\",\n        \"cpmBidMicros\": \"<long>\",\n        \"targetCpaMicros\": \"<long>\",\n        \"effectiveTargetCpaMicros\": \"<long>\",\n        \"effectiveTargetRoas\": \"<number>\",\n        \"adRotationMode\": \"ROTATE_FOREVER\"\n      },\n      \"update\": {\n        \"resourceName\": \"<string>\",\n        \"id\": \"<long>\",\n        \"name\": \"<string>\",\n        \"status\": \"PAUSED\",\n        \"campaign\": \"<string>\",\n        \"type\": \"UNKNOWN\",\n        \"cpcBidMicros\": \"<long>\",\n        \"cpmBidMicros\": \"<long>\",\n        \"targetCpaMicros\": \"<long>\",\n        \"effectiveTargetCpaMicros\": \"<long>\",\n        \"effectiveTargetRoas\": \"<number>\",\n        \"adRotationMode\": \"OPTIMIZE\"\n      },\n      \"remove\": \"<string>\",\n      \"updateMask\": \"<string>\"\n    },\n    {\n      \"create\": {\n        \"resourceName\": \"<string>\",\n        \"id\": \"<long>\",\n        \"name\": \"<string>\",\n        \"status\": \"UNKNOWN\",\n        \"campaign\": \"<string>\",\n        \"type\": \"HOTEL_ADS\",\n        \"cpcBidMicros\": \"<long>\",\n        \"cpmBidMicros\": \"<long>\",\n        \"targetCpaMicros\": \"<long>\",\n        \"effectiveTargetCpaMicros\": \"<long>\",\n        \"effectiveTargetRoas\": \"<number>\",\n        \"adRotationMode\": \"ROTATE_FOREVER\"\n      },\n      \"update\": {\n        \"resourceName\": \"<string>\",\n        \"id\": \"<long>\",\n        \"name\": \"<string>\",\n        \"status\": \"PAUSED\",\n        \"campaign\": \"<string>\",\n        \"type\": \"SHOPPING_SMART_ADS\",\n        \"cpcBidMicros\": \"<long>\",\n        \"cpmBidMicros\": \"<long>\",\n        \"targetCpaMicros\": \"<long>\",\n        \"effectiveTargetCpaMicros\": \"<long>\",\n        \"effectiveTargetRoas\": \"<number>\",\n        \"adRotationMode\": \"OPTIMIZE\"\n      },\n      \"remove\": \"<string>\",\n      \"updateMask\": \"<string>\"\n    }\n  ],\n  \"partialFailure\": \"<boolean>\",\n  \"validateOnly\": \"<boolean>\"\n}",
+                          "options": {
+                            "raw": {
+                              "headerFamily": "json",
+                              "language": "json"
+                            }
+                          }
+                        },
+                        "url": {
+                          "raw": "{{baseUrl}}/v18/customers/:customerId/adGroups:mutate",
+                          "host": [
+                            "{{baseUrl}}"
+                          ],
+                          "path": [
+                            "v18",
+                            "customers",
+                            ":customerId",
+                            "adGroups:mutate"
+                          ],
+                          "variable": [
+                            {
+                              "id": "af77935a-342a-4aa8-b97f-74694c2ec644",
+                              "key": "customerId",
+                              "value": "0575915548",
+                              "description": "(Required) The Google Ads customer ID (without dashes), e.g. 1234567890."
+                            }
+                          ]
+                        },
+                        "description": "Creates, updates, or removes ad groups. An ad group is a set of ads\nthat share the same targeting criteria. Each ad group belongs to\nexactly one campaign.\n"
+                      },
+                      "response": [
+                        {
+                          "id": "b096185c-72e3-4287-919e-9e811f3722fc",
+                          "name": "Successful Response",
+                          "originalRequest": {
+                            "method": "POST",
+                            "header": [
+                              {
+                                "description": "(Required) Developer token for API access. Obtain from the Google Ads API Center\nin your manager account.\n",
+                                "key": "developer-token",
+                                "value": "<string>"
+                              },
+                              {
+                                "description": "The customer ID of the manager account making the request on behalf\nof a client account. Required when authenticating as a manager account.\n",
+                                "key": "login-customer-id",
+                                "value": "<string>"
+                              },
+                              {
+                                "key": "Content-Type",
+                                "value": "application/json"
+                              },
+                              {
+                                "key": "Accept",
+                                "value": "application/json"
+                              },
+                              {
+                                "description": "Added as a part of security scheme: oauth2",
+                                "key": "Authorization",
+                                "value": "<token>"
+                              }
+                            ],
+                            "body": {
+                              "mode": "raw",
+                              "raw": "{\n  \"operations\": [\n    {\n      \"create\": {\n        \"resourceName\": \"<string>\",\n        \"id\": \"<long>\",\n        \"name\": \"<string>\",\n        \"status\": \"PAUSED\",\n        \"campaign\": \"<string>\",\n        \"type\": \"UNSPECIFIED\",\n        \"cpcBidMicros\": \"<long>\",\n        \"cpmBidMicros\": \"<long>\",\n        \"targetCpaMicros\": \"<long>\",\n        \"effectiveTargetCpaMicros\": \"<long>\",\n        \"effectiveTargetRoas\": \"<number>\",\n        \"adRotationMode\": \"ROTATE_FOREVER\"\n      },\n      \"update\": {\n        \"resourceName\": \"<string>\",\n        \"id\": \"<long>\",\n        \"name\": \"<string>\",\n        \"status\": \"PAUSED\",\n        \"campaign\": \"<string>\",\n        \"type\": \"UNKNOWN\",\n        \"cpcBidMicros\": \"<long>\",\n        \"cpmBidMicros\": \"<long>\",\n        \"targetCpaMicros\": \"<long>\",\n        \"effectiveTargetCpaMicros\": \"<long>\",\n        \"effectiveTargetRoas\": \"<number>\",\n        \"adRotationMode\": \"OPTIMIZE\"\n      },\n      \"remove\": \"<string>\",\n      \"updateMask\": \"<string>\"\n    },\n    {\n      \"create\": {\n        \"resourceName\": \"<string>\",\n        \"id\": \"<long>\",\n        \"name\": \"<string>\",\n        \"status\": \"UNKNOWN\",\n        \"campaign\": \"<string>\",\n        \"type\": \"HOTEL_ADS\",\n        \"cpcBidMicros\": \"<long>\",\n        \"cpmBidMicros\": \"<long>\",\n        \"targetCpaMicros\": \"<long>\",\n        \"effectiveTargetCpaMicros\": \"<long>\",\n        \"effectiveTargetRoas\": \"<number>\",\n        \"adRotationMode\": \"ROTATE_FOREVER\"\n      },\n      \"update\": {\n        \"resourceName\": \"<string>\",\n        \"id\": \"<long>\",\n        \"name\": \"<string>\",\n        \"status\": \"PAUSED\",\n        \"campaign\": \"<string>\",\n        \"type\": \"SHOPPING_SMART_ADS\",\n        \"cpcBidMicros\": \"<long>\",\n        \"cpmBidMicros\": \"<long>\",\n        \"targetCpaMicros\": \"<long>\",\n        \"effectiveTargetCpaMicros\": \"<long>\",\n        \"effectiveTargetRoas\": \"<number>\",\n        \"adRotationMode\": \"OPTIMIZE\"\n      },\n      \"remove\": \"<string>\",\n      \"updateMask\": \"<string>\"\n    }\n  ],\n  \"partialFailure\": \"<boolean>\",\n  \"validateOnly\": \"<boolean>\"\n}",
+                              "options": {
+                                "raw": {
+                                  "headerFamily": "json",
+                                  "language": "json"
+                                }
+                              }
+                            },
+                            "url": {
+                              "raw": "{{baseUrl}}/v18/customers/:customerId/adGroups:mutate",
+                              "host": [
+                                "{{baseUrl}}"
+                              ],
+                              "path": [
+                                "v18",
+                                "customers",
+                                ":customerId",
+                                "adGroups:mutate"
+                              ],
+                              "variable": [
+                                {
+                                  "key": "customerId"
+                                }
+                              ]
+                            }
+                          },
+                          "status": "OK",
+                          "code": 200,
+                          "_postman_previewlanguage": "json",
+                          "header": [
+                            {
+                              "key": "Content-Type",
+                              "value": "application/json"
+                            }
+                          ],
+                          "cookie": [],
+                          "responseTime": null,
+                          "body": "{\n  \"results\": [\n    {\n      \"resourceName\": \"<string>\"\n    },\n    {\n      \"resourceName\": \"<string>\"\n    }\n  ],\n  \"partialFailureError\": {\n    \"code\": \"<integer>\",\n    \"message\": \"<string>\"\n  }\n}",
+                          "createdAt": "2026-07-28T01:45:00.000Z",
+                          "updatedAt": "2026-07-28T01:45:00.000Z",
+                          "uid": "35240-b096185c-72e3-4287-919e-9e811f3722fc"
+                        },
+                        {
+                          "id": "d5b195dc-43c3-417d-8330-70c1cc7c7621",
+                          "name": "Bad Request",
+                          "originalRequest": {
+                            "method": "POST",
+                            "header": [
+                              {
+                                "description": "(Required) Developer token for API access. Obtain from the Google Ads API Center\nin your manager account.\n",
+                                "key": "developer-token",
+                                "value": "<string>"
+                              },
+                              {
+                                "description": "The customer ID of the manager account making the request on behalf\nof a client account. Required when authenticating as a manager account.\n",
+                                "key": "login-customer-id",
+                                "value": "<string>"
+                              },
+                              {
+                                "key": "Content-Type",
+                                "value": "application/json"
+                              },
+                              {
+                                "key": "Accept",
+                                "value": "application/json"
+                              },
+                              {
+                                "description": "Added as a part of security scheme: oauth2",
+                                "key": "Authorization",
+                                "value": "<token>"
+                              }
+                            ],
+                            "body": {
+                              "mode": "raw",
+                              "raw": "{\n  \"operations\": [\n    {\n      \"create\": {\n        \"resourceName\": \"<string>\",\n        \"id\": \"<long>\",\n        \"name\": \"<string>\",\n        \"status\": \"PAUSED\",\n        \"campaign\": \"<string>\",\n        \"type\": \"UNSPECIFIED\",\n        \"cpcBidMicros\": \"<long>\",\n        \"cpmBidMicros\": \"<long>\",\n        \"targetCpaMicros\": \"<long>\",\n        \"effectiveTargetCpaMicros\": \"<long>\",\n        \"effectiveTargetRoas\": \"<number>\",\n        \"adRotationMode\": \"ROTATE_FOREVER\"\n      },\n      \"update\": {\n        \"resourceName\": \"<string>\",\n        \"id\": \"<long>\",\n        \"name\": \"<string>\",\n        \"status\": \"PAUSED\",\n        \"campaign\": \"<string>\",\n        \"type\": \"UNKNOWN\",\n        \"cpcBidMicros\": \"<long>\",\n        \"cpmBidMicros\": \"<long>\",\n        \"targetCpaMicros\": \"<long>\",\n        \"effectiveTargetCpaMicros\": \"<long>\",\n        \"effectiveTargetRoas\": \"<number>\",\n        \"adRotationMode\": \"OPTIMIZE\"\n      },\n      \"remove\": \"<string>\",\n      \"updateMask\": \"<string>\"\n    },\n    {\n      \"create\": {\n        \"resourceName\": \"<string>\",\n        \"id\": \"<long>\",\n        \"name\": \"<string>\",\n        \"status\": \"UNKNOWN\",\n        \"campaign\": \"<string>\",\n        \"type\": \"HOTEL_ADS\",\n        \"cpcBidMicros\": \"<long>\",\n        \"cpmBidMicros\": \"<long>\",\n        \"targetCpaMicros\": \"<long>\",\n        \"effectiveTargetCpaMicros\": \"<long>\",\n        \"effectiveTargetRoas\": \"<number>\",\n        \"adRotationMode\": \"ROTATE_FOREVER\"\n      },\n      \"update\": {\n        \"resourceName\": \"<string>\",\n        \"id\": \"<long>\",\n        \"name\": \"<string>\",\n        \"status\": \"PAUSED\",\n        \"campaign\": \"<string>\",\n        \"type\": \"SHOPPING_SMART_ADS\",\n        \"cpcBidMicros\": \"<long>\",\n        \"cpmBidMicros\": \"<long>\",\n        \"targetCpaMicros\": \"<long>\",\n        \"effectiveTargetCpaMicros\": \"<long>\",\n        \"effectiveTargetRoas\": \"<number>\",\n        \"adRotationMode\": \"OPTIMIZE\"\n      },\n      \"remove\": \"<string>\",\n      \"updateMask\": \"<string>\"\n    }\n  ],\n  \"partialFailure\": \"<boolean>\",\n  \"validateOnly\": \"<boolean>\"\n}",
+                              "options": {
+                                "raw": {
+                                  "headerFamily": "json",
+                                  "language": "json"
+                                }
+                              }
+                            },
+                            "url": {
+                              "raw": "{{baseUrl}}/v18/customers/:customerId/adGroups:mutate",
+                              "host": [
+                                "{{baseUrl}}"
+                              ],
+                              "path": [
+                                "v18",
+                                "customers",
+                                ":customerId",
+                                "adGroups:mutate"
+                              ],
+                              "variable": [
+                                {
+                                  "key": "customerId"
+                                }
+                              ]
+                            }
+                          },
+                          "status": "Bad Request",
+                          "code": 400,
+                          "_postman_previewlanguage": "json",
+                          "header": [
+                            {
+                              "key": "Content-Type",
+                              "value": "application/json"
+                            }
+                          ],
+                          "cookie": [],
+                          "responseTime": null,
+                          "body": "{\n  \"errors\": [\n    {\n      \"errorCode\": {\n        \"adb\": \"<string>\"\n      },\n      \"message\": \"<string>\",\n      \"trigger\": {},\n      \"location\": {\n        \"fieldPathElements\": [\n          {\n            \"fieldName\": \"<string>\",\n            \"index\": \"<integer>\"\n          },\n          {\n            \"fieldName\": \"<string>\",\n            \"index\": \"<integer>\"\n          }\n        ]\n      }\n    },\n    {\n      \"errorCode\": {\n        \"sunt_8f1\": \"<string>\",\n        \"utb\": \"<string>\",\n        \"nullac\": \"<string>\"\n      },\n      \"message\": \"<string>\",\n      \"trigger\": {},\n      \"location\": {\n        \"fieldPathElements\": [\n          {\n            \"fieldName\": \"<string>\",\n            \"index\": \"<integer>\"\n          },\n          {\n            \"fieldName\": \"<string>\",\n            \"index\": \"<integer>\"\n          }\n        ]\n      }\n    }\n  ]\n}",
+                          "createdAt": "2026-07-28T01:45:00.000Z",
+                          "updatedAt": "2026-07-28T01:45:00.000Z",
+                          "uid": "35240-d5b195dc-43c3-417d-8330-70c1cc7c7621"
+                        },
+                        {
+                          "id": "e6d91829-472b-44fc-bc54-53575167ad5b",
+                          "name": "Unauthorized",
+                          "originalRequest": {
+                            "method": "POST",
+                            "header": [
+                              {
+                                "description": "(Required) Developer token for API access. Obtain from the Google Ads API Center\nin your manager account.\n",
+                                "key": "developer-token",
+                                "value": "<string>"
+                              },
+                              {
+                                "description": "The customer ID of the manager account making the request on behalf\nof a client account. Required when authenticating as a manager account.\n",
+                                "key": "login-customer-id",
+                                "value": "<string>"
+                              },
+                              {
+                                "key": "Content-Type",
+                                "value": "application/json"
+                              },
+                              {
+                                "key": "Accept",
+                                "value": "application/json"
+                              },
+                              {
+                                "description": "Added as a part of security scheme: oauth2",
+                                "key": "Authorization",
+                                "value": "<token>"
+                              }
+                            ],
+                            "body": {
+                              "mode": "raw",
+                              "raw": "{\n  \"operations\": [\n    {\n      \"create\": {\n        \"resourceName\": \"<string>\",\n        \"id\": \"<long>\",\n        \"name\": \"<string>\",\n        \"status\": \"PAUSED\",\n        \"campaign\": \"<string>\",\n        \"type\": \"UNSPECIFIED\",\n        \"cpcBidMicros\": \"<long>\",\n        \"cpmBidMicros\": \"<long>\",\n        \"targetCpaMicros\": \"<long>\",\n        \"effectiveTargetCpaMicros\": \"<long>\",\n        \"effectiveTargetRoas\": \"<number>\",\n        \"adRotationMode\": \"ROTATE_FOREVER\"\n      },\n      \"update\": {\n        \"resourceName\": \"<string>\",\n        \"id\": \"<long>\",\n        \"name\": \"<string>\",\n        \"status\": \"PAUSED\",\n        \"campaign\": \"<string>\",\n        \"type\": \"UNKNOWN\",\n        \"cpcBidMicros\": \"<long>\",\n        \"cpmBidMicros\": \"<long>\",\n        \"targetCpaMicros\": \"<long>\",\n        \"effectiveTargetCpaMicros\": \"<long>\",\n        \"effectiveTargetRoas\": \"<number>\",\n        \"adRotationMode\": \"OPTIMIZE\"\n      },\n      \"remove\": \"<string>\",\n      \"updateMask\": \"<string>\"\n    },\n    {\n      \"create\": {\n        \"resourceName\": \"<string>\",\n        \"id\": \"<long>\",\n        \"name\": \"<string>\",\n        \"status\": \"UNKNOWN\",\n        \"campaign\": \"<string>\",\n        \"type\": \"HOTEL_ADS\",\n        \"cpcBidMicros\": \"<long>\",\n        \"cpmBidMicros\": \"<long>\",\n        \"targetCpaMicros\": \"<long>\",\n        \"effectiveTargetCpaMicros\": \"<long>\",\n        \"effectiveTargetRoas\": \"<number>\",\n        \"adRotationMode\": \"ROTATE_FOREVER\"\n      },\n      \"update\": {\n        \"resourceName\": \"<string>\",\n        \"id\": \"<long>\",\n        \"name\": \"<string>\",\n        \"status\": \"PAUSED\",\n        \"campaign\": \"<string>\",\n        \"type\": \"SHOPPING_SMART_ADS\",\n        \"cpcBidMicros\": \"<long>\",\n        \"cpmBidMicros\": \"<long>\",\n        \"targetCpaMicros\": \"<long>\",\n        \"effectiveTargetCpaMicros\": \"<long>\",\n        \"effectiveTargetRoas\": \"<number>\",\n        \"adRotationMode\": \"OPTIMIZE\"\n      },\n      \"remove\": \"<string>\",\n      \"updateMask\": \"<string>\"\n    }\n  ],\n  \"partialFailure\": \"<boolean>\",\n  \"validateOnly\": \"<boolean>\"\n}",
+                              "options": {
+                                "raw": {
+                                  "headerFamily": "json",
+                                  "language": "json"
+                                }
+                              }
+                            },
+                            "url": {
+                              "raw": "{{baseUrl}}/v18/customers/:customerId/adGroups:mutate",
+                              "host": [
+                                "{{baseUrl}}"
+                              ],
+                              "path": [
+                                "v18",
+                                "customers",
+                                ":customerId",
+                                "adGroups:mutate"
+                              ],
+                              "variable": [
+                                {
+                                  "key": "customerId"
+                                }
+                              ]
+                            }
+                          },
+                          "status": "Unauthorized",
+                          "code": 401,
+                          "_postman_previewlanguage": "json",
+                          "header": [
+                            {
+                              "key": "Content-Type",
+                              "value": "application/json"
+                            }
+                          ],
+                          "cookie": [],
+                          "responseTime": null,
+                          "body": "{\n  \"errors\": [\n    {\n      \"errorCode\": {\n        \"adb\": \"<string>\"\n      },\n      \"message\": \"<string>\",\n      \"trigger\": {},\n      \"location\": {\n        \"fieldPathElements\": [\n          {\n            \"fieldName\": \"<string>\",\n            \"index\": \"<integer>\"\n          },\n          {\n            \"fieldName\": \"<string>\",\n            \"index\": \"<integer>\"\n          }\n        ]\n      }\n    },\n    {\n      \"errorCode\": {\n        \"sunt_8f1\": \"<string>\",\n        \"utb\": \"<string>\",\n        \"nullac\": \"<string>\"\n      },\n      \"message\": \"<string>\",\n      \"trigger\": {},\n      \"location\": {\n        \"fieldPathElements\": [\n          {\n            \"fieldName\": \"<string>\",\n            \"index\": \"<integer>\"\n          },\n          {\n            \"fieldName\": \"<string>\",\n            \"index\": \"<integer>\"\n          }\n        ]\n      }\n    }\n  ]\n}",
+                          "createdAt": "2026-07-28T01:45:00.000Z",
+                          "updatedAt": "2026-07-28T01:45:00.000Z",
+                          "uid": "35240-e6d91829-472b-44fc-bc54-53575167ad5b"
+                        }
+                      ],
+                      "createdAt": "2026-07-28T01:45:00.000Z",
+                      "updatedAt": "2026-07-28T01:45:00.000Z",
+                      "uid": "35240-49a8290e-7336-42b9-9513-7545130fb9fc"
+                    }
+                  ],
+                  "id": "87126966-2344-4397-85a4-0971b9f4094e",
+                  "createdAt": "2026-07-28T01:45:00.000Z",
+                  "updatedAt": "2026-07-28T01:45:00.000Z",
+                  "uid": "35240-87126966-2344-4397-85a4-0971b9f4094e"
+                }
+              ],
+              "id": "53cdad80-13c8-4eea-abf6-47e873bcb184",
+              "createdAt": "2026-07-28T01:45:00.000Z",
+              "updatedAt": "2026-07-28T01:45:00.000Z",
+              "uid": "35240-53cdad80-13c8-4eea-abf6-47e873bcb184"
+            }
+          ],
+          "id": "65b81392-c31a-4aac-8a12-1e345d6e131e",
+          "createdAt": "2026-07-28T01:45:00.000Z",
+          "updatedAt": "2026-07-28T01:45:00.000Z",
+          "uid": "35240-65b81392-c31a-4aac-8a12-1e345d6e131e"
+        }
+      ],
+      "id": "a3e65f3a-e88d-4bd4-b311-40390f79aa13",
+      "createdAt": "2026-07-28T01:45:00.000Z",
+      "updatedAt": "2026-07-28T01:45:00.000Z",
+      "uid": "35240-a3e65f3a-e88d-4bd4-b311-40390f79aa13"
+    }
+  ],
+  "auth": {
+    "type": "oauth2",
+    "oauth2": [
+      {
+        "key": "scope",
+        "value": "https://www.googleapis.com/auth/adwords",
+        "type": "string"
+      },
+      {
+        "key": "accessTokenUrl",
+        "value": "https://oauth2.googleapis.com/token",
+        "type": "string"
+      },
+      {
+        "key": "authUrl",
+        "value": "https://accounts.google.com/o/oauth2/auth",
+        "type": "string"
+      },
+      {
+        "key": "grant_type",
+        "value": "authorization_code",
+        "type": "string"
+      }
+    ]
+  },
+  "variable": [
+    {
+      "key": "baseUrl",
+      "value": "https://googleads.googleapis.com"
+    }
+  ]
+}

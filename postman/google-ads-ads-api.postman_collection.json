@@ -1,0 +1,369 @@
+{
+  "info": {
+    "_postman_id": "762da7d3-aad6-4a7f-90fa-b78875d57ecf",
+    "name": "Google Ad Groups Ads API",
+    "description": "The Google Ads API is the modern programmatic interface to Google Ads and the\nnext generation of the AdWords API. It enables developers to interact directly\nwith the Google Ads platform, vastly increasing the efficiency of managing\nlarge or complex Google Ads accounts and campaigns. The API allows for\ncreating, reading, updating, and removing campaigns, ad groups, ads, keywords,\nand retrieving performance reports using Google Ads Query Language (GAQL).\n\n\nContact Support:\n Name: Google Ads API Support",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+    "createdAt": "2026-07-28T01:45:00.000Z",
+    "updatedAt": "2026-07-28T01:45:01.000Z",
+    "lastUpdatedBy": "35240",
+    "uid": "35240-762da7d3-aad6-4a7f-90fa-b78875d57ecf"
+  },
+  "item": [
+    {
+      "name": "v18",
+      "item": [
+        {
+          "name": "customers",
+          "item": [
+            {
+              "name": "{customerId}",
+              "item": [
+                {
+                  "name": "adGroupAds:mutate",
+                  "item": [
+                    {
+                      "name": "Google Ads Create, Update, or Remove Ads",
+                      "id": "573295fe-5ad9-47fa-8f25-bdc8dabc5db1",
+                      "protocolProfileBehavior": {
+                        "disableBodyPruning": true
+                      },
+                      "request": {
+                        "method": "POST",
+                        "header": [
+                          {
+                            "description": "(Required) Developer token for API access. Obtain from the Google Ads API Center\nin your manager account.\n",
+                            "key": "developer-token",
+                            "value": "<string>"
+                          },
+                          {
+                            "description": "The customer ID of the manager account making the request on behalf\nof a client account. Required when authenticating as a manager account.\n",
+                            "key": "login-customer-id",
+                            "value": "<string>"
+                          },
+                          {
+                            "key": "Content-Type",
+                            "value": "application/json"
+                          },
+                          {
+                            "key": "Accept",
+                            "value": "application/json"
+                          }
+                        ],
+                        "body": {
+                          "mode": "raw",
+                          "raw": "{\n  \"operations\": [\n    {\n      \"create\": {\n        \"resourceName\": \"<string>\",\n        \"status\": \"REMOVED\",\n        \"adGroup\": \"<string>\",\n        \"ad\": {\n          \"resourceName\": \"<string>\",\n          \"id\": \"<long>\",\n          \"finalUrls\": [\n            \"<uri>\",\n            \"<uri>\"\n          ],\n          \"finalMobileUrls\": [\n            \"<uri>\",\n            \"<uri>\"\n          ],\n          \"trackingUrlTemplate\": \"<string>\",\n          \"type\": \"RESPONSIVE_DISPLAY_AD\",\n          \"responsiveSearchAd\": {\n            \"headlines\": [\n              {\n                \"text\": \"<string>\",\n                \"pinnedField\": \"HEADLINE_1\"\n              },\n              {\n                \"text\": \"<string>\",\n                \"pinnedField\": \"DESCRIPTION_2\"\n              }\n            ],\n            \"descriptions\": [\n              {\n                \"text\": \"<string>\",\n                \"pinnedField\": \"HEADLINE_2\"\n              },\n              {\n                \"text\": \"<string>\",\n                \"pinnedField\": \"HEADLINE_2\"\n              }\n            ],\n            \"path1\": \"<string>\",\n            \"path2\": \"<string>\"\n          },\n          \"responsiveDisplayAd\": {\n            \"headlines\": [\n              {\n                \"text\": \"<string>\",\n                \"pinnedField\": \"DESCRIPTION_1\"\n              },\n              {\n                \"text\": \"<string>\",\n                \"pinnedField\": \"DESCRIPTION_2\"\n              }\n            ],\n            \"longHeadline\": {\n              \"text\": \"<string>\",\n              \"pinnedField\": \"UNSPECIFIED\"\n            },\n            \"descriptions\": [\n              {\n                \"text\": \"<string>\",\n                \"pinnedField\": \"DESCRIPTION_2\"\n              },\n              {\n                \"text\": \"<string>\",\n                \"pinnedField\": \"DESCRIPTION_1\"\n              }\n            ],\n            \"businessName\": \"<string>\"\n          }\n        },\n        \"policySummary\": {\n          \"approvalStatus\": \"DISAPPROVED\",\n          \"reviewStatus\": \"UNSPECIFIED\",\n          \"policyTopicEntries\": [\n            {\n              \"type\": \"<string>\",\n              \"topic\": \"<string>\"\n            },\n            {\n              \"type\": \"<string>\",\n              \"topic\": \"<string>\"\n            }\n          ]\n        },\n        \"adStrength\": \"NO_ADS\"\n      },\n      \"update\": {\n        \"resourceName\": \"<string>\",\n        \"status\": \"ENABLED\",\n        \"adGroup\": \"<string>\",\n        \"ad\": {\n          \"resourceName\": \"<string>\",\n          \"id\": \"<long>\",\n          \"finalUrls\": [\n            \"<uri>\",\n            \"<uri>\"\n          ],\n          \"finalMobileUrls\": [\n            \"<uri>\",\n            \"<uri>\"\n          ],\n          \"trackingUrlTemplate\": \"<string>\",\n          \"type\": \"CALL_AD\",\n          \"responsiveSearchAd\": {\n            \"headlines\": [\n              {\n                \"text\": \"<string>\",\n                \"pinnedField\": \"HEADLINE_2\"\n              },\n              {\n                \"text\": \"<string>\",\n                \"pinnedField\": \"DESCRIPTION_2\"\n              }\n            ],\n            \"descriptions\": [\n              {\n                \"text\": \"<string>\",\n                \"pinnedField\": \"DESCRIPTION_1\"\n              },\n              {\n                \"text\": \"<string>\",\n                \"pinnedField\": \"DESCRIPTION_2\"\n              }\n            ],\n            \"path1\": \"<string>\",\n            \"path2\": \"<string>\"\n          },\n          \"responsiveDisplayAd\": {\n            \"headlines\": [\n              {\n                \"text\": \"<string>\",\n                \"pinnedField\": \"DESCRIPTION_1\"\n              },\n              {\n                \"text\": \"<string>\",\n                \"pinnedField\": \"HEADLINE_3\"\n              }\n            ],\n            \"longHeadline\": {\n              \"text\": \"<string>\",\n              \"pinnedField\": \"DESCRIPTION_2\"\n            },\n            \"descriptions\": [\n              {\n                \"text\": \"<string>\",\n                \"pinnedField\": \"UNSPECIFIED\"\n              },\n              {\n                \"text\": \"<string>\",\n                \"pinnedField\": \"HEADLINE_2\"\n              }\n            ],\n            \"businessName\": \"<string>\"\n          }\n        },\n        \"policySummary\": {\n          \"approvalStatus\": \"DISAPPROVED\",\n          \"reviewStatus\": \"UNKNOWN\",\n          \"policyTopicEntries\": [\n            {\n              \"type\": \"<string>\",\n              \"topic\": \"<string>\"\n            },\n            {\n              \"type\": \"<string>\",\n              \"topic\": \"<string>\"\n            }\n          ]\n        },\n        \"adStrength\": \"GOOD\"\n      },\n      \"remove\": \"<string>\",\n      \"updateMask\": \"<string>\"\n    },\n    {\n      \"create\": {\n        \"resourceName\": \"<string>\",\n        \"status\": \"REMOVED\",\n        \"adGroup\": \"<string>\",\n        \"ad\": {\n          \"resourceName\": \"<string>\",\n          \"id\": \"<long>\",\n          \"finalUrls\": [\n            \"<uri>\",\n            \"<uri>\"\n          ],\n          \"finalMobileUrls\": [\n            \"<uri>\",\n            \"<uri>\"\n          ],\n          \"trackingUrlTemplate\": \"<string>\",\n          \"type\": \"UNSPECIFIED\",\n          \"responsiveSearchAd\": {\n            \"headlines\": [\n              {\n                \"text\": \"<string>\",\n                \"pinnedField\": \"DESCRIPTION_2\"\n              },\n              {\n                \"text\": \"<string>\",\n                \"pinnedField\": \"DESCRIPTION_1\"\n              }\n            ],\n            \"descriptions\": [\n              {\n                \"text\": \"<string>\",\n                \"pinnedField\": \"DESCRIPTION_1\"\n              },\n              {\n                \"text\": \"<string>\",\n                \"pinnedField\": \"DESCRIPTION_2\"\n              }\n            ],\n            \"path1\": \"<string>\",\n            \"path2\": \"<string>\"\n          },\n          \"responsiveDisplayAd\": {\n            \"headlines\": [\n              {\n                \"text\": \"<string>\",\n                \"pinnedField\": \"UNSPECIFIED\"\n              },\n              {\n                \"text\": \"<string>\",\n                \"pinnedField\": \"DESCRIPTION_2\"\n              }\n            ],\n            \"longHeadline\": {\n              \"text\": \"<string>\",\n              \"pinnedField\": \"HEADLINE_2\"\n            },\n            \"descriptions\": [\n              {\n                \"text\": \"<string>\",\n                \"pinnedField\": \"DESCRIPTION_1\"\n              },\n              {\n                \"text\": \"<string>\",\n                \"pinnedField\": \"DESCRIPTION_1\"\n              }\n            ],\n            \"businessName\": \"<string>\"\n          }\n        },\n        \"policySummary\": {\n          \"approvalStatus\": \"AREA_OF_INTEREST_ONLY\",\n          \"reviewStatus\": \"UNKNOWN\",\n          \"policyTopicEntries\": [\n            {\n              \"type\": \"<string>\",\n              \"topic\": \"<string>\"\n            },\n            {\n              \"type\": \"<string>\",\n              \"topic\": \"<string>\"\n            }\n          ]\n        },\n        \"adStrength\": \"GOOD\"\n      },\n      \"update\": {\n        \"resourceName\": \"<string>\",\n        \"status\": \"UNKNOWN\",\n        \"adGroup\": \"<string>\",\n        \"ad\": {\n          \"resourceName\": \"<string>\",\n          \"id\": \"<long>\",\n          \"finalUrls\": [\n            \"<uri>\",\n            \"<uri>\"\n          ],\n          \"finalMobileUrls\": [\n            \"<uri>\",\n            \"<uri>\"\n          ],\n          \"trackingUrlTemplate\": \"<string>\",\n          \"type\": \"RESPONSIVE_SEARCH_AD\",\n          \"responsiveSearchAd\": {\n            \"headlines\": [\n              {\n                \"text\": \"<string>\",\n                \"pinnedField\": \"HEADLINE_1\"\n              },\n              {\n                \"text\": \"<string>\",\n                \"pinnedField\": \"HEADLINE_1\"\n              }\n            ],\n            \"descriptions\": [\n              {\n                \"text\": \"<string>\",\n                \"pinnedField\": \"DESCRIPTION_2\"\n              },\n              {\n                \"text\": \"<string>\",\n                \"pinnedField\": \"HEADLINE_3\"\n              }\n            ],\n            \"path1\": \"<string>\",\n            \"path2\": \"<string>\"\n          },\n          \"responsiveDisplayAd\": {\n            \"headlines\": [\n              {\n                \"text\": \"<string>\",\n                \"pinnedField\": \"HEADLINE_2\"\n              },\n              {\n                \"text\": \"<string>\",\n                \"pinnedField\": \"DESCRIPTION_2\"\n              }\n            ],\n            \"longHeadline\": {\n              \"text\": \"<string>\",\n              \"pinnedField\": \"UNSPECIFIED\"\n            },\n            \"descriptions\": [\n              {\n                \"text\": \"<string>\",\n                \"pinnedField\": \"HEADLINE_2\"\n              },\n              {\n                \"text\": \"<string>\",\n                \"pinnedField\": \"HEADLINE_2\"\n              }\n            ],\n            \"businessName\": \"<string>\"\n          }\n        },\n        \"policySummary\": {\n          \"approvalStatus\": \"DISAPPROVED\",\n          \"reviewStatus\": \"UNSPECIFIED\",\n          \"policyTopicEntries\": [\n            {\n              \"type\": \"<string>\",\n              \"topic\": \"<string>\"\n            },\n            {\n              \"type\": \"<string>\",\n              \"topic\": \"<string>\"\n            }\n          ]\n        },\n        \"adStrength\": \"EXCELLENT\"\n      },\n      \"remove\": \"<string>\",\n      \"updateMask\": \"<string>\"\n    }\n  ],\n  \"partialFailure\": \"<boolean>\",\n  \"validateOnly\": \"<boolean>\"\n}",
+                          "options": {
+                            "raw": {
+                              "headerFamily": "json",
+                              "language": "json"
+                            }
+                          }
+                        },
+                        "url": {
+                          "raw": "{{baseUrl}}/v18/customers/:customerId/adGroupAds:mutate",
+                          "host": [
+                            "{{baseUrl}}"
+                          ],
+                          "path": [
+                            "v18",
+                            "customers",
+                            ":customerId",
+                            "adGroupAds:mutate"
+                          ],
+                          "variable": [
+                            {
+                              "id": "203e843f-d187-46b0-a406-7134ea5495f8",
+                              "key": "customerId",
+                              "value": "4930523864",
+                              "description": "(Required) The Google Ads customer ID (without dashes), e.g. 1234567890."
+                            }
+                          ]
+                        },
+                        "description": "Creates, updates, or removes ads within ad groups. Ads are the\ncreative content shown to users. Supports responsive search ads,\nexpanded text ads, display ads, and other ad formats.\n"
+                      },
+                      "response": [
+                        {
+                          "id": "e20f6aec-64b6-4bd5-91c1-8374e3976cb7",
+                          "name": "Successful Response",
+                          "originalRequest": {
+                            "method": "POST",
+                            "header": [
+                              {
+                                "description": "(Required) Developer token for API access. Obtain from the Google Ads API Center\nin your manager account.\n",
+                                "key": "developer-token",
+                                "value": "<string>"
+                              },
+                              {
+                                "description": "The customer ID of the manager account making the request on behalf\nof a client account. Required when authenticating as a manager account.\n",
+                                "key": "login-customer-id",
+                                "value": "<string>"
+                              },
+                              {
+                                "key": "Content-Type",
+                                "value": "application/json"
+                              },
+                              {
+                                "key": "Accept",
+                                "value": "application/json"
+                              },
+                              {
+                                "description": "Added as a part of security scheme: oauth2",
+                                "key": "Authorization",
+                                "value": "<token>"
+                              }
+                            ],
+                            "body": {
+                              "mode": "raw",
+                              "raw": "{\n  \"operations\": [\n    {\n      \"create\": {\n        \"resourceName\": \"<string>\",\n        \"status\": \"REMOVED\",\n        \"adGroup\": \"<string>\",\n        \"ad\": {\n          \"resourceName\": \"<string>\",\n          \"id\": \"<long>\",\n          \"finalUrls\": [\n            \"<uri>\",\n            \"<uri>\"\n          ],\n          \"finalMobileUrls\": [\n            \"<uri>\",\n            \"<uri>\"\n          ],\n          \"trackingUrlTemplate\": \"<string>\",\n          \"type\": \"RESPONSIVE_DISPLAY_AD\",\n          \"responsiveSearchAd\": {\n            \"headlines\": [\n              {\n                \"text\": \"<string>\",\n                \"pinnedField\": \"HEADLINE_1\"\n              },\n              {\n                \"text\": \"<string>\",\n                \"pinnedField\": \"DESCRIPTION_2\"\n              }\n            ],\n            \"descriptions\": [\n              {\n                \"text\": \"<string>\",\n                \"pinnedField\": \"HEADLINE_2\"\n              },\n              {\n                \"text\": \"<string>\",\n                \"pinnedField\": \"HEADLINE_2\"\n              }\n            ],\n            \"path1\": \"<string>\",\n            \"path2\": \"<string>\"\n          },\n          \"responsiveDisplayAd\": {\n            \"headlines\": [\n              {\n                \"text\": \"<string>\",\n                \"pinnedField\": \"DESCRIPTION_1\"\n              },\n              {\n                \"text\": \"<string>\",\n                \"pinnedField\": \"DESCRIPTION_2\"\n              }\n            ],\n            \"longHeadline\": {\n              \"text\": \"<string>\",\n              \"pinnedField\": \"UNSPECIFIED\"\n            },\n            \"descriptions\": [\n              {\n                \"text\": \"<string>\",\n                \"pinnedField\": \"DESCRIPTION_2\"\n              },\n              {\n                \"text\": \"<string>\",\n                \"pinnedField\": \"DESCRIPTION_1\"\n              }\n            ],\n            \"businessName\": \"<string>\"\n          }\n        },\n        \"policySummary\": {\n          \"approvalStatus\": \"DISAPPROVED\",\n          \"reviewStatus\": \"UNSPECIFIED\",\n          \"policyTopicEntries\": [\n            {\n              \"type\": \"<string>\",\n              \"topic\": \"<string>\"\n            },\n            {\n              \"type\": \"<string>\",\n              \"topic\": \"<string>\"\n            }\n          ]\n        },\n        \"adStrength\": \"NO_ADS\"\n      },\n      \"update\": {\n        \"resourceName\": \"<string>\",\n        \"status\": \"ENABLED\",\n        \"adGroup\": \"<string>\",\n        \"ad\": {\n          \"resourceName\": \"<string>\",\n          \"id\": \"<long>\",\n          \"finalUrls\": [\n            \"<uri>\",\n            \"<uri>\"\n          ],\n          \"finalMobileUrls\": [\n            \"<uri>\",\n            \"<uri>\"\n          ],\n          \"trackingUrlTemplate\": \"<string>\",\n          \"type\": \"CALL_AD\",\n          \"responsiveSearchAd\": {\n            \"headlines\": [\n              {\n                \"text\": \"<string>\",\n                \"pinnedField\": \"HEADLINE_2\"\n              },\n              {\n                \"text\": \"<string>\",\n                \"pinnedField\": \"DESCRIPTION_2\"\n              }\n            ],\n            \"descriptions\": [\n              {\n                \"text\": \"<string>\",\n                \"pinnedField\": \"DESCRIPTION_1\"\n              },\n              {\n                \"text\": \"<string>\",\n                \"pinnedField\": \"DESCRIPTION_2\"\n              }\n            ],\n            \"path1\": \"<string>\",\n            \"path2\": \"<string>\"\n          },\n          \"responsiveDisplayAd\": {\n            \"headlines\": [\n              {\n                \"text\": \"<string>\",\n                \"pinnedField\": \"DESCRIPTION_1\"\n              },\n              {\n                \"text\": \"<string>\",\n                \"pinnedField\": \"HEADLINE_3\"\n              }\n            ],\n            \"longHeadline\": {\n              \"text\": \"<string>\",\n              \"pinnedField\": \"DESCRIPTION_2\"\n            },\n            \"descriptions\": [\n              {\n                \"text\": \"<string>\",\n                \"pinnedField\": \"UNSPECIFIED\"\n              },\n              {\n                \"text\": \"<string>\",\n                \"pinnedField\": \"HEADLINE_2\"\n              }\n            ],\n            \"businessName\": \"<string>\"\n          }\n        },\n        \"policySummary\": {\n          \"approvalStatus\": \"DISAPPROVED\",\n          \"reviewStatus\": \"UNKNOWN\",\n          \"policyTopicEntries\": [\n            {\n              \"type\": \"<string>\",\n              \"topic\": \"<string>\"\n            },\n            {\n              \"type\": \"<string>\",\n              \"topic\": \"<string>\"\n            }\n          ]\n        },\n        \"adStrength\": \"GOOD\"\n      },\n      \"remove\": \"<string>\",\n      \"updateMask\": \"<string>\"\n    },\n    {\n      \"create\": {\n        \"resourceName\": \"<string>\",\n        \"status\": \"REMOVED\",\n        \"adGroup\": \"<string>\",\n        \"ad\": {\n          \"resourceName\": \"<string>\",\n          \"id\": \"<long>\",\n          \"finalUrls\": [\n            \"<uri>\",\n            \"<uri>\"\n          ],\n          \"finalMobileUrls\": [\n            \"<uri>\",\n            \"<uri>\"\n          ],\n          \"trackingUrlTemplate\": \"<string>\",\n          \"type\": \"UNSPECIFIED\",\n          \"responsiveSearchAd\": {\n            \"headlines\": [\n              {\n                \"text\": \"<string>\",\n                \"pinnedField\": \"DESCRIPTION_2\"\n              },\n              {\n                \"text\": \"<string>\",\n                \"pinnedField\": \"DESCRIPTION_1\"\n              }\n            ],\n            \"descriptions\": [\n              {\n                \"text\": \"<string>\",\n                \"pinnedField\": \"DESCRIPTION_1\"\n              },\n              {\n                \"text\": \"<string>\",\n                \"pinnedField\": \"DESCRIPTION_2\"\n              }\n            ],\n            \"path1\": \"<string>\",\n            \"path2\": \"<string>\"\n          },\n          \"responsiveDisplayAd\": {\n            \"headlines\": [\n              {\n                \"text\": \"<string>\",\n                \"pinnedField\": \"UNSPECIFIED\"\n              },\n              {\n                \"text\": \"<string>\",\n                \"pinnedField\": \"DESCRIPTION_2\"\n              }\n            ],\n            \"longHeadline\": {\n              \"text\": \"<string>\",\n              \"pinnedField\": \"HEADLINE_2\"\n            },\n            \"descriptions\": [\n              {\n                \"text\": \"<string>\",\n                \"pinnedField\": \"DESCRIPTION_1\"\n              },\n              {\n                \"text\": \"<string>\",\n                \"pinnedField\": \"DESCRIPTION_1\"\n              }\n            ],\n            \"businessName\": \"<string>\"\n          }\n        },\n        \"policySummary\": {\n          \"approvalStatus\": \"AREA_OF_INTEREST_ONLY\",\n          \"reviewStatus\": \"UNKNOWN\",\n          \"policyTopicEntries\": [\n            {\n              \"type\": \"<string>\",\n              \"topic\": \"<string>\"\n            },\n            {\n              \"type\": \"<string>\",\n              \"topic\": \"<string>\"\n            }\n          ]\n        },\n        \"adStrength\": \"GOOD\"\n      },\n      \"update\": {\n        \"resourceName\": \"<string>\",\n        \"status\": \"UNKNOWN\",\n        \"adGroup\": \"<string>\",\n        \"ad\": {\n          \"resourceName\": \"<string>\",\n          \"id\": \"<long>\",\n          \"finalUrls\": [\n            \"<uri>\",\n            \"<uri>\"\n          ],\n          \"finalMobileUrls\": [\n            \"<uri>\",\n            \"<uri>\"\n          ],\n          \"trackingUrlTemplate\": \"<string>\",\n          \"type\": \"RESPONSIVE_SEARCH_AD\",\n          \"responsiveSearchAd\": {\n            \"headlines\": [\n              {\n                \"text\": \"<string>\",\n                \"pinnedField\": \"HEADLINE_1\"\n              },\n              {\n                \"text\": \"<string>\",\n                \"pinnedField\": \"HEADLINE_1\"\n              }\n            ],\n            \"descriptions\": [\n              {\n                \"text\": \"<string>\",\n                \"pinnedField\": \"DESCRIPTION_2\"\n              },\n              {\n                \"text\": \"<string>\",\n                \"pinnedField\": \"HEADLINE_3\"\n              }\n            ],\n            \"path1\": \"<string>\",\n            \"path2\": \"<string>\"\n          },\n          \"responsiveDisplayAd\": {\n            \"headlines\": [\n              {\n                \"text\": \"<string>\",\n                \"pinnedField\": \"HEADLINE_2\"\n              },\n              {\n                \"text\": \"<string>\",\n                \"pinnedField\": \"DESCRIPTION_2\"\n              }\n            ],\n            \"longHeadline\": {\n              \"text\": \"<string>\",\n              \"pinnedField\": \"UNSPECIFIED\"\n            },\n            \"descriptions\": [\n              {\n                \"text\": \"<string>\",\n                \"pinnedField\": \"HEADLINE_2\"\n              },\n              {\n                \"text\": \"<string>\",\n                \"pinnedField\": \"HEADLINE_2\"\n              }\n            ],\n            \"businessName\": \"<string>\"\n          }\n        },\n        \"policySummary\": {\n          \"approvalStatus\": \"DISAPPROVED\",\n          \"reviewStatus\": \"UNSPECIFIED\",\n          \"policyTopicEntries\": [\n            {\n              \"type\": \"<string>\",\n              \"topic\": \"<string>\"\n            },\n            {\n              \"type\": \"<string>\",\n              \"topic\": \"<string>\"\n            }\n          ]\n        },\n        \"adStrength\": \"EXCELLENT\"\n      },\n      \"remove\": \"<string>\",\n      \"updateMask\": \"<string>\"\n    }\n  ],\n  \"partialFailure\": \"<boolean>\",\n  \"validateOnly\": \"<boolean>\"\n}",
+                              "options": {
+                                "raw": {
+                                  "headerFamily": "json",
+                                  "language": "json"
+                                }
+                              }
+                            },
+                            "url": {
+                              "raw": "{{baseUrl}}/v18/customers/:customerId/adGroupAds:mutate",
+                              "host": [
+                                "{{baseUrl}}"
+                              ],
+                              "path": [
+                                "v18",
+                                "customers",
+                                ":customerId",
+                                "adGroupAds:mutate"
+                              ],
+                              "variable": [
+                                {
+                                  "key": "customerId"
+                                }
+                              ]
+                            }
+                          },
+                          "status": "OK",
+                          "code": 200,
+                          "_postman_previewlanguage": "json",
+                          "header": [
+                            {
+                              "key": "Content-Type",
+                              "value": "application/json"
+                            }
+                          ],
+                          "cookie": [],
+                          "responseTime": null,
+                          "body": "{\n  \"results\": [\n    {\n      \"resourceName\": \"<string>\"\n    },\n    {\n      \"resourceName\": \"<string>\"\n    }\n  ],\n  \"partialFailureError\": {\n    \"code\": \"<integer>\",\n    \"message\": \"<string>\"\n  }\n}",
+                          "createdAt": "2026-07-28T01:45:01.000Z",
+                          "updatedAt": "2026-07-28T01:45:01.000Z",
+                          "uid": "35240-e20f6aec-64b6-4bd5-91c1-8374e3976cb7"
+                        },
+                        {
+                          "id": "d44a839c-e089-44ab-a085-5c7af1a5bd44",
+                          "name": "Bad Request",
+                          "originalRequest": {
+                            "method": "POST",
+                            "header": [
+                              {
+                                "description": "(Required) Developer token for API access. Obtain from the Google Ads API Center\nin your manager account.\n",
+                                "key": "developer-token",
+                                "value": "<string>"
+                              },
+                              {
+                                "description": "The customer ID of the manager account making the request on behalf\nof a client account. Required when authenticating as a manager account.\n",
+                                "key": "login-customer-id",
+                                "value": "<string>"
+                              },
+                              {
+                                "key": "Content-Type",
+                                "value": "application/json"
+                              },
+                              {
+                                "key": "Accept",
+                                "value": "application/json"
+                              },
+                              {
+                                "description": "Added as a part of security scheme: oauth2",
+                                "key": "Authorization",
+                                "value": "<token>"
+                              }
+                            ],
+                            "body": {
+                              "mode": "raw",
+                              "raw": "{\n  \"operations\": [\n    {\n      \"create\": {\n        \"resourceName\": \"<string>\",\n        \"status\": \"REMOVED\",\n        \"adGroup\": \"<string>\",\n        \"ad\": {\n          \"resourceName\": \"<string>\",\n          \"id\": \"<long>\",\n          \"finalUrls\": [\n            \"<uri>\",\n            \"<uri>\"\n          ],\n          \"finalMobileUrls\": [\n            \"<uri>\",\n            \"<uri>\"\n          ],\n          \"trackingUrlTemplate\": \"<string>\",\n          \"type\": \"RESPONSIVE_DISPLAY_AD\",\n          \"responsiveSearchAd\": {\n            \"headlines\": [\n              {\n                \"text\": \"<string>\",\n                \"pinnedField\": \"HEADLINE_1\"\n              },\n              {\n                \"text\": \"<string>\",\n                \"pinnedField\": \"DESCRIPTION_2\"\n              }\n            ],\n            \"descriptions\": [\n              {\n                \"text\": \"<string>\",\n                \"pinnedField\": \"HEADLINE_2\"\n              },\n              {\n                \"text\": \"<string>\",\n                \"pinnedField\": \"HEADLINE_2\"\n              }\n            ],\n            \"path1\": \"<string>\",\n            \"path2\": \"<string>\"\n          },\n          \"responsiveDisplayAd\": {\n            \"headlines\": [\n              {\n                \"text\": \"<string>\",\n                \"pinnedField\": \"DESCRIPTION_1\"\n              },\n              {\n                \"text\": \"<string>\",\n                \"pinnedField\": \"DESCRIPTION_2\"\n              }\n            ],\n            \"longHeadline\": {\n              \"text\": \"<string>\",\n              \"pinnedField\": \"UNSPECIFIED\"\n            },\n            \"descriptions\": [\n              {\n                \"text\": \"<string>\",\n                \"pinnedField\": \"DESCRIPTION_2\"\n              },\n              {\n                \"text\": \"<string>\",\n                \"pinnedField\": \"DESCRIPTION_1\"\n              }\n            ],\n            \"businessName\": \"<string>\"\n          }\n        },\n        \"policySummary\": {\n          \"approvalStatus\": \"DISAPPROVED\",\n          \"reviewStatus\": \"UNSPECIFIED\",\n          \"policyTopicEntries\": [\n            {\n              \"type\": \"<string>\",\n              \"topic\": \"<string>\"\n            },\n            {\n              \"type\": \"<string>\",\n              \"topic\": \"<string>\"\n            }\n          ]\n        },\n        \"adStrength\": \"NO_ADS\"\n      },\n      \"update\": {\n        \"resourceName\": \"<string>\",\n        \"status\": \"ENABLED\",\n        \"adGroup\": \"<string>\",\n        \"ad\": {\n          \"resourceName\": \"<string>\",\n          \"id\": \"<long>\",\n          \"finalUrls\": [\n            \"<uri>\",\n            \"<uri>\"\n          ],\n          \"finalMobileUrls\": [\n            \"<uri>\",\n            \"<uri>\"\n          ],\n          \"trackingUrlTemplate\": \"<string>\",\n          \"type\": \"CALL_AD\",\n          \"responsiveSearchAd\": {\n            \"headlines\": [\n              {\n                \"text\": \"<string>\",\n                \"pinnedField\": \"HEADLINE_2\"\n              },\n              {\n                \"text\": \"<string>\",\n                \"pinnedField\": \"DESCRIPTION_2\"\n              }\n            ],\n            \"descriptions\": [\n              {\n                \"text\": \"<string>\",\n                \"pinnedField\": \"DESCRIPTION_1\"\n              },\n              {\n                \"text\": \"<string>\",\n                \"pinnedField\": \"DESCRIPTION_2\"\n              }\n            ],\n            \"path1\": \"<string>\",\n            \"path2\": \"<string>\"\n          },\n          \"responsiveDisplayAd\": {\n            \"headlines\": [\n              {\n                \"text\": \"<string>\",\n                \"pinnedField\": \"DESCRIPTION_1\"\n              },\n              {\n                \"text\": \"<string>\",\n                \"pinnedField\": \"HEADLINE_3\"\n              }\n            ],\n            \"longHeadline\": {\n              \"text\": \"<string>\",\n              \"pinnedField\": \"DESCRIPTION_2\"\n            },\n            \"descriptions\": [\n              {\n                \"text\": \"<string>\",\n                \"pinnedField\": \"UNSPECIFIED\"\n              },\n              {\n                \"text\": \"<string>\",\n                \"pinnedField\": \"HEADLINE_2\"\n              }\n            ],\n            \"businessName\": \"<string>\"\n          }\n        },\n        \"policySummary\": {\n          \"approvalStatus\": \"DISAPPROVED\",\n          \"reviewStatus\": \"UNKNOWN\",\n          \"policyTopicEntries\": [\n            {\n              \"type\": \"<string>\",\n              \"topic\": \"<string>\"\n            },\n            {\n              \"type\": \"<string>\",\n              \"topic\": \"<string>\"\n            }\n          ]\n        },\n        \"adStrength\": \"GOOD\"\n      },\n      \"remove\": \"<string>\",\n      \"updateMask\": \"<string>\"\n    },\n    {\n      \"create\": {\n        \"resourceName\": \"<string>\",\n        \"status\": \"REMOVED\",\n        \"adGroup\": \"<string>\",\n        \"ad\": {\n          \"resourceName\": \"<string>\",\n          \"id\": \"<long>\",\n          \"finalUrls\": [\n            \"<uri>\",\n            \"<uri>\"\n          ],\n          \"finalMobileUrls\": [\n            \"<uri>\",\n            \"<uri>\"\n          ],\n          \"trackingUrlTemplate\": \"<string>\",\n          \"type\": \"UNSPECIFIED\",\n          \"responsiveSearchAd\": {\n            \"headlines\": [\n              {\n                \"text\": \"<string>\",\n                \"pinnedField\": \"DESCRIPTION_2\"\n              },\n              {\n                \"text\": \"<string>\",\n                \"pinnedField\": \"DESCRIPTION_1\"\n              }\n            ],\n            \"descriptions\": [\n              {\n                \"text\": \"<string>\",\n                \"pinnedField\": \"DESCRIPTION_1\"\n              },\n              {\n                \"text\": \"<string>\",\n                \"pinnedField\": \"DESCRIPTION_2\"\n              }\n            ],\n            \"path1\": \"<string>\",\n            \"path2\": \"<string>\"\n          },\n          \"responsiveDisplayAd\": {\n            \"headlines\": [\n              {\n                \"text\": \"<string>\",\n                \"pinnedField\": \"UNSPECIFIED\"\n              },\n              {\n                \"text\": \"<string>\",\n                \"pinnedField\": \"DESCRIPTION_2\"\n              }\n            ],\n            \"longHeadline\": {\n              \"text\": \"<string>\",\n              \"pinnedField\": \"HEADLINE_2\"\n            },\n            \"descriptions\": [\n              {\n                \"text\": \"<string>\",\n                \"pinnedField\": \"DESCRIPTION_1\"\n              },\n              {\n                \"text\": \"<string>\",\n                \"pinnedField\": \"DESCRIPTION_1\"\n              }\n            ],\n            \"businessName\": \"<string>\"\n          }\n        },\n        \"policySummary\": {\n          \"approvalStatus\": \"AREA_OF_INTEREST_ONLY\",\n          \"reviewStatus\": \"UNKNOWN\",\n          \"policyTopicEntries\": [\n            {\n              \"type\": \"<string>\",\n              \"topic\": \"<string>\"\n            },\n            {\n              \"type\": \"<string>\",\n              \"topic\": \"<string>\"\n            }\n          ]\n        },\n        \"adStrength\": \"GOOD\"\n      },\n      \"update\": {\n        \"resourceName\": \"<string>\",\n        \"status\": \"UNKNOWN\",\n        \"adGroup\": \"<string>\",\n        \"ad\": {\n          \"resourceName\": \"<string>\",\n          \"id\": \"<long>\",\n          \"finalUrls\": [\n            \"<uri>\",\n            \"<uri>\"\n          ],\n          \"finalMobileUrls\": [\n            \"<uri>\",\n            \"<uri>\"\n          ],\n          \"trackingUrlTemplate\": \"<string>\",\n          \"type\": \"RESPONSIVE_SEARCH_AD\",\n          \"responsiveSearchAd\": {\n            \"headlines\": [\n              {\n                \"text\": \"<string>\",\n                \"pinnedField\": \"HEADLINE_1\"\n              },\n              {\n                \"text\": \"<string>\",\n                \"pinnedField\": \"HEADLINE_1\"\n              }\n            ],\n            \"descriptions\": [\n              {\n                \"text\": \"<string>\",\n                \"pinnedField\": \"DESCRIPTION_2\"\n              },\n              {\n                \"text\": \"<string>\",\n                \"pinnedField\": \"HEADLINE_3\"\n              }\n            ],\n            \"path1\": \"<string>\",\n            \"path2\": \"<string>\"\n          },\n          \"responsiveDisplayAd\": {\n            \"headlines\": [\n              {\n                \"text\": \"<string>\",\n                \"pinnedField\": \"HEADLINE_2\"\n              },\n              {\n                \"text\": \"<string>\",\n                \"pinnedField\": \"DESCRIPTION_2\"\n              }\n            ],\n            \"longHeadline\": {\n              \"text\": \"<string>\",\n              \"pinnedField\": \"UNSPECIFIED\"\n            },\n            \"descriptions\": [\n              {\n                \"text\": \"<string>\",\n                \"pinnedField\": \"HEADLINE_2\"\n              },\n              {\n                \"text\": \"<string>\",\n                \"pinnedField\": \"HEADLINE_2\"\n              }\n            ],\n            \"businessName\": \"<string>\"\n          }\n        },\n        \"policySummary\": {\n          \"approvalStatus\": \"DISAPPROVED\",\n          \"reviewStatus\": \"UNSPECIFIED\",\n          \"policyTopicEntries\": [\n            {\n              \"type\": \"<string>\",\n              \"topic\": \"<string>\"\n            },\n            {\n              \"type\": \"<string>\",\n              \"topic\": \"<string>\"\n            }\n          ]\n        },\n        \"adStrength\": \"EXCELLENT\"\n      },\n      \"remove\": \"<string>\",\n      \"updateMask\": \"<string>\"\n    }\n  ],\n  \"partialFailure\": \"<boolean>\",\n  \"validateOnly\": \"<boolean>\"\n}",
+                              "options": {
+                                "raw": {
+                                  "headerFamily": "json",
+                                  "language": "json"
+                                }
+                              }
+                            },
+                            "url": {
+                              "raw": "{{baseUrl}}/v18/customers/:customerId/adGroupAds:mutate",
+                              "host": [
+                                "{{baseUrl}}"
+                              ],
+                              "path": [
+                                "v18",
+                                "customers",
+                                ":customerId",
+                                "adGroupAds:mutate"
+                              ],
+                              "variable": [
+                                {
+                                  "key": "customerId"
+                                }
+                              ]
+                            }
+                          },
+                          "status": "Bad Request",
+                          "code": 400,
+                          "_postman_previewlanguage": "json",
+                          "header": [
+                            {
+                              "key": "Content-Type",
+                              "value": "application/json"
+                            }
+                          ],
+                          "cookie": [],
+                          "responseTime": null,
+                          "body": "{\n  \"errors\": [\n    {\n      \"errorCode\": {\n        \"nulla3\": \"<string>\",\n        \"ide7\": \"<string>\"\n      },\n      \"message\": \"<string>\",\n      \"trigger\": {},\n      \"location\": {\n        \"fieldPathElements\": [\n          {\n            \"fieldName\": \"<string>\",\n            \"index\": \"<integer>\"\n          },\n          {\n            \"fieldName\": \"<string>\",\n            \"index\": \"<integer>\"\n          }\n        ]\n      }\n    },\n    {\n      \"errorCode\": {\n        \"reprehenderitdcf\": \"<string>\"\n      },\n      \"message\": \"<string>\",\n      \"trigger\": {},\n      \"location\": {\n        \"fieldPathElements\": [\n          {\n            \"fieldName\": \"<string>\",\n            \"index\": \"<integer>\"\n          },\n          {\n            \"fieldName\": \"<string>\",\n            \"index\": \"<integer>\"\n          }\n        ]\n      }\n    }\n  ]\n}",
+                          "createdAt": "2026-07-28T01:45:01.000Z",
+                          "updatedAt": "2026-07-28T01:45:01.000Z",
+                          "uid": "35240-d44a839c-e089-44ab-a085-5c7af1a5bd44"
+                        },
+                        {
+                          "id": "b52196c6-2356-474d-b885-c9deb75ce1cf",
+                          "name": "Unauthorized",
+                          "originalRequest": {
+                            "method": "POST",
+                            "header": [
+                              {
+                                "description": "(Required) Developer token for API access. Obtain from the Google Ads API Center\nin your manager account.\n",
+                                "key": "developer-token",
+                                "value": "<string>"
+                              },
+                              {
+                                "description": "The customer ID of the manager account making the request on behalf\nof a client account. Required when authenticating as a manager account.\n",
+                                "key": "login-customer-id",
+                                "value": "<string>"
+                              },
+                              {
+                                "key": "Content-Type",
+                                "value": "application/json"
+                              },
+                              {
+                                "key": "Accept",
+                                "value": "application/json"
+                              },
+                              {
+                                "description": "Added as a part of security scheme: oauth2",
+                                "key": "Authorization",
+                                "value": "<token>"
+                              }
+                            ],
+                            "body": {
+                              "mode": "raw",
+                              "raw": "{\n  \"operations\": [\n    {\n      \"create\": {\n        \"resourceName\": \"<string>\",\n        \"status\": \"REMOVED\",\n        \"adGroup\": \"<string>\",\n        \"ad\": {\n          \"resourceName\": \"<string>\",\n          \"id\": \"<long>\",\n          \"finalUrls\": [\n            \"<uri>\",\n            \"<uri>\"\n          ],\n          \"finalMobileUrls\": [\n            \"<uri>\",\n            \"<uri>\"\n          ],\n          \"trackingUrlTemplate\": \"<string>\",\n          \"type\": \"RESPONSIVE_DISPLAY_AD\",\n          \"responsiveSearchAd\": {\n            \"headlines\": [\n              {\n                \"text\": \"<string>\",\n                \"pinnedField\": \"HEADLINE_1\"\n              },\n              {\n                \"text\": \"<string>\",\n                \"pinnedField\": \"DESCRIPTION_2\"\n              }\n            ],\n            \"descriptions\": [\n              {\n                \"text\": \"<string>\",\n                \"pinnedField\": \"HEADLINE_2\"\n              },\n              {\n                \"text\": \"<string>\",\n                \"pinnedField\": \"HEADLINE_2\"\n              }\n            ],\n            \"path1\": \"<string>\",\n            \"path2\": \"<string>\"\n          },\n          \"responsiveDisplayAd\": {\n            \"headlines\": [\n              {\n                \"text\": \"<string>\",\n                \"pinnedField\": \"DESCRIPTION_1\"\n              },\n              {\n                \"text\": \"<string>\",\n                \"pinnedField\": \"DESCRIPTION_2\"\n              }\n            ],\n            \"longHeadline\": {\n              \"text\": \"<string>\",\n              \"pinnedField\": \"UNSPECIFIED\"\n            },\n            \"descriptions\": [\n              {\n                \"text\": \"<string>\",\n                \"pinnedField\": \"DESCRIPTION_2\"\n              },\n              {\n                \"text\": \"<string>\",\n                \"pinnedField\": \"DESCRIPTION_1\"\n              }\n            ],\n            \"businessName\": \"<string>\"\n          }\n        },\n        \"policySummary\": {\n          \"approvalStatus\": \"DISAPPROVED\",\n          \"reviewStatus\": \"UNSPECIFIED\",\n          \"policyTopicEntries\": [\n            {\n              \"type\": \"<string>\",\n              \"topic\": \"<string>\"\n            },\n            {\n              \"type\": \"<string>\",\n              \"topic\": \"<string>\"\n            }\n          ]\n        },\n        \"adStrength\": \"NO_ADS\"\n      },\n      \"update\": {\n        \"resourceName\": \"<string>\",\n        \"status\": \"ENABLED\",\n        \"adGroup\": \"<string>\",\n        \"ad\": {\n          \"resourceName\": \"<string>\",\n          \"id\": \"<long>\",\n          \"finalUrls\": [\n            \"<uri>\",\n            \"<uri>\"\n          ],\n          \"finalMobileUrls\": [\n            \"<uri>\",\n            \"<uri>\"\n          ],\n          \"trackingUrlTemplate\": \"<string>\",\n          \"type\": \"CALL_AD\",\n          \"responsiveSearchAd\": {\n            \"headlines\": [\n              {\n                \"text\": \"<string>\",\n                \"pinnedField\": \"HEADLINE_2\"\n              },\n              {\n                \"text\": \"<string>\",\n                \"pinnedField\": \"DESCRIPTION_2\"\n              }\n            ],\n            \"descriptions\": [\n              {\n                \"text\": \"<string>\",\n                \"pinnedField\": \"DESCRIPTION_1\"\n              },\n              {\n                \"text\": \"<string>\",\n                \"pinnedField\": \"DESCRIPTION_2\"\n              }\n            ],\n            \"path1\": \"<string>\",\n            \"path2\": \"<string>\"\n          },\n          \"responsiveDisplayAd\": {\n            \"headlines\": [\n              {\n                \"text\": \"<string>\",\n                \"pinnedField\": \"DESCRIPTION_1\"\n              },\n              {\n                \"text\": \"<string>\",\n                \"pinnedField\": \"HEADLINE_3\"\n              }\n            ],\n            \"longHeadline\": {\n              \"text\": \"<string>\",\n              \"pinnedField\": \"DESCRIPTION_2\"\n            },\n            \"descriptions\": [\n              {\n                \"text\": \"<string>\",\n                \"pinnedField\": \"UNSPECIFIED\"\n              },\n              {\n                \"text\": \"<string>\",\n                \"pinnedField\": \"HEADLINE_2\"\n              }\n            ],\n            \"businessName\": \"<string>\"\n          }\n        },\n        \"policySummary\": {\n          \"approvalStatus\": \"DISAPPROVED\",\n          \"reviewStatus\": \"UNKNOWN\",\n          \"policyTopicEntries\": [\n            {\n              \"type\": \"<string>\",\n              \"topic\": \"<string>\"\n            },\n            {\n              \"type\": \"<string>\",\n              \"topic\": \"<string>\"\n            }\n          ]\n        },\n        \"adStrength\": \"GOOD\"\n      },\n      \"remove\": \"<string>\",\n      \"updateMask\": \"<string>\"\n    },\n    {\n      \"create\": {\n        \"resourceName\": \"<string>\",\n        \"status\": \"REMOVED\",\n        \"adGroup\": \"<string>\",\n        \"ad\": {\n          \"resourceName\": \"<string>\",\n          \"id\": \"<long>\",\n          \"finalUrls\": [\n            \"<uri>\",\n            \"<uri>\"\n          ],\n          \"finalMobileUrls\": [\n            \"<uri>\",\n            \"<uri>\"\n          ],\n          \"trackingUrlTemplate\": \"<string>\",\n          \"type\": \"UNSPECIFIED\",\n          \"responsiveSearchAd\": {\n            \"headlines\": [\n              {\n                \"text\": \"<string>\",\n                \"pinnedField\": \"DESCRIPTION_2\"\n              },\n              {\n                \"text\": \"<string>\",\n                \"pinnedField\": \"DESCRIPTION_1\"\n              }\n            ],\n            \"descriptions\": [\n              {\n                \"text\": \"<string>\",\n                \"pinnedField\": \"DESCRIPTION_1\"\n              },\n              {\n                \"text\": \"<string>\",\n                \"pinnedField\": \"DESCRIPTION_2\"\n              }\n            ],\n            \"path1\": \"<string>\",\n            \"path2\": \"<string>\"\n          },\n          \"responsiveDisplayAd\": {\n            \"headlines\": [\n              {\n                \"text\": \"<string>\",\n                \"pinnedField\": \"UNSPECIFIED\"\n              },\n              {\n                \"text\": \"<string>\",\n                \"pinnedField\": \"DESCRIPTION_2\"\n              }\n            ],\n            \"longHeadline\": {\n              \"text\": \"<string>\",\n              \"pinnedField\": \"HEADLINE_2\"\n            },\n            \"descriptions\": [\n              {\n                \"text\": \"<string>\",\n                \"pinnedField\": \"DESCRIPTION_1\"\n              },\n              {\n                \"text\": \"<string>\",\n                \"pinnedField\": \"DESCRIPTION_1\"\n              }\n            ],\n            \"businessName\": \"<string>\"\n          }\n        },\n        \"policySummary\": {\n          \"approvalStatus\": \"AREA_OF_INTEREST_ONLY\",\n          \"reviewStatus\": \"UNKNOWN\",\n          \"policyTopicEntries\": [\n            {\n              \"type\": \"<string>\",\n              \"topic\": \"<string>\"\n            },\n            {\n              \"type\": \"<string>\",\n              \"topic\": \"<string>\"\n            }\n          ]\n        },\n        \"adStrength\": \"GOOD\"\n      },\n      \"update\": {\n        \"resourceName\": \"<string>\",\n        \"status\": \"UNKNOWN\",\n        \"adGroup\": \"<string>\",\n        \"ad\": {\n          \"resourceName\": \"<string>\",\n          \"id\": \"<long>\",\n          \"finalUrls\": [\n            \"<uri>\",\n            \"<uri>\"\n          ],\n          \"finalMobileUrls\": [\n            \"<uri>\",\n            \"<uri>\"\n          ],\n          \"trackingUrlTemplate\": \"<string>\",\n          \"type\": \"RESPONSIVE_SEARCH_AD\",\n          \"responsiveSearchAd\": {\n            \"headlines\": [\n              {\n                \"text\": \"<string>\",\n                \"pinnedField\": \"HEADLINE_1\"\n              },\n              {\n                \"text\": \"<string>\",\n                \"pinnedField\": \"HEADLINE_1\"\n              }\n            ],\n            \"descriptions\": [\n              {\n                \"text\": \"<string>\",\n                \"pinnedField\": \"DESCRIPTION_2\"\n              },\n              {\n                \"text\": \"<string>\",\n                \"pinnedField\": \"HEADLINE_3\"\n              }\n            ],\n            \"path1\": \"<string>\",\n            \"path2\": \"<string>\"\n          },\n          \"responsiveDisplayAd\": {\n            \"headlines\": [\n              {\n                \"text\": \"<string>\",\n                \"pinnedField\": \"HEADLINE_2\"\n              },\n              {\n                \"text\": \"<string>\",\n                \"pinnedField\": \"DESCRIPTION_2\"\n              }\n            ],\n            \"longHeadline\": {\n              \"text\": \"<string>\",\n              \"pinnedField\": \"UNSPECIFIED\"\n            },\n            \"descriptions\": [\n              {\n                \"text\": \"<string>\",\n                \"pinnedField\": \"HEADLINE_2\"\n              },\n              {\n                \"text\": \"<string>\",\n                \"pinnedField\": \"HEADLINE_2\"\n              }\n            ],\n            \"businessName\": \"<string>\"\n          }\n        },\n        \"policySummary\": {\n          \"approvalStatus\": \"DISAPPROVED\",\n          \"reviewStatus\": \"UNSPECIFIED\",\n          \"policyTopicEntries\": [\n            {\n              \"type\": \"<string>\",\n              \"topic\": \"<string>\"\n            },\n            {\n              \"type\": \"<string>\",\n              \"topic\": \"<string>\"\n            }\n          ]\n        },\n        \"adStrength\": \"EXCELLENT\"\n      },\n      \"remove\": \"<string>\",\n      \"updateMask\": \"<string>\"\n    }\n  ],\n  \"partialFailure\": \"<boolean>\",\n  \"validateOnly\": \"<boolean>\"\n}",
+                              "options": {
+                                "raw": {
+                                  "headerFamily": "json",
+                                  "language": "json"
+                                }
+                              }
+                            },
+                            "url": {
+                              "raw": "{{baseUrl}}/v18/customers/:customerId/adGroupAds:mutate",
+                              "host": [
+                                "{{baseUrl}}"
+                              ],
+                              "path": [
+                                "v18",
+                                "customers",
+                                ":customerId",
+                                "adGroupAds:mutate"
+                              ],
+                              "variable": [
+                                {
+                                  "key": "customerId"
+                                }
+                              ]
+                            }
+                          },
+                          "status": "Unauthorized",
+                          "code": 401,
+                          "_postman_previewlanguage": "json",
+                          "header": [
+                            {
+                              "key": "Content-Type",
+                              "value": "application/json"
+                            }
+                          ],
+                          "cookie": [],
+                          "responseTime": null,
+                          "body": "{\n  \"errors\": [\n    {\n      \"errorCode\": {\n        \"nulla3\": \"<string>\",\n        \"ide7\": \"<string>\"\n      },\n      \"message\": \"<string>\",\n      \"trigger\": {},\n      \"location\": {\n        \"fieldPathElements\": [\n          {\n            \"fieldName\": \"<string>\",\n            \"index\": \"<integer>\"\n          },\n          {\n            \"fieldName\": \"<string>\",\n            \"index\": \"<integer>\"\n          }\n        ]\n      }\n    },\n    {\n      \"errorCode\": {\n        \"reprehenderitdcf\": \"<string>\"\n      },\n      \"message\": \"<string>\",\n      \"trigger\": {},\n      \"location\": {\n        \"fieldPathElements\": [\n          {\n            \"fieldName\": \"<string>\",\n            \"index\": \"<integer>\"\n          },\n          {\n            \"fieldName\": \"<string>\",\n            \"index\": \"<integer>\"\n          }\n        ]\n      }\n    }\n  ]\n}",
+                          "createdAt": "2026-07-28T01:45:01.000Z",
+                          "updatedAt": "2026-07-28T01:45:01.000Z",
+                          "uid": "35240-b52196c6-2356-474d-b885-c9deb75ce1cf"
+                        }
+                      ],
+                      "createdAt": "2026-07-28T01:45:01.000Z",
+                      "updatedAt": "2026-07-28T01:45:01.000Z",
+                      "uid": "35240-573295fe-5ad9-47fa-8f25-bdc8dabc5db1"
+                    }
+                  ],
+                  "id": "b2905ca8-111f-437a-934b-e0e6ea549f8d",
+                  "createdAt": "2026-07-28T01:45:01.000Z",
+                  "updatedAt": "2026-07-28T01:45:01.000Z",
+                  "uid": "35240-b2905ca8-111f-437a-934b-e0e6ea549f8d"
+                }
+              ],
+              "id": "e8899ce3-68ec-453e-99e1-678c058e6ccd",
+              "createdAt": "2026-07-28T01:45:01.000Z",
+              "updatedAt": "2026-07-28T01:45:01.000Z",
+              "uid": "35240-e8899ce3-68ec-453e-99e1-678c058e6ccd"
+            }
+          ],
+          "id": "a93c0700-7eb4-4b39-b57c-439a173987ce",
+          "createdAt": "2026-07-28T01:45:01.000Z",
+          "updatedAt": "2026-07-28T01:45:01.000Z",
+          "uid": "35240-a93c0700-7eb4-4b39-b57c-439a173987ce"
+        }
+      ],
+      "id": "b8a6836f-dbcf-45e6-935f-ef85b9d149d2",
+      "createdAt": "2026-07-28T01:45:01.000Z",
+      "updatedAt": "2026-07-28T01:45:01.000Z",
+      "uid": "35240-b8a6836f-dbcf-45e6-935f-ef85b9d149d2"
+    }
+  ],
+  "auth": {
+    "type": "oauth2",
+    "oauth2": [
+      {
+        "key": "scope",
+        "value": "https://www.googleapis.com/auth/adwords",
+        "type": "string"
+      },
+      {
+        "key": "accessTokenUrl",
+        "value": "https://oauth2.googleapis.com/token",
+        "type": "string"
+      },
+      {
+        "key": "authUrl",
+        "value": "https://accounts.google.com/o/oauth2/auth",
+        "type": "string"
+      },
+      {
+        "key": "grant_type",
+        "value": "authorization_code",
+        "type": "string"
+      }
+    ]
+  },
+  "variable": [
+    {
+      "key": "baseUrl",
+      "value": "https://googleads.googleapis.com"
+    }
+  ]
+}
