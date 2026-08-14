@@ -21,7 +21,7 @@ accessModel:
 image: https://www.gstatic.com/images/branding/product/1x/google_ads_64dp.png
 url: https://raw.githubusercontent.com/api-evangelist/google-ads/refs/heads/main/apis.yml
 created: '2024-01-01'
-modified: '2026-05-19'
+modified: '2026-08-13'
 specificationVersion: '0.19'
 tags:
 - Advertising
@@ -304,6 +304,51 @@ apis:
     url: https://developers.google.com/google-ads/api/docs/first-call/overview
   - type: GraphQL
     url: graphql/google-ads-graphql.md
+- aid: google-ads:google-ads-api
+  name: Google Ads API
+  description: >-
+    The complete Google Ads API v25 surface — 174 operations across campaigns, ad groups,
+    ads, criteria, assets, budgets, bidding, conversions, planning, audience insights,
+    batch jobs and reporting. Described by the OpenAPI 3.1 document derived from Google's
+    own API Discovery Document, which is the only machine-readable contract Google
+    publishes for this API.
+  humanURL: https://developers.google.com/google-ads/api
+  baseURL: https://googleads.googleapis.com
+  tags:
+  - Advertising
+  - Campaign Management
+  - Reporting
+  - Conversions
+  - GAQL
+  properties:
+  - type: OpenAPI
+    url: openapi/google-ads-api-v25-openapi.yml
+  - type: Discovery
+    url: discovery/google-ads-api-v25-discovery.json
+  - type: Overlay
+    url: overlays/google-ads-api-v25-overlay.yaml
+  - type: Protobuf
+    url: grpc/google-ads-google-ads-service.proto
+  - type: DataModel
+    url: data-model/google-ads-data-model.yml
+  - type: Documentation
+    url: https://developers.google.com/google-ads/api/docs/start
+  - type: APIReference
+    url: https://developers.google.com/google-ads/api/reference/rpc/latest/overview
+  - type: Authentication
+    url: https://developers.google.com/google-ads/api/docs/oauth/overview
+  - type: GettingStarted
+    url: https://developers.google.com/google-ads/api/docs/first-call/overview
+  - type: RateLimits
+    url: https://developers.google.com/google-ads/api/docs/best-practices/quotas
+  - type: ChangeLog
+    url: https://developers.google.com/google-ads/api/docs/release-notes
+  - type: Deprecation
+    url: https://developers.google.com/google-ads/api/docs/sunset-dates
+  - type: SDKs
+    url: https://developers.google.com/google-ads/api/docs/client-libs
+  - type: Support
+    url: https://developers.google.com/google-ads/api/support
 common:
 - type: PostmanWorkspace
   url: https://www.postman.com/kinlaneapi/google-ads/overview
@@ -356,7 +401,66 @@ common:
 - name: MCP Server
   url: https://github.com/googleads/google-ads-mcp
   type: MCPServer
+- type: MCPServer
+  url: mcp/google-ads-mcp.yml
+- type: ToolCrosswalk
+  url: mcp/google-ads-tool-crosswalk.yml
+- type: AgentSkill
+  url: skills/_index.yml
+- type: LLMsTxt
+  url: llms/google-ads-llms.txt
+- type: Packages
+  url: packages/google-ads-packages.yml
+- type: SDKs
+  url: packages/google-ads-packages.yml
+- type: CLI
+  url: cli/google-ads-cli.yml
+- type: Conventions
+  url: conventions/google-ads-conventions.yml
+- type: ErrorCatalog
+  url: errors/google-ads-problem-types.yml
+- type: Lifecycle
+  url: lifecycle/google-ads-lifecycle.yml
+- type: Deprecation
+  url: lifecycle/google-ads-lifecycle.yml
+- type: ChangeLog
+  url: changelog/google-ads-changelog.yml
+- type: Conformance
+  url: conformance/google-ads-conformance.yml
+- type: DataModel
+  url: data-model/google-ads-data-model.yml
+- type: Sandbox
+  url: sandbox/google-ads-sandbox.yml
+- type: Plans
+  url: plans/google-ads-plans-pricing.yml
+- type: RateLimits
+  url: rate-limits/google-ads-rate-limits.yml
+- type: WellKnown
+  url: well-known/google-ads-well-known.yml
+- type: SecurityTxt
+  url: well-known/google-ads-security.txt
+- type: Security
+  url: security/google-ads-vulnerability-disclosure.yml
+- type: Protobuf
+  url: grpc/google-ads-google-ads-service.proto
+- type: Discovery
+  url: discovery/google-ads-api-v25-discovery.json
+- type: FinOps
+  url: finops/google-ads-finops.yml
+- type: SpectralRules
+  url: rules/google-ads-jsonschema-spectral-rules.yml
+- type: APIReference
+  url: https://developers.google.com/google-ads/api/reference/rpc/latest/overview
+- type: Documentation
+  url: https://developers.google.com/google-ads/api/docs/start
+- type: Deprecation
+  url: https://developers.google.com/google-ads/api/docs/sunset-dates
 maintainers:
 - FN: Kin Lane
   email: kin@apievangelist.com
   url: https://apievangelist.com
+x-enrichment:
+  date: '2026-08-13'
+  status: enriched
+  artifacts_added: 38
+  pass: local-v1
