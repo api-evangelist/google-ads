@@ -4,7 +4,13 @@ schema: https://raw.githubusercontent.com/api-evangelist/interface-research/main
 provider: Google Ads
 providerId: google-ads
 created: '2026-05-04'
-modified: '2026-05-04'
+modified: '2026-08-13'
+generated: '2026-08-13'
+method: searched
+source: >-
+  https://developers.google.com/google-ads/api/docs/best-practices/quotas — replaces the
+  2026-05-04 API Evangelist scaffold, whose per-minute/per-month tiers and X-RateLimit-*
+  headers were placeholder values that Google does not publish.
 tags:
   - Advertising
   - Campaign Management
@@ -15,81 +21,120 @@ tags:
   - Rate Limiting
   - Quotas
   - Throttling
-description: Machine-readable rate limit definitions for the Google Ads API surface. Captures per-tier
-  quotas, burst behavior, response signaling, and recovery semantics. Defaults are scaffold values to
-  be replaced with published provider limits.
+description: >-
+  Published Google Ads API quotas. The unit that matters is the OPERATION, not the
+  request: a single mutate request may carry up to 10,000 operations and each one counts.
+  Quota is scoped to the developer token's access level, not to a paid plan.
+limit_count: 8
 headers:
-  limit: X-RateLimit-Limit
-  remaining: X-RateLimit-Remaining
-  reset: X-RateLimit-Reset
-  retryAfter: Retry-After
-  policy: RateLimit-Policy
+  limit: null
+  remaining: null
+  reset: null
+  retryAfter: null
+  policy: null
+  note: >-
+    Google publishes NO rate-limit response headers for this API and none were observed.
+    The runtime throttling signal is in the error body: a RESOURCE_EXHAUSTED error whose
+    QuotaErrorDetails carries rate_scope (ACCOUNT or DEVELOPER), rate_name (a human label
+    such as "Requests per account") and retry_delay (a google.protobuf.Duration a client
+    should wait before retrying). An agent must parse the payload, not the headers.
 responseCodes:
   throttled: 429
   quotaExceeded: 429
-  serviceUnavailable: 503
+  note: >-
+    429 RESOURCE_EXHAUSTED is returned for both daily-operation exhaustion and per-second
+    rate limiting, and also when a gRPC response would exceed the 64 MB message ceiling.
 limits:
-  - tier: free
-    name: Free Tier Default
-    scope: api-key
-    metric: requests_per_minute
-    limit: 10
-    burst: 20
-    timeFrame: minute
+  - name: Daily operations — Explorer access, production accounts
+    scope: developer-token
+    metric: operations_per_day
+    limit: 2880
+    timeFrame: day
+    error: RESOURCE_EXHAUSTED
     applies:
       - Google Ads API
-      - Google Ads Scripts
-  - tier: free
-    name: Free Tier Monthly Quota
-    scope: api-key
-    metric: requests_per_month
-    limit: 1000
-    timeFrame: month
+  - name: Daily operations — Explorer access, test accounts
+    scope: developer-token
+    metric: operations_per_day
+    limit: 15000
+    timeFrame: day
+    error: RESOURCE_EXHAUSTED
     applies:
       - Google Ads API
-      - Google Ads Scripts
-  - tier: professional
-    name: Professional Tier Default
-    scope: api-key
-    metric: requests_per_minute
+  - name: Daily operations — Basic access, test and production accounts
+    scope: developer-token
+    metric: operations_per_day
+    limit: 15000
+    timeFrame: day
+    error: RESOURCE_EXHAUSTED
+    applies:
+      - Google Ads API
+  - name: Mutate operations per request
+    scope: per-request
+    metric: operations_per_request
+    limit: 10000
+    error: TOO_MANY_MUTATE_OPERATIONS
+    applies:
+      - Google Ads API
+  - name: Action operations per request
+    scope: per-request
+    metric: operations_per_request
     limit: 100
-    burst: 200
-    timeFrame: minute
+    error: TOO_MANY_ACTION_OPERATIONS
     applies:
       - Google Ads API
-      - Google Ads Scripts
-  - tier: professional
-    name: Professional Tier Monthly Quota
-    scope: api-key
-    metric: requests_per_month
-    limit: 100000
-    timeFrame: month
+  - name: Conversions per upload request
+    scope: per-request
+    metric: conversions_per_request
+    limit: 2000
+    error: TOO_MANY_CONVERSIONS_IN_REQUEST
     applies:
       - Google Ads API
-      - Google Ads Scripts
-  - tier: enterprise
-    name: Enterprise Negotiated Limit
-    scope: contract
-    metric: requests_per_minute
-    limit: 1000
-    burst: 5000
-    timeFrame: minute
+  - name: Planning service throughput
+    scope: per-endpoint
+    metric: queries_per_second
+    limit: 1
+    timeFrame: second
+    error: RESOURCE_EXHAUSTED
     applies:
       - Google Ads API
-      - Google Ads Scripts
+    note: >-
+      Keyword planning methods are additionally limited to 1 request per second per CID.
+  - name: gRPC response message size
+    scope: per-request
+    metric: bytes_per_response
+    limit: 67108864
+    unit: 64 MB
+    error: RESOURCE_EXHAUSTED
+    applies:
+      - Google Ads API
+    note: Exceeding the ceiling surfaces as a 429 Resource Exhausted gRPC error.
+counting_rules:
+  - >-
+    A search or searchStream request counts as ONE operation regardless of how many rows
+    it returns.
+  - >-
+    A paginated follow-up request carrying a valid page token is NOT counted again.
+  - >-
+    Each individual operation inside a mutate request counts separately against the daily
+    quota, so one 10,000-operation request consumes a whole Explorer-access day three
+    times over.
 policies:
-  - name: Backoff Strategy
-    description: Clients should implement exponential backoff with jitter, honoring the Retry-After header
-      when present.
-  - name: Burst Handling
-    description: Short bursts above the steady-state limit are tolerated up to the documented burst ceiling
-      before throttling engages.
-  - name: Quota Reset
-    description: Monthly quotas reset at the start of each calendar month in UTC. Per-minute and per-second
-      windows reset on a sliding-window basis.
-  - name: Fair Use
-    description: Even on uncapped enterprise tiers, sustained usage that materially impacts shared infrastructure
-      may be subject to fair-use throttling.
+  - name: Backoff strategy
+    description: >-
+      On RESOURCE_EXHAUSTED, wait for QuotaErrorDetails.retry_delay before retrying, then
+      apply exponential backoff with jitter. There is no Retry-After header to honour.
+  - name: Quota scope
+    description: >-
+      QuotaErrorDetails.rate_scope distinguishes ACCOUNT (per customer account) from
+      DEVELOPER (per project or developer token). Backing off the wrong scope will not
+      clear the throttle.
+  - name: Access level, not payment
+    description: >-
+      Quota is raised by moving the developer token from Test to Explorer to Basic to
+      Standard access through the API Center — an approval process, not a purchase. See
+      plans/google-ads-plans-pricing.yml.
+docs: https://developers.google.com/google-ads/api/docs/best-practices/quotas
 maintainers:
   - FN: Kin Lane
     email: kin@apievangelist.com

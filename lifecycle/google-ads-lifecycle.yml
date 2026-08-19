@@ -1,0 +1,119 @@
+generated: '2026-08-13'
+method: searched
+source: >-
+  https://developers.google.com/google-ads/api/docs/release-notes and
+  https://developers.google.com/google-ads/api/docs/sunset-dates, corroborated by live
+  probes of https://googleads.googleapis.com/$discovery/rest?version=<v> on 2026-08-13
+provider: Google Ads
+providerId: google-ads
+description: >-
+  Versioning, deprecation and sunset posture for the Google Ads API. Google runs one of
+  the most explicit version lifecycles in the catalog: versions are numbered, dated,
+  announced, and hard-sunset, and a sunset version stops answering entirely rather than
+  degrading quietly.
+
+versioning:
+  scheme: path-segment major version with dotted minor releases
+  pattern: /v{major}[.{minor}]/
+  current: v25
+  current_released: '2026-07-22'
+  cadence: >-
+    A major version approximately quarterly, with one or two minor versions between
+    them. Observed 2026 sequence: v24 (2026-04-22), v24.1 (2026-05-13),
+    v24.2 (2026-06-24), v25 (2026-07-22).
+  location: URL path (and, on gRPC, the generated package google.ads.googleads.v25)
+  note: >-
+    Minor versions do not create a new URL path — v24.1 and v24.2 are served under /v24.
+
+supported_versions:
+  probed: '2026-08-13'
+  method: >-
+    GET https://googleads.googleapis.com/$discovery/rest?version=<v> for each version.
+    A live version returns 200 with its discovery document; a sunset version returns 404.
+  live:
+    - version: v25
+      status: 200
+      current: true
+    - version: v24
+      status: 200
+    - version: v23
+      status: 200
+    - version: v22
+      status: 200
+    - version: v21
+      status: 200
+    - version: v20
+      status: 200
+  sunset:
+    - version: v19
+      status: 404
+    - version: v18
+      status: 404
+    - version: v17
+      status: 404
+  window: >-
+    Six major versions were answering simultaneously at probe time, giving roughly an
+    18-month support window at the observed quarterly cadence.
+
+deprecation_policy:
+  published: true
+  url: https://developers.google.com/google-ads/api/docs/sunset-dates
+  mechanism: >-
+    Google publishes a sunset date for every version alongside its release. Deprecated
+    resources and fields are announced in the release notes for the version that removes
+    them, and removal is a documented breaking change, not a silent drop.
+  breaking_change_examples:
+    - version: v25
+      changes:
+        - Legacy CustomerLifecycleGoal and CampaignLifecycleGoal resources removed
+        - Incentive service fields renamed
+        - Required fields added to ApplyIncentiveRequest
+        - ContactDetails.email removed from LocalServicesLead
+    - version: v24
+      changes:
+        - Campaign-level video brand-safety suitability removed; consolidated to customer level
+        - LOYALTY_SIGN_UPS user category eliminated
+        - Required fields added to DemandGenVideoResponsiveAdInfo and VideoResponsiveAdInfo
+        - ad_sub_network_type segment removed for campaign_budget
+  rfc8594_headers:
+    sunset: false
+    deprecation: false
+    note: >-
+      No Sunset or Deprecation response headers were observed. The lifecycle is signalled
+      in documentation and by the version endpoint disappearing, not in RFC 8594 headers.
+      An unauthenticated GET to a sunset version's discovery document returns 404; a call
+      to a sunset API version returns an error rather than a dated warning header.
+
+deprecated_operations:
+  derived_from: openapi/google-ads-api-v25-openapi.yml
+  count: 0
+  note: >-
+    No operation in the v25 surface carries a deprecated flag. Google deprecates whole
+    versions and individual fields, not individual operations.
+
+migration:
+  guide: https://developers.google.com/google-ads/api/docs/migration
+  note: >-
+    Client library major versions track API versions, so migrating usually means bumping
+    the client library major version (see packages/google-ads-packages.yml).
+
+status_page:
+  url: https://status.cloud.google.com/
+  covers: Google Cloud, including googleapis.com service availability
+  api_specific: false
+  note: >-
+    Google publishes no Google Ads API-specific status page. Incidents affecting the API
+    surface appear on the Google Cloud status dashboard.
+
+sla:
+  published: false
+  note: >-
+    No SLA is published for the Google Ads API. Availability commitments exist for Google
+    Cloud products; the Google Ads API is governed by the Google Ads API Terms of Service
+    (https://developers.google.com/terms), which carry no uptime guarantee.
+
+catalog_note: >-
+  The seven per-resource OpenAPIs in openapi/ (google-ads-campaigns-api-openapi.yml and
+  siblings) describe /v18/ paths. v18 is sunset — its discovery document 404s — so those
+  specs no longer describe a callable surface. openapi/google-ads-api-v25-openapi.yml,
+  derived from the live discovery document, does.

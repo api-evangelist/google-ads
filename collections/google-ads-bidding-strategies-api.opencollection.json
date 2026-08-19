@@ -1,0 +1,67 @@
+{
+  "opencollection": "1.0.0",
+  "info": {
+    "name": "Google Ads Ad Groups Bidding Strategies API",
+    "version": "v18"
+  },
+  "request": {
+    "auth": {
+      "type": "oauth2",
+      "flow": "authorization_code",
+      "authorizationUrl": "https://accounts.google.com/o/oauth2/auth",
+      "accessTokenUrl": "https://oauth2.googleapis.com/token",
+      "credentials": {
+        "clientId": "{{clientId}}",
+        "clientSecret": "{{clientSecret}}"
+      }
+    }
+  },
+  "items": [
+    {
+      "info": {
+        "name": "Bidding Strategies",
+        "type": "folder"
+      },
+      "items": [
+        {
+          "info": {
+            "name": "Google Ads Create, Update, or Remove Bidding Strategies",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "https://googleads.googleapis.com/v18/customers/:customerId/biddingStrategies:mutate",
+            "headers": [
+              {
+                "name": "Authorization",
+                "value": ""
+              },
+              {
+                "name": "developer-token",
+                "value": ""
+              },
+              {
+                "name": "login-customer-id",
+                "value": ""
+              }
+            ],
+            "params": [
+              {
+                "name": "customerId",
+                "value": "",
+                "type": "path",
+                "description": "The Google Ads customer ID (without dashes), e.g. 1234567890."
+              }
+            ],
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "Creates, updates, or removes bidding strategies. Bidding strategies\ndetermine how bids are set for your ads. Supports strategies such as\nTarget CPA, Target ROAS, Maximize Conversions, and Manual CPC.\n"
+        }
+      ]
+    }
+  ],
+  "bundled": true
+}

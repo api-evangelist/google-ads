@@ -1,0 +1,88 @@
+# Google Ads
+
+<!--
+generated: 2026-08-13
+method: generated
+source: apis.yml + discovery/google-ads-api-v25-discovery.json + repo artifacts.
+Google publishes no llms.txt — https://developers.google.com/llms.txt and
+https://developers.google.com/google-ads/api/llms.txt both returned 404 on 2026-08-13.
+-->
+
+> The Google Ads API is the programmatic interface to Google Ads. It is a gRPC-first API
+> with a REST/JSON transport at https://googleads.googleapis.com, versioned roughly
+> quarterly (v25 is current), authenticated with OAuth 2.0 plus a Google Ads developer
+> token, and queried with GAQL — the Google Ads Query Language — rather than with
+> per-resource GET endpoints.
+
+Three facts an agent needs before its first call:
+
+1. **Two credentials, not one.** OAuth 2.0 gets you a user; a developer token gets you
+   the API. A token at Test access can only touch test accounts; Explorer access allows
+   2,880 operations/day against production; Basic access allows 15,000/day.
+2. **Reads go through GAQL.** There is no `GET /campaigns`. You POST a GAQL query to
+   `customers/{customerId}/googleAds:searchStream` and select fields off a resource.
+   Discover the legal fields for a resource with `googleAdsFields:search` — do not guess
+   them.
+3. **Writes go through `:mutate`.** Almost every resource exposes exactly one write
+   operation that takes a list of create/update/remove operations. `partialFailure` and
+   `validateOnly` are the safety rails; there is no idempotency key.
+
+## Machine-readable contracts
+
+- [Google API Discovery Document, v25](https://googleads.googleapis.com/$discovery/rest?version=v25): the first-party contract. 174 methods, 1,460 schemas. Mirrored at `discovery/google-ads-api-v25-discovery.json`.
+- [OpenAPI 3.1 (derived)](openapi/google-ads-api-v25-openapi.yml): mechanical conversion of the discovery document above — same 174 operations, same schemas, OpenAPI shapes.
+- [Protocol buffers](grpc/): the canonical gRPC service definitions from googleapis/googleapis for GoogleAdsService, CampaignService, AdGroupService, CustomerService, GoogleAdsFieldService, and the full error enum set.
+- Per-resource OpenAPIs (`openapi/google-ads-*-api-openapi.yml`) describe a v18 subset and are superseded by the v25 spec above; v18 no longer answers.
+
+## Endpoints and versions
+
+- Base URL: `https://googleads.googleapis.com`
+- Live versions on 2026-08-13: v20, v21, v22, v23, v24, v25. v18 and v19 are sunset — their discovery documents return 404.
+- Version cadence: a major version roughly quarterly; minor versions (v24.1, v24.2) in between.
+
+## Authentication
+
+- OAuth 2.0 authorization code flow. Single scope: `https://www.googleapis.com/auth/adwords`.
+- Authorization endpoint: `https://accounts.google.com/o/oauth2/v2/auth`; token endpoint: `https://oauth2.googleapis.com/token`.
+- Required headers: `developer-token`, plus `login-customer-id` when calling through a manager account.
+- Details: `authentication/google-ads-authentication.yml`, `scopes/google-ads-scopes.yml`.
+
+## Agent surfaces
+
+- MCP server: `mcp/google-ads-mcp.yml`. First-party, Python, **local stdio only** — Google hosts no MCP endpoint. Three read-only tools (`search`, `get_resource_metadata`, `list_accessible_customers`) and four resources. No write tool exists.
+- Tool-to-REST crosswalk: `mcp/google-ads-tool-crosswalk.yml`.
+- A2A agent card: none. No Google Ads host serves `/.well-known/agent-card.json`.
+- Packaged skills: `skills/_index.yml`.
+
+## Runtime semantics
+
+- Conventions (GAQL, pagination, partial failure, validate-only, request ids): `conventions/google-ads-conventions.yml`
+- Errors (`GoogleAdsFailure` envelope, 156 error enum families): `errors/google-ads-problem-types.yml`
+- Rate limits and quotas: `rate-limits/google-ads-rate-limits.yml`
+- Access levels and what each costs: `plans/google-ads-plans-pricing.yml`
+- Versioning, deprecation and sunset: `lifecycle/google-ads-lifecycle.yml`
+- Release notes: `changelog/google-ads-changelog.yml`
+- Testing: `sandbox/google-ads-sandbox.yml`
+
+## Client libraries
+
+First-party, all released within weeks of API v25: Python (`google-ads` 31.2.0), Java
+(`com.google.api-ads:google-ads` 44.0.0), .NET (`Google.Ads.GoogleAds` 27.0.0), PHP
+(`googleads/google-ads-php` v33.6.0), Ruby (`google-ads-googleads` 43.0.0), Perl
+(33.1.0). There is no first-party Node.js or Go client. Full detail with registry dates:
+`packages/google-ads-packages.yml`.
+
+## Documentation
+
+- Developer portal: https://developers.google.com/google-ads/api
+- Get started: https://developers.google.com/google-ads/api/docs/first-call/overview
+- Quotas: https://developers.google.com/google-ads/api/docs/best-practices/quotas
+- Test accounts: https://developers.google.com/google-ads/api/docs/best-practices/test-accounts
+- Release notes: https://developers.google.com/google-ads/api/docs/release-notes
+- Support and forum: https://developers.google.com/google-ads/api/support · https://groups.google.com/g/adwords-api
+- Blog: https://ads-developers.googleblog.com/
+
+## Optional
+
+- Google Ads Scripts (browser-side JavaScript automation, not an API client): https://developers.google.com/google-ads/scripts/docs/start
+- Vulnerability disclosure: https://g.co/vrp (from https://www.google.com/.well-known/security.txt)

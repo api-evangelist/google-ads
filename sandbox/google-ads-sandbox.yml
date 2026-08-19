@@ -1,0 +1,71 @@
+generated: '2026-08-13'
+method: searched
+source: >-
+  https://developers.google.com/google-ads/api/docs/best-practices/test-accounts and
+  https://developers.google.com/google-ads/api/docs/access-levels
+provider: Google Ads
+providerId: google-ads
+description: >-
+  Google Ads has a real test environment, but it is not a separate sandbox host — it is
+  the SAME API, the same base URL and the same credentials pointed at a separate account
+  hierarchy. There is no test-mode key prefix to look for, which means the only thing
+  distinguishing a test call from a live one is the customer ID in the request path.
+  That is worth stating plainly to anyone wiring an agent to this API.
+available: true
+style: separate-account-hierarchy
+base_url: https://googleads.googleapis.com
+separate_host: false
+key_prefixes:
+  test: null
+  live: null
+  note: >-
+    There are no test-vs-live credential prefixes. The developer token of the PRODUCTION
+    manager account is the token used against the test manager account. Environment is
+    determined by which customer ID you call, not by which key you hold.
+setup:
+  - Create a test manager account at ads.google.com using a Google Account that is not already a production Google Ads account.
+  - Create a test client account beneath it (Accounts > Create new account).
+  - Create test campaigns in the Google Ads UI — the API will not populate an empty test account for you.
+  - Note the client customer ID and call the API with it.
+  - Use the developer token of your production manager account when making requests against the test manager account.
+constraints:
+  - >-
+    A test account cannot live under an existing production manager account — the
+    hierarchy must be separate.
+  - Test accounts do not require an approved developer token; Test access is enough.
+  - >-
+    Test accounts appear in the Google Ads UI as cancelled accounts, because there is no
+    active billing and they serve no ads.
+  - Test accounts carry the same restrictions, including rate limits, as production accounts.
+  - Maximum of 50 accounts per test hierarchy.
+  - Test accounts inactive for one year are automatically deleted.
+quota:
+  operations_per_day: 15000
+  note: Test accounts get 15,000 operations/day at both Test and Explorer access levels.
+not_testable:
+  - Serving metrics — impressions, clicks, conversions and cost are always empty
+  - Bid simulations
+  - Conversion uploads
+  - Billing and invoicing flows
+fixtures:
+  test_cards: null
+  test_tokens: null
+  time_simulation: null
+  triggers: null
+  note: >-
+    Google publishes no fixture values, no test payment instruments, no time-travel /
+    test-clock mechanism and no trigger tooling for this API. Nothing was invented here:
+    the absence is the finding. Anything that depends on serving data — the entire
+    reporting surface, bid simulation, conversion attribution — cannot be exercised
+    end-to-end before production.
+validation_alternatives:
+  - name: validateOnly
+    note: >-
+      Every mutate request accepts validateOnly, which runs full server-side validation
+      and returns errors without applying anything. This is the practical dry-run
+      mechanism and it works against production accounts.
+  - name: partialFailure
+    note: >-
+      Isolates bad operations in a batch so a single invalid row does not roll back a
+      whole request. See conventions/google-ads-conventions.yml.
+docs: https://developers.google.com/google-ads/api/docs/best-practices/test-accounts

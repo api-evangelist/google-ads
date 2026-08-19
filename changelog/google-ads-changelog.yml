@@ -1,0 +1,69 @@
+generated: '2026-08-13'
+method: searched
+source: https://developers.google.com/google-ads/api/docs/release-notes
+provider: Google Ads
+providerId: google-ads
+description: >-
+  Dated release notes for the Google Ads API. Recent window only — Google's own page
+  carries the full history back to the AdWords API. Every entry is a versioned release
+  with an explicit breaking-change section, which is why the deprecation posture in
+  lifecycle/ scores as well as it does.
+scheme: major version quarterly, dotted minor releases in between
+current_version: v25
+current_released: '2026-07-22'
+url: https://developers.google.com/google-ads/api/docs/release-notes
+feed: https://ads-developers.googleblog.com/
+entries:
+  - version: v25
+    date: '2026-07-22'
+    type: major
+    breaking: true
+    highlights:
+      - Unified goals schema, adding Loyalty Retention Goal and New Customer Acquisition Goal support
+      - YouTube third-party conversion attribution via integration partners
+      - Video-specific social metrics (comments, likes, shares) for Shorts ads
+      - New ad_sub_format_type segment for YouTube in-stream non-skippable ads by duration
+    breaking_changes:
+      - Legacy CustomerLifecycleGoal and CampaignLifecycleGoal resources removed
+      - Incentive service fields renamed
+      - Required fields added to ApplyIncentiveRequest
+      - ContactDetails.email removed from LocalServicesLead
+  - version: v24.2
+    date: '2026-06-24'
+    type: minor
+    breaking: false
+    highlights:
+      - GENERATE_LANDING_PAGE_TEXT asset automation for Demand Gen video ads
+      - Local Services Ads support in Performance Max campaigns
+      - New experiment types COMPARE_CAMPAIGNS and PMAX_TEXT_CUSTOMIZATION_FINAL_URL_EXPANSION
+      - Multi-Party Authorization review expanded (beta)
+      - Creator insights searchable by topic, plus local creator data
+  - version: v24.1
+    date: '2026-05-13'
+    type: minor
+    breaking: false
+    highlights:
+      - classic_display_images field for custom Demand Gen display images
+      - Four new experiment types for optimization testing
+      - passkey_enabled field added to CustomerUserAccess
+      - mobile_device_platform segment for device-based reporting
+  - version: v24
+    date: '2026-04-22'
+    type: major
+    breaking: true
+    highlights:
+      - VideoResponsiveAdInfo made fully mutable
+      - CartDataSalesView reporting resource introduced
+      - Tag-based product filtering with retail filter bundle support
+    breaking_changes:
+      - Campaign-level video brand-safety suitability removed; consolidated to customer level
+      - LOYALTY_SIGN_UPS user category eliminated
+      - Required fields added to DemandGenVideoResponsiveAdInfo and VideoResponsiveAdInfo
+      - ad_sub_network_type segment removed for campaign_budget
+machine_readable:
+  discovery_revision: '20260721'
+  note: >-
+    The discovery document carries a `revision` field (20260721 for v25 at harvest) that
+    moves when the surface changes. It is the closest thing to a machine-readable
+    changelog signal Google exposes for this API. The MCP server also publishes a
+    `release-notes` resource so an agent can read the notes in-band.

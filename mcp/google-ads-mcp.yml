@@ -1,0 +1,150 @@
+generated: '2026-08-13'
+method: searched
+source: >-
+  https://github.com/googleads/google-ads-mcp — README.md, ads_mcp/tools/*.py and
+  ads_mcp/tools_config.yaml read via the GitHub contents API on 2026-08-13
+name: Google Ads MCP Server
+provider: Google Ads
+providerId: google-ads
+status: published
+description: >-
+  Google's first-party Model Context Protocol server for the Google Ads API. It is a
+  Python (FastMCP) server that Google publishes as source and installs from git; Google
+  does not operate a hosted endpoint. The server is deliberately narrow: rather than
+  wrapping the 174 REST operations one-for-one, it exposes GAQL query construction plus
+  field discovery, so an agent explores the reporting surface with two tools instead of
+  memorising a schema.
+
+deployment:
+  mode: local-stdio
+  endpoint: null
+  install: pipx run --spec git+https://github.com/googleads/google-ads-mcp.git google-ads-mcp
+  package: https://github.com/googleads/google-ads-mcp
+  auth: oauth
+  verified: searched
+
+deployment_notes:
+  - >-
+    mode is local-stdio because Google ships no hosted URL. The default transport is
+    stdio, launched by the MCP client via pipx.
+  - >-
+    The server CAN be run as a streamable-http service by the operator: setting
+    GOOGLE_ADS_MCP_OAUTH_CLIENT_ID and GOOGLE_ADS_MCP_OAUTH_CLIENT_SECRET switches the
+    transport to streamable-http and enables the FastMCP OAuth proxy, defaulting to
+    http://localhost:8080/mcp. Google documents deploying it to Cloud Run. That is a
+    URL the CUSTOMER stands up, not one Google serves, so it is not recorded as a
+    remote endpoint.
+  - >-
+    A PyPI distribution exists (google-ads-mcp 0.0.1, 2025-10-22) but Google's own
+    install instruction bypasses it and installs from git. See packages/.
+  - >-
+    Every call additionally requires a Google Ads developer token (GOOGLE_ADS_DEVELOPER_TOKEN)
+    with at least Explorer access, on top of OAuth. Manager-account access additionally
+    requires GOOGLE_ADS_LOGIN_CUSTOMER_ID.
+
+auth:
+  oauth_scope: https://www.googleapis.com/auth/adwords
+  additional_credentials:
+    - GOOGLE_ADS_DEVELOPER_TOKEN
+    - GOOGLE_PROJECT_ID
+    - GOOGLE_ADS_LOGIN_CUSTOMER_ID (manager accounts only)
+  modes:
+    - name: FastMCP OAuth proxy
+      note: dynamic per-user OAuth; switches transport to streamable-http
+    - name: Application Default Credentials
+      note: gcloud auth application-default login with the adwords scope
+    - name: google-ads.yaml
+      note: reuse the Python client library configuration file
+
+tool_configuration:
+  file: ads_mcp/tools_config.yaml
+  note: >-
+    Tools are grouped into namespaces (customers, search, metadata) that can be
+    individually enabled, disabled, or prefixed. All three are enabled by default.
+
+tools:
+  - name: list_accessible_customers
+    namespace: customers
+    read_only: true
+    description: >-
+      Returns ids of customers directly accessible by the user authenticating the call.
+    parameters: []
+    returns: List[str] of customer IDs with the "customers/" resource prefix stripped
+  - name: search
+    namespace: search
+    read_only: true
+    description: >-
+      Fetches data from the Google Ads API using the search method. Builds a GAQL query
+      from structured arguments and executes it via SearchStream.
+    parameters:
+      - name: customer_id
+        type: string
+        required: true
+      - name: fields
+        type: array<string>
+        required: true
+      - name: resource
+        type: string
+        required: true
+      - name: conditions
+        type: array<string>
+        required: false
+        note: combined with AND into the WHERE clause
+      - name: orderings
+        type: array<string>
+        required: false
+      - name: limit
+        type: integer
+        required: false
+    note: >-
+      Appends "PARAMETERS omit_unselected_resource_names=true" to every generated query.
+  - name: get_resource_metadata
+    namespace: metadata
+    read_only: true
+    description: >-
+      Retrieves the selectable, filterable and sortable fields for a Google Ads resource,
+      including the metrics and segments compatible with it.
+    parameters:
+      - name: resource_name
+        type: string
+        required: true
+        note: e.g. 'campaign', 'ad_group'
+    note: >-
+      Google's own tool docstring instructs the agent "Do not guess fields, you MUST use
+      this tool to discover them before constructing a query for the search tool."
+
+resources:
+  - name: discovery-document
+    description: >-
+      The Google Ads API discovery document for the latest version, describing resources,
+      methods and schemas. Google tells host LLMs to read this to understand the API.
+    note: >-
+      Same document API Evangelist harvested to discovery/google-ads-api-v25-discovery.json.
+  - name: metrics
+    description: Information about the metrics available for reporting in the Google Ads API.
+  - name: segments
+    description: Information about the segments available for reporting in the Google Ads API.
+  - name: release-notes
+    description: Release notes for the latest version of the Google Ads API.
+
+surface_shape:
+  read_only_tools: 3
+  write_tools: 0
+  note: >-
+    The MCP server is read-only. None of the 100+ mutate operations in the REST surface
+    (campaigns:mutate, adGroupAds:mutate, budgets, bidding) are exposed as tools. An
+    agent can report on a Google Ads account through MCP but cannot change one.
+
+repository:
+  url: https://github.com/googleads/google-ads-mcp
+  language: Python
+  license: Apache-2.0
+  created: '2025-10-03'
+  last_pushed: '2026-08-13'
+  stars: 852
+  issues: https://github.com/googleads/google-ads-mcp/issues
+
+telemetry_disclosure: >-
+  Google's README states an extra header is added to API calls made through the MCP
+  server "to help us collect usage data", and warns that the server exposes account data
+  to whatever agent or LLM is connected.

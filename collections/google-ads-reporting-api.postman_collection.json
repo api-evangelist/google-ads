@@ -1,0 +1,835 @@
+{
+  "item": [
+    {
+      "id": "60d8f42b-ed79-42ee-a751-4aa451f72608",
+      "name": "Reporting",
+      "description": {
+        "content": "Query performance data using Google Ads Query Language (GAQL)",
+        "type": "text/plain"
+      },
+      "item": [
+        {
+          "id": "31217d22-6e86-4ae9-94b7-cfd2cc543ad8",
+          "name": "Search Using Google Ads Query Language",
+          "request": {
+            "name": "Search Using Google Ads Query Language",
+            "description": {
+              "content": "Returns all rows that match the search query. Use Google Ads Query\nLanguage (GAQL) to query resources, metrics, and segments across\ncampaigns, ad groups, ads, keywords, and more. This is the primary\nmethod for retrieving reporting data and resource details.\n",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "v18",
+                "customers",
+                ":customerId",
+                "googleAds:search"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": [
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<string>",
+                  "key": "customerId",
+                  "description": "(Required) The Google Ads customer ID (without dashes), e.g. 1234567890."
+                }
+              ]
+            },
+            "header": [
+              {
+                "disabled": false,
+                "description": "(Required) Developer token for API access. Obtain from the Google Ads API Center\nin your manager account.\n",
+                "key": "developer-token",
+                "value": "<string>"
+              },
+              {
+                "disabled": false,
+                "description": "The customer ID of the manager account making the request on behalf\nof a client account. Required when authenticating as a manager account.\n",
+                "key": "login-customer-id",
+                "value": "<string>"
+              },
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              },
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "POST",
+            "auth": null,
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"query\": \"<string>\",\n  \"pageToken\": \"<string>\",\n  \"pageSize\": \"<integer>\",\n  \"validateOnly\": \"<boolean>\",\n  \"returnTotalResultsCount\": \"<boolean>\",\n  \"summaryRowSetting\": \"<string>\"\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            }
+          },
+          "response": [
+            {
+              "id": "b38c8cd3-e153-4369-90f6-b0e7b721484c",
+              "name": "Successful Response",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "v18",
+                    "customers",
+                    ":customerId",
+                    "googleAds:search"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "customerId",
+                      "description": "(Required) The Google Ads customer ID (without dashes), e.g. 1234567890."
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: oauth2",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "<token>"
+                  },
+                  {
+                    "disabled": false,
+                    "description": "(Required) OAuth 2.0 Bearer token for authentication.",
+                    "key": "Authorization",
+                    "value": "string"
+                  },
+                  {
+                    "disabled": false,
+                    "description": "(Required) Developer token for API access. Obtain from the Google Ads API Center\nin your manager account.\n",
+                    "key": "developer-token",
+                    "value": "<string>"
+                  },
+                  {
+                    "disabled": false,
+                    "description": "The customer ID of the manager account making the request on behalf\nof a client account. Required when authenticating as a manager account.\n",
+                    "key": "login-customer-id",
+                    "value": "<string>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"query\": \"SELECT campaign.id, campaign.name, campaign.status, metrics.impressions, metrics.clicks, metrics.cost_micros, metrics.conversions, metrics.ctr, metrics.average_cpc FROM campaign WHERE campaign.status != 'REMOVED' AND segments.date DURING LAST_30_DAYS ORDER BY metrics.impressions DESC LIMIT 50\"\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"results\": [\n    {\n      \"campaign\": {\n        \"resourceName\": \"customers/1234567890/campaigns/111111\",\n        \"id\": 111111,\n        \"name\": \"Brand Awareness Campaign\",\n        \"status\": \"ENABLED\"\n      },\n      \"metrics\": {\n        \"impressions\": 125000,\n        \"clicks\": 4500,\n        \"costMicros\": 2250000000,\n        \"conversions\": 180,\n        \"ctr\": 0.036,\n        \"averageCpc\": 500000\n      }\n    }\n  ],\n  \"nextPageToken\": null,\n  \"totalResultsCount\": 1\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "00850c0f-d8fe-4dbb-895c-948fc3e5a630",
+              "name": "Bad Request",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "v18",
+                    "customers",
+                    ":customerId",
+                    "googleAds:search"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "customerId",
+                      "description": "(Required) The Google Ads customer ID (without dashes), e.g. 1234567890."
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: oauth2",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "<token>"
+                  },
+                  {
+                    "disabled": false,
+                    "description": "(Required) OAuth 2.0 Bearer token for authentication.",
+                    "key": "Authorization",
+                    "value": "string"
+                  },
+                  {
+                    "disabled": false,
+                    "description": "(Required) Developer token for API access. Obtain from the Google Ads API Center\nin your manager account.\n",
+                    "key": "developer-token",
+                    "value": "<string>"
+                  },
+                  {
+                    "disabled": false,
+                    "description": "The customer ID of the manager account making the request on behalf\nof a client account. Required when authenticating as a manager account.\n",
+                    "key": "login-customer-id",
+                    "value": "<string>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"query\": \"SELECT campaign.id, campaign.name, campaign.status, metrics.impressions, metrics.clicks, metrics.cost_micros, metrics.conversions, metrics.ctr, metrics.average_cpc FROM campaign WHERE campaign.status != 'REMOVED' AND segments.date DURING LAST_30_DAYS ORDER BY metrics.impressions DESC LIMIT 50\"\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "Bad Request",
+              "code": 400,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"errors\": [\n    {\n      \"errorCode\": {\n        \"key_0\": \"string\"\n      },\n      \"message\": \"string\",\n      \"trigger\": {},\n      \"location\": {\n        \"fieldPathElements\": [\n          {\n            \"fieldName\": \"string\",\n            \"index\": 1550\n          },\n          {\n            \"fieldName\": \"string\",\n            \"index\": 2367\n          }\n        ]\n      }\n    },\n    {\n      \"errorCode\": {\n        \"key_0\": \"string\",\n        \"key_1\": \"string\",\n        \"key_2\": \"string\",\n        \"key_3\": \"string\"\n      },\n      \"message\": \"string\",\n      \"trigger\": {},\n      \"location\": {\n        \"fieldPathElements\": [\n          {\n            \"fieldName\": \"string\",\n            \"index\": 8026\n          },\n          {\n            \"fieldName\": \"string\",\n            \"index\": 8672\n          }\n        ]\n      }\n    }\n  ]\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "5ac98023-df77-4b5c-b558-825953f55324",
+              "name": "Unauthorized",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "v18",
+                    "customers",
+                    ":customerId",
+                    "googleAds:search"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "customerId",
+                      "description": "(Required) The Google Ads customer ID (without dashes), e.g. 1234567890."
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: oauth2",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "<token>"
+                  },
+                  {
+                    "disabled": false,
+                    "description": "(Required) OAuth 2.0 Bearer token for authentication.",
+                    "key": "Authorization",
+                    "value": "string"
+                  },
+                  {
+                    "disabled": false,
+                    "description": "(Required) Developer token for API access. Obtain from the Google Ads API Center\nin your manager account.\n",
+                    "key": "developer-token",
+                    "value": "<string>"
+                  },
+                  {
+                    "disabled": false,
+                    "description": "The customer ID of the manager account making the request on behalf\nof a client account. Required when authenticating as a manager account.\n",
+                    "key": "login-customer-id",
+                    "value": "<string>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"query\": \"SELECT campaign.id, campaign.name, campaign.status, metrics.impressions, metrics.clicks, metrics.cost_micros, metrics.conversions, metrics.ctr, metrics.average_cpc FROM campaign WHERE campaign.status != 'REMOVED' AND segments.date DURING LAST_30_DAYS ORDER BY metrics.impressions DESC LIMIT 50\"\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "Unauthorized",
+              "code": 401,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"errors\": [\n    {\n      \"errorCode\": {\n        \"key_0\": \"string\"\n      },\n      \"message\": \"string\",\n      \"trigger\": {},\n      \"location\": {\n        \"fieldPathElements\": [\n          {\n            \"fieldName\": \"string\",\n            \"index\": 1550\n          },\n          {\n            \"fieldName\": \"string\",\n            \"index\": 2367\n          }\n        ]\n      }\n    },\n    {\n      \"errorCode\": {\n        \"key_0\": \"string\",\n        \"key_1\": \"string\",\n        \"key_2\": \"string\",\n        \"key_3\": \"string\"\n      },\n      \"message\": \"string\",\n      \"trigger\": {},\n      \"location\": {\n        \"fieldPathElements\": [\n          {\n            \"fieldName\": \"string\",\n            \"index\": 8026\n          },\n          {\n            \"fieldName\": \"string\",\n            \"index\": 8672\n          }\n        ]\n      }\n    }\n  ]\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "a6d3de3b-f65d-4ee0-b811-2e548ca95ed4",
+              "name": "Forbidden",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "v18",
+                    "customers",
+                    ":customerId",
+                    "googleAds:search"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "customerId",
+                      "description": "(Required) The Google Ads customer ID (without dashes), e.g. 1234567890."
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: oauth2",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "<token>"
+                  },
+                  {
+                    "disabled": false,
+                    "description": "(Required) OAuth 2.0 Bearer token for authentication.",
+                    "key": "Authorization",
+                    "value": "string"
+                  },
+                  {
+                    "disabled": false,
+                    "description": "(Required) Developer token for API access. Obtain from the Google Ads API Center\nin your manager account.\n",
+                    "key": "developer-token",
+                    "value": "<string>"
+                  },
+                  {
+                    "disabled": false,
+                    "description": "The customer ID of the manager account making the request on behalf\nof a client account. Required when authenticating as a manager account.\n",
+                    "key": "login-customer-id",
+                    "value": "<string>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"query\": \"SELECT campaign.id, campaign.name, campaign.status, metrics.impressions, metrics.clicks, metrics.cost_micros, metrics.conversions, metrics.ctr, metrics.average_cpc FROM campaign WHERE campaign.status != 'REMOVED' AND segments.date DURING LAST_30_DAYS ORDER BY metrics.impressions DESC LIMIT 50\"\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "Forbidden",
+              "code": 403,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"errors\": [\n    {\n      \"errorCode\": {\n        \"key_0\": \"string\"\n      },\n      \"message\": \"string\",\n      \"trigger\": {},\n      \"location\": {\n        \"fieldPathElements\": [\n          {\n            \"fieldName\": \"string\",\n            \"index\": 1550\n          },\n          {\n            \"fieldName\": \"string\",\n            \"index\": 2367\n          }\n        ]\n      }\n    },\n    {\n      \"errorCode\": {\n        \"key_0\": \"string\",\n        \"key_1\": \"string\",\n        \"key_2\": \"string\",\n        \"key_3\": \"string\"\n      },\n      \"message\": \"string\",\n      \"trigger\": {},\n      \"location\": {\n        \"fieldPathElements\": [\n          {\n            \"fieldName\": \"string\",\n            \"index\": 8026\n          },\n          {\n            \"fieldName\": \"string\",\n            \"index\": 8672\n          }\n        ]\n      }\n    }\n  ]\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "e2a56b21-35a2-414a-b524-ea3dbcae7cd7",
+              "name": "Internal Server Error",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "v18",
+                    "customers",
+                    ":customerId",
+                    "googleAds:search"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "customerId",
+                      "description": "(Required) The Google Ads customer ID (without dashes), e.g. 1234567890."
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: oauth2",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "<token>"
+                  },
+                  {
+                    "disabled": false,
+                    "description": "(Required) OAuth 2.0 Bearer token for authentication.",
+                    "key": "Authorization",
+                    "value": "string"
+                  },
+                  {
+                    "disabled": false,
+                    "description": "(Required) Developer token for API access. Obtain from the Google Ads API Center\nin your manager account.\n",
+                    "key": "developer-token",
+                    "value": "<string>"
+                  },
+                  {
+                    "disabled": false,
+                    "description": "The customer ID of the manager account making the request on behalf\nof a client account. Required when authenticating as a manager account.\n",
+                    "key": "login-customer-id",
+                    "value": "<string>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"query\": \"SELECT campaign.id, campaign.name, campaign.status, metrics.impressions, metrics.clicks, metrics.cost_micros, metrics.conversions, metrics.ctr, metrics.average_cpc FROM campaign WHERE campaign.status != 'REMOVED' AND segments.date DURING LAST_30_DAYS ORDER BY metrics.impressions DESC LIMIT 50\"\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "Internal Server Error",
+              "code": 500,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"errors\": [\n    {\n      \"errorCode\": {\n        \"key_0\": \"string\"\n      },\n      \"message\": \"string\",\n      \"trigger\": {},\n      \"location\": {\n        \"fieldPathElements\": [\n          {\n            \"fieldName\": \"string\",\n            \"index\": 1550\n          },\n          {\n            \"fieldName\": \"string\",\n            \"index\": 2367\n          }\n        ]\n      }\n    },\n    {\n      \"errorCode\": {\n        \"key_0\": \"string\",\n        \"key_1\": \"string\",\n        \"key_2\": \"string\",\n        \"key_3\": \"string\"\n      },\n      \"message\": \"string\",\n      \"trigger\": {},\n      \"location\": {\n        \"fieldPathElements\": [\n          {\n            \"fieldName\": \"string\",\n            \"index\": 8026\n          },\n          {\n            \"fieldName\": \"string\",\n            \"index\": 8672\n          }\n        ]\n      }\n    }\n  ]\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "b737f574-6412-4413-87ba-ac4ba0932845",
+          "name": "Search Stream Using Google Ads Query Language",
+          "request": {
+            "name": "Search Stream Using Google Ads Query Language",
+            "description": {
+              "content": "Returns all rows that match the search query as a streamed response.\nIdentical to the search method but returns results as a stream,\nwhich is more efficient for large result sets.\n",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "v18",
+                "customers",
+                ":customerId",
+                "googleAds:searchStream"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": [
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<string>",
+                  "key": "customerId",
+                  "description": "(Required) The Google Ads customer ID (without dashes), e.g. 1234567890."
+                }
+              ]
+            },
+            "header": [
+              {
+                "disabled": false,
+                "description": "(Required) Developer token for API access. Obtain from the Google Ads API Center\nin your manager account.\n",
+                "key": "developer-token",
+                "value": "<string>"
+              },
+              {
+                "disabled": false,
+                "description": "The customer ID of the manager account making the request on behalf\nof a client account. Required when authenticating as a manager account.\n",
+                "key": "login-customer-id",
+                "value": "<string>"
+              },
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              },
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "POST",
+            "auth": null,
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"query\": \"<string>\",\n  \"summaryRowSetting\": \"<string>\"\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            }
+          },
+          "response": [
+            {
+              "id": "917b5a77-a012-41bc-87e5-c99e0c8e44a8",
+              "name": "Successful Streamed Response",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "v18",
+                    "customers",
+                    ":customerId",
+                    "googleAds:searchStream"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "customerId",
+                      "description": "(Required) The Google Ads customer ID (without dashes), e.g. 1234567890."
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: oauth2",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "<token>"
+                  },
+                  {
+                    "disabled": false,
+                    "description": "(Required) OAuth 2.0 Bearer token for authentication.",
+                    "key": "Authorization",
+                    "value": "string"
+                  },
+                  {
+                    "disabled": false,
+                    "description": "(Required) Developer token for API access. Obtain from the Google Ads API Center\nin your manager account.\n",
+                    "key": "developer-token",
+                    "value": "<string>"
+                  },
+                  {
+                    "disabled": false,
+                    "description": "The customer ID of the manager account making the request on behalf\nof a client account. Required when authenticating as a manager account.\n",
+                    "key": "login-customer-id",
+                    "value": "<string>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"query\": \"<string>\",\n  \"summaryRowSetting\": \"<string>\"\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "[\n  {\n    \"results\": [\n      {\n        \"campaign\": {\n          \"resourceName\": \"string\",\n          \"id\": 4679,\n          \"name\": \"string\",\n          \"status\": \"REMOVED\",\n          \"advertisingChannelType\": \"LOCAL\",\n          \"advertisingChannelSubType\": \"string\",\n          \"biddingStrategyType\": \"MANUAL_CPV\",\n          \"campaignBudget\": \"string\",\n          \"startDate\": \"string\",\n          \"endDate\": \"string\",\n          \"networkSettings\": {\n            \"targetGoogleSearch\": {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            },\n            \"targetSearchNetwork\": {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            },\n            \"targetContentNetwork\": {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            },\n            \"targetPartnerSearchNetwork\": {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            }\n          },\n          \"targetCpa\": {\n            \"targetCpaMicros\": {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            }\n          },\n          \"targetRoas\": {\n            \"targetRoas\": {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            }\n          },\n          \"maximizeConversions\": {\n            \"targetCpaMicros\": {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            }\n          },\n          \"manualCpc\": {\n            \"enhancedCpcEnabled\": {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            }\n          },\n          \"geoTargetTypeSetting\": {\n            \"positiveGeoTargetType\": {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            },\n            \"negativeGeoTargetType\": {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            }\n          }\n        },\n        \"adGroup\": {\n          \"resourceName\": \"string\",\n          \"id\": 1486,\n          \"name\": \"string\",\n          \"status\": \"UNKNOWN\",\n          \"campaign\": \"string\",\n          \"type\": \"SEARCH_STANDARD\",\n          \"cpcBidMicros\": 6312,\n          \"cpmBidMicros\": 7904,\n          \"targetCpaMicros\": 1057,\n          \"effectiveTargetCpaMicros\": 7087,\n          \"effectiveTargetRoas\": 5245.954275767427,\n          \"adRotationMode\": \"OPTIMIZE\"\n        },\n        \"adGroupAd\": {\n          \"resourceName\": \"string\",\n          \"status\": \"UNKNOWN\",\n          \"adGroup\": \"string\",\n          \"ad\": {\n            \"resourceName\": {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            },\n            \"id\": {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            },\n            \"finalUrls\": {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            },\n            \"finalMobileUrls\": {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            },\n            \"trackingUrlTemplate\": {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            },\n            \"type\": {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            },\n            \"responsiveSearchAd\": {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            },\n            \"responsiveDisplayAd\": {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            }\n          },\n          \"policySummary\": {\n            \"approvalStatus\": {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            },\n            \"reviewStatus\": {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            },\n            \"policyTopicEntries\": {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            }\n          },\n          \"adStrength\": \"EXCELLENT\"\n        },\n        \"adGroupCriterion\": {\n          \"resourceName\": \"string\",\n          \"criterionId\": 99,\n          \"adGroup\": \"string\",\n          \"status\": \"UNSPECIFIED\",\n          \"type\": \"AGE_RANGE\",\n          \"keyword\": {\n            \"text\": {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            },\n            \"matchType\": {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            }\n          },\n          \"qualityInfo\": {\n            \"qualityScore\": {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            },\n            \"creativeQualityScore\": {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            },\n            \"postClickQualityScore\": {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            },\n            \"searchPredictedCtr\": {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            }\n          },\n          \"cpcBidMicros\": 7889,\n          \"effectiveCpcBidMicros\": 5181,\n          \"finalUrls\": [\n            \"http://ZbQbyAj.leknsd-nSHTm0Dv45gEza5brMKANa9jkHKHdb60DmTBjC0S4U4CNnDtIv7rB4FAB7t8fWr\",\n            \"https://oqvwMOlEzHYNjSSXgR.frcpj4yJlGJnhjYHIaOj4Jssd0saPYP7DnupOiL0s1y,7eTW\"\n          ],\n          \"negative\": false\n        },\n        \"customer\": {\n          \"resourceName\": \"string\",\n          \"id\": 6288,\n          \"descriptiveName\": \"string\",\n          \"currencyCode\": \"string\",\n          \"timeZone\": \"string\",\n          \"manager\": true,\n          \"testAccount\": true,\n          \"autoTaggingEnabled\": true,\n          \"hasPartnersBadge\": true\n        },\n        \"metrics\": {\n          \"impressions\": 1769,\n          \"clicks\": 2579,\n          \"costMicros\": 4016,\n          \"conversions\": 5148.997810668491,\n          \"conversionsValue\": 1016.0277030328047,\n          \"ctr\": 508.07672715199146,\n          \"averageCpc\": 3728,\n          \"averageCpm\": 9952.31536534684,\n          \"costPerConversion\": 4967.621932928211,\n          \"conversionRate\": 8893.684245754523,\n          \"searchImpressionShare\": 3878.103592707697,\n          \"searchRankLostImpressionShare\": 9955.496377716061,\n          \"searchBudgetLostImpressionShare\": 2815.542399566103,\n          \"allConversions\": 4164.9409281350945,\n          \"viewThroughConversions\": 239,\n          \"interactionRate\": 2412.3063017690492,\n          \"averageCost\": 7225\n        },\n        \"segments\": {\n          \"date\": \"string\",\n          \"dayOfWeek\": \"UNSPECIFIED\",\n          \"device\": \"TABLET\",\n          \"adNetworkType\": \"YOUTUBE_SEARCH\",\n          \"conversionAction\": \"string\",\n          \"conversionActionCategory\": \"string\",\n          \"quarter\": \"string\",\n          \"month\": \"string\",\n          \"week\": \"string\",\n          \"year\": 1733,\n          \"hour\": 8453,\n          \"keyword\": {\n            \"info\": {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            },\n            \"adGroupCriterion\": \"string\"\n          }\n        }\n      },\n      {\n        \"campaign\": {\n          \"resourceName\": \"string\",\n          \"id\": 3285,\n          \"name\": \"string\",\n          \"status\": \"PAUSED\",\n          \"advertisingChannelType\": \"LOCAL_SERVICES\",\n          \"advertisingChannelSubType\": \"string\",\n          \"biddingStrategyType\": \"MAXIMIZE_CONVERSIONS\",\n          \"campaignBudget\": \"string\",\n          \"startDate\": \"string\",\n          \"endDate\": \"string\",\n          \"networkSettings\": {\n            \"targetGoogleSearch\": {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            },\n            \"targetSearchNetwork\": {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            },\n            \"targetContentNetwork\": {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            },\n            \"targetPartnerSearchNetwork\": {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            }\n          },\n          \"targetCpa\": {\n            \"targetCpaMicros\": {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            }\n          },\n          \"targetRoas\": {\n            \"targetRoas\": {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            }\n          },\n          \"maximizeConversions\": {\n            \"targetCpaMicros\": {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            }\n          },\n          \"manualCpc\": {\n            \"enhancedCpcEnabled\": {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            }\n          },\n          \"geoTargetTypeSetting\": {\n            \"positiveGeoTargetType\": {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            },\n            \"negativeGeoTargetType\": {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            }\n          }\n        },\n        \"adGroup\": {\n          \"resourceName\": \"string\",\n          \"id\": 4328,\n          \"name\": \"string\",\n          \"status\": \"UNKNOWN\",\n          \"campaign\": \"string\",\n          \"type\": \"UNSPECIFIED\",\n          \"cpcBidMicros\": 331,\n          \"cpmBidMicros\": 695,\n          \"targetCpaMicros\": 1159,\n          \"effectiveTargetCpaMicros\": 1910,\n          \"effectiveTargetRoas\": 7966.321858866957,\n          \"adRotationMode\": \"UNSPECIFIED\"\n        },\n        \"adGroupAd\": {\n          \"resourceName\": \"string\",\n          \"status\": \"UNSPECIFIED\",\n          \"adGroup\": \"string\",\n          \"ad\": {\n            \"resourceName\": {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            },\n            \"id\": {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            },\n            \"finalUrls\": {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            },\n            \"finalMobileUrls\": {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            },\n            \"trackingUrlTemplate\": {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            },\n            \"type\": {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            },\n            \"responsiveSearchAd\": {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            },\n            \"responsiveDisplayAd\": {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            }\n          },\n          \"policySummary\": {\n            \"approvalStatus\": {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            },\n            \"reviewStatus\": {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            },\n            \"policyTopicEntries\": {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            }\n          },\n          \"adStrength\": \"GOOD\"\n        },\n        \"adGroupCriterion\": {\n          \"resourceName\": \"string\",\n          \"criterionId\": 2847,\n          \"adGroup\": \"string\",\n          \"status\": \"REMOVED\",\n          \"type\": \"PLACEMENT\",\n          \"keyword\": {\n            \"text\": {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            },\n            \"matchType\": {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            }\n          },\n          \"qualityInfo\": {\n            \"qualityScore\": {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            },\n            \"creativeQualityScore\": {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            },\n            \"postClickQualityScore\": {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            },\n            \"searchPredictedCtr\": {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            }\n          },\n          \"cpcBidMicros\": 5911,\n          \"effectiveCpcBidMicros\": 7674,\n          \"finalUrls\": [\n            \"http://xypWHBQnpYdmjQi.iltv-EsHnnfVdu2t6QjS9XX4UNW.,ddwnMTdSoNKYBaHGB+mQxgsAqBE+rz+i3nAi1L\",\n            \"http://NOAyvjodXDpaf.eiggvQYvPDL4JQukv0Egwp9XTKTpgylnEtj\"\n          ],\n          \"negative\": false\n        },\n        \"customer\": {\n          \"resourceName\": \"string\",\n          \"id\": 1220,\n          \"descriptiveName\": \"string\",\n          \"currencyCode\": \"string\",\n          \"timeZone\": \"string\",\n          \"manager\": false,\n          \"testAccount\": true,\n          \"autoTaggingEnabled\": false,\n          \"hasPartnersBadge\": false\n        },\n        \"metrics\": {\n          \"impressions\": 6131,\n          \"clicks\": 5959,\n          \"costMicros\": 9310,\n          \"conversions\": 8038.160055577527,\n          \"conversionsValue\": 8046.488111254541,\n          \"ctr\": 8802.81870670062,\n          \"averageCpc\": 6526,\n          \"averageCpm\": 592.2055952331606,\n          \"costPerConversion\": 9762.208837021702,\n          \"conversionRate\": 4394.284875340641,\n          \"searchImpressionShare\": 856.0280853517122,\n          \"searchRankLostImpressionShare\": 1225.3745618325784,\n          \"searchBudgetLostImpressionShare\": 7989.0207428711055,\n          \"allConversions\": 8255.324330087456,\n          \"viewThroughConversions\": 3601,\n          \"interactionRate\": 9361.073482585634,\n          \"averageCost\": 9557\n        },\n        \"segments\": {\n          \"date\": \"string\",\n          \"dayOfWeek\": \"UNSPECIFIED\",\n          \"device\": \"UNKNOWN\",\n          \"adNetworkType\": \"UNSPECIFIED\",\n          \"conversionAction\": \"string\",\n          \"conversionActionCategory\": \"string\",\n          \"quarter\": \"string\",\n          \"month\": \"string\",\n          \"week\": \"string\",\n          \"year\": 9301,\n          \"hour\": 2327,\n          \"keyword\": {\n            \"info\": {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            },\n            \"adGroupCriterion\": \"string\"\n          }\n        }\n      }\n    ],\n    \"fieldMask\": \"string\",\n    \"summaryRow\": {\n      \"campaign\": {\n        \"resourceName\": \"string\",\n        \"id\": 764,\n        \"name\": \"string\",\n        \"status\": \"REMOVED\",\n        \"advertisingChannelType\": \"SHOPPING\",\n        \"advertisingChannelSubType\": \"string\",\n        \"biddingStrategyType\": \"UNKNOWN\",\n        \"campaignBudget\": \"string\",\n        \"startDate\": \"string\",\n        \"endDate\": \"string\",\n        \"networkSettings\": {\n          \"targetGoogleSearch\": true,\n          \"targetSearchNetwork\": false,\n          \"targetContentNetwork\": false,\n          \"targetPartnerSearchNetwork\": false\n        },\n        \"targetCpa\": {\n          \"targetCpaMicros\": 6304\n        },\n        \"targetRoas\": {\n          \"targetRoas\": 9706.81000129028\n        },\n        \"maximizeConversions\": {\n          \"targetCpaMicros\": 3596\n        },\n        \"manualCpc\": {\n          \"enhancedCpcEnabled\": false\n        },\n        \"geoTargetTypeSetting\": {\n          \"positiveGeoTargetType\": \"PRESENCE\",\n          \"negativeGeoTargetType\": \"PRESENCE\"\n        }\n      },\n      \"adGroup\": {\n        \"resourceName\": \"string\",\n        \"id\": 2250,\n        \"name\": \"string\",\n        \"status\": \"UNKNOWN\",\n        \"campaign\": \"string\",\n        \"type\": \"UNKNOWN\",\n        \"cpcBidMicros\": 3310,\n        \"cpmBidMicros\": 1820,\n        \"targetCpaMicros\": 6397,\n        \"effectiveTargetCpaMicros\": 2674,\n        \"effectiveTargetRoas\": 9001.016532637168,\n        \"adRotationMode\": \"OPTIMIZE\"\n      },\n      \"adGroupAd\": {\n        \"resourceName\": \"string\",\n        \"status\": \"PAUSED\",\n        \"adGroup\": \"string\",\n        \"ad\": {\n          \"resourceName\": \"string\",\n          \"id\": 9119,\n          \"finalUrls\": [\n            {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            },\n            {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            }\n          ],\n          \"finalMobileUrls\": [\n            {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            },\n            {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            }\n          ],\n          \"trackingUrlTemplate\": \"string\",\n          \"type\": \"IMAGE_AD\",\n          \"responsiveSearchAd\": {\n            \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n          },\n          \"responsiveDisplayAd\": {\n            \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n          }\n        },\n        \"policySummary\": {\n          \"approvalStatus\": \"APPROVED_LIMITED\",\n          \"reviewStatus\": \"UNKNOWN\",\n          \"policyTopicEntries\": [\n            {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            },\n            {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            }\n          ]\n        },\n        \"adStrength\": \"GOOD\"\n      },\n      \"adGroupCriterion\": {\n        \"resourceName\": \"string\",\n        \"criterionId\": 7332,\n        \"adGroup\": \"string\",\n        \"status\": \"PAUSED\",\n        \"type\": \"AGE_RANGE\",\n        \"keyword\": {\n          \"text\": \"string\",\n          \"matchType\": \"EXACT\"\n        },\n        \"qualityInfo\": {\n          \"qualityScore\": 5,\n          \"creativeQualityScore\": \"AVERAGE\",\n          \"postClickQualityScore\": \"UNKNOWN\",\n          \"searchPredictedCtr\": \"ABOVE_AVERAGE\"\n        },\n        \"cpcBidMicros\": 5614,\n        \"effectiveCpcBidMicros\": 1736,\n        \"finalUrls\": [\n          \"https://cHhaQAeemKqZuavGz.haiahMiJyyRus8AuFa5ZQ.UNmulOdd\",\n          \"http://WPjlzKSzYzNProG.cejZqh0EZFk5BiJbhUvrZRtxrqcyZxe7yZqFBVOD\"\n        ],\n        \"negative\": false\n      },\n      \"customer\": {\n        \"resourceName\": \"string\",\n        \"id\": 7479,\n        \"descriptiveName\": \"string\",\n        \"currencyCode\": \"string\",\n        \"timeZone\": \"string\",\n        \"manager\": true,\n        \"testAccount\": false,\n        \"autoTaggingEnabled\": false,\n        \"hasPartnersBadge\": true\n      },\n      \"metrics\": {\n        \"impressions\": 6607,\n        \"clicks\": 4933,\n        \"costMicros\": 8075,\n        \"conversions\": 1866.3963589463494,\n        \"conversionsValue\": 8791.353443087546,\n        \"ctr\": 1244.2549121450752,\n        \"averageCpc\": 8977,\n        \"averageCpm\": 3714.139282941462,\n        \"costPerConversion\": 1034.380049736573,\n        \"conversionRate\": 6485.908360237978,\n        \"searchImpressionShare\": 4307.7966364883,\n        \"searchRankLostImpressionShare\": 2036.197052167552,\n        \"searchBudgetLostImpressionShare\": 9470.965168465977,\n        \"allConversions\": 4462.227222926313,\n        \"viewThroughConversions\": 3720,\n        \"interactionRate\": 9565.883108887067,\n        \"averageCost\": 395\n      },\n      \"segments\": {\n        \"date\": \"string\",\n        \"dayOfWeek\": \"FRIDAY\",\n        \"device\": \"TABLET\",\n        \"adNetworkType\": \"CONTENT\",\n        \"conversionAction\": \"string\",\n        \"conversionActionCategory\": \"string\",\n        \"quarter\": \"string\",\n        \"month\": \"string\",\n        \"week\": \"string\",\n        \"year\": 8657,\n        \"hour\": 1189,\n        \"keyword\": {\n          \"info\": {\n            \"text\": {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            },\n            \"matchType\": {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            }\n          },\n          \"adGroupCriterion\": \"string\"\n        }\n      }\n    },\n    \"requestId\": \"string\"\n  },\n  {\n    \"results\": [\n      {\n        \"campaign\": {\n          \"resourceName\": \"string\",\n          \"id\": 347,\n          \"name\": \"string\",\n          \"status\": \"ENABLED\",\n          \"advertisingChannelType\": \"TRAVEL\",\n          \"advertisingChannelSubType\": \"string\",\n          \"biddingStrategyType\": \"UNSPECIFIED\",\n          \"campaignBudget\": \"string\",\n          \"startDate\": \"string\",\n          \"endDate\": \"string\",\n          \"networkSettings\": {\n            \"targetGoogleSearch\": {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            },\n            \"targetSearchNetwork\": {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            },\n            \"targetContentNetwork\": {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            },\n            \"targetPartnerSearchNetwork\": {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            }\n          },\n          \"targetCpa\": {\n            \"targetCpaMicros\": {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            }\n          },\n          \"targetRoas\": {\n            \"targetRoas\": {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            }\n          },\n          \"maximizeConversions\": {\n            \"targetCpaMicros\": {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            }\n          },\n          \"manualCpc\": {\n            \"enhancedCpcEnabled\": {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            }\n          },\n          \"geoTargetTypeSetting\": {\n            \"positiveGeoTargetType\": {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            },\n            \"negativeGeoTargetType\": {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            }\n          }\n        },\n        \"adGroup\": {\n          \"resourceName\": \"string\",\n          \"id\": 4834,\n          \"name\": \"string\",\n          \"status\": \"PAUSED\",\n          \"campaign\": \"string\",\n          \"type\": \"SMART_CAMPAIGN_ADS\",\n          \"cpcBidMicros\": 4510,\n          \"cpmBidMicros\": 5573,\n          \"targetCpaMicros\": 7644,\n          \"effectiveTargetCpaMicros\": 2596,\n          \"effectiveTargetRoas\": 8630.294512010561,\n          \"adRotationMode\": \"ROTATE_FOREVER\"\n        },\n        \"adGroupAd\": {\n          \"resourceName\": \"string\",\n          \"status\": \"UNSPECIFIED\",\n          \"adGroup\": \"string\",\n          \"ad\": {\n            \"resourceName\": {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            },\n            \"id\": {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            },\n            \"finalUrls\": {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            },\n            \"finalMobileUrls\": {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            },\n            \"trackingUrlTemplate\": {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            },\n            \"type\": {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            },\n            \"responsiveSearchAd\": {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            },\n            \"responsiveDisplayAd\": {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            }\n          },\n          \"policySummary\": {\n            \"approvalStatus\": {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            },\n            \"reviewStatus\": {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            },\n            \"policyTopicEntries\": {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            }\n          },\n          \"adStrength\": \"GOOD\"\n        },\n        \"adGroupCriterion\": {\n          \"resourceName\": \"string\",\n          \"criterionId\": 9391,\n          \"adGroup\": \"string\",\n          \"status\": \"PAUSED\",\n          \"type\": \"PLACEMENT\",\n          \"keyword\": {\n            \"text\": {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            },\n            \"matchType\": {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            }\n          },\n          \"qualityInfo\": {\n            \"qualityScore\": {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            },\n            \"creativeQualityScore\": {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            },\n            \"postClickQualityScore\": {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            },\n            \"searchPredictedCtr\": {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            }\n          },\n          \"cpcBidMicros\": 6673,\n          \"effectiveCpcBidMicros\": 780,\n          \"finalUrls\": [\n            \"https://IKtlFqCXYYYPy.lipbHGxzImr,Y+NxA\",\n            \"https://smwCVyOZUMnf.zntNFbedbBgipDLoDvaEq4oBfKzxv6yuEJXBSyaxyy.0JW+lHicx7tliY0paGj\"\n          ],\n          \"negative\": false\n        },\n        \"customer\": {\n          \"resourceName\": \"string\",\n          \"id\": 8169,\n          \"descriptiveName\": \"string\",\n          \"currencyCode\": \"string\",\n          \"timeZone\": \"string\",\n          \"manager\": false,\n          \"testAccount\": true,\n          \"autoTaggingEnabled\": false,\n          \"hasPartnersBadge\": false\n        },\n        \"metrics\": {\n          \"impressions\": 2301,\n          \"clicks\": 1903,\n          \"costMicros\": 300,\n          \"conversions\": 3042.9777935185966,\n          \"conversionsValue\": 7095.320745447884,\n          \"ctr\": 2822.5070097095618,\n          \"averageCpc\": 6986,\n          \"averageCpm\": 660.2239745334492,\n          \"costPerConversion\": 3893.608258205679,\n          \"conversionRate\": 5520.902044118571,\n          \"searchImpressionShare\": 1503.7452189274225,\n          \"searchRankLostImpressionShare\": 6722.8692747036675,\n          \"searchBudgetLostImpressionShare\": 5314.533653451138,\n          \"allConversions\": 3767.8151222384836,\n          \"viewThroughConversions\": 8891,\n          \"interactionRate\": 9430.458740468219,\n          \"averageCost\": 972\n        },\n        \"segments\": {\n          \"date\": \"string\",\n          \"dayOfWeek\": \"TUESDAY\",\n          \"device\": \"UNSPECIFIED\",\n          \"adNetworkType\": \"UNKNOWN\",\n          \"conversionAction\": \"string\",\n          \"conversionActionCategory\": \"string\",\n          \"quarter\": \"string\",\n          \"month\": \"string\",\n          \"week\": \"string\",\n          \"year\": 8145,\n          \"hour\": 5950,\n          \"keyword\": {\n            \"info\": {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            },\n            \"adGroupCriterion\": \"string\"\n          }\n        }\n      },\n      {\n        \"campaign\": {\n          \"resourceName\": \"string\",\n          \"id\": 429,\n          \"name\": \"string\",\n          \"status\": \"PAUSED\",\n          \"advertisingChannelType\": \"MULTI_CHANNEL\",\n          \"advertisingChannelSubType\": \"string\",\n          \"biddingStrategyType\": \"TARGET_CPA\",\n          \"campaignBudget\": \"string\",\n          \"startDate\": \"string\",\n          \"endDate\": \"string\",\n          \"networkSettings\": {\n            \"targetGoogleSearch\": {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            },\n            \"targetSearchNetwork\": {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            },\n            \"targetContentNetwork\": {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            },\n            \"targetPartnerSearchNetwork\": {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            }\n          },\n          \"targetCpa\": {\n            \"targetCpaMicros\": {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            }\n          },\n          \"targetRoas\": {\n            \"targetRoas\": {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            }\n          },\n          \"maximizeConversions\": {\n            \"targetCpaMicros\": {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            }\n          },\n          \"manualCpc\": {\n            \"enhancedCpcEnabled\": {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            }\n          },\n          \"geoTargetTypeSetting\": {\n            \"positiveGeoTargetType\": {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            },\n            \"negativeGeoTargetType\": {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            }\n          }\n        },\n        \"adGroup\": {\n          \"resourceName\": \"string\",\n          \"id\": 1183,\n          \"name\": \"string\",\n          \"status\": \"UNSPECIFIED\",\n          \"campaign\": \"string\",\n          \"type\": \"UNSPECIFIED\",\n          \"cpcBidMicros\": 479,\n          \"cpmBidMicros\": 3594,\n          \"targetCpaMicros\": 3907,\n          \"effectiveTargetCpaMicros\": 5826,\n          \"effectiveTargetRoas\": 1928.5259159454604,\n          \"adRotationMode\": \"UNKNOWN\"\n        },\n        \"adGroupAd\": {\n          \"resourceName\": \"string\",\n          \"status\": \"UNKNOWN\",\n          \"adGroup\": \"string\",\n          \"ad\": {\n            \"resourceName\": {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            },\n            \"id\": {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            },\n            \"finalUrls\": {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            },\n            \"finalMobileUrls\": {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            },\n            \"trackingUrlTemplate\": {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            },\n            \"type\": {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            },\n            \"responsiveSearchAd\": {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            },\n            \"responsiveDisplayAd\": {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            }\n          },\n          \"policySummary\": {\n            \"approvalStatus\": {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            },\n            \"reviewStatus\": {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            },\n            \"policyTopicEntries\": {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            }\n          },\n          \"adStrength\": \"EXCELLENT\"\n        },\n        \"adGroupCriterion\": {\n          \"resourceName\": \"string\",\n          \"criterionId\": 3255,\n          \"adGroup\": \"string\",\n          \"status\": \"ENABLED\",\n          \"type\": \"PLACEMENT\",\n          \"keyword\": {\n            \"text\": {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            },\n            \"matchType\": {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            }\n          },\n          \"qualityInfo\": {\n            \"qualityScore\": {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            },\n            \"creativeQualityScore\": {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            },\n            \"postClickQualityScore\": {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            },\n            \"searchPredictedCtr\": {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            }\n          },\n          \"cpcBidMicros\": 1742,\n          \"effectiveCpcBidMicros\": 101,\n          \"finalUrls\": [\n            \"http://XXcZQF.pevQJOhUAJl4BEn8Dc,rOQSP5Lor8gsihC7\",\n            \"http://EjAIX.zunfyasNtdnPKjN7glGJyUscsG11bZFMTeRGC7YoAr3X,zPMow7tma-VnYGzQ-54Cpitsv6q\"\n          ],\n          \"negative\": false\n        },\n        \"customer\": {\n          \"resourceName\": \"string\",\n          \"id\": 2606,\n          \"descriptiveName\": \"string\",\n          \"currencyCode\": \"string\",\n          \"timeZone\": \"string\",\n          \"manager\": true,\n          \"testAccount\": false,\n          \"autoTaggingEnabled\": true,\n          \"hasPartnersBadge\": false\n        },\n        \"metrics\": {\n          \"impressions\": 9496,\n          \"clicks\": 3804,\n          \"costMicros\": 726,\n          \"conversions\": 5529.475983621799,\n          \"conversionsValue\": 9558.347896763025,\n          \"ctr\": 7795.634505475412,\n          \"averageCpc\": 6902,\n          \"averageCpm\": 432.3969381508774,\n          \"costPerConversion\": 8345.29696021021,\n          \"conversionRate\": 6565.50622764328,\n          \"searchImpressionShare\": 2325.36952417107,\n          \"searchRankLostImpressionShare\": 1445.1078238457226,\n          \"searchBudgetLostImpressionShare\": 2442.5230533461863,\n          \"allConversions\": 2617.8939047791982,\n          \"viewThroughConversions\": 4183,\n          \"interactionRate\": 9258.426826530547,\n          \"averageCost\": 7848\n        },\n        \"segments\": {\n          \"date\": \"string\",\n          \"dayOfWeek\": \"TUESDAY\",\n          \"device\": \"TABLET\",\n          \"adNetworkType\": \"MIXED\",\n          \"conversionAction\": \"string\",\n          \"conversionActionCategory\": \"string\",\n          \"quarter\": \"string\",\n          \"month\": \"string\",\n          \"week\": \"string\",\n          \"year\": 206,\n          \"hour\": 1572,\n          \"keyword\": {\n            \"info\": {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            },\n            \"adGroupCriterion\": \"string\"\n          }\n        }\n      }\n    ],\n    \"fieldMask\": \"string\",\n    \"summaryRow\": {\n      \"campaign\": {\n        \"resourceName\": \"string\",\n        \"id\": 9069,\n        \"name\": \"string\",\n        \"status\": \"ENABLED\",\n        \"advertisingChannelType\": \"LOCAL_SERVICES\",\n        \"advertisingChannelSubType\": \"string\",\n        \"biddingStrategyType\": \"MAXIMIZE_CONVERSIONS\",\n        \"campaignBudget\": \"string\",\n        \"startDate\": \"string\",\n        \"endDate\": \"string\",\n        \"networkSettings\": {\n          \"targetGoogleSearch\": false,\n          \"targetSearchNetwork\": true,\n          \"targetContentNetwork\": true,\n          \"targetPartnerSearchNetwork\": true\n        },\n        \"targetCpa\": {\n          \"targetCpaMicros\": 1786\n        },\n        \"targetRoas\": {\n          \"targetRoas\": 8914.925001425943\n        },\n        \"maximizeConversions\": {\n          \"targetCpaMicros\": 743\n        },\n        \"manualCpc\": {\n          \"enhancedCpcEnabled\": false\n        },\n        \"geoTargetTypeSetting\": {\n          \"positiveGeoTargetType\": \"PRESENCE_OR_INTEREST\",\n          \"negativeGeoTargetType\": \"PRESENCE_OR_INTEREST\"\n        }\n      },\n      \"adGroup\": {\n        \"resourceName\": \"string\",\n        \"id\": 9972,\n        \"name\": \"string\",\n        \"status\": \"UNKNOWN\",\n        \"campaign\": \"string\",\n        \"type\": \"UNKNOWN\",\n        \"cpcBidMicros\": 2124,\n        \"cpmBidMicros\": 2555,\n        \"targetCpaMicros\": 7646,\n        \"effectiveTargetCpaMicros\": 3729,\n        \"effectiveTargetRoas\": 2593.6548928318193,\n        \"adRotationMode\": \"UNKNOWN\"\n      },\n      \"adGroupAd\": {\n        \"resourceName\": \"string\",\n        \"status\": \"REMOVED\",\n        \"adGroup\": \"string\",\n        \"ad\": {\n          \"resourceName\": \"string\",\n          \"id\": 5337,\n          \"finalUrls\": [\n            {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            },\n            {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            }\n          ],\n          \"finalMobileUrls\": [\n            {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            },\n            {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            }\n          ],\n          \"trackingUrlTemplate\": \"string\",\n          \"type\": \"UNKNOWN\",\n          \"responsiveSearchAd\": {\n            \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n          },\n          \"responsiveDisplayAd\": {\n            \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n          }\n        },\n        \"policySummary\": {\n          \"approvalStatus\": \"AREA_OF_INTEREST_ONLY\",\n          \"reviewStatus\": \"REVIEW_IN_PROGRESS\",\n          \"policyTopicEntries\": [\n            {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            },\n            {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            }\n          ]\n        },\n        \"adStrength\": \"UNSPECIFIED\"\n      },\n      \"adGroupCriterion\": {\n        \"resourceName\": \"string\",\n        \"criterionId\": 1392,\n        \"adGroup\": \"string\",\n        \"status\": \"PAUSED\",\n        \"type\": \"TOPIC\",\n        \"keyword\": {\n          \"text\": \"string\",\n          \"matchType\": \"PHRASE\"\n        },\n        \"qualityInfo\": {\n          \"qualityScore\": 4,\n          \"creativeQualityScore\": \"AVERAGE\",\n          \"postClickQualityScore\": \"UNKNOWN\",\n          \"searchPredictedCtr\": \"ABOVE_AVERAGE\"\n        },\n        \"cpcBidMicros\": 3428,\n        \"effectiveCpcBidMicros\": 8734,\n        \"finalUrls\": [\n          \"https://hKdlKKNDqKxMSWaVJwPvDparlEaYFDvB.zaqjcvZvrBq7vqF7YeYxPDqo253DIiPvLOb\",\n          \"http://zYclnroVasMMbFwqWhjhngtxG.ouffWLBWhca0kqbbwywcEFvRR\"\n        ],\n        \"negative\": false\n      },\n      \"customer\": {\n        \"resourceName\": \"string\",\n        \"id\": 8370,\n        \"descriptiveName\": \"string\",\n        \"currencyCode\": \"string\",\n        \"timeZone\": \"string\",\n        \"manager\": false,\n        \"testAccount\": true,\n        \"autoTaggingEnabled\": false,\n        \"hasPartnersBadge\": true\n      },\n      \"metrics\": {\n        \"impressions\": 921,\n        \"clicks\": 4756,\n        \"costMicros\": 4874,\n        \"conversions\": 1832.3438588892727,\n        \"conversionsValue\": 2070.6394260374427,\n        \"ctr\": 6777.348003886225,\n        \"averageCpc\": 3367,\n        \"averageCpm\": 5148.579579244044,\n        \"costPerConversion\": 8813.232292276118,\n        \"conversionRate\": 1108.1539592732913,\n        \"searchImpressionShare\": 9384.066634095694,\n        \"searchRankLostImpressionShare\": 6975.133944268322,\n        \"searchBudgetLostImpressionShare\": 5205.576643909575,\n        \"allConversions\": 2747.3590245282367,\n        \"viewThroughConversions\": 3850,\n        \"interactionRate\": 1057.581128238143,\n        \"averageCost\": 5869\n      },\n      \"segments\": {\n        \"date\": \"string\",\n        \"dayOfWeek\": \"UNKNOWN\",\n        \"device\": \"DESKTOP\",\n        \"adNetworkType\": \"YOUTUBE_WATCH\",\n        \"conversionAction\": \"string\",\n        \"conversionActionCategory\": \"string\",\n        \"quarter\": \"string\",\n        \"month\": \"string\",\n        \"week\": \"string\",\n        \"year\": 8341,\n        \"hour\": 6643,\n        \"keyword\": {\n          \"info\": {\n            \"text\": {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            },\n            \"matchType\": {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            }\n          },\n          \"adGroupCriterion\": \"string\"\n        }\n      }\n    },\n    \"requestId\": \"string\"\n  }\n]",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "27454d9c-8eaf-42a2-81e9-249f87a833ed",
+              "name": "Bad Request",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "v18",
+                    "customers",
+                    ":customerId",
+                    "googleAds:searchStream"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "customerId",
+                      "description": "(Required) The Google Ads customer ID (without dashes), e.g. 1234567890."
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: oauth2",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "<token>"
+                  },
+                  {
+                    "disabled": false,
+                    "description": "(Required) OAuth 2.0 Bearer token for authentication.",
+                    "key": "Authorization",
+                    "value": "string"
+                  },
+                  {
+                    "disabled": false,
+                    "description": "(Required) Developer token for API access. Obtain from the Google Ads API Center\nin your manager account.\n",
+                    "key": "developer-token",
+                    "value": "<string>"
+                  },
+                  {
+                    "disabled": false,
+                    "description": "The customer ID of the manager account making the request on behalf\nof a client account. Required when authenticating as a manager account.\n",
+                    "key": "login-customer-id",
+                    "value": "<string>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"query\": \"<string>\",\n  \"summaryRowSetting\": \"<string>\"\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "Bad Request",
+              "code": 400,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"errors\": [\n    {\n      \"errorCode\": {\n        \"key_0\": \"string\"\n      },\n      \"message\": \"string\",\n      \"trigger\": {},\n      \"location\": {\n        \"fieldPathElements\": [\n          {\n            \"fieldName\": \"string\",\n            \"index\": 1550\n          },\n          {\n            \"fieldName\": \"string\",\n            \"index\": 2367\n          }\n        ]\n      }\n    },\n    {\n      \"errorCode\": {\n        \"key_0\": \"string\",\n        \"key_1\": \"string\",\n        \"key_2\": \"string\",\n        \"key_3\": \"string\"\n      },\n      \"message\": \"string\",\n      \"trigger\": {},\n      \"location\": {\n        \"fieldPathElements\": [\n          {\n            \"fieldName\": \"string\",\n            \"index\": 8026\n          },\n          {\n            \"fieldName\": \"string\",\n            \"index\": 8672\n          }\n        ]\n      }\n    }\n  ]\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "2a589ee3-fd79-4177-bbe7-0b1ef0cf3778",
+              "name": "Unauthorized",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "v18",
+                    "customers",
+                    ":customerId",
+                    "googleAds:searchStream"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "customerId",
+                      "description": "(Required) The Google Ads customer ID (without dashes), e.g. 1234567890."
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: oauth2",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "<token>"
+                  },
+                  {
+                    "disabled": false,
+                    "description": "(Required) OAuth 2.0 Bearer token for authentication.",
+                    "key": "Authorization",
+                    "value": "string"
+                  },
+                  {
+                    "disabled": false,
+                    "description": "(Required) Developer token for API access. Obtain from the Google Ads API Center\nin your manager account.\n",
+                    "key": "developer-token",
+                    "value": "<string>"
+                  },
+                  {
+                    "disabled": false,
+                    "description": "The customer ID of the manager account making the request on behalf\nof a client account. Required when authenticating as a manager account.\n",
+                    "key": "login-customer-id",
+                    "value": "<string>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"query\": \"<string>\",\n  \"summaryRowSetting\": \"<string>\"\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "Unauthorized",
+              "code": 401,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"errors\": [\n    {\n      \"errorCode\": {\n        \"key_0\": \"string\"\n      },\n      \"message\": \"string\",\n      \"trigger\": {},\n      \"location\": {\n        \"fieldPathElements\": [\n          {\n            \"fieldName\": \"string\",\n            \"index\": 1550\n          },\n          {\n            \"fieldName\": \"string\",\n            \"index\": 2367\n          }\n        ]\n      }\n    },\n    {\n      \"errorCode\": {\n        \"key_0\": \"string\",\n        \"key_1\": \"string\",\n        \"key_2\": \"string\",\n        \"key_3\": \"string\"\n      },\n      \"message\": \"string\",\n      \"trigger\": {},\n      \"location\": {\n        \"fieldPathElements\": [\n          {\n            \"fieldName\": \"string\",\n            \"index\": 8026\n          },\n          {\n            \"fieldName\": \"string\",\n            \"index\": 8672\n          }\n        ]\n      }\n    }\n  ]\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        }
+      ],
+      "event": []
+    }
+  ],
+  "event": [],
+  "variable": [
+    {
+      "type": "string",
+      "value": "https://googleads.googleapis.com",
+      "key": "baseUrl"
+    }
+  ],
+  "auth": {
+    "type": "oauth2",
+    "oauth2": [
+      {
+        "key": "scope",
+        "value": "https://www.googleapis.com/auth/adwords"
+      },
+      {
+        "key": "accessTokenUrl",
+        "value": "https://oauth2.googleapis.com/token"
+      },
+      {
+        "key": "authUrl",
+        "value": "https://accounts.google.com/o/oauth2/auth"
+      },
+      {
+        "key": "grant_type",
+        "value": "authorization_code"
+      }
+    ]
+  },
+  "info": {
+    "_postman_id": "fc69155f-0f02-41b3-97d0-566d1dc61930",
+    "name": "Google Ads Ad Groups Reporting API",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+    "description": {
+      "content": "The Google Ads API is the modern programmatic interface to Google Ads and the\nnext generation of the AdWords API. It enables developers to interact directly\nwith the Google Ads platform, vastly increasing the efficiency of managing\nlarge or complex Google Ads accounts and campaigns. The API allows for\ncreating, reading, updating, and removing campaigns, ad groups, ads, keywords,\nand retrieving performance reports using Google Ads Query Language (GAQL).\n\n\nContact Support:\n Name: Google Ads API Support",
+      "type": "text/plain"
+    }
+  }
+}

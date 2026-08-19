@@ -1,0 +1,364 @@
+{
+  "item": [
+    {
+      "id": "53f7f8aa-8ad2-4dae-bfec-70e1d363affc",
+      "name": "Ads",
+      "description": {
+        "content": "Create and manage individual ads within ad groups",
+        "type": "text/plain"
+      },
+      "item": [
+        {
+          "id": "b22cf1b3-37e8-44c4-bba0-26fbbf18e4a8",
+          "name": "Google Ads Create, Update, or Remove Ads",
+          "request": {
+            "name": "Google Ads Create, Update, or Remove Ads",
+            "description": {
+              "content": "Creates, updates, or removes ads within ad groups. Ads are the\ncreative content shown to users. Supports responsive search ads,\nexpanded text ads, display ads, and other ad formats.\n",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "v18",
+                "customers",
+                ":customerId",
+                "adGroupAds:mutate"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": [
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<string>",
+                  "key": "customerId",
+                  "description": "(Required) The Google Ads customer ID (without dashes), e.g. 1234567890."
+                }
+              ]
+            },
+            "header": [
+              {
+                "disabled": false,
+                "description": "(Required) Developer token for API access. Obtain from the Google Ads API Center\nin your manager account.\n",
+                "key": "developer-token",
+                "value": "<string>"
+              },
+              {
+                "disabled": false,
+                "description": "The customer ID of the manager account making the request on behalf\nof a client account. Required when authenticating as a manager account.\n",
+                "key": "login-customer-id",
+                "value": "<string>"
+              },
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              },
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "POST",
+            "auth": null,
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"operations\": [\n    {\n      \"create\": {\n        \"resourceName\": \"<string>\",\n        \"status\": \"<string>\",\n        \"adGroup\": \"<string>\",\n        \"ad\": {\n          \"resourceName\": \"<string>\",\n          \"id\": \"<long>\",\n          \"finalUrls\": [\n            \"<uri>\",\n            \"<uri>\"\n          ],\n          \"finalMobileUrls\": [\n            \"<uri>\",\n            \"<uri>\"\n          ],\n          \"trackingUrlTemplate\": \"<string>\",\n          \"type\": \"<string>\",\n          \"responsiveSearchAd\": {\n            \"headlines\": {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            },\n            \"descriptions\": {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            },\n            \"path1\": {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            },\n            \"path2\": {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            }\n          },\n          \"responsiveDisplayAd\": {\n            \"headlines\": {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            },\n            \"longHeadline\": {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            },\n            \"descriptions\": {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            },\n            \"businessName\": {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            }\n          }\n        },\n        \"policySummary\": {\n          \"approvalStatus\": \"<string>\",\n          \"reviewStatus\": \"<string>\",\n          \"policyTopicEntries\": [\n            {\n              \"type\": {\n                \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n              },\n              \"topic\": {\n                \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n              }\n            },\n            {\n              \"type\": {\n                \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n              },\n              \"topic\": {\n                \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n              }\n            }\n          ]\n        },\n        \"adStrength\": \"<string>\"\n      },\n      \"update\": {\n        \"resourceName\": \"<string>\",\n        \"status\": \"<string>\",\n        \"adGroup\": \"<string>\",\n        \"ad\": {\n          \"resourceName\": \"<string>\",\n          \"id\": \"<long>\",\n          \"finalUrls\": [\n            \"<uri>\",\n            \"<uri>\"\n          ],\n          \"finalMobileUrls\": [\n            \"<uri>\",\n            \"<uri>\"\n          ],\n          \"trackingUrlTemplate\": \"<string>\",\n          \"type\": \"<string>\",\n          \"responsiveSearchAd\": {\n            \"headlines\": {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            },\n            \"descriptions\": {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            },\n            \"path1\": {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            },\n            \"path2\": {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            }\n          },\n          \"responsiveDisplayAd\": {\n            \"headlines\": {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            },\n            \"longHeadline\": {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            },\n            \"descriptions\": {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            },\n            \"businessName\": {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            }\n          }\n        },\n        \"policySummary\": {\n          \"approvalStatus\": \"<string>\",\n          \"reviewStatus\": \"<string>\",\n          \"policyTopicEntries\": [\n            {\n              \"type\": {\n                \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n              },\n              \"topic\": {\n                \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n              }\n            },\n            {\n              \"type\": {\n                \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n              },\n              \"topic\": {\n                \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n              }\n            }\n          ]\n        },\n        \"adStrength\": \"<string>\"\n      },\n      \"remove\": \"<string>\",\n      \"updateMask\": \"<string>\"\n    },\n    {\n      \"create\": {\n        \"resourceName\": \"<string>\",\n        \"status\": \"<string>\",\n        \"adGroup\": \"<string>\",\n        \"ad\": {\n          \"resourceName\": \"<string>\",\n          \"id\": \"<long>\",\n          \"finalUrls\": [\n            \"<uri>\",\n            \"<uri>\"\n          ],\n          \"finalMobileUrls\": [\n            \"<uri>\",\n            \"<uri>\"\n          ],\n          \"trackingUrlTemplate\": \"<string>\",\n          \"type\": \"<string>\",\n          \"responsiveSearchAd\": {\n            \"headlines\": {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            },\n            \"descriptions\": {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            },\n            \"path1\": {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            },\n            \"path2\": {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            }\n          },\n          \"responsiveDisplayAd\": {\n            \"headlines\": {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            },\n            \"longHeadline\": {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            },\n            \"descriptions\": {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            },\n            \"businessName\": {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            }\n          }\n        },\n        \"policySummary\": {\n          \"approvalStatus\": \"<string>\",\n          \"reviewStatus\": \"<string>\",\n          \"policyTopicEntries\": [\n            {\n              \"type\": {\n                \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n              },\n              \"topic\": {\n                \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n              }\n            },\n            {\n              \"type\": {\n                \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n              },\n              \"topic\": {\n                \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n              }\n            }\n          ]\n        },\n        \"adStrength\": \"<string>\"\n      },\n      \"update\": {\n        \"resourceName\": \"<string>\",\n        \"status\": \"<string>\",\n        \"adGroup\": \"<string>\",\n        \"ad\": {\n          \"resourceName\": \"<string>\",\n          \"id\": \"<long>\",\n          \"finalUrls\": [\n            \"<uri>\",\n            \"<uri>\"\n          ],\n          \"finalMobileUrls\": [\n            \"<uri>\",\n            \"<uri>\"\n          ],\n          \"trackingUrlTemplate\": \"<string>\",\n          \"type\": \"<string>\",\n          \"responsiveSearchAd\": {\n            \"headlines\": {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            },\n            \"descriptions\": {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            },\n            \"path1\": {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            },\n            \"path2\": {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            }\n          },\n          \"responsiveDisplayAd\": {\n            \"headlines\": {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            },\n            \"longHeadline\": {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            },\n            \"descriptions\": {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            },\n            \"businessName\": {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            }\n          }\n        },\n        \"policySummary\": {\n          \"approvalStatus\": \"<string>\",\n          \"reviewStatus\": \"<string>\",\n          \"policyTopicEntries\": [\n            {\n              \"type\": {\n                \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n              },\n              \"topic\": {\n                \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n              }\n            },\n            {\n              \"type\": {\n                \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n              },\n              \"topic\": {\n                \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n              }\n            }\n          ]\n        },\n        \"adStrength\": \"<string>\"\n      },\n      \"remove\": \"<string>\",\n      \"updateMask\": \"<string>\"\n    }\n  ],\n  \"partialFailure\": \"<boolean>\",\n  \"validateOnly\": \"<boolean>\"\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            }
+          },
+          "response": [
+            {
+              "id": "858ae7a7-4ae3-4600-b5cf-2d735130d7f6",
+              "name": "Successful Response",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "v18",
+                    "customers",
+                    ":customerId",
+                    "adGroupAds:mutate"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "customerId",
+                      "description": "(Required) The Google Ads customer ID (without dashes), e.g. 1234567890."
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: oauth2",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "<token>"
+                  },
+                  {
+                    "disabled": false,
+                    "description": "(Required) OAuth 2.0 Bearer token for authentication.",
+                    "key": "Authorization",
+                    "value": "string"
+                  },
+                  {
+                    "disabled": false,
+                    "description": "(Required) Developer token for API access. Obtain from the Google Ads API Center\nin your manager account.\n",
+                    "key": "developer-token",
+                    "value": "<string>"
+                  },
+                  {
+                    "disabled": false,
+                    "description": "The customer ID of the manager account making the request on behalf\nof a client account. Required when authenticating as a manager account.\n",
+                    "key": "login-customer-id",
+                    "value": "<string>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"operations\": [\n    {\n      \"create\": {\n        \"adGroup\": \"customers/1234567890/adGroups/444444\",\n        \"status\": \"ENABLED\",\n        \"ad\": {\n          \"finalUrls\": [\n            \"https://www.example.com/products\"\n          ],\n          \"responsiveSearchAd\": {\n            \"headlines\": [\n              {\n                \"text\": \"Buy Products Online\"\n              },\n              {\n                \"text\": \"Free Shipping Available\"\n              },\n              {\n                \"text\": \"Shop the Best Deals\"\n              }\n            ],\n            \"descriptions\": [\n              {\n                \"text\": \"Browse our wide selection of quality products with fast, free shipping.\"\n              },\n              {\n                \"text\": \"Save big on your favorite brands. Shop now and get exclusive deals.\"\n              }\n            ],\n            \"path1\": \"products\",\n            \"path2\": \"deals\"\n          }\n        }\n      }\n    }\n  ],\n  \"partialFailure\": false\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"results\": [\n    {\n      \"resourceName\": \"string\"\n    },\n    {\n      \"resourceName\": \"string\"\n    }\n  ],\n  \"partialFailureError\": {\n    \"code\": 532,\n    \"message\": \"string\"\n  }\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "f558cb2f-f4ef-42b0-a0ab-50f31ea6f88a",
+              "name": "Bad Request",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "v18",
+                    "customers",
+                    ":customerId",
+                    "adGroupAds:mutate"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "customerId",
+                      "description": "(Required) The Google Ads customer ID (without dashes), e.g. 1234567890."
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: oauth2",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "<token>"
+                  },
+                  {
+                    "disabled": false,
+                    "description": "(Required) OAuth 2.0 Bearer token for authentication.",
+                    "key": "Authorization",
+                    "value": "string"
+                  },
+                  {
+                    "disabled": false,
+                    "description": "(Required) Developer token for API access. Obtain from the Google Ads API Center\nin your manager account.\n",
+                    "key": "developer-token",
+                    "value": "<string>"
+                  },
+                  {
+                    "disabled": false,
+                    "description": "The customer ID of the manager account making the request on behalf\nof a client account. Required when authenticating as a manager account.\n",
+                    "key": "login-customer-id",
+                    "value": "<string>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"operations\": [\n    {\n      \"create\": {\n        \"adGroup\": \"customers/1234567890/adGroups/444444\",\n        \"status\": \"ENABLED\",\n        \"ad\": {\n          \"finalUrls\": [\n            \"https://www.example.com/products\"\n          ],\n          \"responsiveSearchAd\": {\n            \"headlines\": [\n              {\n                \"text\": \"Buy Products Online\"\n              },\n              {\n                \"text\": \"Free Shipping Available\"\n              },\n              {\n                \"text\": \"Shop the Best Deals\"\n              }\n            ],\n            \"descriptions\": [\n              {\n                \"text\": \"Browse our wide selection of quality products with fast, free shipping.\"\n              },\n              {\n                \"text\": \"Save big on your favorite brands. Shop now and get exclusive deals.\"\n              }\n            ],\n            \"path1\": \"products\",\n            \"path2\": \"deals\"\n          }\n        }\n      }\n    }\n  ],\n  \"partialFailure\": false\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "Bad Request",
+              "code": 400,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"errors\": [\n    {\n      \"errorCode\": {\n        \"key_0\": \"string\"\n      },\n      \"message\": \"string\",\n      \"trigger\": {},\n      \"location\": {\n        \"fieldPathElements\": [\n          {\n            \"fieldName\": \"string\",\n            \"index\": 1503\n          },\n          {\n            \"fieldName\": \"string\",\n            \"index\": 4111\n          }\n        ]\n      }\n    },\n    {\n      \"errorCode\": {\n        \"key_0\": \"string\"\n      },\n      \"message\": \"string\",\n      \"trigger\": {},\n      \"location\": {\n        \"fieldPathElements\": [\n          {\n            \"fieldName\": \"string\",\n            \"index\": 1524\n          },\n          {\n            \"fieldName\": \"string\",\n            \"index\": 4527\n          }\n        ]\n      }\n    }\n  ]\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "53ab2b88-0e49-4d0e-88bf-0ce2ad4ab30b",
+              "name": "Unauthorized",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "v18",
+                    "customers",
+                    ":customerId",
+                    "adGroupAds:mutate"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "customerId",
+                      "description": "(Required) The Google Ads customer ID (without dashes), e.g. 1234567890."
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: oauth2",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "<token>"
+                  },
+                  {
+                    "disabled": false,
+                    "description": "(Required) OAuth 2.0 Bearer token for authentication.",
+                    "key": "Authorization",
+                    "value": "string"
+                  },
+                  {
+                    "disabled": false,
+                    "description": "(Required) Developer token for API access. Obtain from the Google Ads API Center\nin your manager account.\n",
+                    "key": "developer-token",
+                    "value": "<string>"
+                  },
+                  {
+                    "disabled": false,
+                    "description": "The customer ID of the manager account making the request on behalf\nof a client account. Required when authenticating as a manager account.\n",
+                    "key": "login-customer-id",
+                    "value": "<string>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"operations\": [\n    {\n      \"create\": {\n        \"adGroup\": \"customers/1234567890/adGroups/444444\",\n        \"status\": \"ENABLED\",\n        \"ad\": {\n          \"finalUrls\": [\n            \"https://www.example.com/products\"\n          ],\n          \"responsiveSearchAd\": {\n            \"headlines\": [\n              {\n                \"text\": \"Buy Products Online\"\n              },\n              {\n                \"text\": \"Free Shipping Available\"\n              },\n              {\n                \"text\": \"Shop the Best Deals\"\n              }\n            ],\n            \"descriptions\": [\n              {\n                \"text\": \"Browse our wide selection of quality products with fast, free shipping.\"\n              },\n              {\n                \"text\": \"Save big on your favorite brands. Shop now and get exclusive deals.\"\n              }\n            ],\n            \"path1\": \"products\",\n            \"path2\": \"deals\"\n          }\n        }\n      }\n    }\n  ],\n  \"partialFailure\": false\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "Unauthorized",
+              "code": 401,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"errors\": [\n    {\n      \"errorCode\": {\n        \"key_0\": \"string\"\n      },\n      \"message\": \"string\",\n      \"trigger\": {},\n      \"location\": {\n        \"fieldPathElements\": [\n          {\n            \"fieldName\": \"string\",\n            \"index\": 1503\n          },\n          {\n            \"fieldName\": \"string\",\n            \"index\": 4111\n          }\n        ]\n      }\n    },\n    {\n      \"errorCode\": {\n        \"key_0\": \"string\"\n      },\n      \"message\": \"string\",\n      \"trigger\": {},\n      \"location\": {\n        \"fieldPathElements\": [\n          {\n            \"fieldName\": \"string\",\n            \"index\": 1524\n          },\n          {\n            \"fieldName\": \"string\",\n            \"index\": 4527\n          }\n        ]\n      }\n    }\n  ]\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        }
+      ],
+      "event": []
+    }
+  ],
+  "event": [],
+  "variable": [
+    {
+      "type": "string",
+      "value": "https://googleads.googleapis.com",
+      "key": "baseUrl"
+    }
+  ],
+  "auth": {
+    "type": "oauth2",
+    "oauth2": [
+      {
+        "key": "scope",
+        "value": "https://www.googleapis.com/auth/adwords"
+      },
+      {
+        "key": "accessTokenUrl",
+        "value": "https://oauth2.googleapis.com/token"
+      },
+      {
+        "key": "authUrl",
+        "value": "https://accounts.google.com/o/oauth2/auth"
+      },
+      {
+        "key": "grant_type",
+        "value": "authorization_code"
+      }
+    ]
+  },
+  "info": {
+    "_postman_id": "46f55c6c-ed8c-4a62-9a48-c697c28fd6a4",
+    "name": "Google Ad Groups Ads API",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+    "description": {
+      "content": "The Google Ads API is the modern programmatic interface to Google Ads and the\nnext generation of the AdWords API. It enables developers to interact directly\nwith the Google Ads platform, vastly increasing the efficiency of managing\nlarge or complex Google Ads accounts and campaigns. The API allows for\ncreating, reading, updating, and removing campaigns, ad groups, ads, keywords,\nand retrieving performance reports using Google Ads Query Language (GAQL).\n\n\nContact Support:\n Name: Google Ads API Support",
+      "type": "text/plain"
+    }
+  }
+}

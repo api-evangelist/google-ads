@@ -4,7 +4,14 @@ schema: https://raw.githubusercontent.com/api-evangelist/interface-research/main
 provider: Google Ads
 providerId: google-ads
 created: '2026-05-04'
-modified: '2026-05-04'
+modified: '2026-08-13'
+generated: '2026-08-13'
+method: searched
+source: >-
+  https://developers.google.com/google-ads/api/docs/access-levels and
+  https://developers.google.com/google-ads/api/docs/best-practices/quotas — replaces the
+  2026-05-04 API Evangelist scaffold, which invented Free/Professional/Enterprise tiers,
+  TBD prices and an overage rate that Google does not publish and does not charge.
 tags:
   - Advertising
   - Campaign Management
@@ -12,141 +19,142 @@ tags:
   - Google
   - Marketing
   - PPC
-description: Machine-readable plans and pricing scaffold for this API provider. Conforms to the API Commons
-  Plans schema. Tier limits and prices are scaffold defaults; replace with provider-published values.
+description: >-
+  The Google Ads API has no price. Google charges nothing for API access — the revenue is
+  the ad spend the API manages. What LOOKS like a plan ladder is an approval ladder: the
+  developer token's access level gates the daily operation quota, and levels are granted
+  by review, not purchase. Every tier below is $0.00.
+plan_count: 4
+pricing_model: free-with-approval-gated-quota
+pricing_page: null
+currency: USD
 plans:
-  - id: google-ads-free
-    name: Free
-    type: freemium
-    description: Free entry tier for the Google Ads API surface. Intended for evaluation, prototyping,
-      and low-volume integrations. Real limits and pricing must be reconciled with the provider's published
-      plan documentation.
+  - id: google-ads-test-access
+    name: Test Account Access
+    type: free
+    price: '0.00'
+    billingPeriod: none
+    description: >-
+      The level a developer token starts at. Can call the API only against test accounts;
+      any call against a production account fails with DEVELOPER_TOKEN_NOT_APPROVED.
+    how_to_get: Complete Google Ads API sign-up in the Google Ads web interface.
     entries:
-      - label: API Requests
-        description: Monthly API request quota across all included endpoints
-        name: api_requests
+      - label: Daily operations — test accounts
+        name: operations_test
         type: quota
-        metric: requests
-        limit: 1000
-        timeFrame: month
-        geo: global
+        metric: operations
+        limit: 15000
+        timeFrame: day
         domains:
           - https://googleads.googleapis.com
-        unit: 1
         price: '0.00'
-        userMultiplied: false
-      - label: Rate Limit
-        description: Maximum requests per minute on the free tier
-        name: rate_limit
-        type: rate
-        metric: requests_per_minute
-        limit: 10
-        timeFrame: minute
-        geo: global
+      - label: Daily operations — production accounts
+        name: operations_production
+        type: quota
+        metric: operations
+        limit: 0
+        timeFrame: day
         domains:
           - https://googleads.googleapis.com
-        unit: 1
         price: '0.00'
-        userMultiplied: false
     elements:
-      - name: Public Documentation
-      - name: Community Support
-      - name: Sandbox Access
-      - name: Google Ads API
-      - name: Google Ads Scripts
-  - id: google-ads-pro
-    name: Professional
-    type: paid
-    description: Production tier for Google Ads. Provides higher quotas, priority support, and access
-      to the broader API portfolio. Pricing placeholder; align with the provider's pricing page.
+      - name: Test accounts only
+      - name: Full API surface
+      - name: Public documentation
+      - name: Community support (adwords-api Google Group)
+  - id: google-ads-explorer-access
+    name: Explorer Access
+    type: free
+    price: '0.00'
+    billingPeriod: none
+    description: >-
+      Production access at a low ceiling. Frequently granted automatically after sign-up.
+      This is the level Google's own MCP server requires as a minimum to query production
+      accounts.
+    how_to_get: May be granted automatically after initial sign-up; otherwise apply in the API Center.
     entries:
-      - label: API Requests
-        description: Monthly API request quota
-        name: api_requests
+      - label: Daily operations — production accounts
+        name: operations_production
         type: quota
-        metric: requests
-        limit: 100000
-        timeFrame: month
-        geo: global
+        metric: operations
+        limit: 2880
+        timeFrame: day
         domains:
           - https://googleads.googleapis.com
-        unit: 1
-        price: TBD
-        userMultiplied: false
-      - label: Rate Limit
-        description: Maximum requests per minute on the professional tier
-        name: rate_limit
-        type: rate
-        metric: requests_per_minute
-        limit: 100
-        timeFrame: minute
-        geo: global
-        domains:
-          - https://googleads.googleapis.com
-        unit: 1
         price: '0.00'
-        userMultiplied: false
-      - label: Overage
-        description: Per-request price after monthly quota is exceeded
-        name: overage
-        type: metered
-        metric: requests
+      - label: Daily operations — test accounts
+        name: operations_test
+        type: quota
+        metric: operations
+        limit: 15000
+        timeFrame: day
+        domains:
+          - https://googleads.googleapis.com
+        price: '0.00'
+    elements:
+      - name: Test and production accounts
+      - name: Full API surface
+  - id: google-ads-basic-access
+    name: Basic Access
+    type: free
+    price: '0.00'
+    billingPeriod: none
+    description: Production access at the standard ceiling.
+    how_to_get: API Center > Apply for Basic Access.
+    review_time: 5 business days
+    entries:
+      - label: Daily operations — test and production accounts
+        name: operations
+        type: quota
+        metric: operations
+        limit: 15000
+        timeFrame: day
+        domains:
+          - https://googleads.googleapis.com
+        price: '0.00'
+    elements:
+      - name: Test and production accounts
+      - name: Full API surface
+  - id: google-ads-standard-access
+    name: Standard Access
+    type: free
+    price: '0.00'
+    billingPeriod: none
+    description: Uncapped daily operations. The level agencies and platform integrators run at.
+    how_to_get: API Center > Apply for Standard Access (requires Basic Access first).
+    review_time: 10 business days
+    entries:
+      - label: Daily operations — test and production accounts
+        name: operations
+        type: quota
+        metric: operations
         limit: -1
-        timeFrame: month
-        geo: global
+        timeFrame: day
         domains:
           - https://googleads.googleapis.com
-        unit: 1000
-        price: TBD
-        userMultiplied: false
+        price: '0.00'
+        note: >-
+          Documented as unlimited operations per day. Per-request ceilings (10,000 mutate
+          operations, 100 action operations, 2,000 conversions) and the 1 QPS planning
+          limit still apply at every level.
     elements:
-      - name: All Production Endpoints
-      - name: Email Support
-      - name: SLA Targets
-      - name: Webhook Subscriptions
-      - name: Google Ads API
-      - name: Google Ads Scripts
-  - id: google-ads-enterprise
-    name: Enterprise
-    type: enterprise
-    description: Custom-negotiated tier for Google Ads. Includes dedicated capacity, contractual SLAs,
-      security review, data residency options, and named technical account management.
-    entries:
-      - label: API Requests
-        description: Negotiated request volume; -1 indicates uncapped subject to fair use
-        name: api_requests
-        type: quota
-        metric: requests
-        limit: -1
-        timeFrame: month
-        geo: configurable
-        domains:
-          - https://googleads.googleapis.com
-        unit: 1
-        price: custom
-        userMultiplied: false
-      - label: Rate Limit
-        description: Negotiated burst and steady-state rate
-        name: rate_limit
-        type: rate
-        metric: requests_per_minute
-        limit: 1000
-        timeFrame: minute
-        geo: configurable
-        domains:
-          - https://googleads.googleapis.com
-        unit: 1
-        price: custom
-        userMultiplied: false
-    elements:
-      - name: Unlimited / Negotiated Volume
-      - name: 24/7 Dedicated Support
-      - name: Contractual SLA
-      - name: Security & Compliance Review
-      - name: Dedicated Account Manager
-      - name: Custom Data Residency
-      - name: Google Ads API
-      - name: Google Ads Scripts
+      - name: Test and production accounts
+      - name: Unlimited daily operations
+      - name: Full API surface
+notes:
+  - >-
+    No fee is disclosed at any access level, and no overage rate exists — exceeding quota
+    returns RESOURCE_EXHAUSTED rather than a charge.
+  - >-
+    Access levels are a property of the developer token, which belongs to a Google Ads
+    manager account. Moving up the ladder is an application reviewed by Google (5 business
+    days for Basic, 10 for Standard), so quota headroom has a lead time, not a price.
+  - >-
+    The commercial relationship is the Google Ads account itself: the API is free, the
+    advertising it manages is not.
+see_also:
+  - rate-limits/google-ads-rate-limits.yml
+  - sandbox/google-ads-sandbox.yml
 maintainers:
   - FN: Kin Lane
     email: kin@apievangelist.com

@@ -1,0 +1,104 @@
+{
+  "opencollection": "1.0.0",
+  "info": {
+    "name": "Google Ads Ad Groups Reporting API",
+    "version": "v18"
+  },
+  "request": {
+    "auth": {
+      "type": "oauth2",
+      "flow": "authorization_code",
+      "authorizationUrl": "https://accounts.google.com/o/oauth2/auth",
+      "accessTokenUrl": "https://oauth2.googleapis.com/token",
+      "credentials": {
+        "clientId": "{{clientId}}",
+        "clientSecret": "{{clientSecret}}"
+      }
+    }
+  },
+  "items": [
+    {
+      "info": {
+        "name": "Reporting",
+        "type": "folder"
+      },
+      "items": [
+        {
+          "info": {
+            "name": "Search Using Google Ads Query Language",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "https://googleads.googleapis.com/v18/customers/:customerId/googleAds:search",
+            "headers": [
+              {
+                "name": "Authorization",
+                "value": ""
+              },
+              {
+                "name": "developer-token",
+                "value": ""
+              },
+              {
+                "name": "login-customer-id",
+                "value": ""
+              }
+            ],
+            "params": [
+              {
+                "name": "customerId",
+                "value": "",
+                "type": "path",
+                "description": "The Google Ads customer ID (without dashes), e.g. 1234567890."
+              }
+            ],
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "Returns all rows that match the search query. Use Google Ads Query\nLanguage (GAQL) to query resources, metrics, and segments across\ncampaigns, ad groups, ads, keywords, and more. This is the primary\nmethod for retrieving reporting data and resource details.\n"
+        },
+        {
+          "info": {
+            "name": "Search Stream Using Google Ads Query Language",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "https://googleads.googleapis.com/v18/customers/:customerId/googleAds:searchStream",
+            "headers": [
+              {
+                "name": "Authorization",
+                "value": ""
+              },
+              {
+                "name": "developer-token",
+                "value": ""
+              },
+              {
+                "name": "login-customer-id",
+                "value": ""
+              }
+            ],
+            "params": [
+              {
+                "name": "customerId",
+                "value": "",
+                "type": "path",
+                "description": "The Google Ads customer ID (without dashes), e.g. 1234567890."
+              }
+            ],
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "Returns all rows that match the search query as a streamed response.\nIdentical to the search method but returns results as a stream,\nwhich is more efficient for large result sets.\n"
+        }
+      ]
+    }
+  ],
+  "bundled": true
+}

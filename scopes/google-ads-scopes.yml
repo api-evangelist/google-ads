@@ -1,20 +1,71 @@
-generated: '2026-07-11'
-method: derived
-source: openapi/google-ads-api-openapi.yml
+generated: '2026-08-13'
+method: searched
+source: >-
+  https://googleads.googleapis.com/$discovery/rest?version=v25 (auth.oauth2.scopes, read
+  live 2026-08-13) and https://developers.google.com/google-ads/api/docs/oauth/overview
+docs: https://developers.google.com/google-ads/api/docs/oauth/overview
+provider: Google Ads
+providerId: google-ads
+description: >-
+  The Google Ads API has exactly ONE OAuth scope, and it is all-or-nothing. There is no
+  read-only scope, no per-resource scope, and no way for a user to grant an application
+  reporting access without also granting it the ability to change campaigns and spend.
+  For anyone delegating this API to an agent, that is the single most important fact on
+  this page: least privilege is not expressible in the token. It has to be enforced
+  outside it — by the tools you expose, by the customer IDs you allow, and by review
+  before mutate.
+scope_count: 1
 schemes:
-- name: oauth2Auth
-  source: openapi/google-ads-api-openapi.yml
-  flows:
-  - flow: authorizationCode
-    authorizationUrl: https://accounts.google.com/o/oauth2/auth
-    tokenUrl: https://oauth2.googleapis.com/token
-  description: |-
-    Google Ads API uses OAuth 2.0 for authentication. Requires a developer
-    token, OAuth 2.0 client ID and secret, and a refresh token.
+  - name: oauth2
+    type: oauth2
+    source: discovery/google-ads-api-v25-discovery.json
+    flows:
+      - flow: authorizationCode
+        authorizationUrl: https://accounts.google.com/o/oauth2/v2/auth
+        tokenUrl: https://oauth2.googleapis.com/token
+    note: >-
+      The per-resource v18 specs in openapi/ declare the same single scope with the older
+      https://accounts.google.com/o/oauth2/auth authorization URL. The OIDC discovery
+      document at accounts.google.com names /o/oauth2/v2/auth as current.
 scopes:
-- scope: https://www.googleapis.com/auth/adwords
-  description: Full access to Google Ads accounts
-  flows:
-  - authorizationCode
-  sources:
-  - openapi/google-ads-api-openapi.yml
+  - scope: https://www.googleapis.com/auth/adwords
+    description: See, edit, create, and delete your Google Ads accounts and data.
+    grants:
+      - read
+      - write
+      - delete
+    flows:
+      - authorizationCode
+    applies_to: every one of the 174 operations in the v25 surface
+    sources:
+      - discovery/google-ads-api-v25-discovery.json
+      - openapi/google-ads-api-v25-openapi.yml
+    note: >-
+      Description is Google's own wording from the discovery document's auth block, not a
+      paraphrase.
+additional_credentials:
+  - name: developer-token
+    kind: header
+    required: true
+    note: >-
+      Not an OAuth scope, but the second half of authorization on this API. Its access
+      level (Test / Explorer / Basic / Standard) determines the daily operation quota. A
+      valid OAuth token with the adwords scope still fails against production accounts if
+      the developer token is at Test access.
+    docs: https://developers.google.com/google-ads/api/docs/access-levels
+  - name: login-customer-id
+    kind: header
+    required: conditional
+    note: Required when acting on a client account through a manager account.
+  - name: linked-customer-id
+    kind: header
+    required: conditional
+    note: Used by third-party app analytics providers acting on a linked account.
+granularity:
+  read_only_scope: false
+  per_resource_scopes: false
+  note: >-
+    Access scoping in Google Ads is done at the ACCOUNT level (which customer IDs the
+    authenticating user can reach, and the user-access role held on each) rather than at
+    the scope level. CustomerUserAccess exposes roles such as read-only, standard and
+    admin — but those are properties of the Google Ads user, not of the OAuth grant.

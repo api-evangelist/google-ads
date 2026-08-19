@@ -1,0 +1,135 @@
+generated: '2026-08-13'
+method: derived
+source: >-
+  discovery/google-ads-api-v25-discovery.json,
+  openapi/google-ads-api-v25-openapi.yml,
+  well-known/google-ads-openid-configuration.json,
+  well-known/google-ads-oauth-authorization-server.json,
+  grpc/google-ads-errors.proto, and the Google Ads API documentation
+provider: Google Ads
+providerId: google-ads
+description: >-
+  Cross-cutting standards conformance for the Google Ads API, asserted only where there
+  is evidence in a harvested artifact or a published Google document. Google Ads is an
+  AIP-shaped Google API: it conforms strongly to OAuth 2.0 and to Google's own API
+  Improvement Proposals, and conforms to almost none of the web-API conventions the rest
+  of this catalog is measured on, because it is a gRPC API with a JSON transport bolted
+  to the side.
+standards:
+  - id: oauth2
+    name: OAuth 2.0 (RFC 6749)
+    conforms: true
+    evidence: >-
+      Authorization code flow declared in the discovery document's auth.oauth2 block and
+      in the OpenAPI securityScheme; authorization endpoint
+      https://accounts.google.com/o/oauth2/v2/auth, token endpoint
+      https://oauth2.googleapis.com/token. Single scope
+      https://www.googleapis.com/auth/adwords.
+  - id: rfc8414
+    name: OAuth 2.0 Authorization Server Metadata (RFC 8414)
+    conforms: true
+    evidence: >-
+      https://accounts.google.com/.well-known/oauth-authorization-server returned 200
+      with a real metadata document on 2026-08-13 (saved to well-known/).
+  - id: oidc
+    name: OpenID Connect Discovery
+    conforms: true
+    partial: true
+    evidence: >-
+      https://accounts.google.com/.well-known/openid-configuration returned 200 with a
+      real OIDC discovery document. OIDC governs the identity layer the Google Ads API
+      authenticates against; the Ads API itself issues no ID tokens.
+  - id: rfc9116
+    name: security.txt (RFC 9116)
+    conforms: true
+    evidence: >-
+      https://www.google.com/.well-known/security.txt returned 200 with Policy
+      https://g.co/vrp, Contact https://g.co/vulnz and mailto:security@google.com,
+      Expires 2030-04-01. Not served on the API host itself.
+  - id: grpc
+    name: gRPC
+    conforms: true
+    evidence: >-
+      The API is gRPC-first. Canonical service definitions published as .proto in
+      googleapis/googleapis; six harvested verbatim into grpc/.
+  - id: protobuf
+    name: Protocol Buffers 3
+    conforms: true
+    evidence: grpc/*.proto — proto3 syntax, google.ads.googleads.v25 package.
+  - id: google-discovery
+    name: Google API Discovery Service format
+    conforms: true
+    evidence: >-
+      https://googleads.googleapis.com/$discovery/rest?version=v25 returns a
+      discovery#restDescription document (revision 20260721, 174 methods, 1,460 schemas).
+  - id: google-aip
+    name: Google API Improvement Proposals (AIP)
+    conforms: true
+    evidence: >-
+      Resource names as paths (customers/{id}/campaigns/{id}), field masks on update,
+      google.longrunning.Operation for async work, google.rpc.Status error envelope,
+      google.protobuf wrapper types throughout the schema set.
+  - id: rfc9457
+    name: Problem Details for HTTP APIs (RFC 9457 / 7807)
+    conforms: false
+    evidence: >-
+      Errors are returned as GoogleAdsFailure (grpc/google-ads-errors.proto), not
+      application/problem+json. No problem type URIs are published.
+  - id: rfc8594
+    name: Sunset HTTP Header (RFC 8594)
+    conforms: false
+    evidence: >-
+      No Sunset or Deprecation headers observed. Versions are sunset by documentation and
+      by the endpoint ceasing to answer — v18 and v19 discovery documents return 404.
+  - id: ratelimit-headers
+    name: RateLimit header fields (draft-ietf-httpapi-ratelimit-headers)
+    conforms: false
+    evidence: >-
+      No X-RateLimit-* or RateLimit-* headers published or observed. Throttling is
+      signalled in-band via QuotaErrorDetails (rate_scope, rate_name, retry_delay).
+  - id: idempotency
+    name: Idempotency keys (draft-ietf-httpapi-idempotency-key-header)
+    conforms: false
+    evidence: >-
+      No idempotency key of any kind in the 174-operation surface. validateOnly and
+      partialFailure are the substitutes; neither makes a retry safe.
+  - id: pagination
+    name: Cursor pagination
+    conforms: true
+    evidence: >-
+      googleAds:search accepts pageSize/pageToken and returns nextPageToken and
+      totalResultsCount. searchStream does not paginate — it streams.
+  - id: openapi
+    name: OpenAPI
+    conforms: false
+    evidence: >-
+      Google publishes no OpenAPI description for the Google Ads API. The OpenAPI 3.1
+      document in openapi/google-ads-api-v25-openapi.yml is an API Evangelist mechanical
+      conversion of Google's own discovery document, not a Google artifact.
+  - id: asyncapi
+    name: AsyncAPI
+    conforms: false
+    not_applicable: true
+    evidence: >-
+      No event, webhook or streaming-subscription surface is published for the Google Ads
+      API. searchStream is a server-streaming RPC, not an event channel. No AsyncAPI
+      artifact was written.
+  - id: json-schema
+    name: JSON Schema
+    conforms: true
+    partial: true
+    evidence: >-
+      The discovery document's 1,460 schemas are JSON-Schema-shaped (type/format/enum/
+      $ref/properties) but declare no $schema dialect.
+  - id: mcp
+    name: Model Context Protocol
+    conforms: true
+    evidence: >-
+      First-party MCP server at github.com/googleads/google-ads-mcp (FastMCP, Apache-2.0),
+      exposing three tools and four resources over stdio. No hosted endpoint. See mcp/.
+  - id: a2a
+    name: A2A Agent Card
+    conforms: false
+    evidence: >-
+      /.well-known/agent-card.json and /.well-known/agent.json return 404 on
+      googleads.googleapis.com, developers.google.com and ads.google.com.

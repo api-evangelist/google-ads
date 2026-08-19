@@ -1,21 +1,109 @@
-generated: '2026-07-11'
-method: derived
-source: openapi/google-ads-api-openapi.yml
+generated: '2026-08-13'
+method: searched
+source: >-
+  https://developers.google.com/google-ads/api/docs/oauth/overview,
+  https://developers.google.com/google-ads/api/docs/access-levels,
+  https://developers.google.com/google-ads/api/docs/concepts/call-structure,
+  well-known/google-ads-openid-configuration.json (live probe 2026-08-13) and
+  discovery/google-ads-api-v25-discovery.json
+docs: https://developers.google.com/google-ads/api/docs/oauth/overview
+provider: Google Ads
+providerId: google-ads
+description: >-
+  Google Ads authentication is two credentials that are easy to confuse and independently
+  sufficient to break a call. OAuth 2.0 identifies the USER and grants the single adwords
+  scope. The developer token identifies the APPLICATION and gates what it may reach and
+  how much of it. A correct OAuth token with a Test-access developer token cannot touch a
+  production account, and no amount of re-authorising will fix it — that is an
+  application to Google, not a token refresh.
 summary:
   types:
-  - oauth2
+    - oauth2
   oauth2_flows:
-  - authorizationCode
+    - authorizationCode
+  additional_required_headers:
+    - developer-token
+  scope_count: 1
 schemes:
-- name: oauth2Auth
-  type: oauth2
-  flows:
-  - flow: authorizationCode
-    authorizationUrl: https://accounts.google.com/o/oauth2/auth
-    tokenUrl: https://oauth2.googleapis.com/token
-    scopes: 1
-  description: |-
-    Google Ads API uses OAuth 2.0 for authentication. Requires a developer
-    token, OAuth 2.0 client ID and secret, and a refresh token.
-  sources:
-  - openapi/google-ads-api-openapi.yml
+  - name: oauth2
+    type: oauth2
+    flows:
+      - flow: authorizationCode
+        authorizationUrl: https://accounts.google.com/o/oauth2/v2/auth
+        tokenUrl: https://oauth2.googleapis.com/token
+        refreshUrl: https://oauth2.googleapis.com/token
+        revocationUrl: https://oauth2.googleapis.com/revoke
+        scopes: 1
+        scope_list:
+          - https://www.googleapis.com/auth/adwords
+    description: >-
+      Authorization code flow issued by Google's identity platform. Endpoints confirmed
+      against the live OIDC discovery document at
+      https://accounts.google.com/.well-known/openid-configuration.
+    sources:
+      - discovery/google-ads-api-v25-discovery.json
+      - openapi/google-ads-api-v25-openapi.yml
+      - well-known/google-ads-openid-configuration.json
+  - name: developerToken
+    type: apiKey
+    in: header
+    parameter_name: developer-token
+    required: true
+    description: >-
+      Issued per Google Ads manager account through the API Center. Carries an access
+      level — Test, Explorer, Basic or Standard — that determines both which accounts may
+      be called and the daily operation quota. See plans/ and rate-limits/.
+    sources:
+      - https://developers.google.com/google-ads/api/docs/access-levels
+  - name: loginCustomerId
+    type: apiKey
+    in: header
+    parameter_name: login-customer-id
+    required: conditional
+    description: >-
+      Customer ID of the manager account making the call on behalf of a client account.
+      Digits only, no hyphens. Omitting it when required produces
+      USER_PERMISSION_DENIED even with a valid token.
+  - name: linkedCustomerId
+    type: apiKey
+    in: header
+    parameter_name: linked-customer-id
+    required: conditional
+    description: >-
+      Used by third-party app analytics providers uploading to an account they are linked
+      to rather than managing.
+credential_types:
+  - name: OAuth desktop / web client
+    note: Standard interactive user consent producing a refresh token stored by the app.
+  - name: Application Default Credentials
+    note: >-
+      gcloud auth application-default login --scopes
+      https://www.googleapis.com/auth/adwords — the path Google's own MCP server documents.
+  - name: Service account with domain-wide delegation
+    note: >-
+      Supported only for Google Workspace domains, impersonating a user who has Google Ads
+      access. A bare service account cannot access Google Ads accounts.
+service_accounts:
+  supported: partial
+  note: >-
+    There is no service-account-only path to the Google Ads API. Machine-to-machine access
+    still resolves to a human Google Ads user, either through a stored refresh token or
+    through domain-wide delegation impersonation.
+token_lifetime:
+  access_token: 3600 seconds (1 hour)
+  refresh_token: >-
+    Long-lived; revoked on password change, explicit revocation, six months of disuse, or
+    when an unverified app in testing status expires its tokens after 7 days.
+mtls:
+  supported: false
+security_notes:
+  - >-
+    The single adwords scope grants read, write and delete across every account the
+    authenticating user can reach. Scope-level least privilege is not available — see
+    scopes/google-ads-scopes.yml.
+  - >-
+    A developer token is a shared secret across every customer an application manages.
+    Leaking it is materially worse than leaking one user's refresh token.
+  - >-
+    Test accounts use the PRODUCTION manager account's developer token, so the same
+    secret spans both environments. See sandbox/google-ads-sandbox.yml.

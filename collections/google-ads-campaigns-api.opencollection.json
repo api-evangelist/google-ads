@@ -1,0 +1,104 @@
+{
+  "opencollection": "1.0.0",
+  "info": {
+    "name": "Google Ads Ad Groups Campaigns API",
+    "version": "v18"
+  },
+  "request": {
+    "auth": {
+      "type": "oauth2",
+      "flow": "authorization_code",
+      "authorizationUrl": "https://accounts.google.com/o/oauth2/auth",
+      "accessTokenUrl": "https://oauth2.googleapis.com/token",
+      "credentials": {
+        "clientId": "{{clientId}}",
+        "clientSecret": "{{clientSecret}}"
+      }
+    }
+  },
+  "items": [
+    {
+      "info": {
+        "name": "Campaigns",
+        "type": "folder"
+      },
+      "items": [
+        {
+          "info": {
+            "name": "Google Ads Create, Update, or Remove Campaigns",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "https://googleads.googleapis.com/v18/customers/:customerId/campaigns:mutate",
+            "headers": [
+              {
+                "name": "Authorization",
+                "value": ""
+              },
+              {
+                "name": "developer-token",
+                "value": ""
+              },
+              {
+                "name": "login-customer-id",
+                "value": ""
+              }
+            ],
+            "params": [
+              {
+                "name": "customerId",
+                "value": "",
+                "type": "path",
+                "description": "The Google Ads customer ID (without dashes), e.g. 1234567890."
+              }
+            ],
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "Creates, updates, or removes campaigns. Operation statuses are returned.\nSupports partial failure where some operations succeed while others fail.\n"
+        },
+        {
+          "info": {
+            "name": "Google Ads Create, Update, or Remove Campaign Budgets",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "https://googleads.googleapis.com/v18/customers/:customerId/campaignBudgets:mutate",
+            "headers": [
+              {
+                "name": "Authorization",
+                "value": ""
+              },
+              {
+                "name": "developer-token",
+                "value": ""
+              },
+              {
+                "name": "login-customer-id",
+                "value": ""
+              }
+            ],
+            "params": [
+              {
+                "name": "customerId",
+                "value": "",
+                "type": "path",
+                "description": "The Google Ads customer ID (without dashes), e.g. 1234567890."
+              }
+            ],
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "Creates, updates, or removes campaign budgets. Campaign budgets\ndefine the daily or total spending limits for one or more campaigns.\n"
+        }
+      ]
+    }
+  ],
+  "bundled": true
+}

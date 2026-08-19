@@ -1,0 +1,124 @@
+generated: '2026-08-13'
+method: probed
+source: live HTTP probes of every apis.yml baseURL host, every OpenAPI servers[] host, the docs host and the OAuth host named in the OpenAPI securityScheme
+description: >-
+  Well-known discovery probe for Google Ads. The API host itself
+  (googleads.googleapis.com) serves NO /.well-known/ documents — every path returns
+  404. The OAuth surface the Google Ads API delegates to (accounts.google.com, named
+  as the authorizationUrl in the OpenAPI securityScheme) does serve a real OIDC
+  discovery document and RFC 8414 authorization-server metadata, and google.com serves
+  a real RFC 9116 security.txt. All three hosts are Google-controlled.
+hosts:
+  - host: googleads.googleapis.com
+    role: API base URL (apis.yml baseURL + OpenAPI servers[])
+    served: 0
+  - host: developers.google.com
+    role: documentation host
+    served: 0
+  - host: ads.google.com
+    role: product console host
+    served: 0
+  - host: accounts.google.com
+    role: OAuth 2.0 authorization server for the https://www.googleapis.com/auth/adwords scope
+    served: 2
+  - host: www.google.com
+    role: corporate root
+    served: 1
+paths:
+  - host: googleads.googleapis.com
+    path: /.well-known/security.txt
+    status: 404
+    file: null
+  - host: googleads.googleapis.com
+    path: /.well-known/openid-configuration
+    status: 404
+    file: null
+  - host: googleads.googleapis.com
+    path: /.well-known/oauth-authorization-server
+    status: 404
+    file: null
+  - host: googleads.googleapis.com
+    path: /.well-known/oauth-protected-resource
+    status: 404
+    file: null
+  - host: googleads.googleapis.com
+    path: /.well-known/api-catalog
+    status: 404
+    file: null
+  - host: googleads.googleapis.com
+    path: /.well-known/ai-plugin.json
+    status: 404
+    file: null
+  - host: googleads.googleapis.com
+    path: /.well-known/agent-card.json
+    status: 404
+    file: null
+  - host: googleads.googleapis.com
+    path: /.well-known/agent.json
+    status: 404
+    file: null
+  - host: developers.google.com
+    path: /.well-known/security.txt
+    status: 404
+    file: null
+  - host: developers.google.com
+    path: /.well-known/agent-card.json
+    status: 404
+    file: null
+  - host: ads.google.com
+    path: /.well-known/security.txt
+    status: 404
+    file: null
+  - host: ads.google.com
+    path: /.well-known/agent-card.json
+    status: 404
+    file: null
+  - host: ads.google.com
+    path: /.well-known/agent.json
+    status: 404
+    file: null
+  - host: accounts.google.com
+    path: /.well-known/openid-configuration
+    status: 200
+    content_type: application/json
+    file: well-known/google-ads-openid-configuration.json
+    note: >-
+      Real OIDC discovery document. Confirms the token_endpoint
+      (https://oauth2.googleapis.com/token) and authorization_endpoint
+      (https://accounts.google.com/o/oauth2/v2/auth) that the Google Ads API
+      OAuth 2.0 authorizationCode flow uses.
+  - host: accounts.google.com
+    path: /.well-known/oauth-authorization-server
+    status: 200
+    content_type: application/json
+    file: well-known/google-ads-oauth-authorization-server.json
+    note: RFC 8414 OAuth 2.0 Authorization Server Metadata for the same issuer.
+  - host: www.google.com
+    path: /.well-known/security.txt
+    status: 200
+    content_type: text/plain
+    file: well-known/google-ads-security.txt
+    note: >-
+      RFC 9116 security.txt. Policy https://g.co/vrp, contacts https://g.co/vulnz and
+      security@google.com, Expires 2030-04-01.
+  - host: www.google.com
+    path: /.well-known/api-catalog
+    status: 404
+    file: null
+  - host: www.google.com
+    path: /.well-known/ai-plugin.json
+    status: 404
+    file: null
+summary:
+  probed: 19
+  served: 3
+  api_host_served: 0
+findings:
+  - >-
+    The Google Ads API host publishes no machine-readable discovery surface at
+    /.well-known/. Everything an agent needs to bootstrap the API — the base URL, the
+    OAuth endpoints, the operation surface — comes from the Google API Discovery
+    Document at https://googleads.googleapis.com/$discovery/rest?version=v25, which is
+    the real first-party contract for this API (saved to discovery/).
+  - >-
+    No A2A Agent Card is served on any Google Ads host. No a2a/ artifact was written.

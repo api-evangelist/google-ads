@@ -1,0 +1,66 @@
+generated: '2026-08-13'
+method: searched
+source: >-
+  https://github.com/googleads/google-ads-doctor (repository metadata and README read via
+  the GitHub API on 2026-08-13) and the googleads GitHub organization listing
+provider: Google Ads
+providerId: google-ads
+description: >-
+  Google publishes no general-purpose command line client for the Google Ads API. There is
+  no `gcloud ads`, no `googleads` binary, nothing that lets an operator query or mutate an
+  account from a shell without writing code against a client library. The one first-party
+  command line tool that exists is a credential diagnostic, and it has been archived since
+  2022. This is recorded as an honest absence, not a gap invented to fill a field.
+general_purpose_cli: false
+tools:
+  - name: oauthdoctor
+    repository: https://github.com/googleads/google-ads-doctor
+    language: Go
+    license: Apache-2.0
+    official: true
+    status: archived
+    last_pushed: '2022-04-12'
+    stars: 35
+    purpose: >-
+      Verifies a Google Ads client OAuth 2.0 environment and reports anomalies. Vets the
+      client library configuration file, checks connectivity to the Google Ads host, and
+      runs the installed-application or web OAuth 2.0 flow, rewriting a valid refresh
+      token back into the config file when the existing one is invalid.
+    install:
+      - method: prebuilt binary
+        note: >-
+          Fetch the repository and use the binary under oauthdoctor/bin for Darwin, Linux
+          or Windows.
+      - method: source
+        note: Build from source with Go, per the repository README.
+    commands:
+      note: >-
+        Single-purpose diagnostic binary rather than a command tree. It operates on the
+        client library configuration file for a chosen language.
+    caveat: >-
+      The repository is ARCHIVED and was last pushed 2022-04-12 — four years and roughly
+      sixteen API versions before v25. Its diagnostics predate current OAuth guidance and
+      the ADC-based setup Google's own MCP server documents. Treat it as historical.
+alternatives:
+  - name: Client library interactive examples
+    note: >-
+      Each first-party client library ships runnable examples (Python's
+      generate_user_credentials.py, the .NET and Java sample runners) that cover the
+      authentication bootstrap oauthdoctor was written for.
+    see: packages/google-ads-packages.yml
+  - name: gcloud auth application-default login
+    note: >-
+      The current documented path to credentials, using the Google Cloud CLI with
+      --scopes https://www.googleapis.com/auth/adwords. gcloud is a Google Cloud tool, not
+      a Google Ads one, and exposes no Google Ads operations.
+  - name: Google Ads MCP server
+    note: >-
+      Launched from a shell via pipx, and the closest thing to an interactive command line
+      against the API today — but it is an agent surface, read-only, and requires an MCP
+      client to drive it.
+    see: mcp/google-ads-mcp.yml
+  - name: Google Ads Scripts
+    note: >-
+      Browser-hosted JavaScript automation inside the Google Ads UI. Not installable, not
+      scriptable from a terminal.
+    see: https://developers.google.com/google-ads/scripts/docs/start

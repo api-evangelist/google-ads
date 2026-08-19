@@ -1,0 +1,230 @@
+generated: '2026-08-13'
+method: derived
+source: >-
+  openapi/google-ads-api-v25-openapi.yml and
+  discovery/google-ads-api-v25-discovery.json — relationships read from the
+  GoogleAdsGoogleadsV25Resources__* schemas, from resource-name templates in each
+  schema's own field descriptions, and from the reference fields those schemas declare.
+provider: Google Ads
+providerId: google-ads
+description: >-
+  Entity graph for the Google Ads API. Every object is addressed by an opaque hierarchical
+  RESOURCE NAME, not by a bare id, and every resource name is rooted at a customer:
+  customers/{customer_id}/campaigns/{campaign_id}. That root is the practical blast radius
+  of a credential — an agent holding the adwords scope operates on whichever customer id
+  it puts in the path. Link objects (CampaignAsset, AdGroupAsset, CampaignLabel) are
+  first-class resources rather than arrays on the parent, which is why the surface has so
+  many :mutate operations.
+statistics:
+  resource_schemas: 248
+  total_schemas: 1460
+  operations: 174
+id_convention:
+  style: hierarchical resource name
+  pattern: customers/{customer_id}/{collection}/{id}[~{sub_id}]
+  examples:
+    - customers/{customer_id}
+    - customers/{customer_id}/campaigns/{campaign_id}
+    - customers/{customer_id}/adGroups/{ad_group_id}
+    - customers/{customer_id}/adGroupAds/{ad_group_id}~{ad_id}
+    - customers/{customer_id}/adGroupCriteria/{ad_group_id}~{criterion_id}
+    - customers/{customer_id}/campaignBudgets/{budget_id}
+  note: >-
+    A tilde joins the composite keys of link-style resources. Resource names are declared
+    immutable and should be read from a GAQL search rather than constructed by hand —
+    hand-built names are the usual cause of RESOURCE_NOT_FOUND.
+entities:
+  - name: Customer
+    schema: GoogleAdsGoogleadsV25Resources__Customer
+    fields: 27
+    root: true
+    description: >-
+      A Google Ads account. Root of every resource name. Manager accounts (MCCs) are
+      Customers that link to other Customers through CustomerClient / CustomerClientLink.
+  - name: Campaign
+    schema: GoogleAdsGoogleadsV25Resources__Campaign
+    fields: 78
+    description: The advertising campaign — channel type, dates, status, budget and bidding.
+  - name: CampaignBudget
+    schema: GoogleAdsGoogleadsV25Resources__CampaignBudget
+    fields: 18
+    description: >-
+      Shared or campaign-specific spend budget. Must exist before a campaign can reference
+      it, which is why campaign creation is usually a two-operation mutate using temp ids.
+  - name: BiddingStrategy
+    schema: GoogleAdsGoogleadsV25Resources__BiddingStrategy
+    fields: 17
+    description: Portfolio bidding strategy shared across campaigns.
+  - name: AdGroup
+    schema: GoogleAdsGoogleadsV25Resources__AdGroup
+    fields: 42
+  - name: AdGroupAd
+    schema: GoogleAdsGoogleadsV25Resources__AdGroupAd
+    fields: 13
+    description: The link object joining an Ad to an AdGroup, carrying its status and policy summary.
+  - name: Ad
+    schema: GoogleAdsGoogleadsV25Resources__Ad
+    fields: 41
+    description: >-
+      The creative itself. Addressed at customer level (customers/{id}/ads/{ad_id}) and
+      attached to ad groups only through AdGroupAd.
+  - name: AdGroupCriterion
+    schema: GoogleAdsGoogleadsV25Resources__AdGroupCriterion
+    fields: 62
+    description: Targeting criterion on an ad group — keywords, audiences, placements.
+  - name: CampaignCriterion
+    schema: GoogleAdsGoogleadsV25Resources__CampaignCriterion
+    fields: 44
+  - name: Asset
+    schema: GoogleAdsGoogleadsV25Resources__Asset
+    fields: 44
+    description: Reusable creative asset — text, image, video, sitelink, call.
+  - name: AssetGroup
+    schema: GoogleAdsGoogleadsV25Resources__AssetGroup
+    fields: 14
+    description: Performance Max asset grouping, bound to a campaign.
+  - name: ConversionAction
+    schema: GoogleAdsGoogleadsV25Resources__ConversionAction
+    fields: 22
+  - name: UserList
+    schema: GoogleAdsGoogleadsV25Resources__UserList
+    fields: 25
+  - name: Audience
+    schema: GoogleAdsGoogleadsV25Resources__Audience
+    fields: 9
+  - name: Experiment
+    schema: GoogleAdsGoogleadsV25Resources__Experiment
+    fields: 15
+  - name: BatchJob
+    schema: GoogleAdsGoogleadsV25Resources__BatchJob
+    fields: 6
+  - name: CustomerClient
+    schema: GoogleAdsGoogleadsV25Resources__CustomerClient
+    fields: 12
+relationships:
+  - from: Customer
+    to: Campaign
+    type: has_many
+    via: resource name hierarchy (customers/{customer_id}/campaigns/{campaign_id})
+  - from: Campaign
+    to: CampaignBudget
+    type: belongs_to
+    via: Campaign.campaignBudget
+    evidence: '"The resource name of the campaign budget of the campaign."'
+  - from: Campaign
+    to: BiddingStrategy
+    type: belongs_to
+    via: Campaign.biddingStrategy
+    evidence: '"The resource name of the portfolio bidding strategy used by the campaign."'
+  - from: Campaign
+    to: BiddingStrategy
+    type: belongs_to
+    via: Campaign.accessibleBiddingStrategy
+    note: Output-only read view of a bidding strategy owned by a manager account.
+  - from: Campaign
+    to: Campaign
+    type: belongs_to
+    via: Campaign.baseCampaign
+    note: Draft and experiment campaigns point back at the campaign they were forked from.
+  - from: Campaign
+    to: CampaignGroup
+    type: belongs_to
+    via: Campaign.campaignGroup
+  - from: AdGroup
+    to: Campaign
+    type: belongs_to
+    via: AdGroup.campaign
+    evidence: '"Immutable. The campaign to which the ad group belongs."'
+  - from: AdGroup
+    to: AdGroup
+    type: belongs_to
+    via: AdGroup.baseAdGroup
+    note: Draft/experiment lineage, mirroring Campaign.baseCampaign.
+  - from: AdGroupAd
+    to: AdGroup
+    type: belongs_to
+    via: AdGroupAd.adGroup
+  - from: AdGroupAd
+    to: Ad
+    type: belongs_to
+    via: AdGroupAd.ad
+  - from: AdGroupCriterion
+    to: AdGroup
+    type: belongs_to
+    via: AdGroupCriterion.adGroup
+  - from: CampaignCriterion
+    to: Campaign
+    type: belongs_to
+    via: CampaignCriterion.campaign
+  - from: AssetGroup
+    to: Campaign
+    type: belongs_to
+    via: AssetGroup.campaign
+  - from: AssetGroupAsset
+    to: AssetGroup
+    type: belongs_to
+    via: AssetGroupAsset.assetGroup
+  - from: AssetGroupAsset
+    to: Asset
+    type: belongs_to
+    via: AssetGroupAsset.asset
+  - from: CampaignAsset
+    to: Campaign
+    type: belongs_to
+    via: CampaignAsset.campaign
+  - from: CampaignAsset
+    to: Asset
+    type: belongs_to
+    via: CampaignAsset.asset
+  - from: AdGroupAsset
+    to: AdGroup
+    type: belongs_to
+    via: AdGroupAsset.adGroup
+  - from: CustomerAsset
+    to: Asset
+    type: belongs_to
+    via: CustomerAsset.asset
+  - from: ConversionAction
+    to: Customer
+    type: belongs_to
+    via: ConversionAction.ownerCustomer
+    note: Null for system-defined conversion actions.
+  - from: CustomerClient
+    to: Customer
+    type: belongs_to
+    via: CustomerClient.clientCustomer
+    note: >-
+      How a manager account enumerates the accounts beneath it. Read-only; the writable
+      side is CustomerClientLink.
+  - from: BiddingStrategy
+    to: CampaignBudget
+    type: has_one
+    via: BiddingStrategy.alignedCampaignBudgetId
+    note: >-
+      An id, not a resource name — one of the few places the API references by bare id.
+  - from: Experiment
+    to: Operation
+    type: has_one
+    via: Experiment.longRunningOperation
+  - from: BatchJob
+    to: Operation
+    type: has_one
+    via: BatchJob.longRunningOperation
+patterns:
+  - name: link objects are resources
+    note: >-
+      CampaignAsset, AdGroupAsset, CustomerAsset, AssetGroupAsset, CampaignLabel,
+      AdGroupLabel, AdGroupAdLabel, CampaignSharedSet and SharedCriterion each exist as a
+      standalone resource with its own :mutate operation, rather than as a nested array on
+      the parent. Roughly a third of the write surface is link management.
+  - name: views are read-only resources
+    note: >-
+      Many *View schemas (AdGroupAdAssetCombinationView, CartDataSalesView,
+      AdGroupSimulation) exist only as GAQL FROM targets. They have no mutate operation and
+      no resource name you can create.
+  - name: micros
+    note: >-
+      Every monetary field is an int64 of micros (1,000,000 micros = one unit of the
+      account currency), serialised as a string in the REST transport. Reading them as
+      floats is the most common integration bug on this API.
+render: null

@@ -1,0 +1,136 @@
+generated: '2026-08-13'
+method: searched
+source: >-
+  https://developers.google.com/google-ads/api/docs/client-libs plus live registry
+  metadata endpoints (pypi.org, search.maven.org, api.nuget.org, repo.packagist.org,
+  rubygems.org, registry.npmjs.org) and the GitHub Releases API for github.com/googleads
+description: >-
+  First-party Google Ads API client libraries. Google publishes and maintains six
+  client libraries (Python, Java, .NET, PHP, Ruby, Perl) plus an MCP server package.
+  Every version/published pair below was read from the registry metadata endpoint or
+  the GitHub Releases API on 2026-08-13. The client library major version tracks the
+  API version it wraps, which makes SDK currency directly readable against the API
+  surface: the API is on v25 (released 2026-07-22) and every maintained library shipped
+  a release in the four weeks around it.
+official_count: 7
+community_count: 2
+packages:
+  - name: google-ads
+    language: Python
+    registry: pypi
+    url: https://pypi.org/project/google-ads/
+    version: 31.2.0
+    published: '2026-07-22'
+    official: true
+    repository: https://github.com/googleads/google-ads-python
+    docs: https://developers.google.com/google-ads/api/docs/client-libs/python
+    note: >-
+      Released the same day as Google Ads API v25. Repository last pushed 2026-08-07.
+
+  - name: com.google.api-ads:google-ads
+    language: Java
+    registry: maven
+    url: https://central.sonatype.com/artifact/com.google.api-ads/google-ads
+    version: 44.0.0
+    published: '2026-07-22'
+    official: true
+    repository: https://github.com/googleads/google-ads-java
+    docs: https://developers.google.com/google-ads/api/docs/client-libs/java
+    note: >-
+      version/published read from the GitHub release (44.0.0, 2026-07-22). Maven
+      Central's solrsearch index still reports latestVersion 43.1.0 (indexed
+      2026-05-13); the newer artifact had not propagated to that index at probe time.
+
+  - name: Google.Ads.GoogleAds
+    language: .NET
+    registry: nuget
+    url: https://www.nuget.org/packages/Google.Ads.GoogleAds
+    version: 27.0.0
+    published: '2026-08-03'
+    official: true
+    repository: https://github.com/googleads/google-ads-dotnet
+    docs: https://developers.google.com/google-ads/api/docs/client-libs/dotnet
+    note: 4,210,921 total NuGet downloads at probe time.
+
+  - name: googleads/google-ads-php
+    language: PHP
+    registry: packagist
+    url: https://packagist.org/packages/googleads/google-ads-php
+    version: v33.6.0
+    published: '2026-07-22'
+    official: true
+    repository: https://github.com/googleads/google-ads-php
+    docs: https://developers.google.com/google-ads/api/docs/client-libs/php
+    note: GitHub release v33.6.0 published 2026-07-23; Packagist recorded 2026-07-22.
+
+  - name: google-ads-googleads
+    language: Ruby
+    registry: rubygems
+    url: https://rubygems.org/gems/google-ads-googleads
+    version: 43.0.0
+    published: '2026-07-22'
+    official: true
+    repository: https://github.com/googleads/google-ads-ruby
+    docs: https://developers.google.com/google-ads/api/docs/client-libs/ruby
+
+  - name: Google::Ads::GoogleAds
+    language: Perl
+    registry: github
+    url: https://github.com/googleads/google-ads-perl/releases
+    version: 33.1.0
+    published: '2026-08-12'
+    official: true
+    repository: https://github.com/googleads/google-ads-perl
+    docs: https://developers.google.com/google-ads/api/docs/client-libs/perl
+    note: >-
+      Distributed from the GitHub repository (install with cpanm from source), not from
+      a CPAN distribution. The metacpan release endpoint returned no record for this
+      distribution at probe time, so the version/published pair is read from the GitHub
+      release, which is the distribution channel Google's own docs point at.
+
+  - name: google-ads-mcp
+    language: Python
+    registry: pypi
+    url: https://pypi.org/project/google-ads-mcp/
+    version: 0.0.1
+    published: '2025-10-22'
+    official: true
+    repository: https://github.com/googleads/google-ads-mcp
+    kind: mcp-server
+    note: >-
+      DECAY SIGNAL. The PyPI distribution is pinned at 0.0.1 from 2025-10-22 and has not
+      been re-published, while the repository it is cut from was last pushed
+      2026-08-13. Google's own README does not install from PyPI — it installs straight
+      from git (`pipx run --spec git+https://github.com/googleads/google-ads-mcp.git`),
+      so the PyPI artifact is ten months behind the code anyone is told to run.
+
+  - name: google-ads-api
+    language: TypeScript / Node.js
+    registry: npm
+    url: https://www.npmjs.com/package/google-ads-api
+    version: 24.1.0
+    published: '2026-06-15'
+    official: false
+    repository: https://github.com/Opteo/google-ads-api
+    note: >-
+      Community library by Opteo. Google publishes no first-party Node.js client for the
+      Google Ads API, which leaves the largest client ecosystem on the API served only
+      by third parties.
+
+  - name: google-ads-node
+    language: TypeScript / Node.js
+    registry: npm
+    url: https://www.npmjs.com/package/google-ads-node
+    version: 24.1.0
+    published: '2026-06-15'
+    official: false
+    repository: https://github.com/opteo/google-ads-node
+    note: Generated gRPC bindings underneath google-ads-api. Also community-maintained.
+
+gaps:
+  - >-
+    No first-party JavaScript/TypeScript client library. Google Ads Scripts covers
+    browser-side automation but is not an npm-installable API client.
+  - >-
+    No first-party Go client library. googleads/google-ads-doctor (Go) is a credential
+    diagnostic tool, not a client, and was last pushed 2022-04-12.

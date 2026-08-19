@@ -1,0 +1,68 @@
+overlay: 1.0.0
+info:
+  title: API Evangelist enhancements — Google Ads Ad Groups API
+  version: 1.0.0
+extends: google-ads-ad-groups-api-openapi.yml
+x-generated: '2026-08-13'
+x-method: generated
+x-source: API Evangelist enrichment pipeline — repo artifacts for google-ads
+actions:
+- target: $.info
+  description: Attach API Evangelist provenance and cross-links to the artifacts derived alongside this spec.
+  update:
+    x-api-evangelist:
+      profile: https://apis.io/provider/google-ads/
+      repository: https://github.com/api-evangelist/google-ads
+      enriched: '2026-08-13'
+      artifacts:
+        conventions: conventions/google-ads-conventions.yml
+        errors: errors/google-ads-problem-types.yml
+        rate-limits: rate-limits/google-ads-rate-limits.yml
+        authentication: authentication/google-ads-authentication.yml
+        scopes: scopes/google-ads-scopes.yml
+        lifecycle: lifecycle/google-ads-lifecycle.yml
+        data-model: data-model/google-ads-data-model.yml
+        skills: skills/_index.yml
+        mcp: mcp/google-ads-mcp.yml
+- target: $.info
+  description: State the runtime semantics an agent cannot read off the operation surface.
+  update:
+    x-idempotency:
+      supported: false
+      note: The Google Ads API publishes no idempotency key. validateOnly and partialFailure are the substitutes;
+        a retried mutate that already succeeded creates duplicates.
+    x-rate-limit-signalling:
+      headers: false
+      note: No X-RateLimit-*/RateLimit-* headers. Throttling arrives as a RESOURCE_EXHAUSTED error carrying QuotaErrorDetails
+        (rate_scope, rate_name, retry_delay).
+    x-error-format:
+      format: google-ads-failure
+      rfc9457: false
+      note: Errors are GoogleAdsFailure with a typed ErrorCode drawn from 156 enum families; see grpc/google-ads-errors.proto.
+    x-money-encoding:
+      unit: micros
+      note: Monetary fields are int64 micros (1,000,000 micros = one currency unit) serialised as strings in the
+        REST transport.
+- target: $.info
+  description: Record the terms and the support surface Google publishes for this API.
+  update:
+    termsOfService: https://developers.google.com/terms
+    contact:
+      name: Google Ads API support
+      url: https://developers.google.com/google-ads/api/support
+- target: $
+  description: Point at the primary developer documentation.
+  update:
+    externalDocs:
+      description: Google Ads API documentation
+      url: https://developers.google.com/google-ads/api
+- target: $.info
+  description: Flag that this description targets a sunset API version.
+  update:
+    x-lifecycle:
+      api_version: v18
+      status: sunset
+      probed: '2026-08-13'
+      evidence: https://googleads.googleapis.com/$discovery/rest?version=v18 returned 404 on 2026-08-13; v20 through
+        v25 returned 200.
+      supersededBy: openapi/google-ads-api-v25-openapi.yml

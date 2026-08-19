@@ -1,0 +1,67 @@
+{
+  "opencollection": "1.0.0",
+  "info": {
+    "name": "Google Ad Groups Ads API",
+    "version": "v18"
+  },
+  "request": {
+    "auth": {
+      "type": "oauth2",
+      "flow": "authorization_code",
+      "authorizationUrl": "https://accounts.google.com/o/oauth2/auth",
+      "accessTokenUrl": "https://oauth2.googleapis.com/token",
+      "credentials": {
+        "clientId": "{{clientId}}",
+        "clientSecret": "{{clientSecret}}"
+      }
+    }
+  },
+  "items": [
+    {
+      "info": {
+        "name": "Ads",
+        "type": "folder"
+      },
+      "items": [
+        {
+          "info": {
+            "name": "Google Ads Create, Update, or Remove Ads",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "https://googleads.googleapis.com/v18/customers/:customerId/adGroupAds:mutate",
+            "headers": [
+              {
+                "name": "Authorization",
+                "value": ""
+              },
+              {
+                "name": "developer-token",
+                "value": ""
+              },
+              {
+                "name": "login-customer-id",
+                "value": ""
+              }
+            ],
+            "params": [
+              {
+                "name": "customerId",
+                "value": "",
+                "type": "path",
+                "description": "The Google Ads customer ID (without dashes), e.g. 1234567890."
+              }
+            ],
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "Creates, updates, or removes ads within ad groups. Ads are the\ncreative content shown to users. Supports responsive search ads,\nexpanded text ads, display ads, and other ad formats.\n"
+        }
+      ]
+    }
+  ],
+  "bundled": true
+}

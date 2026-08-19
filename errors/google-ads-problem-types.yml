@@ -1,0 +1,218 @@
+generated: '2026-08-13'
+method: searched
+source: >-
+  grpc/google-ads-errors.proto (verbatim from
+  googleapis/googleapis google/ads/googleads/v25/errors/errors.proto) enriched from
+  https://developers.google.com/google-ads/api/docs/best-practices/common-errors and
+  https://developers.google.com/google-ads/api/docs/best-practices/quotas
+provider: Google Ads
+providerId: google-ads
+format: google-ads-failure
+rfc9457: false
+description: >-
+  The Google Ads API does not use RFC 9457 problem+json. It returns a GoogleAdsFailure
+  message carrying a repeated list of GoogleAdsError, each with a strongly-typed error
+  code drawn from one of 156 error enum families. That is a far richer contract than a
+  problem type — the error tells you which field of which operation in which batch
+  failed — but it is Google-specific, so an agent cannot parse it with a generic
+  problem-details reader.
+
+envelope:
+  message: GoogleAdsFailure
+  fields:
+    - name: errors
+      type: repeated GoogleAdsError
+      description: The list of errors that occurred.
+    - name: request_id
+      type: string
+      description: The unique ID of the request, used for debugging.
+  error_fields:
+    - name: error_code
+      type: ErrorCode
+      description: A oneof across 156 typed error enums — exactly one is set.
+    - name: message
+      type: string
+      description: A human-readable description of the error.
+    - name: trigger
+      type: Value
+      description: The value that triggered the error.
+    - name: location
+      type: ErrorLocation
+      description: >-
+        Which part of the request proto caused the error, as a path of field-name +
+        (for repeated fields) index. This is what makes per-operation attribution in a
+        batched mutate possible.
+    - name: details
+      type: ErrorDetails
+      description: >-
+        Extra structure returned by certain codes only — PolicyViolationDetails,
+        PolicyFindingDetails, QuotaErrorDetails, ResourceCountDetails,
+        BudgetPerDayMinimumErrorDetails, ReservationErrorDetails,
+        IncompatibleCloGoalsErrorDetails.
+  transport:
+    rest: >-
+      Errors are returned in the standard Google API error envelope; the GoogleAdsFailure
+      is carried in the `details` array of the google.rpc.Status.
+    grpc: Returned as trailing metadata on the RPC.
+
+error_families:
+  count: 156
+  note: >-
+    ErrorCode is a oneof over 156 enum families. Selected families listed below; the
+    complete set is in grpc/google-ads-errors.proto.
+  families:
+    - request_error
+    - authentication_error
+    - authorization_error
+    - quota_error
+    - internal_error
+    - mutate_error
+    - query_error
+    - field_error
+    - field_mask_error
+    - partial_failure_error
+    - size_limit_error
+    - policy_violation_error
+    - policy_finding_error
+    - campaign_error
+    - campaign_budget_error
+    - ad_group_error
+    - ad_group_ad_error
+    - ad_error
+    - criterion_error
+    - customer_error
+    - bidding_error
+    - bidding_strategy_error
+    - asset_error
+    - asset_group_error
+    - user_list_error
+    - user_data_error
+    - conversion_upload_error
+    - keyword_plan_error
+    - keyword_plan_idea_error
+    - reach_plan_error
+    - recommendation_error
+    - experiment_error
+    - experiment_arm_error
+    - batch_job_error
+    - billing_setup_error
+    - invoice_error
+    - payments_account_error
+    - manager_link_error
+    - not_allowlisted_error
+    - database_error
+    - header_error
+
+problem_types:
+  - code: DEVELOPER_TOKEN_INVALID
+    family: authentication_error
+    title: The developer token is invalid
+    remediation: >-
+      Copy the developer token directly from the API Center to avoid transcription
+      errors. It is a separate credential from the OAuth client.
+  - code: DEVELOPER_TOKEN_NOT_APPROVED
+    family: authorization_error
+    title: Developer token is only approved for test accounts
+    remediation: >-
+      Apply for a higher access level. A Test-access token cannot touch production
+      accounts; Explorer or Basic access is required. See plans/.
+  - code: GOOGLE_ACCOUNT_COOKIE_INVALID
+    family: authentication_error
+    title: The access token in the request header is invalid or expired
+    remediation: Refresh the OAuth access token using the stored refresh token.
+  - code: CLIENT_CUSTOMER_ID_INVALID
+    family: authentication_error
+    title: Client customer ID is not a number
+    remediation: >-
+      Pass the customer ID as digits only — 1234567890, not 123-456-7890.
+  - code: CUSTOMER_NOT_ENABLED
+    family: authorization_error
+    title: The account is not enabled
+    remediation: >-
+      The Google Ads account has incomplete signup or has been deactivated. Complete
+      signup or reactivate in the UI; no API call can fix it.
+  - code: USER_PERMISSION_DENIED
+    family: authorization_error
+    title: The authenticated user does not have access to this customer
+    remediation: >-
+      Confirm the OAuth user has access to the customer, and set login-customer-id when
+      calling through a manager account.
+  - code: RESOURCE_NOT_FOUND
+    family: request_error
+    title: The request referred to a resource that could not be found
+    remediation: >-
+      Resource names are opaque; retrieve them with a GAQL search rather than
+      constructing them by hand.
+  - code: RESOURCE_LIMIT
+    family: request_error
+    title: The operation would exceed a system limit
+    remediation: Reuse existing resources or remove unused ones; system limits are per-account.
+  - code: REQUIRED_FIELD_MISSING
+    family: field_error
+    title: The request is missing required information
+    remediation: >-
+      Check the API reference for the required fields of the mutate operation; the
+      `location` field names the exact path.
+  - code: RESOURCE_EXHAUSTED
+    family: quota_error
+    http_status: 429
+    title: Daily operation quota or per-second rate exhausted
+    retryable: true
+    remediation: >-
+      Back off for QuotaErrorDetails.retry_delay. QuotaErrorDetails also names the
+      rate_scope (ACCOUNT or DEVELOPER) and the rate_name, so a client can tell an
+      account-level throttle from a developer-token-level one.
+    details_type: QuotaErrorDetails
+  - code: TOO_MANY_MUTATE_OPERATIONS
+    family: mutate_error
+    title: More than 10,000 mutate operations in one request
+    remediation: Split the request; the documented ceiling is 10,000 operations per request.
+  - code: TOO_MANY_ACTION_OPERATIONS
+    family: mutate_error
+    title: More than 100 action operations in one request
+    remediation: Split the request; the documented ceiling is 100 action operations per request.
+  - code: TOO_MANY_CONVERSIONS_IN_REQUEST
+    family: conversion_upload_error
+    title: More than 2,000 conversions in one upload
+    remediation: Batch conversion uploads at 2,000 per request or fewer.
+  - code: POLICY_VIOLATION
+    family: policy_violation_error
+    title: The ad or asset violates Google Ads policy
+    details_type: PolicyViolationDetails
+    remediation: >-
+      PolicyViolationDetails returns a policy violation key that can be attached to the
+      operation as an exemption request where the policy is exemptible.
+  - code: PARTIAL_FAILURE
+    family: partial_failure_error
+    title: Some operations in the batch failed
+    remediation: >-
+      When partialFailure is true the response carries a partial_failure_error whose
+      GoogleAdsFailure lists each failed operation by index. Successful operations in the
+      same request are applied. See conventions/.
+  - code: INTERNAL_ERROR
+    family: internal_error
+    http_status: 500
+    retryable: true
+    title: An unexpected internal error occurred
+    remediation: Retry with exponential backoff; report persistent failures with the request_id.
+
+http_status_codes:
+  - status: 400
+    meaning: Malformed request or failed validation (most request/field errors)
+  - status: 401
+    meaning: Missing or invalid OAuth credentials
+    probed: >-
+      GET https://googleads.googleapis.com/v21/customers:listAccessibleCustomers with no
+      credentials returned 401 on 2026-08-13.
+  - status: 403
+    meaning: Authenticated but not authorized (permission, developer token access level)
+  - status: 404
+    meaning: Unknown resource, or a sunset API version
+  - status: 429
+    meaning: RESOURCE_EXHAUSTED — quota or rate limit
+  - status: 500
+    meaning: INTERNAL_ERROR — retryable
+docs:
+  - https://developers.google.com/google-ads/api/docs/best-practices/common-errors
+  - https://developers.google.com/google-ads/api/docs/best-practices/quotas
+  - https://developers.google.com/google-ads/api/reference/rpc/latest/overview

@@ -1,0 +1,84 @@
+{
+  "opencollection": "1.0.0",
+  "info": {
+    "name": "Google Ads Ad Groups Customers API",
+    "version": "v18"
+  },
+  "request": {
+    "auth": {
+      "type": "oauth2",
+      "flow": "authorization_code",
+      "authorizationUrl": "https://accounts.google.com/o/oauth2/auth",
+      "accessTokenUrl": "https://oauth2.googleapis.com/token",
+      "credentials": {
+        "clientId": "{{clientId}}",
+        "clientSecret": "{{clientSecret}}"
+      }
+    }
+  },
+  "items": [
+    {
+      "info": {
+        "name": "Customers",
+        "type": "folder"
+      },
+      "items": [
+        {
+          "info": {
+            "name": "Google Ads Get Customer Account Details",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://googleads.googleapis.com/v18/customers/:customerId",
+            "headers": [
+              {
+                "name": "Authorization",
+                "value": ""
+              },
+              {
+                "name": "developer-token",
+                "value": ""
+              },
+              {
+                "name": "login-customer-id",
+                "value": ""
+              }
+            ],
+            "params": [
+              {
+                "name": "customerId",
+                "value": "",
+                "type": "path",
+                "description": "The Google Ads customer ID (without dashes), e.g. 1234567890."
+              }
+            ]
+          },
+          "docs": "Returns the requested customer account in full detail. A customer\nrepresents a Google Ads account or a manager account.\n"
+        },
+        {
+          "info": {
+            "name": "Google Ads List Accessible Customer Accounts",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://googleads.googleapis.com/v18/customers:listAccessibleCustomers",
+            "headers": [
+              {
+                "name": "Authorization",
+                "value": ""
+              },
+              {
+                "name": "developer-token",
+                "value": ""
+              }
+            ]
+          },
+          "docs": "Returns resource names of customers directly accessible by the user\nauthenticating the call. Does not require a customer ID in the path,\nas it operates at the OAuth credential level.\n"
+        }
+      ]
+    }
+  ],
+  "bundled": true
+}

@@ -1,0 +1,284 @@
+{
+  "item": [
+    {
+      "id": "5e9c6ebf-18ec-4510-8e23-b16aaa6f58fe",
+      "name": "Bidding Strategies",
+      "description": {
+        "content": "Manage bidding strategies for campaigns",
+        "type": "text/plain"
+      },
+      "item": [
+        {
+          "id": "fae61880-1cec-40a0-b411-1ffb2c538063",
+          "name": "Google Ads Create, Update, or Remove Bidding Strategies",
+          "request": {
+            "name": "Google Ads Create, Update, or Remove Bidding Strategies",
+            "description": {
+              "content": "Creates, updates, or removes bidding strategies. Bidding strategies\ndetermine how bids are set for your ads. Supports strategies such as\nTarget CPA, Target ROAS, Maximize Conversions, and Manual CPC.\n",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "v18",
+                "customers",
+                ":customerId",
+                "biddingStrategies:mutate"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": [
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<string>",
+                  "key": "customerId",
+                  "description": "(Required) The Google Ads customer ID (without dashes), e.g. 1234567890."
+                }
+              ]
+            },
+            "header": [
+              {
+                "disabled": false,
+                "description": "(Required) Developer token for API access. Obtain from the Google Ads API Center\nin your manager account.\n",
+                "key": "developer-token",
+                "value": "<string>"
+              },
+              {
+                "disabled": false,
+                "description": "The customer ID of the manager account making the request on behalf\nof a client account. Required when authenticating as a manager account.\n",
+                "key": "login-customer-id",
+                "value": "<string>"
+              },
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              },
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "POST",
+            "auth": null,
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"operations\": [\n    {\n      \"create\": {\n        \"resourceName\": \"<string>\",\n        \"id\": \"<long>\",\n        \"name\": \"<string>\",\n        \"type\": \"<string>\",\n        \"status\": \"<string>\",\n        \"campaignCount\": \"<long>\"\n      },\n      \"update\": {\n        \"resourceName\": \"<string>\",\n        \"id\": \"<long>\",\n        \"name\": \"<string>\",\n        \"type\": \"<string>\",\n        \"status\": \"<string>\",\n        \"campaignCount\": \"<long>\"\n      },\n      \"remove\": \"<string>\",\n      \"updateMask\": \"<string>\"\n    },\n    {\n      \"create\": {\n        \"resourceName\": \"<string>\",\n        \"id\": \"<long>\",\n        \"name\": \"<string>\",\n        \"type\": \"<string>\",\n        \"status\": \"<string>\",\n        \"campaignCount\": \"<long>\"\n      },\n      \"update\": {\n        \"resourceName\": \"<string>\",\n        \"id\": \"<long>\",\n        \"name\": \"<string>\",\n        \"type\": \"<string>\",\n        \"status\": \"<string>\",\n        \"campaignCount\": \"<long>\"\n      },\n      \"remove\": \"<string>\",\n      \"updateMask\": \"<string>\"\n    }\n  ],\n  \"partialFailure\": \"<boolean>\",\n  \"validateOnly\": \"<boolean>\"\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            }
+          },
+          "response": [
+            {
+              "id": "50c7a223-1efc-4585-8d50-7345cb794027",
+              "name": "Successful Response",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "v18",
+                    "customers",
+                    ":customerId",
+                    "biddingStrategies:mutate"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "customerId",
+                      "description": "(Required) The Google Ads customer ID (without dashes), e.g. 1234567890."
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: oauth2",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "<token>"
+                  },
+                  {
+                    "disabled": false,
+                    "description": "(Required) OAuth 2.0 Bearer token for authentication.",
+                    "key": "Authorization",
+                    "value": "string"
+                  },
+                  {
+                    "disabled": false,
+                    "description": "(Required) Developer token for API access. Obtain from the Google Ads API Center\nin your manager account.\n",
+                    "key": "developer-token",
+                    "value": "<string>"
+                  },
+                  {
+                    "disabled": false,
+                    "description": "The customer ID of the manager account making the request on behalf\nof a client account. Required when authenticating as a manager account.\n",
+                    "key": "login-customer-id",
+                    "value": "<string>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"operations\": [\n    {\n      \"create\": {\n        \"resourceName\": \"string\",\n        \"id\": 924,\n        \"name\": \"string\",\n        \"type\": \"TARGET_ROAS\",\n        \"status\": \"ENABLED\",\n        \"campaignCount\": 6071\n      },\n      \"update\": {\n        \"resourceName\": \"string\",\n        \"id\": 8998,\n        \"name\": \"string\",\n        \"type\": \"MAXIMIZE_CONVERSION_VALUE\",\n        \"status\": \"UNSPECIFIED\",\n        \"campaignCount\": 7002\n      },\n      \"remove\": \"string\",\n      \"updateMask\": \"string\"\n    },\n    {\n      \"create\": {\n        \"resourceName\": \"string\",\n        \"id\": 5861,\n        \"name\": \"string\",\n        \"type\": \"MAXIMIZE_CONVERSIONS\",\n        \"status\": \"UNSPECIFIED\",\n        \"campaignCount\": 3734\n      },\n      \"update\": {\n        \"resourceName\": \"string\",\n        \"id\": 240,\n        \"name\": \"string\",\n        \"type\": \"MAXIMIZE_CONVERSION_VALUE\",\n        \"status\": \"REMOVED\",\n        \"campaignCount\": 7445\n      },\n      \"remove\": \"string\",\n      \"updateMask\": \"string\"\n    }\n  ],\n  \"partialFailure\": \"<boolean>\",\n  \"validateOnly\": \"<boolean>\"\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"results\": [\n    {\n      \"resourceName\": \"string\"\n    },\n    {\n      \"resourceName\": \"string\"\n    }\n  ],\n  \"partialFailureError\": {\n    \"code\": 5060,\n    \"message\": \"string\"\n  }\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "27d6a704-3739-4bcc-8b83-ff088afd39e2",
+              "name": "Bad Request",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "v18",
+                    "customers",
+                    ":customerId",
+                    "biddingStrategies:mutate"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "customerId",
+                      "description": "(Required) The Google Ads customer ID (without dashes), e.g. 1234567890."
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: oauth2",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "<token>"
+                  },
+                  {
+                    "disabled": false,
+                    "description": "(Required) OAuth 2.0 Bearer token for authentication.",
+                    "key": "Authorization",
+                    "value": "string"
+                  },
+                  {
+                    "disabled": false,
+                    "description": "(Required) Developer token for API access. Obtain from the Google Ads API Center\nin your manager account.\n",
+                    "key": "developer-token",
+                    "value": "<string>"
+                  },
+                  {
+                    "disabled": false,
+                    "description": "The customer ID of the manager account making the request on behalf\nof a client account. Required when authenticating as a manager account.\n",
+                    "key": "login-customer-id",
+                    "value": "<string>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"operations\": [\n    {\n      \"create\": {\n        \"resourceName\": \"string\",\n        \"id\": 924,\n        \"name\": \"string\",\n        \"type\": \"TARGET_ROAS\",\n        \"status\": \"ENABLED\",\n        \"campaignCount\": 6071\n      },\n      \"update\": {\n        \"resourceName\": \"string\",\n        \"id\": 8998,\n        \"name\": \"string\",\n        \"type\": \"MAXIMIZE_CONVERSION_VALUE\",\n        \"status\": \"UNSPECIFIED\",\n        \"campaignCount\": 7002\n      },\n      \"remove\": \"string\",\n      \"updateMask\": \"string\"\n    },\n    {\n      \"create\": {\n        \"resourceName\": \"string\",\n        \"id\": 5861,\n        \"name\": \"string\",\n        \"type\": \"MAXIMIZE_CONVERSIONS\",\n        \"status\": \"UNSPECIFIED\",\n        \"campaignCount\": 3734\n      },\n      \"update\": {\n        \"resourceName\": \"string\",\n        \"id\": 240,\n        \"name\": \"string\",\n        \"type\": \"MAXIMIZE_CONVERSION_VALUE\",\n        \"status\": \"REMOVED\",\n        \"campaignCount\": 7445\n      },\n      \"remove\": \"string\",\n      \"updateMask\": \"string\"\n    }\n  ],\n  \"partialFailure\": \"<boolean>\",\n  \"validateOnly\": \"<boolean>\"\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "Bad Request",
+              "code": 400,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"errors\": [\n    {\n      \"errorCode\": {\n        \"key_0\": \"string\",\n        \"key_1\": \"string\"\n      },\n      \"message\": \"string\",\n      \"trigger\": {},\n      \"location\": {\n        \"fieldPathElements\": [\n          {\n            \"fieldName\": \"string\",\n            \"index\": 2169\n          },\n          {\n            \"fieldName\": \"string\",\n            \"index\": 5973\n          }\n        ]\n      }\n    },\n    {\n      \"errorCode\": {\n        \"key_0\": \"string\",\n        \"key_1\": \"string\"\n      },\n      \"message\": \"string\",\n      \"trigger\": {},\n      \"location\": {\n        \"fieldPathElements\": [\n          {\n            \"fieldName\": \"string\",\n            \"index\": 6606\n          },\n          {\n            \"fieldName\": \"string\",\n            \"index\": 8384\n          }\n        ]\n      }\n    }\n  ]\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        }
+      ],
+      "event": []
+    }
+  ],
+  "event": [],
+  "variable": [
+    {
+      "type": "string",
+      "value": "https://googleads.googleapis.com",
+      "key": "baseUrl"
+    }
+  ],
+  "auth": {
+    "type": "oauth2",
+    "oauth2": [
+      {
+        "key": "scope",
+        "value": "https://www.googleapis.com/auth/adwords"
+      },
+      {
+        "key": "accessTokenUrl",
+        "value": "https://oauth2.googleapis.com/token"
+      },
+      {
+        "key": "authUrl",
+        "value": "https://accounts.google.com/o/oauth2/auth"
+      },
+      {
+        "key": "grant_type",
+        "value": "authorization_code"
+      }
+    ]
+  },
+  "info": {
+    "_postman_id": "668f4e40-f828-4647-b5ae-1c769fb0128b",
+    "name": "Google Ads Ad Groups Bidding Strategies API",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+    "description": {
+      "content": "The Google Ads API is the modern programmatic interface to Google Ads and the\nnext generation of the AdWords API. It enables developers to interact directly\nwith the Google Ads platform, vastly increasing the efficiency of managing\nlarge or complex Google Ads accounts and campaigns. The API allows for\ncreating, reading, updating, and removing campaigns, ad groups, ads, keywords,\nand retrieving performance reports using Google Ads Query Language (GAQL).\n\n\nContact Support:\n Name: Google Ads API Support",
+      "type": "text/plain"
+    }
+  }
+}
