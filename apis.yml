@@ -22,7 +22,7 @@ image: https://www.gstatic.com/images/branding/product/1x/google_ads_64dp.png
 url: https://raw.githubusercontent.com/api-evangelist/google-ads/refs/heads/main/apis.yml
 created: '2024-01-01'
 modified: '2026-08-13'
-specificationVersion: '0.19'
+specificationVersion: '0.23'
 tags:
 - Advertising
 - Campaign Management
