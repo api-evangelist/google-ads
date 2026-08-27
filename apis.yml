@@ -304,29 +304,3496 @@ apis:
     url: https://developers.google.com/google-ads/api/docs/first-call/overview
   - type: GraphQL
     url: graphql/google-ads-graphql.md
-- aid: google-ads:google-ads-api
-  name: Google Ads API
-  description: >-
-    The complete Google Ads API v25 surface — 174 operations across campaigns, ad groups,
-    ads, criteria, assets, budgets, bidding, conversions, planning, audience insights,
-    batch jobs and reporting. Described by the OpenAPI 3.1 document derived from Google's
-    own API Discovery Document, which is the only machine-readable contract Google
-    publishes for this API.
-  humanURL: https://developers.google.com/google-ads/api
+- aid: google-ads:google-ads-audienceinsights-api
+  name: Google Ads Audience Insights API
+  description: The audienceInsights API from Google Ads — 1 operation(s) for audienceinsights.
+  humanURL: https://developers.google.com/google-ads/scripts/docs/start
   baseURL: https://googleads.googleapis.com
   tags:
-  - Advertising
-  - Campaign Management
-  - Reporting
-  - Conversions
-  - GAQL
+  - audienceInsights
   properties:
   - type: OpenAPI
-    url: openapi/google-ads-api-v25-openapi.yml
+    url: openapi/google-ads-audienceinsights-api-openapi.yml
   - type: Discovery
     url: discovery/google-ads-api-v25-discovery.json
-  - type: Overlay
-    url: overlays/google-ads-api-v25-overlay.yaml
+  - type: Protobuf
+    url: grpc/google-ads-google-ads-service.proto
+  - type: DataModel
+    url: data-model/google-ads-data-model.yml
+  - type: Documentation
+    url: https://developers.google.com/google-ads/api/docs/start
+  - type: APIReference
+    url: https://developers.google.com/google-ads/api/reference/rpc/latest/overview
+  - type: Authentication
+    url: https://developers.google.com/google-ads/api/docs/oauth/overview
+  - type: GettingStarted
+    url: https://developers.google.com/google-ads/api/docs/first-call/overview
+  - type: RateLimits
+    url: https://developers.google.com/google-ads/api/docs/best-practices/quotas
+  - type: ChangeLog
+    url: https://developers.google.com/google-ads/api/docs/release-notes
+  - type: Deprecation
+    url: https://developers.google.com/google-ads/api/docs/sunset-dates
+  - type: SDKs
+    url: https://developers.google.com/google-ads/api/docs/client-libs
+  - type: Support
+    url: https://developers.google.com/google-ads/api/support
+- aid: google-ads:google-ads-customers-accountbudgetproposals-api
+  name: Google Ads Customers.account Budget Proposals API
+  description: >-
+    The customers.accountBudgetProposals API from Google Ads — 1 operation(s) for customers.accountbudgetproposals.
+  humanURL: https://developers.google.com/google-ads/scripts/docs/start
+  baseURL: https://googleads.googleapis.com
+  tags:
+  - customers.accountBudgetProposals
+  properties:
+  - type: OpenAPI
+    url: openapi/google-ads-customers-accountbudgetproposals-api-openapi.yml
+  - type: Discovery
+    url: discovery/google-ads-api-v25-discovery.json
+  - type: Protobuf
+    url: grpc/google-ads-google-ads-service.proto
+  - type: DataModel
+    url: data-model/google-ads-data-model.yml
+  - type: Documentation
+    url: https://developers.google.com/google-ads/api/docs/start
+  - type: APIReference
+    url: https://developers.google.com/google-ads/api/reference/rpc/latest/overview
+  - type: Authentication
+    url: https://developers.google.com/google-ads/api/docs/oauth/overview
+  - type: GettingStarted
+    url: https://developers.google.com/google-ads/api/docs/first-call/overview
+  - type: RateLimits
+    url: https://developers.google.com/google-ads/api/docs/best-practices/quotas
+  - type: ChangeLog
+    url: https://developers.google.com/google-ads/api/docs/release-notes
+  - type: Deprecation
+    url: https://developers.google.com/google-ads/api/docs/sunset-dates
+  - type: SDKs
+    url: https://developers.google.com/google-ads/api/docs/client-libs
+  - type: Support
+    url: https://developers.google.com/google-ads/api/support
+- aid: google-ads:google-ads-customers-accountlinks-api
+  name: Google Ads Customers.account Links API
+  description: >-
+    The customers.accountLinks API from Google Ads — 2 operation(s) for customers.accountlinks.
+  humanURL: https://developers.google.com/google-ads/scripts/docs/start
+  baseURL: https://googleads.googleapis.com
+  tags:
+  - customers.accountLinks
+  properties:
+  - type: OpenAPI
+    url: openapi/google-ads-customers-accountlinks-api-openapi.yml
+  - type: Discovery
+    url: discovery/google-ads-api-v25-discovery.json
+  - type: Protobuf
+    url: grpc/google-ads-google-ads-service.proto
+  - type: DataModel
+    url: data-model/google-ads-data-model.yml
+  - type: Documentation
+    url: https://developers.google.com/google-ads/api/docs/start
+  - type: APIReference
+    url: https://developers.google.com/google-ads/api/reference/rpc/latest/overview
+  - type: Authentication
+    url: https://developers.google.com/google-ads/api/docs/oauth/overview
+  - type: GettingStarted
+    url: https://developers.google.com/google-ads/api/docs/first-call/overview
+  - type: RateLimits
+    url: https://developers.google.com/google-ads/api/docs/best-practices/quotas
+  - type: ChangeLog
+    url: https://developers.google.com/google-ads/api/docs/release-notes
+  - type: Deprecation
+    url: https://developers.google.com/google-ads/api/docs/sunset-dates
+  - type: SDKs
+    url: https://developers.google.com/google-ads/api/docs/client-libs
+  - type: Support
+    url: https://developers.google.com/google-ads/api/support
+- aid: google-ads:google-ads-customers-adgroupadlabels-api
+  name: Google Ads Customers.ad Group Ad Labels API
+  description: >-
+    The customers.adGroupAdLabels API from Google Ads — 1 operation(s) for customers.adgroupadlabels.
+  humanURL: https://developers.google.com/google-ads/scripts/docs/start
+  baseURL: https://googleads.googleapis.com
+  tags:
+  - customers.adGroupAdLabels
+  properties:
+  - type: OpenAPI
+    url: openapi/google-ads-customers-adgroupadlabels-api-openapi.yml
+  - type: Discovery
+    url: discovery/google-ads-api-v25-discovery.json
+  - type: Protobuf
+    url: grpc/google-ads-google-ads-service.proto
+  - type: DataModel
+    url: data-model/google-ads-data-model.yml
+  - type: Documentation
+    url: https://developers.google.com/google-ads/api/docs/start
+  - type: APIReference
+    url: https://developers.google.com/google-ads/api/reference/rpc/latest/overview
+  - type: Authentication
+    url: https://developers.google.com/google-ads/api/docs/oauth/overview
+  - type: GettingStarted
+    url: https://developers.google.com/google-ads/api/docs/first-call/overview
+  - type: RateLimits
+    url: https://developers.google.com/google-ads/api/docs/best-practices/quotas
+  - type: ChangeLog
+    url: https://developers.google.com/google-ads/api/docs/release-notes
+  - type: Deprecation
+    url: https://developers.google.com/google-ads/api/docs/sunset-dates
+  - type: SDKs
+    url: https://developers.google.com/google-ads/api/docs/client-libs
+  - type: Support
+    url: https://developers.google.com/google-ads/api/support
+- aid: google-ads:google-ads-customers-adgroupads-api
+  name: Google Ads Customers.ad Group Ads API
+  description: The customers.adGroupAds API from Google Ads — 2 operation(s) for customers.adgroupads.
+  humanURL: https://developers.google.com/google-ads/scripts/docs/start
+  baseURL: https://googleads.googleapis.com
+  tags:
+  - customers.adGroupAds
+  properties:
+  - type: OpenAPI
+    url: openapi/google-ads-customers-adgroupads-api-openapi.yml
+  - type: Discovery
+    url: discovery/google-ads-api-v25-discovery.json
+  - type: Protobuf
+    url: grpc/google-ads-google-ads-service.proto
+  - type: DataModel
+    url: data-model/google-ads-data-model.yml
+  - type: Documentation
+    url: https://developers.google.com/google-ads/api/docs/start
+  - type: APIReference
+    url: https://developers.google.com/google-ads/api/reference/rpc/latest/overview
+  - type: Authentication
+    url: https://developers.google.com/google-ads/api/docs/oauth/overview
+  - type: GettingStarted
+    url: https://developers.google.com/google-ads/api/docs/first-call/overview
+  - type: RateLimits
+    url: https://developers.google.com/google-ads/api/docs/best-practices/quotas
+  - type: ChangeLog
+    url: https://developers.google.com/google-ads/api/docs/release-notes
+  - type: Deprecation
+    url: https://developers.google.com/google-ads/api/docs/sunset-dates
+  - type: SDKs
+    url: https://developers.google.com/google-ads/api/docs/client-libs
+  - type: Support
+    url: https://developers.google.com/google-ads/api/support
+- aid: google-ads:google-ads-customers-adgroupassets-api
+  name: Google Ads Customers.ad Group Assets API
+  description: >-
+    The customers.adGroupAssets API from Google Ads — 1 operation(s) for customers.adgroupassets.
+  humanURL: https://developers.google.com/google-ads/scripts/docs/start
+  baseURL: https://googleads.googleapis.com
+  tags:
+  - customers.adGroupAssets
+  properties:
+  - type: OpenAPI
+    url: openapi/google-ads-customers-adgroupassets-api-openapi.yml
+  - type: Discovery
+    url: discovery/google-ads-api-v25-discovery.json
+  - type: Protobuf
+    url: grpc/google-ads-google-ads-service.proto
+  - type: DataModel
+    url: data-model/google-ads-data-model.yml
+  - type: Documentation
+    url: https://developers.google.com/google-ads/api/docs/start
+  - type: APIReference
+    url: https://developers.google.com/google-ads/api/reference/rpc/latest/overview
+  - type: Authentication
+    url: https://developers.google.com/google-ads/api/docs/oauth/overview
+  - type: GettingStarted
+    url: https://developers.google.com/google-ads/api/docs/first-call/overview
+  - type: RateLimits
+    url: https://developers.google.com/google-ads/api/docs/best-practices/quotas
+  - type: ChangeLog
+    url: https://developers.google.com/google-ads/api/docs/release-notes
+  - type: Deprecation
+    url: https://developers.google.com/google-ads/api/docs/sunset-dates
+  - type: SDKs
+    url: https://developers.google.com/google-ads/api/docs/client-libs
+  - type: Support
+    url: https://developers.google.com/google-ads/api/support
+- aid: google-ads:google-ads-customers-adgroupassetsets-api
+  name: Google Ads Customers.ad Group Asset Sets API
+  description: >-
+    The customers.adGroupAssetSets API from Google Ads — 1 operation(s) for customers.adgroupassetsets.
+  humanURL: https://developers.google.com/google-ads/scripts/docs/start
+  baseURL: https://googleads.googleapis.com
+  tags:
+  - customers.adGroupAssetSets
+  properties:
+  - type: OpenAPI
+    url: openapi/google-ads-customers-adgroupassetsets-api-openapi.yml
+  - type: Discovery
+    url: discovery/google-ads-api-v25-discovery.json
+  - type: Protobuf
+    url: grpc/google-ads-google-ads-service.proto
+  - type: DataModel
+    url: data-model/google-ads-data-model.yml
+  - type: Documentation
+    url: https://developers.google.com/google-ads/api/docs/start
+  - type: APIReference
+    url: https://developers.google.com/google-ads/api/reference/rpc/latest/overview
+  - type: Authentication
+    url: https://developers.google.com/google-ads/api/docs/oauth/overview
+  - type: GettingStarted
+    url: https://developers.google.com/google-ads/api/docs/first-call/overview
+  - type: RateLimits
+    url: https://developers.google.com/google-ads/api/docs/best-practices/quotas
+  - type: ChangeLog
+    url: https://developers.google.com/google-ads/api/docs/release-notes
+  - type: Deprecation
+    url: https://developers.google.com/google-ads/api/docs/sunset-dates
+  - type: SDKs
+    url: https://developers.google.com/google-ads/api/docs/client-libs
+  - type: Support
+    url: https://developers.google.com/google-ads/api/support
+- aid: google-ads:google-ads-customers-adgroupbidmodifiers-api
+  name: Google Ads Customers.ad Group Bid Modifiers API
+  description: >-
+    The customers.adGroupBidModifiers API from Google Ads — 1 operation(s) for customers.adgroupbidmodifiers.
+  humanURL: https://developers.google.com/google-ads/scripts/docs/start
+  baseURL: https://googleads.googleapis.com
+  tags:
+  - customers.adGroupBidModifiers
+  properties:
+  - type: OpenAPI
+    url: openapi/google-ads-customers-adgroupbidmodifiers-api-openapi.yml
+  - type: Discovery
+    url: discovery/google-ads-api-v25-discovery.json
+  - type: Protobuf
+    url: grpc/google-ads-google-ads-service.proto
+  - type: DataModel
+    url: data-model/google-ads-data-model.yml
+  - type: Documentation
+    url: https://developers.google.com/google-ads/api/docs/start
+  - type: APIReference
+    url: https://developers.google.com/google-ads/api/reference/rpc/latest/overview
+  - type: Authentication
+    url: https://developers.google.com/google-ads/api/docs/oauth/overview
+  - type: GettingStarted
+    url: https://developers.google.com/google-ads/api/docs/first-call/overview
+  - type: RateLimits
+    url: https://developers.google.com/google-ads/api/docs/best-practices/quotas
+  - type: ChangeLog
+    url: https://developers.google.com/google-ads/api/docs/release-notes
+  - type: Deprecation
+    url: https://developers.google.com/google-ads/api/docs/sunset-dates
+  - type: SDKs
+    url: https://developers.google.com/google-ads/api/docs/client-libs
+  - type: Support
+    url: https://developers.google.com/google-ads/api/support
+- aid: google-ads:google-ads-customers-adgroupcriteria-api
+  name: Google Ads Customers.ad Group Criteria API
+  description: >-
+    The customers.adGroupCriteria API from Google Ads — 1 operation(s) for customers.adgroupcriteria.
+  humanURL: https://developers.google.com/google-ads/scripts/docs/start
+  baseURL: https://googleads.googleapis.com
+  tags:
+  - customers.adGroupCriteria
+  properties:
+  - type: OpenAPI
+    url: openapi/google-ads-customers-adgroupcriteria-api-openapi.yml
+  - type: Discovery
+    url: discovery/google-ads-api-v25-discovery.json
+  - type: Protobuf
+    url: grpc/google-ads-google-ads-service.proto
+  - type: DataModel
+    url: data-model/google-ads-data-model.yml
+  - type: Documentation
+    url: https://developers.google.com/google-ads/api/docs/start
+  - type: APIReference
+    url: https://developers.google.com/google-ads/api/reference/rpc/latest/overview
+  - type: Authentication
+    url: https://developers.google.com/google-ads/api/docs/oauth/overview
+  - type: GettingStarted
+    url: https://developers.google.com/google-ads/api/docs/first-call/overview
+  - type: RateLimits
+    url: https://developers.google.com/google-ads/api/docs/best-practices/quotas
+  - type: ChangeLog
+    url: https://developers.google.com/google-ads/api/docs/release-notes
+  - type: Deprecation
+    url: https://developers.google.com/google-ads/api/docs/sunset-dates
+  - type: SDKs
+    url: https://developers.google.com/google-ads/api/docs/client-libs
+  - type: Support
+    url: https://developers.google.com/google-ads/api/support
+- aid: google-ads:google-ads-customers-adgroupcriterioncustomizers-api
+  name: Google Ads Customers.Ad Group Criterion Customizers API
+  description: >-
+    The customers.AdGroupCriterionCustomizers API from Google Ads — 1 operation(s) for customers.adgroupcriterioncustomizers.
+  humanURL: https://developers.google.com/google-ads/scripts/docs/start
+  baseURL: https://googleads.googleapis.com
+  tags:
+  - customers.AdGroupCriterionCustomizers
+  properties:
+  - type: OpenAPI
+    url: openapi/google-ads-customers-adgroupcriterioncustomizers-api-openapi.yml
+  - type: Discovery
+    url: discovery/google-ads-api-v25-discovery.json
+  - type: Protobuf
+    url: grpc/google-ads-google-ads-service.proto
+  - type: DataModel
+    url: data-model/google-ads-data-model.yml
+  - type: Documentation
+    url: https://developers.google.com/google-ads/api/docs/start
+  - type: APIReference
+    url: https://developers.google.com/google-ads/api/reference/rpc/latest/overview
+  - type: Authentication
+    url: https://developers.google.com/google-ads/api/docs/oauth/overview
+  - type: GettingStarted
+    url: https://developers.google.com/google-ads/api/docs/first-call/overview
+  - type: RateLimits
+    url: https://developers.google.com/google-ads/api/docs/best-practices/quotas
+  - type: ChangeLog
+    url: https://developers.google.com/google-ads/api/docs/release-notes
+  - type: Deprecation
+    url: https://developers.google.com/google-ads/api/docs/sunset-dates
+  - type: SDKs
+    url: https://developers.google.com/google-ads/api/docs/client-libs
+  - type: Support
+    url: https://developers.google.com/google-ads/api/support
+- aid: google-ads:google-ads-customers-adgroupcriterionlabels-api
+  name: Google Ads Customers.ad Group Criterion Labels API
+  description: >-
+    The customers.adGroupCriterionLabels API from Google Ads — 1 operation(s) for customers.adgroupcriterionlabels.
+  humanURL: https://developers.google.com/google-ads/scripts/docs/start
+  baseURL: https://googleads.googleapis.com
+  tags:
+  - customers.adGroupCriterionLabels
+  properties:
+  - type: OpenAPI
+    url: openapi/google-ads-customers-adgroupcriterionlabels-api-openapi.yml
+  - type: Discovery
+    url: discovery/google-ads-api-v25-discovery.json
+  - type: Protobuf
+    url: grpc/google-ads-google-ads-service.proto
+  - type: DataModel
+    url: data-model/google-ads-data-model.yml
+  - type: Documentation
+    url: https://developers.google.com/google-ads/api/docs/start
+  - type: APIReference
+    url: https://developers.google.com/google-ads/api/reference/rpc/latest/overview
+  - type: Authentication
+    url: https://developers.google.com/google-ads/api/docs/oauth/overview
+  - type: GettingStarted
+    url: https://developers.google.com/google-ads/api/docs/first-call/overview
+  - type: RateLimits
+    url: https://developers.google.com/google-ads/api/docs/best-practices/quotas
+  - type: ChangeLog
+    url: https://developers.google.com/google-ads/api/docs/release-notes
+  - type: Deprecation
+    url: https://developers.google.com/google-ads/api/docs/sunset-dates
+  - type: SDKs
+    url: https://developers.google.com/google-ads/api/docs/client-libs
+  - type: Support
+    url: https://developers.google.com/google-ads/api/support
+- aid: google-ads:google-ads-customers-adgroupcustomizers-api
+  name: Google Ads Customers.ad Group Customizers API
+  description: >-
+    The customers.adGroupCustomizers API from Google Ads — 1 operation(s) for customers.adgroupcustomizers.
+  humanURL: https://developers.google.com/google-ads/scripts/docs/start
+  baseURL: https://googleads.googleapis.com
+  tags:
+  - customers.adGroupCustomizers
+  properties:
+  - type: OpenAPI
+    url: openapi/google-ads-customers-adgroupcustomizers-api-openapi.yml
+  - type: Discovery
+    url: discovery/google-ads-api-v25-discovery.json
+  - type: Protobuf
+    url: grpc/google-ads-google-ads-service.proto
+  - type: DataModel
+    url: data-model/google-ads-data-model.yml
+  - type: Documentation
+    url: https://developers.google.com/google-ads/api/docs/start
+  - type: APIReference
+    url: https://developers.google.com/google-ads/api/reference/rpc/latest/overview
+  - type: Authentication
+    url: https://developers.google.com/google-ads/api/docs/oauth/overview
+  - type: GettingStarted
+    url: https://developers.google.com/google-ads/api/docs/first-call/overview
+  - type: RateLimits
+    url: https://developers.google.com/google-ads/api/docs/best-practices/quotas
+  - type: ChangeLog
+    url: https://developers.google.com/google-ads/api/docs/release-notes
+  - type: Deprecation
+    url: https://developers.google.com/google-ads/api/docs/sunset-dates
+  - type: SDKs
+    url: https://developers.google.com/google-ads/api/docs/client-libs
+  - type: Support
+    url: https://developers.google.com/google-ads/api/support
+- aid: google-ads:google-ads-customers-adgrouplabels-api
+  name: Google Ads Customers.ad Group Labels API
+  description: >-
+    The customers.adGroupLabels API from Google Ads — 1 operation(s) for customers.adgrouplabels.
+  humanURL: https://developers.google.com/google-ads/scripts/docs/start
+  baseURL: https://googleads.googleapis.com
+  tags:
+  - customers.adGroupLabels
+  properties:
+  - type: OpenAPI
+    url: openapi/google-ads-customers-adgrouplabels-api-openapi.yml
+  - type: Discovery
+    url: discovery/google-ads-api-v25-discovery.json
+  - type: Protobuf
+    url: grpc/google-ads-google-ads-service.proto
+  - type: DataModel
+    url: data-model/google-ads-data-model.yml
+  - type: Documentation
+    url: https://developers.google.com/google-ads/api/docs/start
+  - type: APIReference
+    url: https://developers.google.com/google-ads/api/reference/rpc/latest/overview
+  - type: Authentication
+    url: https://developers.google.com/google-ads/api/docs/oauth/overview
+  - type: GettingStarted
+    url: https://developers.google.com/google-ads/api/docs/first-call/overview
+  - type: RateLimits
+    url: https://developers.google.com/google-ads/api/docs/best-practices/quotas
+  - type: ChangeLog
+    url: https://developers.google.com/google-ads/api/docs/release-notes
+  - type: Deprecation
+    url: https://developers.google.com/google-ads/api/docs/sunset-dates
+  - type: SDKs
+    url: https://developers.google.com/google-ads/api/docs/client-libs
+  - type: Support
+    url: https://developers.google.com/google-ads/api/support
+- aid: google-ads:google-ads-customers-adgroups-api
+  name: Google Ads Customers.ad Groups API
+  description: The customers.adGroups API from Google Ads — 1 operation(s) for customers.adgroups.
+  humanURL: https://developers.google.com/google-ads/scripts/docs/start
+  baseURL: https://googleads.googleapis.com
+  tags:
+  - customers.adGroups
+  properties:
+  - type: OpenAPI
+    url: openapi/google-ads-customers-adgroups-api-openapi.yml
+  - type: Discovery
+    url: discovery/google-ads-api-v25-discovery.json
+  - type: Protobuf
+    url: grpc/google-ads-google-ads-service.proto
+  - type: DataModel
+    url: data-model/google-ads-data-model.yml
+  - type: Documentation
+    url: https://developers.google.com/google-ads/api/docs/start
+  - type: APIReference
+    url: https://developers.google.com/google-ads/api/reference/rpc/latest/overview
+  - type: Authentication
+    url: https://developers.google.com/google-ads/api/docs/oauth/overview
+  - type: GettingStarted
+    url: https://developers.google.com/google-ads/api/docs/first-call/overview
+  - type: RateLimits
+    url: https://developers.google.com/google-ads/api/docs/best-practices/quotas
+  - type: ChangeLog
+    url: https://developers.google.com/google-ads/api/docs/release-notes
+  - type: Deprecation
+    url: https://developers.google.com/google-ads/api/docs/sunset-dates
+  - type: SDKs
+    url: https://developers.google.com/google-ads/api/docs/client-libs
+  - type: Support
+    url: https://developers.google.com/google-ads/api/support
+- aid: google-ads:google-ads-customers-adparameters-api
+  name: Google Ads Customers.ad Parameters API
+  description: >-
+    The customers.adParameters API from Google Ads — 1 operation(s) for customers.adparameters.
+  humanURL: https://developers.google.com/google-ads/scripts/docs/start
+  baseURL: https://googleads.googleapis.com
+  tags:
+  - customers.adParameters
+  properties:
+  - type: OpenAPI
+    url: openapi/google-ads-customers-adparameters-api-openapi.yml
+  - type: Discovery
+    url: discovery/google-ads-api-v25-discovery.json
+  - type: Protobuf
+    url: grpc/google-ads-google-ads-service.proto
+  - type: DataModel
+    url: data-model/google-ads-data-model.yml
+  - type: Documentation
+    url: https://developers.google.com/google-ads/api/docs/start
+  - type: APIReference
+    url: https://developers.google.com/google-ads/api/reference/rpc/latest/overview
+  - type: Authentication
+    url: https://developers.google.com/google-ads/api/docs/oauth/overview
+  - type: GettingStarted
+    url: https://developers.google.com/google-ads/api/docs/first-call/overview
+  - type: RateLimits
+    url: https://developers.google.com/google-ads/api/docs/best-practices/quotas
+  - type: ChangeLog
+    url: https://developers.google.com/google-ads/api/docs/release-notes
+  - type: Deprecation
+    url: https://developers.google.com/google-ads/api/docs/sunset-dates
+  - type: SDKs
+    url: https://developers.google.com/google-ads/api/docs/client-libs
+  - type: Support
+    url: https://developers.google.com/google-ads/api/support
+- aid: google-ads:google-ads-customers-ads-api
+  name: Google Ads Customers.ads API
+  description: The customers.ads API from Google Ads — 1 operation(s) for customers.ads.
+  humanURL: https://developers.google.com/google-ads/scripts/docs/start
+  baseURL: https://googleads.googleapis.com
+  tags:
+  - customers.ads
+  properties:
+  - type: OpenAPI
+    url: openapi/google-ads-customers-ads-api-openapi.yml
+  - type: Discovery
+    url: discovery/google-ads-api-v25-discovery.json
+  - type: Protobuf
+    url: grpc/google-ads-google-ads-service.proto
+  - type: DataModel
+    url: data-model/google-ads-data-model.yml
+  - type: Documentation
+    url: https://developers.google.com/google-ads/api/docs/start
+  - type: APIReference
+    url: https://developers.google.com/google-ads/api/reference/rpc/latest/overview
+  - type: Authentication
+    url: https://developers.google.com/google-ads/api/docs/oauth/overview
+  - type: GettingStarted
+    url: https://developers.google.com/google-ads/api/docs/first-call/overview
+  - type: RateLimits
+    url: https://developers.google.com/google-ads/api/docs/best-practices/quotas
+  - type: ChangeLog
+    url: https://developers.google.com/google-ads/api/docs/release-notes
+  - type: Deprecation
+    url: https://developers.google.com/google-ads/api/docs/sunset-dates
+  - type: SDKs
+    url: https://developers.google.com/google-ads/api/docs/client-libs
+  - type: Support
+    url: https://developers.google.com/google-ads/api/support
+- aid: google-ads:google-ads-customers-assetgenerations-api
+  name: Google Ads Customers.asset Generations API
+  description: >-
+    The customers.assetGenerations API from Google Ads — 2 operation(s) for customers.assetgenerations.
+  humanURL: https://developers.google.com/google-ads/scripts/docs/start
+  baseURL: https://googleads.googleapis.com
+  tags:
+  - customers.assetGenerations
+  properties:
+  - type: OpenAPI
+    url: openapi/google-ads-customers-assetgenerations-api-openapi.yml
+  - type: Discovery
+    url: discovery/google-ads-api-v25-discovery.json
+  - type: Protobuf
+    url: grpc/google-ads-google-ads-service.proto
+  - type: DataModel
+    url: data-model/google-ads-data-model.yml
+  - type: Documentation
+    url: https://developers.google.com/google-ads/api/docs/start
+  - type: APIReference
+    url: https://developers.google.com/google-ads/api/reference/rpc/latest/overview
+  - type: Authentication
+    url: https://developers.google.com/google-ads/api/docs/oauth/overview
+  - type: GettingStarted
+    url: https://developers.google.com/google-ads/api/docs/first-call/overview
+  - type: RateLimits
+    url: https://developers.google.com/google-ads/api/docs/best-practices/quotas
+  - type: ChangeLog
+    url: https://developers.google.com/google-ads/api/docs/release-notes
+  - type: Deprecation
+    url: https://developers.google.com/google-ads/api/docs/sunset-dates
+  - type: SDKs
+    url: https://developers.google.com/google-ads/api/docs/client-libs
+  - type: Support
+    url: https://developers.google.com/google-ads/api/support
+- aid: google-ads:google-ads-customers-assetgroupassets-api
+  name: Google Ads Customers.asset Group Assets API
+  description: >-
+    The customers.assetGroupAssets API from Google Ads — 1 operation(s) for customers.assetgroupassets.
+  humanURL: https://developers.google.com/google-ads/scripts/docs/start
+  baseURL: https://googleads.googleapis.com
+  tags:
+  - customers.assetGroupAssets
+  properties:
+  - type: OpenAPI
+    url: openapi/google-ads-customers-assetgroupassets-api-openapi.yml
+  - type: Discovery
+    url: discovery/google-ads-api-v25-discovery.json
+  - type: Protobuf
+    url: grpc/google-ads-google-ads-service.proto
+  - type: DataModel
+    url: data-model/google-ads-data-model.yml
+  - type: Documentation
+    url: https://developers.google.com/google-ads/api/docs/start
+  - type: APIReference
+    url: https://developers.google.com/google-ads/api/reference/rpc/latest/overview
+  - type: Authentication
+    url: https://developers.google.com/google-ads/api/docs/oauth/overview
+  - type: GettingStarted
+    url: https://developers.google.com/google-ads/api/docs/first-call/overview
+  - type: RateLimits
+    url: https://developers.google.com/google-ads/api/docs/best-practices/quotas
+  - type: ChangeLog
+    url: https://developers.google.com/google-ads/api/docs/release-notes
+  - type: Deprecation
+    url: https://developers.google.com/google-ads/api/docs/sunset-dates
+  - type: SDKs
+    url: https://developers.google.com/google-ads/api/docs/client-libs
+  - type: Support
+    url: https://developers.google.com/google-ads/api/support
+- aid: google-ads:google-ads-customers-assetgrouplistinggroupfilters-api
+  name: Google Ads Customers.asset Group Listing Group Filters API
+  description: >-
+    The customers.assetGroupListingGroupFilters API from Google Ads — 1 operation(s) for customers.assetgrouplistinggroupfilters.
+  humanURL: https://developers.google.com/google-ads/scripts/docs/start
+  baseURL: https://googleads.googleapis.com
+  tags:
+  - customers.assetGroupListingGroupFilters
+  properties:
+  - type: OpenAPI
+    url: openapi/google-ads-customers-assetgrouplistinggroupfilters-api-openapi.yml
+  - type: Discovery
+    url: discovery/google-ads-api-v25-discovery.json
+  - type: Protobuf
+    url: grpc/google-ads-google-ads-service.proto
+  - type: DataModel
+    url: data-model/google-ads-data-model.yml
+  - type: Documentation
+    url: https://developers.google.com/google-ads/api/docs/start
+  - type: APIReference
+    url: https://developers.google.com/google-ads/api/reference/rpc/latest/overview
+  - type: Authentication
+    url: https://developers.google.com/google-ads/api/docs/oauth/overview
+  - type: GettingStarted
+    url: https://developers.google.com/google-ads/api/docs/first-call/overview
+  - type: RateLimits
+    url: https://developers.google.com/google-ads/api/docs/best-practices/quotas
+  - type: ChangeLog
+    url: https://developers.google.com/google-ads/api/docs/release-notes
+  - type: Deprecation
+    url: https://developers.google.com/google-ads/api/docs/sunset-dates
+  - type: SDKs
+    url: https://developers.google.com/google-ads/api/docs/client-libs
+  - type: Support
+    url: https://developers.google.com/google-ads/api/support
+- aid: google-ads:google-ads-customers-assetgroups-api
+  name: Google Ads Customers.asset Groups API
+  description: >-
+    The customers.assetGroups API from Google Ads — 1 operation(s) for customers.assetgroups.
+  humanURL: https://developers.google.com/google-ads/scripts/docs/start
+  baseURL: https://googleads.googleapis.com
+  tags:
+  - customers.assetGroups
+  properties:
+  - type: OpenAPI
+    url: openapi/google-ads-customers-assetgroups-api-openapi.yml
+  - type: Discovery
+    url: discovery/google-ads-api-v25-discovery.json
+  - type: Protobuf
+    url: grpc/google-ads-google-ads-service.proto
+  - type: DataModel
+    url: data-model/google-ads-data-model.yml
+  - type: Documentation
+    url: https://developers.google.com/google-ads/api/docs/start
+  - type: APIReference
+    url: https://developers.google.com/google-ads/api/reference/rpc/latest/overview
+  - type: Authentication
+    url: https://developers.google.com/google-ads/api/docs/oauth/overview
+  - type: GettingStarted
+    url: https://developers.google.com/google-ads/api/docs/first-call/overview
+  - type: RateLimits
+    url: https://developers.google.com/google-ads/api/docs/best-practices/quotas
+  - type: ChangeLog
+    url: https://developers.google.com/google-ads/api/docs/release-notes
+  - type: Deprecation
+    url: https://developers.google.com/google-ads/api/docs/sunset-dates
+  - type: SDKs
+    url: https://developers.google.com/google-ads/api/docs/client-libs
+  - type: Support
+    url: https://developers.google.com/google-ads/api/support
+- aid: google-ads:google-ads-customers-assetgroupsignals-api
+  name: Google Ads Customers.asset Group Signals API
+  description: >-
+    The customers.assetGroupSignals API from Google Ads — 1 operation(s) for customers.assetgroupsignals.
+  humanURL: https://developers.google.com/google-ads/scripts/docs/start
+  baseURL: https://googleads.googleapis.com
+  tags:
+  - customers.assetGroupSignals
+  properties:
+  - type: OpenAPI
+    url: openapi/google-ads-customers-assetgroupsignals-api-openapi.yml
+  - type: Discovery
+    url: discovery/google-ads-api-v25-discovery.json
+  - type: Protobuf
+    url: grpc/google-ads-google-ads-service.proto
+  - type: DataModel
+    url: data-model/google-ads-data-model.yml
+  - type: Documentation
+    url: https://developers.google.com/google-ads/api/docs/start
+  - type: APIReference
+    url: https://developers.google.com/google-ads/api/reference/rpc/latest/overview
+  - type: Authentication
+    url: https://developers.google.com/google-ads/api/docs/oauth/overview
+  - type: GettingStarted
+    url: https://developers.google.com/google-ads/api/docs/first-call/overview
+  - type: RateLimits
+    url: https://developers.google.com/google-ads/api/docs/best-practices/quotas
+  - type: ChangeLog
+    url: https://developers.google.com/google-ads/api/docs/release-notes
+  - type: Deprecation
+    url: https://developers.google.com/google-ads/api/docs/sunset-dates
+  - type: SDKs
+    url: https://developers.google.com/google-ads/api/docs/client-libs
+  - type: Support
+    url: https://developers.google.com/google-ads/api/support
+- aid: google-ads:google-ads-customers-assets-api
+  name: Google Ads Customers.assets API
+  description: The customers.assets API from Google Ads — 1 operation(s) for customers.assets.
+  humanURL: https://developers.google.com/google-ads/scripts/docs/start
+  baseURL: https://googleads.googleapis.com
+  tags:
+  - customers.assets
+  properties:
+  - type: OpenAPI
+    url: openapi/google-ads-customers-assets-api-openapi.yml
+  - type: Discovery
+    url: discovery/google-ads-api-v25-discovery.json
+  - type: Protobuf
+    url: grpc/google-ads-google-ads-service.proto
+  - type: DataModel
+    url: data-model/google-ads-data-model.yml
+  - type: Documentation
+    url: https://developers.google.com/google-ads/api/docs/start
+  - type: APIReference
+    url: https://developers.google.com/google-ads/api/reference/rpc/latest/overview
+  - type: Authentication
+    url: https://developers.google.com/google-ads/api/docs/oauth/overview
+  - type: GettingStarted
+    url: https://developers.google.com/google-ads/api/docs/first-call/overview
+  - type: RateLimits
+    url: https://developers.google.com/google-ads/api/docs/best-practices/quotas
+  - type: ChangeLog
+    url: https://developers.google.com/google-ads/api/docs/release-notes
+  - type: Deprecation
+    url: https://developers.google.com/google-ads/api/docs/sunset-dates
+  - type: SDKs
+    url: https://developers.google.com/google-ads/api/docs/client-libs
+  - type: Support
+    url: https://developers.google.com/google-ads/api/support
+- aid: google-ads:google-ads-customers-assetsetassets-api
+  name: Google Ads Customers.asset Set Assets API
+  description: >-
+    The customers.assetSetAssets API from Google Ads — 1 operation(s) for customers.assetsetassets.
+  humanURL: https://developers.google.com/google-ads/scripts/docs/start
+  baseURL: https://googleads.googleapis.com
+  tags:
+  - customers.assetSetAssets
+  properties:
+  - type: OpenAPI
+    url: openapi/google-ads-customers-assetsetassets-api-openapi.yml
+  - type: Discovery
+    url: discovery/google-ads-api-v25-discovery.json
+  - type: Protobuf
+    url: grpc/google-ads-google-ads-service.proto
+  - type: DataModel
+    url: data-model/google-ads-data-model.yml
+  - type: Documentation
+    url: https://developers.google.com/google-ads/api/docs/start
+  - type: APIReference
+    url: https://developers.google.com/google-ads/api/reference/rpc/latest/overview
+  - type: Authentication
+    url: https://developers.google.com/google-ads/api/docs/oauth/overview
+  - type: GettingStarted
+    url: https://developers.google.com/google-ads/api/docs/first-call/overview
+  - type: RateLimits
+    url: https://developers.google.com/google-ads/api/docs/best-practices/quotas
+  - type: ChangeLog
+    url: https://developers.google.com/google-ads/api/docs/release-notes
+  - type: Deprecation
+    url: https://developers.google.com/google-ads/api/docs/sunset-dates
+  - type: SDKs
+    url: https://developers.google.com/google-ads/api/docs/client-libs
+  - type: Support
+    url: https://developers.google.com/google-ads/api/support
+- aid: google-ads:google-ads-customers-assetsets-api
+  name: Google Ads Customers.asset Sets API
+  description: The customers.assetSets API from Google Ads — 1 operation(s) for customers.assetsets.
+  humanURL: https://developers.google.com/google-ads/scripts/docs/start
+  baseURL: https://googleads.googleapis.com
+  tags:
+  - customers.assetSets
+  properties:
+  - type: OpenAPI
+    url: openapi/google-ads-customers-assetsets-api-openapi.yml
+  - type: Discovery
+    url: discovery/google-ads-api-v25-discovery.json
+  - type: Protobuf
+    url: grpc/google-ads-google-ads-service.proto
+  - type: DataModel
+    url: data-model/google-ads-data-model.yml
+  - type: Documentation
+    url: https://developers.google.com/google-ads/api/docs/start
+  - type: APIReference
+    url: https://developers.google.com/google-ads/api/reference/rpc/latest/overview
+  - type: Authentication
+    url: https://developers.google.com/google-ads/api/docs/oauth/overview
+  - type: GettingStarted
+    url: https://developers.google.com/google-ads/api/docs/first-call/overview
+  - type: RateLimits
+    url: https://developers.google.com/google-ads/api/docs/best-practices/quotas
+  - type: ChangeLog
+    url: https://developers.google.com/google-ads/api/docs/release-notes
+  - type: Deprecation
+    url: https://developers.google.com/google-ads/api/docs/sunset-dates
+  - type: SDKs
+    url: https://developers.google.com/google-ads/api/docs/client-libs
+  - type: Support
+    url: https://developers.google.com/google-ads/api/support
+- aid: google-ads:google-ads-customers-audiences-api
+  name: Google Ads Customers.audiences API
+  description: The customers.audiences API from Google Ads — 1 operation(s) for customers.audiences.
+  humanURL: https://developers.google.com/google-ads/scripts/docs/start
+  baseURL: https://googleads.googleapis.com
+  tags:
+  - customers.audiences
+  properties:
+  - type: OpenAPI
+    url: openapi/google-ads-customers-audiences-api-openapi.yml
+  - type: Discovery
+    url: discovery/google-ads-api-v25-discovery.json
+  - type: Protobuf
+    url: grpc/google-ads-google-ads-service.proto
+  - type: DataModel
+    url: data-model/google-ads-data-model.yml
+  - type: Documentation
+    url: https://developers.google.com/google-ads/api/docs/start
+  - type: APIReference
+    url: https://developers.google.com/google-ads/api/reference/rpc/latest/overview
+  - type: Authentication
+    url: https://developers.google.com/google-ads/api/docs/oauth/overview
+  - type: GettingStarted
+    url: https://developers.google.com/google-ads/api/docs/first-call/overview
+  - type: RateLimits
+    url: https://developers.google.com/google-ads/api/docs/best-practices/quotas
+  - type: ChangeLog
+    url: https://developers.google.com/google-ads/api/docs/release-notes
+  - type: Deprecation
+    url: https://developers.google.com/google-ads/api/docs/sunset-dates
+  - type: SDKs
+    url: https://developers.google.com/google-ads/api/docs/client-libs
+  - type: Support
+    url: https://developers.google.com/google-ads/api/support
+- aid: google-ads:google-ads-customers-batchjobs-api
+  name: Google Ads Customers.batch Jobs API
+  description: The customers.batchJobs API from Google Ads — 4 operation(s) for customers.batchjobs.
+  humanURL: https://developers.google.com/google-ads/scripts/docs/start
+  baseURL: https://googleads.googleapis.com
+  tags:
+  - customers.batchJobs
+  properties:
+  - type: OpenAPI
+    url: openapi/google-ads-customers-batchjobs-api-openapi.yml
+  - type: Discovery
+    url: discovery/google-ads-api-v25-discovery.json
+  - type: Protobuf
+    url: grpc/google-ads-google-ads-service.proto
+  - type: DataModel
+    url: data-model/google-ads-data-model.yml
+  - type: Documentation
+    url: https://developers.google.com/google-ads/api/docs/start
+  - type: APIReference
+    url: https://developers.google.com/google-ads/api/reference/rpc/latest/overview
+  - type: Authentication
+    url: https://developers.google.com/google-ads/api/docs/oauth/overview
+  - type: GettingStarted
+    url: https://developers.google.com/google-ads/api/docs/first-call/overview
+  - type: RateLimits
+    url: https://developers.google.com/google-ads/api/docs/best-practices/quotas
+  - type: ChangeLog
+    url: https://developers.google.com/google-ads/api/docs/release-notes
+  - type: Deprecation
+    url: https://developers.google.com/google-ads/api/docs/sunset-dates
+  - type: SDKs
+    url: https://developers.google.com/google-ads/api/docs/client-libs
+  - type: Support
+    url: https://developers.google.com/google-ads/api/support
+- aid: google-ads:google-ads-customers-biddingdataexclusions-api
+  name: Google Ads Customers.bidding Data Exclusions API
+  description: >-
+    The customers.biddingDataExclusions API from Google Ads — 1 operation(s) for customers.biddingdataexclusions.
+  humanURL: https://developers.google.com/google-ads/scripts/docs/start
+  baseURL: https://googleads.googleapis.com
+  tags:
+  - customers.biddingDataExclusions
+  properties:
+  - type: OpenAPI
+    url: openapi/google-ads-customers-biddingdataexclusions-api-openapi.yml
+  - type: Discovery
+    url: discovery/google-ads-api-v25-discovery.json
+  - type: Protobuf
+    url: grpc/google-ads-google-ads-service.proto
+  - type: DataModel
+    url: data-model/google-ads-data-model.yml
+  - type: Documentation
+    url: https://developers.google.com/google-ads/api/docs/start
+  - type: APIReference
+    url: https://developers.google.com/google-ads/api/reference/rpc/latest/overview
+  - type: Authentication
+    url: https://developers.google.com/google-ads/api/docs/oauth/overview
+  - type: GettingStarted
+    url: https://developers.google.com/google-ads/api/docs/first-call/overview
+  - type: RateLimits
+    url: https://developers.google.com/google-ads/api/docs/best-practices/quotas
+  - type: ChangeLog
+    url: https://developers.google.com/google-ads/api/docs/release-notes
+  - type: Deprecation
+    url: https://developers.google.com/google-ads/api/docs/sunset-dates
+  - type: SDKs
+    url: https://developers.google.com/google-ads/api/docs/client-libs
+  - type: Support
+    url: https://developers.google.com/google-ads/api/support
+- aid: google-ads:google-ads-customers-biddingseasonalityadjustments-api
+  name: Google Ads Customers.bidding Seasonality Adjustments API
+  description: >-
+    The customers.biddingSeasonalityAdjustments API from Google Ads — 1 operation(s) for customers.biddingseasonalityadjustments.
+  humanURL: https://developers.google.com/google-ads/scripts/docs/start
+  baseURL: https://googleads.googleapis.com
+  tags:
+  - customers.biddingSeasonalityAdjustments
+  properties:
+  - type: OpenAPI
+    url: openapi/google-ads-customers-biddingseasonalityadjustments-api-openapi.yml
+  - type: Discovery
+    url: discovery/google-ads-api-v25-discovery.json
+  - type: Protobuf
+    url: grpc/google-ads-google-ads-service.proto
+  - type: DataModel
+    url: data-model/google-ads-data-model.yml
+  - type: Documentation
+    url: https://developers.google.com/google-ads/api/docs/start
+  - type: APIReference
+    url: https://developers.google.com/google-ads/api/reference/rpc/latest/overview
+  - type: Authentication
+    url: https://developers.google.com/google-ads/api/docs/oauth/overview
+  - type: GettingStarted
+    url: https://developers.google.com/google-ads/api/docs/first-call/overview
+  - type: RateLimits
+    url: https://developers.google.com/google-ads/api/docs/best-practices/quotas
+  - type: ChangeLog
+    url: https://developers.google.com/google-ads/api/docs/release-notes
+  - type: Deprecation
+    url: https://developers.google.com/google-ads/api/docs/sunset-dates
+  - type: SDKs
+    url: https://developers.google.com/google-ads/api/docs/client-libs
+  - type: Support
+    url: https://developers.google.com/google-ads/api/support
+- aid: google-ads:google-ads-customers-biddingstrategies-api
+  name: Google Ads Customers.bidding Strategies API
+  description: >-
+    The customers.biddingStrategies API from Google Ads — 1 operation(s) for customers.biddingstrategies.
+  humanURL: https://developers.google.com/google-ads/scripts/docs/start
+  baseURL: https://googleads.googleapis.com
+  tags:
+  - customers.biddingStrategies
+  properties:
+  - type: OpenAPI
+    url: openapi/google-ads-customers-biddingstrategies-api-openapi.yml
+  - type: Discovery
+    url: discovery/google-ads-api-v25-discovery.json
+  - type: Protobuf
+    url: grpc/google-ads-google-ads-service.proto
+  - type: DataModel
+    url: data-model/google-ads-data-model.yml
+  - type: Documentation
+    url: https://developers.google.com/google-ads/api/docs/start
+  - type: APIReference
+    url: https://developers.google.com/google-ads/api/reference/rpc/latest/overview
+  - type: Authentication
+    url: https://developers.google.com/google-ads/api/docs/oauth/overview
+  - type: GettingStarted
+    url: https://developers.google.com/google-ads/api/docs/first-call/overview
+  - type: RateLimits
+    url: https://developers.google.com/google-ads/api/docs/best-practices/quotas
+  - type: ChangeLog
+    url: https://developers.google.com/google-ads/api/docs/release-notes
+  - type: Deprecation
+    url: https://developers.google.com/google-ads/api/docs/sunset-dates
+  - type: SDKs
+    url: https://developers.google.com/google-ads/api/docs/client-libs
+  - type: Support
+    url: https://developers.google.com/google-ads/api/support
+- aid: google-ads:google-ads-customers-billingsetups-api
+  name: Google Ads Customers.billing Setups API
+  description: >-
+    The customers.billingSetups API from Google Ads — 1 operation(s) for customers.billingsetups.
+  humanURL: https://developers.google.com/google-ads/scripts/docs/start
+  baseURL: https://googleads.googleapis.com
+  tags:
+  - customers.billingSetups
+  properties:
+  - type: OpenAPI
+    url: openapi/google-ads-customers-billingsetups-api-openapi.yml
+  - type: Discovery
+    url: discovery/google-ads-api-v25-discovery.json
+  - type: Protobuf
+    url: grpc/google-ads-google-ads-service.proto
+  - type: DataModel
+    url: data-model/google-ads-data-model.yml
+  - type: Documentation
+    url: https://developers.google.com/google-ads/api/docs/start
+  - type: APIReference
+    url: https://developers.google.com/google-ads/api/reference/rpc/latest/overview
+  - type: Authentication
+    url: https://developers.google.com/google-ads/api/docs/oauth/overview
+  - type: GettingStarted
+    url: https://developers.google.com/google-ads/api/docs/first-call/overview
+  - type: RateLimits
+    url: https://developers.google.com/google-ads/api/docs/best-practices/quotas
+  - type: ChangeLog
+    url: https://developers.google.com/google-ads/api/docs/release-notes
+  - type: Deprecation
+    url: https://developers.google.com/google-ads/api/docs/sunset-dates
+  - type: SDKs
+    url: https://developers.google.com/google-ads/api/docs/client-libs
+  - type: Support
+    url: https://developers.google.com/google-ads/api/support
+- aid: google-ads:google-ads-customers-campaignassets-api
+  name: Google Ads Customers.campaign Assets API
+  description: >-
+    The customers.campaignAssets API from Google Ads — 1 operation(s) for customers.campaignassets.
+  humanURL: https://developers.google.com/google-ads/scripts/docs/start
+  baseURL: https://googleads.googleapis.com
+  tags:
+  - customers.campaignAssets
+  properties:
+  - type: OpenAPI
+    url: openapi/google-ads-customers-campaignassets-api-openapi.yml
+  - type: Discovery
+    url: discovery/google-ads-api-v25-discovery.json
+  - type: Protobuf
+    url: grpc/google-ads-google-ads-service.proto
+  - type: DataModel
+    url: data-model/google-ads-data-model.yml
+  - type: Documentation
+    url: https://developers.google.com/google-ads/api/docs/start
+  - type: APIReference
+    url: https://developers.google.com/google-ads/api/reference/rpc/latest/overview
+  - type: Authentication
+    url: https://developers.google.com/google-ads/api/docs/oauth/overview
+  - type: GettingStarted
+    url: https://developers.google.com/google-ads/api/docs/first-call/overview
+  - type: RateLimits
+    url: https://developers.google.com/google-ads/api/docs/best-practices/quotas
+  - type: ChangeLog
+    url: https://developers.google.com/google-ads/api/docs/release-notes
+  - type: Deprecation
+    url: https://developers.google.com/google-ads/api/docs/sunset-dates
+  - type: SDKs
+    url: https://developers.google.com/google-ads/api/docs/client-libs
+  - type: Support
+    url: https://developers.google.com/google-ads/api/support
+- aid: google-ads:google-ads-customers-campaignassetsets-api
+  name: Google Ads Customers.campaign Asset Sets API
+  description: >-
+    The customers.campaignAssetSets API from Google Ads — 1 operation(s) for customers.campaignassetsets.
+  humanURL: https://developers.google.com/google-ads/scripts/docs/start
+  baseURL: https://googleads.googleapis.com
+  tags:
+  - customers.campaignAssetSets
+  properties:
+  - type: OpenAPI
+    url: openapi/google-ads-customers-campaignassetsets-api-openapi.yml
+  - type: Discovery
+    url: discovery/google-ads-api-v25-discovery.json
+  - type: Protobuf
+    url: grpc/google-ads-google-ads-service.proto
+  - type: DataModel
+    url: data-model/google-ads-data-model.yml
+  - type: Documentation
+    url: https://developers.google.com/google-ads/api/docs/start
+  - type: APIReference
+    url: https://developers.google.com/google-ads/api/reference/rpc/latest/overview
+  - type: Authentication
+    url: https://developers.google.com/google-ads/api/docs/oauth/overview
+  - type: GettingStarted
+    url: https://developers.google.com/google-ads/api/docs/first-call/overview
+  - type: RateLimits
+    url: https://developers.google.com/google-ads/api/docs/best-practices/quotas
+  - type: ChangeLog
+    url: https://developers.google.com/google-ads/api/docs/release-notes
+  - type: Deprecation
+    url: https://developers.google.com/google-ads/api/docs/sunset-dates
+  - type: SDKs
+    url: https://developers.google.com/google-ads/api/docs/client-libs
+  - type: Support
+    url: https://developers.google.com/google-ads/api/support
+- aid: google-ads:google-ads-customers-campaignbidmodifiers-api
+  name: Google Ads Customers.campaign Bid Modifiers API
+  description: >-
+    The customers.campaignBidModifiers API from Google Ads — 1 operation(s) for customers.campaignbidmodifiers.
+  humanURL: https://developers.google.com/google-ads/scripts/docs/start
+  baseURL: https://googleads.googleapis.com
+  tags:
+  - customers.campaignBidModifiers
+  properties:
+  - type: OpenAPI
+    url: openapi/google-ads-customers-campaignbidmodifiers-api-openapi.yml
+  - type: Discovery
+    url: discovery/google-ads-api-v25-discovery.json
+  - type: Protobuf
+    url: grpc/google-ads-google-ads-service.proto
+  - type: DataModel
+    url: data-model/google-ads-data-model.yml
+  - type: Documentation
+    url: https://developers.google.com/google-ads/api/docs/start
+  - type: APIReference
+    url: https://developers.google.com/google-ads/api/reference/rpc/latest/overview
+  - type: Authentication
+    url: https://developers.google.com/google-ads/api/docs/oauth/overview
+  - type: GettingStarted
+    url: https://developers.google.com/google-ads/api/docs/first-call/overview
+  - type: RateLimits
+    url: https://developers.google.com/google-ads/api/docs/best-practices/quotas
+  - type: ChangeLog
+    url: https://developers.google.com/google-ads/api/docs/release-notes
+  - type: Deprecation
+    url: https://developers.google.com/google-ads/api/docs/sunset-dates
+  - type: SDKs
+    url: https://developers.google.com/google-ads/api/docs/client-libs
+  - type: Support
+    url: https://developers.google.com/google-ads/api/support
+- aid: google-ads:google-ads-customers-campaignbudgets-api
+  name: Google Ads Customers.campaign Budgets API
+  description: >-
+    The customers.campaignBudgets API from Google Ads — 1 operation(s) for customers.campaignbudgets.
+  humanURL: https://developers.google.com/google-ads/scripts/docs/start
+  baseURL: https://googleads.googleapis.com
+  tags:
+  - customers.campaignBudgets
+  properties:
+  - type: OpenAPI
+    url: openapi/google-ads-customers-campaignbudgets-api-openapi.yml
+  - type: Discovery
+    url: discovery/google-ads-api-v25-discovery.json
+  - type: Protobuf
+    url: grpc/google-ads-google-ads-service.proto
+  - type: DataModel
+    url: data-model/google-ads-data-model.yml
+  - type: Documentation
+    url: https://developers.google.com/google-ads/api/docs/start
+  - type: APIReference
+    url: https://developers.google.com/google-ads/api/reference/rpc/latest/overview
+  - type: Authentication
+    url: https://developers.google.com/google-ads/api/docs/oauth/overview
+  - type: GettingStarted
+    url: https://developers.google.com/google-ads/api/docs/first-call/overview
+  - type: RateLimits
+    url: https://developers.google.com/google-ads/api/docs/best-practices/quotas
+  - type: ChangeLog
+    url: https://developers.google.com/google-ads/api/docs/release-notes
+  - type: Deprecation
+    url: https://developers.google.com/google-ads/api/docs/sunset-dates
+  - type: SDKs
+    url: https://developers.google.com/google-ads/api/docs/client-libs
+  - type: Support
+    url: https://developers.google.com/google-ads/api/support
+- aid: google-ads:google-ads-customers-campaignconversiongoals-api
+  name: Google Ads Customers.campaign Conversion Goals API
+  description: >-
+    The customers.campaignConversionGoals API from Google Ads — 1 operation(s) for customers.campaignconversiongoals.
+  humanURL: https://developers.google.com/google-ads/scripts/docs/start
+  baseURL: https://googleads.googleapis.com
+  tags:
+  - customers.campaignConversionGoals
+  properties:
+  - type: OpenAPI
+    url: openapi/google-ads-customers-campaignconversiongoals-api-openapi.yml
+  - type: Discovery
+    url: discovery/google-ads-api-v25-discovery.json
+  - type: Protobuf
+    url: grpc/google-ads-google-ads-service.proto
+  - type: DataModel
+    url: data-model/google-ads-data-model.yml
+  - type: Documentation
+    url: https://developers.google.com/google-ads/api/docs/start
+  - type: APIReference
+    url: https://developers.google.com/google-ads/api/reference/rpc/latest/overview
+  - type: Authentication
+    url: https://developers.google.com/google-ads/api/docs/oauth/overview
+  - type: GettingStarted
+    url: https://developers.google.com/google-ads/api/docs/first-call/overview
+  - type: RateLimits
+    url: https://developers.google.com/google-ads/api/docs/best-practices/quotas
+  - type: ChangeLog
+    url: https://developers.google.com/google-ads/api/docs/release-notes
+  - type: Deprecation
+    url: https://developers.google.com/google-ads/api/docs/sunset-dates
+  - type: SDKs
+    url: https://developers.google.com/google-ads/api/docs/client-libs
+  - type: Support
+    url: https://developers.google.com/google-ads/api/support
+- aid: google-ads:google-ads-customers-campaigncriteria-api
+  name: Google Ads Customers.campaign Criteria API
+  description: >-
+    The customers.campaignCriteria API from Google Ads — 1 operation(s) for customers.campaigncriteria.
+  humanURL: https://developers.google.com/google-ads/scripts/docs/start
+  baseURL: https://googleads.googleapis.com
+  tags:
+  - customers.campaignCriteria
+  properties:
+  - type: OpenAPI
+    url: openapi/google-ads-customers-campaigncriteria-api-openapi.yml
+  - type: Discovery
+    url: discovery/google-ads-api-v25-discovery.json
+  - type: Protobuf
+    url: grpc/google-ads-google-ads-service.proto
+  - type: DataModel
+    url: data-model/google-ads-data-model.yml
+  - type: Documentation
+    url: https://developers.google.com/google-ads/api/docs/start
+  - type: APIReference
+    url: https://developers.google.com/google-ads/api/reference/rpc/latest/overview
+  - type: Authentication
+    url: https://developers.google.com/google-ads/api/docs/oauth/overview
+  - type: GettingStarted
+    url: https://developers.google.com/google-ads/api/docs/first-call/overview
+  - type: RateLimits
+    url: https://developers.google.com/google-ads/api/docs/best-practices/quotas
+  - type: ChangeLog
+    url: https://developers.google.com/google-ads/api/docs/release-notes
+  - type: Deprecation
+    url: https://developers.google.com/google-ads/api/docs/sunset-dates
+  - type: SDKs
+    url: https://developers.google.com/google-ads/api/docs/client-libs
+  - type: Support
+    url: https://developers.google.com/google-ads/api/support
+- aid: google-ads:google-ads-customers-campaigncustomizers-api
+  name: Google Ads Customers.campaign Customizers API
+  description: >-
+    The customers.campaignCustomizers API from Google Ads — 1 operation(s) for customers.campaigncustomizers.
+  humanURL: https://developers.google.com/google-ads/scripts/docs/start
+  baseURL: https://googleads.googleapis.com
+  tags:
+  - customers.campaignCustomizers
+  properties:
+  - type: OpenAPI
+    url: openapi/google-ads-customers-campaigncustomizers-api-openapi.yml
+  - type: Discovery
+    url: discovery/google-ads-api-v25-discovery.json
+  - type: Protobuf
+    url: grpc/google-ads-google-ads-service.proto
+  - type: DataModel
+    url: data-model/google-ads-data-model.yml
+  - type: Documentation
+    url: https://developers.google.com/google-ads/api/docs/start
+  - type: APIReference
+    url: https://developers.google.com/google-ads/api/reference/rpc/latest/overview
+  - type: Authentication
+    url: https://developers.google.com/google-ads/api/docs/oauth/overview
+  - type: GettingStarted
+    url: https://developers.google.com/google-ads/api/docs/first-call/overview
+  - type: RateLimits
+    url: https://developers.google.com/google-ads/api/docs/best-practices/quotas
+  - type: ChangeLog
+    url: https://developers.google.com/google-ads/api/docs/release-notes
+  - type: Deprecation
+    url: https://developers.google.com/google-ads/api/docs/sunset-dates
+  - type: SDKs
+    url: https://developers.google.com/google-ads/api/docs/client-libs
+  - type: Support
+    url: https://developers.google.com/google-ads/api/support
+- aid: google-ads:google-ads-customers-campaigndrafts-api
+  name: Google Ads Customers.campaign Drafts API
+  description: >-
+    The customers.campaignDrafts API from Google Ads — 3 operation(s) for customers.campaigndrafts.
+  humanURL: https://developers.google.com/google-ads/scripts/docs/start
+  baseURL: https://googleads.googleapis.com
+  tags:
+  - customers.campaignDrafts
+  properties:
+  - type: OpenAPI
+    url: openapi/google-ads-customers-campaigndrafts-api-openapi.yml
+  - type: Discovery
+    url: discovery/google-ads-api-v25-discovery.json
+  - type: Protobuf
+    url: grpc/google-ads-google-ads-service.proto
+  - type: DataModel
+    url: data-model/google-ads-data-model.yml
+  - type: Documentation
+    url: https://developers.google.com/google-ads/api/docs/start
+  - type: APIReference
+    url: https://developers.google.com/google-ads/api/reference/rpc/latest/overview
+  - type: Authentication
+    url: https://developers.google.com/google-ads/api/docs/oauth/overview
+  - type: GettingStarted
+    url: https://developers.google.com/google-ads/api/docs/first-call/overview
+  - type: RateLimits
+    url: https://developers.google.com/google-ads/api/docs/best-practices/quotas
+  - type: ChangeLog
+    url: https://developers.google.com/google-ads/api/docs/release-notes
+  - type: Deprecation
+    url: https://developers.google.com/google-ads/api/docs/sunset-dates
+  - type: SDKs
+    url: https://developers.google.com/google-ads/api/docs/client-libs
+  - type: Support
+    url: https://developers.google.com/google-ads/api/support
+- aid: google-ads:google-ads-customers-campaigngoalconfigs-api
+  name: Google Ads Customers.Campaign Goal Configs API
+  description: >-
+    The customers.CampaignGoalConfigs API from Google Ads — 1 operation(s) for customers.campaigngoalconfigs.
+  humanURL: https://developers.google.com/google-ads/scripts/docs/start
+  baseURL: https://googleads.googleapis.com
+  tags:
+  - customers.CampaignGoalConfigs
+  properties:
+  - type: OpenAPI
+    url: openapi/google-ads-customers-campaigngoalconfigs-api-openapi.yml
+  - type: Discovery
+    url: discovery/google-ads-api-v25-discovery.json
+  - type: Protobuf
+    url: grpc/google-ads-google-ads-service.proto
+  - type: DataModel
+    url: data-model/google-ads-data-model.yml
+  - type: Documentation
+    url: https://developers.google.com/google-ads/api/docs/start
+  - type: APIReference
+    url: https://developers.google.com/google-ads/api/reference/rpc/latest/overview
+  - type: Authentication
+    url: https://developers.google.com/google-ads/api/docs/oauth/overview
+  - type: GettingStarted
+    url: https://developers.google.com/google-ads/api/docs/first-call/overview
+  - type: RateLimits
+    url: https://developers.google.com/google-ads/api/docs/best-practices/quotas
+  - type: ChangeLog
+    url: https://developers.google.com/google-ads/api/docs/release-notes
+  - type: Deprecation
+    url: https://developers.google.com/google-ads/api/docs/sunset-dates
+  - type: SDKs
+    url: https://developers.google.com/google-ads/api/docs/client-libs
+  - type: Support
+    url: https://developers.google.com/google-ads/api/support
+- aid: google-ads:google-ads-customers-campaigngroups-api
+  name: Google Ads Customers.campaign Groups API
+  description: >-
+    The customers.campaignGroups API from Google Ads — 1 operation(s) for customers.campaigngroups.
+  humanURL: https://developers.google.com/google-ads/scripts/docs/start
+  baseURL: https://googleads.googleapis.com
+  tags:
+  - customers.campaignGroups
+  properties:
+  - type: OpenAPI
+    url: openapi/google-ads-customers-campaigngroups-api-openapi.yml
+  - type: Discovery
+    url: discovery/google-ads-api-v25-discovery.json
+  - type: Protobuf
+    url: grpc/google-ads-google-ads-service.proto
+  - type: DataModel
+    url: data-model/google-ads-data-model.yml
+  - type: Documentation
+    url: https://developers.google.com/google-ads/api/docs/start
+  - type: APIReference
+    url: https://developers.google.com/google-ads/api/reference/rpc/latest/overview
+  - type: Authentication
+    url: https://developers.google.com/google-ads/api/docs/oauth/overview
+  - type: GettingStarted
+    url: https://developers.google.com/google-ads/api/docs/first-call/overview
+  - type: RateLimits
+    url: https://developers.google.com/google-ads/api/docs/best-practices/quotas
+  - type: ChangeLog
+    url: https://developers.google.com/google-ads/api/docs/release-notes
+  - type: Deprecation
+    url: https://developers.google.com/google-ads/api/docs/sunset-dates
+  - type: SDKs
+    url: https://developers.google.com/google-ads/api/docs/client-libs
+  - type: Support
+    url: https://developers.google.com/google-ads/api/support
+- aid: google-ads:google-ads-customers-campaignlabels-api
+  name: Google Ads Customers.campaign Labels API
+  description: >-
+    The customers.campaignLabels API from Google Ads — 1 operation(s) for customers.campaignlabels.
+  humanURL: https://developers.google.com/google-ads/scripts/docs/start
+  baseURL: https://googleads.googleapis.com
+  tags:
+  - customers.campaignLabels
+  properties:
+  - type: OpenAPI
+    url: openapi/google-ads-customers-campaignlabels-api-openapi.yml
+  - type: Discovery
+    url: discovery/google-ads-api-v25-discovery.json
+  - type: Protobuf
+    url: grpc/google-ads-google-ads-service.proto
+  - type: DataModel
+    url: data-model/google-ads-data-model.yml
+  - type: Documentation
+    url: https://developers.google.com/google-ads/api/docs/start
+  - type: APIReference
+    url: https://developers.google.com/google-ads/api/reference/rpc/latest/overview
+  - type: Authentication
+    url: https://developers.google.com/google-ads/api/docs/oauth/overview
+  - type: GettingStarted
+    url: https://developers.google.com/google-ads/api/docs/first-call/overview
+  - type: RateLimits
+    url: https://developers.google.com/google-ads/api/docs/best-practices/quotas
+  - type: ChangeLog
+    url: https://developers.google.com/google-ads/api/docs/release-notes
+  - type: Deprecation
+    url: https://developers.google.com/google-ads/api/docs/sunset-dates
+  - type: SDKs
+    url: https://developers.google.com/google-ads/api/docs/client-libs
+  - type: Support
+    url: https://developers.google.com/google-ads/api/support
+- aid: google-ads:google-ads-customers-campaigns-api
+  name: Google Ads Customers.campaigns API
+  description: The customers.campaigns API from Google Ads — 2 operation(s) for customers.campaigns.
+  humanURL: https://developers.google.com/google-ads/scripts/docs/start
+  baseURL: https://googleads.googleapis.com
+  tags:
+  - customers.campaigns
+  properties:
+  - type: OpenAPI
+    url: openapi/google-ads-customers-campaigns-api-openapi.yml
+  - type: Discovery
+    url: discovery/google-ads-api-v25-discovery.json
+  - type: Protobuf
+    url: grpc/google-ads-google-ads-service.proto
+  - type: DataModel
+    url: data-model/google-ads-data-model.yml
+  - type: Documentation
+    url: https://developers.google.com/google-ads/api/docs/start
+  - type: APIReference
+    url: https://developers.google.com/google-ads/api/reference/rpc/latest/overview
+  - type: Authentication
+    url: https://developers.google.com/google-ads/api/docs/oauth/overview
+  - type: GettingStarted
+    url: https://developers.google.com/google-ads/api/docs/first-call/overview
+  - type: RateLimits
+    url: https://developers.google.com/google-ads/api/docs/best-practices/quotas
+  - type: ChangeLog
+    url: https://developers.google.com/google-ads/api/docs/release-notes
+  - type: Deprecation
+    url: https://developers.google.com/google-ads/api/docs/sunset-dates
+  - type: SDKs
+    url: https://developers.google.com/google-ads/api/docs/client-libs
+  - type: Support
+    url: https://developers.google.com/google-ads/api/support
+- aid: google-ads:google-ads-customers-campaignsharedsets-api
+  name: Google Ads Customers.campaign Shared Sets API
+  description: >-
+    The customers.campaignSharedSets API from Google Ads — 1 operation(s) for customers.campaignsharedsets.
+  humanURL: https://developers.google.com/google-ads/scripts/docs/start
+  baseURL: https://googleads.googleapis.com
+  tags:
+  - customers.campaignSharedSets
+  properties:
+  - type: OpenAPI
+    url: openapi/google-ads-customers-campaignsharedsets-api-openapi.yml
+  - type: Discovery
+    url: discovery/google-ads-api-v25-discovery.json
+  - type: Protobuf
+    url: grpc/google-ads-google-ads-service.proto
+  - type: DataModel
+    url: data-model/google-ads-data-model.yml
+  - type: Documentation
+    url: https://developers.google.com/google-ads/api/docs/start
+  - type: APIReference
+    url: https://developers.google.com/google-ads/api/reference/rpc/latest/overview
+  - type: Authentication
+    url: https://developers.google.com/google-ads/api/docs/oauth/overview
+  - type: GettingStarted
+    url: https://developers.google.com/google-ads/api/docs/first-call/overview
+  - type: RateLimits
+    url: https://developers.google.com/google-ads/api/docs/best-practices/quotas
+  - type: ChangeLog
+    url: https://developers.google.com/google-ads/api/docs/release-notes
+  - type: Deprecation
+    url: https://developers.google.com/google-ads/api/docs/sunset-dates
+  - type: SDKs
+    url: https://developers.google.com/google-ads/api/docs/client-libs
+  - type: Support
+    url: https://developers.google.com/google-ads/api/support
+- aid: google-ads:google-ads-customers-conversionactions-api
+  name: Google Ads Customers.conversion Actions API
+  description: >-
+    The customers.conversionActions API from Google Ads — 1 operation(s) for customers.conversionactions.
+  humanURL: https://developers.google.com/google-ads/scripts/docs/start
+  baseURL: https://googleads.googleapis.com
+  tags:
+  - customers.conversionActions
+  properties:
+  - type: OpenAPI
+    url: openapi/google-ads-customers-conversionactions-api-openapi.yml
+  - type: Discovery
+    url: discovery/google-ads-api-v25-discovery.json
+  - type: Protobuf
+    url: grpc/google-ads-google-ads-service.proto
+  - type: DataModel
+    url: data-model/google-ads-data-model.yml
+  - type: Documentation
+    url: https://developers.google.com/google-ads/api/docs/start
+  - type: APIReference
+    url: https://developers.google.com/google-ads/api/reference/rpc/latest/overview
+  - type: Authentication
+    url: https://developers.google.com/google-ads/api/docs/oauth/overview
+  - type: GettingStarted
+    url: https://developers.google.com/google-ads/api/docs/first-call/overview
+  - type: RateLimits
+    url: https://developers.google.com/google-ads/api/docs/best-practices/quotas
+  - type: ChangeLog
+    url: https://developers.google.com/google-ads/api/docs/release-notes
+  - type: Deprecation
+    url: https://developers.google.com/google-ads/api/docs/sunset-dates
+  - type: SDKs
+    url: https://developers.google.com/google-ads/api/docs/client-libs
+  - type: Support
+    url: https://developers.google.com/google-ads/api/support
+- aid: google-ads:google-ads-customers-conversioncustomvariables-api
+  name: Google Ads Customers.conversion Custom Variables API
+  description: >-
+    The customers.conversionCustomVariables API from Google Ads — 1 operation(s) for customers.conversioncustomvariables.
+  humanURL: https://developers.google.com/google-ads/scripts/docs/start
+  baseURL: https://googleads.googleapis.com
+  tags:
+  - customers.conversionCustomVariables
+  properties:
+  - type: OpenAPI
+    url: openapi/google-ads-customers-conversioncustomvariables-api-openapi.yml
+  - type: Discovery
+    url: discovery/google-ads-api-v25-discovery.json
+  - type: Protobuf
+    url: grpc/google-ads-google-ads-service.proto
+  - type: DataModel
+    url: data-model/google-ads-data-model.yml
+  - type: Documentation
+    url: https://developers.google.com/google-ads/api/docs/start
+  - type: APIReference
+    url: https://developers.google.com/google-ads/api/reference/rpc/latest/overview
+  - type: Authentication
+    url: https://developers.google.com/google-ads/api/docs/oauth/overview
+  - type: GettingStarted
+    url: https://developers.google.com/google-ads/api/docs/first-call/overview
+  - type: RateLimits
+    url: https://developers.google.com/google-ads/api/docs/best-practices/quotas
+  - type: ChangeLog
+    url: https://developers.google.com/google-ads/api/docs/release-notes
+  - type: Deprecation
+    url: https://developers.google.com/google-ads/api/docs/sunset-dates
+  - type: SDKs
+    url: https://developers.google.com/google-ads/api/docs/client-libs
+  - type: Support
+    url: https://developers.google.com/google-ads/api/support
+- aid: google-ads:google-ads-customers-conversiongoalcampaignconfigs-api
+  name: Google Ads Customers.conversion Goal Campaign Configs API
+  description: >-
+    The customers.conversionGoalCampaignConfigs API from Google Ads — 1 operation(s) for customers.conversiongoalcampaignconfigs.
+  humanURL: https://developers.google.com/google-ads/scripts/docs/start
+  baseURL: https://googleads.googleapis.com
+  tags:
+  - customers.conversionGoalCampaignConfigs
+  properties:
+  - type: OpenAPI
+    url: openapi/google-ads-customers-conversiongoalcampaignconfigs-api-openapi.yml
+  - type: Discovery
+    url: discovery/google-ads-api-v25-discovery.json
+  - type: Protobuf
+    url: grpc/google-ads-google-ads-service.proto
+  - type: DataModel
+    url: data-model/google-ads-data-model.yml
+  - type: Documentation
+    url: https://developers.google.com/google-ads/api/docs/start
+  - type: APIReference
+    url: https://developers.google.com/google-ads/api/reference/rpc/latest/overview
+  - type: Authentication
+    url: https://developers.google.com/google-ads/api/docs/oauth/overview
+  - type: GettingStarted
+    url: https://developers.google.com/google-ads/api/docs/first-call/overview
+  - type: RateLimits
+    url: https://developers.google.com/google-ads/api/docs/best-practices/quotas
+  - type: ChangeLog
+    url: https://developers.google.com/google-ads/api/docs/release-notes
+  - type: Deprecation
+    url: https://developers.google.com/google-ads/api/docs/sunset-dates
+  - type: SDKs
+    url: https://developers.google.com/google-ads/api/docs/client-libs
+  - type: Support
+    url: https://developers.google.com/google-ads/api/support
+- aid: google-ads:google-ads-customers-conversionvaluerules-api
+  name: Google Ads Customers.conversion Value Rules API
+  description: >-
+    The customers.conversionValueRules API from Google Ads — 1 operation(s) for customers.conversionvaluerules.
+  humanURL: https://developers.google.com/google-ads/scripts/docs/start
+  baseURL: https://googleads.googleapis.com
+  tags:
+  - customers.conversionValueRules
+  properties:
+  - type: OpenAPI
+    url: openapi/google-ads-customers-conversionvaluerules-api-openapi.yml
+  - type: Discovery
+    url: discovery/google-ads-api-v25-discovery.json
+  - type: Protobuf
+    url: grpc/google-ads-google-ads-service.proto
+  - type: DataModel
+    url: data-model/google-ads-data-model.yml
+  - type: Documentation
+    url: https://developers.google.com/google-ads/api/docs/start
+  - type: APIReference
+    url: https://developers.google.com/google-ads/api/reference/rpc/latest/overview
+  - type: Authentication
+    url: https://developers.google.com/google-ads/api/docs/oauth/overview
+  - type: GettingStarted
+    url: https://developers.google.com/google-ads/api/docs/first-call/overview
+  - type: RateLimits
+    url: https://developers.google.com/google-ads/api/docs/best-practices/quotas
+  - type: ChangeLog
+    url: https://developers.google.com/google-ads/api/docs/release-notes
+  - type: Deprecation
+    url: https://developers.google.com/google-ads/api/docs/sunset-dates
+  - type: SDKs
+    url: https://developers.google.com/google-ads/api/docs/client-libs
+  - type: Support
+    url: https://developers.google.com/google-ads/api/support
+- aid: google-ads:google-ads-customers-conversionvaluerulesets-api
+  name: Google Ads Customers.conversion Value Rule Sets API
+  description: >-
+    The customers.conversionValueRuleSets API from Google Ads — 1 operation(s) for customers.conversionvaluerulesets.
+  humanURL: https://developers.google.com/google-ads/scripts/docs/start
+  baseURL: https://googleads.googleapis.com
+  tags:
+  - customers.conversionValueRuleSets
+  properties:
+  - type: OpenAPI
+    url: openapi/google-ads-customers-conversionvaluerulesets-api-openapi.yml
+  - type: Discovery
+    url: discovery/google-ads-api-v25-discovery.json
+  - type: Protobuf
+    url: grpc/google-ads-google-ads-service.proto
+  - type: DataModel
+    url: data-model/google-ads-data-model.yml
+  - type: Documentation
+    url: https://developers.google.com/google-ads/api/docs/start
+  - type: APIReference
+    url: https://developers.google.com/google-ads/api/reference/rpc/latest/overview
+  - type: Authentication
+    url: https://developers.google.com/google-ads/api/docs/oauth/overview
+  - type: GettingStarted
+    url: https://developers.google.com/google-ads/api/docs/first-call/overview
+  - type: RateLimits
+    url: https://developers.google.com/google-ads/api/docs/best-practices/quotas
+  - type: ChangeLog
+    url: https://developers.google.com/google-ads/api/docs/release-notes
+  - type: Deprecation
+    url: https://developers.google.com/google-ads/api/docs/sunset-dates
+  - type: SDKs
+    url: https://developers.google.com/google-ads/api/docs/client-libs
+  - type: Support
+    url: https://developers.google.com/google-ads/api/support
+- aid: google-ads:google-ads-customers-customaudiences-api
+  name: Google Ads Customers.custom Audiences API
+  description: >-
+    The customers.customAudiences API from Google Ads — 1 operation(s) for customers.customaudiences.
+  humanURL: https://developers.google.com/google-ads/scripts/docs/start
+  baseURL: https://googleads.googleapis.com
+  tags:
+  - customers.customAudiences
+  properties:
+  - type: OpenAPI
+    url: openapi/google-ads-customers-customaudiences-api-openapi.yml
+  - type: Discovery
+    url: discovery/google-ads-api-v25-discovery.json
+  - type: Protobuf
+    url: grpc/google-ads-google-ads-service.proto
+  - type: DataModel
+    url: data-model/google-ads-data-model.yml
+  - type: Documentation
+    url: https://developers.google.com/google-ads/api/docs/start
+  - type: APIReference
+    url: https://developers.google.com/google-ads/api/reference/rpc/latest/overview
+  - type: Authentication
+    url: https://developers.google.com/google-ads/api/docs/oauth/overview
+  - type: GettingStarted
+    url: https://developers.google.com/google-ads/api/docs/first-call/overview
+  - type: RateLimits
+    url: https://developers.google.com/google-ads/api/docs/best-practices/quotas
+  - type: ChangeLog
+    url: https://developers.google.com/google-ads/api/docs/release-notes
+  - type: Deprecation
+    url: https://developers.google.com/google-ads/api/docs/sunset-dates
+  - type: SDKs
+    url: https://developers.google.com/google-ads/api/docs/client-libs
+  - type: Support
+    url: https://developers.google.com/google-ads/api/support
+- aid: google-ads:google-ads-customers-customconversiongoals-api
+  name: Google Ads Customers.custom Conversion Goals API
+  description: >-
+    The customers.customConversionGoals API from Google Ads — 1 operation(s) for customers.customconversiongoals.
+  humanURL: https://developers.google.com/google-ads/scripts/docs/start
+  baseURL: https://googleads.googleapis.com
+  tags:
+  - customers.customConversionGoals
+  properties:
+  - type: OpenAPI
+    url: openapi/google-ads-customers-customconversiongoals-api-openapi.yml
+  - type: Discovery
+    url: discovery/google-ads-api-v25-discovery.json
+  - type: Protobuf
+    url: grpc/google-ads-google-ads-service.proto
+  - type: DataModel
+    url: data-model/google-ads-data-model.yml
+  - type: Documentation
+    url: https://developers.google.com/google-ads/api/docs/start
+  - type: APIReference
+    url: https://developers.google.com/google-ads/api/reference/rpc/latest/overview
+  - type: Authentication
+    url: https://developers.google.com/google-ads/api/docs/oauth/overview
+  - type: GettingStarted
+    url: https://developers.google.com/google-ads/api/docs/first-call/overview
+  - type: RateLimits
+    url: https://developers.google.com/google-ads/api/docs/best-practices/quotas
+  - type: ChangeLog
+    url: https://developers.google.com/google-ads/api/docs/release-notes
+  - type: Deprecation
+    url: https://developers.google.com/google-ads/api/docs/sunset-dates
+  - type: SDKs
+    url: https://developers.google.com/google-ads/api/docs/client-libs
+  - type: Support
+    url: https://developers.google.com/google-ads/api/support
+- aid: google-ads:google-ads-customers-customerassets-api
+  name: Google Ads Customers.customer Assets API
+  description: >-
+    The customers.customerAssets API from Google Ads — 1 operation(s) for customers.customerassets.
+  humanURL: https://developers.google.com/google-ads/scripts/docs/start
+  baseURL: https://googleads.googleapis.com
+  tags:
+  - customers.customerAssets
+  properties:
+  - type: OpenAPI
+    url: openapi/google-ads-customers-customerassets-api-openapi.yml
+  - type: Discovery
+    url: discovery/google-ads-api-v25-discovery.json
+  - type: Protobuf
+    url: grpc/google-ads-google-ads-service.proto
+  - type: DataModel
+    url: data-model/google-ads-data-model.yml
+  - type: Documentation
+    url: https://developers.google.com/google-ads/api/docs/start
+  - type: APIReference
+    url: https://developers.google.com/google-ads/api/reference/rpc/latest/overview
+  - type: Authentication
+    url: https://developers.google.com/google-ads/api/docs/oauth/overview
+  - type: GettingStarted
+    url: https://developers.google.com/google-ads/api/docs/first-call/overview
+  - type: RateLimits
+    url: https://developers.google.com/google-ads/api/docs/best-practices/quotas
+  - type: ChangeLog
+    url: https://developers.google.com/google-ads/api/docs/release-notes
+  - type: Deprecation
+    url: https://developers.google.com/google-ads/api/docs/sunset-dates
+  - type: SDKs
+    url: https://developers.google.com/google-ads/api/docs/client-libs
+  - type: Support
+    url: https://developers.google.com/google-ads/api/support
+- aid: google-ads:google-ads-customers-customerassetsets-api
+  name: Google Ads Customers.customer Asset Sets API
+  description: >-
+    The customers.customerAssetSets API from Google Ads — 1 operation(s) for customers.customerassetsets.
+  humanURL: https://developers.google.com/google-ads/scripts/docs/start
+  baseURL: https://googleads.googleapis.com
+  tags:
+  - customers.customerAssetSets
+  properties:
+  - type: OpenAPI
+    url: openapi/google-ads-customers-customerassetsets-api-openapi.yml
+  - type: Discovery
+    url: discovery/google-ads-api-v25-discovery.json
+  - type: Protobuf
+    url: grpc/google-ads-google-ads-service.proto
+  - type: DataModel
+    url: data-model/google-ads-data-model.yml
+  - type: Documentation
+    url: https://developers.google.com/google-ads/api/docs/start
+  - type: APIReference
+    url: https://developers.google.com/google-ads/api/reference/rpc/latest/overview
+  - type: Authentication
+    url: https://developers.google.com/google-ads/api/docs/oauth/overview
+  - type: GettingStarted
+    url: https://developers.google.com/google-ads/api/docs/first-call/overview
+  - type: RateLimits
+    url: https://developers.google.com/google-ads/api/docs/best-practices/quotas
+  - type: ChangeLog
+    url: https://developers.google.com/google-ads/api/docs/release-notes
+  - type: Deprecation
+    url: https://developers.google.com/google-ads/api/docs/sunset-dates
+  - type: SDKs
+    url: https://developers.google.com/google-ads/api/docs/client-libs
+  - type: Support
+    url: https://developers.google.com/google-ads/api/support
+- aid: google-ads:google-ads-customers-customerclientlinks-api
+  name: Google Ads Customers.customer Client Links API
+  description: >-
+    The customers.customerClientLinks API from Google Ads — 1 operation(s) for customers.customerclientlinks.
+  humanURL: https://developers.google.com/google-ads/scripts/docs/start
+  baseURL: https://googleads.googleapis.com
+  tags:
+  - customers.customerClientLinks
+  properties:
+  - type: OpenAPI
+    url: openapi/google-ads-customers-customerclientlinks-api-openapi.yml
+  - type: Discovery
+    url: discovery/google-ads-api-v25-discovery.json
+  - type: Protobuf
+    url: grpc/google-ads-google-ads-service.proto
+  - type: DataModel
+    url: data-model/google-ads-data-model.yml
+  - type: Documentation
+    url: https://developers.google.com/google-ads/api/docs/start
+  - type: APIReference
+    url: https://developers.google.com/google-ads/api/reference/rpc/latest/overview
+  - type: Authentication
+    url: https://developers.google.com/google-ads/api/docs/oauth/overview
+  - type: GettingStarted
+    url: https://developers.google.com/google-ads/api/docs/first-call/overview
+  - type: RateLimits
+    url: https://developers.google.com/google-ads/api/docs/best-practices/quotas
+  - type: ChangeLog
+    url: https://developers.google.com/google-ads/api/docs/release-notes
+  - type: Deprecation
+    url: https://developers.google.com/google-ads/api/docs/sunset-dates
+  - type: SDKs
+    url: https://developers.google.com/google-ads/api/docs/client-libs
+  - type: Support
+    url: https://developers.google.com/google-ads/api/support
+- aid: google-ads:google-ads-customers-customerconversiongoals-api
+  name: Google Ads Customers.customer Conversion Goals API
+  description: >-
+    The customers.customerConversionGoals API from Google Ads — 1 operation(s) for customers.customerconversiongoals.
+  humanURL: https://developers.google.com/google-ads/scripts/docs/start
+  baseURL: https://googleads.googleapis.com
+  tags:
+  - customers.customerConversionGoals
+  properties:
+  - type: OpenAPI
+    url: openapi/google-ads-customers-customerconversiongoals-api-openapi.yml
+  - type: Discovery
+    url: discovery/google-ads-api-v25-discovery.json
+  - type: Protobuf
+    url: grpc/google-ads-google-ads-service.proto
+  - type: DataModel
+    url: data-model/google-ads-data-model.yml
+  - type: Documentation
+    url: https://developers.google.com/google-ads/api/docs/start
+  - type: APIReference
+    url: https://developers.google.com/google-ads/api/reference/rpc/latest/overview
+  - type: Authentication
+    url: https://developers.google.com/google-ads/api/docs/oauth/overview
+  - type: GettingStarted
+    url: https://developers.google.com/google-ads/api/docs/first-call/overview
+  - type: RateLimits
+    url: https://developers.google.com/google-ads/api/docs/best-practices/quotas
+  - type: ChangeLog
+    url: https://developers.google.com/google-ads/api/docs/release-notes
+  - type: Deprecation
+    url: https://developers.google.com/google-ads/api/docs/sunset-dates
+  - type: SDKs
+    url: https://developers.google.com/google-ads/api/docs/client-libs
+  - type: Support
+    url: https://developers.google.com/google-ads/api/support
+- aid: google-ads:google-ads-customers-customercustomizers-api
+  name: Google Ads Customers.Customer Customizers API
+  description: >-
+    The customers.CustomerCustomizers API from Google Ads — 1 operation(s) for customers.customercustomizers.
+  humanURL: https://developers.google.com/google-ads/scripts/docs/start
+  baseURL: https://googleads.googleapis.com
+  tags:
+  - customers.CustomerCustomizers
+  properties:
+  - type: OpenAPI
+    url: openapi/google-ads-customers-customercustomizers-api-openapi.yml
+  - type: Discovery
+    url: discovery/google-ads-api-v25-discovery.json
+  - type: Protobuf
+    url: grpc/google-ads-google-ads-service.proto
+  - type: DataModel
+    url: data-model/google-ads-data-model.yml
+  - type: Documentation
+    url: https://developers.google.com/google-ads/api/docs/start
+  - type: APIReference
+    url: https://developers.google.com/google-ads/api/reference/rpc/latest/overview
+  - type: Authentication
+    url: https://developers.google.com/google-ads/api/docs/oauth/overview
+  - type: GettingStarted
+    url: https://developers.google.com/google-ads/api/docs/first-call/overview
+  - type: RateLimits
+    url: https://developers.google.com/google-ads/api/docs/best-practices/quotas
+  - type: ChangeLog
+    url: https://developers.google.com/google-ads/api/docs/release-notes
+  - type: Deprecation
+    url: https://developers.google.com/google-ads/api/docs/sunset-dates
+  - type: SDKs
+    url: https://developers.google.com/google-ads/api/docs/client-libs
+  - type: Support
+    url: https://developers.google.com/google-ads/api/support
+- aid: google-ads:google-ads-customers-customerlabels-api
+  name: Google Ads Customers.customer Labels API
+  description: >-
+    The customers.customerLabels API from Google Ads — 1 operation(s) for customers.customerlabels.
+  humanURL: https://developers.google.com/google-ads/scripts/docs/start
+  baseURL: https://googleads.googleapis.com
+  tags:
+  - customers.customerLabels
+  properties:
+  - type: OpenAPI
+    url: openapi/google-ads-customers-customerlabels-api-openapi.yml
+  - type: Discovery
+    url: discovery/google-ads-api-v25-discovery.json
+  - type: Protobuf
+    url: grpc/google-ads-google-ads-service.proto
+  - type: DataModel
+    url: data-model/google-ads-data-model.yml
+  - type: Documentation
+    url: https://developers.google.com/google-ads/api/docs/start
+  - type: APIReference
+    url: https://developers.google.com/google-ads/api/reference/rpc/latest/overview
+  - type: Authentication
+    url: https://developers.google.com/google-ads/api/docs/oauth/overview
+  - type: GettingStarted
+    url: https://developers.google.com/google-ads/api/docs/first-call/overview
+  - type: RateLimits
+    url: https://developers.google.com/google-ads/api/docs/best-practices/quotas
+  - type: ChangeLog
+    url: https://developers.google.com/google-ads/api/docs/release-notes
+  - type: Deprecation
+    url: https://developers.google.com/google-ads/api/docs/sunset-dates
+  - type: SDKs
+    url: https://developers.google.com/google-ads/api/docs/client-libs
+  - type: Support
+    url: https://developers.google.com/google-ads/api/support
+- aid: google-ads:google-ads-customers-customermanagerlinks-api
+  name: Google Ads Customers.customer Manager Links API
+  description: >-
+    The customers.customerManagerLinks API from Google Ads — 2 operation(s) for customers.customermanagerlinks.
+  humanURL: https://developers.google.com/google-ads/scripts/docs/start
+  baseURL: https://googleads.googleapis.com
+  tags:
+  - customers.customerManagerLinks
+  properties:
+  - type: OpenAPI
+    url: openapi/google-ads-customers-customermanagerlinks-api-openapi.yml
+  - type: Discovery
+    url: discovery/google-ads-api-v25-discovery.json
+  - type: Protobuf
+    url: grpc/google-ads-google-ads-service.proto
+  - type: DataModel
+    url: data-model/google-ads-data-model.yml
+  - type: Documentation
+    url: https://developers.google.com/google-ads/api/docs/start
+  - type: APIReference
+    url: https://developers.google.com/google-ads/api/reference/rpc/latest/overview
+  - type: Authentication
+    url: https://developers.google.com/google-ads/api/docs/oauth/overview
+  - type: GettingStarted
+    url: https://developers.google.com/google-ads/api/docs/first-call/overview
+  - type: RateLimits
+    url: https://developers.google.com/google-ads/api/docs/best-practices/quotas
+  - type: ChangeLog
+    url: https://developers.google.com/google-ads/api/docs/release-notes
+  - type: Deprecation
+    url: https://developers.google.com/google-ads/api/docs/sunset-dates
+  - type: SDKs
+    url: https://developers.google.com/google-ads/api/docs/client-libs
+  - type: Support
+    url: https://developers.google.com/google-ads/api/support
+- aid: google-ads:google-ads-customers-customernegativecriteria-api
+  name: Google Ads Customers.customer Negative Criteria API
+  description: >-
+    The customers.customerNegativeCriteria API from Google Ads — 1 operation(s) for customers.customernegativecriteria.
+  humanURL: https://developers.google.com/google-ads/scripts/docs/start
+  baseURL: https://googleads.googleapis.com
+  tags:
+  - customers.customerNegativeCriteria
+  properties:
+  - type: OpenAPI
+    url: openapi/google-ads-customers-customernegativecriteria-api-openapi.yml
+  - type: Discovery
+    url: discovery/google-ads-api-v25-discovery.json
+  - type: Protobuf
+    url: grpc/google-ads-google-ads-service.proto
+  - type: DataModel
+    url: data-model/google-ads-data-model.yml
+  - type: Documentation
+    url: https://developers.google.com/google-ads/api/docs/start
+  - type: APIReference
+    url: https://developers.google.com/google-ads/api/reference/rpc/latest/overview
+  - type: Authentication
+    url: https://developers.google.com/google-ads/api/docs/oauth/overview
+  - type: GettingStarted
+    url: https://developers.google.com/google-ads/api/docs/first-call/overview
+  - type: RateLimits
+    url: https://developers.google.com/google-ads/api/docs/best-practices/quotas
+  - type: ChangeLog
+    url: https://developers.google.com/google-ads/api/docs/release-notes
+  - type: Deprecation
+    url: https://developers.google.com/google-ads/api/docs/sunset-dates
+  - type: SDKs
+    url: https://developers.google.com/google-ads/api/docs/client-libs
+  - type: Support
+    url: https://developers.google.com/google-ads/api/support
+- aid: google-ads:google-ads-customers-customerskadnetworkconversionvalueschemas-api
+  name: Google Ads Customers.customer Sk Ad Network Conversion Value Schemas API
+  description: >-
+    The customers.customerSkAdNetworkConversionValueSchemas API from Google Ads — 1 operation(s) for customers.customerskadnetworkconversionvalueschemas.
+  humanURL: https://developers.google.com/google-ads/scripts/docs/start
+  baseURL: https://googleads.googleapis.com
+  tags:
+  - customers.customerSkAdNetworkConversionValueSchemas
+  properties:
+  - type: OpenAPI
+    url: openapi/google-ads-customers-customerskadnetworkconversionvalueschemas-api-openapi.yml
+  - type: Discovery
+    url: discovery/google-ads-api-v25-discovery.json
+  - type: Protobuf
+    url: grpc/google-ads-google-ads-service.proto
+  - type: DataModel
+    url: data-model/google-ads-data-model.yml
+  - type: Documentation
+    url: https://developers.google.com/google-ads/api/docs/start
+  - type: APIReference
+    url: https://developers.google.com/google-ads/api/reference/rpc/latest/overview
+  - type: Authentication
+    url: https://developers.google.com/google-ads/api/docs/oauth/overview
+  - type: GettingStarted
+    url: https://developers.google.com/google-ads/api/docs/first-call/overview
+  - type: RateLimits
+    url: https://developers.google.com/google-ads/api/docs/best-practices/quotas
+  - type: ChangeLog
+    url: https://developers.google.com/google-ads/api/docs/release-notes
+  - type: Deprecation
+    url: https://developers.google.com/google-ads/api/docs/sunset-dates
+  - type: SDKs
+    url: https://developers.google.com/google-ads/api/docs/client-libs
+  - type: Support
+    url: https://developers.google.com/google-ads/api/support
+- aid: google-ads:google-ads-customers-customeruseraccesses-api
+  name: Google Ads Customers.customer User Accesses API
+  description: >-
+    The customers.customerUserAccesses API from Google Ads — 1 operation(s) for customers.customeruseraccesses.
+  humanURL: https://developers.google.com/google-ads/scripts/docs/start
+  baseURL: https://googleads.googleapis.com
+  tags:
+  - customers.customerUserAccesses
+  properties:
+  - type: OpenAPI
+    url: openapi/google-ads-customers-customeruseraccesses-api-openapi.yml
+  - type: Discovery
+    url: discovery/google-ads-api-v25-discovery.json
+  - type: Protobuf
+    url: grpc/google-ads-google-ads-service.proto
+  - type: DataModel
+    url: data-model/google-ads-data-model.yml
+  - type: Documentation
+    url: https://developers.google.com/google-ads/api/docs/start
+  - type: APIReference
+    url: https://developers.google.com/google-ads/api/reference/rpc/latest/overview
+  - type: Authentication
+    url: https://developers.google.com/google-ads/api/docs/oauth/overview
+  - type: GettingStarted
+    url: https://developers.google.com/google-ads/api/docs/first-call/overview
+  - type: RateLimits
+    url: https://developers.google.com/google-ads/api/docs/best-practices/quotas
+  - type: ChangeLog
+    url: https://developers.google.com/google-ads/api/docs/release-notes
+  - type: Deprecation
+    url: https://developers.google.com/google-ads/api/docs/sunset-dates
+  - type: SDKs
+    url: https://developers.google.com/google-ads/api/docs/client-libs
+  - type: Support
+    url: https://developers.google.com/google-ads/api/support
+- aid: google-ads:google-ads-customers-customeruseraccessinvitations-api
+  name: Google Ads Customers.customer User Access Invitations API
+  description: >-
+    The customers.customerUserAccessInvitations API from Google Ads — 1 operation(s) for customers.customeruseraccessinvitations.
+  humanURL: https://developers.google.com/google-ads/scripts/docs/start
+  baseURL: https://googleads.googleapis.com
+  tags:
+  - customers.customerUserAccessInvitations
+  properties:
+  - type: OpenAPI
+    url: openapi/google-ads-customers-customeruseraccessinvitations-api-openapi.yml
+  - type: Discovery
+    url: discovery/google-ads-api-v25-discovery.json
+  - type: Protobuf
+    url: grpc/google-ads-google-ads-service.proto
+  - type: DataModel
+    url: data-model/google-ads-data-model.yml
+  - type: Documentation
+    url: https://developers.google.com/google-ads/api/docs/start
+  - type: APIReference
+    url: https://developers.google.com/google-ads/api/reference/rpc/latest/overview
+  - type: Authentication
+    url: https://developers.google.com/google-ads/api/docs/oauth/overview
+  - type: GettingStarted
+    url: https://developers.google.com/google-ads/api/docs/first-call/overview
+  - type: RateLimits
+    url: https://developers.google.com/google-ads/api/docs/best-practices/quotas
+  - type: ChangeLog
+    url: https://developers.google.com/google-ads/api/docs/release-notes
+  - type: Deprecation
+    url: https://developers.google.com/google-ads/api/docs/sunset-dates
+  - type: SDKs
+    url: https://developers.google.com/google-ads/api/docs/client-libs
+  - type: Support
+    url: https://developers.google.com/google-ads/api/support
+- aid: google-ads:google-ads-customers-custominterests-api
+  name: Google Ads Customers.custom Interests API
+  description: >-
+    The customers.customInterests API from Google Ads — 1 operation(s) for customers.custominterests.
+  humanURL: https://developers.google.com/google-ads/scripts/docs/start
+  baseURL: https://googleads.googleapis.com
+  tags:
+  - customers.customInterests
+  properties:
+  - type: OpenAPI
+    url: openapi/google-ads-customers-custominterests-api-openapi.yml
+  - type: Discovery
+    url: discovery/google-ads-api-v25-discovery.json
+  - type: Protobuf
+    url: grpc/google-ads-google-ads-service.proto
+  - type: DataModel
+    url: data-model/google-ads-data-model.yml
+  - type: Documentation
+    url: https://developers.google.com/google-ads/api/docs/start
+  - type: APIReference
+    url: https://developers.google.com/google-ads/api/reference/rpc/latest/overview
+  - type: Authentication
+    url: https://developers.google.com/google-ads/api/docs/oauth/overview
+  - type: GettingStarted
+    url: https://developers.google.com/google-ads/api/docs/first-call/overview
+  - type: RateLimits
+    url: https://developers.google.com/google-ads/api/docs/best-practices/quotas
+  - type: ChangeLog
+    url: https://developers.google.com/google-ads/api/docs/release-notes
+  - type: Deprecation
+    url: https://developers.google.com/google-ads/api/docs/sunset-dates
+  - type: SDKs
+    url: https://developers.google.com/google-ads/api/docs/client-libs
+  - type: Support
+    url: https://developers.google.com/google-ads/api/support
+- aid: google-ads:google-ads-customers-customizerattributes-api
+  name: Google Ads Customers.customizer Attributes API
+  description: >-
+    The customers.customizerAttributes API from Google Ads — 1 operation(s) for customers.customizerattributes.
+  humanURL: https://developers.google.com/google-ads/scripts/docs/start
+  baseURL: https://googleads.googleapis.com
+  tags:
+  - customers.customizerAttributes
+  properties:
+  - type: OpenAPI
+    url: openapi/google-ads-customers-customizerattributes-api-openapi.yml
+  - type: Discovery
+    url: discovery/google-ads-api-v25-discovery.json
+  - type: Protobuf
+    url: grpc/google-ads-google-ads-service.proto
+  - type: DataModel
+    url: data-model/google-ads-data-model.yml
+  - type: Documentation
+    url: https://developers.google.com/google-ads/api/docs/start
+  - type: APIReference
+    url: https://developers.google.com/google-ads/api/reference/rpc/latest/overview
+  - type: Authentication
+    url: https://developers.google.com/google-ads/api/docs/oauth/overview
+  - type: GettingStarted
+    url: https://developers.google.com/google-ads/api/docs/first-call/overview
+  - type: RateLimits
+    url: https://developers.google.com/google-ads/api/docs/best-practices/quotas
+  - type: ChangeLog
+    url: https://developers.google.com/google-ads/api/docs/release-notes
+  - type: Deprecation
+    url: https://developers.google.com/google-ads/api/docs/sunset-dates
+  - type: SDKs
+    url: https://developers.google.com/google-ads/api/docs/client-libs
+  - type: Support
+    url: https://developers.google.com/google-ads/api/support
+- aid: google-ads:google-ads-customers-datalinks-api
+  name: Google Ads Customers.data Links API
+  description: The customers.dataLinks API from Google Ads — 3 operation(s) for customers.datalinks.
+  humanURL: https://developers.google.com/google-ads/scripts/docs/start
+  baseURL: https://googleads.googleapis.com
+  tags:
+  - customers.dataLinks
+  properties:
+  - type: OpenAPI
+    url: openapi/google-ads-customers-datalinks-api-openapi.yml
+  - type: Discovery
+    url: discovery/google-ads-api-v25-discovery.json
+  - type: Protobuf
+    url: grpc/google-ads-google-ads-service.proto
+  - type: DataModel
+    url: data-model/google-ads-data-model.yml
+  - type: Documentation
+    url: https://developers.google.com/google-ads/api/docs/start
+  - type: APIReference
+    url: https://developers.google.com/google-ads/api/reference/rpc/latest/overview
+  - type: Authentication
+    url: https://developers.google.com/google-ads/api/docs/oauth/overview
+  - type: GettingStarted
+    url: https://developers.google.com/google-ads/api/docs/first-call/overview
+  - type: RateLimits
+    url: https://developers.google.com/google-ads/api/docs/best-practices/quotas
+  - type: ChangeLog
+    url: https://developers.google.com/google-ads/api/docs/release-notes
+  - type: Deprecation
+    url: https://developers.google.com/google-ads/api/docs/sunset-dates
+  - type: SDKs
+    url: https://developers.google.com/google-ads/api/docs/client-libs
+  - type: Support
+    url: https://developers.google.com/google-ads/api/support
+- aid: google-ads:google-ads-customers-experimentarms-api
+  name: Google Ads Customers.experiment Arms API
+  description: >-
+    The customers.experimentArms API from Google Ads — 1 operation(s) for customers.experimentarms.
+  humanURL: https://developers.google.com/google-ads/scripts/docs/start
+  baseURL: https://googleads.googleapis.com
+  tags:
+  - customers.experimentArms
+  properties:
+  - type: OpenAPI
+    url: openapi/google-ads-customers-experimentarms-api-openapi.yml
+  - type: Discovery
+    url: discovery/google-ads-api-v25-discovery.json
+  - type: Protobuf
+    url: grpc/google-ads-google-ads-service.proto
+  - type: DataModel
+    url: data-model/google-ads-data-model.yml
+  - type: Documentation
+    url: https://developers.google.com/google-ads/api/docs/start
+  - type: APIReference
+    url: https://developers.google.com/google-ads/api/reference/rpc/latest/overview
+  - type: Authentication
+    url: https://developers.google.com/google-ads/api/docs/oauth/overview
+  - type: GettingStarted
+    url: https://developers.google.com/google-ads/api/docs/first-call/overview
+  - type: RateLimits
+    url: https://developers.google.com/google-ads/api/docs/best-practices/quotas
+  - type: ChangeLog
+    url: https://developers.google.com/google-ads/api/docs/release-notes
+  - type: Deprecation
+    url: https://developers.google.com/google-ads/api/docs/sunset-dates
+  - type: SDKs
+    url: https://developers.google.com/google-ads/api/docs/client-libs
+  - type: Support
+    url: https://developers.google.com/google-ads/api/support
+- aid: google-ads:google-ads-customers-experiments-api
+  name: Google Ads Customers.experiments API
+  description: >-
+    The customers.experiments API from Google Ads — 6 operation(s) for customers.experiments.
+  humanURL: https://developers.google.com/google-ads/scripts/docs/start
+  baseURL: https://googleads.googleapis.com
+  tags:
+  - customers.experiments
+  properties:
+  - type: OpenAPI
+    url: openapi/google-ads-customers-experiments-api-openapi.yml
+  - type: Discovery
+    url: discovery/google-ads-api-v25-discovery.json
+  - type: Protobuf
+    url: grpc/google-ads-google-ads-service.proto
+  - type: DataModel
+    url: data-model/google-ads-data-model.yml
+  - type: Documentation
+    url: https://developers.google.com/google-ads/api/docs/start
+  - type: APIReference
+    url: https://developers.google.com/google-ads/api/reference/rpc/latest/overview
+  - type: Authentication
+    url: https://developers.google.com/google-ads/api/docs/oauth/overview
+  - type: GettingStarted
+    url: https://developers.google.com/google-ads/api/docs/first-call/overview
+  - type: RateLimits
+    url: https://developers.google.com/google-ads/api/docs/best-practices/quotas
+  - type: ChangeLog
+    url: https://developers.google.com/google-ads/api/docs/release-notes
+  - type: Deprecation
+    url: https://developers.google.com/google-ads/api/docs/sunset-dates
+  - type: SDKs
+    url: https://developers.google.com/google-ads/api/docs/client-libs
+  - type: Support
+    url: https://developers.google.com/google-ads/api/support
+- aid: google-ads:google-ads-customers-goals-api
+  name: Google Ads Customers.Goals API
+  description: The customers.Goals API from Google Ads — 1 operation(s) for customers.goals.
+  humanURL: https://developers.google.com/google-ads/scripts/docs/start
+  baseURL: https://googleads.googleapis.com
+  tags:
+  - customers.Goals
+  properties:
+  - type: OpenAPI
+    url: openapi/google-ads-customers-goals-api-openapi.yml
+  - type: Discovery
+    url: discovery/google-ads-api-v25-discovery.json
+  - type: Protobuf
+    url: grpc/google-ads-google-ads-service.proto
+  - type: DataModel
+    url: data-model/google-ads-data-model.yml
+  - type: Documentation
+    url: https://developers.google.com/google-ads/api/docs/start
+  - type: APIReference
+    url: https://developers.google.com/google-ads/api/reference/rpc/latest/overview
+  - type: Authentication
+    url: https://developers.google.com/google-ads/api/docs/oauth/overview
+  - type: GettingStarted
+    url: https://developers.google.com/google-ads/api/docs/first-call/overview
+  - type: RateLimits
+    url: https://developers.google.com/google-ads/api/docs/best-practices/quotas
+  - type: ChangeLog
+    url: https://developers.google.com/google-ads/api/docs/release-notes
+  - type: Deprecation
+    url: https://developers.google.com/google-ads/api/docs/sunset-dates
+  - type: SDKs
+    url: https://developers.google.com/google-ads/api/docs/client-libs
+  - type: Support
+    url: https://developers.google.com/google-ads/api/support
+- aid: google-ads:google-ads-customers-googleads-api
+  name: Google Ads Customers.google Ads API
+  description: The customers.googleAds API from Google Ads — 3 operation(s) for customers.googleads.
+  humanURL: https://developers.google.com/google-ads/scripts/docs/start
+  baseURL: https://googleads.googleapis.com
+  tags:
+  - customers.googleAds
+  properties:
+  - type: OpenAPI
+    url: openapi/google-ads-customers-googleads-api-openapi.yml
+  - type: Discovery
+    url: discovery/google-ads-api-v25-discovery.json
+  - type: Protobuf
+    url: grpc/google-ads-google-ads-service.proto
+  - type: DataModel
+    url: data-model/google-ads-data-model.yml
+  - type: Documentation
+    url: https://developers.google.com/google-ads/api/docs/start
+  - type: APIReference
+    url: https://developers.google.com/google-ads/api/reference/rpc/latest/overview
+  - type: Authentication
+    url: https://developers.google.com/google-ads/api/docs/oauth/overview
+  - type: GettingStarted
+    url: https://developers.google.com/google-ads/api/docs/first-call/overview
+  - type: RateLimits
+    url: https://developers.google.com/google-ads/api/docs/best-practices/quotas
+  - type: ChangeLog
+    url: https://developers.google.com/google-ads/api/docs/release-notes
+  - type: Deprecation
+    url: https://developers.google.com/google-ads/api/docs/sunset-dates
+  - type: SDKs
+    url: https://developers.google.com/google-ads/api/docs/client-libs
+  - type: Support
+    url: https://developers.google.com/google-ads/api/support
+- aid: google-ads:google-ads-customers-incentives-api
+  name: Google Ads Customers.incentives API
+  description: The customers.incentives API from Google Ads — 1 operation(s) for customers.incentives.
+  humanURL: https://developers.google.com/google-ads/scripts/docs/start
+  baseURL: https://googleads.googleapis.com
+  tags:
+  - customers.incentives
+  properties:
+  - type: OpenAPI
+    url: openapi/google-ads-customers-incentives-api-openapi.yml
+  - type: Discovery
+    url: discovery/google-ads-api-v25-discovery.json
+  - type: Protobuf
+    url: grpc/google-ads-google-ads-service.proto
+  - type: DataModel
+    url: data-model/google-ads-data-model.yml
+  - type: Documentation
+    url: https://developers.google.com/google-ads/api/docs/start
+  - type: APIReference
+    url: https://developers.google.com/google-ads/api/reference/rpc/latest/overview
+  - type: Authentication
+    url: https://developers.google.com/google-ads/api/docs/oauth/overview
+  - type: GettingStarted
+    url: https://developers.google.com/google-ads/api/docs/first-call/overview
+  - type: RateLimits
+    url: https://developers.google.com/google-ads/api/docs/best-practices/quotas
+  - type: ChangeLog
+    url: https://developers.google.com/google-ads/api/docs/release-notes
+  - type: Deprecation
+    url: https://developers.google.com/google-ads/api/docs/sunset-dates
+  - type: SDKs
+    url: https://developers.google.com/google-ads/api/docs/client-libs
+  - type: Support
+    url: https://developers.google.com/google-ads/api/support
+- aid: google-ads:google-ads-customers-invoices-api
+  name: Google Ads Customers.invoices API
+  description: The customers.invoices API from Google Ads — 1 operation(s) for customers.invoices.
+  humanURL: https://developers.google.com/google-ads/scripts/docs/start
+  baseURL: https://googleads.googleapis.com
+  tags:
+  - customers.invoices
+  properties:
+  - type: OpenAPI
+    url: openapi/google-ads-customers-invoices-api-openapi.yml
+  - type: Discovery
+    url: discovery/google-ads-api-v25-discovery.json
+  - type: Protobuf
+    url: grpc/google-ads-google-ads-service.proto
+  - type: DataModel
+    url: data-model/google-ads-data-model.yml
+  - type: Documentation
+    url: https://developers.google.com/google-ads/api/docs/start
+  - type: APIReference
+    url: https://developers.google.com/google-ads/api/reference/rpc/latest/overview
+  - type: Authentication
+    url: https://developers.google.com/google-ads/api/docs/oauth/overview
+  - type: GettingStarted
+    url: https://developers.google.com/google-ads/api/docs/first-call/overview
+  - type: RateLimits
+    url: https://developers.google.com/google-ads/api/docs/best-practices/quotas
+  - type: ChangeLog
+    url: https://developers.google.com/google-ads/api/docs/release-notes
+  - type: Deprecation
+    url: https://developers.google.com/google-ads/api/docs/sunset-dates
+  - type: SDKs
+    url: https://developers.google.com/google-ads/api/docs/client-libs
+  - type: Support
+    url: https://developers.google.com/google-ads/api/support
+- aid: google-ads:google-ads-customers-keywordplanadgroupkeywords-api
+  name: Google Ads Customers.keyword Plan Ad Group Keywords API
+  description: >-
+    The customers.keywordPlanAdGroupKeywords API from Google Ads — 1 operation(s) for customers.keywordplanadgroupkeywords.
+  humanURL: https://developers.google.com/google-ads/scripts/docs/start
+  baseURL: https://googleads.googleapis.com
+  tags:
+  - customers.keywordPlanAdGroupKeywords
+  properties:
+  - type: OpenAPI
+    url: openapi/google-ads-customers-keywordplanadgroupkeywords-api-openapi.yml
+  - type: Discovery
+    url: discovery/google-ads-api-v25-discovery.json
+  - type: Protobuf
+    url: grpc/google-ads-google-ads-service.proto
+  - type: DataModel
+    url: data-model/google-ads-data-model.yml
+  - type: Documentation
+    url: https://developers.google.com/google-ads/api/docs/start
+  - type: APIReference
+    url: https://developers.google.com/google-ads/api/reference/rpc/latest/overview
+  - type: Authentication
+    url: https://developers.google.com/google-ads/api/docs/oauth/overview
+  - type: GettingStarted
+    url: https://developers.google.com/google-ads/api/docs/first-call/overview
+  - type: RateLimits
+    url: https://developers.google.com/google-ads/api/docs/best-practices/quotas
+  - type: ChangeLog
+    url: https://developers.google.com/google-ads/api/docs/release-notes
+  - type: Deprecation
+    url: https://developers.google.com/google-ads/api/docs/sunset-dates
+  - type: SDKs
+    url: https://developers.google.com/google-ads/api/docs/client-libs
+  - type: Support
+    url: https://developers.google.com/google-ads/api/support
+- aid: google-ads:google-ads-customers-keywordplanadgroups-api
+  name: Google Ads Customers.keyword Plan Ad Groups API
+  description: >-
+    The customers.keywordPlanAdGroups API from Google Ads — 1 operation(s) for customers.keywordplanadgroups.
+  humanURL: https://developers.google.com/google-ads/scripts/docs/start
+  baseURL: https://googleads.googleapis.com
+  tags:
+  - customers.keywordPlanAdGroups
+  properties:
+  - type: OpenAPI
+    url: openapi/google-ads-customers-keywordplanadgroups-api-openapi.yml
+  - type: Discovery
+    url: discovery/google-ads-api-v25-discovery.json
+  - type: Protobuf
+    url: grpc/google-ads-google-ads-service.proto
+  - type: DataModel
+    url: data-model/google-ads-data-model.yml
+  - type: Documentation
+    url: https://developers.google.com/google-ads/api/docs/start
+  - type: APIReference
+    url: https://developers.google.com/google-ads/api/reference/rpc/latest/overview
+  - type: Authentication
+    url: https://developers.google.com/google-ads/api/docs/oauth/overview
+  - type: GettingStarted
+    url: https://developers.google.com/google-ads/api/docs/first-call/overview
+  - type: RateLimits
+    url: https://developers.google.com/google-ads/api/docs/best-practices/quotas
+  - type: ChangeLog
+    url: https://developers.google.com/google-ads/api/docs/release-notes
+  - type: Deprecation
+    url: https://developers.google.com/google-ads/api/docs/sunset-dates
+  - type: SDKs
+    url: https://developers.google.com/google-ads/api/docs/client-libs
+  - type: Support
+    url: https://developers.google.com/google-ads/api/support
+- aid: google-ads:google-ads-customers-keywordplancampaignkeywords-api
+  name: Google Ads Customers.keyword Plan Campaign Keywords API
+  description: >-
+    The customers.keywordPlanCampaignKeywords API from Google Ads — 1 operation(s) for customers.keywordplancampaignkeywords.
+  humanURL: https://developers.google.com/google-ads/scripts/docs/start
+  baseURL: https://googleads.googleapis.com
+  tags:
+  - customers.keywordPlanCampaignKeywords
+  properties:
+  - type: OpenAPI
+    url: openapi/google-ads-customers-keywordplancampaignkeywords-api-openapi.yml
+  - type: Discovery
+    url: discovery/google-ads-api-v25-discovery.json
+  - type: Protobuf
+    url: grpc/google-ads-google-ads-service.proto
+  - type: DataModel
+    url: data-model/google-ads-data-model.yml
+  - type: Documentation
+    url: https://developers.google.com/google-ads/api/docs/start
+  - type: APIReference
+    url: https://developers.google.com/google-ads/api/reference/rpc/latest/overview
+  - type: Authentication
+    url: https://developers.google.com/google-ads/api/docs/oauth/overview
+  - type: GettingStarted
+    url: https://developers.google.com/google-ads/api/docs/first-call/overview
+  - type: RateLimits
+    url: https://developers.google.com/google-ads/api/docs/best-practices/quotas
+  - type: ChangeLog
+    url: https://developers.google.com/google-ads/api/docs/release-notes
+  - type: Deprecation
+    url: https://developers.google.com/google-ads/api/docs/sunset-dates
+  - type: SDKs
+    url: https://developers.google.com/google-ads/api/docs/client-libs
+  - type: Support
+    url: https://developers.google.com/google-ads/api/support
+- aid: google-ads:google-ads-customers-keywordplancampaigns-api
+  name: Google Ads Customers.keyword Plan Campaigns API
+  description: >-
+    The customers.keywordPlanCampaigns API from Google Ads — 1 operation(s) for customers.keywordplancampaigns.
+  humanURL: https://developers.google.com/google-ads/scripts/docs/start
+  baseURL: https://googleads.googleapis.com
+  tags:
+  - customers.keywordPlanCampaigns
+  properties:
+  - type: OpenAPI
+    url: openapi/google-ads-customers-keywordplancampaigns-api-openapi.yml
+  - type: Discovery
+    url: discovery/google-ads-api-v25-discovery.json
+  - type: Protobuf
+    url: grpc/google-ads-google-ads-service.proto
+  - type: DataModel
+    url: data-model/google-ads-data-model.yml
+  - type: Documentation
+    url: https://developers.google.com/google-ads/api/docs/start
+  - type: APIReference
+    url: https://developers.google.com/google-ads/api/reference/rpc/latest/overview
+  - type: Authentication
+    url: https://developers.google.com/google-ads/api/docs/oauth/overview
+  - type: GettingStarted
+    url: https://developers.google.com/google-ads/api/docs/first-call/overview
+  - type: RateLimits
+    url: https://developers.google.com/google-ads/api/docs/best-practices/quotas
+  - type: ChangeLog
+    url: https://developers.google.com/google-ads/api/docs/release-notes
+  - type: Deprecation
+    url: https://developers.google.com/google-ads/api/docs/sunset-dates
+  - type: SDKs
+    url: https://developers.google.com/google-ads/api/docs/client-libs
+  - type: Support
+    url: https://developers.google.com/google-ads/api/support
+- aid: google-ads:google-ads-customers-keywordplans-api
+  name: Google Ads Customers.keyword Plans API
+  description: >-
+    The customers.keywordPlans API from Google Ads — 1 operation(s) for customers.keywordplans.
+  humanURL: https://developers.google.com/google-ads/scripts/docs/start
+  baseURL: https://googleads.googleapis.com
+  tags:
+  - customers.keywordPlans
+  properties:
+  - type: OpenAPI
+    url: openapi/google-ads-customers-keywordplans-api-openapi.yml
+  - type: Discovery
+    url: discovery/google-ads-api-v25-discovery.json
+  - type: Protobuf
+    url: grpc/google-ads-google-ads-service.proto
+  - type: DataModel
+    url: data-model/google-ads-data-model.yml
+  - type: Documentation
+    url: https://developers.google.com/google-ads/api/docs/start
+  - type: APIReference
+    url: https://developers.google.com/google-ads/api/reference/rpc/latest/overview
+  - type: Authentication
+    url: https://developers.google.com/google-ads/api/docs/oauth/overview
+  - type: GettingStarted
+    url: https://developers.google.com/google-ads/api/docs/first-call/overview
+  - type: RateLimits
+    url: https://developers.google.com/google-ads/api/docs/best-practices/quotas
+  - type: ChangeLog
+    url: https://developers.google.com/google-ads/api/docs/release-notes
+  - type: Deprecation
+    url: https://developers.google.com/google-ads/api/docs/sunset-dates
+  - type: SDKs
+    url: https://developers.google.com/google-ads/api/docs/client-libs
+  - type: Support
+    url: https://developers.google.com/google-ads/api/support
+- aid: google-ads:google-ads-customers-labels-api
+  name: Google Ads Customers.labels API
+  description: The customers.labels API from Google Ads — 1 operation(s) for customers.labels.
+  humanURL: https://developers.google.com/google-ads/scripts/docs/start
+  baseURL: https://googleads.googleapis.com
+  tags:
+  - customers.labels
+  properties:
+  - type: OpenAPI
+    url: openapi/google-ads-customers-labels-api-openapi.yml
+  - type: Discovery
+    url: discovery/google-ads-api-v25-discovery.json
+  - type: Protobuf
+    url: grpc/google-ads-google-ads-service.proto
+  - type: DataModel
+    url: data-model/google-ads-data-model.yml
+  - type: Documentation
+    url: https://developers.google.com/google-ads/api/docs/start
+  - type: APIReference
+    url: https://developers.google.com/google-ads/api/reference/rpc/latest/overview
+  - type: Authentication
+    url: https://developers.google.com/google-ads/api/docs/oauth/overview
+  - type: GettingStarted
+    url: https://developers.google.com/google-ads/api/docs/first-call/overview
+  - type: RateLimits
+    url: https://developers.google.com/google-ads/api/docs/best-practices/quotas
+  - type: ChangeLog
+    url: https://developers.google.com/google-ads/api/docs/release-notes
+  - type: Deprecation
+    url: https://developers.google.com/google-ads/api/docs/sunset-dates
+  - type: SDKs
+    url: https://developers.google.com/google-ads/api/docs/client-libs
+  - type: Support
+    url: https://developers.google.com/google-ads/api/support
+- aid: google-ads:google-ads-customers-localservices-api
+  name: Google Ads Customers.local Services API
+  description: >-
+    The customers.localServices API from Google Ads — 1 operation(s) for customers.localservices.
+  humanURL: https://developers.google.com/google-ads/scripts/docs/start
+  baseURL: https://googleads.googleapis.com
+  tags:
+  - customers.localServices
+  properties:
+  - type: OpenAPI
+    url: openapi/google-ads-customers-localservices-api-openapi.yml
+  - type: Discovery
+    url: discovery/google-ads-api-v25-discovery.json
+  - type: Protobuf
+    url: grpc/google-ads-google-ads-service.proto
+  - type: DataModel
+    url: data-model/google-ads-data-model.yml
+  - type: Documentation
+    url: https://developers.google.com/google-ads/api/docs/start
+  - type: APIReference
+    url: https://developers.google.com/google-ads/api/reference/rpc/latest/overview
+  - type: Authentication
+    url: https://developers.google.com/google-ads/api/docs/oauth/overview
+  - type: GettingStarted
+    url: https://developers.google.com/google-ads/api/docs/first-call/overview
+  - type: RateLimits
+    url: https://developers.google.com/google-ads/api/docs/best-practices/quotas
+  - type: ChangeLog
+    url: https://developers.google.com/google-ads/api/docs/release-notes
+  - type: Deprecation
+    url: https://developers.google.com/google-ads/api/docs/sunset-dates
+  - type: SDKs
+    url: https://developers.google.com/google-ads/api/docs/client-libs
+  - type: Support
+    url: https://developers.google.com/google-ads/api/support
+- aid: google-ads:google-ads-customers-localservicesleads-api
+  name: Google Ads Customers.local Services Leads API
+  description: >-
+    The customers.localServicesLeads API from Google Ads — 1 operation(s) for customers.localservicesleads.
+  humanURL: https://developers.google.com/google-ads/scripts/docs/start
+  baseURL: https://googleads.googleapis.com
+  tags:
+  - customers.localServicesLeads
+  properties:
+  - type: OpenAPI
+    url: openapi/google-ads-customers-localservicesleads-api-openapi.yml
+  - type: Discovery
+    url: discovery/google-ads-api-v25-discovery.json
+  - type: Protobuf
+    url: grpc/google-ads-google-ads-service.proto
+  - type: DataModel
+    url: data-model/google-ads-data-model.yml
+  - type: Documentation
+    url: https://developers.google.com/google-ads/api/docs/start
+  - type: APIReference
+    url: https://developers.google.com/google-ads/api/reference/rpc/latest/overview
+  - type: Authentication
+    url: https://developers.google.com/google-ads/api/docs/oauth/overview
+  - type: GettingStarted
+    url: https://developers.google.com/google-ads/api/docs/first-call/overview
+  - type: RateLimits
+    url: https://developers.google.com/google-ads/api/docs/best-practices/quotas
+  - type: ChangeLog
+    url: https://developers.google.com/google-ads/api/docs/release-notes
+  - type: Deprecation
+    url: https://developers.google.com/google-ads/api/docs/sunset-dates
+  - type: SDKs
+    url: https://developers.google.com/google-ads/api/docs/client-libs
+  - type: Support
+    url: https://developers.google.com/google-ads/api/support
+- aid: google-ads:google-ads-customers-multipartyauthreview-api
+  name: Google Ads Customers.multi Party Auth Review API
+  description: >-
+    The customers.multiPartyAuthReview API from Google Ads — 1 operation(s) for customers.multipartyauthreview.
+  humanURL: https://developers.google.com/google-ads/scripts/docs/start
+  baseURL: https://googleads.googleapis.com
+  tags:
+  - customers.multiPartyAuthReview
+  properties:
+  - type: OpenAPI
+    url: openapi/google-ads-customers-multipartyauthreview-api-openapi.yml
+  - type: Discovery
+    url: discovery/google-ads-api-v25-discovery.json
+  - type: Protobuf
+    url: grpc/google-ads-google-ads-service.proto
+  - type: DataModel
+    url: data-model/google-ads-data-model.yml
+  - type: Documentation
+    url: https://developers.google.com/google-ads/api/docs/start
+  - type: APIReference
+    url: https://developers.google.com/google-ads/api/reference/rpc/latest/overview
+  - type: Authentication
+    url: https://developers.google.com/google-ads/api/docs/oauth/overview
+  - type: GettingStarted
+    url: https://developers.google.com/google-ads/api/docs/first-call/overview
+  - type: RateLimits
+    url: https://developers.google.com/google-ads/api/docs/best-practices/quotas
+  - type: ChangeLog
+    url: https://developers.google.com/google-ads/api/docs/release-notes
+  - type: Deprecation
+    url: https://developers.google.com/google-ads/api/docs/sunset-dates
+  - type: SDKs
+    url: https://developers.google.com/google-ads/api/docs/client-libs
+  - type: Support
+    url: https://developers.google.com/google-ads/api/support
+- aid: google-ads:google-ads-customers-offlineuserdatajobs-api
+  name: Google Ads Customers.offline User Data Jobs API
+  description: >-
+    The customers.offlineUserDataJobs API from Google Ads — 3 operation(s) for customers.offlineuserdatajobs.
+  humanURL: https://developers.google.com/google-ads/scripts/docs/start
+  baseURL: https://googleads.googleapis.com
+  tags:
+  - customers.offlineUserDataJobs
+  properties:
+  - type: OpenAPI
+    url: openapi/google-ads-customers-offlineuserdatajobs-api-openapi.yml
+  - type: Discovery
+    url: discovery/google-ads-api-v25-discovery.json
+  - type: Protobuf
+    url: grpc/google-ads-google-ads-service.proto
+  - type: DataModel
+    url: data-model/google-ads-data-model.yml
+  - type: Documentation
+    url: https://developers.google.com/google-ads/api/docs/start
+  - type: APIReference
+    url: https://developers.google.com/google-ads/api/reference/rpc/latest/overview
+  - type: Authentication
+    url: https://developers.google.com/google-ads/api/docs/oauth/overview
+  - type: GettingStarted
+    url: https://developers.google.com/google-ads/api/docs/first-call/overview
+  - type: RateLimits
+    url: https://developers.google.com/google-ads/api/docs/best-practices/quotas
+  - type: ChangeLog
+    url: https://developers.google.com/google-ads/api/docs/release-notes
+  - type: Deprecation
+    url: https://developers.google.com/google-ads/api/docs/sunset-dates
+  - type: SDKs
+    url: https://developers.google.com/google-ads/api/docs/client-libs
+  - type: Support
+    url: https://developers.google.com/google-ads/api/support
+- aid: google-ads:google-ads-customers-operations-api
+  name: Google Ads Customers.operations API
+  description: The customers.operations API from Google Ads — 4 operation(s) for customers.operations.
+  humanURL: https://developers.google.com/google-ads/scripts/docs/start
+  baseURL: https://googleads.googleapis.com
+  tags:
+  - customers.operations
+  properties:
+  - type: OpenAPI
+    url: openapi/google-ads-customers-operations-api-openapi.yml
+  - type: Discovery
+    url: discovery/google-ads-api-v25-discovery.json
+  - type: Protobuf
+    url: grpc/google-ads-google-ads-service.proto
+  - type: DataModel
+    url: data-model/google-ads-data-model.yml
+  - type: Documentation
+    url: https://developers.google.com/google-ads/api/docs/start
+  - type: APIReference
+    url: https://developers.google.com/google-ads/api/reference/rpc/latest/overview
+  - type: Authentication
+    url: https://developers.google.com/google-ads/api/docs/oauth/overview
+  - type: GettingStarted
+    url: https://developers.google.com/google-ads/api/docs/first-call/overview
+  - type: RateLimits
+    url: https://developers.google.com/google-ads/api/docs/best-practices/quotas
+  - type: ChangeLog
+    url: https://developers.google.com/google-ads/api/docs/release-notes
+  - type: Deprecation
+    url: https://developers.google.com/google-ads/api/docs/sunset-dates
+  - type: SDKs
+    url: https://developers.google.com/google-ads/api/docs/client-libs
+  - type: Support
+    url: https://developers.google.com/google-ads/api/support
+- aid: google-ads:google-ads-customers-paymentsaccounts-api
+  name: Google Ads Customers.payments Accounts API
+  description: >-
+    The customers.paymentsAccounts API from Google Ads — 1 operation(s) for customers.paymentsaccounts.
+  humanURL: https://developers.google.com/google-ads/scripts/docs/start
+  baseURL: https://googleads.googleapis.com
+  tags:
+  - customers.paymentsAccounts
+  properties:
+  - type: OpenAPI
+    url: openapi/google-ads-customers-paymentsaccounts-api-openapi.yml
+  - type: Discovery
+    url: discovery/google-ads-api-v25-discovery.json
+  - type: Protobuf
+    url: grpc/google-ads-google-ads-service.proto
+  - type: DataModel
+    url: data-model/google-ads-data-model.yml
+  - type: Documentation
+    url: https://developers.google.com/google-ads/api/docs/start
+  - type: APIReference
+    url: https://developers.google.com/google-ads/api/reference/rpc/latest/overview
+  - type: Authentication
+    url: https://developers.google.com/google-ads/api/docs/oauth/overview
+  - type: GettingStarted
+    url: https://developers.google.com/google-ads/api/docs/first-call/overview
+  - type: RateLimits
+    url: https://developers.google.com/google-ads/api/docs/best-practices/quotas
+  - type: ChangeLog
+    url: https://developers.google.com/google-ads/api/docs/release-notes
+  - type: Deprecation
+    url: https://developers.google.com/google-ads/api/docs/sunset-dates
+  - type: SDKs
+    url: https://developers.google.com/google-ads/api/docs/client-libs
+  - type: Support
+    url: https://developers.google.com/google-ads/api/support
+- aid: google-ads:google-ads-customers-productlinkinvitations-api
+  name: Google Ads Customers.product Link Invitations API
+  description: >-
+    The customers.productLinkInvitations API from Google Ads — 3 operation(s) for customers.productlinkinvitations.
+  humanURL: https://developers.google.com/google-ads/scripts/docs/start
+  baseURL: https://googleads.googleapis.com
+  tags:
+  - customers.productLinkInvitations
+  properties:
+  - type: OpenAPI
+    url: openapi/google-ads-customers-productlinkinvitations-api-openapi.yml
+  - type: Discovery
+    url: discovery/google-ads-api-v25-discovery.json
+  - type: Protobuf
+    url: grpc/google-ads-google-ads-service.proto
+  - type: DataModel
+    url: data-model/google-ads-data-model.yml
+  - type: Documentation
+    url: https://developers.google.com/google-ads/api/docs/start
+  - type: APIReference
+    url: https://developers.google.com/google-ads/api/reference/rpc/latest/overview
+  - type: Authentication
+    url: https://developers.google.com/google-ads/api/docs/oauth/overview
+  - type: GettingStarted
+    url: https://developers.google.com/google-ads/api/docs/first-call/overview
+  - type: RateLimits
+    url: https://developers.google.com/google-ads/api/docs/best-practices/quotas
+  - type: ChangeLog
+    url: https://developers.google.com/google-ads/api/docs/release-notes
+  - type: Deprecation
+    url: https://developers.google.com/google-ads/api/docs/sunset-dates
+  - type: SDKs
+    url: https://developers.google.com/google-ads/api/docs/client-libs
+  - type: Support
+    url: https://developers.google.com/google-ads/api/support
+- aid: google-ads:google-ads-customers-productlinks-api
+  name: Google Ads Customers.product Links API
+  description: >-
+    The customers.productLinks API from Google Ads — 2 operation(s) for customers.productlinks.
+  humanURL: https://developers.google.com/google-ads/scripts/docs/start
+  baseURL: https://googleads.googleapis.com
+  tags:
+  - customers.productLinks
+  properties:
+  - type: OpenAPI
+    url: openapi/google-ads-customers-productlinks-api-openapi.yml
+  - type: Discovery
+    url: discovery/google-ads-api-v25-discovery.json
+  - type: Protobuf
+    url: grpc/google-ads-google-ads-service.proto
+  - type: DataModel
+    url: data-model/google-ads-data-model.yml
+  - type: Documentation
+    url: https://developers.google.com/google-ads/api/docs/start
+  - type: APIReference
+    url: https://developers.google.com/google-ads/api/reference/rpc/latest/overview
+  - type: Authentication
+    url: https://developers.google.com/google-ads/api/docs/oauth/overview
+  - type: GettingStarted
+    url: https://developers.google.com/google-ads/api/docs/first-call/overview
+  - type: RateLimits
+    url: https://developers.google.com/google-ads/api/docs/best-practices/quotas
+  - type: ChangeLog
+    url: https://developers.google.com/google-ads/api/docs/release-notes
+  - type: Deprecation
+    url: https://developers.google.com/google-ads/api/docs/sunset-dates
+  - type: SDKs
+    url: https://developers.google.com/google-ads/api/docs/client-libs
+  - type: Support
+    url: https://developers.google.com/google-ads/api/support
+- aid: google-ads:google-ads-customers-recommendations-api
+  name: Google Ads Customers.recommendations API
+  description: >-
+    The customers.recommendations API from Google Ads — 3 operation(s) for customers.recommendations.
+  humanURL: https://developers.google.com/google-ads/scripts/docs/start
+  baseURL: https://googleads.googleapis.com
+  tags:
+  - customers.recommendations
+  properties:
+  - type: OpenAPI
+    url: openapi/google-ads-customers-recommendations-api-openapi.yml
+  - type: Discovery
+    url: discovery/google-ads-api-v25-discovery.json
+  - type: Protobuf
+    url: grpc/google-ads-google-ads-service.proto
+  - type: DataModel
+    url: data-model/google-ads-data-model.yml
+  - type: Documentation
+    url: https://developers.google.com/google-ads/api/docs/start
+  - type: APIReference
+    url: https://developers.google.com/google-ads/api/reference/rpc/latest/overview
+  - type: Authentication
+    url: https://developers.google.com/google-ads/api/docs/oauth/overview
+  - type: GettingStarted
+    url: https://developers.google.com/google-ads/api/docs/first-call/overview
+  - type: RateLimits
+    url: https://developers.google.com/google-ads/api/docs/best-practices/quotas
+  - type: ChangeLog
+    url: https://developers.google.com/google-ads/api/docs/release-notes
+  - type: Deprecation
+    url: https://developers.google.com/google-ads/api/docs/sunset-dates
+  - type: SDKs
+    url: https://developers.google.com/google-ads/api/docs/client-libs
+  - type: Support
+    url: https://developers.google.com/google-ads/api/support
+- aid: google-ads:google-ads-customers-recommendationsubscriptions-api
+  name: Google Ads Customers.recommendation Subscriptions API
+  description: >-
+    The customers.recommendationSubscriptions API from Google Ads — 1 operation(s) for customers.recommendationsubscriptions.
+  humanURL: https://developers.google.com/google-ads/scripts/docs/start
+  baseURL: https://googleads.googleapis.com
+  tags:
+  - customers.recommendationSubscriptions
+  properties:
+  - type: OpenAPI
+    url: openapi/google-ads-customers-recommendationsubscriptions-api-openapi.yml
+  - type: Discovery
+    url: discovery/google-ads-api-v25-discovery.json
+  - type: Protobuf
+    url: grpc/google-ads-google-ads-service.proto
+  - type: DataModel
+    url: data-model/google-ads-data-model.yml
+  - type: Documentation
+    url: https://developers.google.com/google-ads/api/docs/start
+  - type: APIReference
+    url: https://developers.google.com/google-ads/api/reference/rpc/latest/overview
+  - type: Authentication
+    url: https://developers.google.com/google-ads/api/docs/oauth/overview
+  - type: GettingStarted
+    url: https://developers.google.com/google-ads/api/docs/first-call/overview
+  - type: RateLimits
+    url: https://developers.google.com/google-ads/api/docs/best-practices/quotas
+  - type: ChangeLog
+    url: https://developers.google.com/google-ads/api/docs/release-notes
+  - type: Deprecation
+    url: https://developers.google.com/google-ads/api/docs/sunset-dates
+  - type: SDKs
+    url: https://developers.google.com/google-ads/api/docs/client-libs
+  - type: Support
+    url: https://developers.google.com/google-ads/api/support
+- aid: google-ads:google-ads-customers-remarketingactions-api
+  name: Google Ads Customers.remarketing Actions API
+  description: >-
+    The customers.remarketingActions API from Google Ads — 1 operation(s) for customers.remarketingactions.
+  humanURL: https://developers.google.com/google-ads/scripts/docs/start
+  baseURL: https://googleads.googleapis.com
+  tags:
+  - customers.remarketingActions
+  properties:
+  - type: OpenAPI
+    url: openapi/google-ads-customers-remarketingactions-api-openapi.yml
+  - type: Discovery
+    url: discovery/google-ads-api-v25-discovery.json
+  - type: Protobuf
+    url: grpc/google-ads-google-ads-service.proto
+  - type: DataModel
+    url: data-model/google-ads-data-model.yml
+  - type: Documentation
+    url: https://developers.google.com/google-ads/api/docs/start
+  - type: APIReference
+    url: https://developers.google.com/google-ads/api/reference/rpc/latest/overview
+  - type: Authentication
+    url: https://developers.google.com/google-ads/api/docs/oauth/overview
+  - type: GettingStarted
+    url: https://developers.google.com/google-ads/api/docs/first-call/overview
+  - type: RateLimits
+    url: https://developers.google.com/google-ads/api/docs/best-practices/quotas
+  - type: ChangeLog
+    url: https://developers.google.com/google-ads/api/docs/release-notes
+  - type: Deprecation
+    url: https://developers.google.com/google-ads/api/docs/sunset-dates
+  - type: SDKs
+    url: https://developers.google.com/google-ads/api/docs/client-libs
+  - type: Support
+    url: https://developers.google.com/google-ads/api/support
+- aid: google-ads:google-ads-customers-reservations-api
+  name: Google Ads Customers.reservations API
+  description: >-
+    The customers.reservations API from Google Ads — 2 operation(s) for customers.reservations.
+  humanURL: https://developers.google.com/google-ads/scripts/docs/start
+  baseURL: https://googleads.googleapis.com
+  tags:
+  - customers.reservations
+  properties:
+  - type: OpenAPI
+    url: openapi/google-ads-customers-reservations-api-openapi.yml
+  - type: Discovery
+    url: discovery/google-ads-api-v25-discovery.json
+  - type: Protobuf
+    url: grpc/google-ads-google-ads-service.proto
+  - type: DataModel
+    url: data-model/google-ads-data-model.yml
+  - type: Documentation
+    url: https://developers.google.com/google-ads/api/docs/start
+  - type: APIReference
+    url: https://developers.google.com/google-ads/api/reference/rpc/latest/overview
+  - type: Authentication
+    url: https://developers.google.com/google-ads/api/docs/oauth/overview
+  - type: GettingStarted
+    url: https://developers.google.com/google-ads/api/docs/first-call/overview
+  - type: RateLimits
+    url: https://developers.google.com/google-ads/api/docs/best-practices/quotas
+  - type: ChangeLog
+    url: https://developers.google.com/google-ads/api/docs/release-notes
+  - type: Deprecation
+    url: https://developers.google.com/google-ads/api/docs/sunset-dates
+  - type: SDKs
+    url: https://developers.google.com/google-ads/api/docs/client-libs
+  - type: Support
+    url: https://developers.google.com/google-ads/api/support
+- aid: google-ads:google-ads-customers-sharedcriteria-api
+  name: Google Ads Customers.shared Criteria API
+  description: >-
+    The customers.sharedCriteria API from Google Ads — 1 operation(s) for customers.sharedcriteria.
+  humanURL: https://developers.google.com/google-ads/scripts/docs/start
+  baseURL: https://googleads.googleapis.com
+  tags:
+  - customers.sharedCriteria
+  properties:
+  - type: OpenAPI
+    url: openapi/google-ads-customers-sharedcriteria-api-openapi.yml
+  - type: Discovery
+    url: discovery/google-ads-api-v25-discovery.json
+  - type: Protobuf
+    url: grpc/google-ads-google-ads-service.proto
+  - type: DataModel
+    url: data-model/google-ads-data-model.yml
+  - type: Documentation
+    url: https://developers.google.com/google-ads/api/docs/start
+  - type: APIReference
+    url: https://developers.google.com/google-ads/api/reference/rpc/latest/overview
+  - type: Authentication
+    url: https://developers.google.com/google-ads/api/docs/oauth/overview
+  - type: GettingStarted
+    url: https://developers.google.com/google-ads/api/docs/first-call/overview
+  - type: RateLimits
+    url: https://developers.google.com/google-ads/api/docs/best-practices/quotas
+  - type: ChangeLog
+    url: https://developers.google.com/google-ads/api/docs/release-notes
+  - type: Deprecation
+    url: https://developers.google.com/google-ads/api/docs/sunset-dates
+  - type: SDKs
+    url: https://developers.google.com/google-ads/api/docs/client-libs
+  - type: Support
+    url: https://developers.google.com/google-ads/api/support
+- aid: google-ads:google-ads-customers-sharedsets-api
+  name: Google Ads Customers.shared Sets API
+  description: The customers.sharedSets API from Google Ads — 1 operation(s) for customers.sharedsets.
+  humanURL: https://developers.google.com/google-ads/scripts/docs/start
+  baseURL: https://googleads.googleapis.com
+  tags:
+  - customers.sharedSets
+  properties:
+  - type: OpenAPI
+    url: openapi/google-ads-customers-sharedsets-api-openapi.yml
+  - type: Discovery
+    url: discovery/google-ads-api-v25-discovery.json
+  - type: Protobuf
+    url: grpc/google-ads-google-ads-service.proto
+  - type: DataModel
+    url: data-model/google-ads-data-model.yml
+  - type: Documentation
+    url: https://developers.google.com/google-ads/api/docs/start
+  - type: APIReference
+    url: https://developers.google.com/google-ads/api/reference/rpc/latest/overview
+  - type: Authentication
+    url: https://developers.google.com/google-ads/api/docs/oauth/overview
+  - type: GettingStarted
+    url: https://developers.google.com/google-ads/api/docs/first-call/overview
+  - type: RateLimits
+    url: https://developers.google.com/google-ads/api/docs/best-practices/quotas
+  - type: ChangeLog
+    url: https://developers.google.com/google-ads/api/docs/release-notes
+  - type: Deprecation
+    url: https://developers.google.com/google-ads/api/docs/sunset-dates
+  - type: SDKs
+    url: https://developers.google.com/google-ads/api/docs/client-libs
+  - type: Support
+    url: https://developers.google.com/google-ads/api/support
+- aid: google-ads:google-ads-customers-smartcampaignsettings-api
+  name: Google Ads Customers.smart Campaign Settings API
+  description: >-
+    The customers.smartCampaignSettings API from Google Ads — 2 operation(s) for customers.smartcampaignsettings.
+  humanURL: https://developers.google.com/google-ads/scripts/docs/start
+  baseURL: https://googleads.googleapis.com
+  tags:
+  - customers.smartCampaignSettings
+  properties:
+  - type: OpenAPI
+    url: openapi/google-ads-customers-smartcampaignsettings-api-openapi.yml
+  - type: Discovery
+    url: discovery/google-ads-api-v25-discovery.json
+  - type: Protobuf
+    url: grpc/google-ads-google-ads-service.proto
+  - type: DataModel
+    url: data-model/google-ads-data-model.yml
+  - type: Documentation
+    url: https://developers.google.com/google-ads/api/docs/start
+  - type: APIReference
+    url: https://developers.google.com/google-ads/api/reference/rpc/latest/overview
+  - type: Authentication
+    url: https://developers.google.com/google-ads/api/docs/oauth/overview
+  - type: GettingStarted
+    url: https://developers.google.com/google-ads/api/docs/first-call/overview
+  - type: RateLimits
+    url: https://developers.google.com/google-ads/api/docs/best-practices/quotas
+  - type: ChangeLog
+    url: https://developers.google.com/google-ads/api/docs/release-notes
+  - type: Deprecation
+    url: https://developers.google.com/google-ads/api/docs/sunset-dates
+  - type: SDKs
+    url: https://developers.google.com/google-ads/api/docs/client-libs
+  - type: Support
+    url: https://developers.google.com/google-ads/api/support
+- aid: google-ads:google-ads-customers-thirdpartyappanalyticslinks-api
+  name: Google Ads Customers.third Party App Analytics Links API
+  description: >-
+    The customers.thirdPartyAppAnalyticsLinks API from Google Ads — 1 operation(s) for customers.thirdpartyappanalyticslinks.
+  humanURL: https://developers.google.com/google-ads/scripts/docs/start
+  baseURL: https://googleads.googleapis.com
+  tags:
+  - customers.thirdPartyAppAnalyticsLinks
+  properties:
+  - type: OpenAPI
+    url: openapi/google-ads-customers-thirdpartyappanalyticslinks-api-openapi.yml
+  - type: Discovery
+    url: discovery/google-ads-api-v25-discovery.json
+  - type: Protobuf
+    url: grpc/google-ads-google-ads-service.proto
+  - type: DataModel
+    url: data-model/google-ads-data-model.yml
+  - type: Documentation
+    url: https://developers.google.com/google-ads/api/docs/start
+  - type: APIReference
+    url: https://developers.google.com/google-ads/api/reference/rpc/latest/overview
+  - type: Authentication
+    url: https://developers.google.com/google-ads/api/docs/oauth/overview
+  - type: GettingStarted
+    url: https://developers.google.com/google-ads/api/docs/first-call/overview
+  - type: RateLimits
+    url: https://developers.google.com/google-ads/api/docs/best-practices/quotas
+  - type: ChangeLog
+    url: https://developers.google.com/google-ads/api/docs/release-notes
+  - type: Deprecation
+    url: https://developers.google.com/google-ads/api/docs/sunset-dates
+  - type: SDKs
+    url: https://developers.google.com/google-ads/api/docs/client-libs
+  - type: Support
+    url: https://developers.google.com/google-ads/api/support
+- aid: google-ads:google-ads-customers-userlistcustomertypes-api
+  name: Google Ads Customers.user List Customer Types API
+  description: >-
+    The customers.userListCustomerTypes API from Google Ads — 1 operation(s) for customers.userlistcustomertypes.
+  humanURL: https://developers.google.com/google-ads/scripts/docs/start
+  baseURL: https://googleads.googleapis.com
+  tags:
+  - customers.userListCustomerTypes
+  properties:
+  - type: OpenAPI
+    url: openapi/google-ads-customers-userlistcustomertypes-api-openapi.yml
+  - type: Discovery
+    url: discovery/google-ads-api-v25-discovery.json
+  - type: Protobuf
+    url: grpc/google-ads-google-ads-service.proto
+  - type: DataModel
+    url: data-model/google-ads-data-model.yml
+  - type: Documentation
+    url: https://developers.google.com/google-ads/api/docs/start
+  - type: APIReference
+    url: https://developers.google.com/google-ads/api/reference/rpc/latest/overview
+  - type: Authentication
+    url: https://developers.google.com/google-ads/api/docs/oauth/overview
+  - type: GettingStarted
+    url: https://developers.google.com/google-ads/api/docs/first-call/overview
+  - type: RateLimits
+    url: https://developers.google.com/google-ads/api/docs/best-practices/quotas
+  - type: ChangeLog
+    url: https://developers.google.com/google-ads/api/docs/release-notes
+  - type: Deprecation
+    url: https://developers.google.com/google-ads/api/docs/sunset-dates
+  - type: SDKs
+    url: https://developers.google.com/google-ads/api/docs/client-libs
+  - type: Support
+    url: https://developers.google.com/google-ads/api/support
+- aid: google-ads:google-ads-customers-userlists-api
+  name: Google Ads Customers.user Lists API
+  description: The customers.userLists API from Google Ads — 1 operation(s) for customers.userlists.
+  humanURL: https://developers.google.com/google-ads/scripts/docs/start
+  baseURL: https://googleads.googleapis.com
+  tags:
+  - customers.userLists
+  properties:
+  - type: OpenAPI
+    url: openapi/google-ads-customers-userlists-api-openapi.yml
+  - type: Discovery
+    url: discovery/google-ads-api-v25-discovery.json
+  - type: Protobuf
+    url: grpc/google-ads-google-ads-service.proto
+  - type: DataModel
+    url: data-model/google-ads-data-model.yml
+  - type: Documentation
+    url: https://developers.google.com/google-ads/api/docs/start
+  - type: APIReference
+    url: https://developers.google.com/google-ads/api/reference/rpc/latest/overview
+  - type: Authentication
+    url: https://developers.google.com/google-ads/api/docs/oauth/overview
+  - type: GettingStarted
+    url: https://developers.google.com/google-ads/api/docs/first-call/overview
+  - type: RateLimits
+    url: https://developers.google.com/google-ads/api/docs/best-practices/quotas
+  - type: ChangeLog
+    url: https://developers.google.com/google-ads/api/docs/release-notes
+  - type: Deprecation
+    url: https://developers.google.com/google-ads/api/docs/sunset-dates
+  - type: SDKs
+    url: https://developers.google.com/google-ads/api/docs/client-libs
+  - type: Support
+    url: https://developers.google.com/google-ads/api/support
+- aid: google-ads:google-ads-customers-youtubevideouploads-api
+  name: Google Ads Customers.you Tube Video Uploads API
+  description: >-
+    The customers.youTubeVideoUploads API from Google Ads — 2 operation(s) for customers.youtubevideouploads.
+  humanURL: https://developers.google.com/google-ads/scripts/docs/start
+  baseURL: https://googleads.googleapis.com
+  tags:
+  - customers.youTubeVideoUploads
+  properties:
+  - type: OpenAPI
+    url: openapi/google-ads-customers-youtubevideouploads-api-openapi.yml
+  - type: Discovery
+    url: discovery/google-ads-api-v25-discovery.json
+  - type: Protobuf
+    url: grpc/google-ads-google-ads-service.proto
+  - type: DataModel
+    url: data-model/google-ads-data-model.yml
+  - type: Documentation
+    url: https://developers.google.com/google-ads/api/docs/start
+  - type: APIReference
+    url: https://developers.google.com/google-ads/api/reference/rpc/latest/overview
+  - type: Authentication
+    url: https://developers.google.com/google-ads/api/docs/oauth/overview
+  - type: GettingStarted
+    url: https://developers.google.com/google-ads/api/docs/first-call/overview
+  - type: RateLimits
+    url: https://developers.google.com/google-ads/api/docs/best-practices/quotas
+  - type: ChangeLog
+    url: https://developers.google.com/google-ads/api/docs/release-notes
+  - type: Deprecation
+    url: https://developers.google.com/google-ads/api/docs/sunset-dates
+  - type: SDKs
+    url: https://developers.google.com/google-ads/api/docs/client-libs
+  - type: Support
+    url: https://developers.google.com/google-ads/api/support
+- aid: google-ads:google-ads-geotargetconstants-api
+  name: Google Ads Geo Target Constants API
+  description: The geoTargetConstants API from Google Ads — 1 operation(s) for geotargetconstants.
+  humanURL: https://developers.google.com/google-ads/scripts/docs/start
+  baseURL: https://googleads.googleapis.com
+  tags:
+  - geoTargetConstants
+  properties:
+  - type: OpenAPI
+    url: openapi/google-ads-geotargetconstants-api-openapi.yml
+  - type: Discovery
+    url: discovery/google-ads-api-v25-discovery.json
+  - type: Protobuf
+    url: grpc/google-ads-google-ads-service.proto
+  - type: DataModel
+    url: data-model/google-ads-data-model.yml
+  - type: Documentation
+    url: https://developers.google.com/google-ads/api/docs/start
+  - type: APIReference
+    url: https://developers.google.com/google-ads/api/reference/rpc/latest/overview
+  - type: Authentication
+    url: https://developers.google.com/google-ads/api/docs/oauth/overview
+  - type: GettingStarted
+    url: https://developers.google.com/google-ads/api/docs/first-call/overview
+  - type: RateLimits
+    url: https://developers.google.com/google-ads/api/docs/best-practices/quotas
+  - type: ChangeLog
+    url: https://developers.google.com/google-ads/api/docs/release-notes
+  - type: Deprecation
+    url: https://developers.google.com/google-ads/api/docs/sunset-dates
+  - type: SDKs
+    url: https://developers.google.com/google-ads/api/docs/client-libs
+  - type: Support
+    url: https://developers.google.com/google-ads/api/support
+- aid: google-ads:google-ads-googleadsfields-api
+  name: Google Ads Google Ads Fields API
+  description: The googleAdsFields API from Google Ads — 2 operation(s) for googleadsfields.
+  humanURL: https://developers.google.com/google-ads/scripts/docs/start
+  baseURL: https://googleads.googleapis.com
+  tags:
+  - googleAdsFields
+  properties:
+  - type: OpenAPI
+    url: openapi/google-ads-googleadsfields-api-openapi.yml
+  - type: Discovery
+    url: discovery/google-ads-api-v25-discovery.json
+  - type: Protobuf
+    url: grpc/google-ads-google-ads-service.proto
+  - type: DataModel
+    url: data-model/google-ads-data-model.yml
+  - type: Documentation
+    url: https://developers.google.com/google-ads/api/docs/start
+  - type: APIReference
+    url: https://developers.google.com/google-ads/api/reference/rpc/latest/overview
+  - type: Authentication
+    url: https://developers.google.com/google-ads/api/docs/oauth/overview
+  - type: GettingStarted
+    url: https://developers.google.com/google-ads/api/docs/first-call/overview
+  - type: RateLimits
+    url: https://developers.google.com/google-ads/api/docs/best-practices/quotas
+  - type: ChangeLog
+    url: https://developers.google.com/google-ads/api/docs/release-notes
+  - type: Deprecation
+    url: https://developers.google.com/google-ads/api/docs/sunset-dates
+  - type: SDKs
+    url: https://developers.google.com/google-ads/api/docs/client-libs
+  - type: Support
+    url: https://developers.google.com/google-ads/api/support
+- aid: google-ads:google-ads-incentives-api
+  name: Google Ads Incentives API
+  description: The incentives API from Google Ads — 1 operation(s) for incentives.
+  humanURL: https://developers.google.com/google-ads/scripts/docs/start
+  baseURL: https://googleads.googleapis.com
+  tags:
+  - incentives
+  properties:
+  - type: OpenAPI
+    url: openapi/google-ads-incentives-api-openapi.yml
+  - type: Discovery
+    url: discovery/google-ads-api-v25-discovery.json
+  - type: Protobuf
+    url: grpc/google-ads-google-ads-service.proto
+  - type: DataModel
+    url: data-model/google-ads-data-model.yml
+  - type: Documentation
+    url: https://developers.google.com/google-ads/api/docs/start
+  - type: APIReference
+    url: https://developers.google.com/google-ads/api/reference/rpc/latest/overview
+  - type: Authentication
+    url: https://developers.google.com/google-ads/api/docs/oauth/overview
+  - type: GettingStarted
+    url: https://developers.google.com/google-ads/api/docs/first-call/overview
+  - type: RateLimits
+    url: https://developers.google.com/google-ads/api/docs/best-practices/quotas
+  - type: ChangeLog
+    url: https://developers.google.com/google-ads/api/docs/release-notes
+  - type: Deprecation
+    url: https://developers.google.com/google-ads/api/docs/sunset-dates
+  - type: SDKs
+    url: https://developers.google.com/google-ads/api/docs/client-libs
+  - type: Support
+    url: https://developers.google.com/google-ads/api/support
+- aid: google-ads:google-ads-keywordthemeconstants-api
+  name: Google Ads Keyword Theme Constants API
+  description: >-
+    The keywordThemeConstants API from Google Ads — 1 operation(s) for keywordthemeconstants.
+  humanURL: https://developers.google.com/google-ads/scripts/docs/start
+  baseURL: https://googleads.googleapis.com
+  tags:
+  - keywordThemeConstants
+  properties:
+  - type: OpenAPI
+    url: openapi/google-ads-keywordthemeconstants-api-openapi.yml
+  - type: Discovery
+    url: discovery/google-ads-api-v25-discovery.json
+  - type: Protobuf
+    url: grpc/google-ads-google-ads-service.proto
+  - type: DataModel
+    url: data-model/google-ads-data-model.yml
+  - type: Documentation
+    url: https://developers.google.com/google-ads/api/docs/start
+  - type: APIReference
+    url: https://developers.google.com/google-ads/api/reference/rpc/latest/overview
+  - type: Authentication
+    url: https://developers.google.com/google-ads/api/docs/oauth/overview
+  - type: GettingStarted
+    url: https://developers.google.com/google-ads/api/docs/first-call/overview
+  - type: RateLimits
+    url: https://developers.google.com/google-ads/api/docs/best-practices/quotas
+  - type: ChangeLog
+    url: https://developers.google.com/google-ads/api/docs/release-notes
+  - type: Deprecation
+    url: https://developers.google.com/google-ads/api/docs/sunset-dates
+  - type: SDKs
+    url: https://developers.google.com/google-ads/api/docs/client-libs
+  - type: Support
+    url: https://developers.google.com/google-ads/api/support
+- aid: google-ads:google-ads-media-api
+  name: Google Ads Media API
+  description: The media API from Google Ads — 1 operation(s) for media.
+  humanURL: https://developers.google.com/google-ads/scripts/docs/start
+  baseURL: https://googleads.googleapis.com
+  tags:
+  - media
+  properties:
+  - type: OpenAPI
+    url: openapi/google-ads-media-api-openapi.yml
+  - type: Discovery
+    url: discovery/google-ads-api-v25-discovery.json
+  - type: Protobuf
+    url: grpc/google-ads-google-ads-service.proto
+  - type: DataModel
+    url: data-model/google-ads-data-model.yml
+  - type: Documentation
+    url: https://developers.google.com/google-ads/api/docs/start
+  - type: APIReference
+    url: https://developers.google.com/google-ads/api/reference/rpc/latest/overview
+  - type: Authentication
+    url: https://developers.google.com/google-ads/api/docs/oauth/overview
+  - type: GettingStarted
+    url: https://developers.google.com/google-ads/api/docs/first-call/overview
+  - type: RateLimits
+    url: https://developers.google.com/google-ads/api/docs/best-practices/quotas
+  - type: ChangeLog
+    url: https://developers.google.com/google-ads/api/docs/release-notes
+  - type: Deprecation
+    url: https://developers.google.com/google-ads/api/docs/sunset-dates
+  - type: SDKs
+    url: https://developers.google.com/google-ads/api/docs/client-libs
+  - type: Support
+    url: https://developers.google.com/google-ads/api/support
+- aid: google-ads:google-ads-v25-api
+  name: Google Ads V25 API
+  description: The v25 API from Google Ads — 9 operation(s) for v25.
+  humanURL: https://developers.google.com/google-ads/scripts/docs/start
+  baseURL: https://googleads.googleapis.com
+  tags:
+  - v25
+  properties:
+  - type: OpenAPI
+    url: openapi/google-ads-v25-api-openapi.yml
+  - type: Discovery
+    url: discovery/google-ads-api-v25-discovery.json
   - type: Protobuf
     url: grpc/google-ads-google-ads-service.proto
   - type: DataModel
@@ -350,6 +3817,8 @@ apis:
   - type: Support
     url: https://developers.google.com/google-ads/api/support
 common:
+- type: Overlay
+  url: overlays/google-ads-api-v25-overlay.yaml
 - type: PostmanWorkspace
   url: https://www.postman.com/kinlaneapi/google-ads/overview
 - type: AgenticAccess
