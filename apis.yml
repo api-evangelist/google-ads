@@ -5,6 +5,18 @@ description: The Google Ads API is the modern programmatic interface to Google A
   with the Google Ads platform, vastly increasing the efficiency of managing large
   or complex Google Ads accounts and campaigns.
 type: Index
+deliveryModel:
+  model: saas
+  open_source: false
+  commercial: true
+  callable_host: true
+  label: Hosted service · you call their endpoint
+  confidence: high
+  source:
+  - openapi
+  - pricing
+  generated: '2026-08-28'
+  method: derived
 accessModel:
   pricing: freemium
   onboarding: self-serve
@@ -3817,6 +3829,9 @@ apis:
   - type: Support
     url: https://developers.google.com/google-ads/api/support
 common:
+- type: CapabilityMap
+  url: capabilities/google-ads-capability-edges.yml
+  name: Google Ads Business Capability Map
 - type: Overlay
   url: overlays/google-ads-api-v25-overlay.yaml
 - type: PostmanWorkspace
