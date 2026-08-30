@@ -322,6 +322,8 @@ apis:
   humanURL: https://developers.google.com/google-ads/scripts/docs/start
   baseURL: https://googleads.googleapis.com
   tags:
+  - Audience Insights
+  tags_raw:
   - audienceInsights
   properties:
   - type: OpenAPI
@@ -356,7 +358,8 @@ apis:
     The customers.accountBudgetProposals API from Google Ads — 1 operation(s) for customers.accountbudgetproposals.
   humanURL: https://developers.google.com/google-ads/scripts/docs/start
   baseURL: https://googleads.googleapis.com
-  tags:
+  tags: []
+  tags_raw:
   - customers.accountBudgetProposals
   properties:
   - type: OpenAPI
@@ -391,7 +394,8 @@ apis:
     The customers.accountLinks API from Google Ads — 2 operation(s) for customers.accountlinks.
   humanURL: https://developers.google.com/google-ads/scripts/docs/start
   baseURL: https://googleads.googleapis.com
-  tags:
+  tags: []
+  tags_raw:
   - customers.accountLinks
   properties:
   - type: OpenAPI
@@ -426,7 +430,8 @@ apis:
     The customers.adGroupAdLabels API from Google Ads — 1 operation(s) for customers.adgroupadlabels.
   humanURL: https://developers.google.com/google-ads/scripts/docs/start
   baseURL: https://googleads.googleapis.com
-  tags:
+  tags: []
+  tags_raw:
   - customers.adGroupAdLabels
   properties:
   - type: OpenAPI
@@ -460,7 +465,8 @@ apis:
   description: The customers.adGroupAds API from Google Ads — 2 operation(s) for customers.adgroupads.
   humanURL: https://developers.google.com/google-ads/scripts/docs/start
   baseURL: https://googleads.googleapis.com
-  tags:
+  tags: []
+  tags_raw:
   - customers.adGroupAds
   properties:
   - type: OpenAPI
@@ -495,7 +501,8 @@ apis:
     The customers.adGroupAssets API from Google Ads — 1 operation(s) for customers.adgroupassets.
   humanURL: https://developers.google.com/google-ads/scripts/docs/start
   baseURL: https://googleads.googleapis.com
-  tags:
+  tags: []
+  tags_raw:
   - customers.adGroupAssets
   properties:
   - type: OpenAPI
@@ -530,7 +537,8 @@ apis:
     The customers.adGroupAssetSets API from Google Ads — 1 operation(s) for customers.adgroupassetsets.
   humanURL: https://developers.google.com/google-ads/scripts/docs/start
   baseURL: https://googleads.googleapis.com
-  tags:
+  tags: []
+  tags_raw:
   - customers.adGroupAssetSets
   properties:
   - type: OpenAPI
@@ -565,7 +573,8 @@ apis:
     The customers.adGroupBidModifiers API from Google Ads — 1 operation(s) for customers.adgroupbidmodifiers.
   humanURL: https://developers.google.com/google-ads/scripts/docs/start
   baseURL: https://googleads.googleapis.com
-  tags:
+  tags: []
+  tags_raw:
   - customers.adGroupBidModifiers
   properties:
   - type: OpenAPI
@@ -600,7 +609,8 @@ apis:
     The customers.adGroupCriteria API from Google Ads — 1 operation(s) for customers.adgroupcriteria.
   humanURL: https://developers.google.com/google-ads/scripts/docs/start
   baseURL: https://googleads.googleapis.com
-  tags:
+  tags: []
+  tags_raw:
   - customers.adGroupCriteria
   properties:
   - type: OpenAPI
@@ -635,7 +645,8 @@ apis:
     The customers.AdGroupCriterionCustomizers API from Google Ads — 1 operation(s) for customers.adgroupcriterioncustomizers.
   humanURL: https://developers.google.com/google-ads/scripts/docs/start
   baseURL: https://googleads.googleapis.com
-  tags:
+  tags: []
+  tags_raw:
   - customers.AdGroupCriterionCustomizers
   properties:
   - type: OpenAPI
@@ -670,7 +681,8 @@ apis:
     The customers.adGroupCriterionLabels API from Google Ads — 1 operation(s) for customers.adgroupcriterionlabels.
   humanURL: https://developers.google.com/google-ads/scripts/docs/start
   baseURL: https://googleads.googleapis.com
-  tags:
+  tags: []
+  tags_raw:
   - customers.adGroupCriterionLabels
   properties:
   - type: OpenAPI
@@ -705,7 +717,8 @@ apis:
     The customers.adGroupCustomizers API from Google Ads — 1 operation(s) for customers.adgroupcustomizers.
   humanURL: https://developers.google.com/google-ads/scripts/docs/start
   baseURL: https://googleads.googleapis.com
-  tags:
+  tags: []
+  tags_raw:
   - customers.adGroupCustomizers
   properties:
   - type: OpenAPI
@@ -740,7 +753,8 @@ apis:
     The customers.adGroupLabels API from Google Ads — 1 operation(s) for customers.adgrouplabels.
   humanURL: https://developers.google.com/google-ads/scripts/docs/start
   baseURL: https://googleads.googleapis.com
-  tags:
+  tags: []
+  tags_raw:
   - customers.adGroupLabels
   properties:
   - type: OpenAPI
@@ -774,7 +788,8 @@ apis:
   description: The customers.adGroups API from Google Ads — 1 operation(s) for customers.adgroups.
   humanURL: https://developers.google.com/google-ads/scripts/docs/start
   baseURL: https://googleads.googleapis.com
-  tags:
+  tags: []
+  tags_raw:
   - customers.adGroups
   properties:
   - type: OpenAPI
@@ -809,7 +824,8 @@ apis:
     The customers.adParameters API from Google Ads — 1 operation(s) for customers.adparameters.
   humanURL: https://developers.google.com/google-ads/scripts/docs/start
   baseURL: https://googleads.googleapis.com
-  tags:
+  tags: []
+  tags_raw:
   - customers.adParameters
   properties:
   - type: OpenAPI
@@ -843,7 +859,8 @@ apis:
   description: The customers.ads API from Google Ads — 1 operation(s) for customers.ads.
   humanURL: https://developers.google.com/google-ads/scripts/docs/start
   baseURL: https://googleads.googleapis.com
-  tags:
+  tags: []
+  tags_raw:
   - customers.ads
   properties:
   - type: OpenAPI
@@ -878,7 +895,8 @@ apis:
     The customers.assetGenerations API from Google Ads — 2 operation(s) for customers.assetgenerations.
   humanURL: https://developers.google.com/google-ads/scripts/docs/start
   baseURL: https://googleads.googleapis.com
-  tags:
+  tags: []
+  tags_raw:
   - customers.assetGenerations
   properties:
   - type: OpenAPI
@@ -913,7 +931,8 @@ apis:
     The customers.assetGroupAssets API from Google Ads — 1 operation(s) for customers.assetgroupassets.
   humanURL: https://developers.google.com/google-ads/scripts/docs/start
   baseURL: https://googleads.googleapis.com
-  tags:
+  tags: []
+  tags_raw:
   - customers.assetGroupAssets
   properties:
   - type: OpenAPI
@@ -948,7 +967,8 @@ apis:
     The customers.assetGroupListingGroupFilters API from Google Ads — 1 operation(s) for customers.assetgrouplistinggroupfilters.
   humanURL: https://developers.google.com/google-ads/scripts/docs/start
   baseURL: https://googleads.googleapis.com
-  tags:
+  tags: []
+  tags_raw:
   - customers.assetGroupListingGroupFilters
   properties:
   - type: OpenAPI
@@ -983,7 +1003,8 @@ apis:
     The customers.assetGroups API from Google Ads — 1 operation(s) for customers.assetgroups.
   humanURL: https://developers.google.com/google-ads/scripts/docs/start
   baseURL: https://googleads.googleapis.com
-  tags:
+  tags: []
+  tags_raw:
   - customers.assetGroups
   properties:
   - type: OpenAPI
@@ -1018,7 +1039,8 @@ apis:
     The customers.assetGroupSignals API from Google Ads — 1 operation(s) for customers.assetgroupsignals.
   humanURL: https://developers.google.com/google-ads/scripts/docs/start
   baseURL: https://googleads.googleapis.com
-  tags:
+  tags: []
+  tags_raw:
   - customers.assetGroupSignals
   properties:
   - type: OpenAPI
@@ -1052,7 +1074,8 @@ apis:
   description: The customers.assets API from Google Ads — 1 operation(s) for customers.assets.
   humanURL: https://developers.google.com/google-ads/scripts/docs/start
   baseURL: https://googleads.googleapis.com
-  tags:
+  tags: []
+  tags_raw:
   - customers.assets
   properties:
   - type: OpenAPI
@@ -1087,7 +1110,8 @@ apis:
     The customers.assetSetAssets API from Google Ads — 1 operation(s) for customers.assetsetassets.
   humanURL: https://developers.google.com/google-ads/scripts/docs/start
   baseURL: https://googleads.googleapis.com
-  tags:
+  tags: []
+  tags_raw:
   - customers.assetSetAssets
   properties:
   - type: OpenAPI
@@ -1121,7 +1145,8 @@ apis:
   description: The customers.assetSets API from Google Ads — 1 operation(s) for customers.assetsets.
   humanURL: https://developers.google.com/google-ads/scripts/docs/start
   baseURL: https://googleads.googleapis.com
-  tags:
+  tags: []
+  tags_raw:
   - customers.assetSets
   properties:
   - type: OpenAPI
@@ -1155,7 +1180,8 @@ apis:
   description: The customers.audiences API from Google Ads — 1 operation(s) for customers.audiences.
   humanURL: https://developers.google.com/google-ads/scripts/docs/start
   baseURL: https://googleads.googleapis.com
-  tags:
+  tags: []
+  tags_raw:
   - customers.audiences
   properties:
   - type: OpenAPI
@@ -1189,7 +1215,8 @@ apis:
   description: The customers.batchJobs API from Google Ads — 4 operation(s) for customers.batchjobs.
   humanURL: https://developers.google.com/google-ads/scripts/docs/start
   baseURL: https://googleads.googleapis.com
-  tags:
+  tags: []
+  tags_raw:
   - customers.batchJobs
   properties:
   - type: OpenAPI
@@ -1224,7 +1251,8 @@ apis:
     The customers.biddingDataExclusions API from Google Ads — 1 operation(s) for customers.biddingdataexclusions.
   humanURL: https://developers.google.com/google-ads/scripts/docs/start
   baseURL: https://googleads.googleapis.com
-  tags:
+  tags: []
+  tags_raw:
   - customers.biddingDataExclusions
   properties:
   - type: OpenAPI
@@ -1259,7 +1287,8 @@ apis:
     The customers.biddingSeasonalityAdjustments API from Google Ads — 1 operation(s) for customers.biddingseasonalityadjustments.
   humanURL: https://developers.google.com/google-ads/scripts/docs/start
   baseURL: https://googleads.googleapis.com
-  tags:
+  tags: []
+  tags_raw:
   - customers.biddingSeasonalityAdjustments
   properties:
   - type: OpenAPI
@@ -1294,7 +1323,8 @@ apis:
     The customers.biddingStrategies API from Google Ads — 1 operation(s) for customers.biddingstrategies.
   humanURL: https://developers.google.com/google-ads/scripts/docs/start
   baseURL: https://googleads.googleapis.com
-  tags:
+  tags: []
+  tags_raw:
   - customers.biddingStrategies
   properties:
   - type: OpenAPI
@@ -1329,7 +1359,8 @@ apis:
     The customers.billingSetups API from Google Ads — 1 operation(s) for customers.billingsetups.
   humanURL: https://developers.google.com/google-ads/scripts/docs/start
   baseURL: https://googleads.googleapis.com
-  tags:
+  tags: []
+  tags_raw:
   - customers.billingSetups
   properties:
   - type: OpenAPI
@@ -1364,7 +1395,8 @@ apis:
     The customers.campaignAssets API from Google Ads — 1 operation(s) for customers.campaignassets.
   humanURL: https://developers.google.com/google-ads/scripts/docs/start
   baseURL: https://googleads.googleapis.com
-  tags:
+  tags: []
+  tags_raw:
   - customers.campaignAssets
   properties:
   - type: OpenAPI
@@ -1399,7 +1431,8 @@ apis:
     The customers.campaignAssetSets API from Google Ads — 1 operation(s) for customers.campaignassetsets.
   humanURL: https://developers.google.com/google-ads/scripts/docs/start
   baseURL: https://googleads.googleapis.com
-  tags:
+  tags: []
+  tags_raw:
   - customers.campaignAssetSets
   properties:
   - type: OpenAPI
@@ -1434,7 +1467,8 @@ apis:
     The customers.campaignBidModifiers API from Google Ads — 1 operation(s) for customers.campaignbidmodifiers.
   humanURL: https://developers.google.com/google-ads/scripts/docs/start
   baseURL: https://googleads.googleapis.com
-  tags:
+  tags: []
+  tags_raw:
   - customers.campaignBidModifiers
   properties:
   - type: OpenAPI
@@ -1469,7 +1503,8 @@ apis:
     The customers.campaignBudgets API from Google Ads — 1 operation(s) for customers.campaignbudgets.
   humanURL: https://developers.google.com/google-ads/scripts/docs/start
   baseURL: https://googleads.googleapis.com
-  tags:
+  tags: []
+  tags_raw:
   - customers.campaignBudgets
   properties:
   - type: OpenAPI
@@ -1504,7 +1539,8 @@ apis:
     The customers.campaignConversionGoals API from Google Ads — 1 operation(s) for customers.campaignconversiongoals.
   humanURL: https://developers.google.com/google-ads/scripts/docs/start
   baseURL: https://googleads.googleapis.com
-  tags:
+  tags: []
+  tags_raw:
   - customers.campaignConversionGoals
   properties:
   - type: OpenAPI
@@ -1539,7 +1575,8 @@ apis:
     The customers.campaignCriteria API from Google Ads — 1 operation(s) for customers.campaigncriteria.
   humanURL: https://developers.google.com/google-ads/scripts/docs/start
   baseURL: https://googleads.googleapis.com
-  tags:
+  tags: []
+  tags_raw:
   - customers.campaignCriteria
   properties:
   - type: OpenAPI
@@ -1574,7 +1611,8 @@ apis:
     The customers.campaignCustomizers API from Google Ads — 1 operation(s) for customers.campaigncustomizers.
   humanURL: https://developers.google.com/google-ads/scripts/docs/start
   baseURL: https://googleads.googleapis.com
-  tags:
+  tags: []
+  tags_raw:
   - customers.campaignCustomizers
   properties:
   - type: OpenAPI
@@ -1609,7 +1647,8 @@ apis:
     The customers.campaignDrafts API from Google Ads — 3 operation(s) for customers.campaigndrafts.
   humanURL: https://developers.google.com/google-ads/scripts/docs/start
   baseURL: https://googleads.googleapis.com
-  tags:
+  tags: []
+  tags_raw:
   - customers.campaignDrafts
   properties:
   - type: OpenAPI
@@ -1644,7 +1683,8 @@ apis:
     The customers.CampaignGoalConfigs API from Google Ads — 1 operation(s) for customers.campaigngoalconfigs.
   humanURL: https://developers.google.com/google-ads/scripts/docs/start
   baseURL: https://googleads.googleapis.com
-  tags:
+  tags: []
+  tags_raw:
   - customers.CampaignGoalConfigs
   properties:
   - type: OpenAPI
@@ -1679,7 +1719,8 @@ apis:
     The customers.campaignGroups API from Google Ads — 1 operation(s) for customers.campaigngroups.
   humanURL: https://developers.google.com/google-ads/scripts/docs/start
   baseURL: https://googleads.googleapis.com
-  tags:
+  tags: []
+  tags_raw:
   - customers.campaignGroups
   properties:
   - type: OpenAPI
@@ -1714,7 +1755,8 @@ apis:
     The customers.campaignLabels API from Google Ads — 1 operation(s) for customers.campaignlabels.
   humanURL: https://developers.google.com/google-ads/scripts/docs/start
   baseURL: https://googleads.googleapis.com
-  tags:
+  tags: []
+  tags_raw:
   - customers.campaignLabels
   properties:
   - type: OpenAPI
@@ -1748,7 +1790,8 @@ apis:
   description: The customers.campaigns API from Google Ads — 2 operation(s) for customers.campaigns.
   humanURL: https://developers.google.com/google-ads/scripts/docs/start
   baseURL: https://googleads.googleapis.com
-  tags:
+  tags: []
+  tags_raw:
   - customers.campaigns
   properties:
   - type: OpenAPI
@@ -1783,7 +1826,8 @@ apis:
     The customers.campaignSharedSets API from Google Ads — 1 operation(s) for customers.campaignsharedsets.
   humanURL: https://developers.google.com/google-ads/scripts/docs/start
   baseURL: https://googleads.googleapis.com
-  tags:
+  tags: []
+  tags_raw:
   - customers.campaignSharedSets
   properties:
   - type: OpenAPI
@@ -1818,7 +1862,8 @@ apis:
     The customers.conversionActions API from Google Ads — 1 operation(s) for customers.conversionactions.
   humanURL: https://developers.google.com/google-ads/scripts/docs/start
   baseURL: https://googleads.googleapis.com
-  tags:
+  tags: []
+  tags_raw:
   - customers.conversionActions
   properties:
   - type: OpenAPI
@@ -1853,7 +1898,8 @@ apis:
     The customers.conversionCustomVariables API from Google Ads — 1 operation(s) for customers.conversioncustomvariables.
   humanURL: https://developers.google.com/google-ads/scripts/docs/start
   baseURL: https://googleads.googleapis.com
-  tags:
+  tags: []
+  tags_raw:
   - customers.conversionCustomVariables
   properties:
   - type: OpenAPI
@@ -1888,7 +1934,8 @@ apis:
     The customers.conversionGoalCampaignConfigs API from Google Ads — 1 operation(s) for customers.conversiongoalcampaignconfigs.
   humanURL: https://developers.google.com/google-ads/scripts/docs/start
   baseURL: https://googleads.googleapis.com
-  tags:
+  tags: []
+  tags_raw:
   - customers.conversionGoalCampaignConfigs
   properties:
   - type: OpenAPI
@@ -1923,7 +1970,8 @@ apis:
     The customers.conversionValueRules API from Google Ads — 1 operation(s) for customers.conversionvaluerules.
   humanURL: https://developers.google.com/google-ads/scripts/docs/start
   baseURL: https://googleads.googleapis.com
-  tags:
+  tags: []
+  tags_raw:
   - customers.conversionValueRules
   properties:
   - type: OpenAPI
@@ -1958,7 +2006,8 @@ apis:
     The customers.conversionValueRuleSets API from Google Ads — 1 operation(s) for customers.conversionvaluerulesets.
   humanURL: https://developers.google.com/google-ads/scripts/docs/start
   baseURL: https://googleads.googleapis.com
-  tags:
+  tags: []
+  tags_raw:
   - customers.conversionValueRuleSets
   properties:
   - type: OpenAPI
@@ -1993,7 +2042,8 @@ apis:
     The customers.customAudiences API from Google Ads — 1 operation(s) for customers.customaudiences.
   humanURL: https://developers.google.com/google-ads/scripts/docs/start
   baseURL: https://googleads.googleapis.com
-  tags:
+  tags: []
+  tags_raw:
   - customers.customAudiences
   properties:
   - type: OpenAPI
@@ -2028,7 +2078,8 @@ apis:
     The customers.customConversionGoals API from Google Ads — 1 operation(s) for customers.customconversiongoals.
   humanURL: https://developers.google.com/google-ads/scripts/docs/start
   baseURL: https://googleads.googleapis.com
-  tags:
+  tags: []
+  tags_raw:
   - customers.customConversionGoals
   properties:
   - type: OpenAPI
@@ -2063,7 +2114,8 @@ apis:
     The customers.customerAssets API from Google Ads — 1 operation(s) for customers.customerassets.
   humanURL: https://developers.google.com/google-ads/scripts/docs/start
   baseURL: https://googleads.googleapis.com
-  tags:
+  tags: []
+  tags_raw:
   - customers.customerAssets
   properties:
   - type: OpenAPI
@@ -2098,7 +2150,8 @@ apis:
     The customers.customerAssetSets API from Google Ads — 1 operation(s) for customers.customerassetsets.
   humanURL: https://developers.google.com/google-ads/scripts/docs/start
   baseURL: https://googleads.googleapis.com
-  tags:
+  tags: []
+  tags_raw:
   - customers.customerAssetSets
   properties:
   - type: OpenAPI
@@ -2133,7 +2186,8 @@ apis:
     The customers.customerClientLinks API from Google Ads — 1 operation(s) for customers.customerclientlinks.
   humanURL: https://developers.google.com/google-ads/scripts/docs/start
   baseURL: https://googleads.googleapis.com
-  tags:
+  tags: []
+  tags_raw:
   - customers.customerClientLinks
   properties:
   - type: OpenAPI
@@ -2168,7 +2222,8 @@ apis:
     The customers.customerConversionGoals API from Google Ads — 1 operation(s) for customers.customerconversiongoals.
   humanURL: https://developers.google.com/google-ads/scripts/docs/start
   baseURL: https://googleads.googleapis.com
-  tags:
+  tags: []
+  tags_raw:
   - customers.customerConversionGoals
   properties:
   - type: OpenAPI
@@ -2203,7 +2258,8 @@ apis:
     The customers.CustomerCustomizers API from Google Ads — 1 operation(s) for customers.customercustomizers.
   humanURL: https://developers.google.com/google-ads/scripts/docs/start
   baseURL: https://googleads.googleapis.com
-  tags:
+  tags: []
+  tags_raw:
   - customers.CustomerCustomizers
   properties:
   - type: OpenAPI
@@ -2238,7 +2294,8 @@ apis:
     The customers.customerLabels API from Google Ads — 1 operation(s) for customers.customerlabels.
   humanURL: https://developers.google.com/google-ads/scripts/docs/start
   baseURL: https://googleads.googleapis.com
-  tags:
+  tags: []
+  tags_raw:
   - customers.customerLabels
   properties:
   - type: OpenAPI
@@ -2273,7 +2330,8 @@ apis:
     The customers.customerManagerLinks API from Google Ads — 2 operation(s) for customers.customermanagerlinks.
   humanURL: https://developers.google.com/google-ads/scripts/docs/start
   baseURL: https://googleads.googleapis.com
-  tags:
+  tags: []
+  tags_raw:
   - customers.customerManagerLinks
   properties:
   - type: OpenAPI
@@ -2308,7 +2366,8 @@ apis:
     The customers.customerNegativeCriteria API from Google Ads — 1 operation(s) for customers.customernegativecriteria.
   humanURL: https://developers.google.com/google-ads/scripts/docs/start
   baseURL: https://googleads.googleapis.com
-  tags:
+  tags: []
+  tags_raw:
   - customers.customerNegativeCriteria
   properties:
   - type: OpenAPI
@@ -2343,7 +2402,8 @@ apis:
     The customers.customerSkAdNetworkConversionValueSchemas API from Google Ads — 1 operation(s) for customers.customerskadnetworkconversionvalueschemas.
   humanURL: https://developers.google.com/google-ads/scripts/docs/start
   baseURL: https://googleads.googleapis.com
-  tags:
+  tags: []
+  tags_raw:
   - customers.customerSkAdNetworkConversionValueSchemas
   properties:
   - type: OpenAPI
@@ -2378,7 +2438,8 @@ apis:
     The customers.customerUserAccesses API from Google Ads — 1 operation(s) for customers.customeruseraccesses.
   humanURL: https://developers.google.com/google-ads/scripts/docs/start
   baseURL: https://googleads.googleapis.com
-  tags:
+  tags: []
+  tags_raw:
   - customers.customerUserAccesses
   properties:
   - type: OpenAPI
@@ -2413,7 +2474,8 @@ apis:
     The customers.customerUserAccessInvitations API from Google Ads — 1 operation(s) for customers.customeruseraccessinvitations.
   humanURL: https://developers.google.com/google-ads/scripts/docs/start
   baseURL: https://googleads.googleapis.com
-  tags:
+  tags: []
+  tags_raw:
   - customers.customerUserAccessInvitations
   properties:
   - type: OpenAPI
@@ -2448,7 +2510,8 @@ apis:
     The customers.customInterests API from Google Ads — 1 operation(s) for customers.custominterests.
   humanURL: https://developers.google.com/google-ads/scripts/docs/start
   baseURL: https://googleads.googleapis.com
-  tags:
+  tags: []
+  tags_raw:
   - customers.customInterests
   properties:
   - type: OpenAPI
@@ -2483,7 +2546,8 @@ apis:
     The customers.customizerAttributes API from Google Ads — 1 operation(s) for customers.customizerattributes.
   humanURL: https://developers.google.com/google-ads/scripts/docs/start
   baseURL: https://googleads.googleapis.com
-  tags:
+  tags: []
+  tags_raw:
   - customers.customizerAttributes
   properties:
   - type: OpenAPI
@@ -2517,7 +2581,8 @@ apis:
   description: The customers.dataLinks API from Google Ads — 3 operation(s) for customers.datalinks.
   humanURL: https://developers.google.com/google-ads/scripts/docs/start
   baseURL: https://googleads.googleapis.com
-  tags:
+  tags: []
+  tags_raw:
   - customers.dataLinks
   properties:
   - type: OpenAPI
@@ -2552,7 +2617,8 @@ apis:
     The customers.experimentArms API from Google Ads — 1 operation(s) for customers.experimentarms.
   humanURL: https://developers.google.com/google-ads/scripts/docs/start
   baseURL: https://googleads.googleapis.com
-  tags:
+  tags: []
+  tags_raw:
   - customers.experimentArms
   properties:
   - type: OpenAPI
@@ -2587,7 +2653,8 @@ apis:
     The customers.experiments API from Google Ads — 6 operation(s) for customers.experiments.
   humanURL: https://developers.google.com/google-ads/scripts/docs/start
   baseURL: https://googleads.googleapis.com
-  tags:
+  tags: []
+  tags_raw:
   - customers.experiments
   properties:
   - type: OpenAPI
@@ -2621,7 +2688,8 @@ apis:
   description: The customers.Goals API from Google Ads — 1 operation(s) for customers.goals.
   humanURL: https://developers.google.com/google-ads/scripts/docs/start
   baseURL: https://googleads.googleapis.com
-  tags:
+  tags: []
+  tags_raw:
   - customers.Goals
   properties:
   - type: OpenAPI
@@ -2655,7 +2723,8 @@ apis:
   description: The customers.googleAds API from Google Ads — 3 operation(s) for customers.googleads.
   humanURL: https://developers.google.com/google-ads/scripts/docs/start
   baseURL: https://googleads.googleapis.com
-  tags:
+  tags: []
+  tags_raw:
   - customers.googleAds
   properties:
   - type: OpenAPI
@@ -2689,7 +2758,8 @@ apis:
   description: The customers.incentives API from Google Ads — 1 operation(s) for customers.incentives.
   humanURL: https://developers.google.com/google-ads/scripts/docs/start
   baseURL: https://googleads.googleapis.com
-  tags:
+  tags: []
+  tags_raw:
   - customers.incentives
   properties:
   - type: OpenAPI
@@ -2723,7 +2793,8 @@ apis:
   description: The customers.invoices API from Google Ads — 1 operation(s) for customers.invoices.
   humanURL: https://developers.google.com/google-ads/scripts/docs/start
   baseURL: https://googleads.googleapis.com
-  tags:
+  tags: []
+  tags_raw:
   - customers.invoices
   properties:
   - type: OpenAPI
@@ -2758,7 +2829,8 @@ apis:
     The customers.keywordPlanAdGroupKeywords API from Google Ads — 1 operation(s) for customers.keywordplanadgroupkeywords.
   humanURL: https://developers.google.com/google-ads/scripts/docs/start
   baseURL: https://googleads.googleapis.com
-  tags:
+  tags: []
+  tags_raw:
   - customers.keywordPlanAdGroupKeywords
   properties:
   - type: OpenAPI
@@ -2793,7 +2865,8 @@ apis:
     The customers.keywordPlanAdGroups API from Google Ads — 1 operation(s) for customers.keywordplanadgroups.
   humanURL: https://developers.google.com/google-ads/scripts/docs/start
   baseURL: https://googleads.googleapis.com
-  tags:
+  tags: []
+  tags_raw:
   - customers.keywordPlanAdGroups
   properties:
   - type: OpenAPI
@@ -2828,7 +2901,8 @@ apis:
     The customers.keywordPlanCampaignKeywords API from Google Ads — 1 operation(s) for customers.keywordplancampaignkeywords.
   humanURL: https://developers.google.com/google-ads/scripts/docs/start
   baseURL: https://googleads.googleapis.com
-  tags:
+  tags: []
+  tags_raw:
   - customers.keywordPlanCampaignKeywords
   properties:
   - type: OpenAPI
@@ -2863,7 +2937,8 @@ apis:
     The customers.keywordPlanCampaigns API from Google Ads — 1 operation(s) for customers.keywordplancampaigns.
   humanURL: https://developers.google.com/google-ads/scripts/docs/start
   baseURL: https://googleads.googleapis.com
-  tags:
+  tags: []
+  tags_raw:
   - customers.keywordPlanCampaigns
   properties:
   - type: OpenAPI
@@ -2898,7 +2973,8 @@ apis:
     The customers.keywordPlans API from Google Ads — 1 operation(s) for customers.keywordplans.
   humanURL: https://developers.google.com/google-ads/scripts/docs/start
   baseURL: https://googleads.googleapis.com
-  tags:
+  tags: []
+  tags_raw:
   - customers.keywordPlans
   properties:
   - type: OpenAPI
@@ -2932,7 +3008,8 @@ apis:
   description: The customers.labels API from Google Ads — 1 operation(s) for customers.labels.
   humanURL: https://developers.google.com/google-ads/scripts/docs/start
   baseURL: https://googleads.googleapis.com
-  tags:
+  tags: []
+  tags_raw:
   - customers.labels
   properties:
   - type: OpenAPI
@@ -2967,7 +3044,8 @@ apis:
     The customers.localServices API from Google Ads — 1 operation(s) for customers.localservices.
   humanURL: https://developers.google.com/google-ads/scripts/docs/start
   baseURL: https://googleads.googleapis.com
-  tags:
+  tags: []
+  tags_raw:
   - customers.localServices
   properties:
   - type: OpenAPI
@@ -3002,7 +3080,8 @@ apis:
     The customers.localServicesLeads API from Google Ads — 1 operation(s) for customers.localservicesleads.
   humanURL: https://developers.google.com/google-ads/scripts/docs/start
   baseURL: https://googleads.googleapis.com
-  tags:
+  tags: []
+  tags_raw:
   - customers.localServicesLeads
   properties:
   - type: OpenAPI
@@ -3037,7 +3116,8 @@ apis:
     The customers.multiPartyAuthReview API from Google Ads — 1 operation(s) for customers.multipartyauthreview.
   humanURL: https://developers.google.com/google-ads/scripts/docs/start
   baseURL: https://googleads.googleapis.com
-  tags:
+  tags: []
+  tags_raw:
   - customers.multiPartyAuthReview
   properties:
   - type: OpenAPI
@@ -3072,7 +3152,8 @@ apis:
     The customers.offlineUserDataJobs API from Google Ads — 3 operation(s) for customers.offlineuserdatajobs.
   humanURL: https://developers.google.com/google-ads/scripts/docs/start
   baseURL: https://googleads.googleapis.com
-  tags:
+  tags: []
+  tags_raw:
   - customers.offlineUserDataJobs
   properties:
   - type: OpenAPI
@@ -3106,7 +3187,8 @@ apis:
   description: The customers.operations API from Google Ads — 4 operation(s) for customers.operations.
   humanURL: https://developers.google.com/google-ads/scripts/docs/start
   baseURL: https://googleads.googleapis.com
-  tags:
+  tags: []
+  tags_raw:
   - customers.operations
   properties:
   - type: OpenAPI
@@ -3141,7 +3223,8 @@ apis:
     The customers.paymentsAccounts API from Google Ads — 1 operation(s) for customers.paymentsaccounts.
   humanURL: https://developers.google.com/google-ads/scripts/docs/start
   baseURL: https://googleads.googleapis.com
-  tags:
+  tags: []
+  tags_raw:
   - customers.paymentsAccounts
   properties:
   - type: OpenAPI
@@ -3176,7 +3259,8 @@ apis:
     The customers.productLinkInvitations API from Google Ads — 3 operation(s) for customers.productlinkinvitations.
   humanURL: https://developers.google.com/google-ads/scripts/docs/start
   baseURL: https://googleads.googleapis.com
-  tags:
+  tags: []
+  tags_raw:
   - customers.productLinkInvitations
   properties:
   - type: OpenAPI
@@ -3211,7 +3295,8 @@ apis:
     The customers.productLinks API from Google Ads — 2 operation(s) for customers.productlinks.
   humanURL: https://developers.google.com/google-ads/scripts/docs/start
   baseURL: https://googleads.googleapis.com
-  tags:
+  tags: []
+  tags_raw:
   - customers.productLinks
   properties:
   - type: OpenAPI
@@ -3246,7 +3331,8 @@ apis:
     The customers.recommendations API from Google Ads — 3 operation(s) for customers.recommendations.
   humanURL: https://developers.google.com/google-ads/scripts/docs/start
   baseURL: https://googleads.googleapis.com
-  tags:
+  tags: []
+  tags_raw:
   - customers.recommendations
   properties:
   - type: OpenAPI
@@ -3281,7 +3367,8 @@ apis:
     The customers.recommendationSubscriptions API from Google Ads — 1 operation(s) for customers.recommendationsubscriptions.
   humanURL: https://developers.google.com/google-ads/scripts/docs/start
   baseURL: https://googleads.googleapis.com
-  tags:
+  tags: []
+  tags_raw:
   - customers.recommendationSubscriptions
   properties:
   - type: OpenAPI
@@ -3316,7 +3403,8 @@ apis:
     The customers.remarketingActions API from Google Ads — 1 operation(s) for customers.remarketingactions.
   humanURL: https://developers.google.com/google-ads/scripts/docs/start
   baseURL: https://googleads.googleapis.com
-  tags:
+  tags: []
+  tags_raw:
   - customers.remarketingActions
   properties:
   - type: OpenAPI
@@ -3351,7 +3439,8 @@ apis:
     The customers.reservations API from Google Ads — 2 operation(s) for customers.reservations.
   humanURL: https://developers.google.com/google-ads/scripts/docs/start
   baseURL: https://googleads.googleapis.com
-  tags:
+  tags: []
+  tags_raw:
   - customers.reservations
   properties:
   - type: OpenAPI
@@ -3386,7 +3475,8 @@ apis:
     The customers.sharedCriteria API from Google Ads — 1 operation(s) for customers.sharedcriteria.
   humanURL: https://developers.google.com/google-ads/scripts/docs/start
   baseURL: https://googleads.googleapis.com
-  tags:
+  tags: []
+  tags_raw:
   - customers.sharedCriteria
   properties:
   - type: OpenAPI
@@ -3420,7 +3510,8 @@ apis:
   description: The customers.sharedSets API from Google Ads — 1 operation(s) for customers.sharedsets.
   humanURL: https://developers.google.com/google-ads/scripts/docs/start
   baseURL: https://googleads.googleapis.com
-  tags:
+  tags: []
+  tags_raw:
   - customers.sharedSets
   properties:
   - type: OpenAPI
@@ -3455,7 +3546,8 @@ apis:
     The customers.smartCampaignSettings API from Google Ads — 2 operation(s) for customers.smartcampaignsettings.
   humanURL: https://developers.google.com/google-ads/scripts/docs/start
   baseURL: https://googleads.googleapis.com
-  tags:
+  tags: []
+  tags_raw:
   - customers.smartCampaignSettings
   properties:
   - type: OpenAPI
@@ -3490,7 +3582,8 @@ apis:
     The customers.thirdPartyAppAnalyticsLinks API from Google Ads — 1 operation(s) for customers.thirdpartyappanalyticslinks.
   humanURL: https://developers.google.com/google-ads/scripts/docs/start
   baseURL: https://googleads.googleapis.com
-  tags:
+  tags: []
+  tags_raw:
   - customers.thirdPartyAppAnalyticsLinks
   properties:
   - type: OpenAPI
@@ -3525,7 +3618,8 @@ apis:
     The customers.userListCustomerTypes API from Google Ads — 1 operation(s) for customers.userlistcustomertypes.
   humanURL: https://developers.google.com/google-ads/scripts/docs/start
   baseURL: https://googleads.googleapis.com
-  tags:
+  tags: []
+  tags_raw:
   - customers.userListCustomerTypes
   properties:
   - type: OpenAPI
@@ -3559,7 +3653,8 @@ apis:
   description: The customers.userLists API from Google Ads — 1 operation(s) for customers.userlists.
   humanURL: https://developers.google.com/google-ads/scripts/docs/start
   baseURL: https://googleads.googleapis.com
-  tags:
+  tags: []
+  tags_raw:
   - customers.userLists
   properties:
   - type: OpenAPI
@@ -3594,7 +3689,8 @@ apis:
     The customers.youTubeVideoUploads API from Google Ads — 2 operation(s) for customers.youtubevideouploads.
   humanURL: https://developers.google.com/google-ads/scripts/docs/start
   baseURL: https://googleads.googleapis.com
-  tags:
+  tags: []
+  tags_raw:
   - customers.youTubeVideoUploads
   properties:
   - type: OpenAPI
@@ -3628,7 +3724,8 @@ apis:
   description: The geoTargetConstants API from Google Ads — 1 operation(s) for geotargetconstants.
   humanURL: https://developers.google.com/google-ads/scripts/docs/start
   baseURL: https://googleads.googleapis.com
-  tags:
+  tags: []
+  tags_raw:
   - geoTargetConstants
   properties:
   - type: OpenAPI
@@ -3662,7 +3759,8 @@ apis:
   description: The googleAdsFields API from Google Ads — 2 operation(s) for googleadsfields.
   humanURL: https://developers.google.com/google-ads/scripts/docs/start
   baseURL: https://googleads.googleapis.com
-  tags:
+  tags: []
+  tags_raw:
   - googleAdsFields
   properties:
   - type: OpenAPI
@@ -3697,6 +3795,8 @@ apis:
   humanURL: https://developers.google.com/google-ads/scripts/docs/start
   baseURL: https://googleads.googleapis.com
   tags:
+  - Incentives
+  tags_raw:
   - incentives
   properties:
   - type: OpenAPI
@@ -3731,7 +3831,8 @@ apis:
     The keywordThemeConstants API from Google Ads — 1 operation(s) for keywordthemeconstants.
   humanURL: https://developers.google.com/google-ads/scripts/docs/start
   baseURL: https://googleads.googleapis.com
-  tags:
+  tags: []
+  tags_raw:
   - keywordThemeConstants
   properties:
   - type: OpenAPI
@@ -3766,6 +3867,8 @@ apis:
   humanURL: https://developers.google.com/google-ads/scripts/docs/start
   baseURL: https://googleads.googleapis.com
   tags:
+  - Media
+  tags_raw:
   - media
   properties:
   - type: OpenAPI
