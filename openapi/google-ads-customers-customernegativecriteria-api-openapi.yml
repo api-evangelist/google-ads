@@ -1,0 +1,488 @@
+openapi: 3.2.0
+info:
+  title: Google Ads Customers.customer Negative Criteria API
+  description: Manage your Google Ads accounts, campaigns, and reports with this API.
+  version: v25
+  x-discovery-revision: '20260721'
+  contact:
+    name: Google
+    url: https://developers.google.com/google-ads/api/
+  termsOfService: https://developers.google.com/terms
+servers:
+- url: https://googleads.googleapis.com
+  description: Google Ads API production server
+security:
+- oauth2:
+  - https://www.googleapis.com/auth/adwords
+tags:
+- name: customers.customerNegativeCriteria
+paths:
+  /v25/customers/{customersId}/customerNegativeCriteria:mutate:
+    parameters:
+    - name: upload_protocol
+      in: query
+      required: false
+      schema:
+        type: string
+      description: Upload protocol for media (e.g. "raw", "multipart").
+    - name: quotaUser
+      in: query
+      required: false
+      schema:
+        type: string
+      description: Available to use for quota purposes for server-side applications. Can be any arbitrary string assigned to a user, but should not exceed 40 characters.
+    - name: fields
+      in: query
+      required: false
+      schema:
+        type: string
+      description: Selector specifying which fields to include in a partial response.
+    - name: $.xgafv
+      in: query
+      required: false
+      schema:
+        type: string
+        enum:
+        - '1'
+        - '2'
+        x-enumDescriptions:
+        - v1 error format
+        - v2 error format
+      description: V1 error format.
+    - name: callback
+      in: query
+      required: false
+      schema:
+        type: string
+      description: JSONP
+    - name: prettyPrint
+      in: query
+      required: false
+      schema:
+        type: boolean
+        default: 'true'
+      description: Returns response with indentations and line breaks.
+    - name: access_token
+      in: query
+      required: false
+      schema:
+        type: string
+      description: OAuth access token.
+    - name: uploadType
+      in: query
+      required: false
+      schema:
+        type: string
+      description: Legacy upload protocol for media (e.g. "media", "multipart").
+    - name: key
+      in: query
+      required: false
+      schema:
+        type: string
+      description: API key. Your API key identifies your project and provides you with API access, quota, and reports. Required unless you provide an OAuth 2.0 token.
+    - name: oauth_token
+      in: query
+      required: false
+      schema:
+        type: string
+      description: OAuth 2.0 token for the current user.
+    - name: alt
+      in: query
+      required: false
+      schema:
+        x-enumDescriptions:
+        - Responses with Content-Type of application/json
+        - Media download with context-dependent Content-Type
+        - Responses with Content-Type of application/x-protobuf
+        type: string
+        default: json
+        enum:
+        - json
+        - media
+        - proto
+      description: Data format for response.
+    post:
+      operationId: googleads_customers_customerNegativeCriteria_mutate
+      summary: Creates or removes criteria
+      tags:
+      - customers.customerNegativeCriteria
+      description: 'Creates or removes criteria. Operation statuses are returned. List of thrown errors: [AuthenticationError]() [AuthorizationError]() [CriterionError]() [DatabaseError]() [FieldError]() [HeaderError]() [InternalError]() [MutateError]() [QuotaError]() [RequestError]()'
+      parameters:
+      - name: customerId
+        in: path
+        required: true
+        schema:
+          type: string
+          pattern: ^[^/]+$
+        description: Required. The ID of the customer whose criteria are being modified.
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/GoogleAdsGoogleadsV25Services__MutateCustomerNegativeCriteriaRequest'
+      responses:
+        '200':
+          description: Successful response
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/GoogleAdsGoogleadsV25Services__MutateCustomerNegativeCriteriaResponse'
+      security:
+      - oauth2:
+        - https://www.googleapis.com/auth/adwords
+components:
+  schemas:
+    GoogleAdsGoogleadsV25Common__YouTubeChannelInfo:
+      type: object
+      properties:
+        channelId:
+          type: string
+          description: The YouTube uploader channel id or the channel code of a YouTube channel.
+      description: A YouTube Channel criterion.
+    GoogleAdsGoogleadsV25Common__NegativeKeywordListInfo:
+      description: A Negative Keyword List criterion. Represents a shared set of negative keywords that can be excluded at the account-level. Only one negative keyword list criterion can be attached per account.
+      type: object
+      properties:
+        sharedSet:
+          description: The NegativeKeywordListInfo shared set resource name.
+          type: string
+    GoogleAdsGoogleadsV25Common__MobileApplicationInfo:
+      type: object
+      properties:
+        appId:
+          description: A string that uniquely identifies a mobile application to Google Ads API. The format of this string is "{platform}-{platform_native_id}", where platform is "1" for iOS apps and "2" for Android apps, and where platform_native_id is the mobile application identifier native to the corresponding platform. For iOS, this native identifier is the 9 digit string that appears at the end of an App Store URL (for example, "476943146" for "Flood-It! 2" whose App Store link is "http://itunes.apple.com/us/app/flood-it!-2/id476943146"). For Android, this native identifier is the application's package name (for example, "com.labpixies.colordrips" for "Color Drips" given Google Play link "https://play.google.com/store/apps/details?id=com.labpixies.colordrips"). A well formed app id for Google Ads API would thus be "1-476943146" for iOS and "2-com.labpixies.colordrips" for Android. This field is required and must be set in CREATE operations.
+          type: string
+        name:
+          description: Name of this mobile application.
+          type: string
+      description: A mobile application criterion.
+    GoogleAdsGoogleadsV25Common__ContentLabelInfo:
+      type: object
+      properties:
+        type:
+          x-enumDescriptions:
+          - Not specified.
+          - Used for return value only. Represents value unknown in this version.
+          - Sexually suggestive content.
+          - Below the fold placement.
+          - Parked domain.
+          - Juvenile, gross & bizarre content.
+          - Profanity & rough language.
+          - Death & tragedy.
+          - Video.
+          - 'Content rating: G.'
+          - 'Content rating: PG.'
+          - 'Content rating: T.'
+          - 'Content rating: MA.'
+          - 'Content rating: not yet rated.'
+          - Embedded video.
+          - Live streaming video.
+          - Sensitive social issues.
+          - Content that's suitable for families to view together, including Made for Kids videos on YouTube.
+          - Video games that simulate hand-to-hand fighting or combat with the use of modern or medieval weapons.
+          - Video games that feature mature content, such as violence, inappropriate language, or sexual suggestiveness.
+          - Health content that people might find sensitive or upsetting, such as medical procedures or images and descriptions of various medical conditions.
+          - Health content from sources that may provide accurate information but aren't as commonly cited as other, more well-known sources.
+          - News content that's been recently announced, regardless of the themes or people being reported on.
+          - News content that people might find sensitive or upsetting, such as crimes, accidents, and natural incidents, or commentary on potentially controversial social and political issues.
+          - News content from sources that aren't featured on Google News or YouTube News.
+          - Political content, such as political statements made by well-known politicians, political elections, or events widely perceived to be political in nature.
+          - Content with religious themes, such as religious teachings or customs, holy sites or places of worship, well-known religious figures or people dressed in religious attire, or religious opinions on social and political issues.
+          enum:
+          - UNSPECIFIED
+          - UNKNOWN
+          - SEXUALLY_SUGGESTIVE
+          - BELOW_THE_FOLD
+          - PARKED_DOMAIN
+          - JUVENILE
+          - PROFANITY
+          - TRAGEDY
+          - VIDEO
+          - VIDEO_RATING_DV_G
+          - VIDEO_RATING_DV_PG
+          - VIDEO_RATING_DV_T
+          - VIDEO_RATING_DV_MA
+          - VIDEO_NOT_YET_RATED
+          - EMBEDDED_VIDEO
+          - LIVE_STREAMING_VIDEO
+          - SOCIAL_ISSUES
+          - BRAND_SUITABILITY_CONTENT_FOR_FAMILIES
+          - BRAND_SUITABILITY_GAMES_FIGHTING
+          - BRAND_SUITABILITY_GAMES_MATURE
+          - BRAND_SUITABILITY_HEALTH_SENSITIVE
+          - BRAND_SUITABILITY_HEALTH_SOURCE_UNDETERMINED
+          - BRAND_SUITABILITY_NEWS_RECENT
+          - BRAND_SUITABILITY_NEWS_SENSITIVE
+          - BRAND_SUITABILITY_NEWS_SOURCE_NOT_FEATURED
+          - BRAND_SUITABILITY_POLITICS
+          - BRAND_SUITABILITY_RELIGION
+          description: Content label type, required for CREATE operations.
+          type: string
+      description: Content Label for category exclusion.
+    GoogleAdsGoogleadsV25Common__MobileAppCategoryInfo:
+      description: A mobile app category criterion.
+      type: object
+      properties:
+        mobileAppCategoryConstant:
+          type: string
+          description: The mobile app category constant resource name.
+    GoogleAdsGoogleadsV25Services__MutateCustomerNegativeCriteriaResponse:
+      description: Response message for customer negative criterion mutate.
+      type: object
+      properties:
+        results:
+          description: All results for the mutate.
+          items:
+            $ref: '#/components/schemas/GoogleAdsGoogleadsV25Services__MutateCustomerNegativeCriteriaResult'
+          type: array
+        partialFailureError:
+          $ref: '#/components/schemas/GoogleRpc__Status'
+          description: Errors that pertain to operation failures in the partial failure mode. Returned only when partial_failure = true and all errors occur inside the operations. If any errors occur outside the operations (for example, auth errors), we return an RPC level error.
+    GoogleAdsGoogleadsV25Services__MutateCustomerNegativeCriteriaResult:
+      type: object
+      properties:
+        customerNegativeCriterion:
+          description: The mutated criterion with only mutable fields after mutate. The field will only be returned when response_content_type is set to "MUTABLE_RESOURCE".
+          $ref: '#/components/schemas/GoogleAdsGoogleadsV25Resources__CustomerNegativeCriterion'
+        resourceName:
+          type: string
+          description: Returned for successful operations.
+      description: The result for the criterion mutate.
+    GoogleAdsGoogleadsV25Common__PlacementListInfo:
+      description: A Placement List criterion. Represents a shared set of placements that can be excluded at the account-level.
+      type: object
+      properties:
+        sharedSet:
+          type: string
+          description: The PlacementListInfo shared set resource name.
+    GoogleAdsGoogleadsV25Common__IpBlockInfo:
+      type: object
+      properties:
+        ipAddress:
+          type: string
+          description: The IP address or the CIDR block to be excluded.
+      description: 'An IpBlock criterion used for excluding IP addresses. We support excluding individual IP addresses or CIDR blocks. Create one IpBlockInfo criterion for each individual IP address or CIDR block you want to exclude. You can exclude up to 500 IP addresses per campaign. For more details, see [Exclude IP addresses](//support.google.com/google-ads/answer/2456098). IPv4 examples: * Individual address: 192.168.0.1 * Individual address as CIDR block: 192.168.0.1/32 * CIDR block: 192.168.0.0/24 IPv6 examples: * Individual address: 2001:db8:a0b:12f0::1 * Individual address as CIDR block: 2001:db8:a0b:12f0::1/128 * CIDR block: 2001:db8::/48'
+    GoogleAdsGoogleadsV25Services__CustomerNegativeCriterionOperation:
+      type: object
+      properties:
+        create:
+          $ref: '#/components/schemas/GoogleAdsGoogleadsV25Resources__CustomerNegativeCriterion'
+          description: 'Create operation: No resource name is expected for the new criterion.'
+        remove:
+          description: 'Remove operation: A resource name for the removed criterion is expected, in this format: `customers/{customer_id}/customerNegativeCriteria/{criterion_id}`'
+          type: string
+      description: A single operation (create or remove) on a customer level negative criterion.
+    GoogleRpc__Status:
+      description: 'The `Status` type defines a logical error model that is suitable for different programming environments, including REST APIs and RPC APIs. It is used by [gRPC](https://github.com/grpc). Each `Status` message contains three pieces of data: error code, error message, and error details. You can find out more about this error model and how to work with it in the [API Design Guide](https://cloud.google.com/apis/design/errors).'
+      type: object
+      properties:
+        message:
+          description: A developer-facing error message, which should be in English. Any user-facing error message should be localized and sent in the google.rpc.Status.details field, or localized by the client.
+          type: string
+        code:
+          type: integer
+          description: The status code, which should be an enum value of google.rpc.Code.
+          format: int32
+        details:
+          type: array
+          description: A list of messages that carry the error details. There is a common set of message types for APIs to use.
+          items:
+            type: object
+            additionalProperties:
+              description: Properties of the object. Contains field @type with type URL.
+    GoogleAdsGoogleadsV25Common__YouTubeVideoInfo:
+      description: A YouTube Video criterion.
+      type: object
+      properties:
+        videoId:
+          type: string
+          description: YouTube video id as it appears on the YouTube watch page.
+    GoogleAdsGoogleadsV25Resources__CustomerNegativeCriterion:
+      description: A negative criterion for exclusions at the customer level.
+      type: object
+      properties:
+        placementList:
+          description: Immutable. PlacementList.
+          $ref: '#/components/schemas/GoogleAdsGoogleadsV25Common__PlacementListInfo'
+        youtubeVideo:
+          description: Immutable. YouTube Video.
+          $ref: '#/components/schemas/GoogleAdsGoogleadsV25Common__YouTubeVideoInfo'
+        resourceName:
+          description: 'Immutable. The resource name of the customer negative criterion. Customer negative criterion resource names have the form: `customers/{customer_id}/customerNegativeCriteria/{criterion_id}`'
+          type: string
+        placement:
+          description: Immutable. Placement.
+          $ref: '#/components/schemas/GoogleAdsGoogleadsV25Common__PlacementInfo'
+        id:
+          type: string
+          description: Output only. The ID of the criterion.
+          format: int64
+        type:
+          x-enumDescriptions:
+          - Not specified.
+          - Used for return value only. Represents value unknown in this version.
+          - Keyword, for example, 'mars cruise'.
+          - Placement, also known as Website, for example, 'www.flowers4sale.com'
+          - Mobile application categories to target.
+          - Mobile applications to target.
+          - Devices to target.
+          - Locations to target.
+          - Listing groups to target.
+          - Ad Schedule.
+          - Age range.
+          - Gender.
+          - Income Range.
+          - Parental status.
+          - YouTube Video.
+          - YouTube Channel.
+          - User list.
+          - Proximity.
+          - A topic target on the display network (for example, "Pets & Animals").
+          - Listing scope to target.
+          - Language.
+          - IpBlock.
+          - Content Label for category exclusion.
+          - Carrier.
+          - A category the user is interested in.
+          - Webpage criterion for dynamic search ads.
+          - Operating system version.
+          - App payment model.
+          - Mobile device.
+          - Custom affinity.
+          - Custom intent.
+          - Location group.
+          - Custom audience
+          - Combined audience
+          - Smart Campaign keyword theme
+          - Audience
+          - Negative Keyword List
+          - Local Services Ads Service ID.
+          - Search Theme.
+          - Brand
+          - Brand List
+          - Life Event
+          - Webpage List
+          - Video lineup
+          - Placement List
+          - A list of rules for item groups in Vertical Ads.
+          - A rule for an item group in Vertical Ads.
+          - Retail Filter Bundle for linking a retail filter shared set to an ad group.
+          - Retail Filter for defining individual tag rules or expressions within a shared set.
+          description: Output only. The type of the criterion.
+          type: string
+          enum:
+          - UNSPECIFIED
+          - UNKNOWN
+          - KEYWORD
+          - PLACEMENT
+          - MOBILE_APP_CATEGORY
+          - MOBILE_APPLICATION
+          - DEVICE
+          - LOCATION
+          - LISTING_GROUP
+          - AD_SCHEDULE
+          - AGE_RANGE
+          - GENDER
+          - INCOME_RANGE
+          - PARENTAL_STATUS
+          - YOUTUBE_VIDEO
+          - YOUTUBE_CHANNEL
+          - USER_LIST
+          - PROXIMITY
+          - TOPIC
+          - LISTING_SCOPE
+          - LANGUAGE
+          - IP_BLOCK
+          - CONTENT_LABEL
+          - CARRIER
+          - USER_INTEREST
+          - WEBPAGE
+          - OPERATING_SYSTEM_VERSION
+          - APP_PAYMENT_MODEL
+          - MOBILE_DEVICE
+          - CUSTOM_AFFINITY
+          - CUSTOM_INTENT
+          - LOCATION_GROUP
+          - CUSTOM_AUDIENCE
+          - COMBINED_AUDIENCE
+          - KEYWORD_THEME
+          - AUDIENCE
+          - NEGATIVE_KEYWORD_LIST
+          - LOCAL_SERVICE_ID
+          - SEARCH_THEME
+          - BRAND
+          - BRAND_LIST
+          - LIFE_EVENT
+          - WEBPAGE_LIST
+          - VIDEO_LINEUP
+          - PLACEMENT_LIST
+          - VERTICAL_ADS_ITEM_GROUP_RULE_LIST
+          - VERTICAL_ADS_ITEM_GROUP_RULE
+          - RETAIL_FILTER_BUNDLE
+          - RETAIL_FILTER
+        mobileApplication:
+          description: Immutable. MobileApplication.
+          $ref: '#/components/schemas/GoogleAdsGoogleadsV25Common__MobileApplicationInfo'
+        negativeKeywordList:
+          $ref: '#/components/schemas/GoogleAdsGoogleadsV25Common__NegativeKeywordListInfo'
+          description: Immutable. NegativeKeywordList.
+        ipBlock:
+          $ref: '#/components/schemas/GoogleAdsGoogleadsV25Common__IpBlockInfo'
+          description: Immutable. IpBlock. You can exclude up to 500 IP addresses per account.
+        contentLabel:
+          $ref: '#/components/schemas/GoogleAdsGoogleadsV25Common__ContentLabelInfo'
+          description: Immutable. ContentLabel.
+        youtubeChannel:
+          description: Immutable. YouTube Channel.
+          $ref: '#/components/schemas/GoogleAdsGoogleadsV25Common__YouTubeChannelInfo'
+        mobileAppCategory:
+          description: Immutable. MobileAppCategory.
+          $ref: '#/components/schemas/GoogleAdsGoogleadsV25Common__MobileAppCategoryInfo'
+    GoogleAdsGoogleadsV25Services__MutateCustomerNegativeCriteriaRequest:
+      description: Request message for CustomerNegativeCriterionService.MutateCustomerNegativeCriteria.
+      type: object
+      properties:
+        validateOnly:
+          description: If true, the request is validated but not executed. Only errors are returned, not results.
+          type: boolean
+        responseContentType:
+          x-enumDescriptions:
+          - Not specified. Will return the resource name only in the response.
+          - The mutate response will be the resource name.
+          - The mutate response will contain the resource name and the resource with mutable fields if possible. Otherwise, only the resource name will be returned.
+          enum:
+          - UNSPECIFIED
+          - RESOURCE_NAME_ONLY
+          - MUTABLE_RESOURCE
+          description: The response content type setting. Determines whether the mutable resource or just the resource name should be returned post mutation.
+          type: string
+        operations:
+          type: array
+          description: Required. The list of operations to perform on individual criteria.
+          items:
+            $ref: '#/components/schemas/GoogleAdsGoogleadsV25Services__CustomerNegativeCriterionOperation'
+        partialFailure:
+          description: If true, successful operations will be carried out and invalid operations will return errors. If false, all operations will be carried out in one transaction if and only if they are all valid. Default is false.
+          type: boolean
+    GoogleAdsGoogleadsV25Common__PlacementInfo:
+      description: A placement criterion. This can be used to modify bids for sites when targeting the content network.
+      type: object
+      properties:
+        url:
+          type: string
+          description: URL of the placement. For example, "http://www.domain.com".
+  securitySchemes:
+    oauth2:
+      type: oauth2
+      description: Google OAuth 2.0. Google Ads API additionally requires a developer token in the developer-token header.
+      flows:
+        authorizationCode:
+          authorizationUrl: https://accounts.google.com/o/oauth2/auth
+          tokenUrl: https://oauth2.googleapis.com/token
+          scopes:
+            https://www.googleapis.com/auth/adwords: See, edit, create, and delete your Google Ads accounts and data.
+externalDocs:
+  url: https://developers.google.com/google-ads/api/
+x-source: https://googleads.googleapis.com/$discovery/rest?version=v25
+x-generated-by: API Evangelist enrichment pipeline — mechanical conversion of the first-party Google API Discovery Document

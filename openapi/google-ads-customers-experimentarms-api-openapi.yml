@@ -1,0 +1,568 @@
+openapi: 3.2.0
+info:
+  title: Google Ads Customers.experiment Arms API
+  description: Manage your Google Ads accounts, campaigns, and reports with this API.
+  version: v25
+  x-discovery-revision: '20260721'
+  contact:
+    name: Google
+    url: https://developers.google.com/google-ads/api/
+  termsOfService: https://developers.google.com/terms
+servers:
+- url: https://googleads.googleapis.com
+  description: Google Ads API production server
+security:
+- oauth2:
+  - https://www.googleapis.com/auth/adwords
+tags:
+- name: customers.experimentArms
+paths:
+  /v25/customers/{customersId}/experimentArms:mutate:
+    parameters:
+    - name: upload_protocol
+      in: query
+      required: false
+      schema:
+        type: string
+      description: Upload protocol for media (e.g. "raw", "multipart").
+    - name: quotaUser
+      in: query
+      required: false
+      schema:
+        type: string
+      description: Available to use for quota purposes for server-side applications. Can be any arbitrary string assigned to a user, but should not exceed 40 characters.
+    - name: fields
+      in: query
+      required: false
+      schema:
+        type: string
+      description: Selector specifying which fields to include in a partial response.
+    - name: $.xgafv
+      in: query
+      required: false
+      schema:
+        type: string
+        enum:
+        - '1'
+        - '2'
+        x-enumDescriptions:
+        - v1 error format
+        - v2 error format
+      description: V1 error format.
+    - name: callback
+      in: query
+      required: false
+      schema:
+        type: string
+      description: JSONP
+    - name: prettyPrint
+      in: query
+      required: false
+      schema:
+        type: boolean
+        default: 'true'
+      description: Returns response with indentations and line breaks.
+    - name: access_token
+      in: query
+      required: false
+      schema:
+        type: string
+      description: OAuth access token.
+    - name: uploadType
+      in: query
+      required: false
+      schema:
+        type: string
+      description: Legacy upload protocol for media (e.g. "media", "multipart").
+    - name: key
+      in: query
+      required: false
+      schema:
+        type: string
+      description: API key. Your API key identifies your project and provides you with API access, quota, and reports. Required unless you provide an OAuth 2.0 token.
+    - name: oauth_token
+      in: query
+      required: false
+      schema:
+        type: string
+      description: OAuth 2.0 token for the current user.
+    - name: alt
+      in: query
+      required: false
+      schema:
+        x-enumDescriptions:
+        - Responses with Content-Type of application/json
+        - Media download with context-dependent Content-Type
+        - Responses with Content-Type of application/x-protobuf
+        type: string
+        default: json
+        enum:
+        - json
+        - media
+        - proto
+      description: Data format for response.
+    post:
+      operationId: googleads_customers_experimentArms_mutate
+      summary: Creates, updates, or removes experiment arms
+      tags:
+      - customers.experimentArms
+      description: 'Creates, updates, or removes experiment arms. Operation statuses are returned. List of thrown errors: [AuthenticationError]() [AuthorizationError]() [ExperimentArmError]() [HeaderError]() [InternalError]() [QuotaError]() [RequestError]()'
+      parameters:
+      - name: customerId
+        in: path
+        required: true
+        schema:
+          pattern: ^[^/]+$
+          type: string
+        description: Required. The ID of the customer whose experiments are being modified.
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/GoogleAdsGoogleadsV25Services__MutateExperimentArmsRequest'
+      responses:
+        '200':
+          description: Successful response
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/GoogleAdsGoogleadsV25Services__MutateExperimentArmsResponse'
+      security:
+      - oauth2:
+        - https://www.googleapis.com/auth/adwords
+components:
+  schemas:
+    GoogleAdsGoogleadsV25Resources_ExperimentArm_AssetVariationInfo:
+      type: object
+      properties:
+        baseAd:
+          description: Associated base ad resource name.
+          type: string
+        assetDetails:
+          description: Details for each asset that is being modified from the base ad.
+          items:
+            $ref: '#/components/schemas/GoogleAdsGoogleadsV25Resources_ExperimentArm_AssetDetail'
+          type: array
+        baseAdGroup:
+          type: string
+          description: Associated base AdGroup resource name.
+      description: Details of asset variations to be performed on an ad in the control ad group.
+    GoogleAdsGoogleadsV25Services__MutateExperimentArmResult:
+      type: object
+      properties:
+        resourceName:
+          description: Returned for successful operations.
+          type: string
+        experimentArm:
+          description: The mutated experiment arm with only mutable fields after mutate. The field will only be returned when response_content_type is set to "MUTABLE_RESOURCE".
+          $ref: '#/components/schemas/GoogleAdsGoogleadsV25Resources__ExperimentArm'
+      description: The result for the experiment arm mutate.
+    GoogleAdsGoogleadsV25Resources_ExperimentArm_AssetTestingInfo:
+      type: object
+      properties:
+        assetVariationInfos:
+          type: array
+          description: Details of assets associated for each experimental copy of the ad.
+          items:
+            $ref: '#/components/schemas/GoogleAdsGoogleadsV25Resources_ExperimentArm_AssetVariationInfo'
+      description: Details of assets associated with the experimental copies of ads.
+    GoogleAdsGoogleadsV25Services__ExperimentArmOperation:
+      description: A single operation on an experiment arm.
+      type: object
+      properties:
+        update:
+          $ref: '#/components/schemas/GoogleAdsGoogleadsV25Resources__ExperimentArm'
+          description: 'Update operation: The experiment arm is expected to have a valid resource name.'
+        updateMask:
+          description: FieldMask that determines which resource fields are modified in an update.
+          type: string
+          format: google-fieldmask
+        create:
+          description: Create operation
+          $ref: '#/components/schemas/GoogleAdsGoogleadsV25Resources__ExperimentArm'
+        remove:
+          type: string
+          description: 'Remove operation: The experiment arm is expected to have a valid resource name, in this format: `customers/{customer_id}/experiments/{campaign_experiment_id}`'
+    GoogleAdsGoogleadsV25Resources__ExperimentArm:
+      description: A Google ads experiment for users to experiment changes on multiple campaigns, compare the performance, and apply the effective changes.
+      type: object
+      properties:
+        campaigns:
+          type: array
+          description: List of campaigns in the trial arm. The max length is one.
+          items:
+            type: string
+        trafficSplit:
+          type: string
+          description: Traffic split of the trial arm. The value should be between 1 and 100 and must total 100 between the two trial arms.
+          format: int64
+        inDesignCampaigns:
+          type: array
+          description: Output only. The in design campaigns in the treatment experiment arm.
+          items:
+            type: string
+        resourceName:
+          type: string
+          description: 'Immutable. The resource name of the experiment arm. Experiment arm resource names have the form: `customers/{customer_id}/experimentArms/{TrialArm.trial_id}~{TrialArm.trial_arm_id}`'
+        experiment:
+          type: string
+          description: Immutable. The experiment to which the ExperimentArm belongs.
+        performanceMaxExperimentArmInfo:
+          $ref: '#/components/schemas/GoogleAdsGoogleadsV25Resources_ExperimentArm_PerformanceMaxExperimentArmInfo'
+          description: Immutable. Information specific to the control or treatment campaign of a Performance Max experiment. This field is specific to experiments of type PMAX_REPLACEMENT_SHOPPING. For example, the treatment experiment arm contains the information of treatment Performance Max campaign settings for PMAX_REPLACEMENT_SHOPPING experiments.
+        assetTestingInfo:
+          description: Details of assets under experiment.
+          $ref: '#/components/schemas/GoogleAdsGoogleadsV25Resources_ExperimentArm_AssetTestingInfo'
+        assetGroups:
+          type: array
+          description: List of asset groups in the experiment arm. The max length is one. In the Optimize Assets experiment construction, the control arm and treatment arm should both contain the same asset group ID.
+          items:
+            $ref: '#/components/schemas/GoogleAdsGoogleadsV25Resources_ExperimentArm_AssetGroupInfo'
+        name:
+          description: Required. The name of the experiment arm. It must have a minimum length of 1 and maximum length of 1024. It must be unique under an experiment.
+          type: string
+        control:
+          description: Whether this arm is a control arm. A control arm is the arm against which the other arms are compared.
+          type: boolean
+    GoogleAdsGoogleadsV25Resources_ExperimentArm_PerformanceMaxExperimentArmInfo:
+      description: Information specific to the control or treatment campaign of a Performance Max experiment.
+      type: object
+      properties:
+        experimentalPerformanceMaxCampaignSettings:
+          $ref: '#/components/schemas/GoogleAdsGoogleadsV25Resources_ExperimentArm_ExperimentalPerformanceMaxCampaignSettings'
+          description: Immutable. Performance Max campaign settings to be applied on the Google-created experimental campaign in a Performance Max experiment. The experimental campaign is automatically created by Google upon experiment creation.
+    GoogleAdsGoogleadsV25Resources_ExperimentArm_AssetDetail:
+      type: object
+      properties:
+        asset:
+          description: The asset that is being modified for the experiment.
+          type: string
+        fieldType:
+          x-enumDescriptions:
+          - Not specified.
+          - Used for return value only. Represents value unknown in this version.
+          - The asset is linked for use as a headline.
+          - The asset is linked for use as a description.
+          - The asset is linked for use as mandatory ad text.
+          - The asset is linked for use as a marketing image.
+          - The asset is linked for use as a media bundle.
+          - The asset is linked for use as a YouTube video.
+          - The asset is linked to indicate that a hotels campaign is "Book on Google" enabled.
+          - The asset is linked for use as a Lead Form extension.
+          - The asset is linked for use as a Promotion extension.
+          - The asset is linked for use as a Callout extension.
+          - The asset is linked for use as a Structured Snippet extension.
+          - The asset is linked for use as a Sitelink.
+          - The asset is linked for use as a Mobile App extension.
+          - The asset is linked for use as a Hotel Callout extension.
+          - The asset is linked for use as a Call extension.
+          - The asset is linked for use as a Price extension.
+          - The asset is linked for use as a long headline.
+          - The asset is linked for use as a business name.
+          - The asset is linked for use as a square marketing image.
+          - The asset is linked for use as a portrait marketing image.
+          - The asset is linked for use as a logo.
+          - The asset is linked for use as a landscape logo.
+          - The asset is linked for use as a non YouTube logo.
+          - The asset is linked for use to select a call-to-action.
+          - The asset is linked for use to select an ad image.
+          - The asset is linked for use as a business logo.
+          - The asset is linked for use as a hotel property in a Performance Max for travel goals campaign.
+          - The asset is linked for use as a Demand Gen carousel card.
+          - The asset is linked for use as a Business Message.
+          - The asset is linked for use as a tall portrait marketing image.
+          - The asset is linked for use as related YouTube videos.
+          - The asset is linked for use as a landing page preview image.
+          - The asset is linked for use as a long description.
+          - The asset is linked for use as a call-to-action.
+          - The asset is linked for use as a classic display image.
+          enum:
+          - UNSPECIFIED
+          - UNKNOWN
+          - HEADLINE
+          - DESCRIPTION
+          - MANDATORY_AD_TEXT
+          - MARKETING_IMAGE
+          - MEDIA_BUNDLE
+          - YOUTUBE_VIDEO
+          - BOOK_ON_GOOGLE
+          - LEAD_FORM
+          - PROMOTION
+          - CALLOUT
+          - STRUCTURED_SNIPPET
+          - SITELINK
+          - MOBILE_APP
+          - HOTEL_CALLOUT
+          - CALL
+          - PRICE
+          - LONG_HEADLINE
+          - BUSINESS_NAME
+          - SQUARE_MARKETING_IMAGE
+          - PORTRAIT_MARKETING_IMAGE
+          - LOGO
+          - LANDSCAPE_LOGO
+          - VIDEO
+          - CALL_TO_ACTION_SELECTION
+          - AD_IMAGE
+          - BUSINESS_LOGO
+          - HOTEL_PROPERTY
+          - DEMAND_GEN_CAROUSEL_CARD
+          - BUSINESS_MESSAGE
+          - TALL_PORTRAIT_MARKETING_IMAGE
+          - RELATED_YOUTUBE_VIDEOS
+          - LANDING_PAGE_PREVIEW
+          - LONG_DESCRIPTION
+          - CALL_TO_ACTION
+          - CLASSIC_DISPLAY_IMAGE
+          type: string
+          description: Field type for the asset.
+        assetDetailOperation:
+          x-enumDescriptions:
+          - Not specified.
+          - The value is unknown in this version.
+          - Asset is attached to the ad.
+          - Asset is removed from the ad.
+          enum:
+          - UNSPECIFIED
+          - UNKNOWN
+          - ADD
+          - REMOVE
+          type: string
+          description: Enum to specify whether the asset is removed or added from the base ad.
+      description: Details of an asset modification for the experiment ad, such as adding or removing the asset.
+    GoogleAdsGoogleadsV25Services__MutateExperimentArmsRequest:
+      description: Request message for ExperimentArmService.MutateExperimentArms.
+      type: object
+      properties:
+        validateOnly:
+          type: boolean
+          description: If true, the request is validated but not executed. Only errors are returned, not results.
+        responseContentType:
+          description: The response content type setting. Determines whether the mutable resource or just the resource name should be returned post mutation.
+          type: string
+          x-enumDescriptions:
+          - Not specified. Will return the resource name only in the response.
+          - The mutate response will be the resource name.
+          - The mutate response will contain the resource name and the resource with mutable fields if possible. Otherwise, only the resource name will be returned.
+          enum:
+          - UNSPECIFIED
+          - RESOURCE_NAME_ONLY
+          - MUTABLE_RESOURCE
+        operations:
+          description: Required. The list of operations to perform on individual experiment arm.
+          items:
+            $ref: '#/components/schemas/GoogleAdsGoogleadsV25Services__ExperimentArmOperation'
+          type: array
+        partialFailure:
+          description: If true, successful operations will be carried out and invalid operations will return errors. If false, all operations will be carried out in one transaction if and only if they are all valid. Default is false.
+          type: boolean
+    GoogleRpc__Status:
+      description: 'The `Status` type defines a logical error model that is suitable for different programming environments, including REST APIs and RPC APIs. It is used by [gRPC](https://github.com/grpc). Each `Status` message contains three pieces of data: error code, error message, and error details. You can find out more about this error model and how to work with it in the [API Design Guide](https://cloud.google.com/apis/design/errors).'
+      type: object
+      properties:
+        message:
+          description: A developer-facing error message, which should be in English. Any user-facing error message should be localized and sent in the google.rpc.Status.details field, or localized by the client.
+          type: string
+        code:
+          type: integer
+          description: The status code, which should be an enum value of google.rpc.Code.
+          format: int32
+        details:
+          type: array
+          description: A list of messages that carry the error details. There is a common set of message types for APIs to use.
+          items:
+            type: object
+            additionalProperties:
+              description: Properties of the object. Contains field @type with type URL.
+    GoogleAdsGoogleadsV25Resources_ExperimentArm_AssetGroupAssetInfo:
+      description: Holds the details of an asset within an asset group for an Optimize Assets experiment arm.
+      type: object
+      properties:
+        fieldType:
+          type: string
+          description: Field type of the asset group asset.
+          x-enumDescriptions:
+          - Not specified.
+          - Used for return value only. Represents value unknown in this version.
+          - The asset is linked for use as a headline.
+          - The asset is linked for use as a description.
+          - The asset is linked for use as mandatory ad text.
+          - The asset is linked for use as a marketing image.
+          - The asset is linked for use as a media bundle.
+          - The asset is linked for use as a YouTube video.
+          - The asset is linked to indicate that a hotels campaign is "Book on Google" enabled.
+          - The asset is linked for use as a Lead Form extension.
+          - The asset is linked for use as a Promotion extension.
+          - The asset is linked for use as a Callout extension.
+          - The asset is linked for use as a Structured Snippet extension.
+          - The asset is linked for use as a Sitelink.
+          - The asset is linked for use as a Mobile App extension.
+          - The asset is linked for use as a Hotel Callout extension.
+          - The asset is linked for use as a Call extension.
+          - The asset is linked for use as a Price extension.
+          - The asset is linked for use as a long headline.
+          - The asset is linked for use as a business name.
+          - The asset is linked for use as a square marketing image.
+          - The asset is linked for use as a portrait marketing image.
+          - The asset is linked for use as a logo.
+          - The asset is linked for use as a landscape logo.
+          - The asset is linked for use as a non YouTube logo.
+          - The asset is linked for use to select a call-to-action.
+          - The asset is linked for use to select an ad image.
+          - The asset is linked for use as a business logo.
+          - The asset is linked for use as a hotel property in a Performance Max for travel goals campaign.
+          - The asset is linked for use as a Demand Gen carousel card.
+          - The asset is linked for use as a Business Message.
+          - The asset is linked for use as a tall portrait marketing image.
+          - The asset is linked for use as related YouTube videos.
+          - The asset is linked for use as a landing page preview image.
+          - The asset is linked for use as a long description.
+          - The asset is linked for use as a call-to-action.
+          - The asset is linked for use as a classic display image.
+          enum:
+          - UNSPECIFIED
+          - UNKNOWN
+          - HEADLINE
+          - DESCRIPTION
+          - MANDATORY_AD_TEXT
+          - MARKETING_IMAGE
+          - MEDIA_BUNDLE
+          - YOUTUBE_VIDEO
+          - BOOK_ON_GOOGLE
+          - LEAD_FORM
+          - PROMOTION
+          - CALLOUT
+          - STRUCTURED_SNIPPET
+          - SITELINK
+          - MOBILE_APP
+          - HOTEL_CALLOUT
+          - CALL
+          - PRICE
+          - LONG_HEADLINE
+          - BUSINESS_NAME
+          - SQUARE_MARKETING_IMAGE
+          - PORTRAIT_MARKETING_IMAGE
+          - LOGO
+          - LANDSCAPE_LOGO
+          - VIDEO
+          - CALL_TO_ACTION_SELECTION
+          - AD_IMAGE
+          - BUSINESS_LOGO
+          - HOTEL_PROPERTY
+          - DEMAND_GEN_CAROUSEL_CARD
+          - BUSINESS_MESSAGE
+          - TALL_PORTRAIT_MARKETING_IMAGE
+          - RELATED_YOUTUBE_VIDEOS
+          - LANDING_PAGE_PREVIEW
+          - LONG_DESCRIPTION
+          - CALL_TO_ACTION
+          - CLASSIC_DISPLAY_IMAGE
+        asset:
+          description: Asset resource name of the asset group asset.
+          type: string
+    GoogleAdsGoogleadsV25Resources_ExperimentArm_ExperimentalPerformanceMaxCampaignSettings:
+      description: Parameters for an experiment to create a Performance Max campaign. The experimental Performance Max campaign gets created automatically based on the existing SHOPPING campaign settings and the settings specified in this field.
+      type: object
+      properties:
+        biddingStrategyType:
+          description: Immutable. Bidding strategy type of the Performance Max experiment campaign.
+          type: string
+          x-enumDescriptions:
+          - Not specified.
+          - Used for return value only. Represents value unknown in this version.
+          - Commission is an automatic bidding strategy in which the advertiser pays a certain portion of the conversion value.
+          - Enhanced CPC is a bidding strategy that raises bids for clicks that seem more likely to lead to a conversion and lowers them for clicks where they seem less likely.
+          - Fixed CPM is a manual bidding strategy with a fixed CPM.
+          - Fixed share of voice is a manual bidding strategy for YouTube Sponsorships that bills either on CPM or a fixed cost per day.
+          - Used for return value only. Indicates that a campaign does not have a bidding strategy. This prevents the campaign from serving. For example, a campaign may be attached to a manager bidding strategy and the serving account is subsequently unlinked from the manager account. In this case the campaign will automatically be detached from the now inaccessible manager bidding strategy and transition to the INVALID bidding strategy type.
+          - Manual bidding strategy that allows advertiser to set the bid per advertiser-specified action.
+          - Manual click based bidding where user pays per click.
+          - Manual impression based bidding where user pays per thousand impressions.
+          - A bidding strategy that pays a configurable amount per video view.
+          - A bidding strategy that automatically maximizes number of conversions given a daily budget.
+          - An automated bidding strategy that automatically sets bids to maximize revenue while spending your budget.
+          - Page-One Promoted bidding scheme, which sets max cpc bids to target impressions on page one or page one promoted slots on google.com. This enum value is deprecated.
+          - Percent Cpc is bidding strategy where bids are a fraction of the advertised price for some good or service.
+          - Target CPA is an automated bid strategy that sets bids to help get as many conversions as possible at the target cost-per-acquisition (CPA) you set.
+          - Target CPC is an automated bid strategy that sets bids to help get as many clicks as possible at the target cost-per-click (CPC) you set.
+          - Target CPM is an automated bid strategy that sets bids to help get as many impressions as possible at the target cost per one thousand impressions (CPM) you set.
+          - Target CPV is an automated bidding strategy that sets bids to optimize performance given the average target cost per view.
+          - An automated bidding strategy that sets bids so that a certain percentage of search ads are shown at the top of the first page (or other targeted location).
+          - Target Outrank Share is an automated bidding strategy that sets bids based on the target fraction of auctions where the advertiser should outrank a specific competitor. This enum value is deprecated.
+          - Target ROAS is an automated bidding strategy that helps you maximize revenue while averaging a specific target Return On Average Spend (ROAS).
+          - Target Spend is an automated bid strategy that sets your bids to help get as many clicks as possible within your budget.
+          enum:
+          - UNSPECIFIED
+          - UNKNOWN
+          - COMMISSION
+          - ENHANCED_CPC
+          - FIXED_CPM
+          - FIXED_SHARE_OF_VOICE
+          - INVALID
+          - MANUAL_CPA
+          - MANUAL_CPC
+          - MANUAL_CPM
+          - MANUAL_CPV
+          - MAXIMIZE_CONVERSIONS
+          - MAXIMIZE_CONVERSION_VALUE
+          - PAGE_ONE_PROMOTED
+          - PERCENT_CPC
+          - TARGET_CPA
+          - TARGET_CPC
+          - TARGET_CPM
+          - TARGET_CPV
+          - TARGET_IMPRESSION_SHARE
+          - TARGET_OUTRANK_SHARE
+          - TARGET_ROAS
+          - TARGET_SPEND
+        targetCpaMicros:
+          format: int64
+          description: Immutable. Target CPA of the Performance Max experiment campaign.
+          type: string
+        budgetAmountMicros:
+          type: string
+          description: Immutable. The amount of budget of the Performance Max experiment campaign.
+          format: int64
+        targetRoas:
+          description: Immutable. Target ROAS of the Performance Max experiment campaign.
+          type: number
+          format: double
+    GoogleAdsGoogleadsV25Services__MutateExperimentArmsResponse:
+      description: Response message for experiment arm mutate.
+      type: object
+      properties:
+        results:
+          type: array
+          description: All results for the mutate.
+          items:
+            $ref: '#/components/schemas/GoogleAdsGoogleadsV25Services__MutateExperimentArmResult'
+        partialFailureError:
+          $ref: '#/components/schemas/GoogleRpc__Status'
+          description: Errors that pertain to operation failures in the partial failure mode. Returned only when partial_failure = true and all errors occur inside the operations. If any errors occur outside the operations (for example, auth errors), we return an RPC level error.
+    GoogleAdsGoogleadsV25Resources_ExperimentArm_AssetGroupInfo:
+      type: object
+      properties:
+        assetGroup:
+          description: Asset group resource name.
+          type: string
+        assetGroupAssets:
+          type: array
+          description: List of asset group assets under the asset group.
+          items:
+            $ref: '#/components/schemas/GoogleAdsGoogleadsV25Resources_ExperimentArm_AssetGroupAssetInfo'
+      description: Holds the asset groups included in an arm of an Optimize Assets experiment.
+  securitySchemes:
+    oauth2:
+      type: oauth2
+      description: Google OAuth 2.0. Google Ads API additionally requires a developer token in the developer-token header.
+      flows:
+        authorizationCode:
+          authorizationUrl: https://accounts.google.com/o/oauth2/auth
+          tokenUrl: https://oauth2.googleapis.com/token
+          scopes:
+            https://www.googleapis.com/auth/adwords: See, edit, create, and delete your Google Ads accounts and data.
+externalDocs:
+  url: https://developers.google.com/google-ads/api/
+x-source: https://googleads.googleapis.com/$discovery/rest?version=v25
+x-generated-by: API Evangelist enrichment pipeline — mechanical conversion of the first-party Google API Discovery Document

@@ -1,0 +1,554 @@
+openapi: 3.2.0
+info:
+  title: Google Ads Customers.campaign Drafts API
+  description: Manage your Google Ads accounts, campaigns, and reports with this API.
+  version: v25
+  x-discovery-revision: '20260721'
+  contact:
+    name: Google
+    url: https://developers.google.com/google-ads/api/
+  termsOfService: https://developers.google.com/terms
+servers:
+- url: https://googleads.googleapis.com
+  description: Google Ads API production server
+security:
+- oauth2:
+  - https://www.googleapis.com/auth/adwords
+tags:
+- name: customers.campaignDrafts
+paths:
+  /v25/customers/{customersId}/campaignDrafts/{campaignDraftsId}:promote:
+    parameters:
+    - name: upload_protocol
+      in: query
+      required: false
+      schema:
+        type: string
+      description: Upload protocol for media (e.g. "raw", "multipart").
+    - name: quotaUser
+      in: query
+      required: false
+      schema:
+        type: string
+      description: Available to use for quota purposes for server-side applications. Can be any arbitrary string assigned to a user, but should not exceed 40 characters.
+    - name: fields
+      in: query
+      required: false
+      schema:
+        type: string
+      description: Selector specifying which fields to include in a partial response.
+    - name: $.xgafv
+      in: query
+      required: false
+      schema:
+        type: string
+        enum:
+        - '1'
+        - '2'
+        x-enumDescriptions:
+        - v1 error format
+        - v2 error format
+      description: V1 error format.
+    - name: callback
+      in: query
+      required: false
+      schema:
+        type: string
+      description: JSONP
+    - name: prettyPrint
+      in: query
+      required: false
+      schema:
+        type: boolean
+        default: 'true'
+      description: Returns response with indentations and line breaks.
+    - name: access_token
+      in: query
+      required: false
+      schema:
+        type: string
+      description: OAuth access token.
+    - name: uploadType
+      in: query
+      required: false
+      schema:
+        type: string
+      description: Legacy upload protocol for media (e.g. "media", "multipart").
+    - name: key
+      in: query
+      required: false
+      schema:
+        type: string
+      description: API key. Your API key identifies your project and provides you with API access, quota, and reports. Required unless you provide an OAuth 2.0 token.
+    - name: oauth_token
+      in: query
+      required: false
+      schema:
+        type: string
+      description: OAuth 2.0 token for the current user.
+    - name: alt
+      in: query
+      required: false
+      schema:
+        x-enumDescriptions:
+        - Responses with Content-Type of application/json
+        - Media download with context-dependent Content-Type
+        - Responses with Content-Type of application/x-protobuf
+        type: string
+        default: json
+        enum:
+        - json
+        - media
+        - proto
+      description: Data format for response.
+    post:
+      operationId: googleads_customers_campaignDrafts_promote
+      summary: Promotes the changes in a draft back to the base campaign
+      tags:
+      - customers.campaignDrafts
+      description: 'Promotes the changes in a draft back to the base campaign. This method returns a Long Running Operation (LRO) indicating if the Promote is done. Use google.longrunning.Operations.GetOperation to poll the LRO until it is done. Only a done status is returned in the response. See the status in the Campaign Draft resource to determine if the promotion was successful. If the LRO failed, use CampaignDraftService.ListCampaignDraftAsyncErrors to view the list of error reasons. List of thrown errors: [AuthenticationError]() [AuthorizationError]() [CampaignDraftError]() [HeaderError]() [InternalError]() [QuotaError]() [RequestError]()'
+      parameters:
+      - name: campaignDraft
+        in: path
+        required: true
+        schema:
+          type: string
+          pattern: ^customers/[^/]+/campaignDrafts/[^/]+$
+        description: Required. The resource name of the campaign draft to promote.
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/GoogleAdsGoogleadsV25Services__PromoteCampaignDraftRequest'
+      responses:
+        '200':
+          description: Successful response
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/GoogleLongrunning__Operation'
+      security:
+      - oauth2:
+        - https://www.googleapis.com/auth/adwords
+  /v25/customers/{customersId}/campaignDrafts/{campaignDraftsId}:listAsyncErrors:
+    parameters:
+    - name: upload_protocol
+      in: query
+      required: false
+      schema:
+        type: string
+      description: Upload protocol for media (e.g. "raw", "multipart").
+    - name: quotaUser
+      in: query
+      required: false
+      schema:
+        type: string
+      description: Available to use for quota purposes for server-side applications. Can be any arbitrary string assigned to a user, but should not exceed 40 characters.
+    - name: fields
+      in: query
+      required: false
+      schema:
+        type: string
+      description: Selector specifying which fields to include in a partial response.
+    - name: $.xgafv
+      in: query
+      required: false
+      schema:
+        type: string
+        enum:
+        - '1'
+        - '2'
+        x-enumDescriptions:
+        - v1 error format
+        - v2 error format
+      description: V1 error format.
+    - name: callback
+      in: query
+      required: false
+      schema:
+        type: string
+      description: JSONP
+    - name: prettyPrint
+      in: query
+      required: false
+      schema:
+        type: boolean
+        default: 'true'
+      description: Returns response with indentations and line breaks.
+    - name: access_token
+      in: query
+      required: false
+      schema:
+        type: string
+      description: OAuth access token.
+    - name: uploadType
+      in: query
+      required: false
+      schema:
+        type: string
+      description: Legacy upload protocol for media (e.g. "media", "multipart").
+    - name: key
+      in: query
+      required: false
+      schema:
+        type: string
+      description: API key. Your API key identifies your project and provides you with API access, quota, and reports. Required unless you provide an OAuth 2.0 token.
+    - name: oauth_token
+      in: query
+      required: false
+      schema:
+        type: string
+      description: OAuth 2.0 token for the current user.
+    - name: alt
+      in: query
+      required: false
+      schema:
+        x-enumDescriptions:
+        - Responses with Content-Type of application/json
+        - Media download with context-dependent Content-Type
+        - Responses with Content-Type of application/x-protobuf
+        type: string
+        default: json
+        enum:
+        - json
+        - media
+        - proto
+      description: Data format for response.
+    get:
+      operationId: googleads_customers_campaignDrafts_listAsyncErrors
+      summary: Returns all errors that occurred during CampaignDraft promote
+      tags:
+      - customers.campaignDrafts
+      description: 'Returns all errors that occurred during CampaignDraft promote. Throws an error if called before campaign draft is promoted. Supports standard list paging. List of thrown errors: [AuthenticationError]() [AuthorizationError]() [HeaderError]() [InternalError]() [QuotaError]() [RequestError]()'
+      parameters:
+      - name: resourceName
+        in: path
+        required: true
+        schema:
+          type: string
+          pattern: ^customers/[^/]+/campaignDrafts/[^/]+$
+        description: Required. The name of the campaign draft from which to retrieve the async errors.
+      - name: pageSize
+        in: query
+        required: false
+        schema:
+          type: integer
+          format: int32
+        description: Number of elements to retrieve in a single page. When a page request is too large, the server may decide to further limit the number of returned resources.
+      - name: pageToken
+        in: query
+        required: false
+        schema:
+          type: string
+        description: Token of the page to retrieve. If not specified, the first page of results will be returned. Use the value obtained from `next_page_token` in the previous response in order to request the next page of results.
+      responses:
+        '200':
+          description: Successful response
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/GoogleAdsGoogleadsV25Services__ListCampaignDraftAsyncErrorsResponse'
+      security:
+      - oauth2:
+        - https://www.googleapis.com/auth/adwords
+  /v25/customers/{customersId}/campaignDrafts:mutate:
+    parameters:
+    - name: upload_protocol
+      in: query
+      required: false
+      schema:
+        type: string
+      description: Upload protocol for media (e.g. "raw", "multipart").
+    - name: quotaUser
+      in: query
+      required: false
+      schema:
+        type: string
+      description: Available to use for quota purposes for server-side applications. Can be any arbitrary string assigned to a user, but should not exceed 40 characters.
+    - name: fields
+      in: query
+      required: false
+      schema:
+        type: string
+      description: Selector specifying which fields to include in a partial response.
+    - name: $.xgafv
+      in: query
+      required: false
+      schema:
+        type: string
+        enum:
+        - '1'
+        - '2'
+        x-enumDescriptions:
+        - v1 error format
+        - v2 error format
+      description: V1 error format.
+    - name: callback
+      in: query
+      required: false
+      schema:
+        type: string
+      description: JSONP
+    - name: prettyPrint
+      in: query
+      required: false
+      schema:
+        type: boolean
+        default: 'true'
+      description: Returns response with indentations and line breaks.
+    - name: access_token
+      in: query
+      required: false
+      schema:
+        type: string
+      description: OAuth access token.
+    - name: uploadType
+      in: query
+      required: false
+      schema:
+        type: string
+      description: Legacy upload protocol for media (e.g. "media", "multipart").
+    - name: key
+      in: query
+      required: false
+      schema:
+        type: string
+      description: API key. Your API key identifies your project and provides you with API access, quota, and reports. Required unless you provide an OAuth 2.0 token.
+    - name: oauth_token
+      in: query
+      required: false
+      schema:
+        type: string
+      description: OAuth 2.0 token for the current user.
+    - name: alt
+      in: query
+      required: false
+      schema:
+        x-enumDescriptions:
+        - Responses with Content-Type of application/json
+        - Media download with context-dependent Content-Type
+        - Responses with Content-Type of application/x-protobuf
+        type: string
+        default: json
+        enum:
+        - json
+        - media
+        - proto
+      description: Data format for response.
+    post:
+      operationId: googleads_customers_campaignDrafts_mutate
+      summary: Creates, updates, or removes campaign drafts
+      tags:
+      - customers.campaignDrafts
+      description: 'Creates, updates, or removes campaign drafts. Operation statuses are returned. List of thrown errors: [AuthenticationError]() [AuthorizationError]() [CampaignDraftError]() [DatabaseError]() [FieldError]() [HeaderError]() [InternalError]() [MutateError]() [QuotaError]() [RequestError]()'
+      parameters:
+      - name: customerId
+        in: path
+        required: true
+        schema:
+          pattern: ^[^/]+$
+          type: string
+        description: Required. The ID of the customer whose campaign drafts are being modified.
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/GoogleAdsGoogleadsV25Services__MutateCampaignDraftsRequest'
+      responses:
+        '200':
+          description: Successful response
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/GoogleAdsGoogleadsV25Services__MutateCampaignDraftsResponse'
+      security:
+      - oauth2:
+        - https://www.googleapis.com/auth/adwords
+components:
+  schemas:
+    GoogleLongrunning__Operation:
+      type: object
+      properties:
+        done:
+          description: If the value is `false`, it means the operation is still in progress. If `true`, the operation is completed, and either `error` or `response` is available.
+          type: boolean
+        name:
+          description: The server-assigned name, which is only unique within the same service that originally returns it. If you use the default HTTP mapping, the `name` should be a resource name ending with `operations/{unique_id}`.
+          type: string
+        response:
+          type: object
+          description: The normal, successful response of the operation. If the original method returns no data on success, such as `Delete`, the response is `google.protobuf.Empty`. If the original method is standard `Get`/`Create`/`Update`, the response should be the resource. For other methods, the response should have the type `XxxResponse`, where `Xxx` is the original method name. For example, if the original method name is `TakeSnapshot()`, the inferred response type is `TakeSnapshotResponse`.
+          additionalProperties:
+            description: Properties of the object. Contains field @type with type URL.
+        error:
+          $ref: '#/components/schemas/GoogleRpc__Status'
+          description: The error result of the operation in case of failure or cancellation.
+        metadata:
+          type: object
+          description: Service-specific metadata associated with the operation. It typically contains progress information and common metadata such as create time. Some services might not provide such metadata. Any method that returns a long-running operation should document the metadata type, if any.
+          additionalProperties:
+            description: Properties of the object. Contains field @type with type URL.
+      description: This resource represents a long-running operation that is the result of a network API call.
+    GoogleAdsGoogleadsV25Services__MutateCampaignDraftResult:
+      description: The result for the campaign draft mutate.
+      type: object
+      properties:
+        resourceName:
+          type: string
+          description: Returned for successful operations.
+        campaignDraft:
+          description: The mutated campaign draft with only mutable fields after mutate. The field will only be returned when response_content_type is set to "MUTABLE_RESOURCE".
+          $ref: '#/components/schemas/GoogleAdsGoogleadsV25Resources__CampaignDraft'
+    GoogleAdsGoogleadsV25Resources__CampaignDraft:
+      description: A campaign draft.
+      type: object
+      properties:
+        name:
+          type: string
+          description: The name of the campaign draft. This field is required and should not be empty when creating new campaign drafts. It must not contain any null (code point 0x0), NL line feed (code point 0xA) or carriage return (code point 0xD) characters.
+        draftId:
+          format: int64
+          type: string
+          description: Output only. The ID of the draft. This field is read-only.
+        resourceName:
+          description: 'Immutable. The resource name of the campaign draft. Campaign draft resource names have the form: `customers/{customer_id}/campaignDrafts/{base_campaign_id}~{draft_id}`'
+          type: string
+        hasExperimentRunning:
+          type: boolean
+          description: Output only. Whether there is an experiment based on this draft currently serving.
+        status:
+          enum:
+          - UNSPECIFIED
+          - UNKNOWN
+          - PROPOSED
+          - REMOVED
+          - PROMOTING
+          - PROMOTED
+          - PROMOTE_FAILED
+          description: Output only. The status of the campaign draft. This field is read-only. When a new campaign draft is added, the status defaults to PROPOSED.
+          type: string
+          x-enumDescriptions:
+          - The status has not been specified.
+          - Used for return value only. Represents value unknown in this version.
+          - Initial state of the draft, the advertiser can start adding changes with no effect on serving.
+          - The campaign draft is removed.
+          - Advertiser requested to promote draft's changes back into the original campaign. Advertiser can poll the long running operation returned by the promote action to see the status of the promotion.
+          - The process to merge changes in the draft back to the original campaign has completed successfully.
+          - The promotion failed after it was partially applied. Promote cannot be attempted again safely, so the issue must be corrected in the original campaign.
+        baseCampaign:
+          description: Immutable. The base campaign to which the draft belongs.
+          type: string
+        draftCampaign:
+          description: Output only. Resource name of the Campaign that results from overlaying the draft changes onto the base campaign. This field is read-only.
+          type: string
+        longRunningOperation:
+          description: Output only. The resource name of the long-running operation that can be used to poll for completion of draft promotion. This is only set if the draft promotion is in progress or finished.
+          type: string
+    GoogleAdsGoogleadsV25Services__MutateCampaignDraftsResponse:
+      description: Response message for campaign draft mutate.
+      type: object
+      properties:
+        partialFailureError:
+          $ref: '#/components/schemas/GoogleRpc__Status'
+          description: Errors that pertain to operation failures in the partial failure mode. Returned only when partial_failure = true and all errors occur inside the operations. If any errors occur outside the operations (for example, auth errors), we return an RPC level error.
+        results:
+          description: All results for the mutate.
+          items:
+            $ref: '#/components/schemas/GoogleAdsGoogleadsV25Services__MutateCampaignDraftResult'
+          type: array
+    GoogleAdsGoogleadsV25Services__MutateCampaignDraftsRequest:
+      type: object
+      properties:
+        operations:
+          description: Required. The list of operations to perform on individual campaign drafts.
+          items:
+            $ref: '#/components/schemas/GoogleAdsGoogleadsV25Services__CampaignDraftOperation'
+          type: array
+        validateOnly:
+          type: boolean
+          description: If true, the request is validated but not executed. Only errors are returned, not results.
+        responseContentType:
+          type: string
+          description: The response content type setting. Determines whether the mutable resource or just the resource name should be returned post mutation.
+          x-enumDescriptions:
+          - Not specified. Will return the resource name only in the response.
+          - The mutate response will be the resource name.
+          - The mutate response will contain the resource name and the resource with mutable fields if possible. Otherwise, only the resource name will be returned.
+          enum:
+          - UNSPECIFIED
+          - RESOURCE_NAME_ONLY
+          - MUTABLE_RESOURCE
+        partialFailure:
+          description: If true, successful operations will be carried out and invalid operations will return errors. If false, all operations will be carried out in one transaction if and only if they are all valid. Default is false.
+          type: boolean
+      description: Request message for CampaignDraftService.MutateCampaignDrafts.
+    GoogleAdsGoogleadsV25Services__PromoteCampaignDraftRequest:
+      description: Request message for CampaignDraftService.PromoteCampaignDraft.
+      type: object
+      properties:
+        validateOnly:
+          type: boolean
+          description: If true, the request is validated but no Long Running Operation is created. Only errors are returned.
+    GoogleAdsGoogleadsV25Services__ListCampaignDraftAsyncErrorsResponse:
+      description: Response message for CampaignDraftService.ListCampaignDraftAsyncErrors.
+      type: object
+      properties:
+        errors:
+          type: array
+          description: Details of the errors when performing the asynchronous operation.
+          items:
+            $ref: '#/components/schemas/GoogleRpc__Status'
+        nextPageToken:
+          type: string
+          description: Pagination token used to retrieve the next page of results. Pass the content of this string as the `page_token` attribute of the next request. `next_page_token` is not returned for the last page.
+    GoogleRpc__Status:
+      description: 'The `Status` type defines a logical error model that is suitable for different programming environments, including REST APIs and RPC APIs. It is used by [gRPC](https://github.com/grpc). Each `Status` message contains three pieces of data: error code, error message, and error details. You can find out more about this error model and how to work with it in the [API Design Guide](https://cloud.google.com/apis/design/errors).'
+      type: object
+      properties:
+        message:
+          description: A developer-facing error message, which should be in English. Any user-facing error message should be localized and sent in the google.rpc.Status.details field, or localized by the client.
+          type: string
+        code:
+          type: integer
+          description: The status code, which should be an enum value of google.rpc.Code.
+          format: int32
+        details:
+          type: array
+          description: A list of messages that carry the error details. There is a common set of message types for APIs to use.
+          items:
+            type: object
+            additionalProperties:
+              description: Properties of the object. Contains field @type with type URL.
+    GoogleAdsGoogleadsV25Services__CampaignDraftOperation:
+      type: object
+      properties:
+        remove:
+          description: 'Remove operation: The campaign draft is expected to have a valid resource name, in this format: `customers/{customer_id}/campaignDrafts/{base_campaign_id}~{draft_id}`'
+          type: string
+        updateMask:
+          format: google-fieldmask
+          type: string
+          description: FieldMask that determines which resource fields are modified in an update.
+        create:
+          $ref: '#/components/schemas/GoogleAdsGoogleadsV25Resources__CampaignDraft'
+          description: 'Create operation: No resource name is expected for the new campaign draft.'
+        update:
+          $ref: '#/components/schemas/GoogleAdsGoogleadsV25Resources__CampaignDraft'
+          description: 'Update operation: The campaign draft is expected to have a valid resource name.'
+      description: A single operation (create, update, remove) on a campaign draft.
+  securitySchemes:
+    oauth2:
+      type: oauth2
+      description: Google OAuth 2.0. Google Ads API additionally requires a developer token in the developer-token header.
+      flows:
+        authorizationCode:
+          authorizationUrl: https://accounts.google.com/o/oauth2/auth
+          tokenUrl: https://oauth2.googleapis.com/token
+          scopes:
+            https://www.googleapis.com/auth/adwords: See, edit, create, and delete your Google Ads accounts and data.
+externalDocs:
+  url: https://developers.google.com/google-ads/api/
+x-source: https://googleads.googleapis.com/$discovery/rest?version=v25
+x-generated-by: API Evangelist enrichment pipeline — mechanical conversion of the first-party Google API Discovery Document

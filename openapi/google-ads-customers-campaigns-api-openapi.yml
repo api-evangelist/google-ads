@@ -1,0 +1,2495 @@
+openapi: 3.2.0
+info:
+  title: Google Ads Customers.campaigns API
+  description: Manage your Google Ads accounts, campaigns, and reports with this API.
+  version: v25
+  x-discovery-revision: '20260721'
+  contact:
+    name: Google
+    url: https://developers.google.com/google-ads/api/
+  termsOfService: https://developers.google.com/terms
+servers:
+- url: https://googleads.googleapis.com
+  description: Google Ads API production server
+security:
+- oauth2:
+  - https://www.googleapis.com/auth/adwords
+tags:
+- name: customers.campaigns
+paths:
+  /v25/customers/{customersId}/campaigns:enablePMaxBrandGuidelines:
+    parameters:
+    - name: upload_protocol
+      in: query
+      required: false
+      schema:
+        type: string
+      description: Upload protocol for media (e.g. "raw", "multipart").
+    - name: quotaUser
+      in: query
+      required: false
+      schema:
+        type: string
+      description: Available to use for quota purposes for server-side applications. Can be any arbitrary string assigned to a user, but should not exceed 40 characters.
+    - name: fields
+      in: query
+      required: false
+      schema:
+        type: string
+      description: Selector specifying which fields to include in a partial response.
+    - name: $.xgafv
+      in: query
+      required: false
+      schema:
+        type: string
+        enum:
+        - '1'
+        - '2'
+        x-enumDescriptions:
+        - v1 error format
+        - v2 error format
+      description: V1 error format.
+    - name: callback
+      in: query
+      required: false
+      schema:
+        type: string
+      description: JSONP
+    - name: prettyPrint
+      in: query
+      required: false
+      schema:
+        type: boolean
+        default: 'true'
+      description: Returns response with indentations and line breaks.
+    - name: access_token
+      in: query
+      required: false
+      schema:
+        type: string
+      description: OAuth access token.
+    - name: uploadType
+      in: query
+      required: false
+      schema:
+        type: string
+      description: Legacy upload protocol for media (e.g. "media", "multipart").
+    - name: key
+      in: query
+      required: false
+      schema:
+        type: string
+      description: API key. Your API key identifies your project and provides you with API access, quota, and reports. Required unless you provide an OAuth 2.0 token.
+    - name: oauth_token
+      in: query
+      required: false
+      schema:
+        type: string
+      description: OAuth 2.0 token for the current user.
+    - name: alt
+      in: query
+      required: false
+      schema:
+        x-enumDescriptions:
+        - Responses with Content-Type of application/json
+        - Media download with context-dependent Content-Type
+        - Responses with Content-Type of application/x-protobuf
+        type: string
+        default: json
+        enum:
+        - json
+        - media
+        - proto
+      description: Data format for response.
+    post:
+      operationId: googleads_customers_campaigns_enablePMaxBrandGuidelines
+      summary: Enables Brand Guidelines for Performance Max campaigns
+      tags:
+      - customers.campaigns
+      description: 'Enables Brand Guidelines for Performance Max campaigns. List of thrown errors: [AuthenticationError]() [AssetError]() [AssetLinkError]() [AuthorizationError]() [BrandGuidelinesMigrationError]() [CampaignError]() [HeaderError]() [InternalError]() [MutateError]() [QuotaError]() [RequestError]() [ResourceCountLimitExceededError]()'
+      parameters:
+      - name: customerId
+        in: path
+        required: true
+        schema:
+          pattern: ^[^/]+$
+          type: string
+        description: Required. The ID of the customer whose campaigns are being enabled.
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/GoogleAdsGoogleadsV25Services__EnablePMaxBrandGuidelinesRequest'
+      responses:
+        '200':
+          description: Successful response
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/GoogleAdsGoogleadsV25Services__EnablePMaxBrandGuidelinesResponse'
+      security:
+      - oauth2:
+        - https://www.googleapis.com/auth/adwords
+  /v25/customers/{customersId}/campaigns:mutate:
+    parameters:
+    - name: upload_protocol
+      in: query
+      required: false
+      schema:
+        type: string
+      description: Upload protocol for media (e.g. "raw", "multipart").
+    - name: quotaUser
+      in: query
+      required: false
+      schema:
+        type: string
+      description: Available to use for quota purposes for server-side applications. Can be any arbitrary string assigned to a user, but should not exceed 40 characters.
+    - name: fields
+      in: query
+      required: false
+      schema:
+        type: string
+      description: Selector specifying which fields to include in a partial response.
+    - name: $.xgafv
+      in: query
+      required: false
+      schema:
+        type: string
+        enum:
+        - '1'
+        - '2'
+        x-enumDescriptions:
+        - v1 error format
+        - v2 error format
+      description: V1 error format.
+    - name: callback
+      in: query
+      required: false
+      schema:
+        type: string
+      description: JSONP
+    - name: prettyPrint
+      in: query
+      required: false
+      schema:
+        type: boolean
+        default: 'true'
+      description: Returns response with indentations and line breaks.
+    - name: access_token
+      in: query
+      required: false
+      schema:
+        type: string
+      description: OAuth access token.
+    - name: uploadType
+      in: query
+      required: false
+      schema:
+        type: string
+      description: Legacy upload protocol for media (e.g. "media", "multipart").
+    - name: key
+      in: query
+      required: false
+      schema:
+        type: string
+      description: API key. Your API key identifies your project and provides you with API access, quota, and reports. Required unless you provide an OAuth 2.0 token.
+    - name: oauth_token
+      in: query
+      required: false
+      schema:
+        type: string
+      description: OAuth 2.0 token for the current user.
+    - name: alt
+      in: query
+      required: false
+      schema:
+        x-enumDescriptions:
+        - Responses with Content-Type of application/json
+        - Media download with context-dependent Content-Type
+        - Responses with Content-Type of application/x-protobuf
+        type: string
+        default: json
+        enum:
+        - json
+        - media
+        - proto
+      description: Data format for response.
+    post:
+      operationId: googleads_customers_campaigns_mutate
+      summary: Creates, updates, or removes campaigns
+      tags:
+      - customers.campaigns
+      description: 'Creates, updates, or removes campaigns. Operation statuses are returned. List of thrown errors: [AdxError]() [AuthenticationError]() [AuthorizationError]() [BiddingError]() [BiddingStrategyError]() [CampaignBudgetError]() [CampaignError]() [ContextError]() [DatabaseError]() [DateError]() [DateRangeError]() [DistinctError]() [FieldError]() [FieldMaskError]() [HeaderError]() [IdError]() [InternalError]() [ListOperationError]() [MutateError]() [NewResourceCreationError]() [NotAllowlistedError]() [NotEmptyError]() [NullError]() [OperationAccessDeniedError]() [OperatorError]() [QuotaError]() [RangeError]() [RegionCodeError]() [RequestError]() [ResourceCountLimitExceededError]() [SettingError]() [SizeLimitError]() [StringFormatError]() [StringLengthError]() [UrlFieldError]()'
+      parameters:
+      - name: customerId
+        in: path
+        required: true
+        schema:
+          type: string
+          pattern: ^[^/]+$
+        description: Required. The ID of the customer whose campaigns are being modified.
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/GoogleAdsGoogleadsV25Services__MutateCampaignsRequest'
+      responses:
+        '200':
+          description: Successful response
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/GoogleAdsGoogleadsV25Services__MutateCampaignsResponse'
+      security:
+      - oauth2:
+        - https://www.googleapis.com/auth/adwords
+components:
+  schemas:
+    GoogleAdsGoogleadsV25Common__ManualCpc:
+      description: Manual click-based bidding where user pays per click.
+      type: object
+      properties:
+        enhancedCpcEnabled:
+          type: boolean
+          description: Whether bids are to be enhanced based on conversion optimizer data.
+    GoogleAdsGoogleadsV25Common__TargetingSetting:
+      description: Settings for the targeting-related features, at the campaign and ad group levels. For more details about the targeting setting, visit https://support.google.com/google-ads/answer/7365594
+      type: object
+      properties:
+        targetRestrictions:
+          type: array
+          description: The per-targeting-dimension setting to restrict the reach of your campaign or ad group.
+          items:
+            $ref: '#/components/schemas/GoogleAdsGoogleadsV25Common__TargetRestriction'
+        targetRestrictionOperations:
+          description: The list of operations changing the target restrictions. Adding a target restriction with a targeting dimension that already exists causes the existing target restriction to be replaced with the new value.
+          items:
+            $ref: '#/components/schemas/GoogleAdsGoogleadsV25Common__TargetRestrictionOperation'
+          type: array
+    GoogleAdsGoogleadsV25Common__ManualCpm:
+      type: object
+      properties: {}
+      description: Manual impression-based bidding where user pays per thousand impressions.
+    GoogleAdsGoogleadsV25Resources_Campaign_VanityPharma:
+      type: object
+      properties:
+        vanityPharmaText:
+          description: The text that will be displayed in display URL of the text ad when website description is the selected display mode for vanity pharma URLs.
+          type: string
+          x-enumDescriptions:
+          - Not specified.
+          - Used for return value only. Represents value unknown in this version.
+          - Prescription treatment website with website content in English.
+          - Prescription treatment website with website content in Spanish (Sitio de tratamientos con receta).
+          - Prescription device website with website content in English.
+          - Prescription device website with website content in Spanish (Sitio de dispositivos con receta).
+          - Medical device website with website content in English.
+          - Medical device website with website content in Spanish (Sitio de dispositivos médicos).
+          - Preventative treatment website with website content in English.
+          - Preventative treatment website with website content in Spanish (Sitio de tratamientos preventivos).
+          - Prescription contraception website with website content in English.
+          - Prescription contraception website with website content in Spanish (Sitio de anticonceptivos con receta).
+          - Prescription vaccine website with website content in English.
+          - Prescription vaccine website with website content in Spanish (Sitio de vacunas con receta).
+          enum:
+          - UNSPECIFIED
+          - UNKNOWN
+          - PRESCRIPTION_TREATMENT_WEBSITE_EN
+          - PRESCRIPTION_TREATMENT_WEBSITE_ES
+          - PRESCRIPTION_DEVICE_WEBSITE_EN
+          - PRESCRIPTION_DEVICE_WEBSITE_ES
+          - MEDICAL_DEVICE_WEBSITE_EN
+          - MEDICAL_DEVICE_WEBSITE_ES
+          - PREVENTATIVE_TREATMENT_WEBSITE_EN
+          - PREVENTATIVE_TREATMENT_WEBSITE_ES
+          - PRESCRIPTION_CONTRACEPTION_WEBSITE_EN
+          - PRESCRIPTION_CONTRACEPTION_WEBSITE_ES
+          - PRESCRIPTION_VACCINE_WEBSITE_EN
+          - PRESCRIPTION_VACCINE_WEBSITE_ES
+        vanityPharmaDisplayUrlMode:
+          x-enumDescriptions:
+          - Not specified.
+          - Used for return value only. Represents value unknown in this version.
+          - Replace vanity pharma URL with manufacturer website url.
+          - Replace vanity pharma URL with description of the website.
+          enum:
+          - UNSPECIFIED
+          - UNKNOWN
+          - MANUFACTURER_WEBSITE_URL
+          - WEBSITE_DESCRIPTION
+          type: string
+          description: The display mode for vanity pharma URLs.
+      description: Describes how unbranded pharma ads will be displayed.
+    GoogleAdsGoogleadsV25Services__CampaignOperation:
+      description: A single operation (create, update, remove) on a campaign.
+      type: object
+      properties:
+        updateMask:
+          type: string
+          description: FieldMask that determines which resource fields are modified in an update.
+          format: google-fieldmask
+        create:
+          $ref: '#/components/schemas/GoogleAdsGoogleadsV25Resources__Campaign'
+          description: 'Create operation: No resource name is expected for the new campaign.'
+        update:
+          $ref: '#/components/schemas/GoogleAdsGoogleadsV25Resources__Campaign'
+          description: 'Update operation: The campaign is expected to have a valid resource name.'
+        remove:
+          description: 'Remove operation: A resource name for the removed campaign is expected, in this format: `customers/{customer_id}/campaigns/{campaign_id}`'
+          type: string
+    GoogleAdsGoogleadsV25Resources_Campaign_AssetAutomationSetting:
+      description: Asset automation setting contains pair of AssetAutomationType and the asset automation opt-in/out status
+      type: object
+      properties:
+        assetAutomationType:
+          x-enumDescriptions:
+          - Not specified.
+          - Used as a return value only. Represents value unknown in this version.
+          - Text asset automation (text customization) includes headlines and descriptions, allowing Google to create customized text assets using your existing ads, landing page copy, and generative AI across your campaign's ads. By default, advertisers are opted-in for Performance Max and opted-out for Search. Contrast this with `FINAL_URL_EXPANSION_TEXT_ASSET_AUTOMATION`, which dynamically generates text assets to match the content of dynamically selected landing pages when final URL expansion is active.
+          - Converts horizontal video assets to vertical orientation using content-aware technology. By default, advertisers are opted in for DemandGenVideoResponsiveAdInfo.
+          - Shortens video assets to better capture user attention using content-aware technology. By default, advertisers are opted in for DemandGenVideoResponsiveAdInfo.
+          - Generates a preview of the landing page shown in the engagement panel. By using this feature, you confirm that you own all legal rights to the images on the landing page used by this account (or you have permission to share the images with Google). You hereby instruct Google to publish these images on your behalf for advertising or other commercial purposes.
+          - Generates text information from the landing page to be shown in the engagement panel. Opted in by default for DemandGenVideoResponsiveAdInfo.
+          - Generates video enhancements (vertical and shorter videos) for PMax campaigns. Opted in by default.
+          - Generates image enhancements (AutoCrop and AutoEnhance). Opted in by default for pmax.
+          - Generates image extraction. It defaults to account level Dynamic Image Extension control value.
+          - Adds design elements and embeds text assets into image assets to create images with different aspect ratios. By default, advertisers are opted in for DemandGenMultiAssetAd.
+          - Controls automation for text assets related to Final URL expansion. This includes automatically creating dynamic landing pages from the final URL and generating text assets from the content of those landing pages. This setting is turned OFF by default for Search campaigns, but it is turned ON by default for Performance Max campaigns. Enabling final URL expansion also enables text asset automation. There is no way to opt out of text asset automation and still use final URL expansion. Contrast this with standard `TEXT_ASSET_AUTOMATION` (text customization), which customizes copy across all ads in the campaign even when final URL expansion does not occur.
+          - Generates videos using other Assets as input, such as images and text. By default, advertisers are opted in for DemandGenMultiAssetAd.
+          - Generates animated images using other Assets as input, such as images and text. By default, advertisers are opted in for DemandGenMultiAssetAd.
+          enum:
+          - UNSPECIFIED
+          - UNKNOWN
+          - TEXT_ASSET_AUTOMATION
+          - GENERATE_VERTICAL_YOUTUBE_VIDEOS
+          - GENERATE_SHORTER_YOUTUBE_VIDEOS
+          - GENERATE_LANDING_PAGE_PREVIEW
+          - GENERATE_LANDING_PAGE_TEXT
+          - GENERATE_ENHANCED_YOUTUBE_VIDEOS
+          - GENERATE_IMAGE_ENHANCEMENT
+          - GENERATE_IMAGE_EXTRACTION
+          - GENERATE_DESIGN_VERSIONS_FOR_IMAGES
+          - FINAL_URL_EXPANSION_TEXT_ASSET_AUTOMATION
+          - GENERATE_VIDEOS_FROM_OTHER_ASSETS
+          - GENERATE_ANIMATED_IMAGES_FROM_OTHER_ASSETS
+          type: string
+          description: The asset automation type advertiser would like to opt-in/out.
+        assetAutomationStatus:
+          description: The opt-in/out status of asset automation type.
+          type: string
+          x-enumDescriptions:
+          - Not specified.
+          - Used as a return value only. Represents value unknown in this version.
+          - Opted-in will enable generating and serving an asset automation type.
+          - Opted-out will stop generating and serving an asset automation type.
+          enum:
+          - UNSPECIFIED
+          - UNKNOWN
+          - OPTED_IN
+          - OPTED_OUT
+    GoogleAdsGoogleadsV25Resources_CampaignVideoCampaignSettings_VideoAdSequenceStep:
+      description: Information about a step within a video sequence.
+      type: object
+      properties:
+        videoAdSequenceStepId:
+          description: The ID of this sequence step.
+          type: string
+          format: int64
+        previousStepId:
+          type: string
+          description: The ID of the previous step. This field is required for all steps except the first one. It must point to a step that appears in the step definition list before this step.
+          format: int64
+        previousStepInteractionType:
+          type: string
+          description: Type of interaction *on the previous step* required in order for the user to advance to this step. As with the previous step ID, it's required for every step except for the first one.
+          x-enumDescriptions:
+          - Not specified.
+          - Used for return value only. Represents value unknown in this version.
+          - The viewer engaged with or watched at least 30 seconds of the ad (or the entire ad, if it was less than 30 seconds). Only available for campaigns using Target CPM as the bidding strategy and skippable in-stream ads as the ad format.
+          - The viewer skipped the ad. Only available for campaigns using Target CPM as the bidding strategy and skippable in-stream ads as the ad format.
+          - The ad was shown to the viewer.
+          - An ad impression that was not immediately skipped, but didn't reach the billable event either.
+          enum:
+          - UNSPECIFIED
+          - UNKNOWN
+          - PAID_VIEW
+          - SKIP
+          - IMPRESSION
+          - ENGAGED_IMPRESSION
+        adGroupType:
+          description: The ad group type for this step (denoting the video format).
+          type: string
+          x-enumDescriptions:
+          - The type has not been specified.
+          - The received value is not known in this version. This is a response-only value.
+          - The default ad group type for Search campaigns.
+          - The default ad group type for Display campaigns.
+          - The ad group type for Shopping campaigns serving standard product ads.
+          - The default ad group type for Hotel campaigns.
+          - The type for ad groups in Smart Shopping campaigns.
+          - Short unskippable in-stream video ads.
+          - TrueView (skippable) in-stream video ads.
+          - TrueView in-display video ads.
+          - Unskippable in-stream video ads.
+          - Ad group type for Dynamic Search Ads ad groups.
+          - The type for ad groups in Shopping Comparison Listing campaigns.
+          - The ad group type for Promoted Hotel ad groups.
+          - Video responsive ad groups.
+          - Video efficient reach ad groups.
+          - Ad group type for Smart campaigns.
+          - Ad group type for Travel campaigns.
+          - Ad group type for YouTube Audio campaigns.
+          enum:
+          - UNSPECIFIED
+          - UNKNOWN
+          - SEARCH_STANDARD
+          - DISPLAY_STANDARD
+          - SHOPPING_PRODUCT_ADS
+          - HOTEL_ADS
+          - SHOPPING_SMART_ADS
+          - VIDEO_BUMPER
+          - VIDEO_TRUE_VIEW_IN_STREAM
+          - VIDEO_TRUE_VIEW_IN_DISPLAY
+          - VIDEO_NON_SKIPPABLE_IN_STREAM
+          - SEARCH_DYNAMIC_ADS
+          - SHOPPING_COMPARISON_LISTING_ADS
+          - PROMOTED_HOTEL_ADS
+          - VIDEO_RESPONSIVE
+          - VIDEO_EFFICIENT_REACH
+          - SMART_CAMPAIGN_ADS
+          - TRAVEL_ADS
+          - YOUTUBE_AUDIO
+        assetId:
+          type: string
+          description: The ID of the Asset for this step. The asset must be type YOUTUBE_VIDEO.
+          format: int64
+    GoogleAdsGoogleadsV25Services__BrandCampaignAssets:
+      type: object
+      properties:
+        businessNameAsset:
+          type: string
+          description: Required. The resource name of the business name text asset.
+        logoAsset:
+          type: array
+          description: Required. The resource name of square logo assets.
+          items:
+            type: string
+        landscapeLogoAsset:
+          type: array
+          description: Optional. The resource name of landscape logo assets.
+          items:
+            type: string
+      description: Assets linked at the campaign level. A business_name and at least one logo_asset are required.
+    GoogleAdsGoogleadsV25Resources_CampaignVideoCampaignSettings_NonSkippableInStreamRestrictions:
+      description: Restrictions for non-skippable format.
+      type: object
+      properties:
+        minDuration:
+          description: The minimum allowed duration for non-skippable ads.
+          type: string
+          x-enumDescriptions:
+          - Not specified.
+          - Used for return value only. Represents value unknown in this version.
+          - Indicates that non-skippable ads must be at least 5 seconds long.
+          - Indicates that non-skippable ads must be at least 7 seconds long.
+          - Indicates that non-skippable ads must be at least 16 seconds long.
+          - Indicates that non-skippable ads must be at least 31 seconds long.
+          enum:
+          - UNSPECIFIED
+          - UNKNOWN
+          - MIN_DURATION_FIVE_SECONDS
+          - MIN_DURATION_SEVEN_SECONDS
+          - MIN_DURATION_SIXTEEN_SECONDS
+          - MIN_DURATION_THIRTY_ONE_SECONDS
+        maxDuration:
+          type: string
+          description: The maximum allowed duration for non-skippable ads.
+          x-enumDescriptions:
+          - Not specified.
+          - Used for return value only. Represents value unknown in this version.
+          - Indicates that non-skippable ads must be at most 15 seconds long.
+          - Indicates that non-skippable ads must be at most 30 seconds long.
+          - Indicates that non-skippable ads must be at most 60 seconds long.
+          enum:
+          - UNSPECIFIED
+          - UNKNOWN
+          - MAX_DURATION_FIFTEEN_SECONDS
+          - MAX_DURATION_THIRTY_SECONDS
+          - MAX_DURATION_SIXTY_SECONDS
+    GoogleAdsGoogleadsV25Resources_Campaign_TravelCampaignSettings:
+      type: object
+      properties:
+        travelAccountId:
+          description: Immutable. The Travel account ID associated with the Travel campaign.
+          type: string
+          format: int64
+      description: Settings for Travel campaign.
+    GoogleAdsGoogleadsV25Common__CampaignThirdPartyIntegrationPartners:
+      type: object
+      properties:
+        brandSafetyIntegrationPartners:
+          type: array
+          description: Third party integration partners for brand safety verification for this Campaign.
+          items:
+            $ref: '#/components/schemas/GoogleAdsGoogleadsV25Common__CampaignThirdPartyBrandSafetyIntegrationPartner'
+        conversionAttributionIntegrationPartners:
+          type: array
+          description: Third party integration partners for YouTube conversion attribution verification for this Campaign.
+          items:
+            $ref: '#/components/schemas/GoogleAdsGoogleadsV25Common__CampaignThirdPartyConversionAttributionIntegrationPartner'
+        brandLiftIntegrationPartners:
+          description: Third party integration partners for Brand Lift verification for this Campaign.
+          items:
+            $ref: '#/components/schemas/GoogleAdsGoogleadsV25Common__CampaignThirdPartyBrandLiftIntegrationPartner'
+          type: array
+        viewabilityIntegrationPartners:
+          type: array
+          description: Third party integration partners for YouTube viewability verification for this Campaign.
+          items:
+            $ref: '#/components/schemas/GoogleAdsGoogleadsV25Common__CampaignThirdPartyViewabilityIntegrationPartner'
+        reachIntegrationPartners:
+          description: Third party integration partners for reach verification for this Campaign.
+          items:
+            $ref: '#/components/schemas/GoogleAdsGoogleadsV25Common__CampaignThirdPartyReachIntegrationPartner'
+          type: array
+      description: Container for Campaign level third party integration partners.
+    GoogleAdsGoogleadsV25Common__FixedCpm:
+      type: object
+      properties:
+        goal:
+          type: string
+          description: Fixed CPM bidding goal. Determines the exact bidding optimization parameters.
+          x-enumDescriptions:
+          - Not specified.
+          - Used for return value only. Represents value unknown in this version.
+          - Maximize reach, that is the number of users who saw the ads in this campaign.
+          - Target Frequency CPM bidder. Optimize bidding to reach a single user with the requested frequency.
+          enum:
+          - UNSPECIFIED
+          - UNKNOWN
+          - REACH
+          - TARGET_FREQUENCY
+        targetFrequencyInfo:
+          description: Target frequency bidding goal details.
+          $ref: '#/components/schemas/GoogleAdsGoogleadsV25Common__FixedCpmTargetFrequencyGoalInfo'
+      description: Fixed CPM (cost per thousand impression) bidding strategy. A manual bidding strategy with a fixed CPM.
+    GoogleAdsGoogleadsV25Resources_Campaign_LocalServicesCampaignSettings:
+      description: Settings for LocalServicesCampaign subresource.
+      type: object
+      properties:
+        categoryBids:
+          type: array
+          description: Categorical level bids associated with MANUAL_CPA bidding strategy.
+          items:
+            $ref: '#/components/schemas/GoogleAdsGoogleadsV25Resources_Campaign_CategoryBid'
+    GoogleAdsGoogleadsV25Resources_Campaign_SelectiveOptimization:
+      description: Selective optimization setting for this campaign, which includes a set of conversion actions to optimize this campaign towards. This feature only applies to app campaigns that use MULTI_CHANNEL as AdvertisingChannelType and APP_CAMPAIGN or APP_CAMPAIGN_FOR_ENGAGEMENT as AdvertisingChannelSubType.
+      type: object
+      properties:
+        conversionActions:
+          description: The selected set of resource names for conversion actions for optimizing this campaign.
+          items:
+            type: string
+          type: array
+    GoogleAdsGoogleadsV25Services__EnableOperation:
+      type: object
+      properties:
+        campaign:
+          description: Required. The resource name of the campaign to enable.
+          type: string
+        accentColor:
+          description: 'Optional. Hex code representation of the accent brand color, for example #00ff00. accent_color is required when main_color is specified.'
+          type: string
+        brandAssets:
+          $ref: '#/components/schemas/GoogleAdsGoogleadsV25Services__BrandCampaignAssets'
+          description: Optional. The brand assets linked to the campaign. This field is required when the value of auto_populate_brand_assets is false.
+        fontFamily:
+          type: string
+          description: 'Optional. The font family is specified as a string, and must be one of the following: "Open Sans", "Roboto", "Roboto Slab", "Montserrat", "Poppins", "Lato", "Oswald", or "Playfair Display".'
+        autoPopulateBrandAssets:
+          description: Required. The switch to automatically populate top-performing brand assets. This field is required. If true, top-performing brand assets will be automatically populated. If false, the brand_assets field is required.
+          type: boolean
+        mainColor:
+          type: string
+          description: 'Optional. Hex code representation of the main brand color, for example #00ff00. main_color is required when accent color is specified.'
+        finalUriDomain:
+          description: Optional. The domain of the final uri.
+          type: string
+      description: A single enable operation of a campaign.
+    GoogleAdsGoogleadsV25Resources_CampaignVideoCampaignSettings_BookingDetails:
+      description: Container for booking details for campaigns with the FIXED_CPM or FIXED_SHARE_OF_VOICE bidding strategies.
+      type: object
+      properties:
+        holdExpirationDateTime:
+          type: string
+          description: Output only. Time until which booked inventory will be held or has been held for this campaign. Available for status HELD and HOLD_EXPIRED. Format is "yyyy-MM-dd HH:mm:ss" in the customer's time zone.
+        cancellationDateTime:
+          description: Output only. Time when the booked inventory of this campaign will be cancelled or has been cancelled. Available for primary status NOT_ELIGIBLE if the campaign will be cancelled and for primary status reason BOOKING_CANCELLED. Format is "yyyy-MM-dd HH:mm:ss" in the customer's time zone.
+          type: string
+        status:
+          description: Output only. The status of the booking.
+          type: string
+          enum:
+          - UNSPECIFIED
+          - UNKNOWN
+          - BOOKED
+          - HELD
+          - CAMPAIGN_ENDED
+          - HOLD_EXPIRED
+          - BOOKING_CANCELLED
+          x-enumDescriptions:
+          - Not specified.
+          - Used for return value only. Represents value unknown in this version.
+          - The booking is active and holds inventory for the campaign.
+          - The campaign is holding inventory, but the booking is not confirmed.
+          - The campaign has ended and is no longer holding inventory.
+          - The hold on the inventory has expired.
+          - The campaign was booked, but was in a non-servable state for too long and the booking was cancelled by the system.
+    GoogleAdsGoogleadsV25Common__RealTimeBiddingSetting:
+      description: Settings for Real-Time Bidding, a feature only available for campaigns targeting the Ad Exchange network.
+      type: object
+      properties:
+        optIn:
+          type: boolean
+          description: Whether the campaign is opted in to real-time bidding.
+    GoogleAdsGoogleadsV25Resources_Campaign_AppCampaignSetting:
+      description: Campaign-level settings for App Campaigns.
+      type: object
+      properties:
+        biddingStrategyGoalType:
+          x-enumDescriptions:
+          - Not specified.
+          - Used for return value only. Represents value unknown in this version.
+          - Aim to maximize the number of app installs. The cpa bid is the target cost per install.
+          - Aim to maximize the long term number of selected in-app conversions from app installs. The cpa bid is the target cost per install.
+          - Aim to maximize the long term number of selected in-app conversions from app installs. The cpa bid is the target cost per in-app conversion. Note that the actual cpa may seem higher than the target cpa at first, since the long term conversions haven't happened yet.
+          - Aim to maximize all conversions' value, for example, install + selected in-app conversions while achieving or exceeding target return on advertising spend.
+          - Aim to maximize the pre-registration of the app.
+          - Aim to maximize installation of the app without target cost-per-install.
+          - Aim to maximize the selected in-app conversion's volume while spending the full budget. No advertiser-specific target CPA.
+          - Aim to maximize total conversion value, such as install and selected in-app conversions, while spending the full budget. No advertiser-specified target ROAS.
+          enum:
+          - UNSPECIFIED
+          - UNKNOWN
+          - OPTIMIZE_INSTALLS_TARGET_INSTALL_COST
+          - OPTIMIZE_IN_APP_CONVERSIONS_TARGET_INSTALL_COST
+          - OPTIMIZE_IN_APP_CONVERSIONS_TARGET_CONVERSION_COST
+          - OPTIMIZE_RETURN_ON_ADVERTISING_SPEND
+          - OPTIMIZE_PRE_REGISTRATION_CONVERSION_VOLUME
+          - OPTIMIZE_INSTALLS_WITHOUT_TARGET_INSTALL_COST
+          - OPTIMIZE_IN_APP_CONVERSIONS_WITHOUT_TARGET_CPA
+          - OPTIMIZE_TOTAL_VALUE_WITHOUT_TARGET_ROAS
+          description: Represents the goal which the bidding strategy of this app campaign should optimize towards.
+          type: string
+        appStore:
+          x-enumDescriptions:
+          - Not specified.
+          - Used for return value only. Represents value unknown in this version.
+          - Apple app store.
+          - Google play.
+          enum:
+          - UNSPECIFIED
+          - UNKNOWN
+          - APPLE_APP_STORE
+          - GOOGLE_APP_STORE
+          type: string
+          description: Immutable. The application store that distributes this specific app.
+        appId:
+          description: Immutable. A string that uniquely identifies a mobile application.
+          type: string
+    GoogleAdsGoogleadsV25Resources_Campaign_AudienceSetting:
+      description: Settings for the audience targeting.
+      type: object
+      properties:
+        useAudienceGrouped:
+          type: boolean
+          description: Immutable. If true, this campaign uses an Audience resource for audience targeting. If false, this campaign may use audience segment criteria instead.
+    GoogleAdsGoogleadsV25Resources_CampaignVideoCampaignSettings_VideoAdInventoryControl:
+      description: For campaigns using video responsive ads inventory controls determine on which inventories the ads can be shown. This only applies for campaigns with the bidding strategies TARGET_CPM and FIXED_CPM.
+      type: object
+      properties:
+        allowInStream:
+          description: Determine if video responsive ads can be used for in-stream video ads.
+          type: boolean
+        allowInFeed:
+          description: Determine if video responsive ads can be used for in-feed video ads.
+          type: boolean
+        allowShorts:
+          description: Determine if video responsive ads can be used as shorts format.
+          type: boolean
+        allowNonSkippableInStream:
+          description: Determine if video responsive ads can be used for non-skippable in-stream ads. This is only available for campaigns that allow mixing of non-skippable with other formats (Video reach campaign with Target Frequency bidding strategy goal).
+          type: boolean
+    GoogleAdsGoogleadsV25Common__ManualCpa:
+      description: Manual bidding strategy that allows advertiser to set the bid per advertiser-specified action.
+      type: object
+      properties: {}
+    GoogleAdsGoogleadsV25Services__MutateCampaignsRequest:
+      description: Request message for CampaignService.MutateCampaigns.
+      type: object
+      properties:
+        validateOnly:
+          description: If true, the request is validated but not executed. Only errors are returned, not results.
+          type: boolean
+        responseContentType:
+          description: The response content type setting. Determines whether the mutable resource or just the resource name should be returned post mutation.
+          type: string
+          x-enumDescriptions:
+          - Not specified. Will return the resource name only in the response.
+          - The mutate response will be the resource name.
+          - The mutate response will contain the resource name and the resource with mutable fields if possible. Otherwise, only the resource name will be returned.
+          enum:
+          - UNSPECIFIED
+          - RESOURCE_NAME_ONLY
+          - MUTABLE_RESOURCE
+        operations:
+          type: array
+          description: Required. The list of operations to perform on individual campaigns.
+          items:
+            $ref: '#/components/schemas/GoogleAdsGoogleadsV25Services__CampaignOperation'
+        partialFailure:
+          description: If true, successful operations will be carried out and invalid operations will return errors. If false, all operations will be carried out in one transaction if and only if they are all valid. Default is false.
+          type: boolean
+    GoogleAdsGoogleadsV25Resources_Campaign_LocalCampaignSetting:
+      type: object
+      properties:
+        locationSourceType:
+          x-enumDescriptions:
+          - No value has been specified.
+          - Used for return value only. Represents value unknown in this version.
+          - Locations associated with the customer's linked Business Profile.
+          - Affiliate (chain) store locations. For example, Best Buy store locations.
+          enum:
+          - UNSPECIFIED
+          - UNKNOWN
+          - GOOGLE_MY_BUSINESS
+          - AFFILIATE
+          type: string
+          description: The location source type for this local campaign.
+      description: Campaign setting for local campaigns.
+    GoogleAdsGoogleadsV25Common__Commission:
+      description: Commission is an automatic bidding strategy in which the advertiser pays a certain portion of the conversion value.
+      type: object
+      properties:
+        commissionRateMicros:
+          type: string
+          description: Commission rate defines the portion of the conversion value that the advertiser will be billed. A commission rate of x should be passed into this field as (x * 1,000,000). For example, 106,000 represents a commission rate of 0.106 (10.6%).
+          format: int64
+    GoogleAdsGoogleadsV25Common__TargetImpressionShare:
+      description: An automated bidding strategy that sets bids so that a certain percentage of search ads are shown at the top of the first page (or other targeted location).
+      type: object
+      properties:
+        cpcBidCeilingMicros:
+          format: int64
+          description: The highest CPC bid the automated bidding system is permitted to specify. This is a required field entered by the advertiser that sets the ceiling and specified in local micros.
+          type: string
+        locationFractionMicros:
+          format: int64
+          description: The chosen fraction of ads to be shown in the targeted location in micros. For example, 1% equals 10,000.
+          type: string
+        location:
+          description: The targeted location on the search results page.
+          type: string
+          x-enumDescriptions:
+          - Not specified.
+          - Used for return value only. Represents value unknown in this version.
+          - Any location on the web page.
+          - Top box of ads.
+          - Top slot in the top box of ads.
+          enum:
+          - UNSPECIFIED
+          - UNKNOWN
+          - ANYWHERE_ON_PAGE
+          - TOP_OF_PAGE
+          - ABSOLUTE_TOP_OF_PAGE
+    GoogleAdsGoogleadsV25Resources_Campaign_GeoTargetTypeSetting:
+      type: object
+      properties:
+        positiveGeoTargetType:
+          description: The setting used for positive geotargeting in this particular campaign.
+          type: string
+          x-enumDescriptions:
+          - Not specified.
+          - The value is unknown in this version.
+          - Specifies that an ad is triggered if the user is in, or shows interest in, advertiser's targeted locations.
+          - Specifies that an ad is triggered if the user searches for advertiser's targeted locations. This can only be used with Search and standard Shopping campaigns.
+          - Specifies that an ad is triggered if the user is in or regularly in advertiser's targeted locations.
+          enum:
+          - UNSPECIFIED
+          - UNKNOWN
+          - PRESENCE_OR_INTEREST
+          - SEARCH_INTEREST
+          - PRESENCE
+        negativeGeoTargetType:
+          x-enumDescriptions:
+          - Not specified.
+          - The value is unknown in this version.
+          - Specifies that a user is excluded from seeing the ad if they are in, or show interest in, advertiser's excluded locations.
+          - Specifies that a user is excluded from seeing the ad if they are in advertiser's excluded locations.
+          enum:
+          - UNSPECIFIED
+          - UNKNOWN
+          - PRESENCE_OR_INTEREST
+          - PRESENCE
+          description: The setting used for negative geotargeting in this particular campaign.
+          type: string
+      description: Represents a collection of settings related to ads geotargeting.
+    GoogleAdsGoogleadsV25Common__PercentCpc:
+      type: object
+      properties:
+        cpcBidCeilingMicros:
+          description: 'Maximum bid limit that can be set by the bid strategy. This is an optional field entered by the advertiser and specified in local micros. Note: A zero value is interpreted in the same way as having bid_ceiling undefined.'
+          type: string
+          format: int64
+        enhancedCpcEnabled:
+          description: Adjusts the bid for each auction upward or downward, depending on the likelihood of a conversion. Individual bids may exceed cpc_bid_ceiling_micros, but the average bid amount for a campaign should not.
+          type: boolean
+      description: A bidding strategy where bids are a fraction of the advertised price for some good or service.
+    GoogleAdsGoogleadsV25Common__TargetCpa:
+      description: An automated bid strategy that sets bids to help get as many conversions as possible at the target cost-per-acquisition (CPA) you set.
+      type: object
+      properties:
+        cpcBidFloorMicros:
+          description: Minimum bid limit that can be set by the bid strategy. The limit applies to all keywords managed by the strategy. This should only be set for portfolio bid strategies.
+          type: string
+          format: int64
+        cpcBidCeilingMicros:
+          format: int64
+          description: Maximum bid limit that can be set by the bid strategy. The limit applies to all keywords managed by the strategy. This should only be set for portfolio bid strategies.
+          type: string
+        targetCpaMicros:
+          description: Average CPA target. This target should be greater than or equal to minimum billable unit based on the currency for the account.
+          type: string
+          format: int64
+    GoogleAdsGoogleadsV25Common__TargetCpc:
+      description: An automated bidding strategy that sets bids to help get as many clicks as possible at the target cost-per-click (CPC) you set.
+      type: object
+      properties:
+        targetCpcMicros:
+          description: Average CPC target. This target should be greater than or equal to minimum billable unit based on the currency for the account.
+          type: string
+          format: int64
+    GoogleAdsGoogleadsV25Common__CampaignThirdPartyViewabilityIntegrationPartner:
+      type: object
+      properties:
+        viewabilityIntegrationPartner:
+          x-enumDescriptions:
+          - Not specified.
+          - Used for return value only. Represents value unknown in this version.
+          - DoubleVerify.
+          - Integral Ad Science.
+          - Zefr.
+          enum:
+          - UNSPECIFIED
+          - UNKNOWN
+          - DOUBLE_VERIFY
+          - INTEGRAL_AD_SCIENCE
+          - ZEFR
+          type: string
+          description: Allowed third party integration partners for YouTube viewability verification.
+        shareCost:
+          description: If true, then cost data will be shared with this vendor.
+          type: boolean
+        viewabilityIntegrationPartnerData:
+          description: Third party partner data for YouTube viewability verification. This is optional metadata for partners to join or attach data to Ads campaigns.
+          $ref: '#/components/schemas/GoogleAdsGoogleadsV25Common__ThirdPartyIntegrationPartnerData'
+      description: Container for third party viewability integration data for Campaign.
+    GoogleAdsGoogleadsV25Common__TargetSpend:
+      description: An automated bid strategy that sets your bids to help get as many clicks as possible within your budget.
+      type: object
+      properties:
+        targetSpendMicros:
+          description: 'Deprecated: The spend target under which to maximize clicks. A TargetSpend bidder will attempt to spend the smaller of this value or the natural throttling spend amount. If not specified, the budget is used as the spend target. This field is deprecated and should no longer be used. See https://ads-developers.googleblog.com/2020/05/reminder-about-sunset-creation-of.html for details.'
+          deprecated: true
+          type: string
+          format: int64
+        cpcBidCeilingMicros:
+          type: string
+          description: Maximum bid limit that can be set by the bid strategy. The limit applies to all keywords managed by the strategy.
+          format: int64
+    GoogleAdsGoogleadsV25Common__FrequencyCapEntry:
+      description: A rule specifying the maximum number of times an ad (or some set of ads) can be shown to a user over a particular time period.
+      type: object
+      properties:
+        key:
+          $ref: '#/components/schemas/GoogleAdsGoogleadsV25Common__FrequencyCapKey'
+          description: The key of a particular frequency cap. There can be no more than one frequency cap with the same key.
+        cap:
+          type: integer
+          description: Maximum number of events allowed during the time range by this cap.
+          format: int32
+    GoogleAdsGoogleadsV25Resources_Campaign_VideoCampaignSettings:
+      type: object
+      properties:
+        videoAdSequence:
+          $ref: '#/components/schemas/GoogleAdsGoogleadsV25Resources_CampaignVideoCampaignSettings_VideoAdSequence'
+          description: Container for video ads sequencing definition.
+        bookingDetails:
+          description: Output only. Booking information for campaigns with the FIXED_CPM or FIXED_SHARE_OF_VOICE bidding strategies.
+          $ref: '#/components/schemas/GoogleAdsGoogleadsV25Resources_CampaignVideoCampaignSettings_BookingDetails'
+        reservationAdCategorySelfDisclosure:
+          description: Ad category self-disclosure for campaigns with the FIXED_CPM or FIXED_SHARE_OF_VOICE bidding strategies.
+          $ref: '#/components/schemas/GoogleAdsGoogleadsV25Resources_CampaignVideoCampaignSettings_ReservationAdCategorySelfDisclosure'
+        videoAdFormatControl:
+          $ref: '#/components/schemas/GoogleAdsGoogleadsV25Resources_CampaignVideoCampaignSettings_VideoAdFormatControl'
+          description: Format-restricting control enabling usage of video responsive ads in format defined Video campaigns (for example, non-skippable).
+        videoAdInventoryControl:
+          $ref: '#/components/schemas/GoogleAdsGoogleadsV25Resources_CampaignVideoCampaignSettings_VideoAdInventoryControl'
+          description: Inventory control for video responsive ads in reach campaigns.
+      description: Settings for Video campaign.
+    GoogleAdsGoogleadsV25Common__CampaignThirdPartyReachIntegrationPartner:
+      type: object
+      properties:
+        reachIntegrationPartner:
+          x-enumDescriptions:
+          - Not specified.
+          - Used for return value only. Represents value unknown in this version.
+          - Nielsen.
+          - Comscore.
+          - Kantar.
+          - Video Research.
+          - Gemius.
+          - MediaScope.
+          - AudienceProject
+          - VideoAmp
+          - iSpot.tv
+          enum:
+          - UNSPECIFIED
+          - UNKNOWN
+          - NIELSEN
+          - COMSCORE
+          - KANTAR_MILLWARD_BROWN
+          - VIDEO_RESEARCH
+          - GEMIUS
+          - MEDIA_SCOPE
+          - AUDIENCE_PROJECT
+          - VIDEO_AMP
+          - ISPOT_TV
+          type: string
+          description: Allowed third party integration partners for reach verification.
+        reachIntegrationPartnerData:
+          $ref: '#/components/schemas/GoogleAdsGoogleadsV25Common__ThirdPartyIntegrationPartnerData'
+          description: Third party partner data for YouTube Reach verification. This is optional metadata for partners to join or attach data to Ads campaigns.
+        shareCost:
+          description: If true, then cost data will be shared with this vendor.
+          type: boolean
+      description: Container for third party reach integration data for Campaign.
+    GoogleAdsGoogleadsV25Common__TargetCpv:
+      description: Target CPV (cost per view) bidding strategy. An automated bidding strategy that sets bids to optimize performance given the target CPV you set.
+      type: object
+      properties: {}
+    GoogleAdsGoogleadsV25Common__CampaignThirdPartyBrandLiftIntegrationPartner:
+      description: Container for third party Brand Lift integration data for Campaign.
+      type: object
+      properties:
+        brandLiftIntegrationPartner:
+          description: Allowed third party integration partners for Brand Lift verification.
+          type: string
+          x-enumDescriptions:
+          - Not specified.
+          - Used for return value only. Represents value unknown in this version.
+          - Kantar
+          - Dynata
+          - Intage
+          - Macromill
+          enum:
+          - UNSPECIFIED
+          - UNKNOWN
+          - KANTAR_MILLWARD_BROWN
+          - DYNATA
+          - INTAGE
+          - MACROMILL
+        brandLiftIntegrationPartnerData:
+          $ref: '#/components/schemas/GoogleAdsGoogleadsV25Common__ThirdPartyIntegrationPartnerData'
+          description: Third party partner data for YouTube Brand Lift verification. This is optional metadata for partners to join or attach data to Ads campaigns.
+        shareCost:
+          type: boolean
+          description: If true, then cost data will be shared with this vendor.
+    GoogleAdsGoogleadsV25Resources_Campaign_PerformanceMaxUpgrade:
+      description: Information about a campaign being upgraded to Performance Max.
+      type: object
+      properties:
+        status:
+          x-enumDescriptions:
+          - Not specified.
+          - Used for return value only. Represents value unknown in this version.
+          - The upgrade to a Performance Max campaign is in progress.
+          - The upgrade to a Performance Max campaign is complete.
+          - The upgrade to a Performance Max campaign failed. The campaign will still serve as it was before upgrade was attempted.
+          - The campaign is eligible for upgrade to a Performance Max campaign.
+          enum:
+          - UNSPECIFIED
+          - UNKNOWN
+          - UPGRADE_IN_PROGRESS
+          - UPGRADE_COMPLETE
+          - UPGRADE_FAILED
+          - UPGRADE_ELIGIBLE
+          type: string
+          description: Output only. The upgrade status of a campaign requested to be upgraded to Performance Max.
+        performanceMaxCampaign:
+          description: Output only. The resource name of the Performance Max campaign the campaign is upgraded to.
+          type: string
+        preUpgradeCampaign:
+          type: string
+          description: Output only. The resource name of the legacy campaign upgraded to Performance Max.
+    GoogleAdsGoogleadsV25Resources_Campaign_DemandGenCampaignSettings:
+      type: object
+      properties:
+        upgradedTargeting:
+          description: Immutable. Specifies whether this campaign uses upgraded targeting options. When this field is set to `true`, you can use location and language targeting at the ad group level as opposed to the standard campaign-level targeting. This field defaults to `true`, and can only be set when creating a campaign.
+          type: boolean
+      description: Settings for Demand Gen campaign.
+    GoogleAdsGoogleadsV25Services__MutateCampaignResult:
+      description: The result for the campaign mutate.
+      type: object
+      properties:
+        resourceName:
+          description: Returned for successful operations.
+          type: string
+        campaign:
+          $ref: '#/components/schemas/GoogleAdsGoogleadsV25Resources__Campaign'
+          description: The mutated campaign with only mutable fields after mutate. The field will only be returned when response_content_type is set to "MUTABLE_RESOURCE".
+    GoogleAdsGoogleadsV25Resources_Campaign_CategoryBid:
+      description: Category bids in LocalServicesReportingCampaignSettings.
+      type: object
+      properties:
+        targetCpaBidMicros:
+          format: int64
+          description: Target CPA bid for the category. Value is in micros and in the advertiser's currency.
+          type: string
+        categoryId:
+          description: Category for which the bid will be associated with. For example, xcat:service_area_business_plumber.
+          type: string
+        manualCpaBidMicros:
+          format: int64
+          type: string
+          description: Manual CPA bid for the category. Bid must be greater than the reserve price associated for that category. Value is in micros and in the advertiser's currency.
+    GoogleAdsGoogleadsV25Services__EnablePMaxBrandGuidelinesRequest:
+      description: Request to enable Brand Guidelines for a Performance Max campaign.
+      type: object
+      properties:
+        operations:
+          type: array
+          description: Required. The list of individual campaign operations. A maximum of 10 enable operations can be executed in a request.
+          items:
+            $ref: '#/components/schemas/GoogleAdsGoogleadsV25Services__EnableOperation'
+    GoogleAdsGoogleadsV25Resources_Campaign_NetworkSettings:
+      description: The network settings for the campaign.
+      type: object
+      properties:
+        targetSearchNetwork:
+          description: Whether ads will be served on sites in the Google Search Partners Network (requires `target_google_search` to also be `true`).
+          type: boolean
+        targetContentNetwork:
+          type: boolean
+          description: Whether ads will be served on specified placements in the Google Display Network. Placements are specified using the Placement criterion.
+        targetGoogleTvNetwork:
+          description: Whether ads will be served on the Google TV network.
+          type: boolean
+        targetYoutube:
+          description: Whether ads will be served on YouTube.
+          type: boolean
+        targetGoogleSearch:
+          type: boolean
+          description: Whether ads will be served with google.com search results.
+        targetPartnerSearchNetwork:
+          description: Whether ads will be served on the partner network. This is available only to some select partner accounts. Unless you have been instructed to use this field, it likely does not apply to your account. This does not control whether ads will be served on Google Search Partners Network; use `target_search_network` for that instead.
+          type: boolean
+    GoogleAdsGoogleadsV25Resources_Campaign_DynamicSearchAdsSetting:
+      type: object
+      properties:
+        languageCode:
+          type: string
+          description: Required. The language code specifying the language of the domain, for example, "en".
+        domainName:
+          type: string
+          description: Required. The Internet domain name that this setting represents, for example, "google.com" or "www.google.com".
+        useSuppliedUrlsOnly:
+          type: boolean
+          description: Whether the campaign uses advertiser supplied URLs exclusively.
+      description: The setting for controlling Dynamic Search Ads (DSA).
+    GoogleAdsGoogleadsV25Common__TargetCpmTargetFrequencyGoal:
+      description: Target Frequency bidding goal details.
+      type: object
+      properties:
+        targetCount:
+          format: int64
+          description: Target Frequency count representing how many times you want to reach a single user.
+          type: string
+        timeUnit:
+          x-enumDescriptions:
+          - Not specified.
+          - Used for return value only. Represents value unknown in this version.
+          - Optimize bidding to reach Target Frequency in a week.
+          - Optimize bidding to reach Target Frequency in a month.
+          enum:
+          - UNSPECIFIED
+          - UNKNOWN
+          - WEEKLY
+          - MONTHLY
+          description: Time window expressing the period over which you want to reach the specified target_count.
+          type: string
+    GoogleAdsGoogleadsV25Common__LocalServicesPhoneNumber:
+      type: object
+      properties:
+        phoneNumberType:
+          x-enumDescriptions:
+          - Not specified.
+          - Used for return value only. Represents value unknown in this version.
+          - Provider-provided destination number to use for calls originating from a GLS ad unit. This is the default.
+          - Destination phone number that supports SMS.
+          - Destination phone number for a provider's WhatsApp account.
+          enum:
+          - UNSPECIFIED
+          - UNKNOWN
+          - DESTINATION_PHONE_NUMBER_FOR_ADS
+          - DESTINATION_PHONE_NUMBER_FOR_SMS_ONLY
+          - DESTINATION_PHONE_NUMBER_FOR_WHATSAPP_ONLY
+          description: The type of the phone number.
+          type: string
+        phoneNumber:
+          description: The phone number.
+          type: string
+        countryCode:
+          type: string
+          description: Upper-case, two-letter codes as defined by ISO-3166.
+      description: Phone number associated with the provider.
+    GoogleAdsGoogleadsV25Common__CampaignThirdPartyConversionAttributionIntegrationPartner:
+      description: Container for third party YouTube conversion attribution integration data for Campaign.
+      type: object
+      properties:
+        conversionAttributionIntegrationPartner:
+          x-enumDescriptions:
+          - Not specified.
+          - Used for return value only. Represents value unknown in this version.
+          - Transunion.
+          enum:
+          - UNSPECIFIED
+          - UNKNOWN
+          - TRANSUNION
+          type: string
+          description: Allowed third party integration partners for YouTube conversion attribution verification.
+        conversionAttributionIntegrationPartnerData:
+          $ref: '#/components/schemas/GoogleAdsGoogleadsV25Common__ThirdPartyIntegrationPartnerData'
+          description: Third party partner data for YouTube conversion attribution verification.
+    GoogleAdsGoogleadsV25Services__EnablePMaxBrandGuidelinesResponse:
+      description: Brand Guidelines campaign enablement response.
+      type: object
+      properties:
+        results:
+          description: Campaign enablement results per campaign.
+          items:
+            $ref: '#/components/schemas/GoogleAdsGoogleadsV25Services__EnablementResult'
+          type: array
+    GoogleAdsGoogleadsV25Common__CustomParameter:
+      type: object
+      properties:
+        key:
+          description: The key matching the parameter tag name.
+          type: string
+        value:
+          type: string
+          description: The value to be substituted.
+      description: A mapping that can be used by custom parameter tags in a `tracking_url_template`, `final_urls`, or `mobile_final_urls`.
+    GoogleAdsGoogleadsV25Common__TargetRoas:
+      type: object
+      properties:
+        targetRoas:
+          type: number
+          description: Required. The chosen revenue (based on conversion data) per unit of spend. Value must be between 0.01 and 1000.0, inclusive.
+          format: double
+        cpcBidFloorMicros:
+          format: int64
+          type: string
+          description: Minimum bid limit that can be set by the bid strategy. The limit applies to all keywords managed by the strategy. This should only be set for portfolio bid strategies.
+        targetRoasTolerancePercentMillis:
+          type: string
+          description: The percent of ROAS(return on advertising spend) degradation tolerance allowed to increase traffic diversity and conversion volume, specified in millis (for example, 10,000 = 10%). A value of 10,000 means that the advertiser can expect ROAS degradation of up to 10% of the specified target ROAS. This field is only mutable for portfolio bidding strategies.
+          format: int64
+        cpcBidCeilingMicros:
+          description: Maximum bid limit that can be set by the bid strategy. The limit applies to all keywords managed by the strategy. This should only be set for portfolio bid strategies.
+          type: string
+          format: int64
+      description: An automated bidding strategy that helps you maximize revenue while averaging a specific target return on ad spend (ROAS).
+    GoogleAdsGoogleadsV25Resources_Campaign_BrandGuidelines:
+      type: object
+      properties:
+        mainColor:
+          description: 'The main brand color, entered as a hex code (e.g., #00ff00). You must provide the main_color if you provide an accent_color.'
+          type: string
+        accentColor:
+          description: 'The accent brand color, entered as a hex code (e.g., #00ff00). You must provide the accent_color if you provide a main_color.'
+          type: string
+        predefinedFontFamily:
+          description: 'The brand''s font family. Must be one of the following Google Fonts (case sensitive): Open Sans, Roboto, Montserrat, Poppins, Lato, Oswald, Playfair Display, Roboto Slab.'
+          type: string
+      description: Settings that control the visual appearance of your brand in a campaign's automatically generated assets and formats. Only applicable to Performance Max campaigns.
+    GoogleAdsGoogleadsV25Resources__Campaign:
+      type: object
+      properties:
+        biddingStrategySystemStatus:
+          x-enumDescriptions:
+          - Signals that an unexpected error occurred, for example, no bidding strategy type was found, or no status information was found.
+          - Used for return value only. Represents value unknown in this version.
+          - The bid strategy is active, and AdWords cannot find any specific issues with the strategy.
+          - The bid strategy is learning because it has been recently created or recently reactivated.
+          - The bid strategy is learning because of a recent setting change.
+          - The bid strategy is learning because of a recent budget change.
+          - The bid strategy is learning because of recent change in number of campaigns, ad groups or keywords attached to it.
+          - The bid strategy depends on conversion reporting and the customer recently modified conversion types that were relevant to the bid strategy.
+          - The bid strategy depends on conversion reporting and the customer recently changed their conversion settings.
+          - The bid strategy is limited by its bid ceiling.
+          - The bid strategy is limited by its bid floor.
+          - The bid strategy is limited because there was not enough conversion traffic over the past weeks.
+          - A significant fraction of keywords in this bid strategy are limited by budget.
+          - The bid strategy cannot reach its target spend because its spend has been de-prioritized.
+          - A significant fraction of keywords in this bid strategy have a low Quality Score.
+          - The bid strategy cannot fully spend its budget because of narrow targeting.
+          - Missing conversion tracking (no pings present) and/or remarketing lists for SSC.
+          - The bid strategy depends on conversion reporting and the customer is lacking conversion types that might be reported against this strategy.
+          - The bid strategy depends on conversion reporting and the customer's conversion settings are misconfigured.
+          - There are campaigns outside the bid strategy that share budgets with campaigns included in the strategy.
+          - The campaign has an invalid strategy type and is not serving.
+          - The bid strategy is not active. Either there are no active campaigns, ad groups or keywords attached to the bid strategy. Or there are no active budgets connected to the bid strategy.
+          - This bid strategy currently does not support status reporting.
+          - There were multiple LEARNING_* system statuses for this bid strategy during the time in question.
+          - There were multiple LIMITED_* system statuses for this bid strategy during the time in question.
+          - There were multiple MISCONFIGURED_* system statuses for this bid strategy during the time in question.
+          - There were multiple system statuses for this bid strategy during the time in question.
+          enum:
+          - UNSPECIFIED
+          - UNKNOWN
+          - ENABLED
+          - LEARNING_NEW
+          - LEARNING_SETTING_CHANGE
+          - LEARNING_BUDGET_CHANGE
+          - LEARNING_COMPOSITION_CHANGE
+          - LEARNING_CONVERSION_TYPE_CHANGE
+          - LEARNING_CONVERSION_SETTING_CHANGE
+          - LIMITED_BY_CPC_BID_CEILING
+          - LIMITED_BY_CPC_BID_FLOOR
+          - LIMITED_BY_DATA
+          - LIMITED_BY_BUDGET
+          - LIMITED_BY_LOW_PRIORITY_SPEND
+          - LIMITED_BY_LOW_QUALITY
+          - LIMITED_BY_INVENTORY
+          - MISCONFIGURED_ZERO_ELIGIBILITY
+          - MISCONFIGURED_CONVERSION_TYPES
+          - MISCONFIGURED_CONVERSION_SETTINGS
+          - MISCONFIGURED_SHARED_BUDGET
+          - MISCONFIGURED_STRATEGY_TYPE
+          - PAUSED
+          - UNAVAILABLE
+          - MULTIPLE_LEARNING
+          - MULTIPLE_LIMITED
+          - MULTIPLE_MISCONFIGURED
+          - MULTIPLE
+          type: string
+          description: Output only. The system status of the campaign's bidding strategy.
+        adServingOptimizationStatus:
+          x-enumDescriptions:
+          - No value has been specified.
+          - The received value is not known in this version. This is a response-only value.
+          - Ad serving is optimized based on CTR for the campaign.
+          - Ad serving is optimized based on CTR * Conversion for the campaign. If the campaign is not in the conversion optimizer bidding strategy, it will default to OPTIMIZED.
+          - Ads are rotated evenly for 90 days, then optimized for clicks.
+          - Show lower performing ads more evenly with higher performing ads, and do not optimize.
+          - Ad serving optimization status is not available.
+          enum:
+          - UNSPECIFIED
+          - UNKNOWN
+          - OPTIMIZE
+          - CONVERSION_OPTIMIZE
+          - ROTATE
+          - ROTATE_INDEFINITELY
+          - UNAVAILABLE
+          type: string
+          description: The ad serving optimization status of the campaign.
+        servingStatus:
+          enum:
+          - UNSPECIFIED
+          - UNKNOWN
+          - SERVING
+          - NONE
+          - ENDED
+          - PENDING
+          - SUSPENDED
+          type: string
+          description: Output only. The ad serving status of the campaign.
+          x-enumDescriptions:
+          - No value has been specified.
+          - The received value is not known in this version. This is a response-only value.
+          - Serving.
+          - None.
+          - Ended.
+          - Pending.
+          - Suspended.
+        localServicesCampaignSettings:
+          $ref: '#/components/schemas/GoogleAdsGoogleadsV25Resources_Campaign_LocalServicesCampaignSettings'
+          description: The Local Services Campaign related settings.
+        biddingStrategy:
+          description: The resource name of the portfolio bidding strategy used by the campaign.
+          type: string
+        commission:
+          $ref: '#/components/schemas/GoogleAdsGoogleadsV25Common__Commission'
+          description: Commission is an automatic bidding strategy in which the advertiser pays a certain portion of the conversion value.
+        startDateTime:
+          description: The date and time when campaign started in serving. The timestamp is in the customer's time zone and in "yyyy-MM-dd HH:mm:ss" format. Set the time component to 00:00:00 for daily granularity, time granularity is only supported for some campaign types.
+          type: string
+        viewThroughConversionOptimizationEnabled:
+          description: Whether VTC (View-through Conversion) optimization is enabled for this campaign. Only allowed for certain Demand Gen and App Campaigns.
+          type: boolean
+        shoppingSetting:
+          description: The setting for controlling Shopping campaigns.
+          $ref: '#/components/schemas/GoogleAdsGoogleadsV25Resources_Campaign_ShoppingSetting'
+        maximizeConversions:
+          $ref: '#/components/schemas/GoogleAdsGoogleadsV25Common__MaximizeConversions'
+          description: Standard Maximize Conversions bidding strategy that automatically maximizes number of conversions while spending your budget.
+        containsEuPoliticalAdvertising:
+          type: string
+          description: The advertiser should self-declare whether this campaign contains political advertising content targeted towards the European Union.
+          x-enumDescriptions:
+          - Not specified.
+          - Used for return value only. Represents value unknown in this version.
+          - The campaign contains political advertising targeted towards the EU. The campaign will be restricted from serving ads in the EU.
+          - The campaign does not contain political advertising targeted towards the EU. No additional serving restrictions will apply.
+          enum:
+          - UNSPECIFIED
+          - UNKNOWN
+          - CONTAINS_EU_POLITICAL_ADVERTISING
+          - DOES_NOT_CONTAIN_EU_POLITICAL_ADVERTISING
+        manualCpa:
+          $ref: '#/components/schemas/GoogleAdsGoogleadsV25Common__ManualCpa'
+          description: Standard Manual CPA bidding strategy. Manual bidding strategy that allows advertiser to set the bid per advertiser-specified action. Supported only for Local Services campaigns.
+        textGuidelines:
+          description: Settings to control automatically generated text assets. Only available in Performance Max and Search campaigns (Brand Guidelines does not need to be enabled).
+          $ref: '#/components/schemas/GoogleAdsGoogleadsV25Resources_Campaign_TextGuidelines'
+        assetAutomationSettings:
+          description: Contains the opt-in/out status of each AssetAutomationType. See documentation of each asset automation type enum for default opt in/out behavior.
+          items:
+            $ref: '#/components/schemas/GoogleAdsGoogleadsV25Resources_Campaign_AssetAutomationSetting'
+          type: array
+        thirdPartyIntegrationPartners:
+          description: Third-Party integration partners.
+          $ref: '#/components/schemas/GoogleAdsGoogleadsV25Common__CampaignThirdPartyIntegrationPartners'
+        videoCampaignSettings:
+          description: Settings for Video campaign.
+          $ref: '#/components/schemas/GoogleAdsGoogleadsV25Resources_Campaign_VideoCampaignSettings'
+        listingType:
+          x-enumDescriptions:
+          - Not specified.
+          - Used for return value only. Represents value unknown in this version.
+          - This campaign serves vehicle ads.
+          enum:
+          - UNSPECIFIED
+          - UNKNOWN
+          - VEHICLES
+          description: Immutable. Listing type of ads served for this campaign. Field is restricted for usage with Performance Max campaigns.
+          type: string
+        status:
+          x-enumDescriptions:
+          - Not specified.
+          - Used for return value only. Represents value unknown in this version.
+          - Campaign is active and can show ads.
+          - Campaign has been paused by the user.
+          - Campaign has been removed.
+          enum:
+          - UNSPECIFIED
+          - UNKNOWN
+          - ENABLED
+          - PAUSED
+          - REMOVED
+          type: string
+          description: The status of the campaign. When a new campaign is added, the status defaults to ENABLED.
+        dynamicSearchAdsSetting:
+          description: The setting for controlling Dynamic Search Ads (DSA).
+          $ref: '#/components/schemas/GoogleAdsGoogleadsV25Resources_Campaign_DynamicSearchAdsSetting'
+        targetCpv:
+          description: An automated bidding strategy that sets bids to optimize performance given the target CPV you set.
+          $ref: '#/components/schemas/GoogleAdsGoogleadsV25Common__TargetCpv'
+        targetCpa:
+          description: Standard Target CPA bidding strategy that automatically sets bids to help get as many conversions as possible at the target cost-per-acquisition (CPA) you set.
+          $ref: '#/components/schemas/GoogleAdsGoogleadsV25Common__TargetCpa'
+        campaignBudget:
+          type: string
+          description: The resource name of the campaign budget of the campaign.
+        advertisingChannelSubType:
+          description: Immutable. Optional refinement to `advertising_channel_type`. Must be a valid sub-type of the parent channel type. Can be set only when creating campaigns. After campaign is created, the field can not be changed.
+          type: string
+          x-enumDescriptions:
+          - Not specified.
+          - Used as a return value only. Represents value unknown in this version.
+          - Mobile app campaigns for Search.
+          - Mobile app campaigns for Display.
+          - AdWords express campaigns for search.
+          - AdWords Express campaigns for display.
+          - Smart Shopping campaigns.
+          - Gmail Ad campaigns.
+          - Smart display campaigns. New campaigns of this sub type cannot be created.
+          - Video TrueView for Action campaigns.
+          - Video campaigns with non-skippable video ads.
+          - App Campaign that lets you easily promote your Android or iOS app across Google's top properties including Search, Play, YouTube, and the Google Display Network.
+          - App Campaign for engagement, focused on driving re-engagement with the app across several of Google's top properties including Search, YouTube, and the Google Display Network.
+          - Campaigns specialized for local advertising.
+          - Shopping Comparison Listing campaigns.
+          - Standard Smart campaigns.
+          - Video campaigns with sequence video ads.
+          - App Campaign for pre registration, specialized for advertising mobile app pre-registration, that targets multiple advertising channels across Google Play, YouTube and Display Network. See https://support.google.com/google-ads/answer/9441344 to learn more.
+          - Video reach campaign with Target Frequency bidding strategy.
+          - Travel Activities campaigns.
+          - YouTube Audio campaigns.
+          enum:
+          - UNSPECIFIED
+          - UNKNOWN
+          - SEARCH_MOBILE_APP
+          - DISPLAY_MOBILE_APP
+          - SEARCH_EXPRESS
+          - DISPLAY_EXPRESS
+          - SHOPPING_SMART_ADS
+          - DISPLAY_GMAIL_AD
+          - DISPLAY_SMART_CAMPAIGN
+          - VIDEO_ACTION
+          - VIDEO_NON_SKIPPABLE
+          - APP_CAMPAIGN
+          - APP_CAMPAIGN_FOR_ENGAGEMENT
+          - LOCAL_CAMPAIGN
+          - SHOPPING_COMPARISON_LISTING_ADS
+          - SMART_CAMPAIGN
+          - VIDEO_SEQUENCE
+          - APP_CAMPAIGN_FOR_PRE_REGISTRATION
+          - VIDEO_REACH_TARGET_FREQUENCY
+          - TRAVEL_ACTIVITIES
+          - YOUTUBE_AUDIO
+        appCampaignSetting:
+          $ref: '#/components/schemas/GoogleAdsGoogleadsV25Resources_Campaign_AppCampaignSetting'
+          description: The setting related to App Campaign.
+        excludedParentAssetSetTypes:
+          description: The asset set types that should be excluded from this campaign. Asset set links with these types will not be inherited by this campaign from the upper level. Location group types (GMB_DYNAMIC_LOCATION_GROUP, CHAIN_DYNAMIC_LOCATION_GROUP, and STATIC_LOCATION_GROUP) are child types of LOCATION_SYNC. Therefore, if LOCATION_SYNC is set for this field, all location group asset sets are not allowed to be linked to this campaign, and all Location Extension (LE) and Affiliate Location Extensions (ALE) will not be served under this campaign. Only LOCATION_SYNC is currently supported.
+          items:
+            x-enumDescriptions:
+            - Not specified.
+            - Used for return value only. Represents value unknown in this version.
+            - Page asset set.
+            - Dynamic education asset set.
+            - Google Merchant Center asset set.
+            - Dynamic real estate asset set.
+            - Dynamic custom asset set.
+            - Dynamic hotels and rentals asset set.
+            - Dynamic flights asset set.
+            - Dynamic travel asset set.
+            - Dynamic local asset set.
+            - Dynamic jobs asset set.
+            - Location sync level asset set.
+            - Business Profile location group asset set.
+            - Chain location group asset set which can be used for both owned locations and affiliate locations.
+            - Static location group asset set which can be used for both owned locations and affiliate locations.
+            - Hotel Property asset set which is used to link a hotel property feed to Performance Max for travel goals campaigns.
+            - Travel Feed asset set type. Can represent either a Hotel feed or a Things to Do (activities) feed.
+            enum:
+            - UNSPECIFIED
+            - UNKNOWN
+            - PAGE_FEED
+            - DYNAMIC_EDUCATION
+            - MERCHANT_CENTER_FEED
+            - DYNAMIC_REAL_ESTATE
+            - DYNAMIC_CUSTOM
+            - DYNAMIC_HOTELS_AND_RENTALS
+            - DYNAMIC_FLIGHTS
+            - DYNAMIC_TRAVEL
+            - DYNAMIC_LOCAL
+            - DYNAMIC_JOBS
+            - LOCATION_SYNC
+            - BUSINESS_PROFILE_DYNAMIC_LOCATION_GROUP
+            - CHAIN_DYNAMIC_LOCATION_GROUP
+            - STATIC_LOCATION_GROUP
+            - HOTEL_PROPERTY
+            - TRAVEL_FEED
+            type: string
+          type: array
+        finalUrlSuffix:
+          description: Suffix used to append query parameters to landing pages that are served with parallel tracking.
+          type: string
+        advertisingChannelType:
+          description: Immutable. The primary serving target for ads within the campaign. The targeting options can be refined in `network_settings`. This field is required and should not be empty when creating new campaigns. Can be set only when creating campaigns. After the campaign is created, the field can not be changed.
+          type: string
+          x-enumDescriptions:
+          - Not specified.
+          - Used for return value only. Represents value unknown in this version.
+          - Search Network. Includes display bundled, and Search+ campaigns.
+          - Google Display Network only.
+          - Shopping campaigns serve on the shopping property and on google.com search results.
+          - Hotel Ads campaigns.
+          - Video campaigns.
+          - App Campaigns, and App Campaigns for Engagement, that run across multiple channels.
+          - Local ads campaigns.
+          - Smart campaigns.
+          - Performance Max campaigns.
+          - Local services campaigns.
+          - Travel campaigns.
+          - Demand Gen campaigns.
+          enum:
+          - UNSPECIFIED
+          - UNKNOWN
+          - SEARCH
+          - DISPLAY
+          - SHOPPING
+          - HOTEL
+          - VIDEO
+          - MULTI_CHANNEL
+          - LOCAL
+          - SMART
+          - PERFORMANCE_MAX
+          - LOCAL_SERVICES
+          - TRAVEL
+          - DEMAND_GEN
+        networkSettings:
+          description: The network settings for the campaign.
+          $ref: '#/components/schemas/GoogleAdsGoogleadsV25Resources_Campaign_NetworkSettings'
+        hotelSetting:
+          $ref: '#/components/schemas/GoogleAdsGoogleadsV25Resources_Campaign_HotelSettingInfo'
+          description: The hotel setting for the campaign.
+        frequencyCaps:
+          type: array
+          description: A list that limits how often each user will see this campaign's ads.
+          items:
+            $ref: '#/components/schemas/GoogleAdsGoogleadsV25Common__FrequencyCapEntry'
+        trackingSetting:
+          $ref: '#/components/schemas/GoogleAdsGoogleadsV25Resources_Campaign_TrackingSetting'
+          description: Output only. Campaign-level settings for tracking information.
+        fixedCpm:
+          $ref: '#/components/schemas/GoogleAdsGoogleadsV25Common__FixedCpm'
+          description: A manual bidding strategy with a fixed CPM.
+        targetCpc:
+          $ref: '#/components/schemas/GoogleAdsGoogleadsV25Common__TargetCpc'
+          description: An automated bidding strategy that sets bids to help get as many clicks as possible at the target cost-per-click (CPC) you set.
+        biddingStrategyType:
+          x-enumDescriptions:
+          - Not specified.
+          - Used for return value only. Represents value unknown in this version.
+          - Commission is an automatic bidding strategy in which the advertiser pays a certain portion of the conversion value.
+          - Enhanced CPC is a bidding strategy that raises bids for clicks that seem more likely to lead to a conversion and lowers them for clicks where they seem less likely.
+          - Fixed CPM is a manual bidding strategy with a fixed CPM.
+          - Fixed share of voice is a manual bidding strategy for YouTube Sponsorships that bills either on CPM or a fixed cost per day.
+          - Used for return value only. Indicates that a campaign does not have a bidding strategy. This prevents the campaign from serving. For example, a campaign may be attached to a manager bidding strategy and the serving account is subsequently unlinked from the manager account. In this case the campaign will automatically be detached from the now inaccessible manager bidding strategy and transition to the INVALID bidding strategy type.
+          - Manual bidding strategy that allows advertiser to set the bid per advertiser-specified action.
+          - Manual click based bidding where user pays per click.
+          - Manual impression based bidding where user pays per thousand impressions.
+          - A bidding strategy that pays a configurable amount per video view.
+          - A bidding strategy that automatically maximizes number of conversions given a daily budget.
+          - An automated bidding strategy that automatically sets bids to maximize revenue while spending your budget.
+          - Page-One Promoted bidding scheme, which sets max cpc bids to target impressions on page one or page one promoted slots on google.com. This enum value is deprecated.
+          - Percent Cpc is bidding strategy where bids are a fraction of the advertised price for some good or service.
+          - Target CPA is an automated bid strategy that sets bids to help get as many conversions as possible at the target cost-per-acquisition (CPA) you set.
+          - Target CPC is an automated bid strategy that sets bids to help get as many clicks as possible at the target cost-per-click (CPC) you set.
+          - Target CPM is an automated bid strategy that sets bids to help get as many impressions as possible at the target cost per one thousand impressions (CPM) you set.
+          - Target CPV is an automated bidding strategy that sets bids to optimize performance given the average target cost per view.
+          - An automated bidding strategy that sets bids so that a certain percentage of search ads are shown at the top of the first page (or other targeted location).
+          - Target Outrank Share is an automated bidding strategy that sets bids based on the target fraction of auctions where the advertiser should outrank a specific competitor. This enum value is deprecated.
+          - Target ROAS is an automated bidding strategy that helps you maximize revenue while averaging a specific target Return On Average Spend (ROAS).
+          - Target Spend is an automated bid strategy that sets your bids to help get as many clicks as possible within your budget.
+          description: Output only. The type of bidding strategy. A bidding strategy can be created by setting either the bidding scheme to create a standard bidding strategy or the `bidding_strategy` field to create a portfolio bidding strategy. This field is read-only.
+          type: string
+          enum:
+          - UNSPECIFIED
+          - UNKNOWN
+          - COMMISSION
+          - ENHANCED_CPC
+          - FIXED_CPM
+          - FIXED_SHARE_OF_VOICE
+          - INVALID
+          - MANUAL_CPA
+          - MANUAL_CPC
+          - MANUAL_CPM
+          - MANUAL_CPV
+          - MAXIMIZE_CONVERSIONS
+          - MAXIMIZE_CONVERSION_VALUE
+          - PAGE_ONE_PROMOTED
+          - PERCENT_CPC
+          - TARGET_CPA
+          - TARGET_CPC
+          - TARGET_CPM
+          - TARGET_CPV
+          - TARGET_IMPRESSION_SHARE
+          - TARGET_OUTRANK_SHARE
+          - TARGET_ROAS
+          - TARGET_SPEND
+        urlCustomParameters:
+          type: array
+          description: The list of mappings used to substitute custom parameter tags in a `tracking_url_template`, `final_urls`, or `mobile_final_urls`.
+          items:
+            $ref: '#/components/schemas/GoogleAdsGoogleadsV25Common__CustomParameter'
+        baseCampaign:
+          type: string
+          description: Output only. The resource name of the base campaign of a draft or experiment campaign. For base campaigns, this is equal to `resource_name`. This field is read-only.
+        optimizationGoalSetting:
+          description: Optimization goal setting for this campaign, which includes a set of optimization goal types.
+          $ref: '#/components/schemas/GoogleAdsGoogleadsV25Resources_Campaign_OptimizationGoalSetting'
+        feedTypes:
+          type: array
+          description: Output only. Types of feeds that are attached directly to this campaign.
+          items:
+            x-enumDescriptions:
+            - Not specified.
+            - Used for return value only. Represents value unknown in this version.
+            - Page asset set.
+            - Dynamic education asset set.
+            - Google Merchant Center asset set.
+            - Dynamic real estate asset set.
+            - Dynamic custom asset set.
+            - Dynamic hotels and rentals asset set.
+            - Dynamic flights asset set.
+            - Dynamic travel asset set.
+            - Dynamic local asset set.
+            - Dynamic jobs asset set.
+            - Location sync level asset set.
+            - Business Profile location group asset set.
+            - Chain location group asset set which can be used for both owned locations and affiliate locations.
+            - Static location group asset set which can be used for both owned locations and affiliate locations.
+            - Hotel Property asset set which is used to link a hotel property feed to Performance Max for travel goals campaigns.
+            - Travel Feed asset set type. Can represent either a Hotel feed or a Things to Do (activities) feed.
+            enum:
+            - UNSPECIFIED
+            - UNKNOWN
+            - PAGE_FEED
+            - DYNAMIC_EDUCATION
+            - MERCHANT_CENTER_FEED
+            - DYNAMIC_REAL_ESTATE
+            - DYNAMIC_CUSTOM
+            - DYNAMIC_HOTELS_AND_RENTALS
+            - DYNAMIC_FLIGHTS
+            - DYNAMIC_TRAVEL
+            - DYNAMIC_LOCAL
+            - DYNAMIC_JOBS
+            - LOCATION_SYNC
+            - BUSINESS_PROFILE_DYNAMIC_LOCATION_GROUP
+            - CHAIN_DYNAMIC_LOCATION_GROUP
+            - STATIC_LOCATION_GROUP
+            - HOTEL_PROPERTY
+            - TRAVEL_FEED
+            type: string
+        brandGuidelinesEnabled:
+          type: boolean
+          description: 'Immutable. Whether Brand Guidelines are enabled for this Campaign. Only applicable to Performance Max campaigns. If enabled, business name and logo assets must be linked as CampaignAssets instead of AssetGroupAssets. Writable only at campaign creation. Set to true to enable Brand Guidelines when creating a new Performance Max campaign. Immutable after creation. This field cannot be modified using standard update operations after the campaign has been created. For existing campaigns: To enable Brand Guidelines on a campaign after it has been created, use the CampaignService.EnablePMaxBrandGuidelines method, which is a separate operation. It is not possible to disable Brand Guidelines for an existing campaign. Incompatible with Travel Goals: This feature is not supported for Performance Max campaigns with Travel Goals. Attempting to set this field to true for a Travel Goals campaign will result in an error.'
+        targetSpend:
+          description: Standard Target Spend bidding strategy that automatically sets your bids to help get as many clicks as possible within your budget.
+          $ref: '#/components/schemas/GoogleAdsGoogleadsV25Common__TargetSpend'
+        primaryStatus:
+          enum:
+          - UNSPECIFIED
+          - UNKNOWN
+          - ELIGIBLE
+          - PAUSED
+          - REMOVED
+          - ENDED
+          - PENDING
+          - MISCONFIGURED
+          - LIMITED
+          - LEARNING
+          - NOT_ELIGIBLE
+          type: string
+          description: Output only. The primary status of the campaign. Provides insight into why a campaign is not serving or not serving optimally. Modification to the campaign and its related entities might take a while to be reflected in this status.
+          x-enumDescriptions:
+          - Not specified.
+          - Used for return value only. Represents value unknown in this version.
+          - The campaign is eligible to serve.
+          - The user-specified campaign status is paused.
+          - The user-specified campaign status is removed.
+          - The user-specified time for this campaign to end has passed.
+          - The campaign may serve in the future.
+          - The campaign or its associated entities have incorrect user-specified settings.
+          - The campaign or its associated entities are limited by user-specified settings.
+          - The automated bidding system is adjusting to user-specified changes to the campaign or associated entities.
+          - The campaign is not eligible to serve.
+        missingEuPoliticalAdvertisingDeclaration:
+          description: Output only. Indicates whether this campaign is missing a declaration about whether it contains political advertising targeted towards the EU and is ineligible for any exemptions. If this field is true, use the contains_eu_political_advertising field to add the required declaration. This field is read-only.
+          type: boolean
+        localCampaignSetting:
+          description: The setting for local campaign.
+          $ref: '#/components/schemas/GoogleAdsGoogleadsV25Resources_Campaign_LocalCampaignSetting'
+        vanityPharma:
+          description: Describes how unbranded pharma ads will be displayed.
+          $ref: '#/components/schemas/GoogleAdsGoogleadsV25Resources_Campaign_VanityPharma'
+        trackingUrlTemplate:
+          description: The URL template for constructing a tracking URL.
+          type: string
+        resourceName:
+          type: string
+          description: 'Immutable. The resource name of the campaign. Campaign resource names have the form: `customers/{customer_id}/campaigns/{campaign_id}`'
+        id:
+          format: int64
+          description: Output only. The ID of the campaign.
+          type: string
+        labels:
+          type: array
+          description: Output only. The resource names of labels attached to this campaign.
+          items:
+            type: string
+        targetImpressionShare:
+          $ref: '#/components/schemas/GoogleAdsGoogleadsV25Common__TargetImpressionShare'
+          description: Target Impression Share bidding strategy. An automated bidding strategy that sets bids to achieve a chosen percentage of impressions.
+        demandGenCampaignSettings:
+          description: Settings for Demand Gen campaign.
+          $ref: '#/components/schemas/GoogleAdsGoogleadsV25Resources_Campaign_DemandGenCampaignSettings'
+        name:
+          type: string
+          description: The name of the campaign. This field is required and should not be empty when creating new campaigns. It must not contain any null (code point 0x0), NL line feed (code point 0xA) or carriage return (code point 0xD) characters.
+        targetCpm:
+          description: A bidding strategy that automatically optimizes cost per thousand impressions.
+          $ref: '#/components/schemas/GoogleAdsGoogleadsV25Common__TargetCpm'
+        hotelPropertyAssetSet:
+          description: Immutable. The resource name for a set of hotel properties for Performance Max for travel goals campaigns.
+          type: string
+        aiMaxSetting:
+          description: Settings for AI Max in Search and Shopping campaigns.
+          $ref: '#/components/schemas/GoogleAdsGoogleadsV25Resources_Campaign_AiMaxSetting'
+        audienceSetting:
+          $ref: '#/components/schemas/GoogleAdsGoogleadsV25Resources_Campaign_AudienceSetting'
+          description: Immutable. Setting for audience related features.
+        endDateTime:
+          type: string
+          description: The last day and time of the campaign in serving customer's timezone in "yyyy-MM-dd HH:mm:ss" format. Set the time component to 23:59:59 for daily granularity, time granularity is only supported for some campaign types. On create, defaults to running indefinitely. To set an existing campaign to run indefinitely, clear this field.
+        geoTargetTypeSetting:
+          $ref: '#/components/schemas/GoogleAdsGoogleadsV25Resources_Campaign_GeoTargetTypeSetting'
+          description: The setting for ads geotargeting.
+        realTimeBiddingSetting:
+          description: Settings for Real-Time Bidding, a feature only available for campaigns targeting the Ad Exchange network.
+          $ref: '#/components/schemas/GoogleAdsGoogleadsV25Common__RealTimeBiddingSetting'
+        targetingSetting:
+          description: Setting for targeting related features.
+          $ref: '#/components/schemas/GoogleAdsGoogleadsV25Common__TargetingSetting'
+        experimentType:
+          enum:
+          - UNSPECIFIED
+          - UNKNOWN
+          - BASE
+          - DRAFT
+          - EXPERIMENT
+          description: 'Output only. The type of campaign: normal, draft, or experiment.'
+          type: string
+          x-enumDescriptions:
+          - Not specified.
+          - Used for return value only. Represents value unknown in this version.
+          - This is a regular campaign.
+          - This is a draft version of a campaign. It has some modifications from a base campaign, but it does not serve or accrue metrics.
+          - This is an experiment version of a campaign. It has some modifications from a base campaign, and a percentage of traffic is being diverted from the BASE campaign to this experiment campaign.
+        brandGuidelines:
+          $ref: '#/components/schemas/GoogleAdsGoogleadsV25Resources_Campaign_BrandGuidelines'
+          description: 'These settings control how your brand appears in automatically generated assets and formats within this campaign. Note: These settings can only be used for Performance Max campaigns that have Brand Guidelines enabled.'
+        percentCpc:
+          $ref: '#/components/schemas/GoogleAdsGoogleadsV25Common__PercentCpc'
+          description: Standard Percent Cpc bidding strategy where bids are a fraction of the advertised price for some good or service.
+        primaryStatusReasons:
+          type: array
+          description: Output only. The primary status reasons of the campaign. Provides insight into why a campaign is not serving or not serving optimally. These reasons are aggregated to determine an overall CampaignPrimaryStatus.
+          items:
+            x-enumDescriptions:
+            - Not specified.
+            - Used for return value only. Represents value unknown in this version.
+            - The user-specified campaign status is removed.
+            - The user-specified campaign status is paused.
+            - The user-specified time for this campaign to start is in the future.
+            - The user-specified time for this campaign to end has passed.
+            - The campaign is a draft.
+            - The bidding strategy has incorrect user-specified settings.
+            - The bidding strategy is limited by user-specified settings such as lack of data or similar.
+            - The automated bidding system is adjusting to user-specified changes to the bidding strategy.
+            - Campaign could capture more conversion value by adjusting CPA/ROAS targets.
+            - The budget is limiting the campaign's ability to serve.
+            - The budget has incorrect user-specified settings.
+            - Campaign is not targeting all relevant queries.
+            - The user-specified ad group statuses are all paused.
+            - No eligible ad groups exist in this campaign.
+            - The user-specified keyword statuses are all paused.
+            - No eligible keywords exist in this campaign.
+            - The user-specified ad group ad statuses are all paused.
+            - No eligible ad group ads exist in this campaign.
+            - At least one ad in this campaign is limited by policy.
+            - At least one ad in this campaign is disapproved.
+            - Most ads in this campaign are pending review.
+            - The campaign has a lead form goal, and the lead form extension is missing.
+            - The campaign has a call goal, and the call extension is missing.
+            - The lead form extension is under review.
+            - The lead extension is disapproved.
+            - The call extension is under review.
+            - The call extension is disapproved.
+            - No eligible mobile application ad group criteria exist in this campaign.
+            - The user-specified campaign group status is paused.
+            - The user-specified times of all group budgets associated with the parent campaign group has passed.
+            - The app associated with this ACi campaign is not released in the target countries of the campaign.
+            - The app associated with this ACi campaign is partially released in the target countries of the campaign.
+            - At least one asset group in this campaign is disapproved.
+            - At least one asset group in this campaign is limited by policy.
+            - Most asset groups in this campaign are pending review.
+            - No eligible asset groups exist in this campaign.
+            - All asset groups in this campaign are paused.
+            - The campaign has location restrictions but does not specify location targeting.
+            - The campaign is a campaign with the FIXED_CPM bidding strategy but is not booked. Contributes to CampaignPrimaryStatus.NOT_ELIGIBLE when the campaign is not paused, and CampaignPrimaryStatus.PAUSED when the campaign is paused.
+            - The campaign is a campaign with the FIXED_CPM bidding strategy for which inventory was held, with the hold expiring. The hold expiry time can be read from Campaign.booking_details.hold_expiration_date_time. Contributes to CampaignPrimaryStatus.PAUSED.
+            - The campaign is a campaign with the FIXED_CPM bidding strategy with the inventory hold expired. Contributes to CampaignPrimaryStatus.PAUSED.
+            - The campaign is a campaign with the FIXED_CPM bidding strategy that has been auto-cancelled. Contributes to CampaignPrimaryStatus.NOT_ELIGIBLE.
+            enum:
+            - UNSPECIFIED
+            - UNKNOWN
+            - CAMPAIGN_REMOVED
+            - CAMPAIGN_PAUSED
+            - CAMPAIGN_PENDING
+            - CAMPAIGN_ENDED
+            - CAMPAIGN_DRAFT
+            - BIDDING_STRATEGY_MISCONFIGURED
+            - BIDDING_STRATEGY_LIMITED
+            - BIDDING_STRATEGY_LEARNING
+            - BIDDING_STRATEGY_CONSTRAINED
+            - BUDGET_CONSTRAINED
+            - BUDGET_MISCONFIGURED
+            - SEARCH_VOLUME_LIMITED
+            - AD_GROUPS_PAUSED
+            - NO_AD_GROUPS
+            - KEYWORDS_PAUSED
+            - NO_KEYWORDS
+            - AD_GROUP_ADS_PAUSED
+            - NO_AD_GROUP_ADS
+            - HAS_ADS_LIMITED_BY_POLICY
+            - HAS_ADS_DISAPPROVED
+            - MOST_ADS_UNDER_REVIEW
+            - MISSING_LEAD_FORM_EXTENSION
+            - MISSING_CALL_EXTENSION
+            - LEAD_FORM_EXTENSION_UNDER_REVIEW
+            - LEAD_FORM_EXTENSION_DISAPPROVED
+            - CALL_EXTENSION_UNDER_REVIEW
+            - CALL_EXTENSION_DISAPPROVED
+            - NO_MOBILE_APPLICATION_AD_GROUP_CRITERIA
+            - CAMPAIGN_GROUP_PAUSED
+            - CAMPAIGN_GROUP_ALL_GROUP_BUDGETS_ENDED
+            - APP_NOT_RELEASED
+            - APP_PARTIALLY_RELEASED
+            - HAS_ASSET_GROUPS_DISAPPROVED
+            - HAS_ASSET_GROUPS_LIMITED_BY_POLICY
+            - MOST_ASSET_GROUPS_UNDER_REVIEW
+            - NO_ASSET_GROUPS
+            - ASSET_GROUPS_PAUSED
+            - MISSING_LOCATION_TARGETING
+            - CAMPAIGN_NOT_BOOKED
+            - BOOKING_HOLD_EXPIRING
+            - BOOKING_HOLD_EXPIRED
+            - BOOKING_CANCELLED
+            type: string
+        excludedParentAssetFieldTypes:
+          description: The asset field types that should be excluded from this campaign. Asset links with these field types will not be inherited by this campaign from the upper level.
+          items:
+            type: string
+            x-enumDescriptions:
+            - Not specified.
+            - Used for return value only. Represents value unknown in this version.
+            - The asset is linked for use as a headline.
+            - The asset is linked for use as a description.
+            - The asset is linked for use as mandatory ad text.
+            - The asset is linked for use as a marketing image.
+            - The asset is linked for use as a media bundle.
+            - The asset is linked for use as a YouTube video.
+            - The asset is linked to indicate that a hotels campaign is "Book on Google" enabled.
+            - The asset is linked for use as a Lead Form extension.
+            - The asset is linked for use as a Promotion extension.
+            - The asset is linked for use as a Callout extension.
+            - The asset is linked for use as a Structured Snippet extension.
+            - The asset is linked for use as a Sitelink.
+            - The asset is linked for use as a Mobile App extension.
+            - The asset is linked for use as a Hotel Callout extension.
+            - The asset is linked for use as a Call extension.
+            - The asset is linked for use as a Price extension.
+            - The asset is linked for use as a long headline.
+            - The asset is linked for use as a business name.
+            - The asset is linked for use as a square marketing image.
+            - The asset is linked for use as a portrait marketing image.
+            - The asset is linked for use as a logo.
+            - The asset is linked for use as a landscape logo.
+            - The asset is linked for use as a non YouTube logo.
+            - The asset is linked for use to select a call-to-action.
+            - The asset is linked for use to select an ad image.
+            - The asset is linked for use as a business logo.
+            - The asset is linked for use as a hotel property in a Performance Max for travel goals campaign.
+            - The asset is linked for use as a Demand Gen carousel card.
+            - The asset is linked for use as a Business Message.
+            - The asset is linked for use as a tall portrait marketing image.
+            - The asset is linked for use as related YouTube videos.
+            - The asset is linked for use as a landing page preview image.
+            - The asset is linked for use as a long description.
+            - The asset is linked for use as a call-to-action.
+            - The asset is linked for use as a classic display image.
+            enum:
+            - UNSPECIFIED
+            - UNKNOWN
+            - HEADLINE
+            - DESCRIPTION
+            - MANDATORY_AD_TEXT
+            - MARKETING_IMAGE
+            - MEDIA_BUNDLE
+            - YOUTUBE_VIDEO
+            - BOOK_ON_GOOGLE
+            - LEAD_FORM
+            - PROMOTION
+            - CALLOUT
+            - STRUCTURED_SNIPPET
+            - SITELINK
+            - MOBILE_APP
+            - HOTEL_CALLOUT
+            - CALL
+            - PRICE
+            - LONG_HEADLINE
+            - BUSINESS_NAME
+            - SQUARE_MARKETING_IMAGE
+            - PORTRAIT_MARKETING_IMAGE
+            - LOGO
+            - LANDSCAPE_LOGO
+            - VIDEO
+            - CALL_TO_ACTION_SELECTION
+            - AD_IMAGE
+            - BUSINESS_LOGO
+            - HOTEL_PROPERTY
+            - DEMAND_GEN_CAROUSEL_CARD
+            - BUSINESS_MESSAGE
+            - TALL_PORTRAIT_MARKETING_IMAGE
+            - RELATED_YOUTUBE_VIDEOS
+            - LANDING_PAGE_PREVIEW
+            - LONG_DESCRIPTION
+            - CALL_TO_ACTION
+            - CLASSIC_DISPLAY_IMAGE
+          type: array
+        manualCpv:
+          $ref: '#/components/schemas/GoogleAdsGoogleadsV25Common__ManualCpv'
+          description: A bidding strategy that pays a configurable amount per video view.
+        manualCpc:
+          $ref: '#/components/schemas/GoogleAdsGoogleadsV25Common__ManualCpc'
+          description: Standard Manual CPC bidding strategy. Manual click-based bidding where user pays per click.
+        targetRoas:
+          description: Standard Target ROAS bidding strategy that automatically maximizes revenue while averaging a specific target return on ad spend (ROAS).
+          $ref: '#/components/schemas/GoogleAdsGoogleadsV25Common__TargetRoas'
+        campaignGroup:
+          type: string
+          description: The resource name of the campaign group that this campaign belongs to.
+        paymentMode:
+          description: Payment mode for the campaign.
+          type: string
+          x-enumDescriptions:
+          - Not specified.
+          - Used for return value only. Represents value unknown in this version.
+          - Pay per interaction.
+          - Pay per conversion value. This mode is only supported by campaigns with AdvertisingChannelType.HOTEL, BiddingStrategyType.COMMISSION, and BudgetType.STANDARD.
+          - Pay per conversion. This mode is only supported by campaigns with AdvertisingChannelType.DISPLAY (excluding AdvertisingChannelSubType.DISPLAY_GMAIL), BiddingStrategyType.TARGET_CPA, and BudgetType.FIXED_CPA. The customer must also be eligible for this mode. See Customer.eligibility_failure_reasons for details.
+          - Pay per guest stay value. This mode is only supported by campaigns with AdvertisingChannelType.HOTEL, BiddingStrategyType.COMMISSION, and BudgetType.STANDARD.
+          enum:
+          - UNSPECIFIED
+          - UNKNOWN
+          - CLICKS
+          - CONVERSION_VALUE
+          - CONVERSIONS
+          - GUEST_STAY
+        travelCampaignSettings:
+          $ref: '#/components/schemas/GoogleAdsGoogleadsV25Resources_Campaign_TravelCampaignSettings'
+          description: Settings for Travel campaign.
+        selectiveOptimization:
+          description: Selective optimization setting for this campaign, which includes a set of conversion actions to optimize this campaign towards. This feature only applies to app campaigns that use MULTI_CHANNEL as AdvertisingChannelType and APP_CAMPAIGN or APP_CAMPAIGN_FOR_ENGAGEMENT as AdvertisingChannelSubType.
+          $ref: '#/components/schemas/GoogleAdsGoogleadsV25Resources_Campaign_SelectiveOptimization'
+        keywordMatchType:
+          x-enumDescriptions:
+          - No value has been specified.
+          - Used for return value only. Represents value unknown in this version.
+          - Campaign level broad match.
+          enum:
+          - UNSPECIFIED
+          - UNKNOWN
+          - BROAD
+          description: Keyword match type of Campaign. Set to BROAD to set broad matching for all keywords in a campaign.
+          type: string
+        manualCpm:
+          $ref: '#/components/schemas/GoogleAdsGoogleadsV25Common__ManualCpm'
+          description: Standard Manual CPM bidding strategy. Manual impression-based bidding where user pays per thousand impressions.
+        maximizeConversionValue:
+          description: Standard Maximize Conversion Value bidding strategy that automatically sets bids to maximize revenue while spending your budget.
+          $ref: '#/components/schemas/GoogleAdsGoogleadsV25Common__MaximizeConversionValue'
+        pmaxCampaignSettings:
+          description: Settings for Performance Max campaign.
+          $ref: '#/components/schemas/GoogleAdsGoogleadsV25Resources_Campaign_PmaxCampaignSettings'
+        optimizationScore:
+          type: number
+          description: Output only. Optimization score of the campaign. Optimization score is an estimate of how well a campaign is set to perform. It ranges from 0% (0.0) to 100% (1.0), with 100% indicating that the campaign is performing at full potential. This field is null for unscored campaigns. See "About optimization score" at https://support.google.com/google-ads/answer/9061546. This field is read-only.
+          format: double
+        accessibleBiddingStrategy:
+          type: string
+          description: Output only. Resource name of AccessibleBiddingStrategy, a read-only view of the unrestricted attributes of the attached portfolio bidding strategy identified by 'bidding_strategy'. Empty, if the campaign does not use a portfolio strategy. Unrestricted strategy attributes are available to all customers with whom the strategy is shared and are read from the AccessibleBiddingStrategy resource. In contrast, restricted attributes are only available to the owner customer of the strategy and their managers. Restricted attributes can only be read from the BiddingStrategy resource.
+        performanceMaxUpgrade:
+          description: Output only. Information about campaigns being upgraded to Performance Max.
+          $ref: '#/components/schemas/GoogleAdsGoogleadsV25Resources_Campaign_PerformanceMaxUpgrade'
+      description: A campaign.
+    GoogleAdsGoogleadsV25Services__MutateCampaignsResponse:
+      type: object
+      properties:
+        partialFailureError:
+          $ref: '#/components/schemas/GoogleRpc__Status'
+          description: Errors that pertain to operation failures in the partial failure mode. Returned only when partial_failure = true and all errors occur inside the operations. If any errors occur outside the operations (for example, auth errors), we return an RPC level error.
+        results:
+          type: array
+          description: All results for the mutate.
+          items:
+            $ref: '#/components/schemas/GoogleAdsGoogleadsV25Services__MutateCampaignResult'
+      description: Response message for campaign mutate.
+    GoogleAdsGoogleadsV25Resources_Campaign_PmaxCampaignSettings:
+      type: object
+      properties:
+        localServicesPmaxCampaignSettings:
+          description: The Local Services Campaign related settings. Only updates are available for existing Local Services Pmax campaigns.
+          $ref: '#/components/schemas/GoogleAdsGoogleadsV25Resources_Campaign_LocalServicesPmaxCampaignSettings'
+        brandTargetingOverrides:
+          description: Overrides of brand targeting for various ad types.
+          $ref: '#/components/schemas/GoogleAdsGoogleadsV25Resources_CampaignPmaxCampaignSettings_BrandTargetingOverrides'
+        localServicesEnabled:
+          type: boolean
+          description: Output only. Indicates whether the Performance Max campaign is a Local Services campaign.
+      description: Settings for Performance Max campaigns.
+    GoogleAdsGoogleadsV25Resources_Campaign_AiMaxSetting:
+      type: object
+      properties:
+        enableAiMax:
+          description: Controls whether or not AI Max features are served for this campaign. Individual AI Max features are enabled or disabled by their respective settings. But if enable_ai_max is set to false or cleared, then no AI Max features will serve for this campaign, regardless of the other settings. Supported in Search and Shopping campaigns. For Search campaigns, Search Term Matching is enabled by default when AI Max is enabled, and can be disabled at the ad group level. For Shopping campaigns, Text customization is always enabled when AI Max is enabled.
+          type: boolean
+        bundlingRequired:
+          x-enumDescriptions:
+          - Not specified.
+          - Used for return value only. Represents value unknown in this version.
+          - Search campaign is using text asset automation or brand list targeting, and AI Max is not required to be enabled to serve these features.
+          - AI Max is required to be enabled for this search campaign to serve existing text asset automation and brand list targeting, or to add new text asset automation and brand list targeting settings.
+          enum:
+          - UNSPECIFIED
+          - UNKNOWN
+          - NOT_REQUIRED
+          - REQUIRED
+          description: Output only. Search campaigns only. Indicates whether a campaign has adopted AI Max before, and is required to have AI Max enabled to adopt campaign-level text asset automation and brand list targeting in all API versions.
+          type: string
+      description: Settings for AI Max in Search and Shopping campaigns.
+    GoogleAdsGoogleadsV25Common__FrequencyCapKey:
+      description: A group of fields used as keys for a frequency cap. There can be no more than one frequency cap with the same key.
+      type: object
+      properties:
+        level:
+          x-enumDescriptions:
+          - Not specified.
+          - Used for return value only. Represents value unknown in this version.
+          - The cap is applied at the ad group ad level.
+          - The cap is applied at the ad group level.
+          - The cap is applied at the campaign level.
+          enum:
+          - UNSPECIFIED
+          - UNKNOWN
+          - AD_GROUP_AD
+          - AD_GROUP
+          - CAMPAIGN
+          description: The level on which the cap is to be applied (for example, ad group ad, ad group). The cap is applied to all the entities of this level.
+          type: string
+        eventType:
+          description: The type of event that the cap applies to (for example, impression).
+          type: string
+          x-enumDescriptions:
+          - Not specified.
+          - Used for return value only. Represents value unknown in this version.
+          - The cap applies on ad impressions.
+          - The cap applies on video ad views.
+          enum:
+          - UNSPECIFIED
+          - UNKNOWN
+          - IMPRESSION
+          - VIDEO_VIEW
+        timeLength:
+          format: int32
+          type: integer
+          description: Number of time units the cap lasts.
+        timeUnit:
+          x-enumDescriptions:
+          - Not specified.
+          - Used for return value only. Represents value unknown in this version.
+          - The cap would define limit per one day.
+          - The cap would define limit per one week.
+          - The cap would define limit per one month.
+          enum:
+          - UNSPECIFIED
+          - UNKNOWN
+          - DAY
+          - WEEK
+          - MONTH
+          type: string
+          description: Unit of time the cap is defined at (for example, day, week).
+    GoogleAdsGoogleadsV25Common__TargetRestrictionOperation:
+      type: object
+      properties:
+        operator:
+          type: string
+          description: Type of list operation to perform.
+          x-enumDescriptions:
+          - Unspecified.
+          - Used for return value only. Represents value unknown in this version.
+          - Add the restriction to the existing restrictions.
+          - Remove the restriction from the existing restrictions.
+          enum:
+          - UNSPECIFIED
+          - UNKNOWN
+          - ADD
+          - REMOVE
+        value:
+          $ref: '#/components/schemas/GoogleAdsGoogleadsV25Common__TargetRestriction'
+          description: The target restriction being added to or removed from the list.
+      description: Operation to be performed on a target restriction list in a mutate.
+    GoogleAdsGoogleadsV25Resources_Campaign_LocalServicesPmaxCampaignSettings:
+      description: Settings for Local Services Performance Max Campaign subresource.
+      type: object
+      properties:
+        countryCode:
+          description: Immutable. Country code of the Local Services Ad. Set once during Ad Creation and used to determine verification requirements and validate location criterion selection; upper-case, two-letter codes as defined by ISO-3166.
+          type: string
+        phoneNumbers:
+          type: array
+          description: List of phone numbers associated with the provider.
+          items:
+            $ref: '#/components/schemas/GoogleAdsGoogleadsV25Common__LocalServicesPhoneNumber'
+        foundingYear:
+          format: int64
+          description: Founding year of the business.
+          type: string
+        navigationalQueryLeadsEnabled:
+          description: Whether to use navigational query filter.
+          type: boolean
+    GoogleAdsGoogleadsV25Common__MaximizeConversionValue:
+      type: object
+      properties:
+        cpcBidCeilingMicros:
+          format: int64
+          description: Maximum bid limit that can be set by the bid strategy. The limit applies to all keywords managed by the strategy. Mutable for portfolio bidding strategies only.
+          type: string
+        targetRoas:
+          type: number
+          description: The target return on ad spend (ROAS) option. If set, the bid strategy will maximize revenue while averaging the target return on ad spend. If the target ROAS is high, the bid strategy may not be able to spend the full budget. If the target ROAS is not set, the bid strategy will aim to achieve the highest possible ROAS for the budget.
+          format: double
+        cpcBidFloorMicros:
+          description: Minimum bid limit that can be set by the bid strategy. The limit applies to all keywords managed by the strategy. Mutable for portfolio bidding strategies only.
+          type: string
+          format: int64
+        targetRoasTolerancePercentMillis:
+          format: int64
+          description: The percent of ROAS(return on advertising spend) degradation tolerance allowed to increase traffic diversity and conversion volume, specified in millis (for example, 10,000 = 10%). A value of 10,000 means that the advertiser can expect ROAS degradation of up to 10% of the specified target ROAS.
+          type: string
+      description: An automated bidding strategy to help get the most conversion value for your campaigns while spending your budget.
+    GoogleAdsGoogleadsV25Common__CampaignThirdPartyBrandSafetyIntegrationPartner:
+      type: object
+      properties:
+        brandSafetyIntegrationPartnerData:
+          description: Third party partner data for YouTube brand safety verification. This is optional metadata for partners to join or attach data to Ads campaigns.
+          $ref: '#/components/schemas/GoogleAdsGoogleadsV25Common__ThirdPartyIntegrationPartnerData'
+        brandSafetyIntegrationPartner:
+          type: string
+          description: Allowed third party integration partners for brand safety verification.
+          x-enumDescriptions:
+          - Not specified.
+          - Used for return value only. Represents value unknown in this version.
+          - DoubleVerify.
+          - Integral Ad Science.
+          - Zefr.
+          enum:
+          - UNSPECIFIED
+          - UNKNOWN
+          - DOUBLE_VERIFY
+          - INTEGRAL_AD_SCIENCE
+          - ZEFR
+      description: Container for third party brand safety integration data for Campaign.
+    GoogleAdsGoogleadsV25Resources_CampaignPmaxCampaignSettings_BrandTargetingOverrides:
+      description: Overrides of brand targeting for various ad types.
+      type: object
+      properties:
+        ignoreExclusionsForShoppingAds:
+          description: If true, brand exclusions are ignored for Shopping ads.
+          type: boolean
+    GoogleAdsGoogleadsV25Common__FixedCpmTargetFrequencyGoalInfo:
+      type: object
+      properties:
+        targetCount:
+          description: Target frequency count represents the number of times an advertiser wants to show the ad to target a single user.
+          type: string
+          format: int64
+        timeUnit:
+          x-enumDescriptions:
+          - Not specified.
+          - Used for return value only. Represents value unknown in this version.
+          - Optimize bidding to reach target frequency in 30 days.
+          enum:
+          - UNSPECIFIED
+          - UNKNOWN
+          - MONTHLY
+          description: Time window expressing the period over which you want to reach the specified target_count.
+          type: string
+      description: Target frequency bidding goal details for Fixed CPM bidding strategy. Only relevant if the goal of the bidding strategy is `TARGET_FREQUENCY`.
+    GoogleAdsGoogleadsV25Resources_CampaignVideoCampaignSettings_VideoAdFormatControl:
+      type: object
+      properties:
+        formatRestriction:
+          x-enumDescriptions:
+          - Not specified.
+          - Used for return value only. Represents value unknown in this version.
+          - Non-skippable in-stream video responsive ad.
+          enum:
+          - UNSPECIFIED
+          - UNKNOWN
+          - NON_SKIPPABLE_IN_STREAM
+          description: All contained responsive ads are expected to respect this restriction.
+          type: string
+        nonSkippableInStreamRestrictions:
+          description: Restrictions for non-skippable format.
+          $ref: '#/components/schemas/GoogleAdsGoogleadsV25Resources_CampaignVideoCampaignSettings_NonSkippableInStreamRestrictions'
+      description: Format-restricting control enabling usage of video responsive ads in format defined Video campaigns (for example, non-skippable).
+    GoogleRpc__Status:
+      description: 'The `Status` type defines a logical error model that is suitable for different programming environments, including REST APIs and RPC APIs. It is used by [gRPC](https://github.com/grpc). Each `Status` message contains three pieces of data: error code, error message, and error details. You can find out more about this error model and how to work with it in the [API Design Guide](https://cloud.google.com/apis/design/errors).'
+      type: object
+      properties:
+        message:
+          description: A developer-facing error message, which should be in English. Any user-facing error message should be localized and sent in the google.rpc.Status.details field, or localized by the client.
+          type: string
+        code:
+          type: integer
+          description: The status code, which should be an enum value of google.rpc.Code.
+          format: int32
+        details:
+          type: array
+          description: A list of messages that carry the error details. There is a common set of message types for APIs to use.
+          items:
+            type: object
+            additionalProperties:
+              description: Properties of the object. Contains field @type with type URL.
+    GoogleAdsGoogleadsV25Resources_Campaign_TrackingSetting:
+      type: object
+      properties:
+        trackingUrl:
+          description: Output only. The url used for dynamic tracking.
+          type: string
+      description: Campaign-level settings for tracking information.
+    GoogleAdsGoogleadsV25Services__EnablementResult:
+      type: object
+      properties:
+        campaign:
+          description: This indicates the campaign for which enablement was tried, regardless of the outcome.
+          type: string
+        enablementError:
+          $ref: '#/components/schemas/GoogleRpc__Status'
+          description: Details of the error when enablement fails.
+      description: A single enablement result of a campaign.
+    GoogleAdsGoogleadsV25Common__TargetRestriction:
+      description: The list of per-targeting-dimension targeting settings.
+      type: object
+      properties:
+        targetingDimension:
+          x-enumDescriptions:
+          - Not specified.
+          - Used for return value only. Represents value unknown in this version.
+          - Keyword criteria, for example, 'mars cruise'. KEYWORD may be used as a custom bid dimension. Keywords are always a targeting dimension, so may not be set as a target "ALL" dimension with TargetRestriction.
+          - Audience criteria, which include user list, user interest, custom affinity, and custom in market.
+          - Topic criteria for targeting categories of content, for example, 'category::Animals>Pets' Used for Display and Video targeting.
+          - Criteria for targeting gender.
+          - Criteria for targeting age ranges.
+          - Placement criteria, which include websites like 'www.flowers4sale.com', as well as mobile applications, mobile app categories, YouTube videos, and YouTube channels.
+          - Criteria for parental status targeting.
+          - Criteria for income range targeting.
+          enum:
+          - UNSPECIFIED
+          - UNKNOWN
+          - KEYWORD
+          - AUDIENCE
+          - TOPIC
+          - GENDER
+          - AGE_RANGE
+          - PLACEMENT
+          - PARENTAL_STATUS
+          - INCOME_RANGE
+          description: The targeting dimension that these settings apply to.
+          type: string
+        bidOnly:
+          type: boolean
+          description: Indicates whether to restrict your ads to show only for the criteria you have selected for this targeting_dimension, or to target all values for this targeting_dimension and show ads based on your targeting in other TargetingDimensions. A value of `true` means that these criteria will only apply bid modifiers, and not affect targeting. A value of `false` means that these criteria will restrict targeting as well as applying bid modifiers.
+    GoogleAdsGoogleadsV25Resources_Campaign_MessagingRestriction:
+      type: object
+      properties:
+        restrictionText:
+          type: string
+          description: Freeform instructions to guide text asset generation using LLM inference. Valid instructions may contain a maximum of 300 characters.
+        restrictionType:
+          type: string
+          description: Determines how the guideline is applied. Only `RESTRICTION_BASED_EXCLUSION` is currently supported.
+          x-enumDescriptions:
+          - Not specified.
+          - Used for return value only. Represents value unknown in this version.
+          - Exclude text assets that are not compliant with this restriction.
+          enum:
+          - UNSPECIFIED
+          - UNKNOWN
+          - RESTRICTION_BASED_EXCLUSION
+      description: Freeform instructions that will be used to guide text asset generation using LLM inference.
+    GoogleAdsGoogleadsV25Resources_CampaignVideoCampaignSettings_ReservationAdCategorySelfDisclosure:
+      type: object
+      properties:
+        gambling:
+          type: boolean
+          description: The campaign is expected to contain gambling-related ads.
+        alcohol:
+          description: The campaign is expected to contain alcohol-related ads.
+          type: boolean
+        politics:
+          type: boolean
+          description: The campaign is expected to contain politics-related ads.
+      description: Container for ad category self-disclosure for campaigns with the FIXED_CPM or FIXED_SHARE_OF_VOICE bidding strategies.
+    GoogleAdsGoogleadsV25Resources_Campaign_HotelSettingInfo:
+      type: object
+      properties:
+        hotelCenterId:
+          type: string
+          description: The linked Hotel Center account.
+          format: int64
+        disableHotelSetting:
+          description: Disable the optional hotel setting. This field is currently supported only for Demand Gen campaigns.
+          type: boolean
+      description: Campaign-level settings for hotel ads.
+    GoogleAdsGoogleadsV25Common__MaximizeConversions:
+      description: An automated bidding strategy to help get the most conversions for your campaigns while spending your budget.
+      type: object
+      properties:
+        cpcBidFloorMicros:
+          format: int64
+          description: Minimum bid limit that can be set by the bid strategy. The limit applies to all keywords managed by the strategy. Mutable for portfolio bidding strategies only.
+          type: string
+        cpcBidCeilingMicros:
+          description: Maximum bid limit that can be set by the bid strategy. The limit applies to all keywords managed by the strategy. Mutable for portfolio bidding strategies only.
+          type: string
+          format: int64
+        targetCpaMicros:
+          description: The target cost-per-action (CPA) option. This is the average amount that you would like to spend per conversion action specified in micro units of the bidding strategy's currency. If set, the bid strategy will get as many conversions as possible at or below the target cost-per-action. If the target CPA is not set, the bid strategy will aim to achieve the lowest possible CPA given the budget.
+          type: string
+          format: int64
+    GoogleAdsGoogleadsV25Resources_Campaign_ShoppingSetting:
+      type: object
+      properties:
+        campaignPriority:
+          type: integer
+          description: Priority of the campaign. Campaigns with numerically higher priorities take precedence over those with lower priorities. This field is required for Shopping campaigns, with values between 0 and 2, inclusive. This field is optional for Smart Shopping campaigns, but must be equal to 3 if set.
+          format: int32
+        merchantId:
+          description: ID of the Merchant Center account. This field is required for create operations. This field is immutable for Shopping campaigns.
+          type: string
+          format: int64
+        feedLabel:
+          type: string
+          description: Feed label of products to include in the campaign. Valid feed labels may contain a maximum of 20 characters including uppercase letters, numbers, hyphens, and underscores. If you previously used the deprecated `sales_country` in the two-letter country code (`XX`) format, the `feed_label` field should be used instead. For more information see the [feed label](//support.google.com/merchants/answer/12453549) support article.
+        useVehicleInventory:
+          type: boolean
+          description: Immutable. Whether to target Vehicle Listing inventory. This field is supported only in Smart Shopping Campaigns. For setting Vehicle Listing inventory in Performance Max campaigns, use `listing_type` instead.
+        enableLocal:
+          description: Whether to include local products.
+          type: boolean
+        advertisingPartnerIds:
+          description: The list of Google Ads accounts IDs of advertising partners cooperating within the campaign. This feature is currently available only for accounts having an advertising partner link. Once set, the field is immutable. This feature is currently supported only for Performance Max, Shopping, Search and Demand Gen campaign types.
+          items:
+            type: string
+            format: int64
+          type: array
+        disableProductFeed:
+          description: Disable the optional product feed. This field is currently supported only for Demand Gen campaigns. See https://support.google.com/google-ads/answer/13721750 to learn more about this feature.
+          type: boolean
+        ignoreBrandExclusionInShoppingAds:
+          type: boolean
+          description: If true, brand exclusions are ignored for Shopping ads. Only supported for Shopping campaigns.
+      description: The setting for Shopping campaigns. Defines the universe of products that can be advertised by the campaign, and how this campaign interacts with other Shopping campaigns.
+    GoogleAdsGoogleadsV25Resources_Campaign_TextGuidelines:
+      description: Settings to control automatically generated text assets.
+      type: object
+      properties:
+        termExclusions:
+          description: Exact words or phrases that will be excluded from generated text assets. At most 25 exclusions may be provided. Valid exclusions may contain a maximum of 30 characters.
+          items:
+            type: string
+          type: array
+        messagingRestrictions:
+          type: array
+          description: Freeform instructions that will be used to guide text asset generation using LLM inference. At most 40 restrictions may be provided.
+          items:
+            $ref: '#/components/schemas/GoogleAdsGoogleadsV25Resources_Campaign_MessagingRestriction'
+    GoogleAdsGoogleadsV25Common__ThirdPartyIntegrationPartnerData:
+      description: Contains third party measurement partner related data for video campaigns.
+      type: object
+      properties:
+        clientId:
+          type: string
+          description: The client ID that allows the measurement partner to join multiple campaigns for a particular advertiser.
+        thirdPartyPlacementId:
+          type: string
+          description: The third party placement ID that maps the measurement partner data with a campaign (or a group of related campaigns) specific data.
+    GoogleAdsGoogleadsV25Resources_CampaignVideoCampaignSettings_VideoAdSequence:
+      type: object
+      properties:
+        steps:
+          description: The list of sequence steps and data associated with them.
+          items:
+            $ref: '#/components/schemas/GoogleAdsGoogleadsV25Resources_CampaignVideoCampaignSettings_VideoAdSequenceStep'
+          type: array
+        minimumDuration:
+          description: Users are eligible to repeat sequence after this period. Defaults to WEEK if not specified.
+          type: string
+          x-enumDescriptions:
+          - Not specified.
+          - Used for return value only. Represents value unknown in this version.
+          - Users are eligible to restart a sequence once they have completed the sequence and at least 7 days have passed since sequence start.
+          - Users are eligible to restart a sequence once at least 30 days have passed since sequence start. Users are eligible to start the sequence again even if they haven't completed the sequence.
+          enum:
+          - UNSPECIFIED
+          - UNKNOWN
+          - WEEK
+          - MONTH
+      description: Container for video ads sequencing definition.
+    GoogleAdsGoogleadsV25Resources_Campaign_OptimizationGoalSetting:
+      description: Optimization goal setting for this campaign, which includes a set of optimization goal types.
+      type: object
+      properties:
+        optimizationGoalTypes:
+          description: The list of optimization goal types.
+          items:
+            x-enumDescriptions:
+            - Not specified.
+            - Used as a return value only. Represents value unknown in this version.
+            - Optimize for call clicks. Call click conversions are times people selected 'Call' to contact a store after viewing an ad.
+            - Optimize for driving directions. Driving directions conversions are times people selected 'Get directions' to navigate to a store after viewing an ad.
+            - Optimize for pre-registration. Pre-registration conversions are the number of pre-registration signups to receive a notification when the app is released.
+            enum:
+            - UNSPECIFIED
+            - UNKNOWN
+            - CALL_CLICKS
+            - DRIVING_DIRECTIONS
+            - APP_PRE_REGISTRATION
+            type: string
+          type: array
+    GoogleAdsGoogleadsV25Common__TargetCpm:
+      type: object
+      properties:
+        targetFrequencyGoal:
+          $ref: '#/components/schemas/GoogleAdsGoogleadsV25Common__TargetCpmTargetFrequencyGoal'
+          description: Target Frequency bidding goal details.
+      description: Target CPM (cost per thousand impressions) is an automated bidding strategy that sets bids to optimize performance given the target CPM you set.
+    GoogleAdsGoogleadsV25Common__ManualCpv:
+      description: View based bidding where user pays per video view.
+      type: object
+      properties: {}
+  securitySchemes:
+    oauth2:
+      type: oauth2
+      description: Google OAuth 2.0. Google Ads API additionally requires a developer token in the developer-token header.
+      flows:
+        authorizationCode:
+          authorizationUrl: https://accounts.google.com/o/oauth2/auth
+          tokenUrl: https://oauth2.googleapis.com/token
+          scopes:
+            https://www.googleapis.com/auth/adwords: See, edit, create, and delete your Google Ads accounts and data.
+externalDocs:
+  url: https://developers.google.com/google-ads/api/
+x-source: https://googleads.googleapis.com/$discovery/rest?version=v25
+x-generated-by: API Evangelist enrichment pipeline — mechanical conversion of the first-party Google API Discovery Document

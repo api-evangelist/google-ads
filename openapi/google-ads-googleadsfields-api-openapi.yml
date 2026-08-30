@@ -1,0 +1,377 @@
+openapi: 3.2.0
+info:
+  title: Google Ads Fields API
+  description: Manage your Google Ads accounts, campaigns, and reports with this API.
+  version: v25
+  x-discovery-revision: '20260721'
+  contact:
+    name: Google
+    url: https://developers.google.com/google-ads/api/
+  termsOfService: https://developers.google.com/terms
+servers:
+- url: https://googleads.googleapis.com
+  description: Google Ads API production server
+security:
+- oauth2:
+  - https://www.googleapis.com/auth/adwords
+tags:
+- name: googleAdsFields
+paths:
+  /v25/googleAdsFields/{googleAdsFieldsId}:
+    parameters:
+    - name: upload_protocol
+      in: query
+      required: false
+      schema:
+        type: string
+      description: Upload protocol for media (e.g. "raw", "multipart").
+    - name: quotaUser
+      in: query
+      required: false
+      schema:
+        type: string
+      description: Available to use for quota purposes for server-side applications. Can be any arbitrary string assigned to a user, but should not exceed 40 characters.
+    - name: fields
+      in: query
+      required: false
+      schema:
+        type: string
+      description: Selector specifying which fields to include in a partial response.
+    - name: $.xgafv
+      in: query
+      required: false
+      schema:
+        type: string
+        enum:
+        - '1'
+        - '2'
+        x-enumDescriptions:
+        - v1 error format
+        - v2 error format
+      description: V1 error format.
+    - name: callback
+      in: query
+      required: false
+      schema:
+        type: string
+      description: JSONP
+    - name: prettyPrint
+      in: query
+      required: false
+      schema:
+        type: boolean
+        default: 'true'
+      description: Returns response with indentations and line breaks.
+    - name: access_token
+      in: query
+      required: false
+      schema:
+        type: string
+      description: OAuth access token.
+    - name: uploadType
+      in: query
+      required: false
+      schema:
+        type: string
+      description: Legacy upload protocol for media (e.g. "media", "multipart").
+    - name: key
+      in: query
+      required: false
+      schema:
+        type: string
+      description: API key. Your API key identifies your project and provides you with API access, quota, and reports. Required unless you provide an OAuth 2.0 token.
+    - name: oauth_token
+      in: query
+      required: false
+      schema:
+        type: string
+      description: OAuth 2.0 token for the current user.
+    - name: alt
+      in: query
+      required: false
+      schema:
+        x-enumDescriptions:
+        - Responses with Content-Type of application/json
+        - Media download with context-dependent Content-Type
+        - Responses with Content-Type of application/x-protobuf
+        type: string
+        default: json
+        enum:
+        - json
+        - media
+        - proto
+      description: Data format for response.
+    get:
+      operationId: googleads_googleAdsFields_get
+      summary: Returns just the requested field
+      tags:
+      - googleAdsFields
+      description: 'Returns just the requested field. List of thrown errors: [AuthenticationError]() [AuthorizationError]() [HeaderError]() [InternalError]() [QuotaError]() [RequestError]()'
+      parameters:
+      - name: resourceName
+        in: path
+        required: true
+        schema:
+          pattern: ^googleAdsFields/[^/]+$
+          type: string
+        description: Required. The resource name of the field to get.
+      responses:
+        '200':
+          description: Successful response
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/GoogleAdsGoogleadsV25Resources__GoogleAdsField'
+      security:
+      - oauth2:
+        - https://www.googleapis.com/auth/adwords
+  /v25/googleAdsFields:search:
+    parameters:
+    - name: upload_protocol
+      in: query
+      required: false
+      schema:
+        type: string
+      description: Upload protocol for media (e.g. "raw", "multipart").
+    - name: quotaUser
+      in: query
+      required: false
+      schema:
+        type: string
+      description: Available to use for quota purposes for server-side applications. Can be any arbitrary string assigned to a user, but should not exceed 40 characters.
+    - name: fields
+      in: query
+      required: false
+      schema:
+        type: string
+      description: Selector specifying which fields to include in a partial response.
+    - name: $.xgafv
+      in: query
+      required: false
+      schema:
+        type: string
+        enum:
+        - '1'
+        - '2'
+        x-enumDescriptions:
+        - v1 error format
+        - v2 error format
+      description: V1 error format.
+    - name: callback
+      in: query
+      required: false
+      schema:
+        type: string
+      description: JSONP
+    - name: prettyPrint
+      in: query
+      required: false
+      schema:
+        type: boolean
+        default: 'true'
+      description: Returns response with indentations and line breaks.
+    - name: access_token
+      in: query
+      required: false
+      schema:
+        type: string
+      description: OAuth access token.
+    - name: uploadType
+      in: query
+      required: false
+      schema:
+        type: string
+      description: Legacy upload protocol for media (e.g. "media", "multipart").
+    - name: key
+      in: query
+      required: false
+      schema:
+        type: string
+      description: API key. Your API key identifies your project and provides you with API access, quota, and reports. Required unless you provide an OAuth 2.0 token.
+    - name: oauth_token
+      in: query
+      required: false
+      schema:
+        type: string
+      description: OAuth 2.0 token for the current user.
+    - name: alt
+      in: query
+      required: false
+      schema:
+        x-enumDescriptions:
+        - Responses with Content-Type of application/json
+        - Media download with context-dependent Content-Type
+        - Responses with Content-Type of application/x-protobuf
+        type: string
+        default: json
+        enum:
+        - json
+        - media
+        - proto
+      description: Data format for response.
+    post:
+      operationId: googleads_googleAdsFields_search
+      summary: Returns all fields that match the search query
+      tags:
+      - googleAdsFields
+      description: 'Returns all fields that match the search query. List of thrown errors: [AuthenticationError]() [AuthorizationError]() [HeaderError]() [InternalError]() [QueryError]() [QuotaError]() [RequestError]()'
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/GoogleAdsGoogleadsV25Services__SearchGoogleAdsFieldsRequest'
+      responses:
+        '200':
+          description: Successful response
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/GoogleAdsGoogleadsV25Services__SearchGoogleAdsFieldsResponse'
+      security:
+      - oauth2:
+        - https://www.googleapis.com/auth/adwords
+components:
+  schemas:
+    GoogleAdsGoogleadsV25Services__SearchGoogleAdsFieldsRequest:
+      type: object
+      properties:
+        pageToken:
+          description: Token of the page to retrieve. If not specified, the first page of results will be returned. Use the value obtained from `next_page_token` in the previous response in order to request the next page of results.
+          type: string
+        query:
+          type: string
+          description: Required. The query string.
+        pageSize:
+          format: int32
+          type: integer
+          description: Number of elements to retrieve in a single page. When too large a page is requested, the server may decide to further limit the number of returned resources.
+      description: Request message for GoogleAdsFieldService.SearchGoogleAdsFields.
+    GoogleAdsGoogleadsV25Services__SearchGoogleAdsFieldsResponse:
+      description: Response message for GoogleAdsFieldService.SearchGoogleAdsFields.
+      type: object
+      properties:
+        nextPageToken:
+          description: Pagination token used to retrieve the next page of results. Pass the content of this string as the `page_token` attribute of the next request. `next_page_token` is not returned for the last page.
+          type: string
+        results:
+          type: array
+          description: The list of fields that matched the query.
+          items:
+            $ref: '#/components/schemas/GoogleAdsGoogleadsV25Resources__GoogleAdsField'
+        totalResultsCount:
+          format: int64
+          description: Total number of results that match the query ignoring the LIMIT clause.
+          type: string
+    GoogleAdsGoogleadsV25Resources__GoogleAdsField:
+      description: A field or resource (artifact) used by GoogleAdsService.
+      type: object
+      properties:
+        category:
+          x-enumDescriptions:
+          - Unspecified
+          - Unknown
+          - The described artifact is a resource.
+          - The described artifact is a field and is an attribute of a resource. Including a resource attribute field in a query may segment the query if the resource to which it is attributed segments the resource found in the FROM clause.
+          - The described artifact is a field and always segments search queries.
+          - The described artifact is a field and is a metric. It never segments search queries.
+          enum:
+          - UNSPECIFIED
+          - UNKNOWN
+          - RESOURCE
+          - ATTRIBUTE
+          - SEGMENT
+          - METRIC
+          type: string
+          description: Output only. The category of the artifact.
+        typeUrl:
+          type: string
+          description: Output only. The URL of proto describing the artifact's data type.
+        dataType:
+          enum:
+          - UNSPECIFIED
+          - UNKNOWN
+          - BOOLEAN
+          - DATE
+          - DOUBLE
+          - ENUM
+          - FLOAT
+          - INT32
+          - INT64
+          - MESSAGE
+          - RESOURCE_NAME
+          - STRING
+          - UINT64
+          description: Output only. This field determines the operators that can be used with the artifact in WHERE clauses.
+          type: string
+          x-enumDescriptions:
+          - Unspecified
+          - Unknown
+          - 'Maps to google.protobuf.BoolValue Applicable operators: =, !='
+          - 'Maps to google.protobuf.StringValue. It can be compared using the set of operators specific to dates however. Applicable operators: =, <, >, <=, >=, BETWEEN, DURING, and IN'
+          - 'Maps to google.protobuf.DoubleValue Applicable operators: =, !=, <, >, IN, NOT IN'
+          - 'Maps to an enum. It''s specific definition can be found at type_url. Applicable operators: =, !=, IN, NOT IN'
+          - 'Maps to google.protobuf.FloatValue Applicable operators: =, !=, <, >, IN, NOT IN'
+          - 'Maps to google.protobuf.Int32Value Applicable operators: =, !=, <, >, <=, >=, BETWEEN, IN, NOT IN'
+          - 'Maps to google.protobuf.Int64Value Applicable operators: =, !=, <, >, <=, >=, BETWEEN, IN, NOT IN'
+          - Maps to a protocol buffer message type. The data type's details can be found in type_url. No operators work with MESSAGE fields.
+          - Maps to google.protobuf.StringValue. Represents the resource name (unique id) of a resource or one of its foreign keys. No operators work with RESOURCE_NAME fields.
+          - 'Maps to google.protobuf.StringValue. Applicable operators: =, !=, LIKE, NOT LIKE, IN, NOT IN'
+          - 'Maps to google.protobuf.UInt64Value Applicable operators: =, !=, <, >, <=, >=, BETWEEN, IN, NOT IN'
+        metrics:
+          description: Output only. This field lists the names of all metrics that are selectable with the described artifact when it is used in the FROM clause. It is only set for artifacts whose category is RESOURCE.
+          items:
+            type: string
+          type: array
+        sortable:
+          description: Output only. Whether the artifact can be used in a ORDER BY clause in search queries.
+          type: boolean
+        enumValues:
+          description: Output only. Values the artifact can assume if it is a field of type ENUM. This field is only set for artifacts of category SEGMENT or ATTRIBUTE.
+          items:
+            type: string
+          type: array
+        name:
+          description: Output only. The name of the artifact.
+          type: string
+        attributeResources:
+          description: Output only. The names of all resources that are selectable with the described artifact. Fields from these resources do not segment metrics when included in search queries. This field is only set for artifacts whose category is RESOURCE.
+          items:
+            type: string
+          type: array
+        isRepeated:
+          type: boolean
+          description: Output only. Whether the field artifact is repeated.
+        segments:
+          description: Output only. This field lists the names of all artifacts, whether a segment or another resource, that segment metrics when included in search queries and when the described artifact is used in the FROM clause. It is only set for artifacts whose category is RESOURCE.
+          items:
+            type: string
+          type: array
+        selectable:
+          description: Output only. Whether the artifact can be used in a SELECT clause in search queries.
+          type: boolean
+        resourceName:
+          description: 'Output only. The resource name of the artifact. Artifact resource names have the form: `googleAdsFields/{name}`'
+          type: string
+        filterable:
+          description: Output only. Whether the artifact can be used in a WHERE clause in search queries.
+          type: boolean
+        selectableWith:
+          description: Output only. The names of all resources, segments, and metrics that are selectable with the described artifact.
+          items:
+            type: string
+          type: array
+  securitySchemes:
+    oauth2:
+      type: oauth2
+      description: Google OAuth 2.0. Google Ads API additionally requires a developer token in the developer-token header.
+      flows:
+        authorizationCode:
+          authorizationUrl: https://accounts.google.com/o/oauth2/auth
+          tokenUrl: https://oauth2.googleapis.com/token
+          scopes:
+            https://www.googleapis.com/auth/adwords: See, edit, create, and delete your Google Ads accounts and data.
+externalDocs:
+  url: https://developers.google.com/google-ads/api/
+x-source: https://googleads.googleapis.com/$discovery/rest?version=v25
+x-generated-by: API Evangelist enrichment pipeline — mechanical conversion of the first-party Google API Discovery Document

@@ -1,0 +1,265 @@
+openapi: 3.2.0
+info:
+  title: Google Ads Customers.billing Setups API
+  description: Manage your Google Ads accounts, campaigns, and reports with this API.
+  version: v25
+  x-discovery-revision: '20260721'
+  contact:
+    name: Google
+    url: https://developers.google.com/google-ads/api/
+  termsOfService: https://developers.google.com/terms
+servers:
+- url: https://googleads.googleapis.com
+  description: Google Ads API production server
+security:
+- oauth2:
+  - https://www.googleapis.com/auth/adwords
+tags:
+- name: customers.billingSetups
+paths:
+  /v25/customers/{customersId}/billingSetups:mutate:
+    parameters:
+    - name: upload_protocol
+      in: query
+      required: false
+      schema:
+        type: string
+      description: Upload protocol for media (e.g. "raw", "multipart").
+    - name: quotaUser
+      in: query
+      required: false
+      schema:
+        type: string
+      description: Available to use for quota purposes for server-side applications. Can be any arbitrary string assigned to a user, but should not exceed 40 characters.
+    - name: fields
+      in: query
+      required: false
+      schema:
+        type: string
+      description: Selector specifying which fields to include in a partial response.
+    - name: $.xgafv
+      in: query
+      required: false
+      schema:
+        type: string
+        enum:
+        - '1'
+        - '2'
+        x-enumDescriptions:
+        - v1 error format
+        - v2 error format
+      description: V1 error format.
+    - name: callback
+      in: query
+      required: false
+      schema:
+        type: string
+      description: JSONP
+    - name: prettyPrint
+      in: query
+      required: false
+      schema:
+        type: boolean
+        default: 'true'
+      description: Returns response with indentations and line breaks.
+    - name: access_token
+      in: query
+      required: false
+      schema:
+        type: string
+      description: OAuth access token.
+    - name: uploadType
+      in: query
+      required: false
+      schema:
+        type: string
+      description: Legacy upload protocol for media (e.g. "media", "multipart").
+    - name: key
+      in: query
+      required: false
+      schema:
+        type: string
+      description: API key. Your API key identifies your project and provides you with API access, quota, and reports. Required unless you provide an OAuth 2.0 token.
+    - name: oauth_token
+      in: query
+      required: false
+      schema:
+        type: string
+      description: OAuth 2.0 token for the current user.
+    - name: alt
+      in: query
+      required: false
+      schema:
+        x-enumDescriptions:
+        - Responses with Content-Type of application/json
+        - Media download with context-dependent Content-Type
+        - Responses with Content-Type of application/x-protobuf
+        type: string
+        default: json
+        enum:
+        - json
+        - media
+        - proto
+      description: Data format for response.
+    post:
+      operationId: googleads_customers_billingSetups_mutate
+      summary: Creates a billing setup, or cancels an existing billing setup
+      tags:
+      - customers.billingSetups
+      description: 'Creates a billing setup, or cancels an existing billing setup. List of thrown errors: [AuthenticationError]() [AuthorizationError]() [BillingSetupError]() [DateError]() [FieldError]() [HeaderError]() [InternalError]() [MutateError]() [QuotaError]() [RequestError]()'
+      parameters:
+      - name: customerId
+        in: path
+        required: true
+        schema:
+          pattern: ^[^/]+$
+          type: string
+        description: Required. Id of the customer to apply the billing setup mutate operation to.
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/GoogleAdsGoogleadsV25Services__MutateBillingSetupRequest'
+      responses:
+        '200':
+          description: Successful response
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/GoogleAdsGoogleadsV25Services__MutateBillingSetupResponse'
+      security:
+      - oauth2:
+        - https://www.googleapis.com/auth/adwords
+components:
+  schemas:
+    GoogleAdsGoogleadsV25Resources__BillingSetup:
+      description: A billing setup, which associates a payments account and an advertiser. A billing setup is specific to one advertiser.
+      type: object
+      properties:
+        paymentsAccountInfo:
+          $ref: '#/components/schemas/GoogleAdsGoogleadsV25Resources_BillingSetup_PaymentsAccountInfo'
+          description: Immutable. The payments account information associated with this billing setup. When setting up billing, this is used to signup with a new payments account (and then payments_account should not be set). When getting a billing setup, this and payments_account will be populated.
+        id:
+          format: int64
+          type: string
+          description: Output only. The ID of the billing setup.
+        status:
+          enum:
+          - UNSPECIFIED
+          - UNKNOWN
+          - PENDING
+          - APPROVED_HELD
+          - APPROVED
+          - CANCELLED
+          type: string
+          description: Output only. The status of the billing setup.
+          x-enumDescriptions:
+          - Not specified.
+          - Used for return value only. Represents value unknown in this version.
+          - The billing setup is pending approval.
+          - The billing setup has been approved but the corresponding first budget has not. This can only occur for billing setups configured for monthly invoicing.
+          - The billing setup has been approved.
+          - The billing setup was cancelled by the user prior to approval.
+        paymentsAccount:
+          description: 'Immutable. The resource name of the payments account associated with this billing setup. Payments resource names have the form: `customers/{customer_id}/paymentsAccounts/{payments_account_id}` When setting up billing, this is used to signup with an existing payments account (and then payments_account_info should not be set). When getting a billing setup, this and payments_account_info will be populated.'
+          type: string
+        resourceName:
+          description: 'Immutable. The resource name of the billing setup. BillingSetup resource names have the form: `customers/{customer_id}/billingSetups/{billing_setup_id}`'
+          type: string
+        startDateTime:
+          description: Immutable. The start date time in yyyy-MM-dd or yyyy-MM-dd HH:mm:ss format. Only a future time is allowed.
+          type: string
+        endTimeType:
+          x-enumDescriptions:
+          - Not specified.
+          - Used for return value only. Represents value unknown in this version.
+          - As soon as possible.
+          - An infinite point in the future.
+          type: string
+          description: Output only. The end time as a type. The only possible value is FOREVER.
+          enum:
+          - UNSPECIFIED
+          - UNKNOWN
+          - NOW
+          - FOREVER
+        startTimeType:
+          description: Immutable. The start time as a type. Only NOW is allowed.
+          type: string
+          x-enumDescriptions:
+          - Not specified.
+          - Used for return value only. Represents value unknown in this version.
+          - As soon as possible.
+          - An infinite point in the future.
+          enum:
+          - UNSPECIFIED
+          - UNKNOWN
+          - NOW
+          - FOREVER
+        endDateTime:
+          description: Output only. The end date time in yyyy-MM-dd or yyyy-MM-dd HH:mm:ss format.
+          type: string
+    GoogleAdsGoogleadsV25Services__MutateBillingSetupResult:
+      type: object
+      properties:
+        resourceName:
+          type: string
+          description: Returned for successful operations.
+      description: Result for a single billing setup mutate.
+    GoogleAdsGoogleadsV25Resources_BillingSetup_PaymentsAccountInfo:
+      description: Container of payments account information for this billing.
+      type: object
+      properties:
+        paymentsAccountName:
+          description: Immutable. The name of the payments account associated with the billing setup. This enables the user to specify a meaningful name for a payments account to aid in reconciling monthly invoices. This name will be printed in the monthly invoices.
+          type: string
+        paymentsProfileId:
+          type: string
+          description: Immutable. A 12 digit id used to identify the payments profile associated with the billing setup. This must be passed in as a string with dashes, for example, "1234-5678-9012".
+        secondaryPaymentsProfileId:
+          type: string
+          description: Output only. A secondary payments profile id present in uncommon situations, for example, when a sequential liability agreement has been arranged.
+        paymentsAccountId:
+          description: Output only. A 16 digit id used to identify the payments account associated with the billing setup. This must be passed as a string with dashes, for example, "1234-5678-9012-3456".
+          type: string
+        paymentsProfileName:
+          description: Output only. The name of the payments profile associated with the billing setup.
+          type: string
+    GoogleAdsGoogleadsV25Services__MutateBillingSetupResponse:
+      description: Response message for a billing setup operation.
+      type: object
+      properties:
+        result:
+          $ref: '#/components/schemas/GoogleAdsGoogleadsV25Services__MutateBillingSetupResult'
+          description: A result that identifies the resource affected by the mutate request.
+    GoogleAdsGoogleadsV25Services__BillingSetupOperation:
+      type: object
+      properties:
+        create:
+          description: Creates a billing setup. No resource name is expected for the new billing setup.
+          $ref: '#/components/schemas/GoogleAdsGoogleadsV25Resources__BillingSetup'
+        remove:
+          description: Resource name of the billing setup to remove. A setup cannot be removed unless it is in a pending state or its scheduled start time is in the future. The resource name looks like `customers/{customer_id}/billingSetups/{billing_id}`.
+          type: string
+      description: A single operation on a billing setup, which describes the cancellation of an existing billing setup.
+    GoogleAdsGoogleadsV25Services__MutateBillingSetupRequest:
+      description: Request message for billing setup mutate operations.
+      type: object
+      properties:
+        operation:
+          $ref: '#/components/schemas/GoogleAdsGoogleadsV25Services__BillingSetupOperation'
+          description: Required. The operation to perform.
+  securitySchemes:
+    oauth2:
+      type: oauth2
+      description: Google OAuth 2.0. Google Ads API additionally requires a developer token in the developer-token header.
+      flows:
+        authorizationCode:
+          authorizationUrl: https://accounts.google.com/o/oauth2/auth
+          tokenUrl: https://oauth2.googleapis.com/token
+          scopes:
+            https://www.googleapis.com/auth/adwords: See, edit, create, and delete your Google Ads accounts and data.
+externalDocs:
+  url: https://developers.google.com/google-ads/api/
+x-source: https://googleads.googleapis.com/$discovery/rest?version=v25
+x-generated-by: API Evangelist enrichment pipeline — mechanical conversion of the first-party Google API Discovery Document

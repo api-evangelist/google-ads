@@ -1,0 +1,2566 @@
+openapi: 3.2.0
+info:
+  title: Google Ads Customers.assets API
+  description: Manage your Google Ads accounts, campaigns, and reports with this API.
+  version: v25
+  x-discovery-revision: '20260721'
+  contact:
+    name: Google
+    url: https://developers.google.com/google-ads/api/
+  termsOfService: https://developers.google.com/terms
+servers:
+- url: https://googleads.googleapis.com
+  description: Google Ads API production server
+security:
+- oauth2:
+  - https://www.googleapis.com/auth/adwords
+tags:
+- name: customers.assets
+paths:
+  /v25/customers/{customersId}/assets:mutate:
+    parameters:
+    - name: upload_protocol
+      in: query
+      required: false
+      schema:
+        type: string
+      description: Upload protocol for media (e.g. "raw", "multipart").
+    - name: quotaUser
+      in: query
+      required: false
+      schema:
+        type: string
+      description: Available to use for quota purposes for server-side applications. Can be any arbitrary string assigned to a user, but should not exceed 40 characters.
+    - name: fields
+      in: query
+      required: false
+      schema:
+        type: string
+      description: Selector specifying which fields to include in a partial response.
+    - name: $.xgafv
+      in: query
+      required: false
+      schema:
+        type: string
+        enum:
+        - '1'
+        - '2'
+        x-enumDescriptions:
+        - v1 error format
+        - v2 error format
+      description: V1 error format.
+    - name: callback
+      in: query
+      required: false
+      schema:
+        type: string
+      description: JSONP
+    - name: prettyPrint
+      in: query
+      required: false
+      schema:
+        type: boolean
+        default: 'true'
+      description: Returns response with indentations and line breaks.
+    - name: access_token
+      in: query
+      required: false
+      schema:
+        type: string
+      description: OAuth access token.
+    - name: uploadType
+      in: query
+      required: false
+      schema:
+        type: string
+      description: Legacy upload protocol for media (e.g. "media", "multipart").
+    - name: key
+      in: query
+      required: false
+      schema:
+        type: string
+      description: API key. Your API key identifies your project and provides you with API access, quota, and reports. Required unless you provide an OAuth 2.0 token.
+    - name: oauth_token
+      in: query
+      required: false
+      schema:
+        type: string
+      description: OAuth 2.0 token for the current user.
+    - name: alt
+      in: query
+      required: false
+      schema:
+        x-enumDescriptions:
+        - Responses with Content-Type of application/json
+        - Media download with context-dependent Content-Type
+        - Responses with Content-Type of application/x-protobuf
+        type: string
+        default: json
+        enum:
+        - json
+        - media
+        - proto
+      description: Data format for response.
+    post:
+      operationId: googleads_customers_assets_mutate
+      summary: Creates assets
+      tags:
+      - customers.assets
+      description: 'Creates assets. Operation statuses are returned. List of thrown errors: [AssetError]() [AuthenticationError]() [AuthorizationError]() [CollectionSizeError]() [CurrencyCodeError]() [DatabaseError]() [DateError]() [DistinctError]() [FieldError]() [FieldMaskError]() [HeaderError]() [IdError]() [InternalError]() [ListOperationError]() [MediaUploadError]() [MutateError]() [NotAllowlistedError]() [NotEmptyError]() [OperatorError]() [QuotaError]() [RangeError]() [RequestError]() [SizeLimitError]() [StringFormatError]() [StringLengthError]() [UrlFieldError]() [YoutubeVideoRegistrationError]()'
+      parameters:
+      - name: customerId
+        in: path
+        required: true
+        schema:
+          type: string
+          pattern: ^[^/]+$
+        description: Required. The ID of the customer whose assets are being modified.
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/GoogleAdsGoogleadsV25Services__MutateAssetsRequest'
+      responses:
+        '200':
+          description: Successful response
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/GoogleAdsGoogleadsV25Services__MutateAssetsResponse'
+      security:
+      - oauth2:
+        - https://www.googleapis.com/auth/adwords
+components:
+  schemas:
+    GoogleAdsGoogleadsV25Common_PolicyTopicEvidence_WebsiteList:
+      description: A list of websites that caused a policy finding. Used for ONE_WEBSITE_PER_AD_GROUP policy topic, for example. In case there are more than five websites, only the top five (those that appear in resources the most) will be listed here.
+      type: object
+      properties:
+        websites:
+          type: array
+          description: Websites that caused the policy finding.
+          items:
+            type: string
+    GoogleAdsGoogleadsV25Common__PolicyTopicConstraint:
+      type: object
+      properties:
+        resellerConstraint:
+          description: Reseller constraint.
+          $ref: '#/components/schemas/GoogleAdsGoogleadsV25Common_PolicyTopicConstraint_ResellerConstraint'
+        certificateMissingInCountryList:
+          $ref: '#/components/schemas/GoogleAdsGoogleadsV25Common_PolicyTopicConstraint_CountryConstraintList'
+          description: Countries where a certificate is required for serving.
+        countryConstraintList:
+          description: Countries where the resource cannot serve.
+          $ref: '#/components/schemas/GoogleAdsGoogleadsV25Common_PolicyTopicConstraint_CountryConstraintList'
+        certificateDomainMismatchInCountryList:
+          $ref: '#/components/schemas/GoogleAdsGoogleadsV25Common_PolicyTopicConstraint_CountryConstraintList'
+          description: Countries where the resource's domain is not covered by the certificates associated with it.
+      description: Describes the effect on serving that a policy topic entry will have.
+    GoogleAdsGoogleadsV25Services__MutateAssetsRequest:
+      type: object
+      properties:
+        operations:
+          type: array
+          description: Required. The list of operations to perform on individual assets.
+          items:
+            $ref: '#/components/schemas/GoogleAdsGoogleadsV25Services__AssetOperation'
+        responseContentType:
+          x-enumDescriptions:
+          - Not specified. Will return the resource name only in the response.
+          - The mutate response will be the resource name.
+          - The mutate response will contain the resource name and the resource with mutable fields if possible. Otherwise, only the resource name will be returned.
+          enum:
+          - UNSPECIFIED
+          - RESOURCE_NAME_ONLY
+          - MUTABLE_RESOURCE
+          description: The response content type setting. Determines whether the mutable resource or just the resource name should be returned post mutation.
+          type: string
+        validateOnly:
+          type: boolean
+          description: If true, the request is validated but not executed. Only errors are returned, not results.
+        partialFailure:
+          type: boolean
+          description: If true, successful operations will be carried out and invalid operations will return errors. If false, all operations will be carried out in one transaction if and only if they are all valid. Default is false.
+      description: Request message for AssetService.MutateAssets
+    GoogleAdsGoogleadsV25Common__AdScheduleInfo:
+      type: object
+      properties:
+        dayOfWeek:
+          description: Day of the week the schedule applies to. This field is required for CREATE operations and is prohibited on UPDATE operations.
+          type: string
+          x-enumDescriptions:
+          - Not specified.
+          - The value is unknown in this version.
+          - Monday.
+          - Tuesday.
+          - Wednesday.
+          - Thursday.
+          - Friday.
+          - Saturday.
+          - Sunday.
+          enum:
+          - UNSPECIFIED
+          - UNKNOWN
+          - MONDAY
+          - TUESDAY
+          - WEDNESDAY
+          - THURSDAY
+          - FRIDAY
+          - SATURDAY
+          - SUNDAY
+        startHour:
+          type: integer
+          description: Starting hour in 24 hour time. This field must be between 0 and 23, inclusive. This field is required for CREATE operations and is prohibited on UPDATE operations.
+          format: int32
+        endHour:
+          type: integer
+          description: Ending hour in 24 hour time; 24 signifies end of the day. This field must be between 0 and 24, inclusive. This field is required for CREATE operations and is prohibited on UPDATE operations.
+          format: int32
+        endMinute:
+          type: string
+          description: Minutes after the end hour at which this schedule ends. The schedule is exclusive of the end minute. This field is required for CREATE operations and is prohibited on UPDATE operations.
+          x-enumDescriptions:
+          - Not specified.
+          - The value is unknown in this version.
+          - Zero minutes past the hour.
+          - Fifteen minutes past the hour.
+          - Thirty minutes past the hour.
+          - Forty-five minutes past the hour.
+          enum:
+          - UNSPECIFIED
+          - UNKNOWN
+          - ZERO
+          - FIFTEEN
+          - THIRTY
+          - FORTY_FIVE
+        startMinute:
+          description: Minutes after the start hour at which this schedule starts. This field is required for CREATE operations and is prohibited on UPDATE operations.
+          type: string
+          x-enumDescriptions:
+          - Not specified.
+          - The value is unknown in this version.
+          - Zero minutes past the hour.
+          - Fifteen minutes past the hour.
+          - Thirty minutes past the hour.
+          - Forty-five minutes past the hour.
+          enum:
+          - UNSPECIFIED
+          - UNKNOWN
+          - ZERO
+          - FIFTEEN
+          - THIRTY
+          - FORTY_FIVE
+      description: Represents an AdSchedule criterion. AdSchedule is specified as the day of the week and a time interval within which ads will be shown. No more than six AdSchedules can be added for the same day.
+    GoogleAdsGoogleadsV25Common__CallAsset:
+      description: A Call asset.
+      type: object
+      properties:
+        callConversionAction:
+          type: string
+          description: The conversion action to attribute a call conversion to. If not set, the default conversion action is used. This field only has effect if call_conversion_reporting_state is set to USE_RESOURCE_LEVEL_CALL_CONVERSION_ACTION.
+        phoneNumber:
+          description: 'Required. The advertiser''s raw phone number. Examples: ''1234567890'', ''(123)456-7890'''
+          type: string
+        adScheduleTargets:
+          type: array
+          description: List of non-overlapping schedules specifying all time intervals for which the asset may serve. There can be a maximum of 6 schedules per day, 42 in total.
+          items:
+            $ref: '#/components/schemas/GoogleAdsGoogleadsV25Common__AdScheduleInfo'
+        countryCode:
+          description: 'Required. Two-letter country code of the phone number. Examples: ''US'', ''us''.'
+          type: string
+        callConversionReportingState:
+          type: string
+          description: Indicates whether this CallAsset should use its own call conversion setting, follow the account level setting, or disable call conversion.
+          x-enumDescriptions:
+          - Not specified.
+          - Used for return value only. Represents value unknown in this version.
+          - Call conversion action is disabled.
+          - Call conversion action will use call conversion type set at the account level.
+          - Call conversion action will use call conversion type set at the resource (call only ads/call extensions) level.
+          enum:
+          - UNSPECIFIED
+          - UNKNOWN
+          - DISABLED
+          - USE_ACCOUNT_LEVEL_CALL_CONVERSION_ACTION
+          - USE_RESOURCE_LEVEL_CALL_CONVERSION_ACTION
+    GoogleAdsGoogleadsV25Common__DynamicEducationAsset:
+      type: object
+      properties:
+        contextualKeywords:
+          type: array
+          description: Contextual keywords, for example, Nursing certification, Health, Mountain View.
+          items:
+            type: string
+        imageUrl:
+          type: string
+          description: Image url, for example, http://www.example.com/image.png. The image will not be uploaded as image asset.
+        locationId:
+          type: string
+          description: Location ID which can be any sequence of letters and digits and must be unique.
+        programDescription:
+          description: Program description, for example, Nursing Certification.
+          type: string
+        iosAppLink:
+          description: iOS deep link, for example, exampleApp://content/page.
+          type: string
+        iosAppStoreId:
+          description: iOS app store ID. This is used to check if the user has the app installed on their device before deep linking. If this field is set, then the ios_app_link field must also be present.
+          type: string
+          format: int64
+        androidAppLink:
+          description: Android deep link, for example, android-app://com.example.android/http/example.com/gizmos?1234.
+          type: string
+        programId:
+          type: string
+          description: Required. Program ID which can be any sequence of letters and digits, and must be unique and match the values of remarketing tag. Required.
+        address:
+          description: School address which can be specified in one of the following formats. (1) City, state, code, country, for example, Mountain View, CA, USA. (2) Full address, for example, 123 Boulevard St, Mountain View, CA 94043. (3) Latitude-longitude in the DDD format, for example, 41.40338, 2.17403
+          type: string
+        subject:
+          description: Subject of study, for example, Health.
+          type: string
+        similarProgramIds:
+          description: Similar program IDs.
+          items:
+            type: string
+          type: array
+        schoolName:
+          type: string
+          description: School name, for example, Mountain View School of Nursing.
+        thumbnailImageUrl:
+          type: string
+          description: Thumbnail image url, for example, http://www.example.com/thumbnail.png. The thumbnail image will not be uploaded as image asset.
+        programName:
+          type: string
+          description: Required. Program name, for example, Nursing. Required.
+      description: A Dynamic Education asset.
+    GoogleAdsGoogleadsV25Common__PromotionBarcodeInfo:
+      description: Barcode info to generate promotion barcode.
+      type: object
+      properties:
+        barcodeContent:
+          type: string
+          description: Promotion message to be encoded in the barcode.
+        type:
+          type: string
+          description: Barcode type used to generate barcode with the correct format.
+          x-enumDescriptions:
+          - Not specified.
+          - Used for return value only. Represents value unknown in this version.
+          - Aztec 2D barcode format. Max 350 characters and no links
+          - CODABAR 1D format. Max 12 characters and no links. Supported characters include 0123456789-$:/.+ and optional start and end guards from ABCD.
+          - Code 39 1D format. Max 8 characters and no links. Supported characters include 0123456789ABCDEFGHIJKLMNOPQRSTUVWXYZ-. *$/+%.
+          - Code 128 1D format. Max 18 ASCII characters only and no links
+          - Data Matrix 2D barcode format. Max 525 ISO-8859-1 characters only and no links
+          - EAN-8 1D format. The barcode value should be 7 digits (the check digit will be computed automatically) or 8 digits (if you are providing your own check digit).
+          - EAN-13 1D format. The barcode value should be 12 digits (the check digit will be computed automatically) or 13 digits (if you are providing your own check digit).
+          - ITF (Interleaved Two of Five) 1D format. Must be 14 digits long
+          - PDF417 format. Max 140 characters and no links
+          - UPC-A 1D format. The barcode value should be 11 digits (the check digit will be computed automatically) or 12 digits (if you are providing your own check digit).
+          enum:
+          - UNSPECIFIED
+          - UNKNOWN
+          - AZTEC
+          - CODABAR
+          - CODE39
+          - CODE128
+          - DATA_MATRIX
+          - EAN8
+          - EAN13
+          - ITF
+          - PDF417
+          - UPC_A
+    GoogleAdsGoogleadsV25Common__BusinessMessageCallToActionInfo:
+      type: object
+      properties:
+        callToActionDescription:
+          description: 'Required. Text providing a clear value proposition of what users expect once they take the action. Examples: ''Message us for a quote'', ''Ask our expert team''.'
+          type: string
+        callToActionSelection:
+          x-enumDescriptions:
+          - Not specified.
+          - Used for return value only. Represents value unknown in this version.
+          - Apply now.
+          - Book now.
+          - Contact us.
+          - Get info.
+          - Get offer.
+          - Get quote.
+          - Get started.
+          - Learn more.
+          enum:
+          - UNSPECIFIED
+          - UNKNOWN
+          - APPLY_NOW
+          - BOOK_NOW
+          - CONTACT_US
+          - GET_INFO
+          - GET_OFFER
+          - GET_QUOTE
+          - GET_STARTED
+          - LEARN_MORE
+          type: string
+          description: Required. Pre-defined call to action text.
+      description: Display information that encourages the user to take action.
+    GoogleAdsGoogleadsV25Common_PolicyTopicEvidence_TextList:
+      type: object
+      properties:
+        texts:
+          description: The fragments of text from the resource that caused the policy finding.
+          items:
+            type: string
+          type: array
+      description: A list of fragments of text that violated a policy.
+    GoogleAdsGoogleadsV25Common_PolicyTopicEvidence_DestinationNotWorking:
+      type: object
+      properties:
+        httpErrorCode:
+          format: int64
+          type: string
+          description: The HTTP error code.
+        expandedUrl:
+          type: string
+          description: The full URL that didn't work.
+        device:
+          x-enumDescriptions:
+          - No value has been specified.
+          - The received value is not known in this version. This is a response-only value.
+          - Landing page doesn't work on desktop device.
+          - Landing page doesn't work on Android device.
+          - Landing page doesn't work on iOS device.
+          enum:
+          - UNSPECIFIED
+          - UNKNOWN
+          - DESKTOP
+          - ANDROID
+          - IOS
+          type: string
+          description: The type of device that failed to load the URL.
+        dnsErrorType:
+          description: The type of DNS error.
+          type: string
+          x-enumDescriptions:
+          - No value has been specified.
+          - The received value is not known in this version. This is a response-only value.
+          - Host name not found in DNS when fetching landing page.
+          - Google internal crawler issue when communicating with DNS. This error doesn't mean the landing page doesn't work. Google will recrawl the landing page.
+          enum:
+          - UNSPECIFIED
+          - UNKNOWN
+          - HOSTNAME_NOT_FOUND
+          - GOOGLE_CRAWLER_DNS_ISSUE
+        lastCheckedDateTime:
+          description: 'The time the URL was last checked. The format is "YYYY-MM-DD HH:MM:SS". Examples: "2018-03-05 09:15:00" or "2018-02-01 14:34:30"'
+          type: string
+      description: Evidence details when the destination is returning an HTTP error code or isn't functional in all locations for commonly used devices.
+    GoogleAdsGoogleadsV25Common__DynamicLocalAsset:
+      description: A dynamic local asset.
+      type: object
+      properties:
+        description:
+          description: Description, for example, Save on your weekly bill.
+          type: string
+        formattedPrice:
+          description: Formatted price which can be any characters. If set, this attribute will be used instead of 'price', for example, Starting at $100.00.
+          type: string
+        similarDealIds:
+          description: Similar deal IDs, for example, 1275.
+          items:
+            type: string
+          type: array
+        category:
+          type: string
+          description: Category, for example, Food.
+        androidAppLink:
+          description: Android deep link, for example, android-app://com.example.android/http/example.com/gizmos?1234.
+          type: string
+        iosAppLink:
+          description: iOS deep link, for example, exampleApp://content/page.
+          type: string
+        iosAppStoreId:
+          format: int64
+          type: string
+          description: iOS app store ID. This is used to check if the user has the app installed on their device before deep linking. If this field is set, then the ios_app_link field must also be present.
+        salePrice:
+          description: Sale price which can be number followed by the alphabetic currency code, ISO 4217 standard. Use '.' as the decimal mark, for example, 80.00 USD. Must be less than the 'price' field.
+          type: string
+        imageUrl:
+          description: Image URL, for example, http://www.example.com/image.png. The image will not be uploaded as image asset.
+          type: string
+        contextualKeywords:
+          description: Contextual keywords, for example, Save groceries coupons.
+          items:
+            type: string
+          type: array
+        subtitle:
+          type: string
+          description: Subtitle, for example, Groceries.
+        dealId:
+          description: Required. Deal ID which can be any sequence of letters and digits, and must be unique and match the values of remarketing tag. Required.
+          type: string
+        dealName:
+          description: Required. Deal name, for example, 50% off at Mountain View Grocers. Required.
+          type: string
+        formattedSalePrice:
+          description: Formatted sale price which can be any characters. If set, this attribute will be used instead of 'sale price', for example, On sale for $80.00.
+          type: string
+        address:
+          type: string
+          description: Address which can be specified in one of the following formats. (1) City, state, code, country, for example, Mountain View, CA, USA. (2) Full address, for example, 123 Boulevard St, Mountain View, CA 94043. (3) Latitude-longitude in the DDD format, for example, 41.40338, 2.17403.
+        price:
+          type: string
+          description: Price which can be a number followed by the alphabetic currency code, ISO 4217 standard. Use '.' as the decimal mark, for example, 100.00 USD.
+    GoogleRpc__Status:
+      description: 'The `Status` type defines a logical error model that is suitable for different programming environments, including REST APIs and RPC APIs. It is used by [gRPC](https://github.com/grpc). Each `Status` message contains three pieces of data: error code, error message, and error details. You can find out more about this error model and how to work with it in the [API Design Guide](https://cloud.google.com/apis/design/errors).'
+      type: object
+      properties:
+        message:
+          description: A developer-facing error message, which should be in English. Any user-facing error message should be localized and sent in the google.rpc.Status.details field, or localized by the client.
+          type: string
+        code:
+          type: integer
+          description: The status code, which should be an enum value of google.rpc.Code.
+          format: int32
+        details:
+          type: array
+          description: A list of messages that carry the error details. There is a common set of message types for APIs to use.
+          items:
+            type: object
+            additionalProperties:
+              description: Properties of the object. Contains field @type with type URL.
+    GoogleAdsGoogleadsV25Common__PriceOffering:
+      description: A single price offering within a PriceAsset.
+      type: object
+      properties:
+        finalUrl:
+          description: Required. The final URL after all cross domain redirects.
+          type: string
+        description:
+          description: Required. The description of the price offering. The length of this string should be between 1 and 25, inclusive.
+          type: string
+        unit:
+          x-enumDescriptions:
+          - Not specified.
+          - Used for return value only. Represents value unknown in this version.
+          - Per hour.
+          - Per day.
+          - Per week.
+          - Per month.
+          - Per year.
+          - Per night.
+          enum:
+          - UNSPECIFIED
+          - UNKNOWN
+          - PER_HOUR
+          - PER_DAY
+          - PER_WEEK
+          - PER_MONTH
+          - PER_YEAR
+          - PER_NIGHT
+          type: string
+          description: The price unit of the price offering.
+        header:
+          description: Required. The header of the price offering. The length of this string should be between 1 and 25, inclusive.
+          type: string
+        price:
+          $ref: '#/components/schemas/GoogleAdsGoogleadsV25Common__Money'
+          description: Required. The price value of the price offering.
+        finalMobileUrl:
+          type: string
+          description: The final mobile URL after all cross domain redirects.
+    GoogleAdsGoogleadsV25Common__PolicyTopicEvidence:
+      description: Additional information that explains a policy finding.
+      type: object
+      properties:
+        websiteList:
+          $ref: '#/components/schemas/GoogleAdsGoogleadsV25Common_PolicyTopicEvidence_WebsiteList'
+          description: List of websites linked with this resource.
+        languageCode:
+          description: The language the resource was detected to be written in. This is an IETF language tag such as "en-US".
+          type: string
+        destinationTextList:
+          $ref: '#/components/schemas/GoogleAdsGoogleadsV25Common_PolicyTopicEvidence_DestinationTextList'
+          description: The text in the destination of the resource that is causing a policy finding.
+        destinationMismatch:
+          $ref: '#/components/schemas/GoogleAdsGoogleadsV25Common_PolicyTopicEvidence_DestinationMismatch'
+          description: Mismatch between the destinations of a resource's URLs.
+        destinationNotWorking:
+          $ref: '#/components/schemas/GoogleAdsGoogleadsV25Common_PolicyTopicEvidence_DestinationNotWorking'
+          description: Details when the destination is returning an HTTP error code or isn't functional in all locations for commonly used devices.
+        textList:
+          description: List of evidence found in the text of a resource.
+          $ref: '#/components/schemas/GoogleAdsGoogleadsV25Common_PolicyTopicEvidence_TextList'
+    GoogleAdsGoogleadsV25Common__PageFeedAsset:
+      description: A Page Feed asset.
+      type: object
+      properties:
+        labels:
+          description: Labels used to group the page urls.
+          items:
+            type: string
+          type: array
+        pageUrl:
+          type: string
+          description: Required. The webpage that advertisers want to target.
+    GoogleAdsGoogleadsV25Common__CustomParameter:
+      type: object
+      properties:
+        key:
+          description: The key matching the parameter tag name.
+          type: string
+        value:
+          type: string
+          description: The value to be substituted.
+      description: A mapping that can be used by custom parameter tags in a `tracking_url_template`, `final_urls`, or `mobile_final_urls`.
+    GoogleAdsGoogleadsV25Common__AdVideoAsset:
+      description: A video asset used inside an ad.
+      type: object
+      properties:
+        asset:
+          type: string
+          description: The Asset resource name of this video.
+        adVideoAssetInfo:
+          description: Contains info fields for this AdVideoAsset.
+          $ref: '#/components/schemas/GoogleAdsGoogleadsV25Common__AdVideoAssetInfo'
+    GoogleAdsGoogleadsV25Resources__AssetFieldTypePolicySummary:
+      type: object
+      properties:
+        assetFieldType:
+          enum:
+          - UNSPECIFIED
+          - UNKNOWN
+          - HEADLINE
+          - DESCRIPTION
+          - MANDATORY_AD_TEXT
+          - MARKETING_IMAGE
+          - MEDIA_BUNDLE
+          - YOUTUBE_VIDEO
+          - BOOK_ON_GOOGLE
+          - LEAD_FORM
+          - PROMOTION
+          - CALLOUT
+          - STRUCTURED_SNIPPET
+          - SITELINK
+          - MOBILE_APP
+          - HOTEL_CALLOUT
+          - CALL
+          - PRICE
+          - LONG_HEADLINE
+          - BUSINESS_NAME
+          - SQUARE_MARKETING_IMAGE
+          - PORTRAIT_MARKETING_IMAGE
+          - LOGO
+          - LANDSCAPE_LOGO
+          - VIDEO
+          - CALL_TO_ACTION_SELECTION
+          - AD_IMAGE
+          - BUSINESS_LOGO
+          - HOTEL_PROPERTY
+          - DEMAND_GEN_CAROUSEL_CARD
+          - BUSINESS_MESSAGE
+          - TALL_PORTRAIT_MARKETING_IMAGE
+          - RELATED_YOUTUBE_VIDEOS
+          - LANDING_PAGE_PREVIEW
+          - LONG_DESCRIPTION
+          - CALL_TO_ACTION
+          - CLASSIC_DISPLAY_IMAGE
+          type: string
+          description: Output only. FieldType of this asset.
+          x-enumDescriptions:
+          - Not specified.
+          - Used for return value only. Represents value unknown in this version.
+          - The asset is linked for use as a headline.
+          - The asset is linked for use as a description.
+          - The asset is linked for use as mandatory ad text.
+          - The asset is linked for use as a marketing image.
+          - The asset is linked for use as a media bundle.
+          - The asset is linked for use as a YouTube video.
+          - The asset is linked to indicate that a hotels campaign is "Book on Google" enabled.
+          - The asset is linked for use as a Lead Form extension.
+          - The asset is linked for use as a Promotion extension.
+          - The asset is linked for use as a Callout extension.
+          - The asset is linked for use as a Structured Snippet extension.
+          - The asset is linked for use as a Sitelink.
+          - The asset is linked for use as a Mobile App extension.
+          - The asset is linked for use as a Hotel Callout extension.
+          - The asset is linked for use as a Call extension.
+          - The asset is linked for use as a Price extension.
+          - The asset is linked for use as a long headline.
+          - The asset is linked for use as a business name.
+          - The asset is linked for use as a square marketing image.
+          - The asset is linked for use as a portrait marketing image.
+          - The asset is linked for use as a logo.
+          - The asset is linked for use as a landscape logo.
+          - The asset is linked for use as a non YouTube logo.
+          - The asset is linked for use to select a call-to-action.
+          - The asset is linked for use to select an ad image.
+          - The asset is linked for use as a business logo.
+          - The asset is linked for use as a hotel property in a Performance Max for travel goals campaign.
+          - The asset is linked for use as a Demand Gen carousel card.
+          - The asset is linked for use as a Business Message.
+          - The asset is linked for use as a tall portrait marketing image.
+          - The asset is linked for use as related YouTube videos.
+          - The asset is linked for use as a landing page preview image.
+          - The asset is linked for use as a long description.
+          - The asset is linked for use as a call-to-action.
+          - The asset is linked for use as a classic display image.
+        assetSource:
+          enum:
+          - UNSPECIFIED
+          - UNKNOWN
+          - ADVERTISER
+          - AUTOMATICALLY_CREATED
+          description: Output only. Source of this asset.
+          type: string
+          x-enumDescriptions:
+          - Not specified.
+          - Used for return value only. Represents value unknown in this version.
+          - The asset or asset link is provided by advertiser.
+          - The asset or asset link is generated by Google.
+        policySummaryInfo:
+          $ref: '#/components/schemas/GoogleAdsGoogleadsV25Resources__AssetPolicySummary'
+          description: Output only. Policy summary.
+      description: Contains policy information for an asset under AssetFieldType context.
+    GoogleAdsGoogleadsV25Common__SyntheticContentInfo:
+      description: Container for synthetic content attestations from different sources, such as the advertiser and Google systems.
+      type: object
+      properties:
+        systemAttestation:
+          description: Output only. Information about synthetic content generated by Google's systems.
+          $ref: '#/components/schemas/GoogleAdsGoogleadsV25Common__SyntheticContentAttestation'
+        advertiserAttestation:
+          description: Input provided by the advertiser.
+          $ref: '#/components/schemas/GoogleAdsGoogleadsV25Common__SyntheticContentAttestation'
+    GoogleAdsGoogleadsV25Common__LeadFormCustomQuestionField:
+      type: object
+      properties:
+        customQuestionText:
+          description: The exact custom question field text (for example, "What kind of vehicle do you have?").
+          type: string
+        singleChoiceAnswers:
+          description: Answer configuration for a single choice question. Minimum of 2 answers and maximum of 12 allowed.
+          $ref: '#/components/schemas/GoogleAdsGoogleadsV25Common__LeadFormSingleChoiceAnswers'
+        hasLocationAnswer:
+          type: boolean
+          description: Answer configuration for location question. If true, campaign/account level location data (state, city, business name etc) will be rendered on the Lead Form. Starting V13.1, has_location_answer can only be set for "What is your preferred dealership?" question, for advertisers with Location Assets setup at campaign/account level.
+      description: One custom question input field instance within a form.
+    GoogleAdsGoogleadsV25Common__DynamicFlightsAsset:
+      description: A dynamic flights asset.
+      type: object
+      properties:
+        formattedSalePrice:
+          description: Formatted sale price which can be any characters. If set, this attribute will be used instead of 'sale price', for example, On sale for $80.00.
+          type: string
+        flightSalePrice:
+          type: string
+          description: Flight sale price which can be number followed by the alphabetic currency code, ISO 4217 standard. Use '.' as the decimal mark, for example, 80.00 USD. Must be less than the 'flight_price' field.
+        destinationName:
+          description: Destination name, for example, Paris.
+          type: string
+        originName:
+          description: Origin name, for example, London.
+          type: string
+        customMapping:
+          description: 'A custom field which can be multiple key to values mapping separated by delimiters (",", "|" and ":"), in the forms of ": , , ... , | : , ... , | ... | : , ... ," for example, wifi: most | aircraft: 320, 77W | flights: 42 | legroom: 32".'
+          type: string
+        originId:
+          description: Origin ID which can be any sequence of letters and digits. The ID sequence (destination ID + origin ID) must be unique.
+          type: string
+        similarDestinationIds:
+          type: array
+          description: Similar destination IDs, for example, PAR,LON.
+          items:
+            type: string
+        destinationId:
+          description: Required. Destination ID which can be any sequence of letters and digits, and must be unique and match the values of remarketing tag. Required.
+          type: string
+        flightDescription:
+          type: string
+          description: Required. Flight description, for example, Book your ticket. Required.
+        imageUrl:
+          description: Image URL, for example, http://www.example.com/image.png. The image will not be uploaded as image asset.
+          type: string
+        flightPrice:
+          description: Flight price which can be number followed by the alphabetic currency code, ISO 4217 standard. Use '.' as the decimal mark, for example, 100.00 USD.
+          type: string
+        formattedPrice:
+          description: Formatted price which can be any characters. If set, this attribute will be used instead of 'price', for example, Starting at $100.00.
+          type: string
+        iosAppLink:
+          type: string
+          description: iOS deep link, for example, exampleApp://content/page.
+        iosAppStoreId:
+          format: int64
+          type: string
+          description: iOS app store ID. This is used to check if the user has the app installed on their device before deep linking. If this field is set, then the ios_app_link field must also be present.
+        androidAppLink:
+          description: Android deep link, for example, android-app://com.example.android/http/example.com/gizmos?1234.
+          type: string
+    GoogleAdsGoogleadsV25Services__MutateAssetResult:
+      description: The result for the asset mutate.
+      type: object
+      properties:
+        resourceName:
+          type: string
+          description: The resource name returned for successful operations.
+        asset:
+          description: The mutated asset with only mutable fields after mutate. The field will only be returned when response_content_type is set to "MUTABLE_RESOURCE".
+          $ref: '#/components/schemas/GoogleAdsGoogleadsV25Resources__Asset'
+    GoogleAdsGoogleadsV25Common__PromotionQrCodeInfo:
+      type: object
+      properties:
+        qrCodeContent:
+          description: Promotion message to be encoded in the QR code.
+          type: string
+      description: QR code info to generate promotion QR code.
+    GoogleAdsGoogleadsV25Common__AppDeepLinkAsset:
+      type: object
+      properties:
+        appDeepLinkUri:
+          description: The uri for the app deep link. The uri can be either a custom scheme uri (e.g., `mystore://shoes`) or universal uri (e.g., `http://www.mystore.com/shoes`).
+          type: string
+      description: An app deep link asset
+    GoogleAdsGoogleadsV25Common__DemandGenCarouselCardAsset:
+      type: object
+      properties:
+        headline:
+          type: string
+          description: Required. Headline of the carousel card.
+        callToActionText:
+          description: Call to action text.
+          type: string
+        portraitMarketingImageAsset:
+          type: string
+          description: Asset resource name of the associated 4:5 portrait marketing image.
+        marketingImageAsset:
+          description: Asset resource name of the associated 1.91:1 marketing image. This and/or square marketing image asset is required.
+          type: string
+        squareMarketingImageAsset:
+          type: string
+          description: Asset resource name of the associated square marketing image. This and/or a marketing image asset is required.
+      description: A Demand Gen Carousel Card asset.
+    GoogleAdsGoogleadsV25Common__HotelPropertyAsset:
+      description: A hotel property asset.
+      type: object
+      properties:
+        hotelAddress:
+          description: Address of the hotel. Read-only.
+          type: string
+        placeId:
+          type: string
+          description: Place IDs uniquely identify a place in the Google Places database and on Google Maps. See https://developers.google.com/places/web-service/place-id to learn more.
+        hotelName:
+          type: string
+          description: Name of the hotel. Read-only.
+    GoogleAdsGoogleadsV25Common__WhatsappBusinessMessageInfo:
+      type: object
+      properties:
+        countryCode:
+          description: 'Required. Two-letter country code of the phone number. Examples: ''US'', ''us''.'
+          type: string
+        phoneNumber:
+          description: 'Required. Whatsapp phone number of the business. Examples: ''1234567890'', ''(123)456-7890''.'
+          type: string
+      description: Whatsapp information to use for messaging.
+    GoogleAdsGoogleadsV25Common__MobileAppAsset:
+      type: object
+      properties:
+        appStore:
+          x-enumDescriptions:
+          - Not specified.
+          - Used for return value only. Represents value unknown in this version.
+          - Mobile app vendor for Apple app store.
+          - Mobile app vendor for Google app store.
+          enum:
+          - UNSPECIFIED
+          - UNKNOWN
+          - APPLE_APP_STORE
+          - GOOGLE_APP_STORE
+          description: Required. The application store that distributes this specific app.
+          type: string
+        linkText:
+          description: Required. The visible text displayed when the link is rendered in an ad. The length of this string should be between 1 and 25, inclusive.
+          type: string
+        startDate:
+          description: Start date of when this asset is effective and can begin serving, in yyyy-MM-dd format.
+          type: string
+        endDate:
+          type: string
+          description: Last date of when this asset is effective and still serving, in yyyy-MM-dd format.
+        appId:
+          description: Required. A string that uniquely identifies a mobile application. It should just contain the platform native id, like "com.android.ebay" for Android or "12345689" for iOS.
+          type: string
+      description: An asset representing a mobile app.
+    GoogleAdsGoogleadsV25Common_PolicyTopicEvidence_DestinationMismatch:
+      type: object
+      properties:
+        urlTypes:
+          type: array
+          description: The set of URLs that did not match each other.
+          items:
+            x-enumDescriptions:
+            - No value has been specified.
+            - The received value is not known in this version. This is a response-only value.
+            - The display url.
+            - The final url.
+            - The final mobile url.
+            - The tracking url template, with substituted desktop url.
+            - The tracking url template, with substituted mobile url.
+            enum:
+            - UNSPECIFIED
+            - UNKNOWN
+            - DISPLAY_URL
+            - FINAL_URL
+            - FINAL_MOBILE_URL
+            - TRACKING_URL
+            - MOBILE_TRACKING_URL
+            type: string
+      description: Evidence of mismatches between the URLs of a resource.
+    GoogleAdsGoogleadsV25Common__PolicyTopicEntry:
+      type: object
+      properties:
+        topic:
+          description: Policy topic this finding refers to. For example, "ALCOHOL", "TRADEMARKS_IN_AD_TEXT", or "DESTINATION_NOT_WORKING". The set of possible policy topics is not fixed for a particular API version and may change at any time.
+          type: string
+        type:
+          type: string
+          description: Describes the negative or positive effect this policy will have on serving.
+          x-enumDescriptions:
+          - No value has been specified.
+          - The received value is not known in this version. This is a response-only value.
+          - The resource will not be served.
+          - The resource will not be served under some circumstances.
+          - The resource cannot serve at all because of the current targeting criteria.
+          - May be of interest, but does not limit how the resource is served.
+          - Could increase coverage beyond normal.
+          - Constrained for all targeted countries, but may serve in other countries through area of interest.
+          enum:
+          - UNSPECIFIED
+          - UNKNOWN
+          - PROHIBITED
+          - LIMITED
+          - FULLY_LIMITED
+          - DESCRIPTIVE
+          - BROADENING
+          - AREA_OF_INTEREST_ONLY
+        constraints:
+          description: Indicates how serving of this resource may be affected (for example, not serving in a country).
+          items:
+            $ref: '#/components/schemas/GoogleAdsGoogleadsV25Common__PolicyTopicConstraint'
+          type: array
+        evidences:
+          type: array
+          description: Additional information that explains policy finding (for example, the brand name for a trademark finding).
+          items:
+            $ref: '#/components/schemas/GoogleAdsGoogleadsV25Common__PolicyTopicEvidence'
+      description: Policy finding attached to a resource (for example, alcohol policy associated with a site that sells alcohol). Each PolicyTopicEntry has a topic that indicates the specific ads policy the entry is about and a type to indicate the effect that the entry will have on serving. It may optionally have one or more evidences that indicate the reason for the finding. It may also optionally have one or more constraints that provide details about how serving may be restricted.
+    GoogleAdsGoogleadsV25Common__WebhookDelivery:
+      type: object
+      properties:
+        advertiserWebhookUrl:
+          description: Webhook url specified by advertiser to send the lead.
+          type: string
+        payloadSchemaVersion:
+          format: int64
+          type: string
+          description: The schema version that this delivery instance will use.
+        googleSecret:
+          description: Anti-spoofing secret set by the advertiser as part of the webhook payload.
+          type: string
+      description: Google notifies the advertiser of leads by making HTTP calls to an endpoint they specify. The requests contain JSON matching a schema that Google publishes as part of form ads documentation.
+    GoogleAdsGoogleadsV25Common__DynamicCustomAsset:
+      description: A dynamic custom asset.
+      type: object
+      properties:
+        formattedPrice:
+          description: Formatted price which can be any characters. If set, this attribute will be used instead of 'price', for example, Starting at $20,000.00.
+          type: string
+        iosAppLink:
+          description: iOS deep link, for example, exampleApp://content/page.
+          type: string
+        iosAppStoreId:
+          format: int64
+          description: iOS app store ID. This is used to check if the user has the app installed on their device before deep linking. If this field is set, then the ios_app_link field must also be present.
+          type: string
+        androidAppLink:
+          type: string
+          description: Android deep link, for example, android-app://com.example.android/http/example.com/gizmos?1234.
+        contextualKeywords:
+          type: array
+          description: Contextual keywords, for example, Sedans, 4 door sedans.
+          items:
+            type: string
+        salePrice:
+          type: string
+          description: Sale price which can be number followed by the alphabetic currency code, ISO 4217 standard. Use '.' as the decimal mark, for example, 15,000.00 USD. Must be less than the 'price' field.
+        imageUrl:
+          type: string
+          description: Image URL, for example, http://www.example.com/image.png. The image will not be uploaded as image asset.
+        itemSubtitle:
+          type: string
+          description: Item subtitle, for example, At your Mountain View dealership.
+        itemCategory:
+          type: string
+          description: Item category, for example, Sedans.
+        itemDescription:
+          description: Item description, for example, Best selling mid-size car.
+          type: string
+        itemAddress:
+          description: Item address which can be specified in one of the following formats. (1) City, state, code, country, for example, Mountain View, CA, USA. (2) Full address, for example, 123 Boulevard St, Mountain View, CA 94043. (3) Latitude-longitude in the DDD format, for example, 41.40338, 2.17403
+          type: string
+        similarIds:
+          type: array
+          description: Similar IDs.
+          items:
+            type: string
+        formattedSalePrice:
+          description: Formatted sale price which can be any characters. If set, this attribute will be used instead of 'sale price', for example, On sale for $15,000.00.
+          type: string
+        id2:
+          description: ID2 which can be any sequence of letters and digits, for example, red. ID sequence (ID + ID2) must be unique.
+          type: string
+        id:
+          description: Required. ID which can be any sequence of letters and digits, and must be unique and match the values of remarketing tag, for example, sedan. Required.
+          type: string
+        itemTitle:
+          type: string
+          description: Required. Item title, for example, Mid-size sedan. Required.
+        price:
+          description: Price which can be number followed by the alphabetic currency code, ISO 4217 standard. Use '.' as the decimal mark, for example, 20,000.00 USD.
+          type: string
+    GoogleAdsGoogleadsV25Common__AdVideoAssetLinkFeatureControl:
+      type: object
+      properties:
+        allowYoutubeComments:
+          type: boolean
+          description: Defines if YouTube comments should be enabled for the creative using this YouTube video asset served on YouTube Shorts.
+      description: YouTube Video Asset feature controls.
+    GoogleAdsGoogleadsV25Common__LeadFormDeliveryMethod:
+      type: object
+      properties:
+        webhook:
+          description: Webhook method of delivery.
+          $ref: '#/components/schemas/GoogleAdsGoogleadsV25Common__WebhookDelivery'
+      description: A configuration of how leads are delivered to the advertiser.
+    GoogleAdsGoogleadsV25Common__CalloutAsset:
+      description: A Callout asset.
+      type: object
+      properties:
+        startDate:
+          description: Start date of when this asset is effective and can begin serving, in yyyy-MM-dd format.
+          type: string
+        endDate:
+          description: Last date of when this asset is effective and still serving, in yyyy-MM-dd format.
+          type: string
+        adScheduleTargets:
+          type: array
+          description: List of non-overlapping schedules specifying all time intervals for which the asset may serve. There can be a maximum of 6 schedules per day, 42 in total.
+          items:
+            $ref: '#/components/schemas/GoogleAdsGoogleadsV25Common__AdScheduleInfo'
+        calloutText:
+          description: Required. The callout text. The length of this string should be between 1 and 25, inclusive.
+          type: string
+    GoogleAdsGoogleadsV25Common__ImageDimension:
+      description: Metadata for an image at a certain size, either original or resized.
+      type: object
+      properties:
+        heightPixels:
+          description: Height of the image.
+          type: string
+          format: int64
+        widthPixels:
+          format: int64
+          description: Width of the image.
+          type: string
+        url:
+          description: A URL that returns the image with this height and width.
+          type: string
+    GoogleAdsGoogleadsV25Common__DynamicRealEstateAsset:
+      description: A dynamic real estate asset.
+      type: object
+      properties:
+        price:
+          description: Price which can be number followed by the alphabetic currency code, ISO 4217 standard. Use '.' as the decimal mark, for example, 200,000.00 USD.
+          type: string
+        address:
+          type: string
+          description: Address which can be specified in one of the following formats. (1) City, state, code, country, for example, Mountain View, CA, USA. (2) Full address, for example, 123 Boulevard St, Mountain View, CA 94043. (3) Latitude-longitude in the DDD format, for example, 41.40338, 2.17403
+        propertyType:
+          description: Property type, for example, House.
+          type: string
+        listingName:
+          type: string
+          description: Required. Listing name, for example, Boulevard Bungalow. Required.
+        listingType:
+          description: Listing type, for example, For sale.
+          type: string
+        contextualKeywords:
+          description: Contextual keywords, for example, For sale; Houses for sale.
+          items:
+            type: string
+          type: array
+        imageUrl:
+          description: Image URL, for example, http://www.example.com/image.png. The image will not be uploaded as image asset.
+          type: string
+        cityName:
+          description: City name, for example, Mountain View, California.
+          type: string
+        iosAppLink:
+          type: string
+          description: iOS deep link, for example, exampleApp://content/page.
+        iosAppStoreId:
+          type: string
+          description: iOS app store ID. This is used to check if the user has the app installed on their device before deep linking. If this field is set, then the ios_app_link field must also be present.
+          format: int64
+        listingId:
+          description: Required. Listing ID which can be any sequence of letters and digits, and must be unique and match the values of remarketing tag. Required.
+          type: string
+        androidAppLink:
+          description: Android deep link, for example, android-app://com.example.android/http/example.com/gizmos?1234.
+          type: string
+        description:
+          type: string
+          description: Description, for example, 3 beds, 2 baths, 1568 sq. ft.
+        similarListingIds:
+          type: array
+          description: Similar listing IDs.
+          items:
+            type: string
+        formattedPrice:
+          type: string
+          description: Formatted price which can be any characters. If set, this attribute will be used instead of 'price', for example, Starting at $200,000.00.
+    GoogleAdsGoogleadsV25Common__DynamicTravelAsset:
+      description: A dynamic travel asset.
+      type: object
+      properties:
+        androidAppLink:
+          description: Android deep link, for example, android-app://com.example.android/http/example.com/gizmos?1234.
+          type: string
+        iosAppLink:
+          description: iOS deep link, for example, exampleApp://content/page.
+          type: string
+        iosAppStoreId:
+          format: int64
+          type: string
+          description: iOS app store ID. This is used to check if the user has the app installed on their device before deep linking. If this field is set, then the ios_app_link field must also be present.
+        formattedPrice:
+          type: string
+          description: Formatted price which can be any characters. If set, this attribute will be used instead of 'price', for example, Starting at $100.00.
+        category:
+          type: string
+          description: Category, for example, Express.
+        salePrice:
+          type: string
+          description: Sale price which can be a number followed by the alphabetic currency code, ISO 4217 standard. Use '.' as the decimal mark, for example, 80.00 USD. Must be less than the 'price' field.
+        imageUrl:
+          type: string
+          description: Image URL, for example, http://www.example.com/image.png. The image will not be uploaded as image asset.
+        destinationId:
+          description: Required. Destination ID which can be any sequence of letters and digits, and must be unique and match the values of remarketing tag. Required.
+          type: string
+        contextualKeywords:
+          type: array
+          description: Contextual keywords, for example, Paris trains.
+          items:
+            type: string
+        similarDestinationIds:
+          description: Similar destination IDs, for example, NYC.
+          items:
+            type: string
+          type: array
+        title:
+          description: Required. Title, for example, Book your train ticket. Required.
+          type: string
+        originId:
+          type: string
+          description: Origin ID which can be any sequence of letters and digits. The ID sequence (destination ID + origin ID) must be unique.
+        originName:
+          type: string
+          description: Origin name, for example, London.
+        price:
+          description: Price which can be a number followed by the alphabetic currency code, ISO 4217 standard. Use '.' as the decimal mark, for example, 100.00 USD.
+          type: string
+        destinationName:
+          description: Destination name, for example, Paris.
+          type: string
+        destinationAddress:
+          description: Destination address which can be specified in one of the following formats. (1) City, state, code, country, for example, Mountain View, CA, USA. (2) Full address, for example, 123 Boulevard St, Mountain View, CA 94043. (3) Latitude-longitude in the DDD format, for example, 41.40338, 2.17403.
+          type: string
+        formattedSalePrice:
+          type: string
+          description: Formatted sale price which can be any characters. If set, this attribute will be used instead of 'sale price', for example, On sale for $80.00.
+    GoogleAdsGoogleadsV25Services__AssetOperation:
+      type: object
+      properties:
+        updateMask:
+          description: FieldMask that determines which resource fields are modified in an update.
+          type: string
+          format: google-fieldmask
+        create:
+          description: 'Create operation: No resource name is expected for the new asset.'
+          $ref: '#/components/schemas/GoogleAdsGoogleadsV25Resources__Asset'
+        update:
+          $ref: '#/components/schemas/GoogleAdsGoogleadsV25Resources__Asset'
+          description: 'Update operation: The asset is expected to have a valid resource name in this format: `customers/{customer_id}/assets/{asset_id}`'
+      description: A single operation to create an asset. Supported asset types are YoutubeVideoAsset, MediaBundleAsset, ImageAsset, LeadFormAsset, LocationAsset, and ImageAsset. TextAsset can be created with an Ad inline, but it can also be created apart from an Ad like other assets.
+    GoogleAdsGoogleadsV25Common_PolicyTopicConstraint_CountryConstraintList:
+      description: A list of countries where a resource's serving is constrained.
+      type: object
+      properties:
+        totalTargetedCountries:
+          format: int32
+          type: integer
+          description: Total number of countries targeted by the resource.
+        countries:
+          type: array
+          description: Countries in which serving is restricted.
+          items:
+            $ref: '#/components/schemas/GoogleAdsGoogleadsV25Common_PolicyTopicConstraint_CountryConstraint'
+    GoogleAdsGoogleadsV25Common__FacebookMessengerBusinessMessageInfo:
+      type: object
+      properties:
+        pageName:
+          type: string
+          description: Required. Facebook page name used for starting a chat on Facebook Messenger.
+      description: Facebook Messenger information to use for messaging.
+    GoogleAdsGoogleadsV25Common__Money:
+      type: object
+      properties:
+        currencyCode:
+          description: Three-character ISO 4217 currency code.
+          type: string
+        amountMicros:
+          description: Amount in micros. One million is equivalent to one unit.
+          type: string
+          format: int64
+      description: Represents a price in a particular currency.
+    GoogleAdsGoogleadsV25Common__DynamicHotelsAndRentalsAsset:
+      description: A dynamic hotels and rentals asset.
+      type: object
+      properties:
+        contextualKeywords:
+          description: Contextual keywords, for example, Mountain View "Hotels", South Bay hotels.
+          items:
+            type: string
+          type: array
+        imageUrl:
+          type: string
+          description: Image URL, for example, http://www.example.com/image.png. The image will not be uploaded as image asset.
+        salePrice:
+          type: string
+          description: ISO 4217 standard. Use '.' as the decimal mark, for example, 80.00 USD. Must be less than the 'price' field.
+        propertyName:
+          description: Required. Property name, for example, Mountain View Hotel. Required.
+          type: string
+        category:
+          description: Category, for example, Hotel suite.
+          type: string
+        description:
+          type: string
+          description: Description, for example, Close to SJC Airport.
+        formattedPrice:
+          description: Formatted price which can be any characters. If set, this attribute will be used instead of 'price', for example, Starting at $100.00.
+          type: string
+        iosAppLink:
+          type: string
+          description: iOS deep link, for example, exampleApp://content/page.
+        iosAppStoreId:
+          type: string
+          description: iOS app store ID. This is used to check if the user has the app installed on their device before deep linking. If this field is set, then the ios_app_link field must also be present.
+          format: int64
+        androidAppLink:
+          type: string
+          description: Android deep link, for example, android-app://com.example.android/http/example.com/gizmos?1234.
+        formattedSalePrice:
+          description: Formatted sale price which can be any characters. If set, this attribute will be used instead of 'sale price', for example, On sale for $80.00.
+          type: string
+        destinationName:
+          type: string
+          description: Destination name, for example, Downtown Mountain View.
+        price:
+          type: string
+          description: Price which can be number followed by the alphabetic currency code, ISO 4217 standard. Use '.' as the decimal mark, for example, 100.00 USD.
+        address:
+          description: Address which can be specified in one of the following formats. (1) City, state, code, country, for example, Mountain View, CA, USA. (2) Full address, for example, 123 Boulevard St, Mountain View, CA 94043. (3) Latitude-longitude in the DDD format, for example, 41.40338, 2.17403
+          type: string
+        similarPropertyIds:
+          description: Similar property IDs.
+          items:
+            type: string
+          type: array
+        starRating:
+          description: Star rating. Must be a number between 1 to 5, inclusive.
+          type: string
+          format: int64
+        propertyId:
+          type: string
+          description: Required. Property ID which can be any sequence of letters and digits, and must be unique and match the values of remarketing tag. Required.
+    GoogleAdsGoogleadsV25Common__BookOnGoogleAsset:
+      description: A Book on Google asset. Used to redirect user to book through Google. Book on Google will change the redirect url to book directly through Google.
+      type: object
+      properties: {}
+    GoogleAdsGoogleadsV25Services__MutateAssetsResponse:
+      description: Response message for an asset mutate.
+      type: object
+      properties:
+        partialFailureError:
+          $ref: '#/components/schemas/GoogleRpc__Status'
+          description: Errors that pertain to operation failures in the partial failure mode. Returned only when partial_failure = true and all errors occur inside the operations. If any errors occur outside the operations (for example, auth errors), we return an RPC level error.
+        results:
+          type: array
+          description: All results for the mutate.
+          items:
+            $ref: '#/components/schemas/GoogleAdsGoogleadsV25Services__MutateAssetResult'
+    GoogleAdsGoogleadsV25Common__LeadFormAsset:
+      description: A Lead Form asset.
+      type: object
+      properties:
+        headline:
+          description: Required. Headline of the expanded form to describe what the form is asking for or facilitating.
+          type: string
+        customDisclosure:
+          description: Custom disclosure shown along with Google disclaimer on the lead form. Accessible to allowed customers only.
+          type: string
+        customQuestionFields:
+          description: Ordered list of custom question fields. This field is subject to a limit of 5 qualifying questions per form.
+          items:
+            $ref: '#/components/schemas/GoogleAdsGoogleadsV25Common__LeadFormCustomQuestionField'
+          type: array
+        postSubmitDescription:
+          description: Detailed description shown after form submission that describes how the advertiser will follow up with the user.
+          type: string
+        callToActionType:
+          description: Required. Pre-defined display text that encourages user to expand the form.
+          type: string
+          x-enumDescriptions:
+          - Not specified.
+          - Used for return value only. Represents value unknown in this version.
+          - Learn more.
+          - Get quote.
+          - Apply now.
+          - Sign Up.
+          - Contact us.
+          - Subscribe.
+          - Download.
+          - Book now.
+          - Get offer.
+          - Register.
+          - Get info.
+          - Request a demo.
+          - Join now.
+          - Get started.
+          enum:
+          - UNSPECIFIED
+          - UNKNOWN
+          - LEARN_MORE
+          - GET_QUOTE
+          - APPLY_NOW
+          - SIGN_UP
+          - CONTACT_US
+          - SUBSCRIBE
+          - DOWNLOAD
+          - BOOK_NOW
+          - GET_OFFER
+          - REGISTER
+          - GET_INFO
+          - REQUEST_DEMO
+          - JOIN_NOW
+          - GET_STARTED
+        privacyPolicyUrl:
+          description: Required. Link to a page describing the policy on how the collected data is handled by the advertiser/business.
+          type: string
+        deliveryMethods:
+          type: array
+          description: Configured methods for collected lead data to be delivered to advertiser. Only one method typed as WebhookDelivery can be configured.
+          items:
+            $ref: '#/components/schemas/GoogleAdsGoogleadsV25Common__LeadFormDeliveryMethod'
+        businessName:
+          description: Required. The name of the business being advertised.
+          type: string
+        backgroundImageAsset:
+          description: Asset resource name of the background image. The image dimensions must be exactly 1200x628.
+          type: string
+        description:
+          type: string
+          description: Required. Detailed description of the expanded form to describe what the form is asking for or facilitating.
+        postSubmitHeadline:
+          type: string
+          description: Headline of text shown after form submission that describes how the advertiser will follow up with the user.
+        callToActionDescription:
+          description: Required. Text giving a clear value proposition of what users expect once they expand the form.
+          type: string
+        desiredIntent:
+          type: string
+          description: Chosen intent for the lead form, for example, more volume or more qualified.
+          x-enumDescriptions:
+          - Not specified.
+          - Used for return value only. Represents value unknown in this version.
+          - Deliver more leads at a potentially lower quality.
+          - Deliver leads that are more qualified.
+          enum:
+          - UNSPECIFIED
+          - UNKNOWN
+          - LOW_INTENT
+          - HIGH_INTENT
+        fields:
+          type: array
+          description: Ordered list of input fields. This field can be updated by reordering questions, but not by adding or removing questions.
+          items:
+            $ref: '#/components/schemas/GoogleAdsGoogleadsV25Common__LeadFormField'
+        postSubmitCallToActionType:
+          x-enumDescriptions:
+          - Not specified.
+          - Used for return value only. Represents value unknown in this version.
+          - Visit site.
+          - Download.
+          - Learn more.
+          - Shop now.
+          enum:
+          - UNSPECIFIED
+          - UNKNOWN
+          - VISIT_SITE
+          - DOWNLOAD
+          - LEARN_MORE
+          - SHOP_NOW
+          type: string
+          description: Pre-defined display text that encourages user action after the form is submitted.
+    GoogleAdsGoogleadsV25Common__ZaloBusinessMessageInfo:
+      type: object
+      properties:
+        customName:
+          description: Custom name generated by the advertiser for their Zalo Account. These names will usually be registered brands or trademarks.
+          type: string
+        oaId:
+          type: string
+          description: Zalo Official Account ID of the advertiser.
+          format: int64
+      description: Zalo information to use for messaging.
+    GoogleAdsGoogleadsV25Common__YoutubeVideoAsset:
+      description: A YouTube asset.
+      type: object
+      properties:
+        youtubeVideoId:
+          description: YouTube video id. This is the 11 character string value used in the YouTube video URL.
+          type: string
+        youtubeVideoTitle:
+          description: YouTube video title.
+          type: string
+    GoogleAdsGoogleadsV25Common__SyntheticContentAttestation:
+      description: Represents an attestation about synthetic content from a single source.
+      type: object
+      properties:
+        source:
+          x-enumDescriptions:
+          - Not specified.
+          - Used for return values only. Represents value unknown in this version.
+          - Attestation provided by the advertiser.
+          - Google-generated content with advertiser review or input.
+          - Google-autogenerated content without advertiser review.
+          enum:
+          - UNSPECIFIED
+          - UNKNOWN
+          - ADVERTISER_ATTESTED
+          - GOOGLE_GENERATED_ADVERTISER_REVIEWED
+          - GOOGLE_GENERATED_FULLY_AUTOMATED
+          type: string
+          description: The source of the synthetic content attestation.
+        status:
+          description: Indicates whether the content is considered synthetic by this source.
+          type: string
+          x-enumDescriptions:
+          - Not specified.
+          - Used for return values only. Represents value unknown in this version.
+          - The content is attested as not synthetic.
+          - The content is attested as synthetic.
+          enum:
+          - UNSPECIFIED
+          - UNKNOWN
+          - NOT_SYNTHETIC
+          - IS_SYNTHETIC
+    GoogleAdsGoogleadsV25Common__PriceAsset:
+      type: object
+      properties:
+        priceQualifier:
+          description: The price qualifier of the price asset.
+          type: string
+          x-enumDescriptions:
+          - Not specified.
+          - Used for return value only. Represents value unknown in this version.
+          - '''From'' qualifier for the price.'
+          - '''Up to'' qualifier for the price.'
+          - '''Average'' qualifier for the price.'
+          enum:
+          - UNSPECIFIED
+          - UNKNOWN
+          - FROM
+          - UP_TO
+          - AVERAGE
+        languageCode:
+          description: Required. The language of the price asset. Represented as BCP 47 language tag.
+          type: string
+        type:
+          x-enumDescriptions:
+          - Not specified.
+          - Used for return value only. Represents value unknown in this version.
+          - The type for showing a list of brands.
+          - The type for showing a list of events.
+          - The type for showing locations relevant to your business.
+          - The type for showing sub-regions or districts within a city or region.
+          - The type for showing a collection of product categories.
+          - The type for showing a collection of related product tiers.
+          - The type for showing a collection of services offered by your business.
+          - The type for showing a collection of service categories.
+          - The type for showing a collection of related service tiers.
+          enum:
+          - UNSPECIFIED
+          - UNKNOWN
+          - BRANDS
+          - EVENTS
+          - LOCATIONS
+          - NEIGHBORHOODS
+          - PRODUCT_CATEGORIES
+          - PRODUCT_TIERS
+          - SERVICES
+          - SERVICE_CATEGORIES
+          - SERVICE_TIERS
+          type: string
+          description: Required. The type of the price asset.
+        priceOfferings:
+          description: The price offerings of the price asset. The size of this collection should be between 3 and 8, inclusive.
+          items:
+            $ref: '#/components/schemas/GoogleAdsGoogleadsV25Common__PriceOffering'
+          type: array
+      description: An asset representing a list of price offers.
+    GoogleAdsGoogleadsV25Common__SitelinkAsset:
+      description: A Sitelink asset.
+      type: object
+      properties:
+        description1:
+          type: string
+          description: First line of the description for the sitelink. If set, the length should be between 1 and 35, inclusive, and description2 must also be set.
+        description2:
+          type: string
+          description: Second line of the description for the sitelink. If set, the length should be between 1 and 35, inclusive, and description1 must also be set.
+        linkText:
+          description: Required. URL display text for the sitelink. The length of this string should be between 1 and 25, inclusive.
+          type: string
+        startDate:
+          description: Start date of when this asset is effective and can begin serving, in yyyy-MM-dd format.
+          type: string
+        endDate:
+          type: string
+          description: Last date of when this asset is effective and still serving, in yyyy-MM-dd format.
+        adScheduleTargets:
+          description: List of non-overlapping schedules specifying all time intervals for which the asset may serve. There can be a maximum of 6 schedules per day, 42 in total.
+          items:
+            $ref: '#/components/schemas/GoogleAdsGoogleadsV25Common__AdScheduleInfo'
+          type: array
+    GoogleAdsGoogleadsV25Common_PolicyTopicConstraint_ResellerConstraint:
+      description: Indicates that a policy topic was constrained due to disapproval of the website for reseller purposes.
+      type: object
+      properties: {}
+    GoogleAdsGoogleadsV25Common__BusinessProfileLocation:
+      description: Business Profile location data synced from the linked Business Profile account.
+      type: object
+      properties:
+        storeCode:
+          type: string
+          description: Business Profile store code of this location. This is synced from the Business Profile account.
+        labels:
+          description: Advertiser specified label for the location on the Business Profile account. This is synced from the Business Profile account.
+          items:
+            type: string
+          type: array
+        listingId:
+          format: int64
+          description: Listing ID of this Business Profile location. This is synced from the linked Business Profile account.
+          type: string
+    GoogleAdsGoogleadsV25Resources__Asset:
+      description: Asset is a part of an ad which can be shared across multiple ads. It can be an image (ImageAsset), a video (YoutubeVideoAsset), etc. Assets are immutable and cannot be removed. To stop an asset from serving, remove the asset from the entity that is using it.
+      type: object
+      properties:
+        source:
+          x-enumDescriptions:
+          - Not specified.
+          - Used for return value only. Represents value unknown in this version.
+          - The asset or asset link is provided by advertiser.
+          - The asset or asset link is generated by Google.
+          type: string
+          description: Output only. Source of the asset.
+          enum:
+          - UNSPECIFIED
+          - UNKNOWN
+          - ADVERTISER
+          - AUTOMATICALLY_CREATED
+        callAsset:
+          $ref: '#/components/schemas/GoogleAdsGoogleadsV25Common__CallAsset'
+          description: A call asset.
+        dynamicHotelsAndRentalsAsset:
+          $ref: '#/components/schemas/GoogleAdsGoogleadsV25Common__DynamicHotelsAndRentalsAsset'
+          description: A dynamic hotels and rentals asset.
+        callToActionAsset:
+          $ref: '#/components/schemas/GoogleAdsGoogleadsV25Common__CallToActionAsset'
+          description: Immutable. A call to action asset.
+        dynamicFlightsAsset:
+          $ref: '#/components/schemas/GoogleAdsGoogleadsV25Common__DynamicFlightsAsset'
+          description: A dynamic flights asset.
+        dynamicTravelAsset:
+          $ref: '#/components/schemas/GoogleAdsGoogleadsV25Common__DynamicTravelAsset'
+          description: A dynamic travel asset.
+        dynamicJobsAsset:
+          description: A dynamic jobs asset.
+          $ref: '#/components/schemas/GoogleAdsGoogleadsV25Common__DynamicJobsAsset'
+        pageFeedAsset:
+          $ref: '#/components/schemas/GoogleAdsGoogleadsV25Common__PageFeedAsset'
+          description: A page feed asset.
+        finalUrlSuffix:
+          description: URL template for appending params to landing page URLs served with parallel tracking.
+          type: string
+        locationAsset:
+          $ref: '#/components/schemas/GoogleAdsGoogleadsV25Common__LocationAsset'
+          description: Output only. A location asset.
+        textAsset:
+          $ref: '#/components/schemas/GoogleAdsGoogleadsV25Common__TextAsset'
+          description: Immutable. A text asset.
+        type:
+          description: Output only. Type of the asset.
+          type: string
+          enum:
+          - UNSPECIFIED
+          - UNKNOWN
+          - YOUTUBE_VIDEO
+          - MEDIA_BUNDLE
+          - IMAGE
+          - TEXT
+          - LEAD_FORM
+          - BOOK_ON_GOOGLE
+          - PROMOTION
+          - CALLOUT
+          - STRUCTURED_SNIPPET
+          - SITELINK
+          - PAGE_FEED
+          - DYNAMIC_EDUCATION
+          - MOBILE_APP
+          - HOTEL_CALLOUT
+          - CALL
+          - PRICE
+          - CALL_TO_ACTION
+          - DYNAMIC_REAL_ESTATE
+          - DYNAMIC_CUSTOM
+          - DYNAMIC_HOTELS_AND_RENTALS
+          - DYNAMIC_FLIGHTS
+          - DYNAMIC_TRAVEL
+          - DYNAMIC_LOCAL
+          - DYNAMIC_JOBS
+          - LOCATION
+          - HOTEL_PROPERTY
+          - DEMAND_GEN_CAROUSEL_CARD
+          - BUSINESS_MESSAGE
+          - APP_DEEP_LINK
+          - YOUTUBE_VIDEO_LIST
+          x-enumDescriptions:
+          - Not specified.
+          - Used for return value only. Represents value unknown in this version.
+          - YouTube video asset.
+          - Media bundle asset.
+          - Image asset.
+          - Text asset.
+          - Lead form asset.
+          - Book on Google asset.
+          - Promotion asset.
+          - Callout asset.
+          - Structured Snippet asset.
+          - Sitelink asset.
+          - Page Feed asset.
+          - Dynamic Education asset.
+          - Mobile app asset.
+          - Hotel callout asset.
+          - Call asset.
+          - Price asset.
+          - Call to action asset.
+          - Dynamic real estate asset.
+          - Dynamic custom asset.
+          - Dynamic hotels and rentals asset.
+          - Dynamic flights asset.
+          - Dynamic travel asset.
+          - Dynamic local asset.
+          - Dynamic jobs asset.
+          - Location asset.
+          - Hotel property asset.
+          - Demand Gen Carousel Card asset.
+          - Business message asset.
+          - App deep link asset.
+          - YouTube video list asset.
+        sitelinkAsset:
+          $ref: '#/components/schemas/GoogleAdsGoogleadsV25Common__SitelinkAsset'
+          description: A sitelink asset.
+        mediaBundleAsset:
+          description: Immutable. A media bundle asset.
+          $ref: '#/components/schemas/GoogleAdsGoogleadsV25Common__MediaBundleAsset'
+        priceAsset:
+          description: A price asset.
+          $ref: '#/components/schemas/GoogleAdsGoogleadsV25Common__PriceAsset'
+        youtubeVideoListAsset:
+          description: Immutable. A YouTube video list asset.
+          $ref: '#/components/schemas/GoogleAdsGoogleadsV25Common__YouTubeVideoListAsset'
+        structuredSnippetAsset:
+          description: A structured snippet asset.
+          $ref: '#/components/schemas/GoogleAdsGoogleadsV25Common__StructuredSnippetAsset'
+        hotelPropertyAsset:
+          description: Immutable. A hotel property asset.
+          $ref: '#/components/schemas/GoogleAdsGoogleadsV25Common__HotelPropertyAsset'
+        dynamicCustomAsset:
+          description: A dynamic custom asset.
+          $ref: '#/components/schemas/GoogleAdsGoogleadsV25Common__DynamicCustomAsset'
+        fieldTypePolicySummaries:
+          type: array
+          description: Output only. Policy information for the asset for each FieldType.
+          items:
+            $ref: '#/components/schemas/GoogleAdsGoogleadsV25Resources__AssetFieldTypePolicySummary'
+        orientation:
+          x-enumDescriptions:
+          - Not specified.
+          - The value is unknown in this version.
+          - Landscape orientation.
+          - Portrait orientation.
+          - Square orientation.
+          description: Output only. Orientation of the asset. This is only supported for image and video assets.
+          type: string
+          enum:
+          - UNSPECIFIED
+          - UNKNOWN
+          - LANDSCAPE
+          - PORTRAIT
+          - SQUARE
+        syntheticContentInfo:
+          $ref: '#/components/schemas/GoogleAdsGoogleadsV25Common__SyntheticContentInfo'
+          description: Synthetic content info for the asset.
+        name:
+          type: string
+          description: Optional name of the asset.
+        hotelCalloutAsset:
+          description: A hotel callout asset.
+          $ref: '#/components/schemas/GoogleAdsGoogleadsV25Common__HotelCalloutAsset'
+        leadFormAsset:
+          $ref: '#/components/schemas/GoogleAdsGoogleadsV25Common__LeadFormAsset'
+          description: A lead form asset.
+        calloutAsset:
+          $ref: '#/components/schemas/GoogleAdsGoogleadsV25Common__CalloutAsset'
+          description: A callout asset.
+        dynamicRealEstateAsset:
+          description: A dynamic real estate asset.
+          $ref: '#/components/schemas/GoogleAdsGoogleadsV25Common__DynamicRealEstateAsset'
+        finalUrls:
+          description: A list of possible final URLs after all cross domain redirects.
+          items:
+            type: string
+          type: array
+        dynamicEducationAsset:
+          description: A dynamic education asset.
+          $ref: '#/components/schemas/GoogleAdsGoogleadsV25Common__DynamicEducationAsset'
+        resourceName:
+          type: string
+          description: 'Immutable. The resource name of the asset. Asset resource names have the form: `customers/{customer_id}/assets/{asset_id}`'
+        trackingUrlTemplate:
+          description: URL template for constructing a tracking URL.
+          type: string
+        appDeepLinkAsset:
+          $ref: '#/components/schemas/GoogleAdsGoogleadsV25Common__AppDeepLinkAsset'
+          description: Immutable. An app deep link asset.
+        id:
+          format: int64
+          description: Output only. The ID of the asset.
+          type: string
+        finalMobileUrls:
+          type: array
+          description: A list of possible final mobile URLs after all cross domain redirects.
+          items:
+            type: string
+        policySummary:
+          description: Output only. Policy information for the asset.
+          $ref: '#/components/schemas/GoogleAdsGoogleadsV25Resources__AssetPolicySummary'
+        bookOnGoogleAsset:
+          description: A book on google asset.
+          $ref: '#/components/schemas/GoogleAdsGoogleadsV25Common__BookOnGoogleAsset'
+        imageAsset:
+          description: Output only. An image asset.
+          $ref: '#/components/schemas/GoogleAdsGoogleadsV25Common__ImageAsset'
+        demandGenCarouselCardAsset:
+          $ref: '#/components/schemas/GoogleAdsGoogleadsV25Common__DemandGenCarouselCardAsset'
+          description: Immutable. A Demand Gen carousel card asset.
+        mobileAppAsset:
+          description: A mobile app asset.
+          $ref: '#/components/schemas/GoogleAdsGoogleadsV25Common__MobileAppAsset'
+        youtubeVideoAsset:
+          $ref: '#/components/schemas/GoogleAdsGoogleadsV25Common__YoutubeVideoAsset'
+          description: Immutable. A YouTube video asset.
+        promotionAsset:
+          $ref: '#/components/schemas/GoogleAdsGoogleadsV25Common__PromotionAsset'
+          description: A promotion asset.
+        dynamicLocalAsset:
+          description: A dynamic local asset.
+          $ref: '#/components/schemas/GoogleAdsGoogleadsV25Common__DynamicLocalAsset'
+        businessMessageAsset:
+          $ref: '#/components/schemas/GoogleAdsGoogleadsV25Common__BusinessMessageAsset'
+          description: A business message asset.
+        urlCustomParameters:
+          description: A list of mappings to be used for substituting URL custom parameter tags in the tracking_url_template, final_urls, and/or final_mobile_urls.
+          items:
+            $ref: '#/components/schemas/GoogleAdsGoogleadsV25Common__CustomParameter'
+          type: array
+    GoogleAdsGoogleadsV25Common_PolicyTopicEvidence_DestinationTextList:
+      type: object
+      properties:
+        destinationTexts:
+          type: array
+          description: List of text found in the resource's destination page.
+          items:
+            type: string
+      description: A list of strings found in a destination page that caused a policy finding.
+    GoogleAdsGoogleadsV25Common__LocationAsset:
+      type: object
+      properties:
+        businessProfileLocations:
+          description: The list of business locations for the customer. This will only be returned if the Location Asset is syncing from the Business Profile account. It is possible to have multiple Business Profile listings under the same account that point to the same Place ID.
+          items:
+            $ref: '#/components/schemas/GoogleAdsGoogleadsV25Common__BusinessProfileLocation'
+          type: array
+        locationOwnershipType:
+          x-enumDescriptions:
+          - Not specified.
+          - Used for return value only. Represents value unknown in this version.
+          - Business Owner of location(legacy location extension - LE).
+          - Affiliate location(Third party location extension - ALE).
+          enum:
+          - UNSPECIFIED
+          - UNKNOWN
+          - BUSINESS_OWNER
+          - AFFILIATE
+          type: string
+          description: The type of location ownership. If the type is BUSINESS_OWNER, it will be served as a location extension. If the type is AFFILIATE, it will be served as an affiliate location.
+        placeId:
+          type: string
+          description: Place IDs uniquely identify a place in the Google Places database and on Google Maps. This field is unique for a given customer ID and asset type. See https://developers.google.com/places/web-service/place-id to learn more about Place ID.
+      description: A location asset.
+    GoogleAdsGoogleadsV25Common__TextAsset:
+      description: A Text asset.
+      type: object
+      properties:
+        text:
+          type: string
+          description: Text content of the text asset.
+    GoogleAdsGoogleadsV25Common__BusinessMessageAsset:
+      type: object
+      properties:
+        messageProvider:
+          x-enumDescriptions:
+          - Not specified.
+          - Used for return value only. Represents value unknown in this version.
+          - WhatsApp message provider
+          - Facebook Messenger message provider
+          - Zalo message provider
+          enum:
+          - UNSPECIFIED
+          - UNKNOWN
+          - WHATSAPP
+          - FACEBOOK_MESSENGER
+          - ZALO
+          description: Required. Message provider of the business message asset.
+          type: string
+        callToAction:
+          $ref: '#/components/schemas/GoogleAdsGoogleadsV25Common__BusinessMessageCallToActionInfo'
+          description: A call to action for the business message asset.
+        whatsappInfo:
+          $ref: '#/components/schemas/GoogleAdsGoogleadsV25Common__WhatsappBusinessMessageInfo'
+          description: Whatsapp.
+        zaloInfo:
+          $ref: '#/components/schemas/GoogleAdsGoogleadsV25Common__ZaloBusinessMessageInfo'
+          description: Zalo.
+        facebookMessengerInfo:
+          description: Facebook Messenger.
+          $ref: '#/components/schemas/GoogleAdsGoogleadsV25Common__FacebookMessengerBusinessMessageInfo'
+        starterMessage:
+          description: Required. A welcome message to prompt the user to initiate a conversation.
+          type: string
+      description: A business message asset.
+    GoogleAdsGoogleadsV25Common__ImageAsset:
+      type: object
+      properties:
+        mimeType:
+          x-enumDescriptions:
+          - The mime type has not been specified.
+          - The received value is not known in this version. This is a response-only value.
+          - MIME type of image/jpeg.
+          - MIME type of image/gif.
+          - MIME type of image/png.
+          - MIME type of application/x-shockwave-flash.
+          - MIME type of text/html.
+          - MIME type of application/pdf.
+          - MIME type of application/msword.
+          - MIME type of application/vnd.ms-excel.
+          - MIME type of application/rtf.
+          - MIME type of audio/wav.
+          - MIME type of audio/mp3.
+          - MIME type of application/x-html5-ad-zip.
+          enum:
+          - UNSPECIFIED
+          - UNKNOWN
+          - IMAGE_JPEG
+          - IMAGE_GIF
+          - IMAGE_PNG
+          - FLASH
+          - TEXT_HTML
+          - PDF
+          - MSWORD
+          - MSEXCEL
+          - RTF
+          - AUDIO_WAV
+          - AUDIO_MP3
+          - HTML5_AD_ZIP
+          type: string
+          description: MIME type of the image asset.
+        fullSize:
+          description: Metadata for this image at its original size.
+          $ref: '#/components/schemas/GoogleAdsGoogleadsV25Common__ImageDimension'
+        data:
+          format: byte
+          type: string
+          description: The raw bytes data of an image. This field is mutate only.
+        fileSize:
+          description: File size of the image asset in bytes.
+          type: string
+          format: int64
+      description: An Image asset.
+    GoogleAdsGoogleadsV25Common__CallToActionAsset:
+      type: object
+      properties:
+        callToAction:
+          x-enumDescriptions:
+          - Not specified.
+          - Used for return value only. Represents value unknown in this version.
+          - The call to action type is learn more.
+          - The call to action type is get quote.
+          - The call to action type is apply now.
+          - The call to action type is sign up.
+          - The call to action type is contact us.
+          - The call to action type is subscribe.
+          - The call to action type is download.
+          - The call to action type is book now.
+          - The call to action type is shop now.
+          - The call to action type is buy now.
+          - The call to action type is donate now.
+          - The call to action type is order now.
+          - The call to action type is play now.
+          - The call to action type is see more.
+          - The call to action type is start now.
+          - The call to action type is visit site.
+          - The call to action type is watch now.
+          enum:
+          - UNSPECIFIED
+          - UNKNOWN
+          - LEARN_MORE
+          - GET_QUOTE
+          - APPLY_NOW
+          - SIGN_UP
+          - CONTACT_US
+          - SUBSCRIBE
+          - DOWNLOAD
+          - BOOK_NOW
+          - SHOP_NOW
+          - BUY_NOW
+          - DONATE_NOW
+          - ORDER_NOW
+          - PLAY_NOW
+          - SEE_MORE
+          - START_NOW
+          - VISIT_SITE
+          - WATCH_NOW
+          description: Call to action.
+          type: string
+      description: A call to action asset.
+    GoogleAdsGoogleadsV25Common__LeadFormField:
+      description: One input field instance within a form.
+      type: object
+      properties:
+        inputType:
+          type: string
+          description: Describes the input type, which may be a predefined type such as "full name" or a pre-vetted question like "What kind of vehicle do you have?".
+          x-enumDescriptions:
+          - Not specified.
+          - Used for return value only. Represents value unknown in this version.
+          - The user will be asked to fill in their given and family name. This field cannot be set at the same time as GIVEN_NAME or FAMILY_NAME.
+          - The user will be asked to fill in their email address.
+          - The user will be asked to fill in their phone number.
+          - The user will be asked to fill in their zip code.
+          - The user will be asked to fill in their street address.
+          - The user will be asked to fill in their city.
+          - The user will be asked to fill in their region part of the address (for example, state for US, province for Canada).
+          - The user will be asked to fill in their country.
+          - The user will be asked to fill in their work email address.
+          - The user will be asked to fill in their company name.
+          - The user will be asked to fill in their work phone.
+          - The user will be asked to fill in their job title.
+          - The user will be asked to fill in their CPF for Brazil users.
+          - The user will be asked to fill in their DNI for Argentina users.
+          - The user will be asked to fill in their DNI for Peru users.
+          - The user will be asked to fill in their RUT for Chile users.
+          - The user will be asked to fill in their CC for Colombia users.
+          - The user will be asked to fill in their CI for Ecuador users.
+          - The user will be asked to fill in their RFC for Mexico users.
+          - The user will be asked to fill in their first name. This field can not be set at the same time as FULL_NAME.
+          - The user will be asked to fill in their last name. This field can not be set at the same time as FULL_NAME.
+          - 'Question: "Which model are you interested in?" Category: "Auto" This field is subject to a limit of 5 qualifying questions per form and cannot be used if values are set using custom_question_fields.'
+          - 'Question: "Which type of vehicle are you interested in?" Category: "Auto" This field is subject to a limit of 5 qualifying questions per form and cannot be used if values are set using custom_question_fields.'
+          - 'Question: "What is your preferred dealership?" Category: "Auto" This field is subject to a limit of 5 qualifying questions per form and cannot be used if values are set using custom_question_fields.'
+          - 'Question: "When do you plan on purchasing a vehicle?" Category: "Auto" This field is subject to a limit of 5 qualifying questions per form and cannot be used if values are set using custom_question_fields.'
+          - 'Question: "Do you own a vehicle?" Category: "Auto" This field is subject to a limit of 5 qualifying questions per form and cannot be used if values are set using custom_question_fields.'
+          - 'Question: "What vehicle ownership option are you interested in?" Category: "Auto" This field is subject to a limit of 5 qualifying questions per form and cannot be used if values are set using custom_question_fields.'
+          - 'Question: "What type of vehicle condition are you interested in?" Category: "Auto" This field is subject to a limit of 5 qualifying questions per form and cannot be used if values are set using custom_question_fields.'
+          - 'Question: "What size is your company?" Category: "Business" This field is subject to a limit of 5 qualifying questions per form and cannot be used if values are set using custom_question_fields.'
+          - 'Question: "What is your annual sales volume?" Category: "Business" This field is subject to a limit of 5 qualifying questions per form and cannot be used if values are set using custom_question_fields.'
+          - 'Question: "How many years have you been in business?" Category: "Business" This field is subject to a limit of 5 qualifying questions per form and cannot be used if values are set using custom_question_fields.'
+          - 'Question: "What is your job department?" Category: "Business" This field is subject to a limit of 5 qualifying questions per form and cannot be used if values are set using custom_question_fields.'
+          - 'Question: "What is your job role?" Category: "Business" This field is subject to a limit of 5 qualifying questions per form and cannot be used if values are set using custom_question_fields.'
+          - 'Question: "Are you over 18 years of age?" Category: "Demographics" This field is subject to a limit of 5 qualifying questions per form and cannot be used if values are set using custom_question_fields.'
+          - 'Question: "Are you over 19 years of age?" Category: "Demographics" This field is subject to a limit of 5 qualifying questions per form and cannot be used if values are set using custom_question_fields.'
+          - 'Question: "Are you over 20 years of age?" Category: "Demographics" This field is subject to a limit of 5 qualifying questions per form and cannot be used if values are set using custom_question_fields.'
+          - 'Question: "Are you over 21 years of age?" Category: "Demographics" This field is subject to a limit of 5 qualifying questions per form and cannot be used if values are set using custom_question_fields.'
+          - 'Question: "Are you over 22 years of age?" Category: "Demographics" This field is subject to a limit of 5 qualifying questions per form and cannot be used if values are set using custom_question_fields.'
+          - 'Question: "Are you over 23 years of age?" Category: "Demographics" This field is subject to a limit of 5 qualifying questions per form and cannot be used if values are set using custom_question_fields.'
+          - 'Question: "Are you over 24 years of age?" Category: "Demographics" This field is subject to a limit of 5 qualifying questions per form and cannot be used if values are set using custom_question_fields.'
+          - 'Question: "Are you over 25 years of age?" Category: "Demographics" This field is subject to a limit of 5 qualifying questions per form and cannot be used if values are set using custom_question_fields.'
+          - 'Question: "Are you over 26 years of age?" Category: "Demographics" This field is subject to a limit of 5 qualifying questions per form and cannot be used if values are set using custom_question_fields.'
+          - 'Question: "Are you over 27 years of age?" Category: "Demographics" This field is subject to a limit of 5 qualifying questions per form and cannot be used if values are set using custom_question_fields.'
+          - 'Question: "Are you over 28 years of age?" Category: "Demographics" This field is subject to a limit of 5 qualifying questions per form and cannot be used if values are set using custom_question_fields.'
+          - 'Question: "Are you over 29 years of age?" Category: "Demographics" This field is subject to a limit of 5 qualifying questions per form and cannot be used if values are set using custom_question_fields.'
+          - 'Question: "Are you over 30 years of age?" Category: "Demographics" This field is subject to a limit of 5 qualifying questions per form and cannot be used if values are set using custom_question_fields.'
+          - 'Question: "Are you over 31 years of age?" Category: "Demographics" This field is subject to a limit of 5 qualifying questions per form and cannot be used if values are set using custom_question_fields.'
+          - 'Question: "Are you over 32 years of age?" Category: "Demographics" This field is subject to a limit of 5 qualifying questions per form and cannot be used if values are set using custom_question_fields.'
+          - 'Question: "Are you over 33 years of age?" Category: "Demographics" This field is subject to a limit of 5 qualifying questions per form and cannot be used if values are set using custom_question_fields.'
+          - 'Question: "Are you over 34 years of age?" Category: "Demographics" This field is subject to a limit of 5 qualifying questions per form and cannot be used if values are set using custom_question_fields.'
+          - 'Question: "Are you over 35 years of age?" Category: "Demographics" This field is subject to a limit of 5 qualifying questions per form and cannot be used if values are set using custom_question_fields.'
+          - 'Question: "Are you over 36 years of age?" Category: "Demographics" This field is subject to a limit of 5 qualifying questions per form and cannot be used if values are set using custom_question_fields.'
+          - 'Question: "Are you over 37 years of age?" Category: "Demographics" This field is subject to a limit of 5 qualifying questions per form and cannot be used if values are set using custom_question_fields.'
+          - 'Question: "Are you over 38 years of age?" Category: "Demographics" This field is subject to a limit of 5 qualifying questions per form and cannot be used if values are set using custom_question_fields.'
+          - 'Question: "Are you over 39 years of age?" Category: "Demographics" This field is subject to a limit of 5 qualifying questions per form and cannot be used if values are set using custom_question_fields.'
+          - 'Question: "Are you over 40 years of age?" Category: "Demographics" This field is subject to a limit of 5 qualifying questions per form and cannot be used if values are set using custom_question_fields.'
+          - 'Question: "Are you over 41 years of age?" Category: "Demographics" This field is subject to a limit of 5 qualifying questions per form and cannot be used if values are set using custom_question_fields.'
+          - 'Question: "Are you over 42 years of age?" Category: "Demographics" This field is subject to a limit of 5 qualifying questions per form and cannot be used if values are set using custom_question_fields.'
+          - 'Question: "Are you over 43 years of age?" Category: "Demographics" This field is subject to a limit of 5 qualifying questions per form and cannot be used if values are set using custom_question_fields.'
+          - 'Question: "Are you over 44 years of age?" Category: "Demographics" This field is subject to a limit of 5 qualifying questions per form and cannot be used if values are set using custom_question_fields.'
+          - 'Question: "Are you over 45 years of age?" Category: "Demographics" This field is subject to a limit of 5 qualifying questions per form and cannot be used if values are set using custom_question_fields.'
+          - 'Question: "Are you over 46 years of age?" Category: "Demographics" This field is subject to a limit of 5 qualifying questions per form and cannot be used if values are set using custom_question_fields.'
+          - 'Question: "Are you over 47 years of age?" Category: "Demographics" This field is subject to a limit of 5 qualifying questions per form and cannot be used if values are set using custom_question_fields.'
+          - 'Question: "Are you over 48 years of age?" Category: "Demographics" This field is subject to a limit of 5 qualifying questions per form and cannot be used if values are set using custom_question_fields.'
+          - 'Question: "Are you over 49 years of age?" Category: "Demographics" This field is subject to a limit of 5 qualifying questions per form and cannot be used if values are set using custom_question_fields.'
+          - 'Question: "Are you over 50 years of age?" Category: "Demographics" This field is subject to a limit of 5 qualifying questions per form and cannot be used if values are set using custom_question_fields.'
+          - 'Question: "Are you over 51 years of age?" Category: "Demographics" This field is subject to a limit of 5 qualifying questions per form and cannot be used if values are set using custom_question_fields.'
+          - 'Question: "Are you over 52 years of age?" Category: "Demographics" This field is subject to a limit of 5 qualifying questions per form and cannot be used if values are set using custom_question_fields.'
+          - 'Question: "Are you over 53 years of age?" Category: "Demographics" This field is subject to a limit of 5 qualifying questions per form and cannot be used if values are set using custom_question_fields.'
+          - 'Question: "Are you over 54 years of age?" Category: "Demographics" This field is subject to a limit of 5 qualifying questions per form and cannot be used if values are set using custom_question_fields.'
+          - 'Question: "Are you over 55 years of age?" Category: "Demographics" This field is subject to a limit of 5 qualifying questions per form and cannot be used if values are set using custom_question_fields.'
+          - 'Question: "Are you over 56 years of age?" Category: "Demographics" This field is subject to a limit of 5 qualifying questions per form and cannot be used if values are set using custom_question_fields.'
+          - 'Question: "Are you over 57 years of age?" Category: "Demographics" This field is subject to a limit of 5 qualifying questions per form and cannot be used if values are set using custom_question_fields.'
+          - 'Question: "Are you over 58 years of age?" Category: "Demographics" This field is subject to a limit of 5 qualifying questions per form and cannot be used if values are set using custom_question_fields.'
+          - 'Question: "Are you over 59 years of age?" Category: "Demographics" This field is subject to a limit of 5 qualifying questions per form and cannot be used if values are set using custom_question_fields.'
+          - 'Question: "Are you over 60 years of age?" Category: "Demographics" This field is subject to a limit of 5 qualifying questions per form and cannot be used if values are set using custom_question_fields.'
+          - 'Question: "Are you over 61 years of age?" Category: "Demographics" This field is subject to a limit of 5 qualifying questions per form and cannot be used if values are set using custom_question_fields.'
+          - 'Question: "Are you over 62 years of age?" Category: "Demographics" This field is subject to a limit of 5 qualifying questions per form and cannot be used if values are set using custom_question_fields.'
+          - 'Question: "Are you over 63 years of age?" Category: "Demographics" This field is subject to a limit of 5 qualifying questions per form and cannot be used if values are set using custom_question_fields.'
+          - 'Question: "Are you over 64 years of age?" Category: "Demographics" This field is subject to a limit of 5 qualifying questions per form and cannot be used if values are set using custom_question_fields.'
+          - 'Question: "Are you over 65 years of age?" Category: "Demographics" This field is subject to a limit of 5 qualifying questions per form and cannot be used if values are set using custom_question_fields.'
+          - 'Question: "Which program are you interested in?" Category: "Education" This field is subject to a limit of 5 qualifying questions per form and cannot be used if values are set using custom_question_fields.'
+          - 'Question: "Which course are you interested in?" Category: "Education" This field is subject to a limit of 5 qualifying questions per form and cannot be used if values are set using custom_question_fields.'
+          - 'Question: "Which product are you interested in?" Category: "General" This field is subject to a limit of 5 qualifying questions per form and cannot be used if values are set using custom_question_fields.'
+          - 'Question: "Which service are you interested in?" Category: "General" This field is subject to a limit of 5 qualifying questions per form and cannot be used if values are set using custom_question_fields.'
+          - 'Question: "Which offer are you interested in?" Category: "General" This field is subject to a limit of 5 qualifying questions per form and cannot be used if values are set using custom_question_fields.'
+          - 'Question: "Which category are you interested in?" Category: "General" This field is subject to a limit of 5 qualifying questions per form and cannot be used if values are set using custom_question_fields.'
+          - 'Question: "What is your preferred method of contact?" Category: "General" This field is subject to a limit of 5 qualifying questions per form and cannot be used if values are set using custom_question_fields.'
+          - 'Question: "What is your preferred location?" Category: "General" This field is subject to a limit of 5 qualifying questions per form and cannot be used if values are set using custom_question_fields.'
+          - 'Question: "What is the best time to contact you?" Category: "General" This field is subject to a limit of 5 qualifying questions per form and cannot be used if values are set using custom_question_fields.'
+          - 'Question: "When are you looking to make a purchase?" Category: "General" This field is subject to a limit of 5 qualifying questions per form and cannot be used if values are set using custom_question_fields.'
+          - 'Question: "How many years of work experience do you have?" Category: "Jobs" This field is subject to a limit of 5 qualifying questions per form and cannot be used if values are set using custom_question_fields.'
+          - 'Question: "What industry do you work in?" Category: "Jobs" This field is subject to a limit of 5 qualifying questions per form and cannot be used if values are set using custom_question_fields.'
+          - 'Question: "What is your highest level of education?" Category: "Jobs" This field is subject to a limit of 5 qualifying questions per form and cannot be used if values are set using custom_question_fields.'
+          - 'Question: "What type of property are you looking for?" Category: "Real Estate" This field is subject to a limit of 5 qualifying questions per form and cannot be used if values are set using custom_question_fields.'
+          - 'Question: "What do you need a realtor''s help with?" Category: "Real Estate" This field is subject to a limit of 5 qualifying questions per form and cannot be used if values are set using custom_question_fields.'
+          - 'Question: "What neighborhood are you interested in?" Category: "Real Estate" This field is subject to a limit of 5 qualifying questions per form and cannot be used if values are set using custom_question_fields.'
+          - 'Question: "What price range are you looking for?" Category: "Real Estate" This field is subject to a limit of 5 qualifying questions per form and cannot be used if values are set using custom_question_fields.'
+          - 'Question: "How many bedrooms are you looking for?" Category: "Real Estate" This field is subject to a limit of 5 qualifying questions per form and cannot be used if values are set using custom_question_fields.'
+          - 'Question: "Are you looking for a fully furnished property?" Category: "Real Estate" This field is subject to a limit of 5 qualifying questions per form and cannot be used if values are set using custom_question_fields.'
+          - 'Question: "Are you looking for properties that allow pets?" Category: "Real Estate" This field is subject to a limit of 5 qualifying questions per form and cannot be used if values are set using custom_question_fields.'
+          - 'Question: "What is the next product you plan to purchase?" Category: "Retail" This field is subject to a limit of 5 qualifying questions per form and cannot be used if values are set using custom_question_fields.'
+          - 'Question: "Would you like to sign up for an event?" Category: "Retail" This field is subject to a limit of 5 qualifying questions per form and cannot be used if values are set using custom_question_fields.'
+          - 'Question: "Where are you interested in shopping?" Category: "Retail" This field is subject to a limit of 5 qualifying questions per form and cannot be used if values are set using custom_question_fields.'
+          - 'Question: "What is your favorite brand?" Category: "Retail" This field is subject to a limit of 5 qualifying questions per form and cannot be used if values are set using custom_question_fields.'
+          - 'Question: "Which type of valid commercial license do you have?" Category: "Transportation" This field is subject to a limit of 5 qualifying questions per form and cannot be used if values are set using custom_question_fields.'
+          - 'Question: "Interested in booking an event?" Category: "Travel" This field is subject to a limit of 5 qualifying questions per form and cannot be used if values are set using custom_question_fields.'
+          - 'Question: "What is your destination country?" Category: "Travel" This field is subject to a limit of 5 qualifying questions per form and cannot be used if values are set using custom_question_fields.'
+          - 'Question: "What is your destination city?" Category: "Travel" This field is subject to a limit of 5 qualifying questions per form and cannot be used if values are set using custom_question_fields.'
+          - 'Question: "What is your departure country?" Category: "Travel" This field is subject to a limit of 5 qualifying questions per form and cannot be used if values are set using custom_question_fields.'
+          - 'Question: "What is your departure city?" Category: "Travel" This field is subject to a limit of 5 qualifying questions per form and cannot be used if values are set using custom_question_fields.'
+          - 'Question: "What is your departure date?" Category: "Travel" This field is subject to a limit of 5 qualifying questions per form and cannot be used if values are set using custom_question_fields.'
+          - 'Question: "What is your return date?" Category: "Travel" This field is subject to a limit of 5 qualifying questions per form and cannot be used if values are set using custom_question_fields.'
+          - 'Question: "How many people are you traveling with?" Category: "Travel" This field is subject to a limit of 5 qualifying questions per form and cannot be used if values are set using custom_question_fields.'
+          - 'Question: "What is your travel budget?" Category: "Travel" This field is subject to a limit of 5 qualifying questions per form and cannot be used if values are set using custom_question_fields.'
+          - 'Question: "Where do you want to stay during your travel?" Category: "Travel" This field is subject to a limit of 5 qualifying questions per form and cannot be used if values are set using custom_question_fields.'
+          enum:
+          - UNSPECIFIED
+          - UNKNOWN
+          - FULL_NAME
+          - EMAIL
+          - PHONE_NUMBER
+          - POSTAL_CODE
+          - STREET_ADDRESS
+          - CITY
+          - REGION
+          - COUNTRY
+          - WORK_EMAIL
+          - COMPANY_NAME
+          - WORK_PHONE
+          - JOB_TITLE
+          - GOVERNMENT_ISSUED_ID_CPF_BR
+          - GOVERNMENT_ISSUED_ID_DNI_AR
+          - GOVERNMENT_ISSUED_ID_DNI_PE
+          - GOVERNMENT_ISSUED_ID_RUT_CL
+          - GOVERNMENT_ISSUED_ID_CC_CO
+          - GOVERNMENT_ISSUED_ID_CI_EC
+          - GOVERNMENT_ISSUED_ID_RFC_MX
+          - FIRST_NAME
+          - LAST_NAME
+          - VEHICLE_MODEL
+          - VEHICLE_TYPE
+          - PREFERRED_DEALERSHIP
+          - VEHICLE_PURCHASE_TIMELINE
+          - VEHICLE_OWNERSHIP
+          - VEHICLE_PAYMENT_TYPE
+          - VEHICLE_CONDITION
+          - COMPANY_SIZE
+          - ANNUAL_SALES
+          - YEARS_IN_BUSINESS
+          - JOB_DEPARTMENT
+          - JOB_ROLE
+          - OVER_18_AGE
+          - OVER_19_AGE
+          - OVER_20_AGE
+          - OVER_21_AGE
+          - OVER_22_AGE
+          - OVER_23_AGE
+          - OVER_24_AGE
+          - OVER_25_AGE
+          - OVER_26_AGE
+          - OVER_27_AGE
+          - OVER_28_AGE
+          - OVER_29_AGE
+          - OVER_30_AGE
+          - OVER_31_AGE
+          - OVER_32_AGE
+          - OVER_33_AGE
+          - OVER_34_AGE
+          - OVER_35_AGE
+          - OVER_36_AGE
+          - OVER_37_AGE
+          - OVER_38_AGE
+          - OVER_39_AGE
+          - OVER_40_AGE
+          - OVER_41_AGE
+          - OVER_42_AGE
+          - OVER_43_AGE
+          - OVER_44_AGE
+          - OVER_45_AGE
+          - OVER_46_AGE
+          - OVER_47_AGE
+          - OVER_48_AGE
+          - OVER_49_AGE
+          - OVER_50_AGE
+          - OVER_51_AGE
+          - OVER_52_AGE
+          - OVER_53_AGE
+          - OVER_54_AGE
+          - OVER_55_AGE
+          - OVER_56_AGE
+          - OVER_57_AGE
+          - OVER_58_AGE
+          - OVER_59_AGE
+          - OVER_60_AGE
+          - OVER_61_AGE
+          - OVER_62_AGE
+          - OVER_63_AGE
+          - OVER_64_AGE
+          - OVER_65_AGE
+          - EDUCATION_PROGRAM
+          - EDUCATION_COURSE
+          - PRODUCT
+          - SERVICE
+          - OFFER
+          - CATEGORY
+          - PREFERRED_CONTACT_METHOD
+          - PREFERRED_LOCATION
+          - PREFERRED_CONTACT_TIME
+          - PURCHASE_TIMELINE
+          - YEARS_OF_EXPERIENCE
+          - JOB_INDUSTRY
+          - LEVEL_OF_EDUCATION
+          - PROPERTY_TYPE
+          - REALTOR_HELP_GOAL
+          - PROPERTY_COMMUNITY
+          - PRICE_RANGE
+          - NUMBER_OF_BEDROOMS
+          - FURNISHED_PROPERTY
+          - PETS_ALLOWED_PROPERTY
+          - NEXT_PLANNED_PURCHASE
+          - EVENT_SIGNUP_INTEREST
+          - PREFERRED_SHOPPING_PLACES
+          - FAVORITE_BRAND
+          - TRANSPORTATION_COMMERCIAL_LICENSE_TYPE
+          - EVENT_BOOKING_INTEREST
+          - DESTINATION_COUNTRY
+          - DESTINATION_CITY
+          - DEPARTURE_COUNTRY
+          - DEPARTURE_CITY
+          - DEPARTURE_DATE
+          - RETURN_DATE
+          - NUMBER_OF_TRAVELERS
+          - TRAVEL_BUDGET
+          - TRAVEL_ACCOMMODATION
+        singleChoiceAnswers:
+          description: Answer configuration for a single choice question. Can be set only for pre-vetted question fields. Minimum of 2 answers required and maximum of 12 allowed.
+          $ref: '#/components/schemas/GoogleAdsGoogleadsV25Common__LeadFormSingleChoiceAnswers'
+        hasLocationAnswer:
+          description: Answer configuration for location question. If true, campaign/account level location data (state, city, business name etc) will be rendered on the Lead Form. Starting V13.1, has_location_answer can only be set for "What is your preferred dealership?" question, for advertisers with Location Assets setup at campaign/account level.
+          type: boolean
+    GoogleAdsGoogleadsV25Resources__AssetPolicySummary:
+      description: Contains policy information for an asset.
+      type: object
+      properties:
+        approvalStatus:
+          type: string
+          description: Output only. The overall approval status of this asset, calculated based on the status of its individual policy topic entries.
+          enum:
+          - UNSPECIFIED
+          - UNKNOWN
+          - DISAPPROVED
+          - APPROVED_LIMITED
+          - APPROVED
+          - AREA_OF_INTEREST_ONLY
+          x-enumDescriptions:
+          - No value has been specified.
+          - The received value is not known in this version. This is a response-only value.
+          - Will not serve.
+          - Serves with restrictions.
+          - Serves without restrictions.
+          - Will not serve in targeted countries, but may serve for users who are searching for information about the targeted countries.
+        policyTopicEntries:
+          description: Output only. The list of policy findings for this asset.
+          items:
+            $ref: '#/components/schemas/GoogleAdsGoogleadsV25Common__PolicyTopicEntry'
+          type: array
+        reviewStatus:
+          description: Output only. Where in the review process this asset is.
+          type: string
+          enum:
+          - UNSPECIFIED
+          - UNKNOWN
+          - REVIEW_IN_PROGRESS
+          - REVIEWED
+          - UNDER_APPEAL
+          - ELIGIBLE_MAY_SERVE
+          x-enumDescriptions:
+          - No value has been specified.
+          - The received value is not known in this version. This is a response-only value.
+          - Currently under review.
+          - Primary review complete. Other reviews may be continuing.
+          - The resource has been resubmitted for approval or its policy decision has been appealed.
+          - The resource is eligible and may be serving but could still undergo further review.
+    GoogleAdsGoogleadsV25Common__HotelCalloutAsset:
+      description: An asset representing a hotel callout.
+      type: object
+      properties:
+        text:
+          description: Required. The text of the hotel callout asset. The length of this string should be between 1 and 25, inclusive.
+          type: string
+        languageCode:
+          type: string
+          description: Required. The language of the hotel callout. Represented as BCP 47 language tag.
+    GoogleAdsGoogleadsV25Common__PromotionAsset:
+      description: A Promotion asset.
+      type: object
+      properties:
+        ordersOverAmount:
+          description: The amount the total order needs to be for the user to be eligible for the promotion.
+          $ref: '#/components/schemas/GoogleAdsGoogleadsV25Common__Money'
+        promotionTarget:
+          description: Required. A freeform description of what the promotion is targeting.
+          type: string
+        termsAndConditionsText:
+          description: Terms and conditions of the promotion.
+          type: string
+        promotionQrCodeInfo:
+          $ref: '#/components/schemas/GoogleAdsGoogleadsV25Common__PromotionQrCodeInfo'
+          description: QR code info used to generate promotion QR code for user to be eligible for the promotion.
+        moneyAmountOff:
+          $ref: '#/components/schemas/GoogleAdsGoogleadsV25Common__Money'
+          description: Money amount off for discount in the promotion. Either this or percent_off is required.
+        promotionCode:
+          description: A code the user should use in order to be eligible for the promotion.
+          type: string
+        termsAndConditionsUri:
+          description: URI to the terms and conditions of the promotion.
+          type: string
+        startDate:
+          description: Start date of when this asset is effective and can begin serving, in yyyy-MM-dd format.
+          type: string
+        redemptionStartDate:
+          description: Start date of when the promotion is eligible to be redeemed, in yyyy-MM-dd format.
+          type: string
+        promotionBarcodeInfo:
+          $ref: '#/components/schemas/GoogleAdsGoogleadsV25Common__PromotionBarcodeInfo'
+          description: Barcode info used to generate promotion barcode for user to be eligible for the promotion.
+        endDate:
+          type: string
+          description: Last date of when this asset is effective and still serving, in yyyy-MM-dd format.
+        redemptionEndDate:
+          description: Last date of when the promotion is eligible to be redeemed, in yyyy-MM-dd format.
+          type: string
+        languageCode:
+          type: string
+          description: The language of the promotion. Represented as BCP 47 language tag.
+        adScheduleTargets:
+          type: array
+          description: List of non-overlapping schedules specifying all time intervals for which the asset may serve. There can be a maximum of 6 schedules per day, 42 in total.
+          items:
+            $ref: '#/components/schemas/GoogleAdsGoogleadsV25Common__AdScheduleInfo'
+        discountModifier:
+          description: A modifier for qualification of the discount.
+          type: string
+          x-enumDescriptions:
+          - Not specified.
+          - Used for return value only. Represents value unknown in this version.
+          - '''Up to''.'
+          enum:
+          - UNSPECIFIED
+          - UNKNOWN
+          - UP_TO
+        occasion:
+          type: string
+          description: The occasion the promotion was intended for. If an occasion is set, the redemption window will need to fall within the date range associated with the occasion.
+          x-enumDescriptions:
+          - Not specified.
+          - Used for return value only. Represents value unknown in this version.
+          - New Year's.
+          - Chinese New Year.
+          - Valentine's Day.
+          - Easter.
+          - Mother's Day.
+          - Father's Day.
+          - Labor Day.
+          - Back To School.
+          - Halloween.
+          - Black Friday.
+          - Cyber Monday.
+          - Christmas.
+          - Boxing Day.
+          - Independence Day in any country.
+          - National Day in any country.
+          - End of any season.
+          - Winter Sale.
+          - Summer sale.
+          - Fall Sale.
+          - Spring Sale.
+          - Ramadan.
+          - Eid al-Fitr.
+          - Eid al-Adha.
+          - Singles Day.
+          - Women's Day.
+          - Holi.
+          - Parent's Day.
+          - St. Nicholas Day.
+          - Carnival.
+          - Epiphany, also known as Three Kings' Day.
+          - Rosh Hashanah.
+          - Passover.
+          - Hanukkah.
+          - Diwali.
+          - Navratri.
+          - 'Available in Thai: Songkran.'
+          - 'Available in Japanese: Year-end Gift.'
+          enum:
+          - UNSPECIFIED
+          - UNKNOWN
+          - NEW_YEARS
+          - CHINESE_NEW_YEAR
+          - VALENTINES_DAY
+          - EASTER
+          - MOTHERS_DAY
+          - FATHERS_DAY
+          - LABOR_DAY
+          - BACK_TO_SCHOOL
+          - HALLOWEEN
+          - BLACK_FRIDAY
+          - CYBER_MONDAY
+          - CHRISTMAS
+          - BOXING_DAY
+          - INDEPENDENCE_DAY
+          - NATIONAL_DAY
+          - END_OF_SEASON
+          - WINTER_SALE
+          - SUMMER_SALE
+          - FALL_SALE
+          - SPRING_SALE
+          - RAMADAN
+          - EID_AL_FITR
+          - EID_AL_ADHA
+          - SINGLES_DAY
+          - WOMENS_DAY
+          - HOLI
+          - PARENTS_DAY
+          - ST_NICHOLAS_DAY
+          - CARNIVAL
+          - EPIPHANY
+          - ROSH_HASHANAH
+          - PASSOVER
+          - HANUKKAH
+          - DIWALI
+          - NAVRATRI
+          - SONGKRAN
+          - YEAR_END_GIFT
+        percentOff:
+          description: Percentage off discount in the promotion. 1,000,000 = 100%. Either this or money_amount_off is required.
+          type: string
+          format: int64
+    GoogleAdsGoogleadsV25Common__YouTubeVideoListAsset:
+      description: A YouTube video list asset.
+      type: object
+      properties:
+        youtubeVideos:
+          type: array
+          description: List of videos. Each is a reference to a YouTube video asset. Minimum of 2 videos required and maximum of 5 allowed.
+          items:
+            $ref: '#/components/schemas/GoogleAdsGoogleadsV25Common__AdVideoAsset'
+    GoogleAdsGoogleadsV25Common_PolicyTopicConstraint_CountryConstraint:
+      type: object
+      properties:
+        countryCriterion:
+          description: Geo target constant resource name of the country in which serving is constrained.
+          type: string
+      description: Indicates that a resource's ability to serve in a particular country is constrained.
+    GoogleAdsGoogleadsV25Common__AdVideoAssetInventoryPreferences:
+      type: object
+      properties:
+        inStreamPreference:
+          description: When true, YouTube Video Asset with this inventory preference will be preferred when choosing a video to serve In Stream.
+          type: boolean
+        shortsPreference:
+          type: boolean
+          description: When true, YouTube Video Asset with this inventory preference will be preferred when choosing a video to serve on YouTube Shorts.
+        inFeedPreference:
+          description: When true, YouTube Video Asset with this inventory preference will be preferred when choosing a video to serve In Feed.
+          type: boolean
+      description: YouTube Video Asset inventory preferences.
+    GoogleAdsGoogleadsV25Common__MediaBundleAsset:
+      description: A MediaBundle asset.
+      type: object
+      properties:
+        data:
+          format: byte
+          description: Media bundle (ZIP file) asset data. The format of the uploaded ZIP file depends on the ad field where it will be used. For more information on the format, see the documentation of the ad field where you plan on using the MediaBundleAsset. This field is mutate only.
+          type: string
+    GoogleAdsGoogleadsV25Common__DynamicJobsAsset:
+      description: A dynamic jobs asset.
+      type: object
+      properties:
+        jobId:
+          type: string
+          description: Required. Job ID which can be any sequence of letters and digits, and must be unique and match the values of remarketing tag. Required.
+        salary:
+          type: string
+          description: Salary, for example, $100,000.
+        jobTitle:
+          type: string
+          description: Required. Job title, for example, Software engineer. Required.
+        contextualKeywords:
+          type: array
+          description: Contextual keywords, for example, Software engineering job.
+          items:
+            type: string
+        imageUrl:
+          type: string
+          description: Image URL, for example, http://www.example.com/image.png. The image will not be uploaded as image asset.
+        iosAppLink:
+          description: iOS deep link, for example, exampleApp://content/page.
+          type: string
+        iosAppStoreId:
+          format: int64
+          description: iOS app store ID. This is used to check if the user has the app installed on their device before deep linking. If this field is set, then the ios_app_link field must also be present.
+          type: string
+        androidAppLink:
+          type: string
+          description: Android deep link, for example, android-app://com.example.android/http/example.com/gizmos?1234.
+        locationId:
+          type: string
+          description: Location ID which can be any sequence of letters and digits. The ID sequence (job ID + location ID) must be unique.
+        description:
+          type: string
+          description: Description, for example, Apply your technical skills.
+        similarJobIds:
+          type: array
+          description: Similar job IDs, for example, 1275.
+          items:
+            type: string
+        jobCategory:
+          description: Job category, for example, Technical.
+          type: string
+        address:
+          type: string
+          description: Address which can be specified in one of the following formats. (1) City, state, code, country, for example, Mountain View, CA, USA. (2) Full address, for example, 123 Boulevard St, Mountain View, CA 94043. (3) Latitude-longitude in the DDD format, for example, 41.40338, 2.17403.
+        jobSubtitle:
+          description: Job subtitle, for example, Level II.
+          type: string
+    GoogleAdsGoogleadsV25Common__StructuredSnippetAsset:
+      description: A Structured Snippet asset.
+      type: object
+      properties:
+        header:
+          type: string
+          description: Required. The header of the snippet. This string should be one of the predefined values at https://developers.google.com/google-ads/api/reference/data/structured-snippet-headers
+        values:
+          type: array
+          description: Required. The values in the snippet. The size of this collection should be between 3 and 10, inclusive. The length of each value should be between 1 and 25 characters, inclusive.
+          items:
+            type: string
+    GoogleAdsGoogleadsV25Common__AdVideoAssetInfo:
+      description: Contains info fields for AdVideoAssets.
+      type: object
+      properties:
+        adVideoAssetInventoryPreferences:
+          $ref: '#/components/schemas/GoogleAdsGoogleadsV25Common__AdVideoAssetInventoryPreferences'
+          description: List of inventory preferences for this AdVideoAsset. This field can only be set for DiscoveryVideoResponsiveAd. The video assets with an inventory asset preference set will be preferred over other videos from the same ad during serving time. For example, consider this ad being served for a specific inventory. The server will first try to match an eligible video with a matching preference for that inventory. Videos with no preferences are chosen only when a video with matching preference and eligible for a given ad slot can be found.
+        adVideoAssetFeatureControl:
+          $ref: '#/components/schemas/GoogleAdsGoogleadsV25Common__AdVideoAssetLinkFeatureControl'
+          description: Defines feature controls for this AdVideoAsset during serving time. For example, whether YouTube comments should be enabled for Partnership Ads served on YouTube Shorts.
+    GoogleAdsGoogleadsV25Common__LeadFormSingleChoiceAnswers:
+      description: Defines possible answers for a single choice question, usually presented as a single-choice drop-down list.
+      type: object
+      properties:
+        answers:
+          type: array
+          description: List of choices for a single question field. The order of entries defines UI order. Minimum of 2 answers required and maximum of 12 allowed.
+          items:
+            type: string
+  securitySchemes:
+    oauth2:
+      type: oauth2
+      description: Google OAuth 2.0. Google Ads API additionally requires a developer token in the developer-token header.
+      flows:
+        authorizationCode:
+          authorizationUrl: https://accounts.google.com/o/oauth2/auth
+          tokenUrl: https://oauth2.googleapis.com/token
+          scopes:
+            https://www.googleapis.com/auth/adwords: See, edit, create, and delete your Google Ads accounts and data.
+externalDocs:
+  url: https://developers.google.com/google-ads/api/
+x-source: https://googleads.googleapis.com/$discovery/rest?version=v25
+x-generated-by: API Evangelist enrichment pipeline — mechanical conversion of the first-party Google API Discovery Document

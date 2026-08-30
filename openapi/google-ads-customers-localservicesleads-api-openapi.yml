@@ -1,0 +1,255 @@
+openapi: 3.2.0
+info:
+  title: Google Ads Customers.local Services Leads API
+  description: Manage your Google Ads accounts, campaigns, and reports with this API.
+  version: v25
+  x-discovery-revision: '20260721'
+  contact:
+    name: Google
+    url: https://developers.google.com/google-ads/api/
+  termsOfService: https://developers.google.com/terms
+servers:
+- url: https://googleads.googleapis.com
+  description: Google Ads API production server
+security:
+- oauth2:
+  - https://www.googleapis.com/auth/adwords
+tags:
+- name: customers.localServicesLeads
+paths:
+  /v25/customers/{customersId}/localServicesLeads/{localServicesLeadsId}:provideLeadFeedback:
+    parameters:
+    - name: upload_protocol
+      in: query
+      required: false
+      schema:
+        type: string
+      description: Upload protocol for media (e.g. "raw", "multipart").
+    - name: quotaUser
+      in: query
+      required: false
+      schema:
+        type: string
+      description: Available to use for quota purposes for server-side applications. Can be any arbitrary string assigned to a user, but should not exceed 40 characters.
+    - name: fields
+      in: query
+      required: false
+      schema:
+        type: string
+      description: Selector specifying which fields to include in a partial response.
+    - name: $.xgafv
+      in: query
+      required: false
+      schema:
+        type: string
+        enum:
+        - '1'
+        - '2'
+        x-enumDescriptions:
+        - v1 error format
+        - v2 error format
+      description: V1 error format.
+    - name: callback
+      in: query
+      required: false
+      schema:
+        type: string
+      description: JSONP
+    - name: prettyPrint
+      in: query
+      required: false
+      schema:
+        type: boolean
+        default: 'true'
+      description: Returns response with indentations and line breaks.
+    - name: access_token
+      in: query
+      required: false
+      schema:
+        type: string
+      description: OAuth access token.
+    - name: uploadType
+      in: query
+      required: false
+      schema:
+        type: string
+      description: Legacy upload protocol for media (e.g. "media", "multipart").
+    - name: key
+      in: query
+      required: false
+      schema:
+        type: string
+      description: API key. Your API key identifies your project and provides you with API access, quota, and reports. Required unless you provide an OAuth 2.0 token.
+    - name: oauth_token
+      in: query
+      required: false
+      schema:
+        type: string
+      description: OAuth 2.0 token for the current user.
+    - name: alt
+      in: query
+      required: false
+      schema:
+        x-enumDescriptions:
+        - Responses with Content-Type of application/json
+        - Media download with context-dependent Content-Type
+        - Responses with Content-Type of application/x-protobuf
+        type: string
+        default: json
+        enum:
+        - json
+        - media
+        - proto
+      description: Data format for response.
+    post:
+      operationId: googleads_customers_localServicesLeads_provideLeadFeedback
+      summary: RPC to provide feedback on Local Services Lead resources.
+      tags:
+      - customers.localServicesLeads
+      description: RPC to provide feedback on Local Services Lead resources.
+      parameters:
+      - name: resourceName
+        in: path
+        required: true
+        schema:
+          type: string
+          pattern: ^customers/[^/]+/localServicesLeads/[^/]+$
+        description: Required. The resource name of the local services lead that for which the feedback is being provided.
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/GoogleAdsGoogleadsV25Services__ProvideLeadFeedbackRequest'
+      responses:
+        '200':
+          description: Successful response
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/GoogleAdsGoogleadsV25Services__ProvideLeadFeedbackResponse'
+      security:
+      - oauth2:
+        - https://www.googleapis.com/auth/adwords
+components:
+  schemas:
+    GoogleAdsGoogleadsV25Services__ProvideLeadFeedbackResponse:
+      type: object
+      properties:
+        creditIssuanceDecision:
+          x-enumDescriptions:
+          - Not specified.
+          - Used for return value only. Represents value unknown in this version.
+          - Bonus credit is issued successfully and bonus credit cap has not reached the threshold after issuing this bonus credit.
+          - Bonus credit is issued successfully and bonus credit cap has reached the threshold after issuing this bonus credit.
+          - Bonus credit is not issued because the provider has reached the bonus credit cap.
+          - Bonus credit is not issued because this lead is not eligible for bonus credit.
+          enum:
+          - UNSPECIFIED
+          - UNKNOWN
+          - SUCCESS_NOT_REACHED_THRESHOLD
+          - SUCCESS_REACHED_THRESHOLD
+          - FAIL_OVER_THRESHOLD
+          - FAIL_NOT_ELIGIBLE
+          type: string
+          description: Required. Decision of bonus credit issued or rejected. If a bonus credit is issued, it will be available for use in about two months.
+      description: Response message for LocalServicesLeadService.ProvideLeadFeedback.
+    GoogleAdsGoogleadsV25Services__SurveyDissatisfied:
+      type: object
+      properties:
+        surveyDissatisfiedReason:
+          x-enumDescriptions:
+          - Not specified.
+          - Used for return value only. Represents value unknown in this version.
+          - Other reasons.
+          - Lead was for a service that does not match the business' service area.
+          - Lead was for a service that is not offered by the business.
+          - Lead was by a customer that was not ready to book.
+          - 'Lead was a spam. Example: lead was from a bot, silent called, scam, etc.'
+          - Lead was a duplicate of another lead that is, customer contacted the business more than once.
+          - 'Lead due to solicitation. Example: a person trying to get a job or selling a product, etc.'
+          enum:
+          - UNSPECIFIED
+          - UNKNOWN
+          - OTHER_DISSATISFIED_REASON
+          - GEO_MISMATCH
+          - JOB_TYPE_MISMATCH
+          - NOT_READY_TO_BOOK
+          - SPAM
+          - DUPLICATE
+          - SOLICITATION
+          type: string
+          description: Required. Provider's reason for not being satisfied with the lead.
+        otherReasonComment:
+          description: Optional. Provider's free form comments. This field is required when OTHER_DISSATISFIED_REASON is selected as the reason.
+          type: string
+      description: Details about various factors for not being satisfied with the lead.
+    GoogleAdsGoogleadsV25Services__SurveySatisfied:
+      type: object
+      properties:
+        surveySatisfiedReason:
+          x-enumDescriptions:
+          - Not specified.
+          - Used for return value only. Represents value unknown in this version.
+          - Other reasons.
+          - Lead converted into a booked customer or client.
+          - Lead could convert into a booked customer or client soon.
+          - Lead was related to the services the business offers.
+          - Lead was for a service that generates high value for the business.
+          enum:
+          - UNSPECIFIED
+          - UNKNOWN
+          - OTHER_SATISFIED_REASON
+          - BOOKED_CUSTOMER
+          - LIKELY_BOOKED_CUSTOMER
+          - SERVICE_RELATED
+          - HIGH_VALUE_SERVICE
+          type: string
+          description: Required. Provider's reason for being satisfied with the lead.
+        otherReasonComment:
+          description: Optional. Provider's free form comments. This field is required when OTHER_SATISFIED_REASON is selected as the reason.
+          type: string
+      description: Details about various factors for being satisfied with the lead.
+    GoogleAdsGoogleadsV25Services__ProvideLeadFeedbackRequest:
+      description: Request message for LocalServicesLeadService.ProvideLeadFeedback.
+      type: object
+      properties:
+        surveyAnswer:
+          type: string
+          description: Required. Survey answer for Local Services Ads Lead.
+          x-enumDescriptions:
+          - Not specified.
+          - Used for return value only. Represents value unknown in this version.
+          - Very satisfied with the lead.
+          - Satisfied with the lead.
+          - Neutral with the lead.
+          - Dissatisfied with the lead.
+          - Very dissatisfied with the lead.
+          enum:
+          - UNSPECIFIED
+          - UNKNOWN
+          - VERY_SATISFIED
+          - SATISFIED
+          - NEUTRAL
+          - DISSATISFIED
+          - VERY_DISSATISFIED
+        surveySatisfied:
+          $ref: '#/components/schemas/GoogleAdsGoogleadsV25Services__SurveySatisfied'
+          description: Details about various factors for being satisfied with the lead.
+        surveyDissatisfied:
+          description: Details about various factors for not being satisfied with the lead.
+          $ref: '#/components/schemas/GoogleAdsGoogleadsV25Services__SurveyDissatisfied'
+  securitySchemes:
+    oauth2:
+      type: oauth2
+      description: Google OAuth 2.0. Google Ads API additionally requires a developer token in the developer-token header.
+      flows:
+        authorizationCode:
+          authorizationUrl: https://accounts.google.com/o/oauth2/auth
+          tokenUrl: https://oauth2.googleapis.com/token
+          scopes:
+            https://www.googleapis.com/auth/adwords: See, edit, create, and delete your Google Ads accounts and data.
+externalDocs:
+  url: https://developers.google.com/google-ads/api/
+x-source: https://googleads.googleapis.com/$discovery/rest?version=v25
+x-generated-by: API Evangelist enrichment pipeline — mechanical conversion of the first-party Google API Discovery Document

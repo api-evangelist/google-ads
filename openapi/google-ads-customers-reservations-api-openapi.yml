@@ -1,0 +1,377 @@
+openapi: 3.2.0
+info:
+  title: Google Ads Customers.reservations API
+  description: Manage your Google Ads accounts, campaigns, and reports with this API.
+  version: v25
+  x-discovery-revision: '20260721'
+  contact:
+    name: Google
+    url: https://developers.google.com/google-ads/api/
+  termsOfService: https://developers.google.com/terms
+servers:
+- url: https://googleads.googleapis.com
+  description: Google Ads API production server
+security:
+- oauth2:
+  - https://www.googleapis.com/auth/adwords
+tags:
+- name: customers.reservations
+paths:
+  /v25/customers/{customersId}/reservations:quoteCampaigns:
+    parameters:
+    - name: upload_protocol
+      in: query
+      required: false
+      schema:
+        type: string
+      description: Upload protocol for media (e.g. "raw", "multipart").
+    - name: quotaUser
+      in: query
+      required: false
+      schema:
+        type: string
+      description: Available to use for quota purposes for server-side applications. Can be any arbitrary string assigned to a user, but should not exceed 40 characters.
+    - name: fields
+      in: query
+      required: false
+      schema:
+        type: string
+      description: Selector specifying which fields to include in a partial response.
+    - name: $.xgafv
+      in: query
+      required: false
+      schema:
+        type: string
+        enum:
+        - '1'
+        - '2'
+        x-enumDescriptions:
+        - v1 error format
+        - v2 error format
+      description: V1 error format.
+    - name: callback
+      in: query
+      required: false
+      schema:
+        type: string
+      description: JSONP
+    - name: prettyPrint
+      in: query
+      required: false
+      schema:
+        type: boolean
+        default: 'true'
+      description: Returns response with indentations and line breaks.
+    - name: access_token
+      in: query
+      required: false
+      schema:
+        type: string
+      description: OAuth access token.
+    - name: uploadType
+      in: query
+      required: false
+      schema:
+        type: string
+      description: Legacy upload protocol for media (e.g. "media", "multipart").
+    - name: key
+      in: query
+      required: false
+      schema:
+        type: string
+      description: API key. Your API key identifies your project and provides you with API access, quota, and reports. Required unless you provide an OAuth 2.0 token.
+    - name: oauth_token
+      in: query
+      required: false
+      schema:
+        type: string
+      description: OAuth 2.0 token for the current user.
+    - name: alt
+      in: query
+      required: false
+      schema:
+        x-enumDescriptions:
+        - Responses with Content-Type of application/json
+        - Media download with context-dependent Content-Type
+        - Responses with Content-Type of application/x-protobuf
+        type: string
+        default: json
+        enum:
+        - json
+        - media
+        - proto
+      description: Data format for response.
+    post:
+      operationId: googleads_customers_reservations_quoteCampaigns
+      summary: Proposes quotes for booking campaigns
+      tags:
+      - customers.reservations
+      description: Proposes quotes for booking campaigns. This request can have a latency of 30 seconds.
+      parameters:
+      - name: customerId
+        in: path
+        required: true
+        schema:
+          pattern: ^[^/]+$
+          type: string
+        description: Required. The ID of the customer making the request.
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/GoogleAdsGoogleadsV25Services__QuoteCampaignsRequest'
+      responses:
+        '200':
+          description: Successful response
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/GoogleAdsGoogleadsV25Services__QuoteCampaignsResponse'
+      security:
+      - oauth2:
+        - https://www.googleapis.com/auth/adwords
+  /v25/customers/{customersId}/reservations:bookCampaigns:
+    parameters:
+    - name: upload_protocol
+      in: query
+      required: false
+      schema:
+        type: string
+      description: Upload protocol for media (e.g. "raw", "multipart").
+    - name: quotaUser
+      in: query
+      required: false
+      schema:
+        type: string
+      description: Available to use for quota purposes for server-side applications. Can be any arbitrary string assigned to a user, but should not exceed 40 characters.
+    - name: fields
+      in: query
+      required: false
+      schema:
+        type: string
+      description: Selector specifying which fields to include in a partial response.
+    - name: $.xgafv
+      in: query
+      required: false
+      schema:
+        type: string
+        enum:
+        - '1'
+        - '2'
+        x-enumDescriptions:
+        - v1 error format
+        - v2 error format
+      description: V1 error format.
+    - name: callback
+      in: query
+      required: false
+      schema:
+        type: string
+      description: JSONP
+    - name: prettyPrint
+      in: query
+      required: false
+      schema:
+        type: boolean
+        default: 'true'
+      description: Returns response with indentations and line breaks.
+    - name: access_token
+      in: query
+      required: false
+      schema:
+        type: string
+      description: OAuth access token.
+    - name: uploadType
+      in: query
+      required: false
+      schema:
+        type: string
+      description: Legacy upload protocol for media (e.g. "media", "multipart").
+    - name: key
+      in: query
+      required: false
+      schema:
+        type: string
+      description: API key. Your API key identifies your project and provides you with API access, quota, and reports. Required unless you provide an OAuth 2.0 token.
+    - name: oauth_token
+      in: query
+      required: false
+      schema:
+        type: string
+      description: OAuth 2.0 token for the current user.
+    - name: alt
+      in: query
+      required: false
+      schema:
+        x-enumDescriptions:
+        - Responses with Content-Type of application/json
+        - Media download with context-dependent Content-Type
+        - Responses with Content-Type of application/x-protobuf
+        type: string
+        default: json
+        enum:
+        - json
+        - media
+        - proto
+      description: Data format for response.
+    post:
+      operationId: googleads_customers_reservations_bookCampaigns
+      summary: Books the requested campaigns
+      tags:
+      - customers.reservations
+      description: Books the requested campaigns. This request can have a latency of 30 seconds.
+      parameters:
+      - name: customerId
+        in: path
+        required: true
+        schema:
+          pattern: ^[^/]+$
+          type: string
+        description: Required. The ID of the customer making the request.
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/GoogleAdsGoogleadsV25Services__BookCampaignsRequest'
+      responses:
+        '200':
+          description: Successful response
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/GoogleAdsGoogleadsV25Services__BookCampaignsResponse'
+      security:
+      - oauth2:
+        - https://www.googleapis.com/auth/adwords
+components:
+  schemas:
+    GoogleAdsGoogleadsV25Actions__QuoteCampaignsOperation:
+      type: object
+      properties:
+        campaigns:
+          type: array
+          description: Campaigns for which the quotes are requested. Maximum 2 campaigns per request.
+          items:
+            $ref: '#/components/schemas/GoogleAdsGoogleadsV25Actions_QuoteCampaignsOperation_Campaign'
+        quoteSignature:
+          description: If provided, the signature of the previous quote. Clients should always provide the quote signature from previous quotes if they haven't changed the campaigns to prevent price fluctuations within a user session.
+          type: string
+      description: Request message for the QuoteCampaigns action. Request including this operation can have a latency of up to 30 seconds. This feature is not publicly available.
+    GoogleAdsGoogleadsV25Services__QuoteCampaignsRequest:
+      type: object
+      properties:
+        operation:
+          description: The operation to quote the campaigns.
+          $ref: '#/components/schemas/GoogleAdsGoogleadsV25Actions__QuoteCampaignsOperation'
+      description: Request message for ReservationService.QuoteCampaigns.
+    GoogleAdsGoogleadsV25Services__BookCampaignsResponse:
+      description: Response message for ReservationService.BookCampaigns.
+      type: object
+      properties:
+        result:
+          description: The result of the book campaigns operation.
+          $ref: '#/components/schemas/GoogleAdsGoogleadsV25Actions__BookCampaignsResult'
+    GoogleAdsGoogleadsV25Actions__BookCampaignsOperation:
+      type: object
+      properties:
+        campaigns:
+          description: Campaigns to book. Maximum 2 campaigns per request.
+          items:
+            $ref: '#/components/schemas/GoogleAdsGoogleadsV25Actions_BookCampaignsOperation_Campaign'
+          type: array
+        quoteSignature:
+          description: If provided, the signature of the previous quote. Clients should always provide the quote signature from previous quotes if they haven't changed the campaigns to prevent price fluctuations within a user session.
+          type: string
+      description: Request message for the BookCampaigns action. Request including this operation can have a latency of up to 30 seconds. This feature is not publicly available.
+    GoogleAdsGoogleadsV25Services__BookCampaignsRequest:
+      description: Request message for ReservationService.BookCampaigns.
+      type: object
+      properties:
+        operation:
+          description: The operation to book the campaigns.
+          $ref: '#/components/schemas/GoogleAdsGoogleadsV25Actions__BookCampaignsOperation'
+    GoogleAdsGoogleadsV25Actions_QuoteCampaignsOperation_Campaign:
+      type: object
+      properties:
+        campaign:
+          description: 'Campaign for which the quote is requested. Format: customers/{customer_id}/campaigns/{campaign_id}'
+          type: string
+      description: A campaign for which the quote is requested.
+    GoogleAdsGoogleadsV25Services__QuoteCampaignsResponse:
+      description: Response message for ReservationService.QuoteCampaigns.
+      type: object
+      properties:
+        result:
+          $ref: '#/components/schemas/GoogleAdsGoogleadsV25Actions__QuoteCampaignsResult'
+          description: The result of the quote campaigns operation.
+    GoogleAdsGoogleadsV25Common__CampaignReservationQuote:
+      type: object
+      properties:
+        possibleHoldDurationSeconds:
+          format: int64
+          description: The possible duration of the hold, in seconds.
+          type: string
+        maxBudgetMicros:
+          description: Maximum budget to get all available impressions at the current CPM. Capped at 10M USD. Specified in micros of the advertiser currency.
+          type: string
+          format: int64
+        suggestedCpmMicros:
+          format: int64
+          type: string
+          description: The CPM that would be accepted for the campaign calculated at the proposed budget. Specified in micros of the advertiser currency.
+        campaign:
+          description: 'The campaign resource name, as it was specified in the request. It could contain a temp ID. Format: customers/{customer_id}/campaigns/{campaign_id}'
+          type: string
+      description: The campaign reservation quote.
+    GoogleAdsGoogleadsV25Actions_BookCampaignsOperation_Campaign:
+      type: object
+      properties:
+        campaign:
+          type: string
+          description: 'Campaign resource to book. Format: customers/{customer_id}/campaigns/{campaign_id}'
+        requestType:
+          x-enumDescriptions:
+          - Not specified.
+          - Used for return value only. Represents value unknown in this version.
+          - Book the campaign. The campaign must have ENABLED status. If the campaign has a hold, it will remove the hold and confirm the contract.
+          - Hold the inventory for the campaign. The campaign must have PAUSED status to request a hold.
+          enum:
+          - UNSPECIFIED
+          - UNKNOWN
+          - BOOK
+          - HOLD
+          type: string
+          description: Determines if the current request should book the inventory or hold it.
+      description: A single campaign to book.
+    GoogleAdsGoogleadsV25Actions__QuoteCampaignsResult:
+      description: The response of the QuoteCampaigns action, when the action is successful. Note that if the response contains errors, the action response will not be returned, but a quote may still be returned in the ErrorDetails.reservation_error_details field.
+      type: object
+      properties:
+        quotes:
+          description: The quotes for the requested campaigns.
+          items:
+            $ref: '#/components/schemas/GoogleAdsGoogleadsV25Common__CampaignReservationQuote'
+          type: array
+        quoteSignature:
+          type: string
+          description: The signature of the quote. This signature should be used when booking the quote.
+    GoogleAdsGoogleadsV25Actions__BookCampaignsResult:
+      type: object
+      properties: {}
+      description: Response message for the BookCampaigns action. Note that if the response contains errors, the action response will not be returned, but a quote may still be returned in the ErrorDetails.reservation_error_details field.
+  securitySchemes:
+    oauth2:
+      type: oauth2
+      description: Google OAuth 2.0. Google Ads API additionally requires a developer token in the developer-token header.
+      flows:
+        authorizationCode:
+          authorizationUrl: https://accounts.google.com/o/oauth2/auth
+          tokenUrl: https://oauth2.googleapis.com/token
+          scopes:
+            https://www.googleapis.com/auth/adwords: See, edit, create, and delete your Google Ads accounts and data.
+externalDocs:
+  url: https://developers.google.com/google-ads/api/
+x-source: https://googleads.googleapis.com/$discovery/rest?version=v25
+x-generated-by: API Evangelist enrichment pipeline — mechanical conversion of the first-party Google API Discovery Document

@@ -1,0 +1,245 @@
+openapi: 3.2.0
+info:
+  title: Google Ads Geo Target Constants API
+  description: Manage your Google Ads accounts, campaigns, and reports with this API.
+  version: v25
+  x-discovery-revision: '20260721'
+  contact:
+    name: Google
+    url: https://developers.google.com/google-ads/api/
+  termsOfService: https://developers.google.com/terms
+servers:
+- url: https://googleads.googleapis.com
+  description: Google Ads API production server
+security:
+- oauth2:
+  - https://www.googleapis.com/auth/adwords
+tags:
+- name: geoTargetConstants
+paths:
+  /v25/geoTargetConstants:suggest:
+    parameters:
+    - name: upload_protocol
+      in: query
+      required: false
+      schema:
+        type: string
+      description: Upload protocol for media (e.g. "raw", "multipart").
+    - name: quotaUser
+      in: query
+      required: false
+      schema:
+        type: string
+      description: Available to use for quota purposes for server-side applications. Can be any arbitrary string assigned to a user, but should not exceed 40 characters.
+    - name: fields
+      in: query
+      required: false
+      schema:
+        type: string
+      description: Selector specifying which fields to include in a partial response.
+    - name: $.xgafv
+      in: query
+      required: false
+      schema:
+        type: string
+        enum:
+        - '1'
+        - '2'
+        x-enumDescriptions:
+        - v1 error format
+        - v2 error format
+      description: V1 error format.
+    - name: callback
+      in: query
+      required: false
+      schema:
+        type: string
+      description: JSONP
+    - name: prettyPrint
+      in: query
+      required: false
+      schema:
+        type: boolean
+        default: 'true'
+      description: Returns response with indentations and line breaks.
+    - name: access_token
+      in: query
+      required: false
+      schema:
+        type: string
+      description: OAuth access token.
+    - name: uploadType
+      in: query
+      required: false
+      schema:
+        type: string
+      description: Legacy upload protocol for media (e.g. "media", "multipart").
+    - name: key
+      in: query
+      required: false
+      schema:
+        type: string
+      description: API key. Your API key identifies your project and provides you with API access, quota, and reports. Required unless you provide an OAuth 2.0 token.
+    - name: oauth_token
+      in: query
+      required: false
+      schema:
+        type: string
+      description: OAuth 2.0 token for the current user.
+    - name: alt
+      in: query
+      required: false
+      schema:
+        x-enumDescriptions:
+        - Responses with Content-Type of application/json
+        - Media download with context-dependent Content-Type
+        - Responses with Content-Type of application/x-protobuf
+        type: string
+        default: json
+        enum:
+        - json
+        - media
+        - proto
+      description: Data format for response.
+    post:
+      operationId: googleads_geoTargetConstants_suggest
+      summary: Returns GeoTargetConstant suggestions by location name or by resource name
+      tags:
+      - geoTargetConstants
+      description: 'Returns GeoTargetConstant suggestions by location name or by resource name. List of thrown errors: [AuthenticationError]() [AuthorizationError]() [GeoTargetConstantSuggestionError]() [HeaderError]() [InternalError]() [QuotaError]() [RequestError]()'
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/GoogleAdsGoogleadsV25Services__SuggestGeoTargetConstantsRequest'
+      responses:
+        '200':
+          description: Successful response
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/GoogleAdsGoogleadsV25Services__SuggestGeoTargetConstantsResponse'
+      security:
+      - oauth2:
+        - https://www.googleapis.com/auth/adwords
+components:
+  schemas:
+    GoogleAdsGoogleadsV25Resources__GeoTargetConstant:
+      description: A geo target constant.
+      type: object
+      properties:
+        name:
+          type: string
+          description: Output only. Geo target constant English name.
+        resourceName:
+          type: string
+          description: 'Output only. The resource name of the geo target constant. Geo target constant resource names have the form: `geoTargetConstants/{geo_target_constant_id}`'
+        countryCode:
+          type: string
+          description: Output only. The ISO-3166-1 alpha-2 country code that is associated with the target.
+        id:
+          description: Output only. The ID of the geo target constant.
+          type: string
+          format: int64
+        status:
+          description: Output only. Geo target constant status.
+          type: string
+          enum:
+          - UNSPECIFIED
+          - UNKNOWN
+          - ENABLED
+          - REMOVAL_PLANNED
+          x-enumDescriptions:
+          - No value has been specified.
+          - The received value is not known in this version. This is a response-only value.
+          - The geo target constant is valid.
+          - The geo target constant is obsolete and will be removed.
+        canonicalName:
+          description: Output only. The fully qualified English name, consisting of the target's name and that of its parent and country.
+          type: string
+        targetType:
+          type: string
+          description: Output only. Geo target constant target type.
+        parentGeoTarget:
+          type: string
+          description: 'Output only. The resource name of the parent geo target constant. Geo target constant resource names have the form: `geoTargetConstants/{parent_geo_target_constant_id}`'
+    GoogleAdsGoogleadsV25Services__SuggestGeoTargetConstantsResponse:
+      description: Response message for GeoTargetConstantService.SuggestGeoTargetConstants.
+      type: object
+      properties:
+        geoTargetConstantSuggestions:
+          type: array
+          description: Geo target constant suggestions.
+          items:
+            $ref: '#/components/schemas/GoogleAdsGoogleadsV25Services__GeoTargetConstantSuggestion'
+    GoogleAdsGoogleadsV25Services__GeoTargetConstantSuggestion:
+      type: object
+      properties:
+        reach:
+          format: int64
+          description: Approximate user population that will be targeted, rounded to the nearest 100.
+          type: string
+        locale:
+          type: string
+          description: The language this GeoTargetConstantSuggestion is currently translated to. It affects the name of geo target fields. For example, if locale=en, then name=Spain. If locale=es, then name=España. The default locale will be returned if no translation exists for the locale in the request.
+        geoTargetConstant:
+          $ref: '#/components/schemas/GoogleAdsGoogleadsV25Resources__GeoTargetConstant'
+          description: The GeoTargetConstant result.
+        searchTerm:
+          type: string
+          description: If the request searched by location name, this is the location name that matched the geo target.
+        geoTargetConstantParents:
+          type: array
+          description: The list of parents of the geo target constant.
+          items:
+            $ref: '#/components/schemas/GoogleAdsGoogleadsV25Resources__GeoTargetConstant'
+      description: A geo target constant suggestion.
+    GoogleAdsGoogleadsV25Services__SuggestGeoTargetConstantsRequest:
+      description: Request message for GeoTargetConstantService.SuggestGeoTargetConstants.
+      type: object
+      properties:
+        locale:
+          description: If possible, returned geo targets are translated using this locale. If not, en is used by default. This is also used as a hint for returned geo targets.
+          type: string
+        countryCode:
+          type: string
+          description: Returned geo targets are restricted to this country code.
+        locationNames:
+          description: The location names to search by. At most 25 names can be set.
+          $ref: '#/components/schemas/GoogleAdsGoogleadsV25Services_SuggestGeoTargetConstantsRequest_LocationNames'
+        geoTargets:
+          $ref: '#/components/schemas/GoogleAdsGoogleadsV25Services_SuggestGeoTargetConstantsRequest_GeoTargets'
+          description: The geo target constant resource names to filter by.
+    GoogleAdsGoogleadsV25Services_SuggestGeoTargetConstantsRequest_GeoTargets:
+      description: A list of geo target constant resource names.
+      type: object
+      properties:
+        geoTargetConstants:
+          type: array
+          description: A list of geo target constant resource names.
+          items:
+            type: string
+    GoogleAdsGoogleadsV25Services_SuggestGeoTargetConstantsRequest_LocationNames:
+      description: A list of location names.
+      type: object
+      properties:
+        names:
+          type: array
+          description: A list of location names.
+          items:
+            type: string
+  securitySchemes:
+    oauth2:
+      type: oauth2
+      description: Google OAuth 2.0. Google Ads API additionally requires a developer token in the developer-token header.
+      flows:
+        authorizationCode:
+          authorizationUrl: https://accounts.google.com/o/oauth2/auth
+          tokenUrl: https://oauth2.googleapis.com/token
+          scopes:
+            https://www.googleapis.com/auth/adwords: See, edit, create, and delete your Google Ads accounts and data.
+externalDocs:
+  url: https://developers.google.com/google-ads/api/
+x-source: https://googleads.googleapis.com/$discovery/rest?version=v25
+x-generated-by: API Evangelist enrichment pipeline — mechanical conversion of the first-party Google API Discovery Document

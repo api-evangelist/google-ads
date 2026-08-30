@@ -1,0 +1,364 @@
+openapi: 3.2.0
+info:
+  title: Google Ads Customers.customer Sk Ad Network Conversion Value Schemas API
+  description: Manage your Google Ads accounts, campaigns, and reports with this API.
+  version: v25
+  x-discovery-revision: '20260721'
+  contact:
+    name: Google
+    url: https://developers.google.com/google-ads/api/
+  termsOfService: https://developers.google.com/terms
+servers:
+- url: https://googleads.googleapis.com
+  description: Google Ads API production server
+security:
+- oauth2:
+  - https://www.googleapis.com/auth/adwords
+tags:
+- name: customers.customerSkAdNetworkConversionValueSchemas
+paths:
+  /v25/customers/{customersId}/customerSkAdNetworkConversionValueSchemas:mutate:
+    parameters:
+    - name: upload_protocol
+      in: query
+      required: false
+      schema:
+        type: string
+      description: Upload protocol for media (e.g. "raw", "multipart").
+    - name: quotaUser
+      in: query
+      required: false
+      schema:
+        type: string
+      description: Available to use for quota purposes for server-side applications. Can be any arbitrary string assigned to a user, but should not exceed 40 characters.
+    - name: fields
+      in: query
+      required: false
+      schema:
+        type: string
+      description: Selector specifying which fields to include in a partial response.
+    - name: $.xgafv
+      in: query
+      required: false
+      schema:
+        type: string
+        enum:
+        - '1'
+        - '2'
+        x-enumDescriptions:
+        - v1 error format
+        - v2 error format
+      description: V1 error format.
+    - name: callback
+      in: query
+      required: false
+      schema:
+        type: string
+      description: JSONP
+    - name: prettyPrint
+      in: query
+      required: false
+      schema:
+        type: boolean
+        default: 'true'
+      description: Returns response with indentations and line breaks.
+    - name: access_token
+      in: query
+      required: false
+      schema:
+        type: string
+      description: OAuth access token.
+    - name: uploadType
+      in: query
+      required: false
+      schema:
+        type: string
+      description: Legacy upload protocol for media (e.g. "media", "multipart").
+    - name: key
+      in: query
+      required: false
+      schema:
+        type: string
+      description: API key. Your API key identifies your project and provides you with API access, quota, and reports. Required unless you provide an OAuth 2.0 token.
+    - name: oauth_token
+      in: query
+      required: false
+      schema:
+        type: string
+      description: OAuth 2.0 token for the current user.
+    - name: alt
+      in: query
+      required: false
+      schema:
+        x-enumDescriptions:
+        - Responses with Content-Type of application/json
+        - Media download with context-dependent Content-Type
+        - Responses with Content-Type of application/x-protobuf
+        type: string
+        default: json
+        enum:
+        - json
+        - media
+        - proto
+      description: Data format for response.
+    post:
+      operationId: googleads_customers_customerSkAdNetworkConversionValueSchemas_mutate
+      summary: Creates or updates the CustomerSkAdNetworkConversionValueSchema
+      tags:
+      - customers.customerSkAdNetworkConversionValueSchemas
+      description: 'Creates or updates the CustomerSkAdNetworkConversionValueSchema. List of thrown errors: [AuthenticationError]() [AuthorizationError]() [FieldError]() [InternalError]() [MutateError]()'
+      parameters:
+      - name: customerId
+        in: path
+        required: true
+        schema:
+          pattern: ^[^/]+$
+          type: string
+        description: The ID of the customer whose shared sets are being modified.
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/GoogleAdsGoogleadsV25Services__MutateCustomerSkAdNetworkConversionValueSchemaRequest'
+      responses:
+        '200':
+          description: Successful response
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/GoogleAdsGoogleadsV25Services__MutateCustomerSkAdNetworkConversionValueSchemaResponse'
+      security:
+      - oauth2:
+        - https://www.googleapis.com/auth/adwords
+components:
+  schemas:
+    GoogleAdsGoogleadsV25Resources_CustomerSkAdNetworkConversionValueSchemaSkAdNetworkConversionValueSchema_Event:
+      description: Defines a Google conversion event that the conversion value is mapped to.
+      type: object
+      properties:
+        eventOccurrenceRange:
+          description: Output only. The event counter range.
+          $ref: '#/components/schemas/GoogleAdsGoogleadsV25Resources_CustomerSkAdNetworkConversionValueSchemaSkAdNetworkConversionValueSchemaEvent_EventOccurrenceRange'
+        eventCounter:
+          type: string
+          description: Output only. For specific event counter values.
+          format: int64
+        eventRevenueRange:
+          $ref: '#/components/schemas/GoogleAdsGoogleadsV25Resources_CustomerSkAdNetworkConversionValueSchemaSkAdNetworkConversionValueSchemaEvent_RevenueRange'
+          description: Output only. The event revenue range.
+        currencyCode:
+          description: Output only. The reported currency for the event_revenue. ISO 4217 three-letter currency code, for example, "USD"
+          type: string
+        eventRevenueValue:
+          type: number
+          description: Output only. The specific event revenue value.
+          format: double
+        mappedEventName:
+          type: string
+          description: Output only. Google event name represented by this conversion value.
+    ? GoogleAdsGoogleadsV25Resources_CustomerSkAdNetworkConversionValueSchemaSkAdNetworkConversionValueSchemaEvent_EventOccurrenceRange
+    : description: Defines a range for event counter values.
+      type: object
+      properties:
+        minEventCount:
+          type: string
+          description: Output only. For event counter ranges, the minimum of the defined range. A value of 0 will be treated as unset.
+          format: int64
+        maxEventCount:
+          type: string
+          description: Output only. For event counter ranges, the maximum of the defined range. A value of 0 will be treated as unset.
+          format: int64
+    GoogleAdsGoogleadsV25Resources_CustomerSkAdNetworkConversionValueSchemaSkAdNetworkConversionValueSchemaEvent_RevenueRange:
+      description: Defines a range for revenue values.
+      type: object
+      properties:
+        minEventRevenue:
+          type: number
+          description: Output only. For revenue ranges, the minimum value in `currency_code` for which this conversion value would be updated. A value of 0 will be treated as unset.
+          format: double
+        maxEventRevenue:
+          format: double
+          description: Output only. For revenue ranges, the maximum value in `currency_code` for which this conversion value would be updated. A value of 0 will be treated as unset.
+          type: number
+    GoogleAdsGoogleadsV25Resources_CustomerSkAdNetworkConversionValueSchema_SkAdNetworkConversionValueSchema:
+      type: object
+      properties:
+        postbackMappings:
+          description: Output only. Per-postback conversion value mappings for postbacks in multiple conversion windows. Only applicable for SkAdNetwork versions >= 4.0.
+          items:
+            $ref: '#/components/schemas/GoogleAdsGoogleadsV25Resources_CustomerSkAdNetworkConversionValueSchemaSkAdNetworkConversionValueSchema_PostbackMapping'
+          type: array
+        appId:
+          type: string
+          description: Required. Output only. Apple App Store app ID.
+        measurementWindowHours:
+          description: Output only. A time window (measured in hours) post-install, after which the App Attribution Partner or advertiser stops calling [updateConversionValue] (https://developer.apple.com/documentation/storekit/skadnetwork/3566697-updateconversionvalue).
+          type: integer
+          format: int32
+        fineGrainedConversionValueMappings:
+          type: array
+          description: Output only. Fine grained conversion value mappings. For SkAdNetwork versions >= 4.0 that support multiple conversion windows, fine grained conversion value mappings are only applicable to the first postback.
+          items:
+            $ref: '#/components/schemas/GoogleAdsGoogleadsV25Resources_CustomerSkAdNetworkConversionValueSchemaSkAdNetworkConversionValueSchema_FineGrainedConversionValueMappings'
+      description: The CustomerLink specific SkAdNetworkConversionValueSchema.
+    GoogleAdsGoogleadsV25Resources__CustomerSkAdNetworkConversionValueSchema:
+      description: A CustomerSkAdNetworkConversionValueSchema.
+      type: object
+      properties:
+        resourceName:
+          type: string
+          description: 'Output only. The resource name of the schema. CustomerSkAdNetworkConversionValueSchema resource names have the form: customers/{customer_id}/customerSkAdNetworkConversionValueSchemas/{account_link_id}'
+        schema:
+          $ref: '#/components/schemas/GoogleAdsGoogleadsV25Resources_CustomerSkAdNetworkConversionValueSchema_SkAdNetworkConversionValueSchema'
+          description: Output only. The schema for the specified resource.
+    GoogleAdsGoogleadsV25Services__MutateCustomerSkAdNetworkConversionValueSchemaRequest:
+      type: object
+      properties:
+        operation:
+          description: The operation to perform.
+          $ref: '#/components/schemas/GoogleAdsGoogleadsV25Services__CustomerSkAdNetworkConversionValueSchemaOperation'
+        validateOnly:
+          type: boolean
+          description: If true, the request is validated but not executed. Only errors are returned, not results.
+        enableWarnings:
+          description: Optional. If true, enables returning warnings. Warnings return error messages and error codes without blocking the execution of the mutate operation.
+          type: boolean
+      description: Request message for CustomerSkAdNetworkConversionValueSchemaService.MutateCustomerSkAdNetworkConversionValueSchema.
+    GoogleAdsGoogleadsV25Services__CustomerSkAdNetworkConversionValueSchemaOperation:
+      type: object
+      properties:
+        update:
+          description: 'Update operation: The schema is expected to have a valid resource name.'
+          $ref: '#/components/schemas/GoogleAdsGoogleadsV25Resources__CustomerSkAdNetworkConversionValueSchema'
+      description: A single update operation for a CustomerSkAdNetworkConversionValueSchema.
+    GoogleAdsGoogleadsV25Resources_CustomerSkAdNetworkConversionValueSchemaSkAdNetworkConversionValueSchema_PostbackMapping:
+      type: object
+      properties:
+        coarseGrainedConversionValueMappings:
+          $ref: '#/components/schemas/GoogleAdsGoogleadsV25Resources_CustomerSkAdNetworkConversionValueSchemaSkAdNetworkConversionValueSchema_CoarseGrainedConversionValueMappings'
+          description: Output only. Conversion value mappings for all coarse grained conversion values.
+        lockWindowCoarseConversionValue:
+          enum:
+          - UNSPECIFIED
+          - UNKNOWN
+          - UNAVAILABLE
+          - LOW
+          - MEDIUM
+          - HIGH
+          - NONE
+          type: string
+          description: Output only. Coarse grained conversion value that triggers conversion window lock.
+          x-enumDescriptions:
+          - Not specified.
+          - The value is unknown in this version.
+          - The value was not present in the postback or we do not have this data for other reasons.
+          - A low coarse conversion value.
+          - A medium coarse conversion value.
+          - A high coarse conversion value.
+          - A coarse conversion value was not configured.
+        lockWindowFineConversionValue:
+          format: int32
+          type: integer
+          description: Output only. Fine grained conversion value that triggers conversion window lock.
+        lockWindowEvent:
+          description: Output only. Event name that triggers conversion window lock.
+          type: string
+        postbackSequenceIndex:
+          description: Output only. 0-based index that indicates the order of postback. Valid values are in the inclusive range [0,2].
+          type: integer
+          format: int32
+      description: Mappings for each postback in multiple conversion windows.
+    GoogleRpc__Status:
+      description: 'The `Status` type defines a logical error model that is suitable for different programming environments, including REST APIs and RPC APIs. It is used by [gRPC](https://github.com/grpc). Each `Status` message contains three pieces of data: error code, error message, and error details. You can find out more about this error model and how to work with it in the [API Design Guide](https://cloud.google.com/apis/design/errors).'
+      type: object
+      properties:
+        message:
+          description: A developer-facing error message, which should be in English. Any user-facing error message should be localized and sent in the google.rpc.Status.details field, or localized by the client.
+          type: string
+        code:
+          type: integer
+          description: The status code, which should be an enum value of google.rpc.Code.
+          format: int32
+        details:
+          type: array
+          description: A list of messages that carry the error details. There is a common set of message types for APIs to use.
+          items:
+            type: object
+            additionalProperties:
+              description: Properties of the object. Contains field @type with type URL.
+    GoogleAdsGoogleadsV25Services__MutateCustomerSkAdNetworkConversionValueSchemaResult:
+      type: object
+      properties:
+        resourceName:
+          description: Resource name of the customer that was modified.
+          type: string
+        appId:
+          description: App ID of the SkanConversionValue modified.
+          type: string
+      description: The result for the CustomerSkAdNetworkConversionValueSchema mutate.
+    ? GoogleAdsGoogleadsV25Resources_CustomerSkAdNetworkConversionValueSchemaSkAdNetworkConversionValueSchema_ConversionValueMapping
+    : type: object
+      properties:
+        minTimePostInstallHours:
+          format: int64
+          type: string
+          description: Output only. The minimum of the time range in which a user was last active during the measurement window.
+        maxTimePostInstallHours:
+          type: string
+          description: Output only. The maximum of the time range in which a user was last active during the measurement window.
+          format: int64
+        mappedEvents:
+          type: array
+          description: Output only. The conversion value may be mapped to multiple events with various attributes.
+          items:
+            $ref: '#/components/schemas/GoogleAdsGoogleadsV25Resources_CustomerSkAdNetworkConversionValueSchemaSkAdNetworkConversionValueSchema_Event'
+      description: Represents mapping from one conversion value to one or more conversion events.
+    GoogleAdsGoogleadsV25Services__MutateCustomerSkAdNetworkConversionValueSchemaResponse:
+      type: object
+      properties:
+        result:
+          description: All results for the mutate.
+          $ref: '#/components/schemas/GoogleAdsGoogleadsV25Services__MutateCustomerSkAdNetworkConversionValueSchemaResult'
+        warning:
+          description: Non blocking errors that provides schema validation failure details. Returned only when enable_warnings = true.
+          $ref: '#/components/schemas/GoogleRpc__Status'
+      description: Response message for MutateCustomerSkAdNetworkConversionValueSchema.
+    ? GoogleAdsGoogleadsV25Resources_CustomerSkAdNetworkConversionValueSchemaSkAdNetworkConversionValueSchema_CoarseGrainedConversionValueMappings
+    : description: Mappings for coarse grained conversion values.
+      type: object
+      properties:
+        lowConversionValueMapping:
+          description: Output only. Mapping for "low" coarse conversion value.
+          $ref: '#/components/schemas/GoogleAdsGoogleadsV25Resources_CustomerSkAdNetworkConversionValueSchemaSkAdNetworkConversionValueSchema_ConversionValueMapping'
+        highConversionValueMapping:
+          description: Output only. Mapping for "high" coarse conversion value.
+          $ref: '#/components/schemas/GoogleAdsGoogleadsV25Resources_CustomerSkAdNetworkConversionValueSchemaSkAdNetworkConversionValueSchema_ConversionValueMapping'
+        mediumConversionValueMapping:
+          description: Output only. Mapping for "medium" coarse conversion value.
+          $ref: '#/components/schemas/GoogleAdsGoogleadsV25Resources_CustomerSkAdNetworkConversionValueSchemaSkAdNetworkConversionValueSchema_ConversionValueMapping'
+    ? GoogleAdsGoogleadsV25Resources_CustomerSkAdNetworkConversionValueSchemaSkAdNetworkConversionValueSchema_FineGrainedConversionValueMappings
+    : description: Mappings for fine grained conversion value.
+      type: object
+      properties:
+        fineGrainedConversionValue:
+          description: Output only. Fine grained conversion value. Valid values are in the inclusive range [0,63].
+          type: integer
+          format: int32
+        conversionValueMapping:
+          $ref: '#/components/schemas/GoogleAdsGoogleadsV25Resources_CustomerSkAdNetworkConversionValueSchemaSkAdNetworkConversionValueSchema_ConversionValueMapping'
+          description: Output only. Conversion events the fine grained conversion value maps to.
+  securitySchemes:
+    oauth2:
+      type: oauth2
+      description: Google OAuth 2.0. Google Ads API additionally requires a developer token in the developer-token header.
+      flows:
+        authorizationCode:
+          authorizationUrl: https://accounts.google.com/o/oauth2/auth
+          tokenUrl: https://oauth2.googleapis.com/token
+          scopes:
+            https://www.googleapis.com/auth/adwords: See, edit, create, and delete your Google Ads accounts and data.
+externalDocs:
+  url: https://developers.google.com/google-ads/api/
+x-source: https://googleads.googleapis.com/$discovery/rest?version=v25
+x-generated-by: API Evangelist enrichment pipeline — mechanical conversion of the first-party Google API Discovery Document

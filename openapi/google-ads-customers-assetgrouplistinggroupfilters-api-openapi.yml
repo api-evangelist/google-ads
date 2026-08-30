@@ -1,0 +1,456 @@
+openapi: 3.2.0
+info:
+  title: Google Ads Customers.asset Group Listing Group Filters API
+  description: Manage your Google Ads accounts, campaigns, and reports with this API.
+  version: v25
+  x-discovery-revision: '20260721'
+  contact:
+    name: Google
+    url: https://developers.google.com/google-ads/api/
+  termsOfService: https://developers.google.com/terms
+servers:
+- url: https://googleads.googleapis.com
+  description: Google Ads API production server
+security:
+- oauth2:
+  - https://www.googleapis.com/auth/adwords
+tags:
+- name: customers.assetGroupListingGroupFilters
+paths:
+  /v25/customers/{customersId}/assetGroupListingGroupFilters:mutate:
+    parameters:
+    - name: upload_protocol
+      in: query
+      required: false
+      schema:
+        type: string
+      description: Upload protocol for media (e.g. "raw", "multipart").
+    - name: quotaUser
+      in: query
+      required: false
+      schema:
+        type: string
+      description: Available to use for quota purposes for server-side applications. Can be any arbitrary string assigned to a user, but should not exceed 40 characters.
+    - name: fields
+      in: query
+      required: false
+      schema:
+        type: string
+      description: Selector specifying which fields to include in a partial response.
+    - name: $.xgafv
+      in: query
+      required: false
+      schema:
+        type: string
+        enum:
+        - '1'
+        - '2'
+        x-enumDescriptions:
+        - v1 error format
+        - v2 error format
+      description: V1 error format.
+    - name: callback
+      in: query
+      required: false
+      schema:
+        type: string
+      description: JSONP
+    - name: prettyPrint
+      in: query
+      required: false
+      schema:
+        type: boolean
+        default: 'true'
+      description: Returns response with indentations and line breaks.
+    - name: access_token
+      in: query
+      required: false
+      schema:
+        type: string
+      description: OAuth access token.
+    - name: uploadType
+      in: query
+      required: false
+      schema:
+        type: string
+      description: Legacy upload protocol for media (e.g. "media", "multipart").
+    - name: key
+      in: query
+      required: false
+      schema:
+        type: string
+      description: API key. Your API key identifies your project and provides you with API access, quota, and reports. Required unless you provide an OAuth 2.0 token.
+    - name: oauth_token
+      in: query
+      required: false
+      schema:
+        type: string
+      description: OAuth 2.0 token for the current user.
+    - name: alt
+      in: query
+      required: false
+      schema:
+        x-enumDescriptions:
+        - Responses with Content-Type of application/json
+        - Media download with context-dependent Content-Type
+        - Responses with Content-Type of application/x-protobuf
+        type: string
+        default: json
+        enum:
+        - json
+        - media
+        - proto
+      description: Data format for response.
+    post:
+      operationId: googleads_customers_assetGroupListingGroupFilters_mutate
+      summary: Creates, updates or removes asset group listing group filters
+      tags:
+      - customers.assetGroupListingGroupFilters
+      description: Creates, updates or removes asset group listing group filters. Operation statuses are returned.
+      parameters:
+      - name: customerId
+        in: path
+        required: true
+        schema:
+          pattern: ^[^/]+$
+          type: string
+        description: Required. The ID of the customer whose asset group listing group filters are being modified.
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/GoogleAdsGoogleadsV25Services__MutateAssetGroupListingGroupFiltersRequest'
+      responses:
+        '200':
+          description: Successful response
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/GoogleAdsGoogleadsV25Services__MutateAssetGroupListingGroupFiltersResponse'
+      security:
+      - oauth2:
+        - https://www.googleapis.com/auth/adwords
+components:
+  schemas:
+    GoogleAdsGoogleadsV25Services__MutateAssetGroupListingGroupFiltersResponse:
+      description: Response message for an asset group listing group filter mutate.
+      type: object
+      properties:
+        results:
+          description: All results for the mutate.
+          items:
+            $ref: '#/components/schemas/GoogleAdsGoogleadsV25Services__MutateAssetGroupListingGroupFilterResult'
+          type: array
+    GoogleAdsGoogleadsV25Resources__AssetGroupListingGroupFilter:
+      description: AssetGroupListingGroupFilter represents a listing group filter tree node in an asset group.
+      type: object
+      properties:
+        path:
+          $ref: '#/components/schemas/GoogleAdsGoogleadsV25Resources__ListingGroupFilterDimensionPath'
+          description: Output only. The path of dimensions defining this listing group filter.
+        parentListingGroupFilter:
+          description: Immutable. Resource name of the parent listing group subdivision. Null for the root listing group filter node.
+          type: string
+        resourceName:
+          description: 'Immutable. The resource name of the asset group listing group filter. Asset group listing group filter resource name have the form: `customers/{customer_id}/assetGroupListingGroupFilters/{asset_group_id}~{listing_group_filter_id}`'
+          type: string
+        id:
+          format: int64
+          type: string
+          description: Output only. The ID of the ListingGroupFilter.
+        listingSource:
+          type: string
+          description: Immutable. The source of listings filtered by this listing group filter.
+          x-enumDescriptions:
+          - Not specified.
+          - Used for return value only. Represents value unknown in this version.
+          - Listings from a Shopping source, like products from Google Merchant Center.
+          - Listings from a webpage source, like URLs from a page feed or from the advertiser web domain.
+          - Used for Retail Product Tags.
+          enum:
+          - UNSPECIFIED
+          - UNKNOWN
+          - SHOPPING
+          - WEBPAGE
+          - RETAIL
+        type:
+          type: string
+          description: Immutable. Type of a listing group filter node.
+          x-enumDescriptions:
+          - Not specified.
+          - Used for return value only. Represents value unknown in this version.
+          - Subdivision of products along some listing dimensions.
+          - An included listing group filter leaf node.
+          - An excluded listing group filter leaf node.
+          enum:
+          - UNSPECIFIED
+          - UNKNOWN
+          - SUBDIVISION
+          - UNIT_INCLUDED
+          - UNIT_EXCLUDED
+        assetGroup:
+          type: string
+          description: Immutable. The asset group which this asset group listing group filter is part of.
+        caseValue:
+          $ref: '#/components/schemas/GoogleAdsGoogleadsV25Resources__ListingGroupFilterDimension'
+          description: Dimension value with which this listing group is refining its parent. Undefined for the root group.
+    GoogleAdsGoogleadsV25Resources__ListingGroupFilterDimensionPath:
+      type: object
+      properties:
+        dimensions:
+          description: Output only. The complete path of dimensions through the listing group filter hierarchy (excluding the root node) to this listing group filter.
+          items:
+            $ref: '#/components/schemas/GoogleAdsGoogleadsV25Resources__ListingGroupFilterDimension'
+          type: array
+      description: The path defining of dimensions defining a listing group filter.
+    GoogleAdsGoogleadsV25Resources_ListingGroupFilterDimension_ProductCategory:
+      type: object
+      properties:
+        categoryId:
+          type: string
+          description: 'ID of the product category. This ID is equivalent to the google_product_category ID as described in this article: https://support.google.com/merchants/answer/6324436'
+          format: int64
+        level:
+          x-enumDescriptions:
+          - Not specified.
+          - Used for return value only. Represents value unknown in this version.
+          - Level 1.
+          - Level 2.
+          - Level 3.
+          - Level 4.
+          - Level 5.
+          enum:
+          - UNSPECIFIED
+          - UNKNOWN
+          - LEVEL1
+          - LEVEL2
+          - LEVEL3
+          - LEVEL4
+          - LEVEL5
+          type: string
+          description: Indicates the level of the category in the taxonomy.
+      description: One element of a category at a certain level. Top-level categories are at level 1, their children at level 2, and so on. We currently support up to 5 levels. The user must specify a dimension type that indicates the level of the category. All cases of the same subdivision must have the same dimension type (category level).
+    GoogleAdsGoogleadsV25Resources_ListingGroupFilterDimension_Webpage:
+      description: Filters for URLs in a page feed and URLs from the advertiser web domain. Several root nodes with this dimension are allowed in an asset group and their conditions are considered in OR.
+      type: object
+      properties:
+        conditions:
+          type: array
+          description: 'The webpage conditions are case sensitive and these are and-ed together when evaluated for filtering. All the conditions should be of same type. Example1: for URL1 = www.ads.google.com?ocid=1&euid=2 and URL2 = www.ads.google.com?ocid=1 and with "ocid" and "euid" as url_contains conditions, URL1 will be matched, but URL2 not. Example2 : If URL1 has Label1, Label2 and URL2 has Label2, Label3, then with Label1 and Label2 as custom_label conditions, URL1 will be matched but not URL2. With Label2 as the only custom_label condition then both URL1 and URL2 will be matched.'
+          items:
+            $ref: '#/components/schemas/GoogleAdsGoogleadsV25Resources_ListingGroupFilterDimension_WebpageCondition'
+    GoogleAdsGoogleadsV25Resources_ListingGroupFilterDimension_ProductBrand:
+      description: Brand of the product.
+      type: object
+      properties:
+        value:
+          description: String value of the product brand.
+          type: string
+    GoogleAdsGoogleadsV25Services__AssetGroupListingGroupFilterOperation:
+      type: object
+      properties:
+        remove:
+          description: 'Remove operation: A resource name for the removed asset group listing group filter is expected, in this format: `customers/{customer_id}/assetGroupListingGroupFilters/{asset_group_id}~{listing_group_filter_id}` An entity can be removed only if it''s not referenced by other parent_listing_group_id. If multiple entities are being deleted, the mutates must be in the correct order.'
+          type: string
+        update:
+          $ref: '#/components/schemas/GoogleAdsGoogleadsV25Resources__AssetGroupListingGroupFilter'
+          description: 'Update operation: The asset group listing group filter is expected to have a valid resource name.'
+        updateMask:
+          format: google-fieldmask
+          description: FieldMask that determines which resource fields are modified in an update.
+          type: string
+        create:
+          $ref: '#/components/schemas/GoogleAdsGoogleadsV25Resources__AssetGroupListingGroupFilter'
+          description: 'Create operation: No resource name is expected for the new asset group listing group filter.'
+      description: A single operation (create, remove) on an asset group listing group filter.
+    GoogleAdsGoogleadsV25Resources_ListingGroupFilterDimension_WebpageCondition:
+      type: object
+      properties:
+        customLabel:
+          type: string
+          description: Filters the URLs in a page feed that have this custom label. A custom label can be added to a campaign by creating an AssetSet of type PAGE_FEED and linking it to the campaign using CampaignAssetSet.
+        urlContains:
+          description: Filters the URLs in a page feed and the URLs from the advertiser web domain that contain this string.
+          type: string
+      description: Matching condition for URL filtering.
+    GoogleAdsGoogleadsV25Resources_ListingGroupFilterDimension_ProductType:
+      type: object
+      properties:
+        value:
+          description: Value of the type.
+          type: string
+        level:
+          type: string
+          description: Level of the type.
+          x-enumDescriptions:
+          - Not specified.
+          - Used for return value only. Represents value unknown in this version.
+          - Level 1.
+          - Level 2.
+          - Level 3.
+          - Level 4.
+          - Level 5.
+          enum:
+          - UNSPECIFIED
+          - UNKNOWN
+          - LEVEL1
+          - LEVEL2
+          - LEVEL3
+          - LEVEL4
+          - LEVEL5
+      description: Type of a product offer.
+    GoogleAdsGoogleadsV25Services__MutateAssetGroupListingGroupFilterResult:
+      type: object
+      properties:
+        resourceName:
+          description: Returned for successful operations.
+          type: string
+        assetGroupListingGroupFilter:
+          description: The mutated AssetGroupListingGroupFilter with only mutable fields after mutate. The field will only be returned when response_content_type is set to "MUTABLE_RESOURCE".
+          $ref: '#/components/schemas/GoogleAdsGoogleadsV25Resources__AssetGroupListingGroupFilter'
+      description: The result for the asset group listing group filter mutate.
+    GoogleAdsGoogleadsV25Services__MutateAssetGroupListingGroupFiltersRequest:
+      type: object
+      properties:
+        validateOnly:
+          type: boolean
+          description: If true, the request is validated but not executed. Only errors are returned, not results.
+        responseContentType:
+          description: The response content type setting. Determines whether the mutable resource or just the resource name should be returned post mutation.
+          type: string
+          x-enumDescriptions:
+          - Not specified. Will return the resource name only in the response.
+          - The mutate response will be the resource name.
+          - The mutate response will contain the resource name and the resource with mutable fields if possible. Otherwise, only the resource name will be returned.
+          enum:
+          - UNSPECIFIED
+          - RESOURCE_NAME_ONLY
+          - MUTABLE_RESOURCE
+        operations:
+          description: Required. The list of operations to perform on individual asset group listing group filters.
+          items:
+            $ref: '#/components/schemas/GoogleAdsGoogleadsV25Services__AssetGroupListingGroupFilterOperation'
+          type: array
+      description: Request message for AssetGroupListingGroupFilterService.MutateAssetGroupListingGroupFilters. partial_failure is not supported because the tree needs to be validated together.
+    GoogleAdsGoogleadsV25Resources_ListingGroupFilterDimension_ProductCustomAttribute:
+      description: Custom attribute of a product offer.
+      type: object
+      properties:
+        value:
+          type: string
+          description: String value of the product custom attribute.
+        index:
+          x-enumDescriptions:
+          - Not specified.
+          - Used for return value only. Represents value unknown in this version.
+          - First listing group filter custom attribute.
+          - Second listing group filter custom attribute.
+          - Third listing group filter custom attribute.
+          - Fourth listing group filter custom attribute.
+          - Fifth listing group filter custom attribute.
+          enum:
+          - UNSPECIFIED
+          - UNKNOWN
+          - INDEX0
+          - INDEX1
+          - INDEX2
+          - INDEX3
+          - INDEX4
+          description: Indicates the index of the custom attribute.
+          type: string
+    GoogleAdsGoogleadsV25Resources_ListingGroupFilterDimension_RetailFilterBundle:
+      description: Dimension for Retail Product Tags.
+      type: object
+      properties:
+        sharedSet:
+          type: string
+          description: The RetailFilterBundle shared set resource name.
+    GoogleAdsGoogleadsV25Resources__ListingGroupFilterDimension:
+      type: object
+      properties:
+        productBrand:
+          $ref: '#/components/schemas/GoogleAdsGoogleadsV25Resources_ListingGroupFilterDimension_ProductBrand'
+          description: Brand of a product offer.
+        productCondition:
+          $ref: '#/components/schemas/GoogleAdsGoogleadsV25Resources_ListingGroupFilterDimension_ProductCondition'
+          description: Condition of a product offer.
+        productCustomAttribute:
+          $ref: '#/components/schemas/GoogleAdsGoogleadsV25Resources_ListingGroupFilterDimension_ProductCustomAttribute'
+          description: Custom attribute of a product offer.
+        productItemId:
+          $ref: '#/components/schemas/GoogleAdsGoogleadsV25Resources_ListingGroupFilterDimension_ProductItemId'
+          description: Item id of a product offer.
+        webpage:
+          description: Filters for URLs in a page feed and URLs from the advertiser web domain.
+          $ref: '#/components/schemas/GoogleAdsGoogleadsV25Resources_ListingGroupFilterDimension_Webpage'
+        productCategory:
+          description: Category of a product offer.
+          $ref: '#/components/schemas/GoogleAdsGoogleadsV25Resources_ListingGroupFilterDimension_ProductCategory'
+        productType:
+          description: Type of a product offer.
+          $ref: '#/components/schemas/GoogleAdsGoogleadsV25Resources_ListingGroupFilterDimension_ProductType'
+        retailFilterBundle:
+          description: Dimension for Retail Product Tags.
+          $ref: '#/components/schemas/GoogleAdsGoogleadsV25Resources_ListingGroupFilterDimension_RetailFilterBundle'
+        productChannel:
+          $ref: '#/components/schemas/GoogleAdsGoogleadsV25Resources_ListingGroupFilterDimension_ProductChannel'
+          description: Locality of a product offer.
+      description: Listing dimensions for the asset group listing group filter.
+    GoogleAdsGoogleadsV25Resources_ListingGroupFilterDimension_ProductCondition:
+      description: Condition of a product offer.
+      type: object
+      properties:
+        condition:
+          x-enumDescriptions:
+          - Not specified.
+          - Used for return value only. Represents value unknown in this version.
+          - The product condition is new.
+          - The product condition is refurbished.
+          - The product condition is used.
+          enum:
+          - UNSPECIFIED
+          - UNKNOWN
+          - NEW
+          - REFURBISHED
+          - USED
+          type: string
+          description: Value of the condition.
+    GoogleAdsGoogleadsV25Resources_ListingGroupFilterDimension_ProductItemId:
+      description: Item id of a product offer.
+      type: object
+      properties:
+        value:
+          type: string
+          description: Value of the id.
+    GoogleAdsGoogleadsV25Resources_ListingGroupFilterDimension_ProductChannel:
+      description: Locality of a product offer.
+      type: object
+      properties:
+        channel:
+          type: string
+          description: Value of the locality.
+          x-enumDescriptions:
+          - Not specified.
+          - Used for return value only. Represents value unknown in this version.
+          - The item is sold online.
+          - The item is sold in local stores.
+          enum:
+          - UNSPECIFIED
+          - UNKNOWN
+          - ONLINE
+          - LOCAL
+  securitySchemes:
+    oauth2:
+      type: oauth2
+      description: Google OAuth 2.0. Google Ads API additionally requires a developer token in the developer-token header.
+      flows:
+        authorizationCode:
+          authorizationUrl: https://accounts.google.com/o/oauth2/auth
+          tokenUrl: https://oauth2.googleapis.com/token
+          scopes:
+            https://www.googleapis.com/auth/adwords: See, edit, create, and delete your Google Ads accounts and data.
+externalDocs:
+  url: https://developers.google.com/google-ads/api/
+x-source: https://googleads.googleapis.com/$discovery/rest?version=v25
+x-generated-by: API Evangelist enrichment pipeline — mechanical conversion of the first-party Google API Discovery Document

@@ -1,0 +1,358 @@
+openapi: 3.2.0
+info:
+  title: Google Ads Customers.conversion Value Rule Sets API
+  description: Manage your Google Ads accounts, campaigns, and reports with this API.
+  version: v25
+  x-discovery-revision: '20260721'
+  contact:
+    name: Google
+    url: https://developers.google.com/google-ads/api/
+  termsOfService: https://developers.google.com/terms
+servers:
+- url: https://googleads.googleapis.com
+  description: Google Ads API production server
+security:
+- oauth2:
+  - https://www.googleapis.com/auth/adwords
+tags:
+- name: customers.conversionValueRuleSets
+paths:
+  /v25/customers/{customersId}/conversionValueRuleSets:mutate:
+    parameters:
+    - name: upload_protocol
+      in: query
+      required: false
+      schema:
+        type: string
+      description: Upload protocol for media (e.g. "raw", "multipart").
+    - name: quotaUser
+      in: query
+      required: false
+      schema:
+        type: string
+      description: Available to use for quota purposes for server-side applications. Can be any arbitrary string assigned to a user, but should not exceed 40 characters.
+    - name: fields
+      in: query
+      required: false
+      schema:
+        type: string
+      description: Selector specifying which fields to include in a partial response.
+    - name: $.xgafv
+      in: query
+      required: false
+      schema:
+        type: string
+        enum:
+        - '1'
+        - '2'
+        x-enumDescriptions:
+        - v1 error format
+        - v2 error format
+      description: V1 error format.
+    - name: callback
+      in: query
+      required: false
+      schema:
+        type: string
+      description: JSONP
+    - name: prettyPrint
+      in: query
+      required: false
+      schema:
+        type: boolean
+        default: 'true'
+      description: Returns response with indentations and line breaks.
+    - name: access_token
+      in: query
+      required: false
+      schema:
+        type: string
+      description: OAuth access token.
+    - name: uploadType
+      in: query
+      required: false
+      schema:
+        type: string
+      description: Legacy upload protocol for media (e.g. "media", "multipart").
+    - name: key
+      in: query
+      required: false
+      schema:
+        type: string
+      description: API key. Your API key identifies your project and provides you with API access, quota, and reports. Required unless you provide an OAuth 2.0 token.
+    - name: oauth_token
+      in: query
+      required: false
+      schema:
+        type: string
+      description: OAuth 2.0 token for the current user.
+    - name: alt
+      in: query
+      required: false
+      schema:
+        x-enumDescriptions:
+        - Responses with Content-Type of application/json
+        - Media download with context-dependent Content-Type
+        - Responses with Content-Type of application/x-protobuf
+        type: string
+        default: json
+        enum:
+        - json
+        - media
+        - proto
+      description: Data format for response.
+    post:
+      operationId: googleads_customers_conversionValueRuleSets_mutate
+      summary: Creates, updates or removes conversion value rule sets
+      tags:
+      - customers.conversionValueRuleSets
+      description: Creates, updates or removes conversion value rule sets. Operation statuses are returned.
+      parameters:
+      - name: customerId
+        in: path
+        required: true
+        schema:
+          pattern: ^[^/]+$
+          type: string
+        description: Required. The ID of the customer whose conversion value rule sets are being modified.
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/GoogleAdsGoogleadsV25Services__MutateConversionValueRuleSetsRequest'
+      responses:
+        '200':
+          description: Successful response
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/GoogleAdsGoogleadsV25Services__MutateConversionValueRuleSetsResponse'
+      security:
+      - oauth2:
+        - https://www.googleapis.com/auth/adwords
+components:
+  schemas:
+    GoogleAdsGoogleadsV25Services__MutateConversionValueRuleSetsRequest:
+      description: Request message for ConversionValueRuleSetService.MutateConversionValueRuleSets.
+      type: object
+      properties:
+        validateOnly:
+          description: If true, the request is validated but not executed. Only errors are returned, not results.
+          type: boolean
+        responseContentType:
+          description: The response content type setting. Determines whether the mutable resource or just the resource name should be returned post mutation.
+          type: string
+          x-enumDescriptions:
+          - Not specified. Will return the resource name only in the response.
+          - The mutate response will be the resource name.
+          - The mutate response will contain the resource name and the resource with mutable fields if possible. Otherwise, only the resource name will be returned.
+          enum:
+          - UNSPECIFIED
+          - RESOURCE_NAME_ONLY
+          - MUTABLE_RESOURCE
+        operations:
+          type: array
+          description: Required. The list of operations to perform on individual conversion value rule sets.
+          items:
+            $ref: '#/components/schemas/GoogleAdsGoogleadsV25Services__ConversionValueRuleSetOperation'
+        partialFailure:
+          type: boolean
+          description: If true, successful operations will be carried out and invalid operations will return errors. If false, all operations will be carried out in one transaction if and only if they are all valid. Default is false.
+    GoogleAdsGoogleadsV25Resources__ConversionValueRuleSet:
+      description: A conversion value rule set is a collection of conversion value rules that lets you adjust conversion values based on the dimensions specified in the `dimensions` field.
+      type: object
+      properties:
+        resourceName:
+          type: string
+          description: 'Immutable. The resource name of the conversion value rule set. Conversion value rule set resource names have the form: `customers/{customer_id}/conversionValueRuleSets/{conversion_value_rule_set_id}`'
+        ownerCustomer:
+          description: Output only. The resource name of the conversion value rule set's owner customer. When the value rule set is inherited from a manager customer, owner_customer will be the resource name of the manager whereas the customer in the resource_name will be of the requesting serving customer. ** Read-only **
+          type: string
+        conversionActionCategories:
+          type: array
+          description: Immutable. The conversion action categories of the conversion value rule set.
+          items:
+            type: string
+            x-enumDescriptions:
+            - Not specified.
+            - Used for return value only. Represents value unknown in this version.
+            - Default category.
+            - User visiting a page.
+            - Purchase, sales, or "order placed" event.
+            - Signup user action.
+            - Software download action (as for an app).
+            - The addition of items to a shopping cart or bag on an advertiser site.
+            - When someone enters the checkout flow on an advertiser site.
+            - The start of a paid subscription for a product or service.
+            - A call to indicate interest in an advertiser's offering.
+            - A lead conversion imported from an external source into Google Ads.
+            - A submission of a form on an advertiser site indicating business interest.
+            - A booking of an appointment with an advertiser's business.
+            - A quote or price estimate request.
+            - A search for an advertiser's business location with intention to visit.
+            - A click to an advertiser's partner's site.
+            - A call, SMS, email, chat or other type of contact to an advertiser.
+            - A website engagement event such as long site time or a Google Analytics (GA) Smart Goal. Intended to be used for GA, Firebase, GA Gold goal imports.
+            - A visit to a physical store location.
+            - A sale occurring in a physical store.
+            - A lead conversion imported from an external source into Google Ads, that has been further qualified by the advertiser (marketing/sales team). In the lead-to-sale journey, advertisers get leads, then act on them by reaching out to the consumer. If the consumer is interested and may end up buying their product, the advertiser marks such leads as "qualified leads".
+            - A lead conversion imported from an external source into Google Ads, that has further completed a chosen stage as defined by the lead gen advertiser.
+            - User watches an ad from a channel and later watches either the same video or a video from the same channel as the ad.
+            enum:
+            - UNSPECIFIED
+            - UNKNOWN
+            - DEFAULT
+            - PAGE_VIEW
+            - PURCHASE
+            - SIGNUP
+            - DOWNLOAD
+            - ADD_TO_CART
+            - BEGIN_CHECKOUT
+            - SUBSCRIBE_PAID
+            - PHONE_CALL_LEAD
+            - IMPORTED_LEAD
+            - SUBMIT_LEAD_FORM
+            - BOOK_APPOINTMENT
+            - REQUEST_QUOTE
+            - GET_DIRECTIONS
+            - OUTBOUND_CLICK
+            - CONTACT
+            - ENGAGEMENT
+            - STORE_VISIT
+            - STORE_SALE
+            - QUALIFIED_LEAD
+            - CONVERTED_LEAD
+            - YOUTUBE_FOLLOW_ON_VIEWS
+        campaign:
+          description: The resource name of the campaign when the conversion value rule set is attached to a campaign.
+          type: string
+        id:
+          type: string
+          description: Output only. The ID of the conversion value rule set.
+          format: int64
+        conversionValueRules:
+          description: Resource names of rules within the rule set.
+          items:
+            type: string
+          type: array
+        status:
+          x-enumDescriptions:
+          - Not specified.
+          - Used for return value only. Represents value unknown in this version.
+          - Conversion Value Rule Set is enabled and can be applied.
+          - Conversion Value Rule Set is permanently deleted and can't be applied.
+          - Conversion Value Rule Set is paused and won't be applied. It can be enabled again.
+          description: Output only. The status of the conversion value rule set. ** Read-only **
+          type: string
+          enum:
+          - UNSPECIFIED
+          - UNKNOWN
+          - ENABLED
+          - REMOVED
+          - PAUSED
+        attachmentType:
+          x-enumDescriptions:
+          - Not specified.
+          - Used for return value only. Represents value unknown in this version.
+          - Attached to the customer.
+          - Attached to a campaign.
+          enum:
+          - UNSPECIFIED
+          - UNKNOWN
+          - CUSTOMER
+          - CAMPAIGN
+          description: Immutable. Defines the scope where the conversion value rule set is attached.
+          type: string
+        dimensions:
+          description: Defines dimensions for Value Rule conditions. The condition types of value rules within this value rule set must be of these dimensions. The first entry in this list is the primary dimension of the included value rules. When using value rule primary dimension segmentation, conversion values will be segmented into the values adjusted by value rules and the original values, if some value rules apply.
+          items:
+            type: string
+            x-enumDescriptions:
+            - Not specified.
+            - Used for return value only. Represents value unknown in this version.
+            - Dimension for geo location.
+            - Dimension for device type.
+            - Dimension for audience.
+            - This dimension implies the rule will always apply.
+            - Dimension for itinerary.
+            enum:
+            - UNSPECIFIED
+            - UNKNOWN
+            - GEO_LOCATION
+            - DEVICE
+            - AUDIENCE
+            - NO_CONDITION
+            - ITINERARY
+          type: array
+    GoogleAdsGoogleadsV25Services__MutateConversionValueRuleSetsResponse:
+      description: Response message for ConversionValueRuleSetService.MutateConversionValueRuleSets.
+      type: object
+      properties:
+        partialFailureError:
+          description: Errors that pertain to operation failures in the partial failure mode. Returned only when partial_failure = true and all errors occur inside the operations. If any errors occur outside the operations (for example, auth errors), we return an RPC level error.
+          $ref: '#/components/schemas/GoogleRpc__Status'
+        results:
+          type: array
+          description: All results for the mutate.
+          items:
+            $ref: '#/components/schemas/GoogleAdsGoogleadsV25Services__MutateConversionValueRuleSetResult'
+    GoogleAdsGoogleadsV25Services__ConversionValueRuleSetOperation:
+      description: A single operation (create, update, remove) on a conversion value rule set.
+      type: object
+      properties:
+        remove:
+          type: string
+          description: 'Remove operation: A resource name for the removed conversion value rule set is expected, in this format: `customers/{customer_id}/conversionValueRuleSets/{conversion_value_rule_set_id}`'
+        update:
+          description: 'Update operation: The conversion value rule set is expected to have a valid resource name.'
+          $ref: '#/components/schemas/GoogleAdsGoogleadsV25Resources__ConversionValueRuleSet'
+        updateMask:
+          description: FieldMask that determines which resource fields are modified in an update.
+          type: string
+          format: google-fieldmask
+        create:
+          description: 'Create operation: No resource name is expected for the new conversion value rule set.'
+          $ref: '#/components/schemas/GoogleAdsGoogleadsV25Resources__ConversionValueRuleSet'
+    GoogleRpc__Status:
+      description: 'The `Status` type defines a logical error model that is suitable for different programming environments, including REST APIs and RPC APIs. It is used by [gRPC](https://github.com/grpc). Each `Status` message contains three pieces of data: error code, error message, and error details. You can find out more about this error model and how to work with it in the [API Design Guide](https://cloud.google.com/apis/design/errors).'
+      type: object
+      properties:
+        message:
+          description: A developer-facing error message, which should be in English. Any user-facing error message should be localized and sent in the google.rpc.Status.details field, or localized by the client.
+          type: string
+        code:
+          type: integer
+          description: The status code, which should be an enum value of google.rpc.Code.
+          format: int32
+        details:
+          type: array
+          description: A list of messages that carry the error details. There is a common set of message types for APIs to use.
+          items:
+            type: object
+            additionalProperties:
+              description: Properties of the object. Contains field @type with type URL.
+    GoogleAdsGoogleadsV25Services__MutateConversionValueRuleSetResult:
+      description: The result for the conversion value rule set mutate.
+      type: object
+      properties:
+        resourceName:
+          type: string
+          description: Returned for successful operations.
+        conversionValueRuleSet:
+          $ref: '#/components/schemas/GoogleAdsGoogleadsV25Resources__ConversionValueRuleSet'
+          description: The mutated conversion value rule set with only mutable fields after mutate. The field will only be returned when response_content_type is set to "MUTABLE_RESOURCE".
+  securitySchemes:
+    oauth2:
+      type: oauth2
+      description: Google OAuth 2.0. Google Ads API additionally requires a developer token in the developer-token header.
+      flows:
+        authorizationCode:
+          authorizationUrl: https://accounts.google.com/o/oauth2/auth
+          tokenUrl: https://oauth2.googleapis.com/token
+          scopes:
+            https://www.googleapis.com/auth/adwords: See, edit, create, and delete your Google Ads accounts and data.
+externalDocs:
+  url: https://developers.google.com/google-ads/api/
+x-source: https://googleads.googleapis.com/$discovery/rest?version=v25
+x-generated-by: API Evangelist enrichment pipeline — mechanical conversion of the first-party Google API Discovery Document

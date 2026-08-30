@@ -1,0 +1,277 @@
+openapi: 3.2.0
+info:
+  title: Google Ads Customers.campaign Conversion Goals API
+  description: Manage your Google Ads accounts, campaigns, and reports with this API.
+  version: v25
+  x-discovery-revision: '20260721'
+  contact:
+    name: Google
+    url: https://developers.google.com/google-ads/api/
+  termsOfService: https://developers.google.com/terms
+servers:
+- url: https://googleads.googleapis.com
+  description: Google Ads API production server
+security:
+- oauth2:
+  - https://www.googleapis.com/auth/adwords
+tags:
+- name: customers.campaignConversionGoals
+paths:
+  /v25/customers/{customersId}/campaignConversionGoals:mutate:
+    parameters:
+    - name: upload_protocol
+      in: query
+      required: false
+      schema:
+        type: string
+      description: Upload protocol for media (e.g. "raw", "multipart").
+    - name: quotaUser
+      in: query
+      required: false
+      schema:
+        type: string
+      description: Available to use for quota purposes for server-side applications. Can be any arbitrary string assigned to a user, but should not exceed 40 characters.
+    - name: fields
+      in: query
+      required: false
+      schema:
+        type: string
+      description: Selector specifying which fields to include in a partial response.
+    - name: $.xgafv
+      in: query
+      required: false
+      schema:
+        type: string
+        enum:
+        - '1'
+        - '2'
+        x-enumDescriptions:
+        - v1 error format
+        - v2 error format
+      description: V1 error format.
+    - name: callback
+      in: query
+      required: false
+      schema:
+        type: string
+      description: JSONP
+    - name: prettyPrint
+      in: query
+      required: false
+      schema:
+        type: boolean
+        default: 'true'
+      description: Returns response with indentations and line breaks.
+    - name: access_token
+      in: query
+      required: false
+      schema:
+        type: string
+      description: OAuth access token.
+    - name: uploadType
+      in: query
+      required: false
+      schema:
+        type: string
+      description: Legacy upload protocol for media (e.g. "media", "multipart").
+    - name: key
+      in: query
+      required: false
+      schema:
+        type: string
+      description: API key. Your API key identifies your project and provides you with API access, quota, and reports. Required unless you provide an OAuth 2.0 token.
+    - name: oauth_token
+      in: query
+      required: false
+      schema:
+        type: string
+      description: OAuth 2.0 token for the current user.
+    - name: alt
+      in: query
+      required: false
+      schema:
+        x-enumDescriptions:
+        - Responses with Content-Type of application/json
+        - Media download with context-dependent Content-Type
+        - Responses with Content-Type of application/x-protobuf
+        type: string
+        default: json
+        enum:
+        - json
+        - media
+        - proto
+      description: Data format for response.
+    post:
+      operationId: googleads_customers_campaignConversionGoals_mutate
+      summary: Creates, updates or removes campaign conversion goals
+      tags:
+      - customers.campaignConversionGoals
+      description: Creates, updates or removes campaign conversion goals. Operation statuses are returned.
+      parameters:
+      - name: customerId
+        in: path
+        required: true
+        schema:
+          type: string
+          pattern: ^[^/]+$
+        description: Required. The ID of the customer whose campaign conversion goals are being modified.
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/GoogleAdsGoogleadsV25Services__MutateCampaignConversionGoalsRequest'
+      responses:
+        '200':
+          description: Successful response
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/GoogleAdsGoogleadsV25Services__MutateCampaignConversionGoalsResponse'
+      security:
+      - oauth2:
+        - https://www.googleapis.com/auth/adwords
+components:
+  schemas:
+    GoogleAdsGoogleadsV25Services__CampaignConversionGoalOperation:
+      type: object
+      properties:
+        updateMask:
+          format: google-fieldmask
+          description: FieldMask that determines which resource fields are modified in an update.
+          type: string
+        update:
+          $ref: '#/components/schemas/GoogleAdsGoogleadsV25Resources__CampaignConversionGoal'
+          description: 'Update operation: The customer conversion goal is expected to have a valid resource name.'
+      description: A single operation (update) on a campaign conversion goal.
+    GoogleAdsGoogleadsV25Services__MutateCampaignConversionGoalResult:
+      type: object
+      properties:
+        resourceName:
+          description: Returned for successful operations.
+          type: string
+      description: The result for the campaign conversion goal mutate.
+    GoogleAdsGoogleadsV25Services__MutateCampaignConversionGoalsResponse:
+      description: Response message for a campaign conversion goal mutate.
+      type: object
+      properties:
+        results:
+          description: All results for the mutate.
+          items:
+            $ref: '#/components/schemas/GoogleAdsGoogleadsV25Services__MutateCampaignConversionGoalResult'
+          type: array
+    GoogleAdsGoogleadsV25Resources__CampaignConversionGoal:
+      description: The biddability setting for the specified campaign only for all conversion actions with a matching category and origin.
+      type: object
+      properties:
+        campaign:
+          type: string
+          description: Immutable. The campaign with which this campaign conversion goal is associated.
+        resourceName:
+          description: 'Immutable. The resource name of the campaign conversion goal. Campaign conversion goal resource names have the form: `customers/{customer_id}/campaignConversionGoals/{campaign_id}~{category}~{origin}`'
+          type: string
+        biddable:
+          description: 'The biddability of the campaign conversion goal. If left unspecified during campaign creation or update operations, this value will inherit the account-level default biddability for the corresponding conversion category and origin. Note: The account-level default may be set to `true` for newly created conversion goals. To explicitly prevent a campaign from bidding on this goal, you must explicitly set `biddable` to `false` and include "biddable" in your mutate operation''s `update_mask`.'
+          type: boolean
+        origin:
+          type: string
+          description: The conversion origin of this campaign conversion goal.
+          x-enumDescriptions:
+          - The conversion origin has not been specified.
+          - The conversion origin is not known in this version.
+          - Conversion that occurs when a user visits a website or takes an action there after viewing an ad.
+          - Conversions reported by an offline pipeline which collects local actions from Google-hosted pages (for example, Google Maps, Google Place Page, etc) and attributes them to relevant ad events.
+          - Conversion that occurs when a user performs an action through any app platforms.
+          - Conversion that occurs when a user makes a call from ads.
+          - Conversion that occurs when a user visits or makes a purchase at a physical store.
+          - Conversion that occurs on YouTube.
+          - Conversion that occurs when a user clicks on local services ads unit and reaches out to advertiser through phone call, message, or booking options on the ad.
+          enum:
+          - UNSPECIFIED
+          - UNKNOWN
+          - WEBSITE
+          - GOOGLE_HOSTED
+          - APP
+          - CALL_FROM_ADS
+          - STORE
+          - YOUTUBE_HOSTED
+          - LOCAL_SERVICES_ADS
+        category:
+          description: The conversion category of this campaign conversion goal.
+          type: string
+          x-enumDescriptions:
+          - Not specified.
+          - Used for return value only. Represents value unknown in this version.
+          - Default category.
+          - User visiting a page.
+          - Purchase, sales, or "order placed" event.
+          - Signup user action.
+          - Software download action (as for an app).
+          - The addition of items to a shopping cart or bag on an advertiser site.
+          - When someone enters the checkout flow on an advertiser site.
+          - The start of a paid subscription for a product or service.
+          - A call to indicate interest in an advertiser's offering.
+          - A lead conversion imported from an external source into Google Ads.
+          - A submission of a form on an advertiser site indicating business interest.
+          - A booking of an appointment with an advertiser's business.
+          - A quote or price estimate request.
+          - A search for an advertiser's business location with intention to visit.
+          - A click to an advertiser's partner's site.
+          - A call, SMS, email, chat or other type of contact to an advertiser.
+          - A website engagement event such as long site time or a Google Analytics (GA) Smart Goal. Intended to be used for GA, Firebase, GA Gold goal imports.
+          - A visit to a physical store location.
+          - A sale occurring in a physical store.
+          - A lead conversion imported from an external source into Google Ads, that has been further qualified by the advertiser (marketing/sales team). In the lead-to-sale journey, advertisers get leads, then act on them by reaching out to the consumer. If the consumer is interested and may end up buying their product, the advertiser marks such leads as "qualified leads".
+          - A lead conversion imported from an external source into Google Ads, that has further completed a chosen stage as defined by the lead gen advertiser.
+          - User watches an ad from a channel and later watches either the same video or a video from the same channel as the ad.
+          enum:
+          - UNSPECIFIED
+          - UNKNOWN
+          - DEFAULT
+          - PAGE_VIEW
+          - PURCHASE
+          - SIGNUP
+          - DOWNLOAD
+          - ADD_TO_CART
+          - BEGIN_CHECKOUT
+          - SUBSCRIBE_PAID
+          - PHONE_CALL_LEAD
+          - IMPORTED_LEAD
+          - SUBMIT_LEAD_FORM
+          - BOOK_APPOINTMENT
+          - REQUEST_QUOTE
+          - GET_DIRECTIONS
+          - OUTBOUND_CLICK
+          - CONTACT
+          - ENGAGEMENT
+          - STORE_VISIT
+          - STORE_SALE
+          - QUALIFIED_LEAD
+          - CONVERTED_LEAD
+          - YOUTUBE_FOLLOW_ON_VIEWS
+    GoogleAdsGoogleadsV25Services__MutateCampaignConversionGoalsRequest:
+      type: object
+      properties:
+        operations:
+          type: array
+          description: Required. The list of operations to perform on individual campaign conversion goal.
+          items:
+            $ref: '#/components/schemas/GoogleAdsGoogleadsV25Services__CampaignConversionGoalOperation'
+        validateOnly:
+          description: If true, the request is validated but not executed. Only errors are returned, not results.
+          type: boolean
+      description: Request message for CampaignConversionGoalService.MutateCampaignConversionGoals.
+  securitySchemes:
+    oauth2:
+      type: oauth2
+      description: Google OAuth 2.0. Google Ads API additionally requires a developer token in the developer-token header.
+      flows:
+        authorizationCode:
+          authorizationUrl: https://accounts.google.com/o/oauth2/auth
+          tokenUrl: https://oauth2.googleapis.com/token
+          scopes:
+            https://www.googleapis.com/auth/adwords: See, edit, create, and delete your Google Ads accounts and data.
+externalDocs:
+  url: https://developers.google.com/google-ads/api/
+x-source: https://googleads.googleapis.com/$discovery/rest?version=v25
+x-generated-by: API Evangelist enrichment pipeline — mechanical conversion of the first-party Google API Discovery Document

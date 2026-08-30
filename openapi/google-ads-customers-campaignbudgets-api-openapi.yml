@@ -1,0 +1,344 @@
+openapi: 3.2.0
+info:
+  title: Google Ads Customers.campaign Budgets API
+  description: Manage your Google Ads accounts, campaigns, and reports with this API.
+  version: v25
+  x-discovery-revision: '20260721'
+  contact:
+    name: Google
+    url: https://developers.google.com/google-ads/api/
+  termsOfService: https://developers.google.com/terms
+servers:
+- url: https://googleads.googleapis.com
+  description: Google Ads API production server
+security:
+- oauth2:
+  - https://www.googleapis.com/auth/adwords
+tags:
+- name: customers.campaignBudgets
+paths:
+  /v25/customers/{customersId}/campaignBudgets:mutate:
+    parameters:
+    - name: upload_protocol
+      in: query
+      required: false
+      schema:
+        type: string
+      description: Upload protocol for media (e.g. "raw", "multipart").
+    - name: quotaUser
+      in: query
+      required: false
+      schema:
+        type: string
+      description: Available to use for quota purposes for server-side applications. Can be any arbitrary string assigned to a user, but should not exceed 40 characters.
+    - name: fields
+      in: query
+      required: false
+      schema:
+        type: string
+      description: Selector specifying which fields to include in a partial response.
+    - name: $.xgafv
+      in: query
+      required: false
+      schema:
+        type: string
+        enum:
+        - '1'
+        - '2'
+        x-enumDescriptions:
+        - v1 error format
+        - v2 error format
+      description: V1 error format.
+    - name: callback
+      in: query
+      required: false
+      schema:
+        type: string
+      description: JSONP
+    - name: prettyPrint
+      in: query
+      required: false
+      schema:
+        type: boolean
+        default: 'true'
+      description: Returns response with indentations and line breaks.
+    - name: access_token
+      in: query
+      required: false
+      schema:
+        type: string
+      description: OAuth access token.
+    - name: uploadType
+      in: query
+      required: false
+      schema:
+        type: string
+      description: Legacy upload protocol for media (e.g. "media", "multipart").
+    - name: key
+      in: query
+      required: false
+      schema:
+        type: string
+      description: API key. Your API key identifies your project and provides you with API access, quota, and reports. Required unless you provide an OAuth 2.0 token.
+    - name: oauth_token
+      in: query
+      required: false
+      schema:
+        type: string
+      description: OAuth 2.0 token for the current user.
+    - name: alt
+      in: query
+      required: false
+      schema:
+        x-enumDescriptions:
+        - Responses with Content-Type of application/json
+        - Media download with context-dependent Content-Type
+        - Responses with Content-Type of application/x-protobuf
+        type: string
+        default: json
+        enum:
+        - json
+        - media
+        - proto
+      description: Data format for response.
+    post:
+      operationId: googleads_customers_campaignBudgets_mutate
+      summary: Creates, updates, or removes campaign budgets
+      tags:
+      - customers.campaignBudgets
+      description: 'Creates, updates, or removes campaign budgets. Operation statuses are returned. List of thrown errors: [AuthenticationError]() [AuthorizationError]() [CampaignBudgetError]() [DatabaseError]() [DistinctError]() [FieldError]() [FieldMaskError]() [HeaderError]() [InternalError]() [MutateError]() [NewResourceCreationError]() [OperationAccessDeniedError]() [QuotaError]() [RangeError]() [RequestError]() [ResourceCountLimitExceededError]() [StringLengthError]()'
+      parameters:
+      - name: customerId
+        in: path
+        required: true
+        schema:
+          type: string
+          pattern: ^[^/]+$
+        description: Required. The ID of the customer whose campaign budgets are being modified.
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/GoogleAdsGoogleadsV25Services__MutateCampaignBudgetsRequest'
+      responses:
+        '200':
+          description: Successful response
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/GoogleAdsGoogleadsV25Services__MutateCampaignBudgetsResponse'
+      security:
+      - oauth2:
+        - https://www.googleapis.com/auth/adwords
+components:
+  schemas:
+    GoogleAdsGoogleadsV25Services__MutateCampaignBudgetsResponse:
+      type: object
+      properties:
+        results:
+          description: All results for the mutate.
+          items:
+            $ref: '#/components/schemas/GoogleAdsGoogleadsV25Services__MutateCampaignBudgetResult'
+          type: array
+        partialFailureError:
+          $ref: '#/components/schemas/GoogleRpc__Status'
+          description: Errors that pertain to operation failures in the partial failure mode. Returned only when partial_failure = true and all errors occur inside the operations. If any errors occur outside the operations (for example, auth errors), we return an RPC level error.
+      description: Response message for campaign budget mutate.
+    GoogleRpc__Status:
+      description: 'The `Status` type defines a logical error model that is suitable for different programming environments, including REST APIs and RPC APIs. It is used by [gRPC](https://github.com/grpc). Each `Status` message contains three pieces of data: error code, error message, and error details. You can find out more about this error model and how to work with it in the [API Design Guide](https://cloud.google.com/apis/design/errors).'
+      type: object
+      properties:
+        message:
+          description: A developer-facing error message, which should be in English. Any user-facing error message should be localized and sent in the google.rpc.Status.details field, or localized by the client.
+          type: string
+        code:
+          type: integer
+          description: The status code, which should be an enum value of google.rpc.Code.
+          format: int32
+        details:
+          type: array
+          description: A list of messages that carry the error details. There is a common set of message types for APIs to use.
+          items:
+            type: object
+            additionalProperties:
+              description: Properties of the object. Contains field @type with type URL.
+    GoogleAdsGoogleadsV25Services__CampaignBudgetOperation:
+      description: A single operation (create, update, remove) on a campaign budget.
+      type: object
+      properties:
+        update:
+          description: 'Update operation: The campaign budget is expected to have a valid resource name.'
+          $ref: '#/components/schemas/GoogleAdsGoogleadsV25Resources__CampaignBudget'
+        updateMask:
+          type: string
+          description: FieldMask that determines which resource fields are modified in an update.
+          format: google-fieldmask
+        create:
+          description: 'Create operation: No resource name is expected for the new budget.'
+          $ref: '#/components/schemas/GoogleAdsGoogleadsV25Resources__CampaignBudget'
+        remove:
+          description: 'Remove operation: A resource name for the removed budget is expected, in this format: `customers/{customer_id}/campaignBudgets/{budget_id}`'
+          type: string
+    GoogleAdsGoogleadsV25Services__MutateCampaignBudgetResult:
+      description: The result for the campaign budget mutate.
+      type: object
+      properties:
+        resourceName:
+          description: Returned for successful operations.
+          type: string
+        campaignBudget:
+          $ref: '#/components/schemas/GoogleAdsGoogleadsV25Resources__CampaignBudget'
+          description: The mutated campaign budget with only mutable fields after mutate. The field will only be returned when response_content_type is set to "MUTABLE_RESOURCE".
+    GoogleAdsGoogleadsV25Resources__CampaignBudget:
+      description: A campaign budget.
+      type: object
+      properties:
+        deliveryMethod:
+          x-enumDescriptions:
+          - Not specified.
+          - Used for return value only. Represents value unknown in this version.
+          - The budget server will throttle serving evenly across the entire time period.
+          - The budget server will not throttle serving, and ads will serve as fast as possible.
+          enum:
+          - UNSPECIFIED
+          - UNKNOWN
+          - STANDARD
+          - ACCELERATED
+          description: The delivery method that determines the rate at which the campaign budget is spent. Defaults to STANDARD if unspecified in a create operation.
+          type: string
+        explicitlyShared:
+          description: Specifies whether the budget is explicitly shared. Defaults to true if unspecified in a create operation. If true, the budget was created with the purpose of sharing across one or more campaigns. If false, the budget was created with the intention of only being used with a single campaign. The budget's name and status will stay in sync with the campaign's name and status. Attempting to share the budget with a second campaign will result in an error. A non-shared budget can become an explicitly shared. The same operation must also assign the budget a name. A shared campaign budget can never become non-shared.
+          type: boolean
+        type:
+          x-enumDescriptions:
+          - Not specified.
+          - Used for return value only. Represents value unknown in this version.
+          - 'Budget type for standard Google Ads usage. Caps daily spend at two times the specified budget amount. Full details: https://support.google.com/google-ads/answer/6385083'
+          - 'Budget type with a fixed cost-per-acquisition (conversion). Full details: https://support.google.com/google-ads/answer/7528254 This type is only supported by campaigns with AdvertisingChannelType.DISPLAY (excluding AdvertisingChannelSubType.DISPLAY_GMAIL), BiddingStrategyType.TARGET_CPA and PaymentMode.CONVERSIONS.'
+          - 'Budget type for Smart Campaign. Full details: https://support.google.com/google-ads/answer/7653509 This type is only supported by campaigns with AdvertisingChannelType.SMART and AdvertisingChannelSubType.SMART_CAMPAIGN.'
+          - 'Budget type for Local Services Campaign. Full details: https://support.google.com/localservices/answer/7434558 This type is only supported by campaigns with AdvertisingChannelType.LOCAL_SERVICES.'
+          enum:
+          - UNSPECIFIED
+          - UNKNOWN
+          - STANDARD
+          - FIXED_CPA
+          - SMART_CAMPAIGN
+          - LOCAL_SERVICES
+          description: Immutable. The type of the campaign budget.
+          type: string
+        id:
+          description: Output only. The ID of the campaign budget. A campaign budget is created using the CampaignBudgetService create operation and is assigned a budget ID. A budget ID can be shared across different campaigns; the system will then allocate the campaign budget among different campaigns to get optimum results.
+          type: string
+          format: int64
+        resourceName:
+          description: 'Immutable. The resource name of the campaign budget. Campaign budget resource names have the form: `customers/{customer_id}/campaignBudgets/{campaign_budget_id}`'
+          type: string
+        recommendedBudgetEstimatedChangeWeeklyViews:
+          format: int64
+          type: string
+          description: Output only. The estimated change in weekly views if the recommended budget is applied. This field is read-only.
+        recommendedBudgetAmountMicros:
+          description: Output only. The recommended budget amount. If no recommendation is available, this will be set to the budget amount. Amount is specified in micros, where one million is equivalent to one currency unit. This field is read-only.
+          type: string
+          format: int64
+        alignedBiddingStrategyId:
+          format: int64
+          type: string
+          description: ID of the portfolio bidding strategy that this shared campaign budget is aligned with. When a bidding strategy and a campaign budget are aligned, they are attached to the same set of campaigns. After a campaign budget is aligned with a bidding strategy, campaigns that are added to the campaign budget must also use the aligned bidding strategy.
+        name:
+          type: string
+          description: The name of the campaign budget. When creating a campaign budget through CampaignBudgetService, every explicitly shared campaign budget must have a non-null, non-empty name. Campaign budgets that are not explicitly shared derive their name from the attached campaign's name. The length of this string must be between 1 and 255, inclusive, in UTF-8 bytes, (trimmed).
+        recommendedBudgetEstimatedChangeWeeklyClicks:
+          format: int64
+          type: string
+          description: Output only. The estimated change in weekly clicks if the recommended budget is applied. This field is read-only.
+        recommendedBudgetEstimatedChangeWeeklyCostMicros:
+          type: string
+          description: Output only. The estimated change in weekly cost in micros if the recommended budget is applied. One million is equivalent to one currency unit. This field is read-only.
+          format: int64
+        hasRecommendedBudget:
+          description: Output only. Indicates whether there is a recommended budget for this campaign budget. This field is read-only.
+          type: boolean
+        period:
+          description: Immutable. Period over which to spend the budget. Defaults to DAILY if not specified.
+          type: string
+          x-enumDescriptions:
+          - Not specified.
+          - Used for return value only. Represents value unknown in this version.
+          - Daily budget.
+          - 'Custom budget, added back in V5. Custom budget can be used with total_amount to specify lifetime budget limit. See: https://support.google.com/google-ads/answer/6385083 for more info.'
+          enum:
+          - UNSPECIFIED
+          - UNKNOWN
+          - DAILY
+          - CUSTOM_PERIOD
+        referenceCount:
+          format: int64
+          description: Output only. The number of campaigns actively using the budget. This field is read-only.
+          type: string
+        status:
+          description: Output only. The status of this campaign budget. This field is read-only.
+          type: string
+          enum:
+          - UNSPECIFIED
+          - UNKNOWN
+          - ENABLED
+          - REMOVED
+          x-enumDescriptions:
+          - Not specified.
+          - Used for return value only. Represents value unknown in this version.
+          - Budget is enabled.
+          - Budget is removed.
+        amountMicros:
+          format: int64
+          description: The average daily amount to be spent by the campaign. This field is used when the CampaignBudget `period` is set to `DAILY`, which is the default. Amount is specified in micros in the account's local currency. One million micros is equivalent to one currency unit. The effective monthly spend is capped at 30.4 times this daily amount. This field is mutually exclusive with 'total_amount_micros'. Only one of 'amount_micros' or 'total_amount_micros' should be set.
+          type: string
+        totalAmountMicros:
+          format: int64
+          type: string
+          description: The total amount to be spent by the campaign over its entire duration. This field is used *only* when the CampaignBudget `period` is set to `CUSTOM_PERIOD`. It represents the budget cap for the campaign's lifetime, rather than a daily limit. The amount is specified in micros in the account's local currency. One million micros is equivalent to one currency unit. This field is mutually exclusive with 'amount_micros'. Only one of 'total_amount_micros' or 'amount_micros' should be set.
+        recommendedBudgetEstimatedChangeWeeklyInteractions:
+          type: string
+          description: Output only. The estimated change in weekly interactions if the recommended budget is applied. This field is read-only.
+          format: int64
+    GoogleAdsGoogleadsV25Services__MutateCampaignBudgetsRequest:
+      description: Request message for CampaignBudgetService.MutateCampaignBudgets.
+      type: object
+      properties:
+        partialFailure:
+          type: boolean
+          description: If true, successful operations will be carried out and invalid operations will return errors. If false, all operations will be carried out in one transaction if and only if they are all valid. Default is false.
+        operations:
+          type: array
+          description: Required. The list of operations to perform on individual campaign budgets.
+          items:
+            $ref: '#/components/schemas/GoogleAdsGoogleadsV25Services__CampaignBudgetOperation'
+        validateOnly:
+          description: If true, the request is validated but not executed. Only errors are returned, not results.
+          type: boolean
+        responseContentType:
+          type: string
+          description: The response content type setting. Determines whether the mutable resource or just the resource name should be returned post mutation.
+          x-enumDescriptions:
+          - Not specified. Will return the resource name only in the response.
+          - The mutate response will be the resource name.
+          - The mutate response will contain the resource name and the resource with mutable fields if possible. Otherwise, only the resource name will be returned.
+          enum:
+          - UNSPECIFIED
+          - RESOURCE_NAME_ONLY
+          - MUTABLE_RESOURCE
+  securitySchemes:
+    oauth2:
+      type: oauth2
+      description: Google OAuth 2.0. Google Ads API additionally requires a developer token in the developer-token header.
+      flows:
+        authorizationCode:
+          authorizationUrl: https://accounts.google.com/o/oauth2/auth
+          tokenUrl: https://oauth2.googleapis.com/token
+          scopes:
+            https://www.googleapis.com/auth/adwords: See, edit, create, and delete your Google Ads accounts and data.
+externalDocs:
+  url: https://developers.google.com/google-ads/api/
+x-source: https://googleads.googleapis.com/$discovery/rest?version=v25
+x-generated-by: API Evangelist enrichment pipeline — mechanical conversion of the first-party Google API Discovery Document

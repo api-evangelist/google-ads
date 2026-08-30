@@ -1,0 +1,307 @@
+openapi: 3.2.0
+info:
+  title: Google Ads Customers.Goals API
+  description: Manage your Google Ads accounts, campaigns, and reports with this API.
+  version: v25
+  x-discovery-revision: '20260721'
+  contact:
+    name: Google
+    url: https://developers.google.com/google-ads/api/
+  termsOfService: https://developers.google.com/terms
+servers:
+- url: https://googleads.googleapis.com
+  description: Google Ads API production server
+security:
+- oauth2:
+  - https://www.googleapis.com/auth/adwords
+tags:
+- name: customers.Goals
+paths:
+  /v25/customers/{customersId}/Goals:mutate:
+    parameters:
+    - name: upload_protocol
+      in: query
+      required: false
+      schema:
+        type: string
+      description: Upload protocol for media (e.g. "raw", "multipart").
+    - name: quotaUser
+      in: query
+      required: false
+      schema:
+        type: string
+      description: Available to use for quota purposes for server-side applications. Can be any arbitrary string assigned to a user, but should not exceed 40 characters.
+    - name: fields
+      in: query
+      required: false
+      schema:
+        type: string
+      description: Selector specifying which fields to include in a partial response.
+    - name: $.xgafv
+      in: query
+      required: false
+      schema:
+        type: string
+        enum:
+        - '1'
+        - '2'
+        x-enumDescriptions:
+        - v1 error format
+        - v2 error format
+      description: V1 error format.
+    - name: callback
+      in: query
+      required: false
+      schema:
+        type: string
+      description: JSONP
+    - name: prettyPrint
+      in: query
+      required: false
+      schema:
+        type: boolean
+        default: 'true'
+      description: Returns response with indentations and line breaks.
+    - name: access_token
+      in: query
+      required: false
+      schema:
+        type: string
+      description: OAuth access token.
+    - name: uploadType
+      in: query
+      required: false
+      schema:
+        type: string
+      description: Legacy upload protocol for media (e.g. "media", "multipart").
+    - name: key
+      in: query
+      required: false
+      schema:
+        type: string
+      description: API key. Your API key identifies your project and provides you with API access, quota, and reports. Required unless you provide an OAuth 2.0 token.
+    - name: oauth_token
+      in: query
+      required: false
+      schema:
+        type: string
+      description: OAuth 2.0 token for the current user.
+    - name: alt
+      in: query
+      required: false
+      schema:
+        x-enumDescriptions:
+        - Responses with Content-Type of application/json
+        - Media download with context-dependent Content-Type
+        - Responses with Content-Type of application/x-protobuf
+        type: string
+        default: json
+        enum:
+        - json
+        - media
+        - proto
+      description: Data format for response.
+    post:
+      operationId: googleads_customers_Goals_mutate
+      summary: Create or update goals
+      tags:
+      - customers.Goals
+      description: 'Create or update goals. List of thrown errors: [AuthenticationError]() [AuthorizationError]() [HeaderError]() [InternalError]() [QuotaError]() [RequestError]() [GoalError]()'
+      parameters:
+      - name: customerId
+        in: path
+        required: true
+        schema:
+          pattern: ^[^/]+$
+          type: string
+        description: Required. The ID of the customer whose goals are being modified.
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/GoogleAdsGoogleadsV25Services__MutateGoalsRequest'
+      responses:
+        '200':
+          description: Successful response
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/GoogleAdsGoogleadsV25Services__MutateGoalsResponse'
+      security:
+      - oauth2:
+        - https://www.googleapis.com/auth/adwords
+components:
+  schemas:
+    GoogleAdsGoogleadsV25Common__CustomerLifecycleOptimizationValueSettings:
+      type: object
+      properties:
+        valueMultiplier:
+          format: double
+          type: number
+          description: Conversion value multiplier.
+        additionalValue:
+          description: Incremental conversion value.
+          type: number
+          format: double
+        additionalHighLifetimeValue:
+          description: Incremental high lifetime conversion value.
+          type: number
+          format: double
+        highLifetimeValueMultiplier:
+          format: double
+          type: number
+          description: High lifetime conversion value multiplier.
+      description: Lifecycle goal optimization value settings.
+    GoogleAdsGoogleadsV25Common_GoalSetting_LoyaltyRetentionGoal:
+      type: object
+      properties:
+        valueSettings:
+          $ref: '#/components/schemas/GoogleAdsGoogleadsV25Common__CustomerLifecycleOptimizationValueSettings'
+          description: Loyalty retention goal value settings.
+      description: Loyalty retention goal settings.
+    GoogleAdsGoogleadsV25Services__MutateGoalsRequest:
+      description: Request message for GoalService.MutateGoals.
+      type: object
+      properties:
+        partialFailure:
+          description: Optional. If true, successful operations will be carried out and invalid operations will return errors. If false, all operations will be carried out in one transaction if and only if they are all valid. Default is false.
+          type: boolean
+        operations:
+          description: Required. The list of operations to perform on the goals.
+          items:
+            $ref: '#/components/schemas/GoogleAdsGoogleadsV25Services__GoalOperation'
+          type: array
+        validateOnly:
+          type: boolean
+          description: Optional. If true, the request is validated but not executed. Only errors are returned, not results.
+    GoogleAdsGoogleadsV25Common_GoalSetting_RetentionGoal:
+      type: object
+      properties:
+        valueSettings:
+          description: Retention goal value settings.
+          $ref: '#/components/schemas/GoogleAdsGoogleadsV25Common__CustomerLifecycleOptimizationValueSettings'
+      description: Retention goal settings.
+    GoogleAdsGoogleadsV25Services__MutateGoalResult:
+      description: The result for the goal mutate.
+      type: object
+      properties:
+        resourceName:
+          type: string
+          description: Returned for successful operations.
+    GoogleAdsGoogleadsV25Services__MutateGoalsResponse:
+      type: object
+      properties:
+        results:
+          description: All results for the mutate.
+          items:
+            $ref: '#/components/schemas/GoogleAdsGoogleadsV25Services__MutateGoalResult'
+          type: array
+        partialFailureError:
+          $ref: '#/components/schemas/GoogleRpc__Status'
+          description: Errors that pertain to operation failures in the partial failure mode.
+      description: Response message for a goal mutate.
+    GoogleRpc__Status:
+      description: 'The `Status` type defines a logical error model that is suitable for different programming environments, including REST APIs and RPC APIs. It is used by [gRPC](https://github.com/grpc). Each `Status` message contains three pieces of data: error code, error message, and error details. You can find out more about this error model and how to work with it in the [API Design Guide](https://cloud.google.com/apis/design/errors).'
+      type: object
+      properties:
+        message:
+          description: A developer-facing error message, which should be in English. Any user-facing error message should be localized and sent in the google.rpc.Status.details field, or localized by the client.
+          type: string
+        code:
+          type: integer
+          description: The status code, which should be an enum value of google.rpc.Code.
+          format: int32
+        details:
+          type: array
+          description: A list of messages that carry the error details. There is a common set of message types for APIs to use.
+          items:
+            type: object
+            additionalProperties:
+              description: Properties of the object. Contains field @type with type URL.
+    GoogleAdsGoogleadsV25Resources__Goal:
+      type: object
+      properties:
+        resourceName:
+          description: 'Immutable. The resource name of the goal. Goal resource names have the form: `customers/{customer_id}/goals/{goal_id}`'
+          type: string
+        ownerCustomer:
+          type: string
+          description: Output only. The resource name of the goal owner customer.
+        newCustomerAcquisitionGoalSettings:
+          $ref: '#/components/schemas/GoogleAdsGoogleadsV25Common_GoalSetting_NewCustomerAcquisitionGoal'
+          description: New customer acquisition goal settings.
+        optimizationEligibility:
+          x-enumDescriptions:
+          - The goal optimization status has not been specified.
+          - The goal optimization status is not known in this version.
+          - The goal is eligible for campaign optimization.
+          - The goal is not eligible for campaign optimization.
+          enum:
+          - UNSPECIFIED
+          - UNKNOWN
+          - ELIGIBLE
+          - INELIGIBLE
+          type: string
+          description: Output only. Indicates if this goal is eligible for campaign optimization.
+        loyaltyRetentionGoalSettings:
+          $ref: '#/components/schemas/GoogleAdsGoogleadsV25Common_GoalSetting_LoyaltyRetentionGoal'
+          description: Loyalty retention goal settings.
+        goalType:
+          x-enumDescriptions:
+          - Not specified.
+          - Used for return value only. Represents value unknown in this version.
+          - Retention goal, which allows advertisers to optimize campaigns to win back lapsed customers. (https://support.google.com/google-ads/answer/14792043?hl=en)
+          - New customer acquisition goal, which allows advertisers to optimize campaigns to acquire new customers.
+          - Loyalty retention goal, which allows advertisers to optimize campaigns for retaining loyalty program members.
+          type: string
+          description: Output only. The type of this goal.
+          enum:
+          - UNSPECIFIED
+          - UNKNOWN
+          - CUSTOMER_RETENTION
+          - NEW_CUSTOMER_ACQUISITION
+          - LOYALTY_RETENTION
+        retentionGoalSettings:
+          description: Retention goal settings.
+          $ref: '#/components/schemas/GoogleAdsGoogleadsV25Common_GoalSetting_RetentionGoal'
+        goalId:
+          type: string
+          description: Output only. The ID of this goal.
+          format: int64
+      description: Representation of goals.
+    GoogleAdsGoogleadsV25Services__GoalOperation:
+      description: A single mutate operation on the goal.
+      type: object
+      properties:
+        updateMask:
+          type: string
+          description: FieldMask that determines which resource fields are modified in an update.
+          format: google-fieldmask
+        create:
+          $ref: '#/components/schemas/GoogleAdsGoogleadsV25Resources__Goal'
+          description: Create a new goal.
+        update:
+          description: Update an existing goal.
+          $ref: '#/components/schemas/GoogleAdsGoogleadsV25Resources__Goal'
+    GoogleAdsGoogleadsV25Common_GoalSetting_NewCustomerAcquisitionGoal:
+      description: New Customer Acquisition goal settings.
+      type: object
+      properties:
+        valueSettings:
+          $ref: '#/components/schemas/GoogleAdsGoogleadsV25Common__CustomerLifecycleOptimizationValueSettings'
+          description: New Customer Acquisition goal value settings.
+  securitySchemes:
+    oauth2:
+      type: oauth2
+      description: Google OAuth 2.0. Google Ads API additionally requires a developer token in the developer-token header.
+      flows:
+        authorizationCode:
+          authorizationUrl: https://accounts.google.com/o/oauth2/auth
+          tokenUrl: https://oauth2.googleapis.com/token
+          scopes:
+            https://www.googleapis.com/auth/adwords: See, edit, create, and delete your Google Ads accounts and data.
+externalDocs:
+  url: https://developers.google.com/google-ads/api/
+x-source: https://googleads.googleapis.com/$discovery/rest?version=v25
+x-generated-by: API Evangelist enrichment pipeline — mechanical conversion of the first-party Google API Discovery Document

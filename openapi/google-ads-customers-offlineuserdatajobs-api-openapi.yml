@@ -1,0 +1,879 @@
+openapi: 3.2.0
+info:
+  title: Google Ads Customers.offline User Data Jobs API
+  description: Manage your Google Ads accounts, campaigns, and reports with this API.
+  version: v25
+  x-discovery-revision: '20260721'
+  contact:
+    name: Google
+    url: https://developers.google.com/google-ads/api/
+  termsOfService: https://developers.google.com/terms
+servers:
+- url: https://googleads.googleapis.com
+  description: Google Ads API production server
+security:
+- oauth2:
+  - https://www.googleapis.com/auth/adwords
+tags:
+- name: customers.offlineUserDataJobs
+paths:
+  /v25/customers/{customersId}/offlineUserDataJobs:create:
+    parameters:
+    - name: upload_protocol
+      in: query
+      required: false
+      schema:
+        type: string
+      description: Upload protocol for media (e.g. "raw", "multipart").
+    - name: quotaUser
+      in: query
+      required: false
+      schema:
+        type: string
+      description: Available to use for quota purposes for server-side applications. Can be any arbitrary string assigned to a user, but should not exceed 40 characters.
+    - name: fields
+      in: query
+      required: false
+      schema:
+        type: string
+      description: Selector specifying which fields to include in a partial response.
+    - name: $.xgafv
+      in: query
+      required: false
+      schema:
+        type: string
+        enum:
+        - '1'
+        - '2'
+        x-enumDescriptions:
+        - v1 error format
+        - v2 error format
+      description: V1 error format.
+    - name: callback
+      in: query
+      required: false
+      schema:
+        type: string
+      description: JSONP
+    - name: prettyPrint
+      in: query
+      required: false
+      schema:
+        type: boolean
+        default: 'true'
+      description: Returns response with indentations and line breaks.
+    - name: access_token
+      in: query
+      required: false
+      schema:
+        type: string
+      description: OAuth access token.
+    - name: uploadType
+      in: query
+      required: false
+      schema:
+        type: string
+      description: Legacy upload protocol for media (e.g. "media", "multipart").
+    - name: key
+      in: query
+      required: false
+      schema:
+        type: string
+      description: API key. Your API key identifies your project and provides you with API access, quota, and reports. Required unless you provide an OAuth 2.0 token.
+    - name: oauth_token
+      in: query
+      required: false
+      schema:
+        type: string
+      description: OAuth 2.0 token for the current user.
+    - name: alt
+      in: query
+      required: false
+      schema:
+        x-enumDescriptions:
+        - Responses with Content-Type of application/json
+        - Media download with context-dependent Content-Type
+        - Responses with Content-Type of application/x-protobuf
+        type: string
+        default: json
+        enum:
+        - json
+        - media
+        - proto
+      description: Data format for response.
+    post:
+      operationId: googleads_customers_offlineUserDataJobs_create
+      summary: Creates an offline user data job
+      tags:
+      - customers.offlineUserDataJobs
+      description: 'Creates an offline user data job. List of thrown errors: [AuthenticationError]() [AuthorizationError]() [DatabaseError]() [FieldError]() [HeaderError]() [InternalError]() [NotAllowlistedError]() [OfflineUserDataJobError]() [QuotaError]() [RequestError]()'
+      parameters:
+      - name: customerId
+        in: path
+        required: true
+        schema:
+          pattern: ^[^/]+$
+          type: string
+        description: Required. The ID of the customer for which to create an offline user data job.
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/GoogleAdsGoogleadsV25Services__CreateOfflineUserDataJobRequest'
+      responses:
+        '200':
+          description: Successful response
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/GoogleAdsGoogleadsV25Services__CreateOfflineUserDataJobResponse'
+      security:
+      - oauth2:
+        - https://www.googleapis.com/auth/adwords
+  /v25/customers/{customersId}/offlineUserDataJobs/{offlineUserDataJobsId}:addOperations:
+    parameters:
+    - name: upload_protocol
+      in: query
+      required: false
+      schema:
+        type: string
+      description: Upload protocol for media (e.g. "raw", "multipart").
+    - name: quotaUser
+      in: query
+      required: false
+      schema:
+        type: string
+      description: Available to use for quota purposes for server-side applications. Can be any arbitrary string assigned to a user, but should not exceed 40 characters.
+    - name: fields
+      in: query
+      required: false
+      schema:
+        type: string
+      description: Selector specifying which fields to include in a partial response.
+    - name: $.xgafv
+      in: query
+      required: false
+      schema:
+        type: string
+        enum:
+        - '1'
+        - '2'
+        x-enumDescriptions:
+        - v1 error format
+        - v2 error format
+      description: V1 error format.
+    - name: callback
+      in: query
+      required: false
+      schema:
+        type: string
+      description: JSONP
+    - name: prettyPrint
+      in: query
+      required: false
+      schema:
+        type: boolean
+        default: 'true'
+      description: Returns response with indentations and line breaks.
+    - name: access_token
+      in: query
+      required: false
+      schema:
+        type: string
+      description: OAuth access token.
+    - name: uploadType
+      in: query
+      required: false
+      schema:
+        type: string
+      description: Legacy upload protocol for media (e.g. "media", "multipart").
+    - name: key
+      in: query
+      required: false
+      schema:
+        type: string
+      description: API key. Your API key identifies your project and provides you with API access, quota, and reports. Required unless you provide an OAuth 2.0 token.
+    - name: oauth_token
+      in: query
+      required: false
+      schema:
+        type: string
+      description: OAuth 2.0 token for the current user.
+    - name: alt
+      in: query
+      required: false
+      schema:
+        x-enumDescriptions:
+        - Responses with Content-Type of application/json
+        - Media download with context-dependent Content-Type
+        - Responses with Content-Type of application/x-protobuf
+        type: string
+        default: json
+        enum:
+        - json
+        - media
+        - proto
+      description: Data format for response.
+    post:
+      operationId: googleads_customers_offlineUserDataJobs_addOperations
+      summary: Adds operations to the offline user data job
+      tags:
+      - customers.offlineUserDataJobs
+      description: 'Adds operations to the offline user data job. List of thrown errors: [AuthenticationError]() [AuthorizationError]() [DatabaseError]() [FieldError]() [HeaderError]() [InternalError]() [MutateError]() [OfflineUserDataJobError]() [QuotaError]() [RequestError]()'
+      parameters:
+      - name: resourceName
+        in: path
+        required: true
+        schema:
+          type: string
+          pattern: ^customers/[^/]+/offlineUserDataJobs/[^/]+$
+        description: Required. The resource name of the OfflineUserDataJob.
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/GoogleAdsGoogleadsV25Services__AddOfflineUserDataJobOperationsRequest'
+      responses:
+        '200':
+          description: Successful response
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/GoogleAdsGoogleadsV25Services__AddOfflineUserDataJobOperationsResponse'
+      security:
+      - oauth2:
+        - https://www.googleapis.com/auth/adwords
+  /v25/customers/{customersId}/offlineUserDataJobs/{offlineUserDataJobsId}:run:
+    parameters:
+    - name: upload_protocol
+      in: query
+      required: false
+      schema:
+        type: string
+      description: Upload protocol for media (e.g. "raw", "multipart").
+    - name: quotaUser
+      in: query
+      required: false
+      schema:
+        type: string
+      description: Available to use for quota purposes for server-side applications. Can be any arbitrary string assigned to a user, but should not exceed 40 characters.
+    - name: fields
+      in: query
+      required: false
+      schema:
+        type: string
+      description: Selector specifying which fields to include in a partial response.
+    - name: $.xgafv
+      in: query
+      required: false
+      schema:
+        type: string
+        enum:
+        - '1'
+        - '2'
+        x-enumDescriptions:
+        - v1 error format
+        - v2 error format
+      description: V1 error format.
+    - name: callback
+      in: query
+      required: false
+      schema:
+        type: string
+      description: JSONP
+    - name: prettyPrint
+      in: query
+      required: false
+      schema:
+        type: boolean
+        default: 'true'
+      description: Returns response with indentations and line breaks.
+    - name: access_token
+      in: query
+      required: false
+      schema:
+        type: string
+      description: OAuth access token.
+    - name: uploadType
+      in: query
+      required: false
+      schema:
+        type: string
+      description: Legacy upload protocol for media (e.g. "media", "multipart").
+    - name: key
+      in: query
+      required: false
+      schema:
+        type: string
+      description: API key. Your API key identifies your project and provides you with API access, quota, and reports. Required unless you provide an OAuth 2.0 token.
+    - name: oauth_token
+      in: query
+      required: false
+      schema:
+        type: string
+      description: OAuth 2.0 token for the current user.
+    - name: alt
+      in: query
+      required: false
+      schema:
+        x-enumDescriptions:
+        - Responses with Content-Type of application/json
+        - Media download with context-dependent Content-Type
+        - Responses with Content-Type of application/x-protobuf
+        type: string
+        default: json
+        enum:
+        - json
+        - media
+        - proto
+      description: Data format for response.
+    post:
+      operationId: googleads_customers_offlineUserDataJobs_run
+      summary: Runs the offline user data job
+      tags:
+      - customers.offlineUserDataJobs
+      description: 'Runs the offline user data job. When finished, the long running operation will contain the processing result or failure information, if any. List of thrown errors: [AuthenticationError]() [AuthorizationError]() [DatabaseError]() [HeaderError]() [InternalError]() [OfflineUserDataJobError]() [QuotaError]() [RequestError]()'
+      parameters:
+      - name: resourceName
+        in: path
+        required: true
+        schema:
+          pattern: ^customers/[^/]+/offlineUserDataJobs/[^/]+$
+          type: string
+        description: Required. The resource name of the OfflineUserDataJob to run.
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/GoogleAdsGoogleadsV25Services__RunOfflineUserDataJobRequest'
+      responses:
+        '200':
+          description: Successful response
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/GoogleLongrunning__Operation'
+      security:
+      - oauth2:
+        - https://www.googleapis.com/auth/adwords
+components:
+  schemas:
+    GoogleAdsGoogleadsV25Common__StoreSalesMetadata:
+      description: Metadata for Store Sales Direct.
+      type: object
+      properties:
+        loyaltyFraction:
+          description: This is the fraction of all transactions that are identifiable (for example, associated with any form of customer information). Required. The fraction needs to be between 0 and 1 (excluding 0).
+          type: number
+          format: double
+        customKey:
+          type: string
+          description: Name of the store sales custom variable key. A predefined key that can be applied to the transaction and then later used for custom segmentation in reporting. Accessible only to customers on the allow-list.
+        transactionUploadFraction:
+          type: number
+          description: This is the ratio of sales being uploaded compared to the overall sales that can be associated with a customer. Required. The fraction needs to be between 0 and 1 (excluding 0). For example, if you upload half the sales that you are able to associate with a customer, this would be 0.5.
+          format: double
+        thirdPartyMetadata:
+          $ref: '#/components/schemas/GoogleAdsGoogleadsV25Common__StoreSalesThirdPartyMetadata'
+          description: Metadata for a third party Store Sales upload.
+    GoogleAdsGoogleadsV25Common__UserData:
+      description: User data holding user identifiers and attributes.
+      type: object
+      properties:
+        userIdentifiers:
+          type: array
+          description: User identification info. Required.
+          items:
+            $ref: '#/components/schemas/GoogleAdsGoogleadsV25Common__UserIdentifier'
+        consent:
+          description: The consent setting for the user. If set, will override the job level consent for this user.
+          $ref: '#/components/schemas/GoogleAdsGoogleadsV25Common__Consent'
+        transactionAttribute:
+          $ref: '#/components/schemas/GoogleAdsGoogleadsV25Common__TransactionAttribute'
+          description: Additional transactions/attributes associated with the user. Required when updating store sales data.
+        userAttribute:
+          description: Additional attributes associated with the user. Required when updating customer match attributes. These have an expiration of 540 days.
+          $ref: '#/components/schemas/GoogleAdsGoogleadsV25Common__UserAttribute'
+    GoogleAdsGoogleadsV25Common__OfflineUserAddressInfo:
+      description: Address identifier of offline data.
+      type: object
+      properties:
+        postalCode:
+          type: string
+          description: Postal code of the user's address.
+        hashedFirstName:
+          description: First name of the user, which is hashed as SHA-256 after normalized (Lowercase all characters; Remove any extra spaces before, after, and in between).
+          type: string
+        state:
+          type: string
+          description: State code of the address. Only accepted for Store Sales and ConversionAdjustmentUploadService.
+        city:
+          type: string
+          description: City of the address. Only accepted for Store Sales and ConversionAdjustmentUploadService.
+        hashedLastName:
+          description: Last name of the user, which is hashed as SHA-256 after normalized (lower case only and no punctuation).
+          type: string
+        hashedStreetAddress:
+          type: string
+          description: The street address of the user hashed using SHA-256 hash function after normalization (lower case only). Only accepted for ConversionAdjustmentUploadService.
+        countryCode:
+          type: string
+          description: 2-letter country code in ISO-3166-1 alpha-2 of the user's address.
+    GoogleAdsGoogleadsV25Common__Consent:
+      type: object
+      properties:
+        adUserData:
+          x-enumDescriptions:
+          - Not specified.
+          - Output-only. Represents a format not yet defined in this enum.
+          - Granted.
+          - Denied.
+          enum:
+          - UNSPECIFIED
+          - UNKNOWN
+          - GRANTED
+          - DENIED
+          description: This represents consent for ad user data.
+          type: string
+        adPersonalization:
+          type: string
+          description: This represents consent for ad personalization. This can only be set for OfflineUserDataJobService and UserDataService.
+          x-enumDescriptions:
+          - Not specified.
+          - Output-only. Represents a format not yet defined in this enum.
+          - Granted.
+          - Denied.
+          enum:
+          - UNSPECIFIED
+          - UNKNOWN
+          - GRANTED
+          - DENIED
+      description: Consent
+    GoogleRpc__Status:
+      description: 'The `Status` type defines a logical error model that is suitable for different programming environments, including REST APIs and RPC APIs. It is used by [gRPC](https://github.com/grpc). Each `Status` message contains three pieces of data: error code, error message, and error details. You can find out more about this error model and how to work with it in the [API Design Guide](https://cloud.google.com/apis/design/errors).'
+      type: object
+      properties:
+        message:
+          description: A developer-facing error message, which should be in English. Any user-facing error message should be localized and sent in the google.rpc.Status.details field, or localized by the client.
+          type: string
+        code:
+          type: integer
+          description: The status code, which should be an enum value of google.rpc.Code.
+          format: int32
+        details:
+          type: array
+          description: A list of messages that carry the error details. There is a common set of message types for APIs to use.
+          items:
+            type: object
+            additionalProperties:
+              description: Properties of the object. Contains field @type with type URL.
+    GoogleAdsGoogleadsV25Resources__OfflineUserDataJobMetadata:
+      description: Metadata of offline user data job.
+      type: object
+      properties:
+        matchRateRange:
+          x-enumDescriptions:
+          - Not specified.
+          - Default value for match rate range.
+          - Match rate range for offline data upload entity is between 0% and 19%.
+          - Match rate range for offline data upload entity is between 20% and 30%.
+          - Match rate range for offline data upload entity is between 31% and 40%.
+          - Match rate range for offline data upload entity is between 41% and 50%.
+          - Match rate range for offline data upload entity is between 51% and 60%.
+          - Match rate range for offline data upload entity is between 61% and 70%.
+          - Match rate range for offline data upload entity is between 71% and 80%.
+          - Match rate range for offline data upload entity is between 81% and 90%.
+          - Match rate range for offline data upload entity is more than or equal to 91%.
+          type: string
+          description: Output only. Match rate of the Customer Match user list upload. Describes the estimated match rate when the status of the job is "RUNNING" and final match rate when the final match rate is available after the status of the job is "SUCCESS/FAILED".
+          enum:
+          - UNSPECIFIED
+          - UNKNOWN
+          - MATCH_RANGE_LESS_THAN_20
+          - MATCH_RANGE_20_TO_30
+          - MATCH_RANGE_31_TO_40
+          - MATCH_RANGE_41_TO_50
+          - MATCH_RANGE_51_TO_60
+          - MATCH_RANGE_61_TO_70
+          - MATCH_RANGE_71_TO_80
+          - MATCH_RANGE_81_TO_90
+          - MATCH_RANGE_91_TO_100
+    GoogleAdsGoogleadsV25Services__AddOfflineUserDataJobOperationsRequest:
+      description: Request message for OfflineUserDataJobService.AddOfflineUserDataJobOperations.
+      type: object
+      properties:
+        enablePartialFailure:
+          type: boolean
+          description: True to enable partial failure for the offline user data job.
+        enableWarnings:
+          description: True to enable warnings for the offline user data job. When enabled, a warning will not block the OfflineUserDataJobOperation, and will also return warning messages about malformed field values.
+          type: boolean
+        validateOnly:
+          type: boolean
+          description: If true, the request is validated but not executed. Only errors are returned, not results.
+        operations:
+          description: Required. The list of operations to be done.
+          items:
+            $ref: '#/components/schemas/GoogleAdsGoogleadsV25Services__OfflineUserDataJobOperation'
+          type: array
+    GoogleAdsGoogleadsV25Services__CreateOfflineUserDataJobResponse:
+      type: object
+      properties:
+        resourceName:
+          type: string
+          description: The resource name of the OfflineUserDataJob.
+      description: Response message for OfflineUserDataJobService.CreateOfflineUserDataJob.
+    GoogleAdsGoogleadsV25Common__StoreAttribute:
+      description: Store attributes of the transaction.
+      type: object
+      properties:
+        storeCode:
+          type: string
+          description: Store code from https://support.google.com/business/answer/3370250#storecode
+    GoogleLongrunning__Operation:
+      type: object
+      properties:
+        done:
+          description: If the value is `false`, it means the operation is still in progress. If `true`, the operation is completed, and either `error` or `response` is available.
+          type: boolean
+        name:
+          description: The server-assigned name, which is only unique within the same service that originally returns it. If you use the default HTTP mapping, the `name` should be a resource name ending with `operations/{unique_id}`.
+          type: string
+        response:
+          type: object
+          description: The normal, successful response of the operation. If the original method returns no data on success, such as `Delete`, the response is `google.protobuf.Empty`. If the original method is standard `Get`/`Create`/`Update`, the response should be the resource. For other methods, the response should have the type `XxxResponse`, where `Xxx` is the original method name. For example, if the original method name is `TakeSnapshot()`, the inferred response type is `TakeSnapshotResponse`.
+          additionalProperties:
+            description: Properties of the object. Contains field @type with type URL.
+        error:
+          $ref: '#/components/schemas/GoogleRpc__Status'
+          description: The error result of the operation in case of failure or cancellation.
+        metadata:
+          type: object
+          description: Service-specific metadata associated with the operation. It typically contains progress information and common metadata such as create time. Some services might not provide such metadata. Any method that returns a long-running operation should document the metadata type, if any.
+          additionalProperties:
+            description: Properties of the object. Contains field @type with type URL.
+      description: This resource represents a long-running operation that is the result of a network API call.
+    GoogleAdsGoogleadsV25Common__UserIdentifier:
+      type: object
+      properties:
+        mobileId:
+          type: string
+          description: Mobile device ID (advertising ID/IDFA). Accepted only for Customer Match.
+        userIdentifierSource:
+          x-enumDescriptions:
+          - Not specified.
+          - Used for return value only. Represents value unknown in this version
+          - Indicates that the user identifier was provided by the first party (advertiser).
+          - Indicates that the user identifier was provided by the third party (partner).
+          enum:
+          - UNSPECIFIED
+          - UNKNOWN
+          - FIRST_PARTY
+          - THIRD_PARTY
+          type: string
+          description: Source of the user identifier when the upload is from Store Sales, ConversionUploadService, or ConversionAdjustmentUploadService.
+        hashedPhoneNumber:
+          type: string
+          description: Hashed phone number using SHA-256 hash function after normalization (E164 standard). Accepted for Customer Match, Store Sales, ConversionUploadService, and ConversionAdjustmentUploadService.
+        hashedEmail:
+          description: Hashed email address using SHA-256 hash function after normalization. Accepted for Customer Match, Store Sales, ConversionUploadService, and ConversionAdjustmentUploadService.
+          type: string
+        addressInfo:
+          description: Address information. Accepted only for Customer Match, Store Sales, and ConversionAdjustmentUploadService.
+          $ref: '#/components/schemas/GoogleAdsGoogleadsV25Common__OfflineUserAddressInfo'
+        thirdPartyUserId:
+          description: Advertiser-assigned user ID for Customer Match upload, or third-party-assigned user ID for Store Sales. Accepted only for Customer Match and Store Sales.
+          type: string
+      description: User identifying information.
+    GoogleAdsGoogleadsV25Common__EventItemAttribute:
+      description: Event Item attributes of the Customer Match.
+      type: object
+      properties:
+        itemId:
+          type: string
+          description: Optional. A unique identifier of a product. It can be either the Merchant Center Item ID or GTIN (Global Trade Item Number).
+    GoogleAdsGoogleadsV25Common__ItemAttribute:
+      description: Item attributes of the transaction.
+      type: object
+      properties:
+        merchantId:
+          description: ID of the Merchant Center Account. Required.
+          type: string
+          format: int64
+        countryCode:
+          description: Common Locale Data Repository (CLDR) territory code of the country associated with the feed where your items are uploaded. See https://developers.google.com/google-ads/api/reference/data/codes-formats#country-codes for more information. This information is useful to differentiate product information in cases where a product (identified by item_id) is associated with multiple countries.
+          type: string
+        itemId:
+          description: A unique identifier of a product. It must be the exact same Merchant Center Item ID you use in your Google Merchant Center for this product. Required.
+          type: string
+        languageCode:
+          type: string
+          description: ISO 639-1 code of the language associated with the feed where your items are uploaded. This information is useful to differentiate product information in cases where a product (identified by item_id) is associated with multiple languages.
+        quantity:
+          type: string
+          description: The number of items sold. Defaults to 1 if not set.
+          format: int64
+    GoogleAdsGoogleadsV25Services__AddOfflineUserDataJobOperationsResponse:
+      description: Response message for OfflineUserDataJobService.AddOfflineUserDataJobOperations.
+      type: object
+      properties:
+        warning:
+          description: Non blocking errors that pertain to operation failures in the warnings mode. Returned only when enable_warnings = true.
+          $ref: '#/components/schemas/GoogleRpc__Status'
+        partialFailureError:
+          $ref: '#/components/schemas/GoogleRpc__Status'
+          description: Errors that pertain to operation failures in the partial failure mode. Returned only when partial_failure = true and all errors occur inside the operations. If any errors occur outside the operations (for example, auth errors), we return an RPC level error.
+    GoogleAdsGoogleadsV25Common__CustomerMatchUserListMetadata:
+      description: Metadata for customer match user list.
+      type: object
+      properties:
+        userList:
+          description: The resource name of remarketing list to update data. Required for job of CUSTOMER_MATCH_USER_LIST type.
+          type: string
+        consent:
+          description: The consent setting for all the users in this job.
+          $ref: '#/components/schemas/GoogleAdsGoogleadsV25Common__Consent'
+    GoogleAdsGoogleadsV25Services__RunOfflineUserDataJobRequest:
+      description: Request message for OfflineUserDataJobService.RunOfflineUserDataJob.
+      type: object
+      properties:
+        validateOnly:
+          type: boolean
+          description: If true, the request is validated but not executed. Only errors are returned, not results.
+    GoogleAdsGoogleadsV25Resources__OfflineUserDataJob:
+      description: A job containing offline user data of store visitors, or user list members that will be processed asynchronously. The uploaded data isn't readable and the processing results of the job can only be read using GoogleAdsService.Search/SearchStream.
+      type: object
+      properties:
+        failureReason:
+          x-enumDescriptions:
+          - Not specified.
+          - Used for return value only. Represents value unknown in this version.
+          - The matched transactions are insufficient.
+          - The uploaded transactions are insufficient.
+          - The average transaction value is unusually high for your account. If this is intended, contact support to request an exception. Learn more at https://support.google.com/google-ads/answer/10018944#transaction_value
+          - The average transaction value is unusually low for your account. If this is intended, contact support to request an exception. Learn more at https://support.google.com/google-ads/answer/10018944#transaction_value
+          - There's a currency code that you haven't used before in your uploads. If this is intended, contact support to request an exception. Learn more at https://support.google.com/google-ads/answer/10018944#Unrecognized_currency
+          enum:
+          - UNSPECIFIED
+          - UNKNOWN
+          - INSUFFICIENT_MATCHED_TRANSACTIONS
+          - INSUFFICIENT_TRANSACTIONS
+          - HIGH_AVERAGE_TRANSACTION_VALUE
+          - LOW_AVERAGE_TRANSACTION_VALUE
+          - NEWLY_OBSERVED_CURRENCY_CODE
+          type: string
+          description: Output only. Reason for the processing failure, if status is FAILED.
+        operationMetadata:
+          description: Output only. Metadata of offline user data job depicting match rate range.
+          $ref: '#/components/schemas/GoogleAdsGoogleadsV25Resources__OfflineUserDataJobMetadata'
+        storeSalesMetadata:
+          $ref: '#/components/schemas/GoogleAdsGoogleadsV25Common__StoreSalesMetadata'
+          description: Immutable. Metadata for store sales data update.
+        resourceName:
+          type: string
+          description: 'Immutable. The resource name of the offline user data job. Offline user data job resource names have the form: `customers/{customer_id}/offlineUserDataJobs/{offline_user_data_job_id}`'
+        id:
+          format: int64
+          description: Output only. ID of this offline user data job.
+          type: string
+        status:
+          description: Output only. Status of the job.
+          type: string
+          enum:
+          - UNSPECIFIED
+          - UNKNOWN
+          - PENDING
+          - RUNNING
+          - SUCCESS
+          - FAILED
+          x-enumDescriptions:
+          - Not specified.
+          - Used for return value only. Represents value unknown in this version.
+          - The job has been successfully created and pending for uploading.
+          - Upload(s) have been accepted and data is being processed.
+          - Uploaded data has been successfully processed. The job might have no operations, which can happen if the job was run without any operations added, or if all operations failed validation individually when attempting to add them to the job.
+          - Uploaded data has failed to be processed. Some operations may have been successfully processed.
+        customerMatchUserListMetadata:
+          description: Immutable. Metadata for data updates to a CRM-based user list.
+          $ref: '#/components/schemas/GoogleAdsGoogleadsV25Common__CustomerMatchUserListMetadata'
+        type:
+          x-enumDescriptions:
+          - Not specified.
+          - Used for return value only. Represents value unknown in this version.
+          - Store Sales Direct data for self service.
+          - Store Sales Direct data for third party.
+          - Customer Match user list data.
+          - Customer Match with attribute data.
+          enum:
+          - UNSPECIFIED
+          - UNKNOWN
+          - STORE_SALES_UPLOAD_FIRST_PARTY
+          - STORE_SALES_UPLOAD_THIRD_PARTY
+          - CUSTOMER_MATCH_USER_LIST
+          - CUSTOMER_MATCH_WITH_ATTRIBUTES
+          type: string
+          description: Immutable. Type of the job.
+        externalId:
+          description: Immutable. User specified job ID.
+          type: string
+          format: int64
+    GoogleAdsGoogleadsV25Common__TransactionAttribute:
+      type: object
+      properties:
+        transactionAmountMicros:
+          description: Transaction amount in micros. Required. Transaction amount in micros needs to be greater than 1000. If item Attributes are provided, it represents the total value of the items, after multiplying the unit price per item by the quantity provided in the ItemAttributes.
+          type: number
+          format: double
+        currencyCode:
+          description: Transaction currency code. ISO 4217 three-letter code is used. Required.
+          type: string
+        orderId:
+          type: string
+          description: Transaction order id. Useful to group transactions which are part of the same order.
+        itemAttribute:
+          description: Item attributes of the transaction. Accessible only to customers on the allow-list.
+          $ref: '#/components/schemas/GoogleAdsGoogleadsV25Common__ItemAttribute'
+        transactionDateTime:
+          description: 'Timestamp when transaction occurred. Required. The format is "YYYY-MM-DD HH:MM:SS[+/-HH:MM]", where [+/-HH:MM] is an optional timezone offset from UTC. If the offset is absent, the API will use the account''s timezone as default. Examples: "2018-03-05 09:15:00" or "2018-02-01 14:34:30+03:00"'
+          type: string
+        storeAttribute:
+          $ref: '#/components/schemas/GoogleAdsGoogleadsV25Common__StoreAttribute'
+          description: Store attributes of the transaction.
+        conversionAction:
+          type: string
+          description: The resource name of conversion action to report conversions to. Required.
+        customValue:
+          description: Value of the custom variable for each transaction. Allowed only if a custom key is provided in the store sales metadata.
+          type: string
+      description: Attribute of the store sales transaction.
+    GoogleAdsGoogleadsV25Common__UserAttribute:
+      description: User attribute, can only be used with CUSTOMER_MATCH_WITH_ATTRIBUTES job type.
+      type: object
+      properties:
+        shoppingLoyalty:
+          description: The shopping loyalty related data. Shopping utilizes this data to provide users with a better experience. Accessible only to merchants on the allow-list with the user's consent.
+          $ref: '#/components/schemas/GoogleAdsGoogleadsV25Common__ShoppingLoyalty'
+        lifecycleStage:
+          type: string
+          description: Optional. Advertiser defined lifecycle stage for the user. The accepted values are "Lead", "Active" and "Churned".
+        eventAttribute:
+          description: Optional. Advertiser defined events and their attributes. All the values in the nested fields are required. Currently this field is in beta.
+          items:
+            $ref: '#/components/schemas/GoogleAdsGoogleadsV25Common__EventAttribute'
+          type: array
+        lastPurchaseDateTime:
+          type: string
+          description: Timestamp of the last purchase made by the user. The format is YYYY-MM-DD HH:MM:SS[+/-HH:MM], where [+/-HH:MM] is an optional timezone offset from UTC. If the offset is absent, the API will use the account's timezone as default.
+        averagePurchaseCount:
+          type: integer
+          description: Advertiser defined average number of purchases that are made by the user in a 30 day period.
+          format: int32
+        acquisitionDateTime:
+          type: string
+          description: Timestamp when the user was acquired. The format is YYYY-MM-DD HH:MM:SS[+/-HH:MM], where [+/-HH:MM] is an optional timezone offset from UTC. If the offset is absent, the API will use the account's timezone as default.
+        averagePurchaseValueMicros:
+          type: string
+          description: Advertiser defined average purchase value in micros for the user.
+          format: int64
+        lifetimeValueMicros:
+          description: Advertiser defined lifetime value for the user.
+          type: string
+          format: int64
+        firstPurchaseDateTime:
+          type: string
+          description: Optional. Timestamp of the first purchase made by the user. The format is YYYY-MM-DD HH:MM:SS[+/-HH:MM], where [+/-HH:MM] is an optional timezone offset from UTC. If the offset is absent, the API will use the account's timezone as default.
+        lifetimeValueBucket:
+          format: int32
+          description: Advertiser defined lifetime value bucket for the user. The valid range for a lifetime value bucket is from 1 (low) to 10 (high), except for remove operation where 0 will also be accepted.
+          type: integer
+    GoogleAdsGoogleadsV25Services__CreateOfflineUserDataJobRequest:
+      description: Request message for OfflineUserDataJobService.CreateOfflineUserDataJob.
+      type: object
+      properties:
+        enableMatchRateRangePreview:
+          description: If true, match rate range for the offline user data job is calculated and made available in the resource.
+          type: boolean
+        job:
+          $ref: '#/components/schemas/GoogleAdsGoogleadsV25Resources__OfflineUserDataJob'
+          description: Required. The offline user data job to be created.
+        validateOnly:
+          type: boolean
+          description: If true, the request is validated but not executed. Only errors are returned, not results.
+    GoogleAdsGoogleadsV25Common__ShoppingLoyalty:
+      type: object
+      properties:
+        loyaltyTier:
+          description: The membership tier. It is a free-form string as each merchant may have their own loyalty system. For example, it could be a number from 1 to 10, or a string such as "Golden" or "Silver", or even empty string "".
+          type: string
+      description: The shopping loyalty related data. Shopping utilizes this data to provide users with a better experience. Accessible only to merchants on the allow-list.
+    GoogleAdsGoogleadsV25Common__EventAttribute:
+      type: object
+      properties:
+        itemAttribute:
+          type: array
+          description: Required. Item attributes of the event.
+          items:
+            $ref: '#/components/schemas/GoogleAdsGoogleadsV25Common__EventItemAttribute'
+        eventDateTime:
+          description: Required. Timestamp at which the event happened. The format is YYYY-MM-DD HH:MM:SS[+/-HH:MM], where [+/-HH:MM] is an optional timezone offset from UTC. If the offset is absent, the API will use the account's timezone as default.
+          type: string
+        event:
+          type: string
+          description: Required. Advertiser defined event to be used for remarketing. The accepted values are "Viewed", "Cart", "Purchased" and "Recommended".
+      description: Advertiser defined events and their attributes. All the values in the nested fields are required.
+    GoogleAdsGoogleadsV25Services__OfflineUserDataJobOperation:
+      type: object
+      properties:
+        removeAll:
+          description: Remove all previously provided data. This is only supported for Customer Match.
+          type: boolean
+        remove:
+          description: Remove the provided data from the transaction. Data cannot be retrieved after being uploaded.
+          $ref: '#/components/schemas/GoogleAdsGoogleadsV25Common__UserData'
+        create:
+          $ref: '#/components/schemas/GoogleAdsGoogleadsV25Common__UserData'
+          description: Add the provided data to the transaction. Data cannot be retrieved after being uploaded.
+      description: Operation to be made for the AddOfflineUserDataJobOperationsRequest.
+    GoogleAdsGoogleadsV25Common__StoreSalesThirdPartyMetadata:
+      type: object
+      properties:
+        advertiserUploadDateTime:
+          type: string
+          description: 'Time the advertiser uploaded the data to the partner. Required. The format is "YYYY-MM-DD HH:MM:SS". Examples: "2018-03-05 09:15:00" or "2018-02-01 14:34:30"'
+        partnerUploadFraction:
+          format: double
+          type: number
+          description: The fraction of valid transactions that are uploaded by the partner to Google. Required. The fraction needs to be between 0 and 1 (excluding 0).
+        validTransactionFraction:
+          format: double
+          type: number
+          description: The fraction of transactions that are valid. Invalid transactions may include invalid formats or values. Required. The fraction needs to be between 0 and 1 (excluding 0).
+        partnerMatchFraction:
+          format: double
+          description: The fraction of valid transactions that are matched to a third party assigned user ID on the partner side. Required. The fraction needs to be between 0 and 1 (excluding 0).
+          type: number
+        partnerId:
+          format: int64
+          description: ID of the third party partner updating the transaction feed.
+          type: string
+        bridgeMapVersionId:
+          type: string
+          description: Version of partner IDs to be used for uploads. Required.
+      description: Metadata for a third party Store Sales. This product is only for customers on the allow-list. Contact your Google business development representative for details on the upload configuration.
+  securitySchemes:
+    oauth2:
+      type: oauth2
+      description: Google OAuth 2.0. Google Ads API additionally requires a developer token in the developer-token header.
+      flows:
+        authorizationCode:
+          authorizationUrl: https://accounts.google.com/o/oauth2/auth
+          tokenUrl: https://oauth2.googleapis.com/token
+          scopes:
+            https://www.googleapis.com/auth/adwords: See, edit, create, and delete your Google Ads accounts and data.
+externalDocs:
+  url: https://developers.google.com/google-ads/api/
+x-source: https://googleads.googleapis.com/$discovery/rest?version=v25
+x-generated-by: API Evangelist enrichment pipeline — mechanical conversion of the first-party Google API Discovery Document

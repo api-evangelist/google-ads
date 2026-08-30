@@ -1,0 +1,1752 @@
+openapi: 3.2.0
+info:
+  title: Google Ads V25 API
+  description: Manage your Google Ads accounts, campaigns, and reports with this API.
+  version: v25
+  x-discovery-revision: '20260721'
+  contact:
+    name: Google
+    url: https://developers.google.com/google-ads/api/
+  termsOfService: https://developers.google.com/terms
+servers:
+- url: https://googleads.googleapis.com
+  description: Google Ads API production server
+security:
+- oauth2:
+  - https://www.googleapis.com/auth/adwords
+tags:
+- name: v25
+paths:
+  /v25:listBenchmarksLocations:
+    parameters:
+    - name: upload_protocol
+      in: query
+      required: false
+      schema:
+        type: string
+      description: Upload protocol for media (e.g. "raw", "multipart").
+    - name: quotaUser
+      in: query
+      required: false
+      schema:
+        type: string
+      description: Available to use for quota purposes for server-side applications. Can be any arbitrary string assigned to a user, but should not exceed 40 characters.
+    - name: fields
+      in: query
+      required: false
+      schema:
+        type: string
+      description: Selector specifying which fields to include in a partial response.
+    - name: $.xgafv
+      in: query
+      required: false
+      schema:
+        type: string
+        enum:
+        - '1'
+        - '2'
+        x-enumDescriptions:
+        - v1 error format
+        - v2 error format
+      description: V1 error format.
+    - name: callback
+      in: query
+      required: false
+      schema:
+        type: string
+      description: JSONP
+    - name: prettyPrint
+      in: query
+      required: false
+      schema:
+        type: boolean
+        default: 'true'
+      description: Returns response with indentations and line breaks.
+    - name: access_token
+      in: query
+      required: false
+      schema:
+        type: string
+      description: OAuth access token.
+    - name: uploadType
+      in: query
+      required: false
+      schema:
+        type: string
+      description: Legacy upload protocol for media (e.g. "media", "multipart").
+    - name: key
+      in: query
+      required: false
+      schema:
+        type: string
+      description: API key. Your API key identifies your project and provides you with API access, quota, and reports. Required unless you provide an OAuth 2.0 token.
+    - name: oauth_token
+      in: query
+      required: false
+      schema:
+        type: string
+      description: OAuth 2.0 token for the current user.
+    - name: alt
+      in: query
+      required: false
+      schema:
+        x-enumDescriptions:
+        - Responses with Content-Type of application/json
+        - Media download with context-dependent Content-Type
+        - Responses with Content-Type of application/x-protobuf
+        type: string
+        default: json
+        enum:
+        - json
+        - media
+        - proto
+      description: Data format for response.
+    post:
+      operationId: googleads_listBenchmarksLocations
+      summary: Returns the list of locations that support benchmarks (for example, countries)
+      tags:
+      - v25
+      description: 'Returns the list of locations that support benchmarks (for example, countries). List of thrown errors: [AuthenticationError]() [AuthorizationError]() [FieldError]() [HeaderError]() [InternalError]() [QuotaError]() [RequestError]()'
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/GoogleAdsGoogleadsV25Services__ListBenchmarksLocationsRequest'
+      responses:
+        '200':
+          description: Successful response
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/GoogleAdsGoogleadsV25Services__ListBenchmarksLocationsResponse'
+      security:
+      - oauth2:
+        - https://www.googleapis.com/auth/adwords
+  /v25:listPlannableProducts:
+    parameters:
+    - name: upload_protocol
+      in: query
+      required: false
+      schema:
+        type: string
+      description: Upload protocol for media (e.g. "raw", "multipart").
+    - name: quotaUser
+      in: query
+      required: false
+      schema:
+        type: string
+      description: Available to use for quota purposes for server-side applications. Can be any arbitrary string assigned to a user, but should not exceed 40 characters.
+    - name: fields
+      in: query
+      required: false
+      schema:
+        type: string
+      description: Selector specifying which fields to include in a partial response.
+    - name: $.xgafv
+      in: query
+      required: false
+      schema:
+        type: string
+        enum:
+        - '1'
+        - '2'
+        x-enumDescriptions:
+        - v1 error format
+        - v2 error format
+      description: V1 error format.
+    - name: callback
+      in: query
+      required: false
+      schema:
+        type: string
+      description: JSONP
+    - name: prettyPrint
+      in: query
+      required: false
+      schema:
+        type: boolean
+        default: 'true'
+      description: Returns response with indentations and line breaks.
+    - name: access_token
+      in: query
+      required: false
+      schema:
+        type: string
+      description: OAuth access token.
+    - name: uploadType
+      in: query
+      required: false
+      schema:
+        type: string
+      description: Legacy upload protocol for media (e.g. "media", "multipart").
+    - name: key
+      in: query
+      required: false
+      schema:
+        type: string
+      description: API key. Your API key identifies your project and provides you with API access, quota, and reports. Required unless you provide an OAuth 2.0 token.
+    - name: oauth_token
+      in: query
+      required: false
+      schema:
+        type: string
+      description: OAuth 2.0 token for the current user.
+    - name: alt
+      in: query
+      required: false
+      schema:
+        x-enumDescriptions:
+        - Responses with Content-Type of application/json
+        - Media download with context-dependent Content-Type
+        - Responses with Content-Type of application/x-protobuf
+        type: string
+        default: json
+        enum:
+        - json
+        - media
+        - proto
+      description: Data format for response.
+    post:
+      operationId: googleads_listPlannableProducts
+      summary: Returns the list of per-location plannable YouTube ad formats with allowed targeting
+      tags:
+      - v25
+      description: 'Returns the list of per-location plannable YouTube ad formats with allowed targeting. List of thrown errors: [AuthenticationError]() [AuthorizationError]() [HeaderError]() [InternalError]() [QuotaError]() [RequestError]()'
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/GoogleAdsGoogleadsV25Services__ListPlannableProductsRequest'
+      responses:
+        '200':
+          description: Successful response
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/GoogleAdsGoogleadsV25Services__ListPlannableProductsResponse'
+      security:
+      - oauth2:
+        - https://www.googleapis.com/auth/adwords
+  /v25:generateConversionRates:
+    parameters:
+    - name: upload_protocol
+      in: query
+      required: false
+      schema:
+        type: string
+      description: Upload protocol for media (e.g. "raw", "multipart").
+    - name: quotaUser
+      in: query
+      required: false
+      schema:
+        type: string
+      description: Available to use for quota purposes for server-side applications. Can be any arbitrary string assigned to a user, but should not exceed 40 characters.
+    - name: fields
+      in: query
+      required: false
+      schema:
+        type: string
+      description: Selector specifying which fields to include in a partial response.
+    - name: $.xgafv
+      in: query
+      required: false
+      schema:
+        type: string
+        enum:
+        - '1'
+        - '2'
+        x-enumDescriptions:
+        - v1 error format
+        - v2 error format
+      description: V1 error format.
+    - name: callback
+      in: query
+      required: false
+      schema:
+        type: string
+      description: JSONP
+    - name: prettyPrint
+      in: query
+      required: false
+      schema:
+        type: boolean
+        default: 'true'
+      description: Returns response with indentations and line breaks.
+    - name: access_token
+      in: query
+      required: false
+      schema:
+        type: string
+      description: OAuth access token.
+    - name: uploadType
+      in: query
+      required: false
+      schema:
+        type: string
+      description: Legacy upload protocol for media (e.g. "media", "multipart").
+    - name: key
+      in: query
+      required: false
+      schema:
+        type: string
+      description: API key. Your API key identifies your project and provides you with API access, quota, and reports. Required unless you provide an OAuth 2.0 token.
+    - name: oauth_token
+      in: query
+      required: false
+      schema:
+        type: string
+      description: OAuth 2.0 token for the current user.
+    - name: alt
+      in: query
+      required: false
+      schema:
+        x-enumDescriptions:
+        - Responses with Content-Type of application/json
+        - Media download with context-dependent Content-Type
+        - Responses with Content-Type of application/x-protobuf
+        type: string
+        default: json
+        enum:
+        - json
+        - media
+        - proto
+      description: Data format for response.
+    post:
+      operationId: googleads_generateConversionRates
+      summary: Returns a collection of conversion rate suggestions for supported plannable products
+      tags:
+      - v25
+      description: 'Returns a collection of conversion rate suggestions for supported plannable products. List of thrown errors: [AuthenticationError]() [AuthorizationError]() [HeaderError]() [InternalError]() [QuotaError]() [RequestError]()'
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/GoogleAdsGoogleadsV25Services__GenerateConversionRatesRequest'
+      responses:
+        '200':
+          description: Successful response
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/GoogleAdsGoogleadsV25Services__GenerateConversionRatesResponse'
+      security:
+      - oauth2:
+        - https://www.googleapis.com/auth/adwords
+  /v25:listBenchmarksAvailableDates:
+    parameters:
+    - name: upload_protocol
+      in: query
+      required: false
+      schema:
+        type: string
+      description: Upload protocol for media (e.g. "raw", "multipart").
+    - name: quotaUser
+      in: query
+      required: false
+      schema:
+        type: string
+      description: Available to use for quota purposes for server-side applications. Can be any arbitrary string assigned to a user, but should not exceed 40 characters.
+    - name: fields
+      in: query
+      required: false
+      schema:
+        type: string
+      description: Selector specifying which fields to include in a partial response.
+    - name: $.xgafv
+      in: query
+      required: false
+      schema:
+        type: string
+        enum:
+        - '1'
+        - '2'
+        x-enumDescriptions:
+        - v1 error format
+        - v2 error format
+      description: V1 error format.
+    - name: callback
+      in: query
+      required: false
+      schema:
+        type: string
+      description: JSONP
+    - name: prettyPrint
+      in: query
+      required: false
+      schema:
+        type: boolean
+        default: 'true'
+      description: Returns response with indentations and line breaks.
+    - name: access_token
+      in: query
+      required: false
+      schema:
+        type: string
+      description: OAuth access token.
+    - name: uploadType
+      in: query
+      required: false
+      schema:
+        type: string
+      description: Legacy upload protocol for media (e.g. "media", "multipart").
+    - name: key
+      in: query
+      required: false
+      schema:
+        type: string
+      description: API key. Your API key identifies your project and provides you with API access, quota, and reports. Required unless you provide an OAuth 2.0 token.
+    - name: oauth_token
+      in: query
+      required: false
+      schema:
+        type: string
+      description: OAuth 2.0 token for the current user.
+    - name: alt
+      in: query
+      required: false
+      schema:
+        x-enumDescriptions:
+        - Responses with Content-Type of application/json
+        - Media download with context-dependent Content-Type
+        - Responses with Content-Type of application/x-protobuf
+        type: string
+        default: json
+        enum:
+        - json
+        - media
+        - proto
+      description: Data format for response.
+    post:
+      operationId: googleads_listBenchmarksAvailableDates
+      summary: Returns a date range that supports benchmarks
+      tags:
+      - v25
+      description: 'Returns a date range that supports benchmarks. List of thrown errors: [AuthenticationError]() [AuthorizationError]() [FieldError]() [HeaderError]() [InternalError]() [QuotaError]() [RequestError]()'
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/GoogleAdsGoogleadsV25Services__ListBenchmarksAvailableDatesRequest'
+      responses:
+        '200':
+          description: Successful response
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/GoogleAdsGoogleadsV25Services__ListBenchmarksAvailableDatesResponse'
+      security:
+      - oauth2:
+        - https://www.googleapis.com/auth/adwords
+  /v25:listPlannableUserLists:
+    parameters:
+    - name: upload_protocol
+      in: query
+      required: false
+      schema:
+        type: string
+      description: Upload protocol for media (e.g. "raw", "multipart").
+    - name: quotaUser
+      in: query
+      required: false
+      schema:
+        type: string
+      description: Available to use for quota purposes for server-side applications. Can be any arbitrary string assigned to a user, but should not exceed 40 characters.
+    - name: fields
+      in: query
+      required: false
+      schema:
+        type: string
+      description: Selector specifying which fields to include in a partial response.
+    - name: $.xgafv
+      in: query
+      required: false
+      schema:
+        type: string
+        enum:
+        - '1'
+        - '2'
+        x-enumDescriptions:
+        - v1 error format
+        - v2 error format
+      description: V1 error format.
+    - name: callback
+      in: query
+      required: false
+      schema:
+        type: string
+      description: JSONP
+    - name: prettyPrint
+      in: query
+      required: false
+      schema:
+        type: boolean
+        default: 'true'
+      description: Returns response with indentations and line breaks.
+    - name: access_token
+      in: query
+      required: false
+      schema:
+        type: string
+      description: OAuth access token.
+    - name: uploadType
+      in: query
+      required: false
+      schema:
+        type: string
+      description: Legacy upload protocol for media (e.g. "media", "multipart").
+    - name: key
+      in: query
+      required: false
+      schema:
+        type: string
+      description: API key. Your API key identifies your project and provides you with API access, quota, and reports. Required unless you provide an OAuth 2.0 token.
+    - name: oauth_token
+      in: query
+      required: false
+      schema:
+        type: string
+      description: OAuth 2.0 token for the current user.
+    - name: alt
+      in: query
+      required: false
+      schema:
+        x-enumDescriptions:
+        - Responses with Content-Type of application/json
+        - Media download with context-dependent Content-Type
+        - Responses with Content-Type of application/x-protobuf
+        type: string
+        default: json
+        enum:
+        - json
+        - media
+        - proto
+      description: Data format for response.
+    post:
+      operationId: googleads_listPlannableUserLists
+      summary: Returns the list of plannable user lists with their plannable status
+      tags:
+      - v25
+      description: 'Returns the list of plannable user lists with their plannable status. User lists may not be plannable for a number of reasons, including: - They are less than 10 days old. - They have a membership lifespan that is less than 30 days - They have less than 10,000 or more than 700,000 users. List of thrown errors: [AuthenticationError]() [AuthorizationError]() [FieldError]() [HeaderError]() [InternalError]() [QuotaError]() [RangeError]() [ReachPlanError]() [RequestError]()'
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/GoogleAdsGoogleadsV25Services__ListPlannableUserListsRequest'
+      responses:
+        '200':
+          description: Successful response
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/GoogleAdsGoogleadsV25Services__ListPlannableUserListsResponse'
+      security:
+      - oauth2:
+        - https://www.googleapis.com/auth/adwords
+  /v25:listPlannableUserInterests:
+    parameters:
+    - name: upload_protocol
+      in: query
+      required: false
+      schema:
+        type: string
+      description: Upload protocol for media (e.g. "raw", "multipart").
+    - name: quotaUser
+      in: query
+      required: false
+      schema:
+        type: string
+      description: Available to use for quota purposes for server-side applications. Can be any arbitrary string assigned to a user, but should not exceed 40 characters.
+    - name: fields
+      in: query
+      required: false
+      schema:
+        type: string
+      description: Selector specifying which fields to include in a partial response.
+    - name: $.xgafv
+      in: query
+      required: false
+      schema:
+        type: string
+        enum:
+        - '1'
+        - '2'
+        x-enumDescriptions:
+        - v1 error format
+        - v2 error format
+      description: V1 error format.
+    - name: callback
+      in: query
+      required: false
+      schema:
+        type: string
+      description: JSONP
+    - name: prettyPrint
+      in: query
+      required: false
+      schema:
+        type: boolean
+        default: 'true'
+      description: Returns response with indentations and line breaks.
+    - name: access_token
+      in: query
+      required: false
+      schema:
+        type: string
+      description: OAuth access token.
+    - name: uploadType
+      in: query
+      required: false
+      schema:
+        type: string
+      description: Legacy upload protocol for media (e.g. "media", "multipart").
+    - name: key
+      in: query
+      required: false
+      schema:
+        type: string
+      description: API key. Your API key identifies your project and provides you with API access, quota, and reports. Required unless you provide an OAuth 2.0 token.
+    - name: oauth_token
+      in: query
+      required: false
+      schema:
+        type: string
+      description: OAuth 2.0 token for the current user.
+    - name: alt
+      in: query
+      required: false
+      schema:
+        x-enumDescriptions:
+        - Responses with Content-Type of application/json
+        - Media download with context-dependent Content-Type
+        - Responses with Content-Type of application/x-protobuf
+        type: string
+        default: json
+        enum:
+        - json
+        - media
+        - proto
+      description: Data format for response.
+    post:
+      operationId: googleads_listPlannableUserInterests
+      summary: Returns the list of plannable user interests
+      tags:
+      - v25
+      description: 'Returns the list of plannable user interests. A plannable user interest is one that can be targeted in a reach forecast using ReachPlanService.GenerateReachForecast. List of thrown errors: [AuthenticationError]() [AuthorizationError]() [FieldError]() [HeaderError]() [InternalError]() [ListOperationError]() [QuotaError]() [RequestError]() [StringLengthError]()'
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/GoogleAdsGoogleadsV25Services__ListPlannableUserInterestsRequest'
+      responses:
+        '200':
+          description: Successful response
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/GoogleAdsGoogleadsV25Services__ListPlannableUserInterestsResponse'
+      security:
+      - oauth2:
+        - https://www.googleapis.com/auth/adwords
+  /v25:listBenchmarksProducts:
+    parameters:
+    - name: upload_protocol
+      in: query
+      required: false
+      schema:
+        type: string
+      description: Upload protocol for media (e.g. "raw", "multipart").
+    - name: quotaUser
+      in: query
+      required: false
+      schema:
+        type: string
+      description: Available to use for quota purposes for server-side applications. Can be any arbitrary string assigned to a user, but should not exceed 40 characters.
+    - name: fields
+      in: query
+      required: false
+      schema:
+        type: string
+      description: Selector specifying which fields to include in a partial response.
+    - name: $.xgafv
+      in: query
+      required: false
+      schema:
+        type: string
+        enum:
+        - '1'
+        - '2'
+        x-enumDescriptions:
+        - v1 error format
+        - v2 error format
+      description: V1 error format.
+    - name: callback
+      in: query
+      required: false
+      schema:
+        type: string
+      description: JSONP
+    - name: prettyPrint
+      in: query
+      required: false
+      schema:
+        type: boolean
+        default: 'true'
+      description: Returns response with indentations and line breaks.
+    - name: access_token
+      in: query
+      required: false
+      schema:
+        type: string
+      description: OAuth access token.
+    - name: uploadType
+      in: query
+      required: false
+      schema:
+        type: string
+      description: Legacy upload protocol for media (e.g. "media", "multipart").
+    - name: key
+      in: query
+      required: false
+      schema:
+        type: string
+      description: API key. Your API key identifies your project and provides you with API access, quota, and reports. Required unless you provide an OAuth 2.0 token.
+    - name: oauth_token
+      in: query
+      required: false
+      schema:
+        type: string
+      description: OAuth 2.0 token for the current user.
+    - name: alt
+      in: query
+      required: false
+      schema:
+        x-enumDescriptions:
+        - Responses with Content-Type of application/json
+        - Media download with context-dependent Content-Type
+        - Responses with Content-Type of application/x-protobuf
+        type: string
+        default: json
+        enum:
+        - json
+        - media
+        - proto
+      description: Data format for response.
+    post:
+      operationId: googleads_listBenchmarksProducts
+      summary: Returns the list of products that supports benchmarks
+      tags:
+      - v25
+      description: 'Returns the list of products that supports benchmarks. List of thrown errors: [AuthenticationError]() [AuthorizationError]() [FieldError]() [HeaderError]() [InternalError]() [QuotaError]() [RequestError]()'
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/GoogleAdsGoogleadsV25Services__ListBenchmarksProductsRequest'
+      responses:
+        '200':
+          description: Successful response
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/GoogleAdsGoogleadsV25Services__ListBenchmarksProductsResponse'
+      security:
+      - oauth2:
+        - https://www.googleapis.com/auth/adwords
+  /v25:listPlannableLocations:
+    parameters:
+    - name: upload_protocol
+      in: query
+      required: false
+      schema:
+        type: string
+      description: Upload protocol for media (e.g. "raw", "multipart").
+    - name: quotaUser
+      in: query
+      required: false
+      schema:
+        type: string
+      description: Available to use for quota purposes for server-side applications. Can be any arbitrary string assigned to a user, but should not exceed 40 characters.
+    - name: fields
+      in: query
+      required: false
+      schema:
+        type: string
+      description: Selector specifying which fields to include in a partial response.
+    - name: $.xgafv
+      in: query
+      required: false
+      schema:
+        type: string
+        enum:
+        - '1'
+        - '2'
+        x-enumDescriptions:
+        - v1 error format
+        - v2 error format
+      description: V1 error format.
+    - name: callback
+      in: query
+      required: false
+      schema:
+        type: string
+      description: JSONP
+    - name: prettyPrint
+      in: query
+      required: false
+      schema:
+        type: boolean
+        default: 'true'
+      description: Returns response with indentations and line breaks.
+    - name: access_token
+      in: query
+      required: false
+      schema:
+        type: string
+      description: OAuth access token.
+    - name: uploadType
+      in: query
+      required: false
+      schema:
+        type: string
+      description: Legacy upload protocol for media (e.g. "media", "multipart").
+    - name: key
+      in: query
+      required: false
+      schema:
+        type: string
+      description: API key. Your API key identifies your project and provides you with API access, quota, and reports. Required unless you provide an OAuth 2.0 token.
+    - name: oauth_token
+      in: query
+      required: false
+      schema:
+        type: string
+      description: OAuth 2.0 token for the current user.
+    - name: alt
+      in: query
+      required: false
+      schema:
+        x-enumDescriptions:
+        - Responses with Content-Type of application/json
+        - Media download with context-dependent Content-Type
+        - Responses with Content-Type of application/x-protobuf
+        type: string
+        default: json
+        enum:
+        - json
+        - media
+        - proto
+      description: Data format for response.
+    post:
+      operationId: googleads_listPlannableLocations
+      summary: Returns the list of plannable locations (for example, countries)
+      tags:
+      - v25
+      description: 'Returns the list of plannable locations (for example, countries). List of thrown errors: [AuthenticationError]() [AuthorizationError]() [HeaderError]() [InternalError]() [QuotaError]() [RequestError]()'
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/GoogleAdsGoogleadsV25Services__ListPlannableLocationsRequest'
+      responses:
+        '200':
+          description: Successful response
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/GoogleAdsGoogleadsV25Services__ListPlannableLocationsResponse'
+      security:
+      - oauth2:
+        - https://www.googleapis.com/auth/adwords
+  /v25:listBenchmarksSources:
+    parameters:
+    - name: upload_protocol
+      in: query
+      required: false
+      schema:
+        type: string
+      description: Upload protocol for media (e.g. "raw", "multipart").
+    - name: quotaUser
+      in: query
+      required: false
+      schema:
+        type: string
+      description: Available to use for quota purposes for server-side applications. Can be any arbitrary string assigned to a user, but should not exceed 40 characters.
+    - name: fields
+      in: query
+      required: false
+      schema:
+        type: string
+      description: Selector specifying which fields to include in a partial response.
+    - name: $.xgafv
+      in: query
+      required: false
+      schema:
+        type: string
+        enum:
+        - '1'
+        - '2'
+        x-enumDescriptions:
+        - v1 error format
+        - v2 error format
+      description: V1 error format.
+    - name: callback
+      in: query
+      required: false
+      schema:
+        type: string
+      description: JSONP
+    - name: prettyPrint
+      in: query
+      required: false
+      schema:
+        type: boolean
+        default: 'true'
+      description: Returns response with indentations and line breaks.
+    - name: access_token
+      in: query
+      required: false
+      schema:
+        type: string
+      description: OAuth access token.
+    - name: uploadType
+      in: query
+      required: false
+      schema:
+        type: string
+      description: Legacy upload protocol for media (e.g. "media", "multipart").
+    - name: key
+      in: query
+      required: false
+      schema:
+        type: string
+      description: API key. Your API key identifies your project and provides you with API access, quota, and reports. Required unless you provide an OAuth 2.0 token.
+    - name: oauth_token
+      in: query
+      required: false
+      schema:
+        type: string
+      description: OAuth 2.0 token for the current user.
+    - name: alt
+      in: query
+      required: false
+      schema:
+        x-enumDescriptions:
+        - Responses with Content-Type of application/json
+        - Media download with context-dependent Content-Type
+        - Responses with Content-Type of application/x-protobuf
+        type: string
+        default: json
+        enum:
+        - json
+        - media
+        - proto
+      description: Data format for response.
+    post:
+      operationId: googleads_listBenchmarksSources
+      summary: Returns the list of benchmarks sources (for example, Industry Verticals)
+      tags:
+      - v25
+      description: 'Returns the list of benchmarks sources (for example, Industry Verticals). List of thrown errors: [AuthenticationError]() [AuthorizationError]() [FieldError]() [HeaderError]() [InternalError]() [QuotaError]() [RequestError]()'
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/GoogleAdsGoogleadsV25Services__ListBenchmarksSourcesRequest'
+      responses:
+        '200':
+          description: Successful response
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/GoogleAdsGoogleadsV25Services__ListBenchmarksSourcesResponse'
+      security:
+      - oauth2:
+        - https://www.googleapis.com/auth/adwords
+components:
+  schemas:
+    GoogleAdsGoogleadsV25Services__PlannableUserListMetadata:
+      type: object
+      properties:
+        userListCrmDataSourceType:
+          description: The data source type of a CRM based user list.
+          type: string
+          x-enumDescriptions:
+          - Not specified.
+          - Used for return value only. Represents value unknown in this version.
+          - The uploaded data is first-party data.
+          - The uploaded data is from a third-party credit bureau.
+          - The uploaded data is from a third-party voter file.
+          - The uploaded data is third party partner data.
+          enum:
+          - UNSPECIFIED
+          - UNKNOWN
+          - FIRST_PARTY
+          - THIRD_PARTY_CREDIT_BUREAU
+          - THIRD_PARTY_VOTER_FILE
+          - THIRD_PARTY_PARTNER_DATA
+      description: The metadata associated with a plannable user list.
+    GoogleAdsGoogleadsV25Services__SurfaceTargeting:
+      type: object
+      properties:
+        surfaces:
+          type: array
+          description: List of surfaces available to target.
+          items:
+            type: string
+            x-enumDescriptions:
+            - Not specified.
+            - The value is unknown in this version.
+            - Discover feed ad surface.
+            - Gmail ad surface.
+            - In-Feed ad surface.
+            - In-Stream bumper ad surface.
+            - In-Stream non-skippable ad surface.
+            - In-Stream skippable ad surface.
+            - Shorts ad surface.
+            - Google Display Network ad surface.
+            - In-Stream non-skippable (30 seconds) ad surface.
+            enum:
+            - UNSPECIFIED
+            - UNKNOWN
+            - DISCOVER_FEED
+            - GMAIL
+            - IN_FEED
+            - IN_STREAM_BUMPER
+            - IN_STREAM_NON_SKIPPABLE
+            - IN_STREAM_SKIPPABLE
+            - SHORTS
+            - GOOGLE_DISPLAY_NETWORK
+            - IN_STREAM_NON_SKIPPABLE_THIRTY_SECONDS
+      description: Container for surfaces for a product. Surfaces refer to the available types of ad inventories such as In-Feed, In-Stream, and Shorts.
+    GoogleAdsGoogleadsV25Services__ListBenchmarksAvailableDatesRequest:
+      type: object
+      properties:
+        applicationInfo:
+          description: Additional information on the application issuing the request.
+          $ref: '#/components/schemas/GoogleAdsGoogleadsV25Common__AdditionalApplicationInfo'
+      description: Request message for BenchmarksService.ListBenchmarksAvailableDates.
+    GoogleAdsGoogleadsV25Services__ListBenchmarksLocationsResponse:
+      description: Response message for BenchmarksService.ListBenchmarksLocations.
+      type: object
+      properties:
+        benchmarksLocations:
+          description: The list of locations supported for benchmarks data.
+          items:
+            $ref: '#/components/schemas/GoogleAdsGoogleadsV25Services__BenchmarksLocation'
+          type: array
+    GoogleAdsGoogleadsV25Services__ProductCoreAttributes:
+      description: A collection of attributes that offer more information about a specific product.
+      type: object
+      properties:
+        marketingObjective:
+          x-enumDescriptions:
+          - Not specified.
+          - The value is unknown in this version.
+          - The objective is to maximize brand visibility and reach as many relevant people as possible, making potential customers aware of the brand or product.
+          - The objective is to encourage potential customers to learn more about the brand or products and consider them for a future purchase.
+          - The objective is to persuade potential customers to take a specific, valuable action, such as making a purchase, signing up for a newsletter, or generating a lead.
+          enum:
+          - UNSPECIFIED
+          - UNKNOWN
+          - AWARENESS
+          - CONSIDERATION
+          - ACTION
+          type: string
+          description: A specific, measurable goal that a company wants to achieve through its marketing efforts.
+        buyingMethod:
+          x-enumDescriptions:
+          - Not specified.
+          - The value is unknown in this version.
+          - Bidding on ads with a target CPM.
+          - Buying method that encompasses deal-based and instant reserve pricing.
+          enum:
+          - UNSPECIFIED
+          - UNKNOWN
+          - AUCTION
+          - RESERVATION
+          description: The method of buying this product. For example, Auction pricing is dynamic and Reservation is booked at a fixed price.
+          type: string
+        costModel:
+          description: How an advertiser pays for their ad campaign.
+          type: string
+          x-enumDescriptions:
+          - Not specified.
+          - The value is unknown in this version.
+          - Cost per mille (thousand impressions).
+          - Cost per view.
+          - Cost per click.
+          - Cost per action (conversion).
+          enum:
+          - UNSPECIFIED
+          - UNKNOWN
+          - CPM
+          - CPV
+          - CPC
+          - CPA
+    GoogleAdsGoogleadsV25Services__ListBenchmarksSourcesRequest:
+      type: object
+      properties:
+        applicationInfo:
+          description: Additional information on the application issuing the request.
+          $ref: '#/components/schemas/GoogleAdsGoogleadsV25Common__AdditionalApplicationInfo'
+        benchmarksSources:
+          description: Required. The types of benchmarks sources to be returned
+          items:
+            type: string
+            x-enumDescriptions:
+            - Not specified.
+            - The value is unknown in this version.
+            - The classification of ad categories for benchmarking. (for example, "Technology" or "Finance").
+            enum:
+            - UNSPECIFIED
+            - UNKNOWN
+            - INDUSTRY_VERTICAL
+          type: array
+      description: Request message for BenchmarksService.ListBenchmarksSources.
+    GoogleAdsGoogleadsV25Services__ListBenchmarksProductsRequest:
+      description: Request message for BenchmarksService.ListBenchmarksProducts.
+      type: object
+      properties:
+        applicationInfo:
+          description: Additional information on the application issuing the request.
+          $ref: '#/components/schemas/GoogleAdsGoogleadsV25Common__AdditionalApplicationInfo'
+    GoogleAdsGoogleadsV25Services__SurfaceTargetingCombinations:
+      description: The surface targeting combinations available for an ad product.
+      type: object
+      properties:
+        defaultTargeting:
+          description: Default surface targeting applied to the ad product.
+          $ref: '#/components/schemas/GoogleAdsGoogleadsV25Services__SurfaceTargeting'
+        availableTargetingCombinations:
+          type: array
+          description: Available surface target combinations for the ad product.
+          items:
+            $ref: '#/components/schemas/GoogleAdsGoogleadsV25Services__SurfaceTargeting'
+    GoogleAdsGoogleadsV25Services__ProductMetadata:
+      type: object
+      properties:
+        plannableProductDescription:
+          type: string
+          description: 'The plain-text description of the ad product. For example: "Video view campaign allows you to plan for a configurable mix of skippable in-stream, in-feed, and Shorts video ads in a single campaign designed to drive more views."'
+        plannableTargeting:
+          description: The allowed plannable targeting for this product.
+          $ref: '#/components/schemas/GoogleAdsGoogleadsV25Services__PlannableTargeting'
+        plannableProductCode:
+          description: 'The code associated with the ad product. For example: "VIDEO_VIEW_CAMPAIGN". To list the available plannable product codes use ReachPlanService.ListPlannableProducts.'
+          type: string
+        plannableProductName:
+          description: 'The name associated with the ad product. For example: "Video View Campaign".'
+          type: string
+        plannableProductCoreAttributes:
+          $ref: '#/components/schemas/GoogleAdsGoogleadsV25Services__ProductCoreAttributes'
+          description: Descriptive attributes of the ad product to further describe its capabilities.
+      description: The metadata associated with an available plannable product.
+    GoogleAdsGoogleadsV25Common__AdditionalApplicationInfo:
+      description: Additional information about the application/tool issuing the request. This field is only used by ContentCreatorInsightsService, AudienceInsightsService, and ReachPlanService APIs.
+      type: object
+      properties:
+        applicationId:
+          description: The unique identifier of the agency proprietary application. This identifier is generated by Google. Reach out to your Google representative to request an application_id for each new application being integrated.
+          type: string
+        applicationInstance:
+          description: The instance type of the application sending the request.
+          type: string
+          x-enumDescriptions:
+          - Not specified.
+          - The value is unknown in this version.
+          - The instance is for development and testing purposes.
+          - The instance is for production purposes.
+          enum:
+          - UNSPECIFIED
+          - UNKNOWN
+          - DEVELOPMENT_AND_TESTING
+          - PRODUCTION
+    GoogleAdsGoogleadsV25Services__ListBenchmarksProductsResponse:
+      description: Response message for BenchmarksService.ListBenchmarksProducts.
+      type: object
+      properties:
+        benchmarksProducts:
+          description: The list of products available for benchmarks data.
+          items:
+            $ref: '#/components/schemas/GoogleAdsGoogleadsV25Services__BenchmarksProductMetadata'
+          type: array
+    GoogleAdsGoogleadsV25Services__BenchmarksSourceMetadata:
+      description: The metadata associated with a benchmarks source.
+      type: object
+      properties:
+        industryVerticalInfo:
+          $ref: '#/components/schemas/GoogleAdsGoogleadsV25Services__IndustryVerticalInfo'
+          description: Information on the Industry Vertical.
+        benchmarksSourceType:
+          x-enumDescriptions:
+          - Not specified.
+          - The value is unknown in this version.
+          - The classification of ad categories for benchmarking. (for example, "Technology" or "Finance").
+          enum:
+          - UNSPECIFIED
+          - UNKNOWN
+          - INDUSTRY_VERTICAL
+          description: The type of benchmarks source.
+          type: string
+    GoogleAdsGoogleadsV25Services__ListBenchmarksSourcesResponse:
+      type: object
+      properties:
+        benchmarksSources:
+          type: array
+          description: The list of available source used to generate benchmarks data for.
+          items:
+            $ref: '#/components/schemas/GoogleAdsGoogleadsV25Services__BenchmarksSourceMetadata'
+      description: Response message for BenchmarksService.ListBenchmarksSources.
+    GoogleAdsGoogleadsV25Services__YouTubeSelectLineUpTargeting:
+      description: Targetable YouTube Select Lineups for the ad product and the default Lineup.
+      type: object
+      properties:
+        youtubeSelectLineups:
+          type: array
+          description: Targetable YouTube Select Lineups for the ad product.
+          items:
+            $ref: '#/components/schemas/GoogleAdsGoogleadsV25Services__YouTubeSelectLineUp'
+        defaultYoutubeSelectLineup:
+          description: The default YouTube Select Lineup for the ad product if available.
+          $ref: '#/components/schemas/GoogleAdsGoogleadsV25Services__YouTubeSelectLineUp'
+    GoogleAdsGoogleadsV25Services__BenchmarksLocation:
+      description: A location that supports benchmarks data.
+      type: object
+      properties:
+        locationType:
+          description: The location's type. Location types correspond to target_type returned by searching location type in GoogleAdsService.Search/SearchStream.
+          type: string
+        locationInfo:
+          description: Information on the geographic location, including the location ID.
+          $ref: '#/components/schemas/GoogleAdsGoogleadsV25Common__LocationInfo'
+        locationName:
+          description: The unique location name in English.
+          type: string
+    GoogleAdsGoogleadsV25Common__LocationInfo:
+      type: object
+      properties:
+        geoTargetConstant:
+          type: string
+          description: The geo target constant resource name.
+      description: A location criterion.
+    GoogleAdsGoogleadsV25Services__ConversionRateSuggestion:
+      type: object
+      properties:
+        conversionRateModel:
+          description: Model type used to calculate the suggested conversion rate.
+          type: string
+          x-enumDescriptions:
+          - Not specified.
+          - The value is unknown in this version.
+          - Suggested conversion rate for the authenticated customer based on the previous 70 days.
+          - Suggested conversion rate based on an aggressive rate for the entire inventory.
+          - Suggested conversion rate based on a conservative rate for the entire inventory.
+          - Suggested conversion rate based on the median rate for the entire inventory.
+          enum:
+          - UNSPECIFIED
+          - UNKNOWN
+          - CUSTOMER_HISTORY
+          - INVENTORY_AGGRESSIVE
+          - INVENTORY_CONSERVATIVE
+          - INVENTORY_MEDIAN
+        surfaceTargeting:
+          $ref: '#/components/schemas/GoogleAdsGoogleadsV25Services__SurfaceTargeting'
+          description: The surfaces associated with the plannable product. If not present, the conversion rate is considered surface agnostic for this product.
+        conversionRate:
+          description: The suggested conversion rate. The value is between 0 and 1 (exclusive).
+          type: number
+          format: double
+        plannableProductCode:
+          type: string
+          description: 'The code associated with the plannable product (for example: DEMAND_GEN). To list all plannable product codes, use ReachPlanService.ListPlannableProducts.'
+      description: A conversion rate suggestion.
+    GoogleAdsGoogleadsV25Services__ListPlannableLocationsResponse:
+      description: The list of plannable locations.
+      type: object
+      properties:
+        plannableLocations:
+          description: The list of locations available for planning. See https://developers.google.com/google-ads/api/reference/data/geotargets for sample locations.
+          items:
+            $ref: '#/components/schemas/GoogleAdsGoogleadsV25Services__PlannableLocation'
+          type: array
+    GoogleAdsGoogleadsV25Services__ListPlannableProductsRequest:
+      description: Request to list available products in a given location.
+      type: object
+      properties:
+        plannableLocationId:
+          description: Required. The ID of the selected location for planning. To list the available plannable location IDs use ReachPlanService.ListPlannableLocations.
+          type: string
+        reachApplicationInfo:
+          $ref: '#/components/schemas/GoogleAdsGoogleadsV25Common__AdditionalApplicationInfo'
+          description: Optional. Additional information on the application issuing the request.
+    GoogleAdsGoogleadsV25Services__PlannableTargeting:
+      description: The targeting for which traffic metrics will be reported.
+      type: object
+      properties:
+        ageRanges:
+          type: array
+          description: Allowed plannable age ranges for the product for which metrics will be reported. Actual targeting is computed by mapping this age range onto standard Google common.AgeRangeInfo values.
+          items:
+            type: string
+            x-enumDescriptions:
+            - Not specified.
+            - The value is unknown in this version.
+            - Between 18 and 24 years old.
+            - Between 18 and 34 years old.
+            - Between 18 and 44 years old.
+            - Between 18 and 49 years old.
+            - Between 18 and 54 years old.
+            - Between 18 and 64 years old.
+            - Between 18 and 65+ years old.
+            - Between 21 and 34 years old.
+            - Between 21 and 44 years old.
+            - Between 21 and 49 years old.
+            - Between 21 and 54 years old.
+            - Between 21 and 64 years old.
+            - Between 21 and 65+ years old.
+            - Between 25 and 34 years old.
+            - Between 25 and 44 years old.
+            - Between 25 and 49 years old.
+            - Between 25 and 54 years old.
+            - Between 25 and 64 years old.
+            - Between 25 and 65+ years old.
+            - Between 35 and 44 years old.
+            - Between 35 and 49 years old.
+            - Between 35 and 54 years old.
+            - Between 35 and 64 years old.
+            - Between 35 and 65+ years old.
+            - Between 45 and 54 years old.
+            - Between 45 and 64 years old.
+            - Between 45 and 65+ years old.
+            - Between 50 and 65+ years old.
+            - Between 55 and 64 years old.
+            - Between 55 and 65+ years old.
+            - 65 years old and beyond.
+            enum:
+            - UNSPECIFIED
+            - UNKNOWN
+            - AGE_RANGE_18_24
+            - AGE_RANGE_18_34
+            - AGE_RANGE_18_44
+            - AGE_RANGE_18_49
+            - AGE_RANGE_18_54
+            - AGE_RANGE_18_64
+            - AGE_RANGE_18_65_UP
+            - AGE_RANGE_21_34
+            - AGE_RANGE_21_44
+            - AGE_RANGE_21_49
+            - AGE_RANGE_21_54
+            - AGE_RANGE_21_64
+            - AGE_RANGE_21_65_UP
+            - AGE_RANGE_25_34
+            - AGE_RANGE_25_44
+            - AGE_RANGE_25_49
+            - AGE_RANGE_25_54
+            - AGE_RANGE_25_64
+            - AGE_RANGE_25_65_UP
+            - AGE_RANGE_35_44
+            - AGE_RANGE_35_49
+            - AGE_RANGE_35_54
+            - AGE_RANGE_35_64
+            - AGE_RANGE_35_65_UP
+            - AGE_RANGE_45_54
+            - AGE_RANGE_45_64
+            - AGE_RANGE_45_65_UP
+            - AGE_RANGE_50_65_UP
+            - AGE_RANGE_55_64
+            - AGE_RANGE_55_65_UP
+            - AGE_RANGE_65_UP
+        youtubeSelectLineupTargeting:
+          description: Targetable YouTube Select Lineups for the ad product. This field replaces the deprecated `youtube_select_lineups` field.
+          $ref: '#/components/schemas/GoogleAdsGoogleadsV25Services__YouTubeSelectLineUpTargeting'
+        genders:
+          type: array
+          description: Targetable genders for the ad product.
+          items:
+            $ref: '#/components/schemas/GoogleAdsGoogleadsV25Common__GenderInfo'
+        surfaceTargeting:
+          description: Targetable surface combinations for the ad product.
+          $ref: '#/components/schemas/GoogleAdsGoogleadsV25Services__SurfaceTargetingCombinations'
+        devices:
+          description: Targetable devices for the ad product. TABLET device targeting is automatically applied to reported metrics when MOBILE targeting is selected for CPM_MASTHEAD, GOOGLE_PREFERRED_BUMPER, and GOOGLE_PREFERRED_SHORT products.
+          items:
+            $ref: '#/components/schemas/GoogleAdsGoogleadsV25Common__DeviceInfo'
+          type: array
+        networks:
+          description: Targetable networks for the ad product.
+          items:
+            x-enumDescriptions:
+            - Not specified.
+            - Used as a return value only. Represents value unknown in this version.
+            - YouTube network.
+            - Google Video Partners (GVP) network.
+            - A combination of the YouTube network and the Google Video Partners network.
+            enum:
+            - UNSPECIFIED
+            - UNKNOWN
+            - YOUTUBE
+            - GOOGLE_VIDEO_PARTNERS
+            - YOUTUBE_AND_GOOGLE_VIDEO_PARTNERS
+            type: string
+          type: array
+    GoogleAdsGoogleadsV25Services__IndustryVerticalInfo:
+      description: The information associated with an Industry Vertical.
+      type: object
+      properties:
+        industryVerticalName:
+          description: The name of the Industry Vertical.
+          type: string
+        industryVerticalId:
+          format: int64
+          description: The unique identifier of the Industry Vertical.
+          type: string
+        parentIndustryVerticalId:
+          description: The unique identifier of the parent Industry Vertical, if exists.
+          type: string
+          format: int64
+    GoogleAdsGoogleadsV25Services__ListPlannableLocationsRequest:
+      type: object
+      properties:
+        reachApplicationInfo:
+          description: Optional. Additional information on the application issuing the request.
+          $ref: '#/components/schemas/GoogleAdsGoogleadsV25Common__AdditionalApplicationInfo'
+      description: Request message for ReachPlanService.ListPlannableLocations.
+    GoogleAdsGoogleadsV25Services__PlannableLocation:
+      description: 'A plannable location: country, metro region, province, etc.'
+      type: object
+      properties:
+        locationType:
+          description: The location's type. Location types correspond to target_type returned by searching location type in GoogleAdsService.Search/SearchStream.
+          type: string
+        id:
+          type: string
+          description: The location identifier.
+        parentCountryId:
+          format: int64
+          description: The parent country (not present if location is a country). If present, will always be a GeoTargetConstant ID. Additional information such as country name is provided by ReachPlanService.ListPlannableLocations or GoogleAdsService.Search/SearchStream.
+          type: string
+        countryCode:
+          description: The ISO-3166-1 alpha-2 country code that is associated with the location.
+          type: string
+        name:
+          description: The unique location name in English.
+          type: string
+    GoogleAdsGoogleadsV25Common__DeviceInfo:
+      description: A device criterion.
+      type: object
+      properties:
+        type:
+          x-enumDescriptions:
+          - Not specified.
+          - The value is unknown in this version.
+          - Mobile devices with full browsers.
+          - Tablets with full browsers.
+          - Computers.
+          - Smart TVs and game consoles.
+          - Other device types.
+          enum:
+          - UNSPECIFIED
+          - UNKNOWN
+          - MOBILE
+          - TABLET
+          - DESKTOP
+          - CONNECTED_TV
+          - OTHER
+          description: Type of the device.
+          type: string
+    GoogleAdsGoogleadsV25Services__ListPlannableUserListsRequest:
+      type: object
+      properties:
+        reachApplicationInfo:
+          description: Optional. Additional information on the application issuing the request.
+          $ref: '#/components/schemas/GoogleAdsGoogleadsV25Common__AdditionalApplicationInfo'
+        customerId:
+          type: string
+          description: Required. The ID of the customer.
+        customerReachGroup:
+          type: string
+          description: The name of the customer being planned for. This is a user-defined value.
+      description: Request message for ReachPlanService.ListPlannableUserLists that lists the available user lists for a customer.
+    GoogleAdsGoogleadsV25Services__ListBenchmarksAvailableDatesResponse:
+      type: object
+      properties:
+        supportedDates:
+          description: The dates that support benchmarks metrics. Data is supported for any dates within this date range inclusive.
+          $ref: '#/components/schemas/GoogleAdsGoogleadsV25Common__DateRange'
+      description: Response message for BenchmarksService.ListBenchmarksAvailableDates.
+    GoogleAdsGoogleadsV25Services__BenchmarksProductMetadata:
+      description: The metadata associated with a product supported for benchmarks data.
+      type: object
+      properties:
+        productCode:
+          description: The identifier of the product. The identifier can be used as inputs for BenchmarksService.GenerateBenchmarksMetrics.
+          type: string
+        marketingObjective:
+          x-enumDescriptions:
+          - Not specified.
+          - The value is unknown in this version.
+          - The objective is to increase awareness.
+          - The objective is to encourage potential customers to consider the brand or products.
+          - The objective is to drive a specific conversion, such as a purchase.
+          enum:
+          - UNSPECIFIED
+          - UNKNOWN
+          - AWARENESS
+          - CONSIDERATION
+          - ACTION
+          description: The marketing objective associated with the product. A marketing objective is a broader classification of products.
+          type: string
+        productName:
+          type: string
+          description: The name of the product.
+    GoogleAdsGoogleadsV25Services__GenerateConversionRatesRequest:
+      description: Request message for ReachPlanService.GenerateConversionRates.
+      type: object
+      properties:
+        customerReachGroup:
+          description: The name of the customer being planned for. This is a user-defined value.
+          type: string
+        customerId:
+          description: Required. The ID of the customer. A conversion rate based on the historical data of this customer may be suggested.
+          type: string
+        reachApplicationInfo:
+          description: Optional. Additional information on the application issuing the request.
+          $ref: '#/components/schemas/GoogleAdsGoogleadsV25Common__AdditionalApplicationInfo'
+    GoogleAdsGoogleadsV25Services__ListBenchmarksLocationsRequest:
+      type: object
+      properties:
+        applicationInfo:
+          description: Additional information on the application issuing the request.
+          $ref: '#/components/schemas/GoogleAdsGoogleadsV25Common__AdditionalApplicationInfo'
+      description: Request message for BenchmarksService.ListBenchmarksLocations.
+    GoogleAdsGoogleadsV25Common__GenderInfo:
+      type: object
+      properties:
+        type:
+          type: string
+          description: Type of the gender.
+          x-enumDescriptions:
+          - Not specified.
+          - Used for return value only. Represents value unknown in this version.
+          - Male.
+          - Female.
+          - Undetermined gender.
+          enum:
+          - UNSPECIFIED
+          - UNKNOWN
+          - MALE
+          - FEMALE
+          - UNDETERMINED
+      description: A gender criterion.
+    GoogleAdsGoogleadsV25Services__ListPlannableUserListsResponse:
+      description: A response with all available user lists with their plannable status.
+      type: object
+      properties:
+        plannableUserLists:
+          type: array
+          description: The list of user lists available for planning and related targeting metadata.
+          items:
+            $ref: '#/components/schemas/GoogleAdsGoogleadsV25Services__PlannableUserList'
+    GoogleAdsGoogleadsV25Common__UserInterestInfo:
+      description: Represents a particular interest-based topic to be targeted.
+      type: object
+      properties:
+        userInterestCategory:
+          type: string
+          description: The UserInterest resource name.
+    GoogleAdsGoogleadsV25Services__GenerateConversionRatesResponse:
+      description: Response message for ReachPlanService.GenerateConversionRates, containing conversion rate suggestions for supported plannable products.
+      type: object
+      properties:
+        conversionRateSuggestions:
+          description: A list containing conversion rate suggestions. Each repeated element will have an associated product code. Multiple suggestions may share the same product code.
+          items:
+            $ref: '#/components/schemas/GoogleAdsGoogleadsV25Services__ConversionRateSuggestion'
+          type: array
+    GoogleAdsGoogleadsV25Services__ListPlannableProductsResponse:
+      type: object
+      properties:
+        productMetadata:
+          type: array
+          description: The list of products available for planning and related targeting metadata.
+          items:
+            $ref: '#/components/schemas/GoogleAdsGoogleadsV25Services__ProductMetadata'
+      description: A response with all available products.
+    GoogleAdsGoogleadsV25Services__ListPlannableUserInterestsRequest:
+      type: object
+      properties:
+        nameQuery:
+          type: string
+          description: A filter by user interest name. If set, only user interests with a name containing the literal string (case insensitive) in the filter will be returned. Maximum length is 200 characters.
+        pathQuery:
+          description: A filter by user interest path. If set, only user interests with a path containing the literal string (case insensitive) in the filter will be returned. Maximum length is 200 characters.
+          type: string
+        userInterestTaxonomyTypes:
+          description: Optional. A filter by user interest type. If set, only user interests with a type listed in the filter will be returned. If not set, user interests of all supported types will be returned. Supported user interest types are AFFINITY and IN_MARKET. Each type must be specified at most once.
+          items:
+            x-enumDescriptions:
+            - Not specified.
+            - Used for return value only. Represents value unknown in this version.
+            - The affinity for this user interest.
+            - The market for this user interest.
+            - Users known to have installed applications in the specified categories.
+            - The geographical location of the interest-based vertical.
+            - User interest criteria for new smart phone users.
+            enum:
+            - UNSPECIFIED
+            - UNKNOWN
+            - AFFINITY
+            - IN_MARKET
+            - MOBILE_APP_INSTALL_USER
+            - VERTICAL_GEO
+            - NEW_SMART_PHONE_USER
+            type: string
+          type: array
+        customerId:
+          description: Required. The ID of the customer.
+          type: string
+        reachApplicationInfo:
+          description: Optional. Additional information on the application issuing the request.
+          $ref: '#/components/schemas/GoogleAdsGoogleadsV25Common__AdditionalApplicationInfo'
+      description: Request message for ReachPlanService.ListPlannableUserInterests.
+    GoogleAdsGoogleadsV25Services__PlannableUserInterest:
+      description: A plannable user interest that can be targeted in a reach forecast using ReachPlanService.GenerateReachForecast.
+      type: object
+      properties:
+        userInterestType:
+          description: The user interest type.
+          type: string
+          x-enumDescriptions:
+          - Not specified.
+          - Used for return value only. Represents value unknown in this version.
+          - The affinity for this user interest.
+          - The market for this user interest.
+          - Users known to have installed applications in the specified categories.
+          - The geographical location of the interest-based vertical.
+          - User interest criteria for new smart phone users.
+          enum:
+          - UNSPECIFIED
+          - UNKNOWN
+          - AFFINITY
+          - IN_MARKET
+          - MOBILE_APP_INSTALL_USER
+          - VERTICAL_GEO
+          - NEW_SMART_PHONE_USER
+        userInterestDisplayName:
+          description: The user interest display name. For example, "Autos & Vehicles"
+          type: string
+        userInterest:
+          description: The user interest id.
+          $ref: '#/components/schemas/GoogleAdsGoogleadsV25Common__UserInterestInfo'
+        userInterestPath:
+          type: string
+          description: The user interest path. For example, "/Autos & Vehicles/Motor Vehicles/Motor Vehicles by Type/Off-Road Vehicles"
+    GoogleAdsGoogleadsV25Services__YouTubeSelectLineUp:
+      description: A Plannable YouTube Select Lineup for product targeting.
+      type: object
+      properties:
+        lineupName:
+          type: string
+          description: The unique name of the YouTube Select Lineup.
+        lineupId:
+          format: int64
+          type: string
+          description: The ID of the YouTube Select Lineup.
+    GoogleAdsGoogleadsV25Services__ListPlannableUserInterestsResponse:
+      description: Response message for ReachPlanService.ListPlannableUserInterests.
+      type: object
+      properties:
+        plannableUserInterests:
+          description: The list of plannable user interests.
+          items:
+            $ref: '#/components/schemas/GoogleAdsGoogleadsV25Services__PlannableUserInterest'
+          type: array
+    GoogleAdsGoogleadsV25Common__UserListInfo:
+      type: object
+      properties:
+        userList:
+          type: string
+          description: The User List resource name.
+      description: A User List criterion. Represents a user list that is defined by the advertiser to be targeted.
+    GoogleAdsGoogleadsV25Common__DateRange:
+      type: object
+      properties:
+        startDate:
+          type: string
+          description: The start date, in yyyy-mm-dd format. This date is inclusive.
+        endDate:
+          description: The end date, in yyyy-mm-dd format. This date is inclusive.
+          type: string
+      description: A date range.
+    GoogleAdsGoogleadsV25Services__PlannableUserList:
+      description: A plannable user list.
+      type: object
+      properties:
+        userListInfo:
+          description: The user list ID.
+          $ref: '#/components/schemas/GoogleAdsGoogleadsV25Common__UserListInfo'
+        userListType:
+          type: string
+          description: The user list type.
+          x-enumDescriptions:
+          - Not specified.
+          - Used for return value only. Represents value unknown in this version.
+          - UserList represented as a collection of conversion types.
+          - UserList represented as a combination of other user lists/interests.
+          - UserList created in the Google Ad Manager platform.
+          - UserList associated with a rule.
+          - UserList with users similar to users of another UserList.
+          - UserList of first-party CRM data provided by advertiser in the form of emails or other formats.
+          - LookalikeUserlist, composed of users similar to those of a configurable seed (set of UserLists)
+          enum:
+          - UNSPECIFIED
+          - UNKNOWN
+          - REMARKETING
+          - LOGICAL
+          - EXTERNAL_REMARKETING
+          - RULE_BASED
+          - SIMILAR
+          - CRM_BASED
+          - LOOKALIKE
+        plannableStatus:
+          type: string
+          description: The plannable status of the user list.
+          x-enumDescriptions:
+          - Not specified.
+          - Used for return value only. Represents value unknown in this version.
+          - The user list is plannable.
+          - The user list is not plannable.
+          enum:
+          - UNSPECIFIED
+          - UNKNOWN
+          - PLANNABLE
+          - UNPLANNABLE
+        displayName:
+          type: string
+          description: The name of the user list.
+        plannableUserListMetadata:
+          $ref: '#/components/schemas/GoogleAdsGoogleadsV25Services__PlannableUserListMetadata'
+          description: The relevant metadata for this user list.
+  securitySchemes:
+    oauth2:
+      type: oauth2
+      description: Google OAuth 2.0. Google Ads API additionally requires a developer token in the developer-token header.
+      flows:
+        authorizationCode:
+          authorizationUrl: https://accounts.google.com/o/oauth2/auth
+          tokenUrl: https://oauth2.googleapis.com/token
+          scopes:
+            https://www.googleapis.com/auth/adwords: See, edit, create, and delete your Google Ads accounts and data.
+externalDocs:
+  url: https://developers.google.com/google-ads/api/
+x-source: https://googleads.googleapis.com/$discovery/rest?version=v25
+x-generated-by: API Evangelist enrichment pipeline — mechanical conversion of the first-party Google API Discovery Document

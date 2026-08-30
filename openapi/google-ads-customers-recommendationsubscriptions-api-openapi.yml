@@ -1,0 +1,372 @@
+openapi: 3.2.0
+info:
+  title: Google Ads Customers.recommendation Subscriptions API
+  description: Manage your Google Ads accounts, campaigns, and reports with this API.
+  version: v25
+  x-discovery-revision: '20260721'
+  contact:
+    name: Google
+    url: https://developers.google.com/google-ads/api/
+  termsOfService: https://developers.google.com/terms
+servers:
+- url: https://googleads.googleapis.com
+  description: Google Ads API production server
+security:
+- oauth2:
+  - https://www.googleapis.com/auth/adwords
+tags:
+- name: customers.recommendationSubscriptions
+paths:
+  /v25/customers/{customersId}/recommendationSubscriptions:mutateRecommendationSubscription:
+    parameters:
+    - name: upload_protocol
+      in: query
+      required: false
+      schema:
+        type: string
+      description: Upload protocol for media (e.g. "raw", "multipart").
+    - name: quotaUser
+      in: query
+      required: false
+      schema:
+        type: string
+      description: Available to use for quota purposes for server-side applications. Can be any arbitrary string assigned to a user, but should not exceed 40 characters.
+    - name: fields
+      in: query
+      required: false
+      schema:
+        type: string
+      description: Selector specifying which fields to include in a partial response.
+    - name: $.xgafv
+      in: query
+      required: false
+      schema:
+        type: string
+        enum:
+        - '1'
+        - '2'
+        x-enumDescriptions:
+        - v1 error format
+        - v2 error format
+      description: V1 error format.
+    - name: callback
+      in: query
+      required: false
+      schema:
+        type: string
+      description: JSONP
+    - name: prettyPrint
+      in: query
+      required: false
+      schema:
+        type: boolean
+        default: 'true'
+      description: Returns response with indentations and line breaks.
+    - name: access_token
+      in: query
+      required: false
+      schema:
+        type: string
+      description: OAuth access token.
+    - name: uploadType
+      in: query
+      required: false
+      schema:
+        type: string
+      description: Legacy upload protocol for media (e.g. "media", "multipart").
+    - name: key
+      in: query
+      required: false
+      schema:
+        type: string
+      description: API key. Your API key identifies your project and provides you with API access, quota, and reports. Required unless you provide an OAuth 2.0 token.
+    - name: oauth_token
+      in: query
+      required: false
+      schema:
+        type: string
+      description: OAuth 2.0 token for the current user.
+    - name: alt
+      in: query
+      required: false
+      schema:
+        x-enumDescriptions:
+        - Responses with Content-Type of application/json
+        - Media download with context-dependent Content-Type
+        - Responses with Content-Type of application/x-protobuf
+        type: string
+        default: json
+        enum:
+        - json
+        - media
+        - proto
+      description: Data format for response.
+    post:
+      operationId: googleads_customers_recommendationSubscriptions_mutateRecommendationSubscription
+      summary: Mutates given subscription with corresponding apply parameters
+      tags:
+      - customers.recommendationSubscriptions
+      description: 'Mutates given subscription with corresponding apply parameters. List of thrown errors: [AuthenticationError]() [AuthorizationError]() [DatabaseError]() [FieldError]() [HeaderError]() [InternalError]() [MutateError]() [QuotaError]() [RecommendationError]() [RecommendationSubscriptionError]() [RequestError]() [UrlFieldError]()'
+      parameters:
+      - name: customerId
+        in: path
+        required: true
+        schema:
+          pattern: ^[^/]+$
+          type: string
+        description: Required. The ID of the subscribing customer.
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/GoogleAdsGoogleadsV25Services__MutateRecommendationSubscriptionRequest'
+      responses:
+        '200':
+          description: Successful response
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/GoogleAdsGoogleadsV25Services__MutateRecommendationSubscriptionResponse'
+      security:
+      - oauth2:
+        - https://www.googleapis.com/auth/adwords
+components:
+  schemas:
+    GoogleAdsGoogleadsV25Services__MutateRecommendationSubscriptionRequest:
+      type: object
+      properties:
+        partialFailure:
+          description: If true, successful operations will be carried out and invalid operations will return errors. If false, all operations will be carried out in one transaction if and only if they are all valid. Default is false.
+          type: boolean
+        operations:
+          type: array
+          description: Required. The list of create or update operations.
+          items:
+            $ref: '#/components/schemas/GoogleAdsGoogleadsV25Services__RecommendationSubscriptionOperation'
+        validateOnly:
+          type: boolean
+          description: If true, the request is validated but not executed. Only errors are returned, not results.
+        responseContentType:
+          x-enumDescriptions:
+          - Not specified. Will return the resource name only in the response.
+          - The mutate response will be the resource name.
+          - The mutate response will contain the resource name and the resource with mutable fields if possible. Otherwise, only the resource name will be returned.
+          enum:
+          - UNSPECIFIED
+          - RESOURCE_NAME_ONLY
+          - MUTABLE_RESOURCE
+          description: The response content type setting. Determines whether the mutable resource or just the resource name should be returned post mutation. The mutable resource will only be returned if the resource has the appropriate response field. For example, MutateCampaignResult.campaign.
+          type: string
+      description: Request message for RecommendationSubscriptionService.MutateRecommendationSubscription
+    GoogleAdsGoogleadsV25Resources__RecommendationSubscription:
+      description: Recommendation Subscription resource
+      type: object
+      properties:
+        status:
+          type: string
+          description: Required. Status of the subscription, either enabled or paused.
+          x-enumDescriptions:
+          - Not specified.
+          - Output-only. Represents a format not yet defined in this enum.
+          - A subscription in the enabled state will automatically apply any recommendations of that type.
+          - Recommendations of the relevant type will not be automatically applied. Subscriptions cannot be deleted. Once created, they can only move between enabled and paused states.
+          enum:
+          - UNSPECIFIED
+          - UNKNOWN
+          - ENABLED
+          - PAUSED
+        type:
+          x-enumDescriptions:
+          - Not specified.
+          - Used for return value only. Represents value unknown in this version.
+          - Provides optimized budget recommendations for campaigns.
+          - Keyword recommendation.
+          - Recommendation to add a new text ad.
+          - Recommendation to update a campaign to use a Target CPA bidding strategy.
+          - Recommendation to update a campaign to use the Maximize Conversions bidding strategy.
+          - Recommendation to enable Enhanced Cost Per Click for a campaign.
+          - Recommendation to start showing your campaign's ads on Google Search Partners Websites.
+          - Recommendation to update a campaign to use a Maximize Clicks bidding strategy.
+          - Recommendation to start using the "Optimize" ad rotation setting for the given ad group.
+          - Recommendation to change an existing keyword from one match type to a broader match type.
+          - Recommendation to move unused budget from one budget to a constrained budget.
+          - Budget recommendation for campaigns that are expected to become budget-constrained in the future (as opposed to the CAMPAIGN_BUDGET recommendation, which applies to campaigns that are currently budget-constrained).
+          - Recommendation to update a campaign to use a Target ROAS bidding strategy.
+          - Recommendation to add a new responsive search ad.
+          - Budget recommendation for campaigns whose ROI is predicted to increase with a budget adjustment.
+          - Recommendation to add broad match versions of keywords for fully automated conversion-based bidding campaigns.
+          - Recommendation to add new responsive search ad assets.
+          - Recommendation to upgrade a Smart Shopping campaign to a Performance Max campaign.
+          - Recommendation to improve strength of responsive search ad.
+          - Recommendation to update a campaign to use Display Expansion.
+          - Recommendation to upgrade a Local campaign to a Performance Max campaign.
+          - Recommendation to raise target CPA when it is too low and there are very few or no conversions. It is applied asynchronously and can take minutes depending on the number of ad groups there are in the related campaign.
+          - Recommendation to raise the budget in advance of a seasonal event that is forecasted to increase traffic, and change bidding strategy from maximize conversion value to target ROAS.
+          - Recommendation to add callout assets to campaign or customer level.
+          - Recommendation to add sitelink assets to campaign or customer level.
+          - Recommendation to add call assets to campaign or customer level.
+          - Recommendation to add the age group attribute to offers that are demoted because of a missing age group.
+          - Recommendation to add a color to offers that are demoted because of a missing color.
+          - Recommendation to add a gender to offers that are demoted because of a missing gender.
+          - Recommendation to add a GTIN (Global Trade Item Number) to offers that are demoted because of a missing GTIN.
+          - Recommendation to add more identifiers to offers that are demoted because of missing identifiers.
+          - Recommendation to add the size to offers that are demoted because of a missing size.
+          - Recommendation informing a customer about a campaign that cannot serve because no products are being targeted.
+          - The shopping recommendation informing a customer about campaign with a high percentage of disapproved products.
+          - Recommendation to create a catch-all campaign that targets all offers.
+          - Recommendation to fix Merchant Center account suspension issues.
+          - Recommendation to fix Merchant Center account suspension warning issues.
+          - Recommendation to migrate offers targeted by Regular Shopping Campaigns to existing Performance Max campaigns.
+          - Recommendation to enable dynamic image extensions on the account, allowing Google to find the best images from ad landing pages and complement text ads.
+          - Recommendation to raise Target CPA based on Google predictions modeled from past conversions. It is applied asynchronously and can take minutes depending on the number of ad groups there are in the related campaign.
+          - Recommendation to lower Target ROAS.
+          - Recommendation to opt into Performance Max campaigns.
+          - Recommendation to improve the asset group strength of a Performance Max campaign to an "Excellent" rating.
+          - Recommendation to migrate Dynamic Search Ads to Performance Max campaigns.
+          - Recommendation to set a target CPA for campaigns that do not have one specified, in advance of a seasonal event that is forecasted to increase traffic.
+          - Recommendation to set a target CPA for campaigns that do not have one specified.
+          - Recommendation to set a target ROAS for campaigns that do not have one specified.
+          - Recommendation to update a campaign to use the Maximize Conversion Value bidding strategy.
+          - Recommendation to deploy Google Tag on more pages.
+          - Recommendation to turn on Final URL expansion for your Performance Max campaigns.
+          - Recommendation to update a customer list that hasn't been updated in the last 90 days.
+          - Recommendation to create a custom audience.
+          - Recommendation to add lead form assets to campaign or customer level.
+          - Recommendation to improve the strength of ads in Demand Gen campaigns.
+          enum:
+          - UNSPECIFIED
+          - UNKNOWN
+          - CAMPAIGN_BUDGET
+          - KEYWORD
+          - TEXT_AD
+          - TARGET_CPA_OPT_IN
+          - MAXIMIZE_CONVERSIONS_OPT_IN
+          - ENHANCED_CPC_OPT_IN
+          - SEARCH_PARTNERS_OPT_IN
+          - MAXIMIZE_CLICKS_OPT_IN
+          - OPTIMIZE_AD_ROTATION
+          - KEYWORD_MATCH_TYPE
+          - MOVE_UNUSED_BUDGET
+          - FORECASTING_CAMPAIGN_BUDGET
+          - TARGET_ROAS_OPT_IN
+          - RESPONSIVE_SEARCH_AD
+          - MARGINAL_ROI_CAMPAIGN_BUDGET
+          - USE_BROAD_MATCH_KEYWORD
+          - RESPONSIVE_SEARCH_AD_ASSET
+          - UPGRADE_SMART_SHOPPING_CAMPAIGN_TO_PERFORMANCE_MAX
+          - RESPONSIVE_SEARCH_AD_IMPROVE_AD_STRENGTH
+          - DISPLAY_EXPANSION_OPT_IN
+          - UPGRADE_LOCAL_CAMPAIGN_TO_PERFORMANCE_MAX
+          - RAISE_TARGET_CPA_BID_TOO_LOW
+          - FORECASTING_SET_TARGET_ROAS
+          - CALLOUT_ASSET
+          - SITELINK_ASSET
+          - CALL_ASSET
+          - SHOPPING_ADD_AGE_GROUP
+          - SHOPPING_ADD_COLOR
+          - SHOPPING_ADD_GENDER
+          - SHOPPING_ADD_GTIN
+          - SHOPPING_ADD_MORE_IDENTIFIERS
+          - SHOPPING_ADD_SIZE
+          - SHOPPING_ADD_PRODUCTS_TO_CAMPAIGN
+          - SHOPPING_FIX_DISAPPROVED_PRODUCTS
+          - SHOPPING_TARGET_ALL_OFFERS
+          - SHOPPING_FIX_SUSPENDED_MERCHANT_CENTER_ACCOUNT
+          - SHOPPING_FIX_MERCHANT_CENTER_ACCOUNT_SUSPENSION_WARNING
+          - SHOPPING_MIGRATE_REGULAR_SHOPPING_CAMPAIGN_OFFERS_TO_PERFORMANCE_MAX
+          - DYNAMIC_IMAGE_EXTENSION_OPT_IN
+          - RAISE_TARGET_CPA
+          - LOWER_TARGET_ROAS
+          - PERFORMANCE_MAX_OPT_IN
+          - IMPROVE_PERFORMANCE_MAX_AD_STRENGTH
+          - MIGRATE_DYNAMIC_SEARCH_ADS_CAMPAIGN_TO_PERFORMANCE_MAX
+          - FORECASTING_SET_TARGET_CPA
+          - SET_TARGET_CPA
+          - SET_TARGET_ROAS
+          - MAXIMIZE_CONVERSION_VALUE_OPT_IN
+          - IMPROVE_GOOGLE_TAG_COVERAGE
+          - PERFORMANCE_MAX_FINAL_URL_OPT_IN
+          - REFRESH_CUSTOMER_MATCH_LIST
+          - CUSTOM_AUDIENCE_OPT_IN
+          - LEAD_FORM_ASSET
+          - IMPROVE_DEMAND_GEN_AD_STRENGTH
+          description: Required. Immutable. The type of recommendation subscribed to.
+          type: string
+        createDateTime:
+          type: string
+          description: Output only. Time in seconds when the subscription was first created. The datetime is in the customer's time zone and in "yyyy-MM-dd HH:mm:ss" format.
+        modifyDateTime:
+          type: string
+          description: Output only. Contains the time in microseconds, when the Recommendation Subscription was last updated. The datetime is in the customer's time zone and in "yyyy-MM-dd HH:mm:ss.ssssss" format.
+        resourceName:
+          description: Immutable. The resource name of the recommendation subscription. `customers/{customer_id}/recommendationSubscriptions/{recommendation_type}`
+          type: string
+    GoogleAdsGoogleadsV25Services__MutateRecommendationSubscriptionResult:
+      type: object
+      properties:
+        resourceName:
+          type: string
+          description: Resource name of the subscription that was modified.
+        recommendationSubscription:
+          description: The mutated recommendation subscription with only mutable fields after mutate. The field will only be returned when response_content_type is set to "MUTABLE_RESOURCE".
+          $ref: '#/components/schemas/GoogleAdsGoogleadsV25Resources__RecommendationSubscription'
+      description: Result message for RecommendationSubscriptionService.MutateRecommendationSubscription
+    GoogleRpc__Status:
+      description: 'The `Status` type defines a logical error model that is suitable for different programming environments, including REST APIs and RPC APIs. It is used by [gRPC](https://github.com/grpc). Each `Status` message contains three pieces of data: error code, error message, and error details. You can find out more about this error model and how to work with it in the [API Design Guide](https://cloud.google.com/apis/design/errors).'
+      type: object
+      properties:
+        message:
+          description: A developer-facing error message, which should be in English. Any user-facing error message should be localized and sent in the google.rpc.Status.details field, or localized by the client.
+          type: string
+        code:
+          type: integer
+          description: The status code, which should be an enum value of google.rpc.Code.
+          format: int32
+        details:
+          type: array
+          description: A list of messages that carry the error details. There is a common set of message types for APIs to use.
+          items:
+            type: object
+            additionalProperties:
+              description: Properties of the object. Contains field @type with type URL.
+    GoogleAdsGoogleadsV25Services__MutateRecommendationSubscriptionResponse:
+      type: object
+      properties:
+        partialFailureError:
+          description: Errors that pertain to operation failures in the partial failure mode. Returned only when partial_failure = true and all errors occur inside the operations. If any errors occur outside the operations (for example, auth errors) we return the RPC level error.
+          $ref: '#/components/schemas/GoogleRpc__Status'
+        results:
+          description: Results, one per operation.
+          items:
+            $ref: '#/components/schemas/GoogleAdsGoogleadsV25Services__MutateRecommendationSubscriptionResult'
+          type: array
+      description: Response message for RecommendationSubscriptionService.MutateRecommendationSubscription
+    GoogleAdsGoogleadsV25Services__RecommendationSubscriptionOperation:
+      type: object
+      properties:
+        update:
+          $ref: '#/components/schemas/GoogleAdsGoogleadsV25Resources__RecommendationSubscription'
+          description: 'Update operation: The subscription is expected to have a valid resource name.'
+        updateMask:
+          format: google-fieldmask
+          description: Optional. FieldMask that determines which resource fields are modified in an update.
+          type: string
+        create:
+          $ref: '#/components/schemas/GoogleAdsGoogleadsV25Resources__RecommendationSubscription'
+          description: 'Create operation: No resource name is expected for the new subscription.'
+      description: A single operation (create, update) on a recommendation subscription. RecommendationSubscriptionService.MutateRecommendationSubscription
+  securitySchemes:
+    oauth2:
+      type: oauth2
+      description: Google OAuth 2.0. Google Ads API additionally requires a developer token in the developer-token header.
+      flows:
+        authorizationCode:
+          authorizationUrl: https://accounts.google.com/o/oauth2/auth
+          tokenUrl: https://oauth2.googleapis.com/token
+          scopes:
+            https://www.googleapis.com/auth/adwords: See, edit, create, and delete your Google Ads accounts and data.
+externalDocs:
+  url: https://developers.google.com/google-ads/api/
+x-source: https://googleads.googleapis.com/$discovery/rest?version=v25
+x-generated-by: API Evangelist enrichment pipeline — mechanical conversion of the first-party Google API Discovery Document

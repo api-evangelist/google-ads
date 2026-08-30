@@ -1,0 +1,278 @@
+openapi: 3.2.0
+info:
+  title: Google Ads Customers.ad Group Customizers API
+  description: Manage your Google Ads accounts, campaigns, and reports with this API.
+  version: v25
+  x-discovery-revision: '20260721'
+  contact:
+    name: Google
+    url: https://developers.google.com/google-ads/api/
+  termsOfService: https://developers.google.com/terms
+servers:
+- url: https://googleads.googleapis.com
+  description: Google Ads API production server
+security:
+- oauth2:
+  - https://www.googleapis.com/auth/adwords
+tags:
+- name: customers.adGroupCustomizers
+paths:
+  /v25/customers/{customersId}/adGroupCustomizers:mutate:
+    parameters:
+    - name: upload_protocol
+      in: query
+      required: false
+      schema:
+        type: string
+      description: Upload protocol for media (e.g. "raw", "multipart").
+    - name: quotaUser
+      in: query
+      required: false
+      schema:
+        type: string
+      description: Available to use for quota purposes for server-side applications. Can be any arbitrary string assigned to a user, but should not exceed 40 characters.
+    - name: fields
+      in: query
+      required: false
+      schema:
+        type: string
+      description: Selector specifying which fields to include in a partial response.
+    - name: $.xgafv
+      in: query
+      required: false
+      schema:
+        type: string
+        enum:
+        - '1'
+        - '2'
+        x-enumDescriptions:
+        - v1 error format
+        - v2 error format
+      description: V1 error format.
+    - name: callback
+      in: query
+      required: false
+      schema:
+        type: string
+      description: JSONP
+    - name: prettyPrint
+      in: query
+      required: false
+      schema:
+        type: boolean
+        default: 'true'
+      description: Returns response with indentations and line breaks.
+    - name: access_token
+      in: query
+      required: false
+      schema:
+        type: string
+      description: OAuth access token.
+    - name: uploadType
+      in: query
+      required: false
+      schema:
+        type: string
+      description: Legacy upload protocol for media (e.g. "media", "multipart").
+    - name: key
+      in: query
+      required: false
+      schema:
+        type: string
+      description: API key. Your API key identifies your project and provides you with API access, quota, and reports. Required unless you provide an OAuth 2.0 token.
+    - name: oauth_token
+      in: query
+      required: false
+      schema:
+        type: string
+      description: OAuth 2.0 token for the current user.
+    - name: alt
+      in: query
+      required: false
+      schema:
+        x-enumDescriptions:
+        - Responses with Content-Type of application/json
+        - Media download with context-dependent Content-Type
+        - Responses with Content-Type of application/x-protobuf
+        type: string
+        default: json
+        enum:
+        - json
+        - media
+        - proto
+      description: Data format for response.
+    post:
+      operationId: googleads_customers_adGroupCustomizers_mutate
+      summary: Creates, updates or removes ad group customizers
+      tags:
+      - customers.adGroupCustomizers
+      description: Creates, updates or removes ad group customizers. Operation statuses are returned.
+      parameters:
+      - name: customerId
+        in: path
+        required: true
+        schema:
+          pattern: ^[^/]+$
+          type: string
+        description: Required. The ID of the customer whose ad group customizers are being modified.
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/GoogleAdsGoogleadsV25Services__MutateAdGroupCustomizersRequest'
+      responses:
+        '200':
+          description: Successful response
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/GoogleAdsGoogleadsV25Services__MutateAdGroupCustomizersResponse'
+      security:
+      - oauth2:
+        - https://www.googleapis.com/auth/adwords
+components:
+  schemas:
+    GoogleAdsGoogleadsV25Services__MutateAdGroupCustomizersRequest:
+      type: object
+      properties:
+        validateOnly:
+          type: boolean
+          description: If true, the request is validated but not executed. Only errors are returned, not results.
+        responseContentType:
+          description: The response content type setting. Determines whether the mutable resource or just the resource name should be returned post mutation.
+          type: string
+          x-enumDescriptions:
+          - Not specified. Will return the resource name only in the response.
+          - The mutate response will be the resource name.
+          - The mutate response will contain the resource name and the resource with mutable fields if possible. Otherwise, only the resource name will be returned.
+          enum:
+          - UNSPECIFIED
+          - RESOURCE_NAME_ONLY
+          - MUTABLE_RESOURCE
+        operations:
+          description: Required. The list of operations to perform on individual ad group customizers.
+          items:
+            $ref: '#/components/schemas/GoogleAdsGoogleadsV25Services__AdGroupCustomizerOperation'
+          type: array
+        partialFailure:
+          description: If true, successful operations will be carried out and invalid operations will return errors. If false, all operations will be carried out in one transaction if and only if they are all valid. Default is false.
+          type: boolean
+      description: Request message for AdGroupCustomizerService.MutateAdGroupCustomizers.
+    GoogleAdsGoogleadsV25Services__MutateAdGroupCustomizerResult:
+      type: object
+      properties:
+        resourceName:
+          type: string
+          description: Returned for successful operations.
+        adGroupCustomizer:
+          description: The mutated AdGroupCustomizer with only mutable fields after mutate. The field will only be returned when response_content_type is set to "MUTABLE_RESOURCE".
+          $ref: '#/components/schemas/GoogleAdsGoogleadsV25Resources__AdGroupCustomizer'
+      description: The result for the ad group customizer mutate.
+    GoogleAdsGoogleadsV25Services__MutateAdGroupCustomizersResponse:
+      description: Response message for an ad group customizer mutate.
+      type: object
+      properties:
+        partialFailureError:
+          $ref: '#/components/schemas/GoogleRpc__Status'
+          description: Errors that pertain to operation failures in the partial failure mode. Returned only when partial_failure = true and all errors occur inside the operations. If any errors occur outside the operations (for example, auth errors), we return an RPC level error.
+        results:
+          type: array
+          description: All results for the mutate.
+          items:
+            $ref: '#/components/schemas/GoogleAdsGoogleadsV25Services__MutateAdGroupCustomizerResult'
+    GoogleAdsGoogleadsV25Resources__AdGroupCustomizer:
+      type: object
+      properties:
+        resourceName:
+          type: string
+          description: 'Immutable. The resource name of the ad group customizer. Ad group customizer resource names have the form: `customers/{customer_id}/adGroupCustomizers/{ad_group_id}~{customizer_attribute_id}`'
+        value:
+          $ref: '#/components/schemas/GoogleAdsGoogleadsV25Common__CustomizerValue'
+          description: Required. The value to associate with the customizer attribute at this level. The value must be of the type specified for the CustomizerAttribute.
+        customizerAttribute:
+          description: Required. Immutable. The customizer attribute which is linked to the ad group.
+          type: string
+        adGroup:
+          description: Immutable. The ad group to which the customizer attribute is linked.
+          type: string
+        status:
+          enum:
+          - UNSPECIFIED
+          - UNKNOWN
+          - ENABLED
+          - REMOVED
+          description: Output only. The status of the ad group customizer.
+          type: string
+          x-enumDescriptions:
+          - The status has not been specified.
+          - The received value is not known in this version.
+          - The customizer value is enabled.
+          - The customizer value is removed.
+      description: A customizer value for the associated CustomizerAttribute at the AdGroup level.
+    GoogleRpc__Status:
+      description: 'The `Status` type defines a logical error model that is suitable for different programming environments, including REST APIs and RPC APIs. It is used by [gRPC](https://github.com/grpc). Each `Status` message contains three pieces of data: error code, error message, and error details. You can find out more about this error model and how to work with it in the [API Design Guide](https://cloud.google.com/apis/design/errors).'
+      type: object
+      properties:
+        message:
+          description: A developer-facing error message, which should be in English. Any user-facing error message should be localized and sent in the google.rpc.Status.details field, or localized by the client.
+          type: string
+        code:
+          type: integer
+          description: The status code, which should be an enum value of google.rpc.Code.
+          format: int32
+        details:
+          type: array
+          description: A list of messages that carry the error details. There is a common set of message types for APIs to use.
+          items:
+            type: object
+            additionalProperties:
+              description: Properties of the object. Contains field @type with type URL.
+    GoogleAdsGoogleadsV25Services__AdGroupCustomizerOperation:
+      type: object
+      properties:
+        create:
+          description: 'Create operation: No resource name is expected for the new ad group customizer'
+          $ref: '#/components/schemas/GoogleAdsGoogleadsV25Resources__AdGroupCustomizer'
+        remove:
+          description: 'Remove operation: A resource name for the removed ad group customizer is expected, in this format: `customers/{customer_id}/adGroupCustomizers/{ad_group_id}~{customizer_attribute_id}`'
+          type: string
+      description: A single operation (create, remove) on a customizer attribute.
+    GoogleAdsGoogleadsV25Common__CustomizerValue:
+      description: A customizer value that is referenced in customizer linkage entities like CustomerCustomizer, CampaignCustomizer, etc.
+      type: object
+      properties:
+        type:
+          type: string
+          description: Required. The data type for the customizer value. It must match the attribute type. The string_value content must match the constraints associated with the type.
+          x-enumDescriptions:
+          - The status has not been specified.
+          - The received value is not known in this version.
+          - Text customizer.
+          - Number customizer.
+          - Price customizer consisting of a number and a currency.
+          - Percentage customizer consisting of a number and a '%'.
+          enum:
+          - UNSPECIFIED
+          - UNKNOWN
+          - TEXT
+          - NUMBER
+          - PRICE
+          - PERCENT
+        stringValue:
+          description: Required. Value to insert in creative text. Customizer values of all types are stored as string to make formatting unambiguous.
+          type: string
+  securitySchemes:
+    oauth2:
+      type: oauth2
+      description: Google OAuth 2.0. Google Ads API additionally requires a developer token in the developer-token header.
+      flows:
+        authorizationCode:
+          authorizationUrl: https://accounts.google.com/o/oauth2/auth
+          tokenUrl: https://oauth2.googleapis.com/token
+          scopes:
+            https://www.googleapis.com/auth/adwords: See, edit, create, and delete your Google Ads accounts and data.
+externalDocs:
+  url: https://developers.google.com/google-ads/api/
+x-source: https://googleads.googleapis.com/$discovery/rest?version=v25
+x-generated-by: API Evangelist enrichment pipeline — mechanical conversion of the first-party Google API Discovery Document

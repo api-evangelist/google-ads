@@ -1,0 +1,533 @@
+openapi: 3.2.0
+info:
+  title: Google Ads Customers.product Link Invitations API
+  description: Manage your Google Ads accounts, campaigns, and reports with this API.
+  version: v25
+  x-discovery-revision: '20260721'
+  contact:
+    name: Google
+    url: https://developers.google.com/google-ads/api/
+  termsOfService: https://developers.google.com/terms
+servers:
+- url: https://googleads.googleapis.com
+  description: Google Ads API production server
+security:
+- oauth2:
+  - https://www.googleapis.com/auth/adwords
+tags:
+- name: customers.productLinkInvitations
+paths:
+  /v25/customers/{customersId}/productLinkInvitations:remove:
+    parameters:
+    - name: upload_protocol
+      in: query
+      required: false
+      schema:
+        type: string
+      description: Upload protocol for media (e.g. "raw", "multipart").
+    - name: quotaUser
+      in: query
+      required: false
+      schema:
+        type: string
+      description: Available to use for quota purposes for server-side applications. Can be any arbitrary string assigned to a user, but should not exceed 40 characters.
+    - name: fields
+      in: query
+      required: false
+      schema:
+        type: string
+      description: Selector specifying which fields to include in a partial response.
+    - name: $.xgafv
+      in: query
+      required: false
+      schema:
+        type: string
+        enum:
+        - '1'
+        - '2'
+        x-enumDescriptions:
+        - v1 error format
+        - v2 error format
+      description: V1 error format.
+    - name: callback
+      in: query
+      required: false
+      schema:
+        type: string
+      description: JSONP
+    - name: prettyPrint
+      in: query
+      required: false
+      schema:
+        type: boolean
+        default: 'true'
+      description: Returns response with indentations and line breaks.
+    - name: access_token
+      in: query
+      required: false
+      schema:
+        type: string
+      description: OAuth access token.
+    - name: uploadType
+      in: query
+      required: false
+      schema:
+        type: string
+      description: Legacy upload protocol for media (e.g. "media", "multipart").
+    - name: key
+      in: query
+      required: false
+      schema:
+        type: string
+      description: API key. Your API key identifies your project and provides you with API access, quota, and reports. Required unless you provide an OAuth 2.0 token.
+    - name: oauth_token
+      in: query
+      required: false
+      schema:
+        type: string
+      description: OAuth 2.0 token for the current user.
+    - name: alt
+      in: query
+      required: false
+      schema:
+        x-enumDescriptions:
+        - Responses with Content-Type of application/json
+        - Media download with context-dependent Content-Type
+        - Responses with Content-Type of application/x-protobuf
+        type: string
+        default: json
+        enum:
+        - json
+        - media
+        - proto
+      description: Data format for response.
+    post:
+      operationId: googleads_customers_productLinkInvitations_remove
+      summary: Remove a product link invitation.
+      tags:
+      - customers.productLinkInvitations
+      description: Remove a product link invitation.
+      parameters:
+      - name: customerId
+        in: path
+        required: true
+        schema:
+          type: string
+          pattern: ^[^/]+$
+        description: Required. The ID of the product link invitation being removed.
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/GoogleAdsGoogleadsV25Services__RemoveProductLinkInvitationRequest'
+      responses:
+        '200':
+          description: Successful response
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/GoogleAdsGoogleadsV25Services__RemoveProductLinkInvitationResponse'
+      security:
+      - oauth2:
+        - https://www.googleapis.com/auth/adwords
+  /v25/customers/{customersId}/productLinkInvitations:update:
+    parameters:
+    - name: upload_protocol
+      in: query
+      required: false
+      schema:
+        type: string
+      description: Upload protocol for media (e.g. "raw", "multipart").
+    - name: quotaUser
+      in: query
+      required: false
+      schema:
+        type: string
+      description: Available to use for quota purposes for server-side applications. Can be any arbitrary string assigned to a user, but should not exceed 40 characters.
+    - name: fields
+      in: query
+      required: false
+      schema:
+        type: string
+      description: Selector specifying which fields to include in a partial response.
+    - name: $.xgafv
+      in: query
+      required: false
+      schema:
+        type: string
+        enum:
+        - '1'
+        - '2'
+        x-enumDescriptions:
+        - v1 error format
+        - v2 error format
+      description: V1 error format.
+    - name: callback
+      in: query
+      required: false
+      schema:
+        type: string
+      description: JSONP
+    - name: prettyPrint
+      in: query
+      required: false
+      schema:
+        type: boolean
+        default: 'true'
+      description: Returns response with indentations and line breaks.
+    - name: access_token
+      in: query
+      required: false
+      schema:
+        type: string
+      description: OAuth access token.
+    - name: uploadType
+      in: query
+      required: false
+      schema:
+        type: string
+      description: Legacy upload protocol for media (e.g. "media", "multipart").
+    - name: key
+      in: query
+      required: false
+      schema:
+        type: string
+      description: API key. Your API key identifies your project and provides you with API access, quota, and reports. Required unless you provide an OAuth 2.0 token.
+    - name: oauth_token
+      in: query
+      required: false
+      schema:
+        type: string
+      description: OAuth 2.0 token for the current user.
+    - name: alt
+      in: query
+      required: false
+      schema:
+        x-enumDescriptions:
+        - Responses with Content-Type of application/json
+        - Media download with context-dependent Content-Type
+        - Responses with Content-Type of application/x-protobuf
+        type: string
+        default: json
+        enum:
+        - json
+        - media
+        - proto
+      description: Data format for response.
+    post:
+      operationId: googleads_customers_productLinkInvitations_update
+      summary: Update a product link invitation.
+      tags:
+      - customers.productLinkInvitations
+      description: Update a product link invitation.
+      parameters:
+      - name: customerId
+        in: path
+        required: true
+        schema:
+          type: string
+          pattern: ^[^/]+$
+        description: Required. The ID of the customer being modified.
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/GoogleAdsGoogleadsV25Services__UpdateProductLinkInvitationRequest'
+      responses:
+        '200':
+          description: Successful response
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/GoogleAdsGoogleadsV25Services__UpdateProductLinkInvitationResponse'
+      security:
+      - oauth2:
+        - https://www.googleapis.com/auth/adwords
+  /v25/customers/{customersId}/productLinkInvitations:create:
+    parameters:
+    - name: upload_protocol
+      in: query
+      required: false
+      schema:
+        type: string
+      description: Upload protocol for media (e.g. "raw", "multipart").
+    - name: quotaUser
+      in: query
+      required: false
+      schema:
+        type: string
+      description: Available to use for quota purposes for server-side applications. Can be any arbitrary string assigned to a user, but should not exceed 40 characters.
+    - name: fields
+      in: query
+      required: false
+      schema:
+        type: string
+      description: Selector specifying which fields to include in a partial response.
+    - name: $.xgafv
+      in: query
+      required: false
+      schema:
+        type: string
+        enum:
+        - '1'
+        - '2'
+        x-enumDescriptions:
+        - v1 error format
+        - v2 error format
+      description: V1 error format.
+    - name: callback
+      in: query
+      required: false
+      schema:
+        type: string
+      description: JSONP
+    - name: prettyPrint
+      in: query
+      required: false
+      schema:
+        type: boolean
+        default: 'true'
+      description: Returns response with indentations and line breaks.
+    - name: access_token
+      in: query
+      required: false
+      schema:
+        type: string
+      description: OAuth access token.
+    - name: uploadType
+      in: query
+      required: false
+      schema:
+        type: string
+      description: Legacy upload protocol for media (e.g. "media", "multipart").
+    - name: key
+      in: query
+      required: false
+      schema:
+        type: string
+      description: API key. Your API key identifies your project and provides you with API access, quota, and reports. Required unless you provide an OAuth 2.0 token.
+    - name: oauth_token
+      in: query
+      required: false
+      schema:
+        type: string
+      description: OAuth 2.0 token for the current user.
+    - name: alt
+      in: query
+      required: false
+      schema:
+        x-enumDescriptions:
+        - Responses with Content-Type of application/json
+        - Media download with context-dependent Content-Type
+        - Responses with Content-Type of application/x-protobuf
+        type: string
+        default: json
+        enum:
+        - json
+        - media
+        - proto
+      description: Data format for response.
+    post:
+      operationId: googleads_customers_productLinkInvitations_create
+      summary: Creates a product link invitation.
+      tags:
+      - customers.productLinkInvitations
+      description: Creates a product link invitation.
+      parameters:
+      - name: customerId
+        in: path
+        required: true
+        schema:
+          type: string
+          pattern: ^[^/]+$
+        description: Required. The ID of the customer being modified.
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/GoogleAdsGoogleadsV25Services__CreateProductLinkInvitationRequest'
+      responses:
+        '200':
+          description: Successful response
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/GoogleAdsGoogleadsV25Services__CreateProductLinkInvitationResponse'
+      security:
+      - oauth2:
+        - https://www.googleapis.com/auth/adwords
+components:
+  schemas:
+    GoogleAdsGoogleadsV25Resources__HotelCenterLinkInvitationIdentifier:
+      description: The identifier for Hotel account.
+      type: object
+      properties:
+        hotelCenterId:
+          format: int64
+          description: Output only. The hotel center id of the hotel account. This field is read only
+          type: string
+    GoogleAdsGoogleadsV25Services__UpdateProductLinkInvitationResponse:
+      type: object
+      properties:
+        resourceName:
+          type: string
+          description: Result of the update.
+      description: Response message for product link invitation update.
+    GoogleAdsGoogleadsV25Resources__AdvertisingPartnerLinkInvitationIdentifier:
+      description: The identifier for the Advertising Partner Google Ads account.
+      type: object
+      properties:
+        customer:
+          description: Immutable. The resource name of the advertising partner Google Ads account. This field is read only.
+          type: string
+    GoogleAdsGoogleadsV25Resources__MerchantCenterLinkInvitationIdentifier:
+      type: object
+      properties:
+        merchantCenterId:
+          type: string
+          description: Output only. The Merchant Center id of the Merchant account. This field is read only
+          format: int64
+      description: The identifier for Merchant Center Account.
+    GoogleAdsGoogleadsV25Services__RemoveProductLinkInvitationResponse:
+      type: object
+      properties:
+        resourceName:
+          type: string
+          description: Result for the remove request.
+      description: Response message for product link invitation removal.
+    GoogleAdsGoogleadsV25Resources__AdvertisingPartnerLinkInvitationProperties:
+      type: object
+      properties:
+        allowedDomain:
+          description: Immutable. The allowed domain for the Advertising Partner link invitation. The advertising partner will only be able to advertise on this domain. The field is immutable after the creation of the link invitation.
+          type: string
+      description: Properties specific to an Advertising Partner link invitation.
+    GoogleAdsGoogleadsV25Resources__ProductLinkInvitation:
+      description: Represents an invitation for data sharing connection between a Google Ads account and another account.
+      type: object
+      properties:
+        advertisingPartnerProperties:
+          $ref: '#/components/schemas/GoogleAdsGoogleadsV25Resources__AdvertisingPartnerLinkInvitationProperties'
+          description: Output only. Advertising Partner link invitation properties. These properties are only applicable when the link is for an Advertising Partner.
+        resourceName:
+          description: 'Immutable. The resource name of a product link invitation. Product link invitation resource names have the form: `customers/{customer_id}/productLinkInvitations/{product_link_invitation_id}`'
+          type: string
+        merchantCenter:
+          $ref: '#/components/schemas/GoogleAdsGoogleadsV25Resources__MerchantCenterLinkInvitationIdentifier'
+          description: Output only. Merchant Center link invitation.
+        productLinkInvitationId:
+          format: int64
+          type: string
+          description: Output only. The ID of the product link invitation. This field is read only.
+        hotelCenter:
+          $ref: '#/components/schemas/GoogleAdsGoogleadsV25Resources__HotelCenterLinkInvitationIdentifier'
+          description: Output only. Hotel link invitation.
+        advertisingPartner:
+          description: Output only. Advertising Partner link invitation.
+          $ref: '#/components/schemas/GoogleAdsGoogleadsV25Resources__AdvertisingPartnerLinkInvitationIdentifier'
+        status:
+          x-enumDescriptions:
+          - Not specified.
+          - Used for return value only. Represents value unknown in this version.
+          - The invitation is accepted.
+          - An invitation has been sent to the other account. A user on the other account may now accept the invitation by setting the status to ACCEPTED.
+          - This invitation has been sent by a user on the other account. It may be accepted by a user on this account by setting the status to ACCEPTED.
+          - The invitation is revoked by the user who sent the invitation.
+          - The invitation has been rejected by the invitee.
+          - The invitation has timed out before being accepted by the invitee.
+          type: string
+          description: Output only. The status of the product link invitation. This field is read only.
+          enum:
+          - UNSPECIFIED
+          - UNKNOWN
+          - ACCEPTED
+          - REQUESTED
+          - PENDING_APPROVAL
+          - REVOKED
+          - REJECTED
+          - EXPIRED
+        type:
+          x-enumDescriptions:
+          - Not specified.
+          - Used for return value only. Represents value unknown in this version.
+          - A link to Data partner.
+          - A link to Google Ads.
+          - A link to Hotel Center.
+          - A link to Google Merchant Center.
+          - A link to the Google Ads account of the advertising partner.
+          enum:
+          - UNSPECIFIED
+          - UNKNOWN
+          - DATA_PARTNER
+          - GOOGLE_ADS
+          - HOTEL_CENTER
+          - MERCHANT_CENTER
+          - ADVERTISING_PARTNER
+          description: Output only. The type of the invited account. This field is read only and can be used for filtering invitations with {@code GoogleAdsService.SearchGoogleAdsRequest}.
+          type: string
+    GoogleAdsGoogleadsV25Services__RemoveProductLinkInvitationRequest:
+      type: object
+      properties:
+        resourceName:
+          type: string
+          description: 'Required. The resource name of the product link invitation being removed is expected, in this format: `customers/{customer_id}/productLinkInvitations/{product_link_invitation_id} `'
+      description: Request message for ProductLinkInvitationService.RemoveProductLinkInvitation.
+    GoogleAdsGoogleadsV25Services__CreateProductLinkInvitationRequest:
+      description: Request message for ProductLinkInvitationService.CreateProductLinkInvitation.
+      type: object
+      properties:
+        productLinkInvitation:
+          description: Required. The product link invitation to be created.
+          $ref: '#/components/schemas/GoogleAdsGoogleadsV25Resources__ProductLinkInvitation'
+    GoogleAdsGoogleadsV25Services__UpdateProductLinkInvitationRequest:
+      type: object
+      properties:
+        productLinkInvitationStatus:
+          type: string
+          description: Required. The product link invitation to be created.
+          x-enumDescriptions:
+          - Not specified.
+          - Used for return value only. Represents value unknown in this version.
+          - The invitation is accepted.
+          - An invitation has been sent to the other account. A user on the other account may now accept the invitation by setting the status to ACCEPTED.
+          - This invitation has been sent by a user on the other account. It may be accepted by a user on this account by setting the status to ACCEPTED.
+          - The invitation is revoked by the user who sent the invitation.
+          - The invitation has been rejected by the invitee.
+          - The invitation has timed out before being accepted by the invitee.
+          enum:
+          - UNSPECIFIED
+          - UNKNOWN
+          - ACCEPTED
+          - REQUESTED
+          - PENDING_APPROVAL
+          - REVOKED
+          - REJECTED
+          - EXPIRED
+        resourceName:
+          description: Required. Resource name of the product link invitation.
+          type: string
+      description: Request message for ProductLinkInvitationService.UpdateProductLinkInvitation.
+    GoogleAdsGoogleadsV25Services__CreateProductLinkInvitationResponse:
+      description: Response message for product link invitation create.
+      type: object
+      properties:
+        resourceName:
+          type: string
+          description: Resource name of the product link invitation.
+  securitySchemes:
+    oauth2:
+      type: oauth2
+      description: Google OAuth 2.0. Google Ads API additionally requires a developer token in the developer-token header.
+      flows:
+        authorizationCode:
+          authorizationUrl: https://accounts.google.com/o/oauth2/auth
+          tokenUrl: https://oauth2.googleapis.com/token
+          scopes:
+            https://www.googleapis.com/auth/adwords: See, edit, create, and delete your Google Ads accounts and data.
+externalDocs:
+  url: https://developers.google.com/google-ads/api/
+x-source: https://googleads.googleapis.com/$discovery/rest?version=v25
+x-generated-by: API Evangelist enrichment pipeline — mechanical conversion of the first-party Google API Discovery Document

@@ -1,0 +1,1500 @@
+openapi: 3.2.0
+info:
+  title: Google Ads Customers.ad Group Criteria API
+  description: Manage your Google Ads accounts, campaigns, and reports with this API.
+  version: v25
+  x-discovery-revision: '20260721'
+  contact:
+    name: Google
+    url: https://developers.google.com/google-ads/api/
+  termsOfService: https://developers.google.com/terms
+servers:
+- url: https://googleads.googleapis.com
+  description: Google Ads API production server
+security:
+- oauth2:
+  - https://www.googleapis.com/auth/adwords
+tags:
+- name: customers.adGroupCriteria
+paths:
+  /v25/customers/{customersId}/adGroupCriteria:mutate:
+    parameters:
+    - name: upload_protocol
+      in: query
+      required: false
+      schema:
+        type: string
+      description: Upload protocol for media (e.g. "raw", "multipart").
+    - name: quotaUser
+      in: query
+      required: false
+      schema:
+        type: string
+      description: Available to use for quota purposes for server-side applications. Can be any arbitrary string assigned to a user, but should not exceed 40 characters.
+    - name: fields
+      in: query
+      required: false
+      schema:
+        type: string
+      description: Selector specifying which fields to include in a partial response.
+    - name: $.xgafv
+      in: query
+      required: false
+      schema:
+        type: string
+        enum:
+        - '1'
+        - '2'
+        x-enumDescriptions:
+        - v1 error format
+        - v2 error format
+      description: V1 error format.
+    - name: callback
+      in: query
+      required: false
+      schema:
+        type: string
+      description: JSONP
+    - name: prettyPrint
+      in: query
+      required: false
+      schema:
+        type: boolean
+        default: 'true'
+      description: Returns response with indentations and line breaks.
+    - name: access_token
+      in: query
+      required: false
+      schema:
+        type: string
+      description: OAuth access token.
+    - name: uploadType
+      in: query
+      required: false
+      schema:
+        type: string
+      description: Legacy upload protocol for media (e.g. "media", "multipart").
+    - name: key
+      in: query
+      required: false
+      schema:
+        type: string
+      description: API key. Your API key identifies your project and provides you with API access, quota, and reports. Required unless you provide an OAuth 2.0 token.
+    - name: oauth_token
+      in: query
+      required: false
+      schema:
+        type: string
+      description: OAuth 2.0 token for the current user.
+    - name: alt
+      in: query
+      required: false
+      schema:
+        x-enumDescriptions:
+        - Responses with Content-Type of application/json
+        - Media download with context-dependent Content-Type
+        - Responses with Content-Type of application/x-protobuf
+        type: string
+        default: json
+        enum:
+        - json
+        - media
+        - proto
+      description: Data format for response.
+    post:
+      operationId: googleads_customers_adGroupCriteria_mutate
+      summary: Creates, updates, or removes criteria
+      tags:
+      - customers.adGroupCriteria
+      description: 'Creates, updates, or removes criteria. Operation statuses are returned. List of thrown errors: [AdGroupCriterionError]() [AdxError]() [AuthenticationError]() [AuthorizationError]() [BiddingError]() [BiddingStrategyError]() [CollectionSizeError]() [ContextError]() [CriterionError]() [DatabaseError]() [DateError]() [DistinctError]() [FieldError]() [FieldMaskError]() [HeaderError]() [IdError]() [InternalError]() [MultiplierError]() [MutateError]() [NewResourceCreationError]() [NotEmptyError]() [NullError]() [OperationAccessDeniedError]() [OperatorError]() [PolicyViolationError]() [QuotaError]() [RangeError]() [RequestError]() [ResourceCountLimitExceededError]() [SizeLimitError]() [StringFormatError]() [StringLengthError]() [UrlFieldError]()'
+      parameters:
+      - name: customerId
+        in: path
+        required: true
+        schema:
+          type: string
+          pattern: ^[^/]+$
+        description: Required. ID of the customer whose criteria are being modified.
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/GoogleAdsGoogleadsV25Services__MutateAdGroupCriteriaRequest'
+      responses:
+        '200':
+          description: Successful response
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/GoogleAdsGoogleadsV25Services__MutateAdGroupCriteriaResponse'
+      security:
+      - oauth2:
+        - https://www.googleapis.com/auth/adwords
+components:
+  schemas:
+    GoogleAdsGoogleadsV25Common__HotelCountryRegionInfo:
+      type: object
+      properties:
+        countryRegionCriterion:
+          description: The Geo Target Constant resource name.
+          type: string
+      description: Country or Region the hotel is located in.
+    GoogleAdsGoogleadsV25Common__ProductBrandInfo:
+      type: object
+      properties:
+        value:
+          description: String value of the product brand.
+          type: string
+      description: Brand of the product.
+    GoogleAdsGoogleadsV25Common__ProductConditionInfo:
+      description: Condition of a product offer.
+      type: object
+      properties:
+        condition:
+          type: string
+          description: Value of the condition.
+          x-enumDescriptions:
+          - Not specified.
+          - Used for return value only. Represents value unknown in this version.
+          - The product condition is new.
+          - The product condition is refurbished.
+          - The product condition is used.
+          enum:
+          - UNSPECIFIED
+          - UNKNOWN
+          - NEW
+          - REFURBISHED
+          - USED
+    GoogleAdsGoogleadsV25Common__ProductLabelsInfo:
+      description: Labels of a product offer. This listing dimension is deprecated and it is supported only in Display campaigns.
+      type: object
+      properties:
+        value:
+          type: string
+          description: String value of the product labels.
+    GoogleAdsGoogleadsV25Common__ProductItemIdInfo:
+      type: object
+      properties:
+        value:
+          type: string
+          description: Value of the id.
+      description: Item id of a product offer.
+    GoogleAdsGoogleadsV25Services__AdGroupCriterionOperation:
+      type: object
+      properties:
+        updateMask:
+          description: FieldMask that determines which resource fields are modified in an update.
+          type: string
+          format: google-fieldmask
+        create:
+          description: 'Create operation: No resource name is expected for the new criterion.'
+          $ref: '#/components/schemas/GoogleAdsGoogleadsV25Resources__AdGroupCriterion'
+        update:
+          $ref: '#/components/schemas/GoogleAdsGoogleadsV25Resources__AdGroupCriterion'
+          description: 'Update operation: The criterion is expected to have a valid resource name.'
+        remove:
+          description: 'Remove operation: A resource name for the removed criterion is expected, in this format: `customers/{customer_id}/adGroupCriteria/{ad_group_id}~{criterion_id}`'
+          type: string
+        exemptPolicyViolationKeys:
+          type: array
+          description: The list of policy violation keys that should not cause a PolicyViolationError to be reported. Not all policy violations are exemptable, refer to the is_exemptible field in the returned PolicyViolationError. Resources violating these polices will be saved, but will not be eligible to serve. They may begin serving at a later time due to a change in policies, re-review of the resource, or a change in advertiser certificates.
+          items:
+            $ref: '#/components/schemas/GoogleAdsGoogleadsV25Common__PolicyViolationKey'
+      description: A single operation (create, remove, update) on an ad group criterion.
+    GoogleAdsGoogleadsV25Common__TopicInfo:
+      type: object
+      properties:
+        topicConstant:
+          type: string
+          description: The Topic Constant resource name.
+        path:
+          description: The category to target or exclude. Each subsequent element in the array describes a more specific sub-category. For example, "Pets & Animals", "Pets", "Dogs" represents the "Pets & Animals/Pets/Dogs" category.
+          items:
+            type: string
+          type: array
+      description: A topic criterion. Use topics to target or exclude placements in the Google Display Network based on the category into which the placement falls (for example, "Pets & Animals/Pets/Dogs").
+    GoogleAdsGoogleadsV25Common__ProductCustomAttributeInfo:
+      type: object
+      properties:
+        index:
+          x-enumDescriptions:
+          - Not specified.
+          - Used for return value only. Represents value unknown in this version.
+          - First product custom attribute.
+          - Second product custom attribute.
+          - Third product custom attribute.
+          - Fourth product custom attribute.
+          - Fifth product custom attribute.
+          enum:
+          - UNSPECIFIED
+          - UNKNOWN
+          - INDEX0
+          - INDEX1
+          - INDEX2
+          - INDEX3
+          - INDEX4
+          type: string
+          description: Indicates the index of the custom attribute.
+        value:
+          description: String value of the product custom attribute.
+          type: string
+      description: Custom attribute of a product offer.
+    GoogleAdsGoogleadsV25Common__PolicyViolationKey:
+      type: object
+      properties:
+        violatingText:
+          description: The text that violates the policy if specified. Otherwise, refers to the policy in general (for example, when requesting to be exempt from the whole policy). If not specified for criterion exemptions, the whole policy is implied. Must be specified for ad exemptions.
+          type: string
+        policyName:
+          description: Unique ID of the violated policy.
+          type: string
+      description: Key of the violation. The key is used for referring to a violation when filing an exemption request.
+    GoogleAdsGoogleadsV25Common__HotelIdInfo:
+      description: Advertiser-specific hotel ID.
+      type: object
+      properties:
+        value:
+          description: String value of the hotel ID.
+          type: string
+    GoogleAdsGoogleadsV25Common__ActivityStateInfo:
+      description: The state where the travel activity is available.
+      type: object
+      properties:
+        value:
+          type: string
+          description: String value of the activity state. The Geo Target Constant resource name.
+    GoogleAdsGoogleadsV25Common__ProductCategoryInfo:
+      type: object
+      properties:
+        level:
+          description: Level of the product category.
+          type: string
+          x-enumDescriptions:
+          - Not specified.
+          - Used for return value only. Represents value unknown in this version.
+          - Level 1.
+          - Level 2.
+          - Level 3.
+          - Level 4.
+          - Level 5.
+          enum:
+          - UNSPECIFIED
+          - UNKNOWN
+          - LEVEL1
+          - LEVEL2
+          - LEVEL3
+          - LEVEL4
+          - LEVEL5
+        categoryId:
+          description: 'ID of the product category. This ID is equivalent to the google_product_category ID as described in this article: https://support.google.com/merchants/answer/6324436'
+          type: string
+          format: int64
+      description: Category of a product offer.
+    GoogleAdsGoogleadsV25Common__ExtendedDemographicInfo:
+      description: Represents an extended demographic criterion.
+      type: object
+      properties:
+        extendedDemographicId:
+          format: int64
+          type: string
+          description: Taxonomy id of the extended demographic group.
+    GoogleAdsGoogleadsV25Common__AppPaymentModelInfo:
+      description: An app payment model criterion.
+      type: object
+      properties:
+        type:
+          x-enumDescriptions:
+          - Not specified.
+          - Used for return value only. Represents value unknown in this version.
+          - Represents paid-for apps.
+          enum:
+          - UNSPECIFIED
+          - UNKNOWN
+          - PAID
+          type: string
+          description: Type of the app payment model.
+    GoogleRpc__Status:
+      description: 'The `Status` type defines a logical error model that is suitable for different programming environments, including REST APIs and RPC APIs. It is used by [gRPC](https://github.com/grpc). Each `Status` message contains three pieces of data: error code, error message, and error details. You can find out more about this error model and how to work with it in the [API Design Guide](https://cloud.google.com/apis/design/errors).'
+      type: object
+      properties:
+        message:
+          description: A developer-facing error message, which should be in English. Any user-facing error message should be localized and sent in the google.rpc.Status.details field, or localized by the client.
+          type: string
+        code:
+          type: integer
+          description: The status code, which should be an enum value of google.rpc.Code.
+          format: int32
+        details:
+          type: array
+          description: A list of messages that carry the error details. There is a common set of message types for APIs to use.
+          items:
+            type: object
+            additionalProperties:
+              description: Properties of the object. Contains field @type with type URL.
+    GoogleAdsGoogleadsV25Common__LifeEventInfo:
+      type: object
+      properties:
+        lifeEventId:
+          format: int64
+          description: Taxonomy id of the life event.
+          type: string
+      description: Represents a life event criterion.
+    GoogleAdsGoogleadsV25Resources__AdGroupCriterion:
+      type: object
+      properties:
+        type:
+          x-enumDescriptions:
+          - Not specified.
+          - Used for return value only. Represents value unknown in this version.
+          - Keyword, for example, 'mars cruise'.
+          - Placement, also known as Website, for example, 'www.flowers4sale.com'
+          - Mobile application categories to target.
+          - Mobile applications to target.
+          - Devices to target.
+          - Locations to target.
+          - Listing groups to target.
+          - Ad Schedule.
+          - Age range.
+          - Gender.
+          - Income Range.
+          - Parental status.
+          - YouTube Video.
+          - YouTube Channel.
+          - User list.
+          - Proximity.
+          - A topic target on the display network (for example, "Pets & Animals").
+          - Listing scope to target.
+          - Language.
+          - IpBlock.
+          - Content Label for category exclusion.
+          - Carrier.
+          - A category the user is interested in.
+          - Webpage criterion for dynamic search ads.
+          - Operating system version.
+          - App payment model.
+          - Mobile device.
+          - Custom affinity.
+          - Custom intent.
+          - Location group.
+          - Custom audience
+          - Combined audience
+          - Smart Campaign keyword theme
+          - Audience
+          - Negative Keyword List
+          - Local Services Ads Service ID.
+          - Search Theme.
+          - Brand
+          - Brand List
+          - Life Event
+          - Webpage List
+          - Video lineup
+          - Placement List
+          - A list of rules for item groups in Vertical Ads.
+          - A rule for an item group in Vertical Ads.
+          - Retail Filter Bundle for linking a retail filter shared set to an ad group.
+          - Retail Filter for defining individual tag rules or expressions within a shared set.
+          enum:
+          - UNSPECIFIED
+          - UNKNOWN
+          - KEYWORD
+          - PLACEMENT
+          - MOBILE_APP_CATEGORY
+          - MOBILE_APPLICATION
+          - DEVICE
+          - LOCATION
+          - LISTING_GROUP
+          - AD_SCHEDULE
+          - AGE_RANGE
+          - GENDER
+          - INCOME_RANGE
+          - PARENTAL_STATUS
+          - YOUTUBE_VIDEO
+          - YOUTUBE_CHANNEL
+          - USER_LIST
+          - PROXIMITY
+          - TOPIC
+          - LISTING_SCOPE
+          - LANGUAGE
+          - IP_BLOCK
+          - CONTENT_LABEL
+          - CARRIER
+          - USER_INTEREST
+          - WEBPAGE
+          - OPERATING_SYSTEM_VERSION
+          - APP_PAYMENT_MODEL
+          - MOBILE_DEVICE
+          - CUSTOM_AFFINITY
+          - CUSTOM_INTENT
+          - LOCATION_GROUP
+          - CUSTOM_AUDIENCE
+          - COMBINED_AUDIENCE
+          - KEYWORD_THEME
+          - AUDIENCE
+          - NEGATIVE_KEYWORD_LIST
+          - LOCAL_SERVICE_ID
+          - SEARCH_THEME
+          - BRAND
+          - BRAND_LIST
+          - LIFE_EVENT
+          - WEBPAGE_LIST
+          - VIDEO_LINEUP
+          - PLACEMENT_LIST
+          - VERTICAL_ADS_ITEM_GROUP_RULE_LIST
+          - VERTICAL_ADS_ITEM_GROUP_RULE
+          - RETAIL_FILTER_BUNDLE
+          - RETAIL_FILTER
+          type: string
+          description: Output only. The type of the criterion.
+        audience:
+          description: Immutable. Audience.
+          $ref: '#/components/schemas/GoogleAdsGoogleadsV25Common__AudienceInfo'
+        adGroup:
+          type: string
+          description: Immutable. The ad group to which the criterion belongs.
+        ageRange:
+          $ref: '#/components/schemas/GoogleAdsGoogleadsV25Common__AgeRangeInfo'
+          description: Immutable. Age range.
+        qualityInfo:
+          $ref: '#/components/schemas/GoogleAdsGoogleadsV25Resources_AdGroupCriterion_QualityInfo'
+          description: Output only. Information regarding the quality of the criterion.
+        brandList:
+          $ref: '#/components/schemas/GoogleAdsGoogleadsV25Common__BrandListInfo'
+          description: Immutable. Brand list criterion.
+        retailFilterBundle:
+          description: Immutable. Retail Filter Bundle.
+          $ref: '#/components/schemas/GoogleAdsGoogleadsV25Common__RetailFilterBundle'
+        effectiveCpcBidMicros:
+          description: Output only. The effective CPC (cost-per-click) bid.
+          type: string
+          format: int64
+        location:
+          description: Immutable. Location.
+          $ref: '#/components/schemas/GoogleAdsGoogleadsV25Common__LocationInfo'
+        topic:
+          $ref: '#/components/schemas/GoogleAdsGoogleadsV25Common__TopicInfo'
+          description: Immutable. Topic.
+        disapprovalReasons:
+          type: array
+          description: 'Output only. List of disapproval reasons of the criterion. The different reasons for disapproving a criterion can be found here: https://support.google.com/adspolicy/answer/6008942 This field is read-only.'
+          items:
+            type: string
+        effectiveCpvBidSource:
+          type: string
+          description: Output only. Source of the effective CPV bid.
+          enum:
+          - UNSPECIFIED
+          - UNKNOWN
+          - CAMPAIGN_BIDDING_STRATEGY
+          - AD_GROUP
+          - AD_GROUP_CRITERION
+          x-enumDescriptions:
+          - Not specified.
+          - Used for return value only. Represents value unknown in this version.
+          - Effective bid or target is inherited from campaign bidding strategy.
+          - The bid or target is defined on the ad group.
+          - The bid or target is defined on the ad group criterion.
+        primaryStatusReasons:
+          type: array
+          description: Output only. The primary status reasons for the ad group criterion.
+          items:
+            type: string
+            x-enumDescriptions:
+            - Not specified.
+            - Used for return value only. Represents unknown value in this version.
+            - The user-specified time for this campaign to start is in the future. Contributes to AdGroupCriterionPrimaryStatus.PENDING.
+            - The ad group criterion is overridden by negative campaign criterion. Contributes to AdGroupCriterionPrimaryStatus.NOT_ELIGIBLE.
+            - The user-specified campaign status is paused. Contributes to AdGroupCriterionPrimaryStatus.PAUSED.
+            - The user-specified campaign status is removed. Contributes to AdGroupCriterionPrimaryStatus.REMOVED.
+            - The user-specified time for this campaign to end has passed. Contributes to AdGroupCriterionPrimaryStatus.ENDED.
+            - The user-specified ad group status is paused. Contributes to AdGroupCriterionPrimaryStatus.PAUSED.
+            - The user-specified ad group status is removed. Contributes to AdGroupCriterionPrimaryStatus.REMOVED.
+            - The ad group criterion is disapproved by the ads approval system. Contributes to AdGroupCriterionPrimaryStatus.NOT_ELIGIBLE.
+            - The ad group criterion is rarely served. Contributes to AdGroupCriterionPrimaryStatus.NOT_ELIGIBLE.
+            - The ad group criterion has a low quality score. Contributes to AdGroupCriterionPrimaryStatus.LIMITED.
+            - The ad group criterion is under review. Contributes to AdGroupCriterionPrimaryStatus.PENDING.
+            - The ad group criterion is pending review. Contributes to AdGroupCriterionPrimaryStatus.NOT_ELIGIBLE.
+            - The ad group criterion's bid is below the value necessary to serve on the first page. Contributes to AdGroupCriterionPrimaryStatus.LIMITED.
+            - The ad group criterion is negative. Contributes to AdGroupCriterionPrimaryStatus.NOT_ELIGIBLE.
+            - The ad group criterion is restricted. Contributes to AdGroupCriterionPrimaryStatus.NOT_ELIGIBLE.
+            - The user-specified ad group criterion status is paused. Contributes to AdGroupCriterionPrimaryStatus.PAUSED.
+            - The ad group criterion has been paused due to prolonged low activity in serving. Contributes to AdGroupCriterionPrimaryStatus.PAUSED.
+            - The user-specified ad group criterion status is removed. Contributes to AdGroupCriterionPrimaryStatus.REMOVED.
+            enum:
+            - UNSPECIFIED
+            - UNKNOWN
+            - CAMPAIGN_PENDING
+            - CAMPAIGN_CRITERION_NEGATIVE
+            - CAMPAIGN_PAUSED
+            - CAMPAIGN_REMOVED
+            - CAMPAIGN_ENDED
+            - AD_GROUP_PAUSED
+            - AD_GROUP_REMOVED
+            - AD_GROUP_CRITERION_DISAPPROVED
+            - AD_GROUP_CRITERION_RARELY_SERVED
+            - AD_GROUP_CRITERION_LOW_QUALITY
+            - AD_GROUP_CRITERION_UNDER_REVIEW
+            - AD_GROUP_CRITERION_PENDING_REVIEW
+            - AD_GROUP_CRITERION_BELOW_FIRST_PAGE_BID
+            - AD_GROUP_CRITERION_NEGATIVE
+            - AD_GROUP_CRITERION_RESTRICTED
+            - AD_GROUP_CRITERION_PAUSED
+            - AD_GROUP_CRITERION_PAUSED_DUE_TO_LOW_ACTIVITY
+            - AD_GROUP_CRITERION_REMOVED
+        listingGroup:
+          description: Immutable. Listing group.
+          $ref: '#/components/schemas/GoogleAdsGoogleadsV25Common__ListingGroupInfo'
+        userInterest:
+          $ref: '#/components/schemas/GoogleAdsGoogleadsV25Common__UserInterestInfo'
+          description: Immutable. User Interest.
+        labels:
+          description: Output only. The resource names of labels attached to this ad group criterion.
+          items:
+            type: string
+          type: array
+        combinedAudience:
+          $ref: '#/components/schemas/GoogleAdsGoogleadsV25Common__CombinedAudienceInfo'
+          description: Immutable. Combined Audience.
+        effectiveCpmBidSource:
+          enum:
+          - UNSPECIFIED
+          - UNKNOWN
+          - CAMPAIGN_BIDDING_STRATEGY
+          - AD_GROUP
+          - AD_GROUP_CRITERION
+          description: Output only. Source of the effective CPM bid.
+          type: string
+          x-enumDescriptions:
+          - Not specified.
+          - Used for return value only. Represents value unknown in this version.
+          - Effective bid or target is inherited from campaign bidding strategy.
+          - The bid or target is defined on the ad group.
+          - The bid or target is defined on the ad group criterion.
+        mobileApplication:
+          description: Immutable. Mobile application.
+          $ref: '#/components/schemas/GoogleAdsGoogleadsV25Common__MobileApplicationInfo'
+        negative:
+          type: boolean
+          description: Immutable. Whether to target (`false`) or exclude (`true`) the criterion. This field is immutable. To switch a criterion from positive to negative, remove then re-add it.
+        finalUrls:
+          type: array
+          description: The list of possible final URLs after all cross-domain redirects for the ad.
+          items:
+            type: string
+        bidModifier:
+          format: double
+          description: 'The modifier for the bid when the criterion matches. The modifier must be in the range: 0.1 - 10.0. Most targetable criteria types support modifiers.'
+          type: number
+        webpage:
+          description: Immutable. Webpage
+          $ref: '#/components/schemas/GoogleAdsGoogleadsV25Common__WebpageInfo'
+        resourceName:
+          type: string
+          description: 'Immutable. The resource name of the ad group criterion. Ad group criterion resource names have the form: `customers/{customer_id}/adGroupCriteria/{ad_group_id}~{criterion_id}`'
+        placement:
+          description: Immutable. Placement.
+          $ref: '#/components/schemas/GoogleAdsGoogleadsV25Common__PlacementInfo'
+        effectiveCpmBidMicros:
+          format: int64
+          description: Output only. The effective CPM (cost-per-thousand viewable impressions) bid.
+          type: string
+        positionEstimates:
+          $ref: '#/components/schemas/GoogleAdsGoogleadsV25Resources_AdGroupCriterion_PositionEstimates'
+          description: Output only. Estimates for criterion bids at various positions.
+        trackingUrlTemplate:
+          type: string
+          description: The URL template for constructing a tracking URL.
+        appPaymentModel:
+          $ref: '#/components/schemas/GoogleAdsGoogleadsV25Common__AppPaymentModelInfo'
+          description: Immutable. App Payment Model.
+        lifeEvent:
+          description: Immutable. Life event campaign criterion.
+          $ref: '#/components/schemas/GoogleAdsGoogleadsV25Common__LifeEventInfo'
+        customAudience:
+          description: Immutable. Custom Audience.
+          $ref: '#/components/schemas/GoogleAdsGoogleadsV25Common__CustomAudienceInfo'
+        effectiveCpcBidSource:
+          description: Output only. Source of the effective CPC bid.
+          type: string
+          enum:
+          - UNSPECIFIED
+          - UNKNOWN
+          - CAMPAIGN_BIDDING_STRATEGY
+          - AD_GROUP
+          - AD_GROUP_CRITERION
+          x-enumDescriptions:
+          - Not specified.
+          - Used for return value only. Represents value unknown in this version.
+          - Effective bid or target is inherited from campaign bidding strategy.
+          - The bid or target is defined on the ad group.
+          - The bid or target is defined on the ad group criterion.
+        approvalStatus:
+          enum:
+          - UNSPECIFIED
+          - UNKNOWN
+          - APPROVED
+          - DISAPPROVED
+          - PENDING_REVIEW
+          - UNDER_REVIEW
+          description: Output only. Approval status of the criterion.
+          type: string
+          x-enumDescriptions:
+          - Not specified.
+          - The value is unknown in this version.
+          - Approved.
+          - Disapproved.
+          - Pending Review.
+          - Under review.
+        urlCustomParameters:
+          description: The list of mappings used to substitute custom parameter tags in a `tracking_url_template`, `final_urls`, or `mobile_final_urls`.
+          items:
+            $ref: '#/components/schemas/GoogleAdsGoogleadsV25Common__CustomParameter'
+          type: array
+        cpcBidMicros:
+          format: int64
+          type: string
+          description: The CPC (cost-per-click) bid.
+        primaryStatus:
+          enum:
+          - UNSPECIFIED
+          - UNKNOWN
+          - ELIGIBLE
+          - PAUSED
+          - REMOVED
+          - PENDING
+          - NOT_ELIGIBLE
+          description: Output only. The primary status for the ad group criterion.
+          type: string
+          x-enumDescriptions:
+          - Not specified.
+          - Used for return value only. Represents value unknown in this version.
+          - The ad group criterion is eligible to serve.
+          - The ad group criterion is paused.
+          - The ad group criterion is removed.
+          - The ad group criterion is pending.
+          - The ad group criterion is not eligible to serve.
+        finalMobileUrls:
+          type: array
+          description: The list of possible final mobile URLs after all cross-domain redirects.
+          items:
+            type: string
+        youtubeChannel:
+          description: Immutable. YouTube Channel.
+          $ref: '#/components/schemas/GoogleAdsGoogleadsV25Common__YouTubeChannelInfo'
+        percentCpcBidMicros:
+          type: string
+          description: The CPC bid amount, expressed as a fraction of the advertised price for some good or service. The valid range for the fraction is [0,1) and the value stored here is 1,000,000 * [fraction].
+          format: int64
+        verticalAdsItemGroupRuleList:
+          description: Immutable. Vertical ads item group rule list criterion.
+          $ref: '#/components/schemas/GoogleAdsGoogleadsV25Common__VerticalAdsItemGroupRuleListInfo'
+        displayName:
+          description: Output only. The display name of the criterion. This field is ignored for mutates.
+          type: string
+        language:
+          description: Immutable. Language.
+          $ref: '#/components/schemas/GoogleAdsGoogleadsV25Common__LanguageInfo'
+        systemServingStatus:
+          description: Output only. Serving status of the criterion.
+          type: string
+          enum:
+          - UNSPECIFIED
+          - UNKNOWN
+          - ELIGIBLE
+          - RARELY_SERVED
+          x-enumDescriptions:
+          - Not specified.
+          - The value is unknown in this version.
+          - Eligible.
+          - Low search volume.
+        effectiveCpvBidMicros:
+          format: int64
+          description: Output only. The effective CPV (cost-per-view) bid.
+          type: string
+        finalUrlSuffix:
+          type: string
+          description: URL template for appending params to final URL.
+        customIntent:
+          $ref: '#/components/schemas/GoogleAdsGoogleadsV25Common__CustomIntentInfo'
+          description: Immutable. Custom Intent.
+        status:
+          x-enumDescriptions:
+          - No value has been specified.
+          - The received value is not known in this version. This is a response-only value.
+          - The ad group criterion is enabled.
+          - The ad group criterion is paused.
+          - The ad group criterion is removed.
+          enum:
+          - UNSPECIFIED
+          - UNKNOWN
+          - ENABLED
+          - PAUSED
+          - REMOVED
+          description: 'The status of the criterion. This is the status of the ad group criterion entity, set by the client. Note: UI reports may incorporate additional information that affects whether a criterion is eligible to run. In some cases a criterion that''s REMOVED in the API can still show as enabled in the UI. For example, campaigns by default show to users of all age ranges unless excluded. The UI will show each age range as "enabled", since they''re eligible to see the ads; but AdGroupCriterion.status will show "removed", since no positive criterion was added.'
+          type: string
+        youtubeVideo:
+          description: Immutable. YouTube Video.
+          $ref: '#/components/schemas/GoogleAdsGoogleadsV25Common__YouTubeVideoInfo'
+        mobileAppCategory:
+          description: Immutable. Mobile app category.
+          $ref: '#/components/schemas/GoogleAdsGoogleadsV25Common__MobileAppCategoryInfo'
+        keyword:
+          description: Immutable. Keyword.
+          $ref: '#/components/schemas/GoogleAdsGoogleadsV25Common__KeywordInfo'
+        gender:
+          description: Immutable. Gender.
+          $ref: '#/components/schemas/GoogleAdsGoogleadsV25Common__GenderInfo'
+        extendedDemographic:
+          description: Immutable. Extended demographic criterion.
+          $ref: '#/components/schemas/GoogleAdsGoogleadsV25Common__ExtendedDemographicInfo'
+        customAffinity:
+          description: Immutable. Custom Affinity.
+          $ref: '#/components/schemas/GoogleAdsGoogleadsV25Common__CustomAffinityInfo'
+        cpmBidMicros:
+          description: The CPM (cost-per-thousand viewable impressions) bid.
+          type: string
+          format: int64
+        videoLineup:
+          description: Immutable. Video lineup criterion.
+          $ref: '#/components/schemas/GoogleAdsGoogleadsV25Common__VideoLineupInfo'
+        parentalStatus:
+          description: Immutable. Parental status.
+          $ref: '#/components/schemas/GoogleAdsGoogleadsV25Common__ParentalStatusInfo'
+        userList:
+          description: Immutable. User List.
+          $ref: '#/components/schemas/GoogleAdsGoogleadsV25Common__UserListInfo'
+        effectivePercentCpcBidMicros:
+          format: int64
+          description: Output only. The effective Percent CPC bid amount.
+          type: string
+        cpvBidMicros:
+          type: string
+          description: The CPV (cost-per-view) bid.
+          format: int64
+        effectivePercentCpcBidSource:
+          description: Output only. Source of the effective Percent CPC bid.
+          type: string
+          enum:
+          - UNSPECIFIED
+          - UNKNOWN
+          - CAMPAIGN_BIDDING_STRATEGY
+          - AD_GROUP
+          - AD_GROUP_CRITERION
+          x-enumDescriptions:
+          - Not specified.
+          - Used for return value only. Represents value unknown in this version.
+          - Effective bid or target is inherited from campaign bidding strategy.
+          - The bid or target is defined on the ad group.
+          - The bid or target is defined on the ad group criterion.
+        incomeRange:
+          description: Immutable. Income range.
+          $ref: '#/components/schemas/GoogleAdsGoogleadsV25Common__IncomeRangeInfo'
+        criterionId:
+          format: int64
+          description: Output only. The ID of the criterion. This field is ignored for mutates.
+          type: string
+      description: An ad group criterion. The ad_group_criterion report only returns criteria that were explicitly added to the ad group.
+    GoogleAdsGoogleadsV25Common__CustomParameter:
+      type: object
+      properties:
+        key:
+          description: The key matching the parameter tag name.
+          type: string
+        value:
+          type: string
+          description: The value to be substituted.
+      description: A mapping that can be used by custom parameter tags in a `tracking_url_template`, `final_urls`, or `mobile_final_urls`.
+    GoogleAdsGoogleadsV25Common__ListingGroupInfo:
+      type: object
+      properties:
+        caseValue:
+          description: Dimension value with which this listing group is refining its parent. Undefined for the root group.
+          $ref: '#/components/schemas/GoogleAdsGoogleadsV25Common__ListingDimensionInfo'
+        path:
+          $ref: '#/components/schemas/GoogleAdsGoogleadsV25Common__ListingDimensionPath'
+          description: The path of dimensions defining this listing group.
+        type:
+          description: Type of the listing group.
+          type: string
+          x-enumDescriptions:
+          - Not specified.
+          - Used for return value only. Represents value unknown in this version.
+          - Subdivision of products along some listing dimension. These nodes are not used by serving to target listing entries, but is purely to define the structure of the tree.
+          - Listing group unit that defines a bid.
+          enum:
+          - UNSPECIFIED
+          - UNKNOWN
+          - SUBDIVISION
+          - UNIT
+        parentAdGroupCriterion:
+          description: Resource name of ad group criterion which is the parent listing group subdivision. Null for the root group.
+          type: string
+      description: A listing group criterion.
+    GoogleAdsGoogleadsV25Common__PlacementInfo:
+      description: A placement criterion. This can be used to modify bids for sites when targeting the content network.
+      type: object
+      properties:
+        url:
+          type: string
+          description: URL of the placement. For example, "http://www.domain.com".
+    GoogleAdsGoogleadsV25Common__MobileApplicationInfo:
+      type: object
+      properties:
+        appId:
+          description: A string that uniquely identifies a mobile application to Google Ads API. The format of this string is "{platform}-{platform_native_id}", where platform is "1" for iOS apps and "2" for Android apps, and where platform_native_id is the mobile application identifier native to the corresponding platform. For iOS, this native identifier is the 9 digit string that appears at the end of an App Store URL (for example, "476943146" for "Flood-It! 2" whose App Store link is "http://itunes.apple.com/us/app/flood-it!-2/id476943146"). For Android, this native identifier is the application's package name (for example, "com.labpixies.colordrips" for "Color Drips" given Google Play link "https://play.google.com/store/apps/details?id=com.labpixies.colordrips"). A well formed app id for Google Ads API would thus be "1-476943146" for iOS and "2-com.labpixies.colordrips" for Android. This field is required and must be set in CREATE operations.
+          type: string
+        name:
+          description: Name of this mobile application.
+          type: string
+      description: A mobile application criterion.
+    GoogleAdsGoogleadsV25Common__BrandListInfo:
+      type: object
+      properties:
+        sharedSet:
+          description: Shared set resource name of the brand list.
+          type: string
+      description: A Brand List Criterion is used to specify a list of brands. The list is represented as a SharedSet id type BRAND_HINT. A criterion of this type can be either targeted or excluded.
+    GoogleAdsGoogleadsV25Common__WebpageSampleInfo:
+      type: object
+      properties:
+        sampleUrls:
+          type: array
+          description: Webpage sample urls
+          items:
+            type: string
+      description: List of sample urls that match the website target
+    GoogleAdsGoogleadsV25Common__ParentalStatusInfo:
+      type: object
+      properties:
+        type:
+          description: Type of the parental status.
+          type: string
+          x-enumDescriptions:
+          - Not specified.
+          - Used for return value only. Represents value unknown in this version.
+          - Parent.
+          - Not a parent.
+          - Undetermined parental status.
+          enum:
+          - UNSPECIFIED
+          - UNKNOWN
+          - PARENT
+          - NOT_A_PARENT
+          - UNDETERMINED
+      description: A parental status criterion.
+    GoogleAdsGoogleadsV25Common__ListingDimensionPath:
+      type: object
+      properties:
+        dimensions:
+          type: array
+          description: The complete path of dimensions through the listing group hierarchy, from the root (excluding the root itself) to this listing group.
+          items:
+            $ref: '#/components/schemas/GoogleAdsGoogleadsV25Common__ListingDimensionInfo'
+      description: The path of dimensions defining a listing group.
+    GoogleAdsGoogleadsV25Common__KeywordInfo:
+      type: object
+      properties:
+        text:
+          type: string
+          description: The text of the keyword (at most 80 characters and 10 words).
+        matchType:
+          x-enumDescriptions:
+          - Not specified.
+          - Used for return value only. Represents value unknown in this version.
+          - Exact match.
+          - Phrase match.
+          - Broad match.
+          enum:
+          - UNSPECIFIED
+          - UNKNOWN
+          - EXACT
+          - PHRASE
+          - BROAD
+          type: string
+          description: The match type of the keyword.
+      description: A keyword criterion.
+    GoogleAdsGoogleadsV25Common__LocationInfo:
+      type: object
+      properties:
+        geoTargetConstant:
+          type: string
+          description: The geo target constant resource name.
+      description: A location criterion.
+    GoogleAdsGoogleadsV25Common__HotelCityInfo:
+      description: City the hotel is located in.
+      type: object
+      properties:
+        cityCriterion:
+          type: string
+          description: The Geo Target Constant resource name.
+    GoogleAdsGoogleadsV25Common__WebpageConditionInfo:
+      type: object
+      properties:
+        operator:
+          type: string
+          description: Operator of webpage targeting condition.
+          x-enumDescriptions:
+          - Not specified.
+          - Used for return value only. Represents value unknown in this version.
+          - The argument web condition is equal to the compared web condition.
+          - The argument web condition is part of the compared web condition.
+          enum:
+          - UNSPECIFIED
+          - UNKNOWN
+          - EQUALS
+          - CONTAINS
+        operand:
+          x-enumDescriptions:
+          - Not specified.
+          - Used for return value only. Represents value unknown in this version.
+          - Operand denoting a webpage URL targeting condition.
+          - Operand denoting a webpage category targeting condition.
+          - Operand denoting a webpage title targeting condition.
+          - Operand denoting a webpage content targeting condition.
+          - Operand denoting a webpage custom label targeting condition.
+          enum:
+          - UNSPECIFIED
+          - UNKNOWN
+          - URL
+          - CATEGORY
+          - PAGE_TITLE
+          - PAGE_CONTENT
+          - CUSTOM_LABEL
+          description: Operand of webpage targeting condition.
+          type: string
+        argument:
+          description: Argument of webpage targeting condition.
+          type: string
+      description: Logical expression for targeting webpages of an advertiser's website.
+    GoogleAdsGoogleadsV25Common__CustomAffinityInfo:
+      description: A custom affinity criterion. A criterion of this type is only targetable.
+      type: object
+      properties:
+        customAffinity:
+          type: string
+          description: The CustomInterest resource name.
+    GoogleAdsGoogleadsV25Common__IncomeRangeInfo:
+      type: object
+      properties:
+        type:
+          type: string
+          description: Type of the income range.
+          x-enumDescriptions:
+          - Not specified.
+          - Used for return value only. Represents value unknown in this version.
+          - 0%-50%.
+          - 50% to 60%.
+          - 60% to 70%.
+          - 70% to 80%.
+          - 80% to 90%.
+          - Greater than 90%.
+          - Undetermined income range.
+          enum:
+          - UNSPECIFIED
+          - UNKNOWN
+          - INCOME_RANGE_0_50
+          - INCOME_RANGE_50_60
+          - INCOME_RANGE_60_70
+          - INCOME_RANGE_70_80
+          - INCOME_RANGE_80_90
+          - INCOME_RANGE_90_UP
+          - INCOME_RANGE_UNDETERMINED
+      description: An income range criterion.
+    GoogleAdsGoogleadsV25Common__YouTubeVideoInfo:
+      description: A YouTube Video criterion.
+      type: object
+      properties:
+        videoId:
+          type: string
+          description: YouTube video id as it appears on the YouTube watch page.
+    GoogleAdsGoogleadsV25Common__ProductGroupingInfo:
+      type: object
+      properties:
+        value:
+          description: String value of the product grouping.
+          type: string
+      description: Grouping of a product offer. This listing dimension is deprecated and it is supported only in Display campaigns.
+    GoogleAdsGoogleadsV25Common__CustomAudienceInfo:
+      description: A custom audience criterion.
+      type: object
+      properties:
+        customAudience:
+          type: string
+          description: The CustomAudience resource name.
+    GoogleAdsGoogleadsV25Common__ActivityCityInfo:
+      description: The city where the travel activity is available.
+      type: object
+      properties:
+        value:
+          type: string
+          description: String value of the activity city. The Geo Target Constant resource name.
+    GoogleAdsGoogleadsV25Common__ProductChannelExclusivityInfo:
+      description: Availability of a product offer.
+      type: object
+      properties:
+        channelExclusivity:
+          x-enumDescriptions:
+          - Not specified.
+          - Used for return value only. Represents value unknown in this version.
+          - The item is sold through one channel only, either local stores or online as indicated by its ProductChannel.
+          - The item is matched to its online or local stores counterpart, indicating it is available for purchase in both ShoppingProductChannels.
+          enum:
+          - UNSPECIFIED
+          - UNKNOWN
+          - SINGLE_CHANNEL
+          - MULTI_CHANNEL
+          description: Value of the availability.
+          type: string
+    GoogleAdsGoogleadsV25Common__WebpageInfo:
+      type: object
+      properties:
+        criterionName:
+          description: The name of the criterion that is defined by this parameter. The name value will be used for identifying, sorting and filtering criteria with this type of parameters. This field is required for CREATE operations and is prohibited on UPDATE operations.
+          type: string
+        coveragePercentage:
+          description: Website criteria coverage percentage. This is the computed percentage of website coverage based on the website target, negative website target and negative keywords in the ad group and campaign. For instance, when coverage returns as 1, it indicates it has 100% coverage. This field is read-only.
+          type: number
+          format: double
+        conditions:
+          description: Conditions, or logical expressions, for webpage targeting. The list of webpage targeting conditions are and-ed together when evaluated for targeting. An empty list of conditions indicates all pages of the campaign's website are targeted. This field is required for CREATE operations and is prohibited on UPDATE operations.
+          items:
+            $ref: '#/components/schemas/GoogleAdsGoogleadsV25Common__WebpageConditionInfo'
+          type: array
+        sample:
+          description: List of sample urls that match the website target. This field is read-only.
+          $ref: '#/components/schemas/GoogleAdsGoogleadsV25Common__WebpageSampleInfo'
+      description: Represents a criterion for targeting webpages of an advertiser's website.
+    GoogleAdsGoogleadsV25Common__CombinedAudienceInfo:
+      description: A combined audience criterion.
+      type: object
+      properties:
+        combinedAudience:
+          type: string
+          description: The CombinedAudience resource name.
+    GoogleAdsGoogleadsV25Common__ListingDimensionInfo:
+      type: object
+      properties:
+        activityCountry:
+          $ref: '#/components/schemas/GoogleAdsGoogleadsV25Common__ActivityCountryInfo'
+          description: The country where the travel activity is available.
+        productGrouping:
+          description: Grouping of a product offer. This listing dimension is deprecated and it is supported only in Display campaigns.
+          $ref: '#/components/schemas/GoogleAdsGoogleadsV25Common__ProductGroupingInfo'
+        productChannel:
+          $ref: '#/components/schemas/GoogleAdsGoogleadsV25Common__ProductChannelInfo'
+          description: Locality of a product offer.
+        activityId:
+          $ref: '#/components/schemas/GoogleAdsGoogleadsV25Common__ActivityIdInfo'
+          description: Advertiser-specific activity ID.
+        hotelCountryRegion:
+          description: Country or Region the hotel is located in.
+          $ref: '#/components/schemas/GoogleAdsGoogleadsV25Common__HotelCountryRegionInfo'
+        hotelCity:
+          $ref: '#/components/schemas/GoogleAdsGoogleadsV25Common__HotelCityInfo'
+          description: City the hotel is located in.
+        productCustomAttribute:
+          $ref: '#/components/schemas/GoogleAdsGoogleadsV25Common__ProductCustomAttributeInfo'
+          description: Custom attribute of a product offer.
+        hotelClass:
+          $ref: '#/components/schemas/GoogleAdsGoogleadsV25Common__HotelClassInfo'
+          description: Class of the hotel as a number of stars 1 to 5.
+        productLabels:
+          description: Labels of a product offer. This listing dimension is deprecated and it is supported only in Display campaigns.
+          $ref: '#/components/schemas/GoogleAdsGoogleadsV25Common__ProductLabelsInfo'
+        productItemId:
+          description: Item id of a product offer.
+          $ref: '#/components/schemas/GoogleAdsGoogleadsV25Common__ProductItemIdInfo'
+        unknownListingDimension:
+          description: Unknown dimension. Set when no other listing dimension is set.
+          $ref: '#/components/schemas/GoogleAdsGoogleadsV25Common__UnknownListingDimensionInfo'
+        productCategory:
+          $ref: '#/components/schemas/GoogleAdsGoogleadsV25Common__ProductCategoryInfo'
+          description: Category of a product offer.
+        activityRating:
+          description: Rating of the activity as a number 1 to 5, where 5 is the best.
+          $ref: '#/components/schemas/GoogleAdsGoogleadsV25Common__ActivityRatingInfo'
+        hotelState:
+          description: State the hotel is located in.
+          $ref: '#/components/schemas/GoogleAdsGoogleadsV25Common__HotelStateInfo'
+        productType:
+          $ref: '#/components/schemas/GoogleAdsGoogleadsV25Common__ProductTypeInfo'
+          description: Type of a product offer.
+        hotelId:
+          $ref: '#/components/schemas/GoogleAdsGoogleadsV25Common__HotelIdInfo'
+          description: Advertiser-specific hotel ID.
+        activityCity:
+          description: The city where the travel activity is available.
+          $ref: '#/components/schemas/GoogleAdsGoogleadsV25Common__ActivityCityInfo'
+        productBrand:
+          description: Brand of a product offer.
+          $ref: '#/components/schemas/GoogleAdsGoogleadsV25Common__ProductBrandInfo'
+        activityState:
+          description: The state where the travel activity is available.
+          $ref: '#/components/schemas/GoogleAdsGoogleadsV25Common__ActivityStateInfo'
+        productCondition:
+          $ref: '#/components/schemas/GoogleAdsGoogleadsV25Common__ProductConditionInfo'
+          description: Condition of a product offer.
+        productLegacyCondition:
+          description: Legacy condition of a product offer. This listing dimension is deprecated and it is supported only in Display campaigns.
+          $ref: '#/components/schemas/GoogleAdsGoogleadsV25Common__ProductLegacyConditionInfo'
+        productTypeFull:
+          $ref: '#/components/schemas/GoogleAdsGoogleadsV25Common__ProductTypeFullInfo'
+          description: Full type of a product offer. This listing dimension is deprecated and it is supported only in Display campaigns.
+        productChannelExclusivity:
+          description: Availability of a product offer.
+          $ref: '#/components/schemas/GoogleAdsGoogleadsV25Common__ProductChannelExclusivityInfo'
+      description: Listing dimensions for listing group criterion.
+    GoogleAdsGoogleadsV25Common__ProductTypeFullInfo:
+      type: object
+      properties:
+        value:
+          type: string
+          description: String value of the product full type.
+      description: Full type of a product offer. This listing dimension is deprecated and it is supported only in Display campaigns.
+    GoogleAdsGoogleadsV25Services__MutateAdGroupCriteriaResponse:
+      description: Response message for an ad group criterion mutate.
+      type: object
+      properties:
+        results:
+          type: array
+          description: All results for the mutate.
+          items:
+            $ref: '#/components/schemas/GoogleAdsGoogleadsV25Services__MutateAdGroupCriterionResult'
+        partialFailureError:
+          description: Errors that pertain to operation failures in the partial failure mode. Returned only when partial_failure = true and all errors occur inside the operations. If any errors occur outside the operations (for example, auth errors), we return an RPC level error.
+          $ref: '#/components/schemas/GoogleRpc__Status'
+    GoogleAdsGoogleadsV25Services__MutateAdGroupCriteriaRequest:
+      description: Request message for AdGroupCriterionService.MutateAdGroupCriteria.
+      type: object
+      properties:
+        partialFailure:
+          description: If true, successful operations will be carried out and invalid operations will return errors. If false, all operations will be carried out in one transaction if and only if they are all valid. Default is false.
+          type: boolean
+        validateOnly:
+          description: If true, the request is validated but not executed. Only errors are returned, not results.
+          type: boolean
+        responseContentType:
+          description: The response content type setting. Determines whether the mutable resource or just the resource name should be returned post mutation.
+          type: string
+          x-enumDescriptions:
+          - Not specified. Will return the resource name only in the response.
+          - The mutate response will be the resource name.
+          - The mutate response will contain the resource name and the resource with mutable fields if possible. Otherwise, only the resource name will be returned.
+          enum:
+          - UNSPECIFIED
+          - RESOURCE_NAME_ONLY
+          - MUTABLE_RESOURCE
+        operations:
+          type: array
+          description: Required. The list of operations to perform on individual criteria.
+          items:
+            $ref: '#/components/schemas/GoogleAdsGoogleadsV25Services__AdGroupCriterionOperation'
+    GoogleAdsGoogleadsV25Resources_AdGroupCriterion_QualityInfo:
+      description: A container for ad group criterion quality information.
+      type: object
+      properties:
+        creativeQualityScore:
+          x-enumDescriptions:
+          - Not specified.
+          - Used for return value only. Represents value unknown in this version.
+          - Quality of the creative is below average.
+          - Quality of the creative is average.
+          - Quality of the creative is above average.
+          description: Output only. The performance of the ad compared to other advertisers.
+          type: string
+          enum:
+          - UNSPECIFIED
+          - UNKNOWN
+          - BELOW_AVERAGE
+          - AVERAGE
+          - ABOVE_AVERAGE
+        postClickQualityScore:
+          type: string
+          description: Output only. The quality score of the landing page.
+          enum:
+          - UNSPECIFIED
+          - UNKNOWN
+          - BELOW_AVERAGE
+          - AVERAGE
+          - ABOVE_AVERAGE
+          x-enumDescriptions:
+          - Not specified.
+          - Used for return value only. Represents value unknown in this version.
+          - Quality of the creative is below average.
+          - Quality of the creative is average.
+          - Quality of the creative is above average.
+        searchPredictedCtr:
+          enum:
+          - UNSPECIFIED
+          - UNKNOWN
+          - BELOW_AVERAGE
+          - AVERAGE
+          - ABOVE_AVERAGE
+          type: string
+          description: Output only. The click-through rate compared to that of other advertisers.
+          x-enumDescriptions:
+          - Not specified.
+          - Used for return value only. Represents value unknown in this version.
+          - Quality of the creative is below average.
+          - Quality of the creative is average.
+          - Quality of the creative is above average.
+        qualityScore:
+          format: int32
+          description: Output only. The quality score. This field may not be populated if Google does not have enough information to determine a value.
+          type: integer
+    GoogleAdsGoogleadsV25Common__ActivityRatingInfo:
+      description: Rating of the activity as a number 1 to 5, where 5 is the best.
+      type: object
+      properties:
+        value:
+          description: Long value of the activity rating.
+          type: string
+          format: int64
+    GoogleAdsGoogleadsV25Common__ProductChannelInfo:
+      description: Locality of a product offer.
+      type: object
+      properties:
+        channel:
+          x-enumDescriptions:
+          - Not specified.
+          - Used for return value only. Represents value unknown in this version.
+          - The item is sold online.
+          - The item is sold in local stores.
+          enum:
+          - UNSPECIFIED
+          - UNKNOWN
+          - ONLINE
+          - LOCAL
+          description: Value of the locality.
+          type: string
+    GoogleAdsGoogleadsV25Common__VideoLineupInfo:
+      description: A Video lineup criterion.
+      type: object
+      properties:
+        videoLineupId:
+          type: string
+          description: ID for a Video lineup. Contact your Google business development representative for details.
+          format: int64
+    GoogleAdsGoogleadsV25Resources_AdGroupCriterion_PositionEstimates:
+      description: Estimates for criterion bids at various positions.
+      type: object
+      properties:
+        topOfPageCpcMicros:
+          format: int64
+          type: string
+          description: Output only. The estimate of the CPC bid required for ad to be displayed at the top of the first page of search results.
+        firstPageCpcMicros:
+          type: string
+          description: Output only. The estimate of the CPC bid required for ad to be shown on first page of search results.
+          format: int64
+        estimatedAddClicksAtFirstPositionCpc:
+          type: string
+          description: Output only. Estimate of how many clicks per week you might get by changing your keyword bid to the value in first_position_cpc_micros.
+          format: int64
+        estimatedAddCostAtFirstPositionCpc:
+          type: string
+          description: Output only. Estimate of how your cost per week might change when changing your keyword bid to the value in first_position_cpc_micros.
+          format: int64
+        firstPositionCpcMicros:
+          format: int64
+          type: string
+          description: Output only. The estimate of the CPC bid required for ad to be displayed in first position, at the top of the first page of search results.
+    GoogleAdsGoogleadsV25Common__ProductTypeInfo:
+      type: object
+      properties:
+        value:
+          type: string
+          description: Value of the type.
+        level:
+          x-enumDescriptions:
+          - Not specified.
+          - Used for return value only. Represents value unknown in this version.
+          - Level 1.
+          - Level 2.
+          - Level 3.
+          - Level 4.
+          - Level 5.
+          enum:
+          - UNSPECIFIED
+          - UNKNOWN
+          - LEVEL1
+          - LEVEL2
+          - LEVEL3
+          - LEVEL4
+          - LEVEL5
+          type: string
+          description: Level of the type.
+      description: Type of a product offer.
+    GoogleAdsGoogleadsV25Common__UnknownListingDimensionInfo:
+      type: object
+      properties: {}
+      description: Unknown listing dimension.
+    GoogleAdsGoogleadsV25Common__RetailFilterBundle:
+      type: object
+      properties:
+        sharedSet:
+          type: string
+          description: The resource name of the shared set that contains the retail filter. This field is required.
+      description: Represents a Retail Filter Bundle, used to link an ad group to a shared set containing retail filters.
+    GoogleAdsGoogleadsV25Common__ProductLegacyConditionInfo:
+      type: object
+      properties:
+        value:
+          description: String value of the product legacy condition.
+          type: string
+      description: Legacy condition of a product offer. This listing dimension is deprecated and it is supported only in Display campaigns.
+    GoogleAdsGoogleadsV25Common__YouTubeChannelInfo:
+      type: object
+      properties:
+        channelId:
+          type: string
+          description: The YouTube uploader channel id or the channel code of a YouTube channel.
+      description: A YouTube Channel criterion.
+    GoogleAdsGoogleadsV25Common__HotelClassInfo:
+      type: object
+      properties:
+        value:
+          format: int64
+          type: string
+          description: Long value of the hotel class.
+      description: Class of the hotel as a number of stars 1 to 5.
+    GoogleAdsGoogleadsV25Common__GenderInfo:
+      type: object
+      properties:
+        type:
+          type: string
+          description: Type of the gender.
+          x-enumDescriptions:
+          - Not specified.
+          - Used for return value only. Represents value unknown in this version.
+          - Male.
+          - Female.
+          - Undetermined gender.
+          enum:
+          - UNSPECIFIED
+          - UNKNOWN
+          - MALE
+          - FEMALE
+          - UNDETERMINED
+      description: A gender criterion.
+    GoogleAdsGoogleadsV25Common__CustomIntentInfo:
+      description: A custom intent criterion. A criterion of this type is only targetable.
+      type: object
+      properties:
+        customIntent:
+          type: string
+          description: The CustomInterest resource name.
+    GoogleAdsGoogleadsV25Common__ActivityCountryInfo:
+      description: The country where the travel activity is available.
+      type: object
+      properties:
+        value:
+          type: string
+          description: String value of the activity country. The Geo Target Constant resource name.
+    GoogleAdsGoogleadsV25Common__MobileAppCategoryInfo:
+      description: A mobile app category criterion.
+      type: object
+      properties:
+        mobileAppCategoryConstant:
+          type: string
+          description: The mobile app category constant resource name.
+    GoogleAdsGoogleadsV25Common__ActivityIdInfo:
+      description: Advertiser-specific activity ID.
+      type: object
+      properties:
+        value:
+          type: string
+          description: String value of the activity ID.
+    GoogleAdsGoogleadsV25Common__UserInterestInfo:
+      description: Represents a particular interest-based topic to be targeted.
+      type: object
+      properties:
+        userInterestCategory:
+          type: string
+          description: The UserInterest resource name.
+    GoogleAdsGoogleadsV25Common__VerticalAdsItemGroupRuleListInfo:
+      type: object
+      properties:
+        sharedSet:
+          description: The shared set resource name of the vertical ads item group rule list.
+          type: string
+      description: A criterion for targeting a shared set of rules for item groups in Vertical Ads (e.g., for hotel ads).
+    GoogleAdsGoogleadsV25Common__AudienceInfo:
+      description: An audience criterion.
+      type: object
+      properties:
+        audience:
+          type: string
+          description: The Audience resource name.
+    GoogleAdsGoogleadsV25Services__MutateAdGroupCriterionResult:
+      description: The result for the criterion mutate.
+      type: object
+      properties:
+        adGroupCriterion:
+          $ref: '#/components/schemas/GoogleAdsGoogleadsV25Resources__AdGroupCriterion'
+          description: The mutated ad group criterion with only mutable fields after mutate. The field will only be returned when response_content_type is set to "MUTABLE_RESOURCE".
+        resourceName:
+          type: string
+          description: Returned for successful operations.
+    GoogleAdsGoogleadsV25Common__AgeRangeInfo:
+      description: An age range criterion.
+      type: object
+      properties:
+        type:
+          x-enumDescriptions:
+          - Not specified.
+          - Used for return value only. Represents value unknown in this version.
+          - Between 18 and 24 years old.
+          - Between 25 and 34 years old.
+          - Between 35 and 44 years old.
+          - Between 45 and 54 years old.
+          - Between 55 and 64 years old.
+          - 65 years old and beyond.
+          - Undetermined age range.
+          enum:
+          - UNSPECIFIED
+          - UNKNOWN
+          - AGE_RANGE_18_24
+          - AGE_RANGE_25_34
+          - AGE_RANGE_35_44
+          - AGE_RANGE_45_54
+          - AGE_RANGE_55_64
+          - AGE_RANGE_65_UP
+          - AGE_RANGE_UNDETERMINED
+          type: string
+          description: Type of the age range.
+    GoogleAdsGoogleadsV25Common__LanguageInfo:
+      description: A language criterion.
+      type: object
+      properties:
+        languageConstant:
+          type: string
+          description: The language constant resource name.
+    GoogleAdsGoogleadsV25Common__UserListInfo:
+      type: object
+      properties:
+        userList:
+          type: string
+          description: The User List resource name.
+      description: A User List criterion. Represents a user list that is defined by the advertiser to be targeted.
+    GoogleAdsGoogleadsV25Common__HotelStateInfo:
+      type: object
+      properties:
+        stateCriterion:
+          description: The Geo Target Constant resource name.
+          type: string
+      description: State the hotel is located in.
+  securitySchemes:
+    oauth2:
+      type: oauth2
+      description: Google OAuth 2.0. Google Ads API additionally requires a developer token in the developer-token header.
+      flows:
+        authorizationCode:
+          authorizationUrl: https://accounts.google.com/o/oauth2/auth
+          tokenUrl: https://oauth2.googleapis.com/token
+          scopes:
+            https://www.googleapis.com/auth/adwords: See, edit, create, and delete your Google Ads accounts and data.
+externalDocs:
+  url: https://developers.google.com/google-ads/api/
+x-source: https://googleads.googleapis.com/$discovery/rest?version=v25
+x-generated-by: API Evangelist enrichment pipeline — mechanical conversion of the first-party Google API Discovery Document

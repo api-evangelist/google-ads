@@ -1,0 +1,541 @@
+openapi: 3.2.0
+info:
+  title: Google Ads Customers.asset Sets API
+  description: Manage your Google Ads accounts, campaigns, and reports with this API.
+  version: v25
+  x-discovery-revision: '20260721'
+  contact:
+    name: Google
+    url: https://developers.google.com/google-ads/api/
+  termsOfService: https://developers.google.com/terms
+servers:
+- url: https://googleads.googleapis.com
+  description: Google Ads API production server
+security:
+- oauth2:
+  - https://www.googleapis.com/auth/adwords
+tags:
+- name: customers.assetSets
+paths:
+  /v25/customers/{customersId}/assetSets:mutate:
+    parameters:
+    - name: upload_protocol
+      in: query
+      required: false
+      schema:
+        type: string
+      description: Upload protocol for media (e.g. "raw", "multipart").
+    - name: quotaUser
+      in: query
+      required: false
+      schema:
+        type: string
+      description: Available to use for quota purposes for server-side applications. Can be any arbitrary string assigned to a user, but should not exceed 40 characters.
+    - name: fields
+      in: query
+      required: false
+      schema:
+        type: string
+      description: Selector specifying which fields to include in a partial response.
+    - name: $.xgafv
+      in: query
+      required: false
+      schema:
+        type: string
+        enum:
+        - '1'
+        - '2'
+        x-enumDescriptions:
+        - v1 error format
+        - v2 error format
+      description: V1 error format.
+    - name: callback
+      in: query
+      required: false
+      schema:
+        type: string
+      description: JSONP
+    - name: prettyPrint
+      in: query
+      required: false
+      schema:
+        type: boolean
+        default: 'true'
+      description: Returns response with indentations and line breaks.
+    - name: access_token
+      in: query
+      required: false
+      schema:
+        type: string
+      description: OAuth access token.
+    - name: uploadType
+      in: query
+      required: false
+      schema:
+        type: string
+      description: Legacy upload protocol for media (e.g. "media", "multipart").
+    - name: key
+      in: query
+      required: false
+      schema:
+        type: string
+      description: API key. Your API key identifies your project and provides you with API access, quota, and reports. Required unless you provide an OAuth 2.0 token.
+    - name: oauth_token
+      in: query
+      required: false
+      schema:
+        type: string
+      description: OAuth 2.0 token for the current user.
+    - name: alt
+      in: query
+      required: false
+      schema:
+        x-enumDescriptions:
+        - Responses with Content-Type of application/json
+        - Media download with context-dependent Content-Type
+        - Responses with Content-Type of application/x-protobuf
+        type: string
+        default: json
+        enum:
+        - json
+        - media
+        - proto
+      description: Data format for response.
+    post:
+      operationId: googleads_customers_assetSets_mutate
+      summary: Creates, updates or removes asset sets
+      tags:
+      - customers.assetSets
+      description: Creates, updates or removes asset sets. Operation statuses are returned.
+      parameters:
+      - name: customerId
+        in: path
+        required: true
+        schema:
+          pattern: ^[^/]+$
+          type: string
+        description: Required. The ID of the customer whose asset sets are being modified.
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/GoogleAdsGoogleadsV25Services__MutateAssetSetsRequest'
+      responses:
+        '200':
+          description: Successful response
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/GoogleAdsGoogleadsV25Services__MutateAssetSetsResponse'
+      security:
+      - oauth2:
+        - https://www.googleapis.com/auth/adwords
+components:
+  schemas:
+    GoogleAdsGoogleadsV25Common__DynamicBusinessProfileLocationGroupFilter:
+      type: object
+      properties:
+        businessNameFilter:
+          $ref: '#/components/schemas/GoogleAdsGoogleadsV25Common__BusinessProfileBusinessNameFilter'
+          description: Used to filter Business Profile locations by business name.
+        labelFilters:
+          type: array
+          description: Used to filter Business Profile locations by label. Only locations that have any of the listed labels will be in the asset set. Label filters are OR'ed together.
+          items:
+            type: string
+        listingIdFilters:
+          type: array
+          description: Used to filter Business Profile locations by listing ids.
+          items:
+            type: string
+            format: int64
+      description: Represents a filter on Business Profile locations in an asset set. If multiple filters are provided, they are AND'ed together.
+    GoogleAdsGoogleadsV25Services__MutateAssetSetsResponse:
+      description: Response message for an asset set mutate.
+      type: object
+      properties:
+        partialFailureError:
+          description: Errors that pertain to operation failures in the partial failure mode. Returned only when partial_failure = true and all errors occur inside the operations. If any errors occur outside the operations (for example, auth errors), we return an RPC level error.
+          $ref: '#/components/schemas/GoogleRpc__Status'
+        results:
+          type: array
+          description: All results for the mutate.
+          items:
+            $ref: '#/components/schemas/GoogleAdsGoogleadsV25Services__MutateAssetSetResult'
+    GoogleAdsGoogleadsV25Resources__AssetSet:
+      description: An asset set representing a collection of assets. Use AssetSetAsset to link an asset to the asset set.
+      type: object
+      properties:
+        resourceName:
+          type: string
+          description: 'Immutable. The resource name of the asset set. Asset set resource names have the form: `customers/{customer_id}/assetSets/{asset_set_id}`'
+        hotelPropertyData:
+          $ref: '#/components/schemas/GoogleAdsGoogleadsV25Resources_AssetSet_HotelPropertyData'
+          description: Output only. For Performance Max for travel goals campaigns with a Hotel Center account link. Read-only.
+        chainLocationGroup:
+          $ref: '#/components/schemas/GoogleAdsGoogleadsV25Common__ChainLocationGroup'
+          description: Represents information about a Chain dynamic location group. Only applicable if the sync level AssetSet's type is LOCATION_SYNC and sync source is chain.
+        merchantCenterFeed:
+          $ref: '#/components/schemas/GoogleAdsGoogleadsV25Resources_AssetSet_MerchantCenterFeed'
+          description: Merchant ID and Feed Label from Google Merchant Center.
+        locationGroupParentAssetSetId:
+          format: int64
+          type: string
+          description: 'Immutable. Parent asset set ID for the asset set where the elements of this asset set come from. For example: the sync level location AssetSet id where the elements in LocationGroup AssetSet come from. This field is required and only applicable for Location Group typed AssetSet.'
+        id:
+          format: int64
+          description: Output only. The ID of the asset set.
+          type: string
+        status:
+          enum:
+          - UNSPECIFIED
+          - UNKNOWN
+          - ENABLED
+          - REMOVED
+          description: Output only. The status of the asset set. Read-only.
+          type: string
+          x-enumDescriptions:
+          - The status has not been specified.
+          - The received value is not known in this version. This is a response-only value.
+          - The asset set is enabled.
+          - The asset set is removed.
+        type:
+          description: Required. Immutable. The type of the asset set. Required.
+          type: string
+          x-enumDescriptions:
+          - Not specified.
+          - Used for return value only. Represents value unknown in this version.
+          - Page asset set.
+          - Dynamic education asset set.
+          - Google Merchant Center asset set.
+          - Dynamic real estate asset set.
+          - Dynamic custom asset set.
+          - Dynamic hotels and rentals asset set.
+          - Dynamic flights asset set.
+          - Dynamic travel asset set.
+          - Dynamic local asset set.
+          - Dynamic jobs asset set.
+          - Location sync level asset set.
+          - Business Profile location group asset set.
+          - Chain location group asset set which can be used for both owned locations and affiliate locations.
+          - Static location group asset set which can be used for both owned locations and affiliate locations.
+          - Hotel Property asset set which is used to link a hotel property feed to Performance Max for travel goals campaigns.
+          - Travel Feed asset set type. Can represent either a Hotel feed or a Things to Do (activities) feed.
+          enum:
+          - UNSPECIFIED
+          - UNKNOWN
+          - PAGE_FEED
+          - DYNAMIC_EDUCATION
+          - MERCHANT_CENTER_FEED
+          - DYNAMIC_REAL_ESTATE
+          - DYNAMIC_CUSTOM
+          - DYNAMIC_HOTELS_AND_RENTALS
+          - DYNAMIC_FLIGHTS
+          - DYNAMIC_TRAVEL
+          - DYNAMIC_LOCAL
+          - DYNAMIC_JOBS
+          - LOCATION_SYNC
+          - BUSINESS_PROFILE_DYNAMIC_LOCATION_GROUP
+          - CHAIN_DYNAMIC_LOCATION_GROUP
+          - STATIC_LOCATION_GROUP
+          - HOTEL_PROPERTY
+          - TRAVEL_FEED
+        name:
+          description: Required. Name of the asset set. Required. It must have a minimum length of 1 and maximum length of 128.
+          type: string
+        travelFeedData:
+          $ref: '#/components/schemas/GoogleAdsGoogleadsV25Resources_AssetSet_TravelFeedData'
+          description: Output only. Travel Feed data. Read-only
+        businessProfileLocationGroup:
+          $ref: '#/components/schemas/GoogleAdsGoogleadsV25Common__BusinessProfileLocationGroup'
+          description: Business Profile location group asset set data.
+        locationSet:
+          description: Location asset set data. This will be used for sync level location set. This can only be set if AssetSet's type is LOCATION_SYNC.
+          $ref: '#/components/schemas/GoogleAdsGoogleadsV25Common__LocationSet'
+    GoogleRpc__Status:
+      description: 'The `Status` type defines a logical error model that is suitable for different programming environments, including REST APIs and RPC APIs. It is used by [gRPC](https://github.com/grpc). Each `Status` message contains three pieces of data: error code, error message, and error details. You can find out more about this error model and how to work with it in the [API Design Guide](https://cloud.google.com/apis/design/errors).'
+      type: object
+      properties:
+        message:
+          description: A developer-facing error message, which should be in English. Any user-facing error message should be localized and sent in the google.rpc.Status.details field, or localized by the client.
+          type: string
+        code:
+          type: integer
+          description: The status code, which should be an enum value of google.rpc.Code.
+          format: int32
+        details:
+          type: array
+          description: A list of messages that carry the error details. There is a common set of message types for APIs to use.
+          items:
+            type: object
+            additionalProperties:
+              description: Properties of the object. Contains field @type with type URL.
+    GoogleAdsGoogleadsV25Resources_AssetSet_TravelFeedData:
+      description: Travel Feed data. Read-only
+      type: object
+      properties:
+        travelFeedVerticalType:
+          enum:
+          - UNSPECIFIED
+          - UNKNOWN
+          - HOTELS
+          - VACATION_RENTALS
+          - RENTAL_CARS
+          - EVENTS
+          - THINGS_TO_DO
+          - FLIGHTS
+          description: Output only. Indicates the vertical type of the travel feed.
+          type: string
+          x-enumDescriptions:
+          - Not specified.
+          - Used for return value only. Represents value unknown in this version.
+          - Hotels travel vertical.
+          - Vacation rentals travel vertical.
+          - Rental cars travel vertical.
+          - Events travel vertical.
+          - Things to do travel vertical.
+          - Flights travel vertical.
+        merchantCenterId:
+          description: Output only. The Merchant Center account ID used for a Things to Do feed.
+          type: string
+          format: int64
+        hotelCenterAccountId:
+          format: int64
+          description: Output only. The Hotel Center account ID used for a Hotel or Vacation Rental feed.
+          type: string
+        partnerCenterId:
+          description: Output only. The Partner Center ID used for a travel vertical feed, except for Hotel, Vacation Rental, and Things to Do feeds.
+          type: string
+          format: int64
+        subsetId:
+          format: int64
+          type: string
+          description: Output only. Id representing a subset of the travel feed.
+    GoogleAdsGoogleadsV25Services__MutateAssetSetResult:
+      description: The result for the asset set mutate.
+      type: object
+      properties:
+        assetSet:
+          $ref: '#/components/schemas/GoogleAdsGoogleadsV25Resources__AssetSet'
+          description: The mutated asset set with only mutable fields after mutate. The field will only be returned when response_content_type is set to "MUTABLE_RESOURCE".
+        resourceName:
+          type: string
+          description: Returned for successful operations.
+    GoogleAdsGoogleadsV25Common__BusinessProfileLocationSet:
+      description: Data used to configure a location set populated from Google Business Profile locations. Different types of filters are AND'ed together, if they are specified.
+      type: object
+      properties:
+        businessAccountId:
+          type: string
+          description: Immutable. The account ID of the managed business whose locations are to be used. If this field is not set, then all businesses accessible by the user (specified by the emailAddress) are used.
+        emailAddress:
+          description: Required. Immutable. Email address of a Google Business Profile account or email address of a manager of the Google Business Profile account.
+          type: string
+        labelFilters:
+          description: Used to filter Google Business Profile listings by labels. If entries exist in labelFilters, only listings that have any of the labels set are candidates to be synchronized into Assets. If no entries exist in labelFilters, then all listings are candidates for syncing. Label filters are OR'ed together.
+          items:
+            type: string
+          type: array
+        httpAuthorizationToken:
+          type: string
+          description: Required. Immutable. The HTTP authorization token used to obtain authorization.
+        businessNameFilter:
+          description: Used to filter Google Business Profile listings by business name. If businessNameFilter is set, only listings with a matching business name are candidates to be sync'd into Assets.
+          type: string
+        listingIdFilters:
+          description: Used to filter Google Business Profile listings by listing id. If entries exist in listingIdFilters, only listings specified by the filters are candidates to be synchronized into Assets. If no entries exist in listingIdFilters, then all listings are candidates for syncing. Listing ID filters are OR'ed together.
+          items:
+            type: string
+            format: int64
+          type: array
+    GoogleAdsGoogleadsV25Common__LocationSet:
+      type: object
+      properties:
+        businessProfileLocationSet:
+          $ref: '#/components/schemas/GoogleAdsGoogleadsV25Common__BusinessProfileLocationSet'
+          description: Data used to configure a location set populated from Google Business Profile locations.
+        locationOwnershipType:
+          x-enumDescriptions:
+          - Not specified.
+          - Used for return value only. Represents value unknown in this version.
+          - Business Owner of location(legacy location extension - LE).
+          - Affiliate location(Third party location extension - ALE).
+          enum:
+          - UNSPECIFIED
+          - UNKNOWN
+          - BUSINESS_OWNER
+          - AFFILIATE
+          description: Required. Immutable. Location Ownership Type (owned location or affiliate location).
+          type: string
+        mapsLocationSet:
+          $ref: '#/components/schemas/GoogleAdsGoogleadsV25Common__MapsLocationSet'
+          description: Only set if locations are synced based on selected maps locations
+        chainLocationSet:
+          $ref: '#/components/schemas/GoogleAdsGoogleadsV25Common__ChainSet'
+          description: Data used to configure a location on chain set populated with the specified chains.
+      description: Data related to location set. One of the Google Business Profile (previously known as Google My Business) data, Chain data, and map location data need to be specified.
+    GoogleAdsGoogleadsV25Common__MapsLocationInfo:
+      description: Wrapper for place ids
+      type: object
+      properties:
+        placeId:
+          description: Place ID of the Maps location.
+          type: string
+    GoogleAdsGoogleadsV25Common__ChainFilter:
+      type: object
+      properties:
+        locationAttributes:
+          description: Used to filter chain locations by location attributes. Only chain locations that belong to all of the specified attribute(s) will be in the asset set. If this field is empty, it means no filtering on this field.
+          items:
+            type: string
+          type: array
+        chainId:
+          format: int64
+          description: Required. Used to filter chain locations by chain id. Only chain locations that belong to the specified chain will be in the asset set.
+          type: string
+      description: One chain level filter on location in a feed item set. The filtering logic among all the fields is AND.
+    GoogleAdsGoogleadsV25Common__ChainLocationGroup:
+      type: object
+      properties:
+        dynamicChainLocationGroupFilters:
+          description: Used to filter chain locations by chain ids. Only Locations that belong to the specified chain(s) will be in the asset set.
+          items:
+            $ref: '#/components/schemas/GoogleAdsGoogleadsV25Common__ChainFilter'
+          type: array
+      description: Represents information about a Chain dynamic location group. Only applicable if the sync level AssetSet's type is LOCATION_SYNC and sync source is chain.
+    GoogleAdsGoogleadsV25Common__MapsLocationSet:
+      type: object
+      properties:
+        mapsLocations:
+          description: Required. A list of maps location info that user manually synced in.
+          items:
+            $ref: '#/components/schemas/GoogleAdsGoogleadsV25Common__MapsLocationInfo'
+          type: array
+      description: Wrapper for multiple maps location sync data
+    GoogleAdsGoogleadsV25Common__ChainSet:
+      description: Data used to configure a location set populated with the specified chains.
+      type: object
+      properties:
+        relationshipType:
+          type: string
+          description: Required. Immutable. Relationship type the specified chains have with this advertiser.
+          x-enumDescriptions:
+          - Not specified.
+          - Used for return value only. Represents value unknown in this version.
+          - Auto dealer relationship.
+          - General retailer relationship.
+          enum:
+          - UNSPECIFIED
+          - UNKNOWN
+          - AUTO_DEALERS
+          - GENERAL_RETAILERS
+        chains:
+          type: array
+          description: Required. A list of chain level filters, all filters are OR'ed together.
+          items:
+            $ref: '#/components/schemas/GoogleAdsGoogleadsV25Common__ChainFilter'
+    GoogleAdsGoogleadsV25Common__BusinessProfileBusinessNameFilter:
+      description: Business Profile location group business name filter.
+      type: object
+      properties:
+        filterType:
+          x-enumDescriptions:
+          - Not specified.
+          - Used for return value only. Represents value unknown in this version.
+          - The filter will use exact string matching.
+          enum:
+          - UNSPECIFIED
+          - UNKNOWN
+          - EXACT
+          type: string
+          description: The type of string matching to use when filtering with business_name.
+        businessName:
+          type: string
+          description: Business name string to use for filtering.
+    GoogleAdsGoogleadsV25Services__MutateAssetSetsRequest:
+      type: object
+      properties:
+        operations:
+          description: Required. The list of operations to perform on individual asset sets.
+          items:
+            $ref: '#/components/schemas/GoogleAdsGoogleadsV25Services__AssetSetOperation'
+          type: array
+        validateOnly:
+          description: If true, the request is validated but not executed. Only errors are returned, not results.
+          type: boolean
+        responseContentType:
+          x-enumDescriptions:
+          - Not specified. Will return the resource name only in the response.
+          - The mutate response will be the resource name.
+          - The mutate response will contain the resource name and the resource with mutable fields if possible. Otherwise, only the resource name will be returned.
+          enum:
+          - UNSPECIFIED
+          - RESOURCE_NAME_ONLY
+          - MUTABLE_RESOURCE
+          type: string
+          description: The response content type setting. Determines whether the mutable resource or just the resource name should be returned post mutation.
+        partialFailure:
+          description: If true, successful operations will be carried out and invalid operations will return errors. If false, all operations will be carried out in one transaction if and only if they are all valid. Default is false.
+          type: boolean
+      description: Request message for AssetSetService.MutateAssetSets.
+    GoogleAdsGoogleadsV25Services__AssetSetOperation:
+      description: A single operation (create, remove) on an asset set.
+      type: object
+      properties:
+        remove:
+          type: string
+          description: 'Remove operation: A resource name for the removed asset set is expected, in this format: `customers/{customer_id}/assetSets/{asset_set_id}`'
+        updateMask:
+          type: string
+          description: FieldMask that determines which resource fields are modified in an update.
+          format: google-fieldmask
+        create:
+          $ref: '#/components/schemas/GoogleAdsGoogleadsV25Resources__AssetSet'
+          description: 'Create operation: No resource name is expected for the new asset set'
+        update:
+          $ref: '#/components/schemas/GoogleAdsGoogleadsV25Resources__AssetSet'
+          description: 'Update operation: The asset set is expected to have a valid resource name.'
+    GoogleAdsGoogleadsV25Resources_AssetSet_HotelPropertyData:
+      description: For Performance Max for travel goals campaigns with a Hotel Center account link. Read-only.
+      type: object
+      properties:
+        hotelCenterId:
+          type: string
+          description: Output only. The hotel center ID of the partner.
+          format: int64
+        partnerName:
+          description: Output only. Name of the hotel partner.
+          type: string
+    GoogleAdsGoogleadsV25Resources_AssetSet_MerchantCenterFeed:
+      type: object
+      properties:
+        merchantId:
+          format: int64
+          type: string
+          description: Required. Merchant ID from Google Merchant Center
+        feedLabel:
+          description: Optional. Feed Label from Google Merchant Center.
+          type: string
+      description: Merchant ID and Feed Label from Google Merchant Center.
+    GoogleAdsGoogleadsV25Common__BusinessProfileLocationGroup:
+      description: Information about a Business Profile dynamic location group. Only applicable if the sync level AssetSet's type is LOCATION_SYNC and sync source is Business Profile.
+      type: object
+      properties:
+        dynamicBusinessProfileLocationGroupFilter:
+          $ref: '#/components/schemas/GoogleAdsGoogleadsV25Common__DynamicBusinessProfileLocationGroupFilter'
+          description: Filter for dynamic Business Profile location sets.
+  securitySchemes:
+    oauth2:
+      type: oauth2
+      description: Google OAuth 2.0. Google Ads API additionally requires a developer token in the developer-token header.
+      flows:
+        authorizationCode:
+          authorizationUrl: https://accounts.google.com/o/oauth2/auth
+          tokenUrl: https://oauth2.googleapis.com/token
+          scopes:
+            https://www.googleapis.com/auth/adwords: See, edit, create, and delete your Google Ads accounts and data.
+externalDocs:
+  url: https://developers.google.com/google-ads/api/
+x-source: https://googleads.googleapis.com/$discovery/rest?version=v25
+x-generated-by: API Evangelist enrichment pipeline — mechanical conversion of the first-party Google API Discovery Document

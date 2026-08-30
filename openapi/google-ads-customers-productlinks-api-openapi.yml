@@ -1,0 +1,376 @@
+openapi: 3.2.0
+info:
+  title: Google Ads Customers.product Links API
+  description: Manage your Google Ads accounts, campaigns, and reports with this API.
+  version: v25
+  x-discovery-revision: '20260721'
+  contact:
+    name: Google
+    url: https://developers.google.com/google-ads/api/
+  termsOfService: https://developers.google.com/terms
+servers:
+- url: https://googleads.googleapis.com
+  description: Google Ads API production server
+security:
+- oauth2:
+  - https://www.googleapis.com/auth/adwords
+tags:
+- name: customers.productLinks
+paths:
+  /v25/customers/{customersId}/productLinks:create:
+    parameters:
+    - name: upload_protocol
+      in: query
+      required: false
+      schema:
+        type: string
+      description: Upload protocol for media (e.g. "raw", "multipart").
+    - name: quotaUser
+      in: query
+      required: false
+      schema:
+        type: string
+      description: Available to use for quota purposes for server-side applications. Can be any arbitrary string assigned to a user, but should not exceed 40 characters.
+    - name: fields
+      in: query
+      required: false
+      schema:
+        type: string
+      description: Selector specifying which fields to include in a partial response.
+    - name: $.xgafv
+      in: query
+      required: false
+      schema:
+        type: string
+        enum:
+        - '1'
+        - '2'
+        x-enumDescriptions:
+        - v1 error format
+        - v2 error format
+      description: V1 error format.
+    - name: callback
+      in: query
+      required: false
+      schema:
+        type: string
+      description: JSONP
+    - name: prettyPrint
+      in: query
+      required: false
+      schema:
+        type: boolean
+        default: 'true'
+      description: Returns response with indentations and line breaks.
+    - name: access_token
+      in: query
+      required: false
+      schema:
+        type: string
+      description: OAuth access token.
+    - name: uploadType
+      in: query
+      required: false
+      schema:
+        type: string
+      description: Legacy upload protocol for media (e.g. "media", "multipart").
+    - name: key
+      in: query
+      required: false
+      schema:
+        type: string
+      description: API key. Your API key identifies your project and provides you with API access, quota, and reports. Required unless you provide an OAuth 2.0 token.
+    - name: oauth_token
+      in: query
+      required: false
+      schema:
+        type: string
+      description: OAuth 2.0 token for the current user.
+    - name: alt
+      in: query
+      required: false
+      schema:
+        x-enumDescriptions:
+        - Responses with Content-Type of application/json
+        - Media download with context-dependent Content-Type
+        - Responses with Content-Type of application/x-protobuf
+        type: string
+        default: json
+        enum:
+        - json
+        - media
+        - proto
+      description: Data format for response.
+    post:
+      operationId: googleads_customers_productLinks_create
+      summary: Creates a product link
+      tags:
+      - customers.productLinks
+      description: 'Creates a product link. List of thrown errors: [AuthenticationError]() [AuthorizationError]() [DatabaseError]() [FieldError]() [HeaderError]() [InternalError]() [MutateError]() [QuotaError]() [RequestError]()'
+      parameters:
+      - name: customerId
+        in: path
+        required: true
+        schema:
+          type: string
+          pattern: ^[^/]+$
+        description: Required. The ID of the customer for which the product link is created.
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/GoogleAdsGoogleadsV25Services__CreateProductLinkRequest'
+      responses:
+        '200':
+          description: Successful response
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/GoogleAdsGoogleadsV25Services__CreateProductLinkResponse'
+      security:
+      - oauth2:
+        - https://www.googleapis.com/auth/adwords
+  /v25/customers/{customersId}/productLinks:remove:
+    parameters:
+    - name: upload_protocol
+      in: query
+      required: false
+      schema:
+        type: string
+      description: Upload protocol for media (e.g. "raw", "multipart").
+    - name: quotaUser
+      in: query
+      required: false
+      schema:
+        type: string
+      description: Available to use for quota purposes for server-side applications. Can be any arbitrary string assigned to a user, but should not exceed 40 characters.
+    - name: fields
+      in: query
+      required: false
+      schema:
+        type: string
+      description: Selector specifying which fields to include in a partial response.
+    - name: $.xgafv
+      in: query
+      required: false
+      schema:
+        type: string
+        enum:
+        - '1'
+        - '2'
+        x-enumDescriptions:
+        - v1 error format
+        - v2 error format
+      description: V1 error format.
+    - name: callback
+      in: query
+      required: false
+      schema:
+        type: string
+      description: JSONP
+    - name: prettyPrint
+      in: query
+      required: false
+      schema:
+        type: boolean
+        default: 'true'
+      description: Returns response with indentations and line breaks.
+    - name: access_token
+      in: query
+      required: false
+      schema:
+        type: string
+      description: OAuth access token.
+    - name: uploadType
+      in: query
+      required: false
+      schema:
+        type: string
+      description: Legacy upload protocol for media (e.g. "media", "multipart").
+    - name: key
+      in: query
+      required: false
+      schema:
+        type: string
+      description: API key. Your API key identifies your project and provides you with API access, quota, and reports. Required unless you provide an OAuth 2.0 token.
+    - name: oauth_token
+      in: query
+      required: false
+      schema:
+        type: string
+      description: OAuth 2.0 token for the current user.
+    - name: alt
+      in: query
+      required: false
+      schema:
+        x-enumDescriptions:
+        - Responses with Content-Type of application/json
+        - Media download with context-dependent Content-Type
+        - Responses with Content-Type of application/x-protobuf
+        type: string
+        default: json
+        enum:
+        - json
+        - media
+        - proto
+      description: Data format for response.
+    post:
+      operationId: googleads_customers_productLinks_remove
+      summary: Removes a product link
+      tags:
+      - customers.productLinks
+      description: 'Removes a product link. List of thrown errors: [AuthenticationError]() [AuthorizationError]() [FieldMaskError]() [HeaderError]() [InternalError]() [MutateError]() [QuotaError]() [RequestError]()'
+      parameters:
+      - name: customerId
+        in: path
+        required: true
+        schema:
+          type: string
+          pattern: ^[^/]+$
+        description: Required. The ID of the customer being modified.
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/GoogleAdsGoogleadsV25Services__RemoveProductLinkRequest'
+      responses:
+        '200':
+          description: Successful response
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/GoogleAdsGoogleadsV25Services__RemoveProductLinkResponse'
+      security:
+      - oauth2:
+        - https://www.googleapis.com/auth/adwords
+components:
+  schemas:
+    GoogleAdsGoogleadsV25Resources__AdvertisingPartnerIdentifier:
+      type: object
+      properties:
+        customer:
+          type: string
+          description: Output only. The resource name of the advertising partner Google Ads account. This field is required and should not be empty when creating a new Advertising Partner link. It is unable to be modified after the creation of the link.
+      description: The identifier for the Advertising Partner Google Ads account.
+    GoogleAdsGoogleadsV25Resources__DataPartnerIdentifier:
+      type: object
+      properties:
+        dataPartnerId:
+          format: int64
+          description: Immutable. The customer ID of the Data partner account. This field is required and should not be empty when creating a new data partner link. It is unable to be modified after the creation of the link.
+          type: string
+      description: The identifier for Data Partner account.
+    GoogleAdsGoogleadsV25Services__RemoveProductLinkRequest:
+      description: Request message for ProductLinkService.RemoveProductLink.
+      type: object
+      properties:
+        resourceName:
+          type: string
+          description: 'Required. Remove operation: A resource name for the product link to remove is expected, in this format: `customers/{customer_id}/productLinks/{product_link_id} `'
+        validateOnly:
+          type: boolean
+          description: If true, the request is validated but not executed. Only errors are returned, not results.
+    GoogleAdsGoogleadsV25Resources__AdvertisingPartnerProperties:
+      description: Properties specific to an Advertising Partner link.
+      type: object
+      properties:
+        allowedDomain:
+          type: string
+          description: Output only. The allowed domain for the Advertising Partner link. The advertising partner will only be able to advertise on this domain. The field is immutable.
+    GoogleAdsGoogleadsV25Resources__ProductLink:
+      type: object
+      properties:
+        type:
+          x-enumDescriptions:
+          - Not specified.
+          - Used for return value only. Represents value unknown in this version.
+          - A link to Data partner.
+          - A link to Google Ads.
+          - A link to Hotel Center.
+          - A link to Google Merchant Center.
+          - A link to the Google Ads account of the advertising partner.
+          enum:
+          - UNSPECIFIED
+          - UNKNOWN
+          - DATA_PARTNER
+          - GOOGLE_ADS
+          - HOTEL_CENTER
+          - MERCHANT_CENTER
+          - ADVERTISING_PARTNER
+          description: Output only. The type of the linked product.
+          type: string
+        dataPartner:
+          $ref: '#/components/schemas/GoogleAdsGoogleadsV25Resources__DataPartnerIdentifier'
+          description: Immutable. Data partner link.
+        productLinkId:
+          description: Output only. The ID of the link. This field is read only.
+          type: string
+          format: int64
+        googleAds:
+          $ref: '#/components/schemas/GoogleAdsGoogleadsV25Resources__GoogleAdsIdentifier'
+          description: Immutable. Google Ads link.
+        advertisingPartner:
+          description: Output only. Advertising Partner link.
+          $ref: '#/components/schemas/GoogleAdsGoogleadsV25Resources__AdvertisingPartnerIdentifier'
+        resourceName:
+          description: 'Immutable. Resource name of the product link. ProductLink resource names have the form: `customers/{customer_id}/productLinks/{product_link_id} `'
+          type: string
+        merchantCenter:
+          $ref: '#/components/schemas/GoogleAdsGoogleadsV25Resources__MerchantCenterIdentifier'
+          description: Immutable. Google Merchant Center link.
+        advertisingPartnerProperties:
+          $ref: '#/components/schemas/GoogleAdsGoogleadsV25Resources__AdvertisingPartnerProperties'
+          description: Output only. Advertising Partner link properties. These properties are only applicable when the link is for an Advertising Partner.
+      description: Represents the data sharing connection between a Google Ads customer and another product.
+    GoogleAdsGoogleadsV25Services__CreateProductLinkResponse:
+      type: object
+      properties:
+        resourceName:
+          type: string
+          description: Returned for successful operations. Resource name of the product link.
+      description: Response message for ProductLinkService.CreateProductLink.
+    GoogleAdsGoogleadsV25Resources__MerchantCenterIdentifier:
+      description: The identifier for Google Merchant Center account
+      type: object
+      properties:
+        merchantCenterId:
+          type: string
+          description: Immutable. The customer ID of the Google Merchant Center account. This field is required and should not be empty when creating a new Merchant Center link. It is unable to be modified after the creation of the link.
+          format: int64
+    GoogleAdsGoogleadsV25Services__RemoveProductLinkResponse:
+      type: object
+      properties:
+        resourceName:
+          description: Result for the remove request.
+          type: string
+      description: Response message for product link removal.
+    GoogleAdsGoogleadsV25Services__CreateProductLinkRequest:
+      description: Request message for ProductLinkService.CreateProductLink.
+      type: object
+      properties:
+        productLink:
+          $ref: '#/components/schemas/GoogleAdsGoogleadsV25Resources__ProductLink'
+          description: Required. The product link to be created.
+    GoogleAdsGoogleadsV25Resources__GoogleAdsIdentifier:
+      description: The identifier for Google Ads account.
+      type: object
+      properties:
+        customer:
+          description: Immutable. The resource name of the Google Ads account. This field is required and should not be empty when creating a new Google Ads link. It is unable to be modified after the creation of the link.
+          type: string
+  securitySchemes:
+    oauth2:
+      type: oauth2
+      description: Google OAuth 2.0. Google Ads API additionally requires a developer token in the developer-token header.
+      flows:
+        authorizationCode:
+          authorizationUrl: https://accounts.google.com/o/oauth2/auth
+          tokenUrl: https://oauth2.googleapis.com/token
+          scopes:
+            https://www.googleapis.com/auth/adwords: See, edit, create, and delete your Google Ads accounts and data.
+externalDocs:
+  url: https://developers.google.com/google-ads/api/
+x-source: https://googleads.googleapis.com/$discovery/rest?version=v25
+x-generated-by: API Evangelist enrichment pipeline — mechanical conversion of the first-party Google API Discovery Document

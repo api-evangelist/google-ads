@@ -1,0 +1,510 @@
+openapi: 3.2.0
+info:
+  title: Google Ads Customers.data Links API
+  description: Manage your Google Ads accounts, campaigns, and reports with this API.
+  version: v25
+  x-discovery-revision: '20260721'
+  contact:
+    name: Google
+    url: https://developers.google.com/google-ads/api/
+  termsOfService: https://developers.google.com/terms
+servers:
+- url: https://googleads.googleapis.com
+  description: Google Ads API production server
+security:
+- oauth2:
+  - https://www.googleapis.com/auth/adwords
+tags:
+- name: customers.dataLinks
+paths:
+  /v25/customers/{customersId}/dataLinks:update:
+    parameters:
+    - name: upload_protocol
+      in: query
+      required: false
+      schema:
+        type: string
+      description: Upload protocol for media (e.g. "raw", "multipart").
+    - name: quotaUser
+      in: query
+      required: false
+      schema:
+        type: string
+      description: Available to use for quota purposes for server-side applications. Can be any arbitrary string assigned to a user, but should not exceed 40 characters.
+    - name: fields
+      in: query
+      required: false
+      schema:
+        type: string
+      description: Selector specifying which fields to include in a partial response.
+    - name: $.xgafv
+      in: query
+      required: false
+      schema:
+        type: string
+        enum:
+        - '1'
+        - '2'
+        x-enumDescriptions:
+        - v1 error format
+        - v2 error format
+      description: V1 error format.
+    - name: callback
+      in: query
+      required: false
+      schema:
+        type: string
+      description: JSONP
+    - name: prettyPrint
+      in: query
+      required: false
+      schema:
+        type: boolean
+        default: 'true'
+      description: Returns response with indentations and line breaks.
+    - name: access_token
+      in: query
+      required: false
+      schema:
+        type: string
+      description: OAuth access token.
+    - name: uploadType
+      in: query
+      required: false
+      schema:
+        type: string
+      description: Legacy upload protocol for media (e.g. "media", "multipart").
+    - name: key
+      in: query
+      required: false
+      schema:
+        type: string
+      description: API key. Your API key identifies your project and provides you with API access, quota, and reports. Required unless you provide an OAuth 2.0 token.
+    - name: oauth_token
+      in: query
+      required: false
+      schema:
+        type: string
+      description: OAuth 2.0 token for the current user.
+    - name: alt
+      in: query
+      required: false
+      schema:
+        x-enumDescriptions:
+        - Responses with Content-Type of application/json
+        - Media download with context-dependent Content-Type
+        - Responses with Content-Type of application/x-protobuf
+        type: string
+        default: json
+        enum:
+        - json
+        - media
+        - proto
+      description: Data format for response.
+    post:
+      operationId: googleads_customers_dataLinks_update
+      summary: Update a data link
+      tags:
+      - customers.dataLinks
+      description: 'Update a data link. List of thrown errors: [AuthenticationError]() [AuthorizationError]() [DatabaseError]() [DataLinkError]() [FieldError]() [HeaderError]() [InternalError]() [MutateError]() [QuotaError]() [RequestError]()'
+      parameters:
+      - name: customerId
+        in: path
+        required: true
+        schema:
+          type: string
+          pattern: ^[^/]+$
+        description: Required. The ID of the customer for which the data link is created.
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/GoogleAdsGoogleadsV25Services__UpdateDataLinkRequest'
+      responses:
+        '200':
+          description: Successful response
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/GoogleAdsGoogleadsV25Services__UpdateDataLinkResponse'
+      security:
+      - oauth2:
+        - https://www.googleapis.com/auth/adwords
+  /v25/customers/{customersId}/dataLinks:create:
+    parameters:
+    - name: upload_protocol
+      in: query
+      required: false
+      schema:
+        type: string
+      description: Upload protocol for media (e.g. "raw", "multipart").
+    - name: quotaUser
+      in: query
+      required: false
+      schema:
+        type: string
+      description: Available to use for quota purposes for server-side applications. Can be any arbitrary string assigned to a user, but should not exceed 40 characters.
+    - name: fields
+      in: query
+      required: false
+      schema:
+        type: string
+      description: Selector specifying which fields to include in a partial response.
+    - name: $.xgafv
+      in: query
+      required: false
+      schema:
+        type: string
+        enum:
+        - '1'
+        - '2'
+        x-enumDescriptions:
+        - v1 error format
+        - v2 error format
+      description: V1 error format.
+    - name: callback
+      in: query
+      required: false
+      schema:
+        type: string
+      description: JSONP
+    - name: prettyPrint
+      in: query
+      required: false
+      schema:
+        type: boolean
+        default: 'true'
+      description: Returns response with indentations and line breaks.
+    - name: access_token
+      in: query
+      required: false
+      schema:
+        type: string
+      description: OAuth access token.
+    - name: uploadType
+      in: query
+      required: false
+      schema:
+        type: string
+      description: Legacy upload protocol for media (e.g. "media", "multipart").
+    - name: key
+      in: query
+      required: false
+      schema:
+        type: string
+      description: API key. Your API key identifies your project and provides you with API access, quota, and reports. Required unless you provide an OAuth 2.0 token.
+    - name: oauth_token
+      in: query
+      required: false
+      schema:
+        type: string
+      description: OAuth 2.0 token for the current user.
+    - name: alt
+      in: query
+      required: false
+      schema:
+        x-enumDescriptions:
+        - Responses with Content-Type of application/json
+        - Media download with context-dependent Content-Type
+        - Responses with Content-Type of application/x-protobuf
+        type: string
+        default: json
+        enum:
+        - json
+        - media
+        - proto
+      description: Data format for response.
+    post:
+      operationId: googleads_customers_dataLinks_create
+      summary: Creates a data link
+      tags:
+      - customers.dataLinks
+      description: 'Creates a data link. The requesting Google Ads account name and account ID will be shared with the third party (such as YouTube creators for video links) to whom you are creating the link with. List of thrown errors: [AuthenticationError]() [AuthorizationError]() [DatabaseError]() [DataLinkError]() [FieldError]() [HeaderError]() [InternalError]() [MutateError]() [QuotaError]() [RequestError]()'
+      parameters:
+      - name: customerId
+        in: path
+        required: true
+        schema:
+          type: string
+          pattern: ^[^/]+$
+        description: Required. The ID of the customer for which the data link is created.
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/GoogleAdsGoogleadsV25Services__CreateDataLinkRequest'
+      responses:
+        '200':
+          description: Successful response
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/GoogleAdsGoogleadsV25Services__CreateDataLinkResponse'
+      security:
+      - oauth2:
+        - https://www.googleapis.com/auth/adwords
+  /v25/customers/{customersId}/dataLinks:remove:
+    parameters:
+    - name: upload_protocol
+      in: query
+      required: false
+      schema:
+        type: string
+      description: Upload protocol for media (e.g. "raw", "multipart").
+    - name: quotaUser
+      in: query
+      required: false
+      schema:
+        type: string
+      description: Available to use for quota purposes for server-side applications. Can be any arbitrary string assigned to a user, but should not exceed 40 characters.
+    - name: fields
+      in: query
+      required: false
+      schema:
+        type: string
+      description: Selector specifying which fields to include in a partial response.
+    - name: $.xgafv
+      in: query
+      required: false
+      schema:
+        type: string
+        enum:
+        - '1'
+        - '2'
+        x-enumDescriptions:
+        - v1 error format
+        - v2 error format
+      description: V1 error format.
+    - name: callback
+      in: query
+      required: false
+      schema:
+        type: string
+      description: JSONP
+    - name: prettyPrint
+      in: query
+      required: false
+      schema:
+        type: boolean
+        default: 'true'
+      description: Returns response with indentations and line breaks.
+    - name: access_token
+      in: query
+      required: false
+      schema:
+        type: string
+      description: OAuth access token.
+    - name: uploadType
+      in: query
+      required: false
+      schema:
+        type: string
+      description: Legacy upload protocol for media (e.g. "media", "multipart").
+    - name: key
+      in: query
+      required: false
+      schema:
+        type: string
+      description: API key. Your API key identifies your project and provides you with API access, quota, and reports. Required unless you provide an OAuth 2.0 token.
+    - name: oauth_token
+      in: query
+      required: false
+      schema:
+        type: string
+      description: OAuth 2.0 token for the current user.
+    - name: alt
+      in: query
+      required: false
+      schema:
+        x-enumDescriptions:
+        - Responses with Content-Type of application/json
+        - Media download with context-dependent Content-Type
+        - Responses with Content-Type of application/x-protobuf
+        type: string
+        default: json
+        enum:
+        - json
+        - media
+        - proto
+      description: Data format for response.
+    post:
+      operationId: googleads_customers_dataLinks_remove
+      summary: Remove a data link
+      tags:
+      - customers.dataLinks
+      description: 'Remove a data link. List of thrown errors: [AuthenticationError]() [AuthorizationError]() [DatabaseError]() [DataLinkError]() [FieldError]() [HeaderError]() [InternalError]() [MutateError]() [QuotaError]() [RequestError]()'
+      parameters:
+      - name: customerId
+        in: path
+        required: true
+        schema:
+          pattern: ^[^/]+$
+          type: string
+        description: Required. The ID of the customer for which the data link is updated.
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/GoogleAdsGoogleadsV25Services__RemoveDataLinkRequest'
+      responses:
+        '200':
+          description: Successful response
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/GoogleAdsGoogleadsV25Services__RemoveDataLinkResponse'
+      security:
+      - oauth2:
+        - https://www.googleapis.com/auth/adwords
+components:
+  schemas:
+    GoogleAdsGoogleadsV25Services__RemoveDataLinkRequest:
+      description: Request message for DataLinkService.RemoveDataLink.
+      type: object
+      properties:
+        resourceName:
+          type: string
+          description: Required. The data link is expected to have a valid resource name.
+    GoogleAdsGoogleadsV25Services__RemoveDataLinkResponse:
+      type: object
+      properties:
+        resourceName:
+          description: Result for the remove request.
+          type: string
+      description: Response message for DataLinkService.RemoveDataLink.
+    GoogleAdsGoogleadsV25Services__UpdateDataLinkResponse:
+      type: object
+      properties:
+        resourceName:
+          description: Returned for successful operations. Resource name of the data link.
+          type: string
+      description: Response message for DataLinkService.UpdateDataLink.
+    GoogleAdsGoogleadsV25Resources__YoutubeVideoIdentifier:
+      description: The identifier for YouTube video
+      type: object
+      properties:
+        videoId:
+          description: Immutable. The ID of the video associated with the video link. This is the 11 character string value used in the YouTube video URL. For example, video ID is jV1vkHv4zq8 from the YouTube video URL "https://www.youtube.com/watch?v=jV1vkHv4zq8&t=2s".
+          type: string
+        channelId:
+          type: string
+          description: Immutable. The ID of the hosting channel of the video. This is a string value with “UC” prefix. For example, "UCK8sQmJBp8GCxrOtXWBpyEA".
+    GoogleAdsGoogleadsV25Resources__YoutubeLinkMetadata:
+      type: object
+      properties:
+        brandChannelId:
+          description: Immutable. The ID of a YouTube brand channel to help creators understand your brand. The channel must be linked to this account. This is a string value with “UC” prefix. For example, "UCK8sQmJBp8GCxrOtXWBpyEA".
+          type: string
+      description: Metadata specific to YouTube links.
+    GoogleAdsGoogleadsV25Services__UpdateDataLinkRequest:
+      description: Request message for DataLinkService.UpdateDataLink.
+      type: object
+      properties:
+        dataLinkStatus:
+          x-enumDescriptions:
+          - Not specified.
+          - The value is unknown in this version.
+          - Link has been requested by one party, but not confirmed by the other party.
+          - Link is waiting for the customer to approve.
+          - Link is established and can be used as needed.
+          - Link is no longer valid and should be ignored.
+          - Link request has been cancelled by the requester and further cleanup may be needed.
+          - Link request has been rejected by the approver.
+          enum:
+          - UNSPECIFIED
+          - UNKNOWN
+          - REQUESTED
+          - PENDING_APPROVAL
+          - ENABLED
+          - DISABLED
+          - REVOKED
+          - REJECTED
+          description: Required. The data link status to be updated to.
+          type: string
+        resourceName:
+          type: string
+          description: Required. The data link is expected to have a valid resource name.
+    GoogleAdsGoogleadsV25Resources__DataLink:
+      description: Represents the data sharing connection between a Google Ads customer and another product's data.
+      type: object
+      properties:
+        dataLinkId:
+          format: int64
+          description: Output only. The ID of the data link. This field is read only.
+          type: string
+        status:
+          enum:
+          - UNSPECIFIED
+          - UNKNOWN
+          - REQUESTED
+          - PENDING_APPROVAL
+          - ENABLED
+          - DISABLED
+          - REVOKED
+          - REJECTED
+          description: Output only. The status of the data link.
+          type: string
+          x-enumDescriptions:
+          - Not specified.
+          - The value is unknown in this version.
+          - Link has been requested by one party, but not confirmed by the other party.
+          - Link is waiting for the customer to approve.
+          - Link is established and can be used as needed.
+          - Link is no longer valid and should be ignored.
+          - Link request has been cancelled by the requester and further cleanup may be needed.
+          - Link request has been rejected by the approver.
+        type:
+          description: Output only. The type of the data.
+          type: string
+          enum:
+          - UNSPECIFIED
+          - UNKNOWN
+          - VIDEO
+          x-enumDescriptions:
+          - Not specified.
+          - The value is unknown in this version.
+          - A data link to YouTube video.
+        productLinkId:
+          type: string
+          description: Output only. The ID of the link. This field is read only.
+          format: int64
+        youtubeLinkMetadata:
+          description: Immutable. Metadata for a YouTube link.
+          $ref: '#/components/schemas/GoogleAdsGoogleadsV25Resources__YoutubeLinkMetadata'
+        youtubeVideo:
+          $ref: '#/components/schemas/GoogleAdsGoogleadsV25Resources__YoutubeVideoIdentifier'
+          description: Immutable. A data link to YouTube video.
+        resourceName:
+          description: 'Immutable. Resource name of the product data link. DataLink resource names have the form: `customers/{customer_id}/dataLinks/{product_link_id}~{data_link_id}`'
+          type: string
+    GoogleAdsGoogleadsV25Services__CreateDataLinkResponse:
+      type: object
+      properties:
+        resourceName:
+          description: Returned for successful operations. Resource name of the data link.
+          type: string
+      description: Response message for DataLinkService.CreateDataLink.
+    GoogleAdsGoogleadsV25Services__CreateDataLinkRequest:
+      description: Request message for DataLinkService.CreateDataLink.
+      type: object
+      properties:
+        dataLink:
+          $ref: '#/components/schemas/GoogleAdsGoogleadsV25Resources__DataLink'
+          description: Required. The data link to be created.
+  securitySchemes:
+    oauth2:
+      type: oauth2
+      description: Google OAuth 2.0. Google Ads API additionally requires a developer token in the developer-token header.
+      flows:
+        authorizationCode:
+          authorizationUrl: https://accounts.google.com/o/oauth2/auth
+          tokenUrl: https://oauth2.googleapis.com/token
+          scopes:
+            https://www.googleapis.com/auth/adwords: See, edit, create, and delete your Google Ads accounts and data.
+externalDocs:
+  url: https://developers.google.com/google-ads/api/
+x-source: https://googleads.googleapis.com/$discovery/rest?version=v25
+x-generated-by: API Evangelist enrichment pipeline — mechanical conversion of the first-party Google API Discovery Document

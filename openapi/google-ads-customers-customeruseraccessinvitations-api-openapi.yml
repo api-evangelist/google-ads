@@ -1,0 +1,232 @@
+openapi: 3.2.0
+info:
+  title: Google Ads Customers.customer User Access Invitations API
+  description: Manage your Google Ads accounts, campaigns, and reports with this API.
+  version: v25
+  x-discovery-revision: '20260721'
+  contact:
+    name: Google
+    url: https://developers.google.com/google-ads/api/
+  termsOfService: https://developers.google.com/terms
+servers:
+- url: https://googleads.googleapis.com
+  description: Google Ads API production server
+security:
+- oauth2:
+  - https://www.googleapis.com/auth/adwords
+tags:
+- name: customers.customerUserAccessInvitations
+paths:
+  /v25/customers/{customersId}/customerUserAccessInvitations:mutate:
+    parameters:
+    - name: upload_protocol
+      in: query
+      required: false
+      schema:
+        type: string
+      description: Upload protocol for media (e.g. "raw", "multipart").
+    - name: quotaUser
+      in: query
+      required: false
+      schema:
+        type: string
+      description: Available to use for quota purposes for server-side applications. Can be any arbitrary string assigned to a user, but should not exceed 40 characters.
+    - name: fields
+      in: query
+      required: false
+      schema:
+        type: string
+      description: Selector specifying which fields to include in a partial response.
+    - name: $.xgafv
+      in: query
+      required: false
+      schema:
+        type: string
+        enum:
+        - '1'
+        - '2'
+        x-enumDescriptions:
+        - v1 error format
+        - v2 error format
+      description: V1 error format.
+    - name: callback
+      in: query
+      required: false
+      schema:
+        type: string
+      description: JSONP
+    - name: prettyPrint
+      in: query
+      required: false
+      schema:
+        type: boolean
+        default: 'true'
+      description: Returns response with indentations and line breaks.
+    - name: access_token
+      in: query
+      required: false
+      schema:
+        type: string
+      description: OAuth access token.
+    - name: uploadType
+      in: query
+      required: false
+      schema:
+        type: string
+      description: Legacy upload protocol for media (e.g. "media", "multipart").
+    - name: key
+      in: query
+      required: false
+      schema:
+        type: string
+      description: API key. Your API key identifies your project and provides you with API access, quota, and reports. Required unless you provide an OAuth 2.0 token.
+    - name: oauth_token
+      in: query
+      required: false
+      schema:
+        type: string
+      description: OAuth 2.0 token for the current user.
+    - name: alt
+      in: query
+      required: false
+      schema:
+        x-enumDescriptions:
+        - Responses with Content-Type of application/json
+        - Media download with context-dependent Content-Type
+        - Responses with Content-Type of application/x-protobuf
+        type: string
+        default: json
+        enum:
+        - json
+        - media
+        - proto
+      description: Data format for response.
+    post:
+      operationId: googleads_customers_customerUserAccessInvitations_mutate
+      summary: Creates or removes an access invitation
+      tags:
+      - customers.customerUserAccessInvitations
+      description: 'Creates or removes an access invitation. List of thrown errors: [AccessInvitationError]() [AuthenticationError]() [AuthorizationError]() [HeaderError]() [InternalError]() [QuotaError]() [RequestError]()'
+      parameters:
+      - name: customerId
+        in: path
+        required: true
+        schema:
+          type: string
+          pattern: ^[^/]+$
+        description: Required. The ID of the customer whose access invitation is being modified.
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/GoogleAdsGoogleadsV25Services__MutateCustomerUserAccessInvitationRequest'
+      responses:
+        '200':
+          description: Successful response
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/GoogleAdsGoogleadsV25Services__MutateCustomerUserAccessInvitationResponse'
+      security:
+      - oauth2:
+        - https://www.googleapis.com/auth/adwords
+components:
+  schemas:
+    GoogleAdsGoogleadsV25Services__MutateCustomerUserAccessInvitationRequest:
+      description: Request message for CustomerUserAccessInvitationService.MutateCustomerUserAccessInvitation
+      type: object
+      properties:
+        operation:
+          $ref: '#/components/schemas/GoogleAdsGoogleadsV25Services__CustomerUserAccessInvitationOperation'
+          description: Required. The operation to perform on the access invitation
+    GoogleAdsGoogleadsV25Services__MutateCustomerUserAccessInvitationResult:
+      description: The result for the access invitation mutate.
+      type: object
+      properties:
+        resourceName:
+          description: Returned for successful operations.
+          type: string
+        multiPartyAuthReview:
+          type: string
+          description: The resource name of the multi-party authorization review associated with this mutate.
+    GoogleAdsGoogleadsV25Services__CustomerUserAccessInvitationOperation:
+      description: A single operation (create or remove) on customer user access invitation.
+      type: object
+      properties:
+        create:
+          description: 'Create operation: No resource name is expected for the new access invitation.'
+          $ref: '#/components/schemas/GoogleAdsGoogleadsV25Resources__CustomerUserAccessInvitation'
+        remove:
+          description: 'Remove operation: A resource name for the revoke invitation is expected, in this format: `customers/{customer_id}/customerUserAccessInvitations/{invitation_id}`'
+          type: string
+    GoogleAdsGoogleadsV25Resources__CustomerUserAccessInvitation:
+      description: Represent an invitation to a new user on this customer account.
+      type: object
+      properties:
+        invitationStatus:
+          x-enumDescriptions:
+          - Not specified.
+          - Used for return value only. Represents value unknown in this version.
+          - The initial state of an invitation, before being acted upon by anyone.
+          - Invitation process was terminated by the email recipient. No new user was created.
+          - Invitation URLs expired without being acted upon. No new user can be created. Invitations expire 20 days after creation.
+          type: string
+          description: Output only. Invitation status of the user.
+          enum:
+          - UNSPECIFIED
+          - UNKNOWN
+          - PENDING
+          - DECLINED
+          - EXPIRED
+        resourceName:
+          type: string
+          description: 'Immutable. Name of the resource. Resource names have the form: `customers/{customer_id}/customerUserAccessInvitations/{invitation_id}`'
+        invitationId:
+          format: int64
+          description: Output only. The ID of the invitation. This field is read-only.
+          type: string
+        emailAddress:
+          description: Immutable. Email address the invitation was sent to. This can differ from the email address of the account that accepts the invite.
+          type: string
+        creationDateTime:
+          type: string
+          description: 'Output only. Time invitation was created. This field is read-only. The format is "YYYY-MM-DD HH:MM:SS". Examples: "2018-03-05 09:15:00" or "2018-02-01 14:34:30"'
+        accessRole:
+          x-enumDescriptions:
+          - Not specified.
+          - Used for return value only. Represents value unknown in this version.
+          - Owns its account and can control the addition of other users.
+          - Can modify campaigns, but can't affect other users.
+          - Can view campaigns and account changes, but cannot make edits.
+          - Role for \"email only\" access. Represents an email recipient rather than a true User entity.
+          enum:
+          - UNSPECIFIED
+          - UNKNOWN
+          - ADMIN
+          - STANDARD
+          - READ_ONLY
+          - EMAIL_ONLY
+          description: Immutable. Access role of the user.
+          type: string
+    GoogleAdsGoogleadsV25Services__MutateCustomerUserAccessInvitationResponse:
+      description: Response message for access invitation mutate.
+      type: object
+      properties:
+        result:
+          description: Result for the mutate.
+          $ref: '#/components/schemas/GoogleAdsGoogleadsV25Services__MutateCustomerUserAccessInvitationResult'
+  securitySchemes:
+    oauth2:
+      type: oauth2
+      description: Google OAuth 2.0. Google Ads API additionally requires a developer token in the developer-token header.
+      flows:
+        authorizationCode:
+          authorizationUrl: https://accounts.google.com/o/oauth2/auth
+          tokenUrl: https://oauth2.googleapis.com/token
+          scopes:
+            https://www.googleapis.com/auth/adwords: See, edit, create, and delete your Google Ads accounts and data.
+externalDocs:
+  url: https://developers.google.com/google-ads/api/
+x-source: https://googleads.googleapis.com/$discovery/rest?version=v25
+x-generated-by: API Evangelist enrichment pipeline — mechanical conversion of the first-party Google API Discovery Document

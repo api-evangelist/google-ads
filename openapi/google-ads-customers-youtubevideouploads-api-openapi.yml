@@ -1,0 +1,356 @@
+openapi: 3.2.0
+info:
+  title: Google Ads Customers.you Tube Video Uploads API
+  description: Manage your Google Ads accounts, campaigns, and reports with this API.
+  version: v25
+  x-discovery-revision: '20260721'
+  contact:
+    name: Google
+    url: https://developers.google.com/google-ads/api/
+  termsOfService: https://developers.google.com/terms
+servers:
+- url: https://googleads.googleapis.com
+  description: Google Ads API production server
+security:
+- oauth2:
+  - https://www.googleapis.com/auth/adwords
+tags:
+- name: customers.youTubeVideoUploads
+paths:
+  /v25/customers/{customersId}/youTubeVideoUploads:update:
+    parameters:
+    - name: upload_protocol
+      in: query
+      required: false
+      schema:
+        type: string
+      description: Upload protocol for media (e.g. "raw", "multipart").
+    - name: quotaUser
+      in: query
+      required: false
+      schema:
+        type: string
+      description: Available to use for quota purposes for server-side applications. Can be any arbitrary string assigned to a user, but should not exceed 40 characters.
+    - name: fields
+      in: query
+      required: false
+      schema:
+        type: string
+      description: Selector specifying which fields to include in a partial response.
+    - name: $.xgafv
+      in: query
+      required: false
+      schema:
+        type: string
+        enum:
+        - '1'
+        - '2'
+        x-enumDescriptions:
+        - v1 error format
+        - v2 error format
+      description: V1 error format.
+    - name: callback
+      in: query
+      required: false
+      schema:
+        type: string
+      description: JSONP
+    - name: prettyPrint
+      in: query
+      required: false
+      schema:
+        type: boolean
+        default: 'true'
+      description: Returns response with indentations and line breaks.
+    - name: access_token
+      in: query
+      required: false
+      schema:
+        type: string
+      description: OAuth access token.
+    - name: uploadType
+      in: query
+      required: false
+      schema:
+        type: string
+      description: Legacy upload protocol for media (e.g. "media", "multipart").
+    - name: key
+      in: query
+      required: false
+      schema:
+        type: string
+      description: API key. Your API key identifies your project and provides you with API access, quota, and reports. Required unless you provide an OAuth 2.0 token.
+    - name: oauth_token
+      in: query
+      required: false
+      schema:
+        type: string
+      description: OAuth 2.0 token for the current user.
+    - name: alt
+      in: query
+      required: false
+      schema:
+        x-enumDescriptions:
+        - Responses with Content-Type of application/json
+        - Media download with context-dependent Content-Type
+        - Responses with Content-Type of application/x-protobuf
+        type: string
+        default: json
+        enum:
+        - json
+        - media
+        - proto
+      description: Data format for response.
+    post:
+      operationId: googleads_customers_youTubeVideoUploads_update
+      summary: Updates YouTube video's metadata, but only for videos uploaded using this API.
+      tags:
+      - customers.youTubeVideoUploads
+      description: Updates YouTube video's metadata, but only for videos uploaded using this API.
+      parameters:
+      - name: customerId
+        in: path
+        required: true
+        schema:
+          type: string
+          pattern: ^[^/]+$
+        description: Required. The customer ID requesting the YouTube video upload update. Required.
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/GoogleAdsGoogleadsV25Services__UpdateYouTubeVideoUploadRequest'
+      responses:
+        '200':
+          description: Successful response
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/GoogleAdsGoogleadsV25Services__UpdateYouTubeVideoUploadResponse'
+      security:
+      - oauth2:
+        - https://www.googleapis.com/auth/adwords
+  /v25/customers/{customersId}/youTubeVideoUploads:remove:
+    parameters:
+    - name: upload_protocol
+      in: query
+      required: false
+      schema:
+        type: string
+      description: Upload protocol for media (e.g. "raw", "multipart").
+    - name: quotaUser
+      in: query
+      required: false
+      schema:
+        type: string
+      description: Available to use for quota purposes for server-side applications. Can be any arbitrary string assigned to a user, but should not exceed 40 characters.
+    - name: fields
+      in: query
+      required: false
+      schema:
+        type: string
+      description: Selector specifying which fields to include in a partial response.
+    - name: $.xgafv
+      in: query
+      required: false
+      schema:
+        type: string
+        enum:
+        - '1'
+        - '2'
+        x-enumDescriptions:
+        - v1 error format
+        - v2 error format
+      description: V1 error format.
+    - name: callback
+      in: query
+      required: false
+      schema:
+        type: string
+      description: JSONP
+    - name: prettyPrint
+      in: query
+      required: false
+      schema:
+        type: boolean
+        default: 'true'
+      description: Returns response with indentations and line breaks.
+    - name: access_token
+      in: query
+      required: false
+      schema:
+        type: string
+      description: OAuth access token.
+    - name: uploadType
+      in: query
+      required: false
+      schema:
+        type: string
+      description: Legacy upload protocol for media (e.g. "media", "multipart").
+    - name: key
+      in: query
+      required: false
+      schema:
+        type: string
+      description: API key. Your API key identifies your project and provides you with API access, quota, and reports. Required unless you provide an OAuth 2.0 token.
+    - name: oauth_token
+      in: query
+      required: false
+      schema:
+        type: string
+      description: OAuth 2.0 token for the current user.
+    - name: alt
+      in: query
+      required: false
+      schema:
+        x-enumDescriptions:
+        - Responses with Content-Type of application/json
+        - Media download with context-dependent Content-Type
+        - Responses with Content-Type of application/x-protobuf
+        type: string
+        default: json
+        enum:
+        - json
+        - media
+        - proto
+      description: Data format for response.
+    post:
+      operationId: googleads_customers_youTubeVideoUploads_remove
+      summary: Removes YouTube videos uploaded using this API.
+      tags:
+      - customers.youTubeVideoUploads
+      description: Removes YouTube videos uploaded using this API.
+      parameters:
+      - name: customerId
+        in: path
+        required: true
+        schema:
+          pattern: ^[^/]+$
+          type: string
+        description: Required. The customer ID requesting the YouTube video upload deletion. Required.
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/GoogleAdsGoogleadsV25Services__RemoveYouTubeVideoUploadRequest'
+      responses:
+        '200':
+          description: Successful response
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/GoogleAdsGoogleadsV25Services__RemoveYouTubeVideoUploadResponse'
+      security:
+      - oauth2:
+        - https://www.googleapis.com/auth/adwords
+components:
+  schemas:
+    GoogleAdsGoogleadsV25Services__UpdateYouTubeVideoUploadResponse:
+      description: Response message for YouTubeVideoUploadService.UpdateYouTubeVideoUpload.
+      type: object
+      properties:
+        resourceName:
+          description: The resource name of the successfully updated YouTube video upload.
+          type: string
+    GoogleAdsGoogleadsV25Services__UpdateYouTubeVideoUploadRequest:
+      description: Request message for YouTubeVideoUploadService.UpdateYouTubeVideoUpload.
+      type: object
+      properties:
+        youTubeVideoUpload:
+          $ref: '#/components/schemas/GoogleAdsGoogleadsV25Resources__YouTubeVideoUpload'
+          description: Required. The YouTube video upload resource to be updated. It's expected to have a valid resource name. Required.
+        updateMask:
+          description: Required. FieldMask that determines which resource fields are modified in an update.
+          type: string
+          format: google-fieldmask
+    GoogleAdsGoogleadsV25Services__RemoveYouTubeVideoUploadRequest:
+      description: Request message for YouTubeVideoUploadService.RemoveYouTubeVideoUpload.
+      type: object
+      properties:
+        resourceNames:
+          description: The resource names of the YouTube video uploads to be removed. Required.
+          items:
+            type: string
+          type: array
+    GoogleAdsGoogleadsV25Services__RemoveYouTubeVideoUploadResponse:
+      type: object
+      properties:
+        resourceNames:
+          description: The resource names of the successfully removed YouTube video uploads.
+          items:
+            type: string
+          type: array
+      description: Response message for YouTubeVideoUploadService.RemoveYouTubeVideoUpload.
+    GoogleAdsGoogleadsV25Resources__YouTubeVideoUpload:
+      description: Represents a video upload to YouTube using the Google Ads API.
+      type: object
+      properties:
+        videoUploadId:
+          format: int64
+          description: Output only. The unique ID of the YouTube video upload.
+          type: string
+        state:
+          x-enumDescriptions:
+          - Not specified.
+          - The value is unknown in this version.
+          - The video is currently being uploaded.
+          - The video was uploaded and is being processed.
+          - The video was successfully uploaded and processed.
+          - The video upload or processing did not complete successfully.
+          - The video was not accepted due to validation or policy reasons.
+          - The video upload state is unavailable. It may have been removed from YouTube.
+          type: string
+          description: Output only. The current state of the YouTube video upload.
+          enum:
+          - UNSPECIFIED
+          - UNKNOWN
+          - PENDING
+          - UPLOADED
+          - PROCESSED
+          - FAILED
+          - REJECTED
+          - UNAVAILABLE
+        videoPrivacy:
+          description: The privacy state of the video. Only mutable for videos uploaded to the advertiser owned (brand) YouTube channel. For videos uploaded to the Google-managed channels only UNLISTED privacy is allowed. Defaults to UNLISTED privacy if not specified.
+          type: string
+          x-enumDescriptions:
+          - Not specified.
+          - The value is unknown in this version.
+          - Video is public.
+          - Video is unlisted.
+          enum:
+          - UNSPECIFIED
+          - UNKNOWN
+          - PUBLIC
+          - UNLISTED
+        channelId:
+          type: string
+          description: Immutable. The destination YouTube channel ID for the video upload. Only mutable on YouTube video upload creation. If omitted, the video will be uploaded to the Google-managed YouTube channel associated with the Ads account.
+        videoTitle:
+          description: Input only. Immutable. The title of the video. Only mutable on YouTube video upload creation. Immutable after creation.
+          type: string
+        videoId:
+          description: Output only. The YouTube video ID of the uploaded video.
+          type: string
+        resourceName:
+          type: string
+          description: Immutable. Resource name of the YouTube video upload.
+        videoDescription:
+          type: string
+          description: Input only. Immutable. The description of the video. Only mutable on YouTube video upload creation. Immutable after creation.
+  securitySchemes:
+    oauth2:
+      type: oauth2
+      description: Google OAuth 2.0. Google Ads API additionally requires a developer token in the developer-token header.
+      flows:
+        authorizationCode:
+          authorizationUrl: https://accounts.google.com/o/oauth2/auth
+          tokenUrl: https://oauth2.googleapis.com/token
+          scopes:
+            https://www.googleapis.com/auth/adwords: See, edit, create, and delete your Google Ads accounts and data.
+externalDocs:
+  url: https://developers.google.com/google-ads/api/
+x-source: https://googleads.googleapis.com/$discovery/rest?version=v25
+x-generated-by: API Evangelist enrichment pipeline — mechanical conversion of the first-party Google API Discovery Document
