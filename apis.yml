@@ -3932,6 +3932,8 @@ apis:
   - type: Support
     url: https://developers.google.com/google-ads/api/support
 common:
+- type: Website
+  url: https://www.google.com/
 - type: CapabilityMap
   url: capabilities/google-ads-capability-edges.yml
   name: Google Ads Business Capability Map
@@ -4051,3 +4053,5 @@ x-enrichment:
   status: enriched
   artifacts_added: 38
   pass: local-v1
+x-parent: google
+x-relationship: product

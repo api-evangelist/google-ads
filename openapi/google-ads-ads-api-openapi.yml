@@ -1,4 +1,4 @@
-openapi: 3.1.0
+openapi: 3.2.0
 info:
   title: Google Ad Groups Ads API
   description: 'The Google Ads API is the modern programmatic interface to Google Ads and the
@@ -78,60 +78,90 @@ paths:
                 $ref: '#/components/schemas/GoogleAdsFailure'
 components:
   schemas:
-    AdGroupAdOperation:
+    Ad:
       type: object
+      description: The creative content of an ad.
       properties:
-        create:
-          $ref: '#/components/schemas/AdGroupAd'
-        update:
-          $ref: '#/components/schemas/AdGroupAd'
-        remove:
+        resourceName:
           type: string
-        updateMask:
-          type: string
-    PolicySummary:
-      type: object
-      description: Policy review status and approval information.
-      properties:
-        approvalStatus:
-          type: string
-          enum:
-          - APPROVED
-          - APPROVED_LIMITED
-          - AREA_OF_INTEREST_ONLY
-          - DISAPPROVED
-          - UNKNOWN
-          - UNSPECIFIED
-          description: Overall approval status of the ad.
-        reviewStatus:
-          type: string
-          enum:
-          - REVIEW_IN_PROGRESS
-          - REVIEWED
-          - UNDER_APPEAL
-          - ELIGIBLE_MAY_SERVE
-          - UNKNOWN
-          - UNSPECIFIED
-          description: Current review status of the ad.
-        policyTopicEntries:
+          description: Resource name of the ad.
+        id:
+          type: integer
+          format: int64
+          description: The unique ID of the ad.
+        finalUrls:
           type: array
           items:
-            type: object
-            properties:
-              type:
-                type: string
-                description: The policy topic type.
-              topic:
-                type: string
-                description: The policy topic name.
-    GoogleAdsFailure:
-      type: object
-      description: Error response from the Google Ads API.
-      properties:
-        errors:
+            type: string
+            format: uri
+          description: The list of landing page URLs for the ad.
+        finalMobileUrls:
           type: array
           items:
-            $ref: '#/components/schemas/GoogleAdsError'
+            type: string
+            format: uri
+          description: Landing page URLs for mobile devices.
+        trackingUrlTemplate:
+          type: string
+          description: URL template for tracking clicks.
+        type:
+          type: string
+          enum:
+          - RESPONSIVE_SEARCH_AD
+          - EXPANDED_TEXT_AD
+          - RESPONSIVE_DISPLAY_AD
+          - IMAGE_AD
+          - VIDEO_AD
+          - CALL_AD
+          - APP_AD
+          - SHOPPING_PRODUCT_AD
+          - UNKNOWN
+          - UNSPECIFIED
+          description: The type of ad.
+        responsiveSearchAd:
+          $ref: '#/components/schemas/ResponsiveSearchAdInfo'
+        responsiveDisplayAd:
+          $ref: '#/components/schemas/ResponsiveDisplayAdInfo'
+    GoogleAdsError:
+      type: object
+      properties:
+        errorCode:
+          type: object
+          description: The error code with a specific error enum and value.
+          additionalProperties:
+            type: string
+        message:
+          type: string
+          description: Human-readable error message.
+        trigger:
+          type: object
+          description: The value that triggered the error.
+        location:
+          type: object
+          description: Location of the error in the request.
+          properties:
+            fieldPathElements:
+              type: array
+              items:
+                type: object
+                properties:
+                  fieldName:
+                    type: string
+                  index:
+                    type: integer
+    MutateAdGroupAdsRequest:
+      type: object
+      required:
+      - operations
+      properties:
+        operations:
+          type: array
+          items:
+            $ref: '#/components/schemas/AdGroupAdOperation'
+        partialFailure:
+          type: boolean
+        validateOnly:
+          type: boolean
     AdTextAsset:
       type: object
       description: A text asset used in responsive ads.
@@ -203,63 +233,52 @@ components:
         path2:
           type: string
           description: Second part of the display URL path.
-    MutateAdGroupAdsRequest:
+    AdGroupAdOperation:
       type: object
-      required:
-      - operations
       properties:
-        operations:
-          type: array
-          items:
-            $ref: '#/components/schemas/AdGroupAdOperation'
-        partialFailure:
-          type: boolean
-        validateOnly:
-          type: boolean
-    Ad:
+        create:
+          $ref: '#/components/schemas/AdGroupAd'
+        update:
+          $ref: '#/components/schemas/AdGroupAd'
+        remove:
+          type: string
+        updateMask:
+          type: string
+    PolicySummary:
       type: object
-      description: The creative content of an ad.
+      description: Policy review status and approval information.
       properties:
-        resourceName:
-          type: string
-          description: Resource name of the ad.
-        id:
-          type: integer
-          format: int64
-          description: The unique ID of the ad.
-        finalUrls:
-          type: array
-          items:
-            type: string
-            format: uri
-          description: The list of landing page URLs for the ad.
-        finalMobileUrls:
-          type: array
-          items:
-            type: string
-            format: uri
-          description: Landing page URLs for mobile devices.
-        trackingUrlTemplate:
-          type: string
-          description: URL template for tracking clicks.
-        type:
+        approvalStatus:
           type: string
           enum:
-          - RESPONSIVE_SEARCH_AD
-          - EXPANDED_TEXT_AD
-          - RESPONSIVE_DISPLAY_AD
-          - IMAGE_AD
-          - VIDEO_AD
-          - CALL_AD
-          - APP_AD
-          - SHOPPING_PRODUCT_AD
+          - APPROVED
+          - APPROVED_LIMITED
+          - AREA_OF_INTEREST_ONLY
+          - DISAPPROVED
           - UNKNOWN
           - UNSPECIFIED
-          description: The type of ad.
-        responsiveSearchAd:
-          $ref: '#/components/schemas/ResponsiveSearchAdInfo'
-        responsiveDisplayAd:
-          $ref: '#/components/schemas/ResponsiveDisplayAdInfo'
+          description: Overall approval status of the ad.
+        reviewStatus:
+          type: string
+          enum:
+          - REVIEW_IN_PROGRESS
+          - REVIEWED
+          - UNDER_APPEAL
+          - ELIGIBLE_MAY_SERVE
+          - UNKNOWN
+          - UNSPECIFIED
+          description: Current review status of the ad.
+        policyTopicEntries:
+          type: array
+          items:
+            type: object
+            properties:
+              type:
+                type: string
+                description: The policy topic type.
+              topic:
+                type: string
+                description: The policy topic name.
     ResponsiveDisplayAdInfo:
       type: object
       description: A responsive display ad that automatically adjusts size, appearance, and format.
@@ -277,18 +296,6 @@ components:
         businessName:
           type: string
           description: The advertiser business name.
-    MutateAdGroupAdsResponse:
-      type: object
-      properties:
-        results:
-          type: array
-          items:
-            type: object
-            properties:
-              resourceName:
-                type: string
-        partialFailureError:
-          $ref: '#/components/schemas/Status'
     Status:
       type: object
       description: Standard gRPC status for partial failure errors.
@@ -303,71 +310,26 @@ components:
           type: array
           items:
             type: object
-    GoogleAdsError:
+    GoogleAdsFailure:
+      type: object
+      description: Error response from the Google Ads API.
+      properties:
+        errors:
+          type: array
+          items:
+            $ref: '#/components/schemas/GoogleAdsError'
+    MutateAdGroupAdsResponse:
       type: object
       properties:
-        errorCode:
-          type: object
-          description: The error code with a specific error enum and value.
-          additionalProperties:
-            type: string
-        message:
-          type: string
-          description: Human-readable error message.
-        trigger:
-          type: object
-          description: The value that triggered the error.
-        location:
-          type: object
-          description: Location of the error in the request.
-          properties:
-            fieldPathElements:
-              type: array
-              items:
-                type: object
-                properties:
-                  fieldName:
-                    type: string
-                  index:
-                    type: integer
-  parameters:
-    LoginCustomerIdHeader:
-      name: login-customer-id
-      in: header
-      required: false
-      description: 'The customer ID of the manager account making the request on behalf
-
-        of a client account. Required when authenticating as a manager account.
-
-        '
-      schema:
-        type: string
-    AuthorizationHeader:
-      name: Authorization
-      in: header
-      required: true
-      description: OAuth 2.0 Bearer token for authentication.
-      schema:
-        type: string
-    DeveloperTokenHeader:
-      name: developer-token
-      in: header
-      required: true
-      description: 'Developer token for API access. Obtain from the Google Ads API Center
-
-        in your manager account.
-
-        '
-      schema:
-        type: string
-    CustomerIdPath:
-      name: customerId
-      in: path
-      required: true
-      description: The Google Ads customer ID (without dashes), e.g. 1234567890.
-      schema:
-        type: string
-        pattern: ^\d{10}$
+        results:
+          type: array
+          items:
+            type: object
+            properties:
+              resourceName:
+                type: string
+        partialFailureError:
+          $ref: '#/components/schemas/Status'
   examples:
     CreateResponsiveSearchAdExample:
       summary: Create a responsive search ad
@@ -390,6 +352,44 @@ components:
                 path1: products
                 path2: deals
         partialFailure: false
+  parameters:
+    LoginCustomerIdHeader:
+      name: login-customer-id
+      in: header
+      required: false
+      description: 'The customer ID of the manager account making the request on behalf
+
+        of a client account. Required when authenticating as a manager account.
+
+        '
+      schema:
+        type: string
+    DeveloperTokenHeader:
+      name: developer-token
+      in: header
+      required: true
+      description: 'Developer token for API access. Obtain from the Google Ads API Center
+
+        in your manager account.
+
+        '
+      schema:
+        type: string
+    AuthorizationHeader:
+      name: Authorization
+      in: header
+      required: true
+      description: OAuth 2.0 Bearer token for authentication.
+      schema:
+        type: string
+    CustomerIdPath:
+      name: customerId
+      in: path
+      required: true
+      description: The Google Ads customer ID (without dashes), e.g. 1234567890.
+      schema:
+        type: string
+        pattern: ^\d{10}$
   securitySchemes:
     oauth2Auth:
       type: oauth2
