@@ -1,67 +1,73 @@
-generated: '2026-07-15'
+generated: '2026-09-16'
 method: generated
-source: openapi/google-ads-api-openapi.yml
+source: openapi/google-ads-ad-groups-api-openapi.yml, openapi/google-ads-ads-api-openapi.yml,
+  openapi/google-ads-audience-insights-api-openapi.yml, openapi/google-ads-bidding-strategies-api-openapi.yml,
+  openapi/google-ads-campaigns-api-openapi.yml, openapi/google-ads-customers-accountbudgetproposals-api-openapi.yml,
+  openapi/google-ads-customers-accountlinks-api-openapi.yml, openapi/google-ads-customers-adgroupadlabels-api-openapi.yml,
+  openapi/google-ads-customers-adgroupads-api-openapi.yml, openapi/google-ads-customers-adgroupassets-api-openapi.yml,
+  openapi/google-ads-customers-adgroupassetsets-api-openapi.yml, openapi/google-ads-customers-adgroupbidmodifiers-api-openapi.yml,
+  openapi/google-ads-customers-adgroupcriteria-api-openapi.yml, openapi/google-ads-customers-adgroupcriterioncustomizers-api-openapi.yml,
+  openapi/google-ads-customers-adgroupcriterionlabels-api-openapi.yml, openapi/google-ads-customers-adgroupcustomizers-api-openapi.yml,
+  openapi/google-ads-customers-adgrouplabels-api-openapi.yml, openapi/google-ads-customers-adgroups-api-openapi.yml,
+  openapi/google-ads-customers-adparameters-api-openapi.yml, openapi/google-ads-customers-ads-api-openapi.yml,
+  openapi/google-ads-customers-api-openapi.yml, openapi/google-ads-customers-assetgenerations-api-openapi.yml,
+  openapi/google-ads-customers-assetgroupassets-api-openapi.yml, openapi/google-ads-customers-assetgrouplistinggroupfilters-api-openapi.yml,
+  openapi/google-ads-customers-assetgroups-api-openapi.yml, openapi/google-ads-customers-assetgroupsignals-api-openapi.yml,
+  openapi/google-ads-customers-assets-api-openapi.yml, openapi/google-ads-customers-assetsetassets-api-openapi.yml,
+  openapi/google-ads-customers-assetsets-api-openapi.yml, openapi/google-ads-customers-audiences-api-openapi.yml,
+  openapi/google-ads-customers-batchjobs-api-openapi.yml, openapi/google-ads-customers-biddingdataexclusions-api-openapi.yml,
+  openapi/google-ads-customers-biddingseasonalityadjustments-api-openapi.yml, openapi/google-ads-customers-biddingstrategies-api-openapi.yml,
+  openapi/google-ads-customers-billingsetups-api-openapi.yml, openapi/google-ads-customers-campaignassets-api-openapi.yml,
+  openapi/google-ads-customers-campaignassetsets-api-openapi.yml, openapi/google-ads-customers-campaignbidmodifiers-api-openapi.yml,
+  openapi/google-ads-customers-campaignbudgets-api-openapi.yml, openapi/google-ads-customers-campaignconversiongoals-api-openapi.yml,
+  openapi/google-ads-customers-campaigncriteria-api-openapi.yml, openapi/google-ads-customers-campaigncustomizers-api-openapi.yml,
+  openapi/google-ads-customers-campaigndrafts-api-openapi.yml, openapi/google-ads-customers-campaigngoalconfigs-api-openapi.yml,
+  openapi/google-ads-customers-campaigngroups-api-openapi.yml, openapi/google-ads-customers-campaignlabels-api-openapi.yml,
+  openapi/google-ads-customers-campaigns-api-openapi.yml, openapi/google-ads-customers-campaignsharedsets-api-openapi.yml,
+  openapi/google-ads-customers-conversionactions-api-openapi.yml, openapi/google-ads-customers-conversioncustomvariables-api-openapi.yml,
+  openapi/google-ads-customers-conversiongoalcampaignconfigs-api-openapi.yml, openapi/google-ads-customers-conversionvaluerules-api-openapi.yml,
+  openapi/google-ads-customers-conversionvaluerulesets-api-openapi.yml, openapi/google-ads-customers-customaudiences-api-openapi.yml,
+  openapi/google-ads-customers-customconversiongoals-api-openapi.yml, openapi/google-ads-customers-customerassets-api-openapi.yml,
+  openapi/google-ads-customers-customerassetsets-api-openapi.yml, openapi/google-ads-customers-customerclientlinks-api-openapi.yml,
+  openapi/google-ads-customers-customerconversiongoals-api-openapi.yml, openapi/google-ads-customers-customercustomizers-api-openapi.yml,
+  openapi/google-ads-customers-customerlabels-api-openapi.yml, openapi/google-ads-customers-customermanagerlinks-api-openapi.yml,
+  openapi/google-ads-customers-customernegativecriteria-api-openapi.yml, openapi/google-ads-customers-customerskadnetworkconversionvalueschemas-api-openapi.yml,
+  openapi/google-ads-customers-customeruseraccesses-api-openapi.yml, openapi/google-ads-customers-customeruseraccessinvitations-api-openapi.yml,
+  openapi/google-ads-customers-custominterests-api-openapi.yml, openapi/google-ads-customers-customizerattributes-api-openapi.yml,
+  openapi/google-ads-customers-datalinks-api-openapi.yml, openapi/google-ads-customers-experimentarms-api-openapi.yml,
+  openapi/google-ads-customers-experiments-api-openapi.yml, openapi/google-ads-customers-goals-api-openapi.yml,
+  openapi/google-ads-customers-googleads-api-openapi.yml, openapi/google-ads-customers-incentives-api-openapi.yml,
+  openapi/google-ads-customers-invoices-api-openapi.yml, openapi/google-ads-customers-keywordplanadgroupkeywords-api-openapi.yml,
+  openapi/google-ads-customers-keywordplanadgroups-api-openapi.yml, openapi/google-ads-customers-keywordplancampaignkeywords-api-openapi.yml,
+  openapi/google-ads-customers-keywordplancampaigns-api-openapi.yml, openapi/google-ads-customers-keywordplans-api-openapi.yml,
+  openapi/google-ads-customers-labels-api-openapi.yml, openapi/google-ads-customers-localservices-api-openapi.yml,
+  openapi/google-ads-customers-localservicesleads-api-openapi.yml, openapi/google-ads-customers-multipartyauthreview-api-openapi.yml,
+  openapi/google-ads-customers-offlineuserdatajobs-api-openapi.yml, openapi/google-ads-customers-operations-api-openapi.yml,
+  openapi/google-ads-customers-paymentsaccounts-api-openapi.yml, openapi/google-ads-customers-productlinkinvitations-api-openapi.yml,
+  openapi/google-ads-customers-productlinks-api-openapi.yml, openapi/google-ads-customers-recommendations-api-openapi.yml,
+  openapi/google-ads-customers-recommendationsubscriptions-api-openapi.yml, openapi/google-ads-customers-remarketingactions-api-openapi.yml,
+  openapi/google-ads-customers-reservations-api-openapi.yml, openapi/google-ads-customers-sharedcriteria-api-openapi.yml,
+  openapi/google-ads-customers-sharedsets-api-openapi.yml, openapi/google-ads-customers-smartcampaignsettings-api-openapi.yml,
+  openapi/google-ads-customers-thirdpartyappanalyticslinks-api-openapi.yml, openapi/google-ads-customers-userlistcustomertypes-api-openapi.yml,
+  openapi/google-ads-customers-userlists-api-openapi.yml, openapi/google-ads-customers-youtubevideouploads-api-openapi.yml,
+  openapi/google-ads-geotargetconstants-api-openapi.yml, openapi/google-ads-googleadsfields-api-openapi.yml,
+  openapi/google-ads-incentives-api-openapi.yml, openapi/google-ads-keywords-api-openapi.yml,
+  openapi/google-ads-keywordthemeconstants-api-openapi.yml, openapi/google-ads-media-api-openapi.yml,
+  openapi/google-ads-reporting-api-openapi.yml, openapi/google-ads-v25-api-openapi.yml
 description: Recommended x-agentic-access execution contracts, classified heuristically from
   the OpenAPI. A governance starting point for exposing this API to AI agents — review and bind
   audience per deployment. See research/curity/agentic-governance/.
 summary:
-  operations: 10
+  operations: 184
   by_action_class:
-    acting: 8
-    connected: 2
+    acting: 170
+    connected: 14
   by_consequence:
-    write: 8
-    read: 2
+    write: 168
+    read: 14
+    physical: 2
   human_in_the_loop_required: 0
 operations:
-- path: /v18/customers/{customerId}/googleAds:search
-  method: post
-  operationId: searchGoogleAds
-  x-agentic-access:
-    action-class: acting
-    consequence: write
-    subject: required
-    audience: null
-    token:
-      max-ttl: 900
-    escalation:
-      human-in-the-loop: conditional
-      triggers:
-      - abnormal
-      - high-value
-    audit: required
-- path: /v18/customers/{customerId}/googleAds:searchStream
-  method: post
-  operationId: searchStreamGoogleAds
-  x-agentic-access:
-    action-class: acting
-    consequence: write
-    subject: required
-    audience: null
-    token:
-      max-ttl: 900
-    escalation:
-      human-in-the-loop: conditional
-      triggers:
-      - abnormal
-      - high-value
-    audit: required
-- path: /v18/customers/{customerId}/campaigns:mutate
-  method: post
-  operationId: mutateCampaigns
-  x-agentic-access:
-    action-class: acting
-    consequence: write
-    subject: required
-    audience: null
-    token:
-      max-ttl: 900
-    escalation:
-      human-in-the-loop: conditional
-      triggers:
-      - abnormal
-      - high-value
-    audit: required
 - path: /v18/customers/{customerId}/adGroups:mutate
   method: post
   operationId: mutateAdGroups
@@ -94,9 +100,43 @@ operations:
       - abnormal
       - high-value
     audit: required
-- path: /v18/customers/{customerId}/adGroupCriteria:mutate
+- path: /v25/audienceInsights:listInsightsEligibleDates
   method: post
-  operationId: mutateAdGroupCriteria
+  operationId: googleads_audienceInsights_listInsightsEligibleDates
+  x-agentic-access:
+    action-class: acting
+    consequence: write
+    subject: required
+    scope:
+    - https://www.googleapis.com/auth/adwords
+    audience: null
+    token:
+      max-ttl: 900
+    escalation:
+      human-in-the-loop: conditional
+      triggers:
+      - abnormal
+      - high-value
+    audit: required
+- path: /v18/customers/{customerId}/biddingStrategies:mutate
+  method: post
+  operationId: mutateBiddingStrategies
+  x-agentic-access:
+    action-class: acting
+    consequence: write
+    subject: required
+    audience: null
+    token:
+      max-ttl: 900
+    escalation:
+      human-in-the-loop: conditional
+      triggers:
+      - abnormal
+      - high-value
+    audit: required
+- path: /v18/customers/{customerId}/campaigns:mutate
+  method: post
+  operationId: mutateCampaigns
   x-agentic-access:
     action-class: acting
     consequence: write
@@ -126,13 +166,303 @@ operations:
       - abnormal
       - high-value
     audit: required
-- path: /v18/customers/{customerId}/biddingStrategies:mutate
+- path: /v25/customers/{customersId}/accountBudgetProposals:mutate
   method: post
-  operationId: mutateBiddingStrategies
+  operationId: googleads_customers_accountBudgetProposals_mutate
   x-agentic-access:
     action-class: acting
     consequence: write
     subject: required
+    scope:
+    - https://www.googleapis.com/auth/adwords
+    audience: null
+    token:
+      max-ttl: 900
+    escalation:
+      human-in-the-loop: conditional
+      triggers:
+      - abnormal
+      - high-value
+    audit: required
+- path: /v25/customers/{customersId}/accountLinks:create
+  method: post
+  operationId: googleads_customers_accountLinks_create
+  x-agentic-access:
+    action-class: acting
+    consequence: write
+    subject: required
+    scope:
+    - https://www.googleapis.com/auth/adwords
+    audience: null
+    token:
+      max-ttl: 900
+    escalation:
+      human-in-the-loop: conditional
+      triggers:
+      - abnormal
+      - high-value
+    audit: required
+- path: /v25/customers/{customersId}/accountLinks:mutate
+  method: post
+  operationId: googleads_customers_accountLinks_mutate
+  x-agentic-access:
+    action-class: acting
+    consequence: write
+    subject: required
+    scope:
+    - https://www.googleapis.com/auth/adwords
+    audience: null
+    token:
+      max-ttl: 900
+    escalation:
+      human-in-the-loop: conditional
+      triggers:
+      - abnormal
+      - high-value
+    audit: required
+- path: /v25/customers/{customersId}/adGroupAdLabels:mutate
+  method: post
+  operationId: googleads_customers_adGroupAdLabels_mutate
+  x-agentic-access:
+    action-class: acting
+    consequence: write
+    subject: required
+    scope:
+    - https://www.googleapis.com/auth/adwords
+    audience: null
+    token:
+      max-ttl: 900
+    escalation:
+      human-in-the-loop: conditional
+      triggers:
+      - abnormal
+      - high-value
+    audit: required
+- path: /v25/customers/{customersId}/adGroupAds/{adGroupAdsId}:removeAutomaticallyCreatedAssets
+  method: post
+  operationId: googleads_customers_adGroupAds_removeAutomaticallyCreatedAssets
+  x-agentic-access:
+    action-class: acting
+    consequence: write
+    subject: required
+    scope:
+    - https://www.googleapis.com/auth/adwords
+    audience: null
+    token:
+      max-ttl: 900
+    escalation:
+      human-in-the-loop: conditional
+      triggers:
+      - abnormal
+      - high-value
+    audit: required
+- path: /v25/customers/{customersId}/adGroupAds:mutate
+  method: post
+  operationId: googleads_customers_adGroupAds_mutate
+  x-agentic-access:
+    action-class: acting
+    consequence: write
+    subject: required
+    scope:
+    - https://www.googleapis.com/auth/adwords
+    audience: null
+    token:
+      max-ttl: 900
+    escalation:
+      human-in-the-loop: conditional
+      triggers:
+      - abnormal
+      - high-value
+    audit: required
+- path: /v25/customers/{customersId}/adGroupAssets:mutate
+  method: post
+  operationId: googleads_customers_adGroupAssets_mutate
+  x-agentic-access:
+    action-class: acting
+    consequence: write
+    subject: required
+    scope:
+    - https://www.googleapis.com/auth/adwords
+    audience: null
+    token:
+      max-ttl: 900
+    escalation:
+      human-in-the-loop: conditional
+      triggers:
+      - abnormal
+      - high-value
+    audit: required
+- path: /v25/customers/{customersId}/adGroupAssetSets:mutate
+  method: post
+  operationId: googleads_customers_adGroupAssetSets_mutate
+  x-agentic-access:
+    action-class: acting
+    consequence: write
+    subject: required
+    scope:
+    - https://www.googleapis.com/auth/adwords
+    audience: null
+    token:
+      max-ttl: 900
+    escalation:
+      human-in-the-loop: conditional
+      triggers:
+      - abnormal
+      - high-value
+    audit: required
+- path: /v25/customers/{customersId}/adGroupBidModifiers:mutate
+  method: post
+  operationId: googleads_customers_adGroupBidModifiers_mutate
+  x-agentic-access:
+    action-class: acting
+    consequence: write
+    subject: required
+    scope:
+    - https://www.googleapis.com/auth/adwords
+    audience: null
+    token:
+      max-ttl: 900
+    escalation:
+      human-in-the-loop: conditional
+      triggers:
+      - abnormal
+      - high-value
+    audit: required
+- path: /v25/customers/{customersId}/adGroupCriteria:mutate
+  method: post
+  operationId: googleads_customers_adGroupCriteria_mutate
+  x-agentic-access:
+    action-class: acting
+    consequence: write
+    subject: required
+    scope:
+    - https://www.googleapis.com/auth/adwords
+    audience: null
+    token:
+      max-ttl: 900
+    escalation:
+      human-in-the-loop: conditional
+      triggers:
+      - abnormal
+      - high-value
+    audit: required
+- path: /v25/customers/{customersId}/AdGroupCriterionCustomizers:mutate
+  method: post
+  operationId: googleads_customers_AdGroupCriterionCustomizers_mutate
+  x-agentic-access:
+    action-class: acting
+    consequence: write
+    subject: required
+    scope:
+    - https://www.googleapis.com/auth/adwords
+    audience: null
+    token:
+      max-ttl: 900
+    escalation:
+      human-in-the-loop: conditional
+      triggers:
+      - abnormal
+      - high-value
+    audit: required
+- path: /v25/customers/{customersId}/adGroupCriterionLabels:mutate
+  method: post
+  operationId: googleads_customers_adGroupCriterionLabels_mutate
+  x-agentic-access:
+    action-class: acting
+    consequence: write
+    subject: required
+    scope:
+    - https://www.googleapis.com/auth/adwords
+    audience: null
+    token:
+      max-ttl: 900
+    escalation:
+      human-in-the-loop: conditional
+      triggers:
+      - abnormal
+      - high-value
+    audit: required
+- path: /v25/customers/{customersId}/adGroupCustomizers:mutate
+  method: post
+  operationId: googleads_customers_adGroupCustomizers_mutate
+  x-agentic-access:
+    action-class: acting
+    consequence: write
+    subject: required
+    scope:
+    - https://www.googleapis.com/auth/adwords
+    audience: null
+    token:
+      max-ttl: 900
+    escalation:
+      human-in-the-loop: conditional
+      triggers:
+      - abnormal
+      - high-value
+    audit: required
+- path: /v25/customers/{customersId}/adGroupLabels:mutate
+  method: post
+  operationId: googleads_customers_adGroupLabels_mutate
+  x-agentic-access:
+    action-class: acting
+    consequence: write
+    subject: required
+    scope:
+    - https://www.googleapis.com/auth/adwords
+    audience: null
+    token:
+      max-ttl: 900
+    escalation:
+      human-in-the-loop: conditional
+      triggers:
+      - abnormal
+      - high-value
+    audit: required
+- path: /v25/customers/{customersId}/adGroups:mutate
+  method: post
+  operationId: googleads_customers_adGroups_mutate
+  x-agentic-access:
+    action-class: acting
+    consequence: write
+    subject: required
+    scope:
+    - https://www.googleapis.com/auth/adwords
+    audience: null
+    token:
+      max-ttl: 900
+    escalation:
+      human-in-the-loop: conditional
+      triggers:
+      - abnormal
+      - high-value
+    audit: required
+- path: /v25/customers/{customersId}/adParameters:mutate
+  method: post
+  operationId: googleads_customers_adParameters_mutate
+  x-agentic-access:
+    action-class: acting
+    consequence: write
+    subject: required
+    scope:
+    - https://www.googleapis.com/auth/adwords
+    audience: null
+    token:
+      max-ttl: 900
+    escalation:
+      human-in-the-loop: conditional
+      triggers:
+      - abnormal
+      - high-value
+    audit: required
+- path: /v25/customers/{customersId}/ads:mutate
+  method: post
+  operationId: googleads_customers_ads_mutate
+  x-agentic-access:
+    action-class: acting
+    consequence: write
+    subject: required
+    scope:
+    - https://www.googleapis.com/auth/adwords
     audience: null
     token:
       max-ttl: 900
@@ -162,3 +492,2791 @@ operations:
     token:
       max-ttl: 3600
     audit: none
+- path: /v25/customers/{customersId}:generateShareablePreviews
+  method: post
+  operationId: googleads_customers_generateShareablePreviews
+  x-agentic-access:
+    action-class: acting
+    consequence: write
+    subject: required
+    scope:
+    - https://www.googleapis.com/auth/adwords
+    audience: null
+    token:
+      max-ttl: 900
+    escalation:
+      human-in-the-loop: conditional
+      triggers:
+      - abnormal
+      - high-value
+    audit: required
+- path: /v25/customers:listAccessibleCustomers
+  method: get
+  operationId: googleads_customers_listAccessibleCustomers
+  x-agentic-access:
+    action-class: connected
+    consequence: read
+    subject: optional
+    scope:
+    - https://www.googleapis.com/auth/adwords
+    token:
+      max-ttl: 3600
+    audit: none
+- path: /v25/customers/{customersId}:generateKeywordHistoricalMetrics
+  method: post
+  operationId: googleads_customers_generateKeywordHistoricalMetrics
+  x-agentic-access:
+    action-class: acting
+    consequence: write
+    subject: required
+    scope:
+    - https://www.googleapis.com/auth/adwords
+    audience: null
+    token:
+      max-ttl: 900
+    escalation:
+      human-in-the-loop: conditional
+      triggers:
+      - abnormal
+      - high-value
+    audit: required
+- path: /v25/customers/{customersId}:suggestKeywordThemes
+  method: post
+  operationId: googleads_customers_suggestKeywordThemes
+  x-agentic-access:
+    action-class: acting
+    consequence: write
+    subject: required
+    scope:
+    - https://www.googleapis.com/auth/adwords
+    audience: null
+    token:
+      max-ttl: 900
+    escalation:
+      human-in-the-loop: conditional
+      triggers:
+      - abnormal
+      - high-value
+    audit: required
+- path: /v25/customers/{customersId}:generateAudienceDefinition
+  method: post
+  operationId: googleads_customers_generateAudienceDefinition
+  x-agentic-access:
+    action-class: acting
+    consequence: write
+    subject: required
+    scope:
+    - https://www.googleapis.com/auth/adwords
+    audience: null
+    token:
+      max-ttl: 900
+    escalation:
+      human-in-the-loop: conditional
+      triggers:
+      - abnormal
+      - high-value
+    audit: required
+- path: /v25/customers/{customersId}:generateTrendingInsights
+  method: post
+  operationId: googleads_customers_generateTrendingInsights
+  x-agentic-access:
+    action-class: acting
+    consequence: write
+    subject: required
+    scope:
+    - https://www.googleapis.com/auth/adwords
+    audience: null
+    token:
+      max-ttl: 900
+    escalation:
+      human-in-the-loop: conditional
+      triggers:
+      - abnormal
+      - high-value
+    audit: required
+- path: /v25/customers/{customersId}:generateAudienceOverlapInsights
+  method: post
+  operationId: googleads_customers_generateAudienceOverlapInsights
+  x-agentic-access:
+    action-class: acting
+    consequence: write
+    subject: required
+    scope:
+    - https://www.googleapis.com/auth/adwords
+    audience: null
+    token:
+      max-ttl: 900
+    escalation:
+      human-in-the-loop: conditional
+      triggers:
+      - abnormal
+      - high-value
+    audit: required
+- path: /v25/customers/{customersId}:suggestSmartCampaignBudgetOptions
+  method: post
+  operationId: googleads_customers_suggestSmartCampaignBudgetOptions
+  x-agentic-access:
+    action-class: acting
+    consequence: write
+    subject: required
+    scope:
+    - https://www.googleapis.com/auth/adwords
+    audience: null
+    token:
+      max-ttl: 900
+    escalation:
+      human-in-the-loop: conditional
+      triggers:
+      - abnormal
+      - high-value
+    audit: required
+- path: /v25/customers/{customersId}:generateSuggestedTargetingInsights
+  method: post
+  operationId: googleads_customers_generateSuggestedTargetingInsights
+  x-agentic-access:
+    action-class: acting
+    consequence: write
+    subject: required
+    scope:
+    - https://www.googleapis.com/auth/adwords
+    audience: null
+    token:
+      max-ttl: 900
+    escalation:
+      human-in-the-loop: conditional
+      triggers:
+      - abnormal
+      - high-value
+    audit: required
+- path: /v25/customers/{customersId}:generateKeywordForecastMetrics
+  method: post
+  operationId: googleads_customers_generateKeywordForecastMetrics
+  x-agentic-access:
+    action-class: acting
+    consequence: write
+    subject: required
+    scope:
+    - https://www.googleapis.com/auth/adwords
+    audience: null
+    token:
+      max-ttl: 900
+    escalation:
+      human-in-the-loop: conditional
+      triggers:
+      - abnormal
+      - high-value
+    audit: required
+- path: /v25/customers/{customersId}:generateCreatorInsights
+  method: post
+  operationId: googleads_customers_generateCreatorInsights
+  x-agentic-access:
+    action-class: acting
+    consequence: write
+    subject: required
+    scope:
+    - https://www.googleapis.com/auth/adwords
+    audience: null
+    token:
+      max-ttl: 900
+    escalation:
+      human-in-the-loop: conditional
+      triggers:
+      - abnormal
+      - high-value
+    audit: required
+- path: /v25/customers/{customersId}:uploadClickConversions
+  method: post
+  operationId: googleads_customers_uploadClickConversions
+  x-agentic-access:
+    action-class: acting
+    consequence: write
+    subject: required
+    scope:
+    - https://www.googleapis.com/auth/adwords
+    audience: null
+    token:
+      max-ttl: 900
+    escalation:
+      human-in-the-loop: conditional
+      triggers:
+      - abnormal
+      - high-value
+    audit: required
+- path: /v25/customers/{customersId}:suggestTravelAssets
+  method: post
+  operationId: googleads_customers_suggestTravelAssets
+  x-agentic-access:
+    action-class: acting
+    consequence: write
+    subject: required
+    scope:
+    - https://www.googleapis.com/auth/adwords
+    audience: null
+    token:
+      max-ttl: 900
+    escalation:
+      human-in-the-loop: conditional
+      triggers:
+      - abnormal
+      - high-value
+    audit: required
+- path: /v25/customers/{customersId}:uploadUserData
+  method: post
+  operationId: googleads_customers_uploadUserData
+  x-agentic-access:
+    action-class: acting
+    consequence: write
+    subject: required
+    scope:
+    - https://www.googleapis.com/auth/adwords
+    audience: null
+    token:
+      max-ttl: 900
+    escalation:
+      human-in-the-loop: conditional
+      triggers:
+      - abnormal
+      - high-value
+    audit: required
+- path: /v25/customers/{customersId}:uploadConversionAdjustments
+  method: post
+  operationId: googleads_customers_uploadConversionAdjustments
+  x-agentic-access:
+    action-class: acting
+    consequence: write
+    subject: required
+    scope:
+    - https://www.googleapis.com/auth/adwords
+    audience: null
+    token:
+      max-ttl: 900
+    escalation:
+      human-in-the-loop: conditional
+      triggers:
+      - abnormal
+      - high-value
+    audit: required
+- path: /v25/customers/{customersId}:removeCampaignAutomaticallyCreatedAsset
+  method: post
+  operationId: googleads_customers_removeCampaignAutomaticallyCreatedAsset
+  x-agentic-access:
+    action-class: acting
+    consequence: write
+    subject: required
+    scope:
+    - https://www.googleapis.com/auth/adwords
+    audience: null
+    token:
+      max-ttl: 900
+    escalation:
+      human-in-the-loop: conditional
+      triggers:
+      - abnormal
+      - high-value
+    audit: required
+- path: /v25/customers/{customersId}:generateAudienceCompositionInsights
+  method: post
+  operationId: googleads_customers_generateAudienceCompositionInsights
+  x-agentic-access:
+    action-class: acting
+    consequence: write
+    subject: required
+    scope:
+    - https://www.googleapis.com/auth/adwords
+    audience: null
+    token:
+      max-ttl: 900
+    escalation:
+      human-in-the-loop: conditional
+      triggers:
+      - abnormal
+      - high-value
+    audit: required
+- path: /v25/customers/{customersId}:suggestSmartCampaignAd
+  method: post
+  operationId: googleads_customers_suggestSmartCampaignAd
+  x-agentic-access:
+    action-class: acting
+    consequence: write
+    subject: required
+    scope:
+    - https://www.googleapis.com/auth/adwords
+    audience: null
+    token:
+      max-ttl: 900
+    escalation:
+      human-in-the-loop: conditional
+      triggers:
+      - abnormal
+      - high-value
+    audit: required
+- path: /v25/customers/{customersId}:startIdentityVerification
+  method: post
+  operationId: googleads_customers_startIdentityVerification
+  x-agentic-access:
+    action-class: acting
+    consequence: write
+    subject: required
+    scope:
+    - https://www.googleapis.com/auth/adwords
+    audience: null
+    token:
+      max-ttl: 900
+    escalation:
+      human-in-the-loop: conditional
+      triggers:
+      - abnormal
+      - high-value
+    audit: required
+- path: /v25/customers/{customersId}:generateReachForecast
+  method: post
+  operationId: googleads_customers_generateReachForecast
+  x-agentic-access:
+    action-class: acting
+    consequence: write
+    subject: required
+    scope:
+    - https://www.googleapis.com/auth/adwords
+    audience: null
+    token:
+      max-ttl: 900
+    escalation:
+      human-in-the-loop: conditional
+      triggers:
+      - abnormal
+      - high-value
+    audit: required
+- path: /v25/customers/{customersId}/getIdentityVerification
+  method: get
+  operationId: googleads_customers_getIdentityVerification
+  x-agentic-access:
+    action-class: connected
+    consequence: read
+    subject: optional
+    scope:
+    - https://www.googleapis.com/auth/adwords
+    token:
+      max-ttl: 3600
+    audit: none
+- path: /v25/customers/{customersId}:suggestBrands
+  method: post
+  operationId: googleads_customers_suggestBrands
+  x-agentic-access:
+    action-class: acting
+    consequence: write
+    subject: required
+    scope:
+    - https://www.googleapis.com/auth/adwords
+    audience: null
+    token:
+      max-ttl: 900
+    escalation:
+      human-in-the-loop: conditional
+      triggers:
+      - abnormal
+      - high-value
+    audit: required
+- path: /v25/customers/{customersId}:mutate
+  method: post
+  operationId: googleads_customers_mutate
+  x-agentic-access:
+    action-class: acting
+    consequence: write
+    subject: required
+    scope:
+    - https://www.googleapis.com/auth/adwords
+    audience: null
+    token:
+      max-ttl: 900
+    escalation:
+      human-in-the-loop: conditional
+      triggers:
+      - abnormal
+      - high-value
+    audit: required
+- path: /v25/customers/{customersId}:generateKeywordIdeas
+  method: post
+  operationId: googleads_customers_generateKeywordIdeas
+  x-agentic-access:
+    action-class: acting
+    consequence: write
+    subject: required
+    scope:
+    - https://www.googleapis.com/auth/adwords
+    audience: null
+    token:
+      max-ttl: 900
+    escalation:
+      human-in-the-loop: conditional
+      triggers:
+      - abnormal
+      - high-value
+    audit: required
+- path: /v25/customers/{customersId}:generateInsightsFinderReport
+  method: post
+  operationId: googleads_customers_generateInsightsFinderReport
+  x-agentic-access:
+    action-class: acting
+    consequence: write
+    subject: required
+    scope:
+    - https://www.googleapis.com/auth/adwords
+    audience: null
+    token:
+      max-ttl: 900
+    escalation:
+      human-in-the-loop: conditional
+      triggers:
+      - abnormal
+      - high-value
+    audit: required
+- path: /v25/customers/{customersId}:uploadCallConversions
+  method: post
+  operationId: googleads_customers_uploadCallConversions
+  x-agentic-access:
+    action-class: acting
+    consequence: write
+    subject: required
+    scope:
+    - https://www.googleapis.com/auth/adwords
+    audience: null
+    token:
+      max-ttl: 900
+    escalation:
+      human-in-the-loop: conditional
+      triggers:
+      - abnormal
+      - high-value
+    audit: required
+- path: /v25/customers/{customersId}:generateAdGroupThemes
+  method: post
+  operationId: googleads_customers_generateAdGroupThemes
+  x-agentic-access:
+    action-class: acting
+    consequence: write
+    subject: required
+    scope:
+    - https://www.googleapis.com/auth/adwords
+    audience: null
+    token:
+      max-ttl: 900
+    escalation:
+      human-in-the-loop: conditional
+      triggers:
+      - abnormal
+      - high-value
+    audit: required
+- path: /v25/customers/{customersId}:createCustomerClient
+  method: post
+  operationId: googleads_customers_createCustomerClient
+  x-agentic-access:
+    action-class: acting
+    consequence: write
+    subject: required
+    scope:
+    - https://www.googleapis.com/auth/adwords
+    audience: null
+    token:
+      max-ttl: 900
+    escalation:
+      human-in-the-loop: conditional
+      triggers:
+      - abnormal
+      - high-value
+    audit: required
+- path: /v25/customers/{customersId}:generateBenchmarksMetrics
+  method: post
+  operationId: googleads_customers_generateBenchmarksMetrics
+  x-agentic-access:
+    action-class: acting
+    consequence: write
+    subject: required
+    scope:
+    - https://www.googleapis.com/auth/adwords
+    audience: null
+    token:
+      max-ttl: 900
+    escalation:
+      human-in-the-loop: conditional
+      triggers:
+      - abnormal
+      - high-value
+    audit: required
+- path: /v25/customers/{customersId}:searchAudienceInsightsAttributes
+  method: post
+  operationId: googleads_customers_searchAudienceInsightsAttributes
+  x-agentic-access:
+    action-class: acting
+    consequence: write
+    subject: required
+    scope:
+    - https://www.googleapis.com/auth/adwords
+    audience: null
+    token:
+      max-ttl: 900
+    escalation:
+      human-in-the-loop: conditional
+      triggers:
+      - abnormal
+      - high-value
+    audit: required
+- path: /v25/customers/{customersId}:generateTargetingSuggestionMetrics
+  method: post
+  operationId: googleads_customers_generateTargetingSuggestionMetrics
+  x-agentic-access:
+    action-class: acting
+    consequence: write
+    subject: required
+    scope:
+    - https://www.googleapis.com/auth/adwords
+    audience: null
+    token:
+      max-ttl: 900
+    escalation:
+      human-in-the-loop: conditional
+      triggers:
+      - abnormal
+      - high-value
+    audit: required
+- path: /v25/customers/{customersId}/assetGenerations:generateText
+  method: post
+  operationId: googleads_customers_assetGenerations_generateText
+  x-agentic-access:
+    action-class: acting
+    consequence: write
+    subject: required
+    scope:
+    - https://www.googleapis.com/auth/adwords
+    audience: null
+    token:
+      max-ttl: 900
+    escalation:
+      human-in-the-loop: conditional
+      triggers:
+      - abnormal
+      - high-value
+    audit: required
+- path: /v25/customers/{customersId}/assetGenerations:generateImages
+  method: post
+  operationId: googleads_customers_assetGenerations_generateImages
+  x-agentic-access:
+    action-class: acting
+    consequence: write
+    subject: required
+    scope:
+    - https://www.googleapis.com/auth/adwords
+    audience: null
+    token:
+      max-ttl: 900
+    escalation:
+      human-in-the-loop: conditional
+      triggers:
+      - abnormal
+      - high-value
+    audit: required
+- path: /v25/customers/{customersId}/assetGroupAssets:mutate
+  method: post
+  operationId: googleads_customers_assetGroupAssets_mutate
+  x-agentic-access:
+    action-class: acting
+    consequence: write
+    subject: required
+    scope:
+    - https://www.googleapis.com/auth/adwords
+    audience: null
+    token:
+      max-ttl: 900
+    escalation:
+      human-in-the-loop: conditional
+      triggers:
+      - abnormal
+      - high-value
+    audit: required
+- path: /v25/customers/{customersId}/assetGroupListingGroupFilters:mutate
+  method: post
+  operationId: googleads_customers_assetGroupListingGroupFilters_mutate
+  x-agentic-access:
+    action-class: acting
+    consequence: write
+    subject: required
+    scope:
+    - https://www.googleapis.com/auth/adwords
+    audience: null
+    token:
+      max-ttl: 900
+    escalation:
+      human-in-the-loop: conditional
+      triggers:
+      - abnormal
+      - high-value
+    audit: required
+- path: /v25/customers/{customersId}/assetGroups:mutate
+  method: post
+  operationId: googleads_customers_assetGroups_mutate
+  x-agentic-access:
+    action-class: acting
+    consequence: write
+    subject: required
+    scope:
+    - https://www.googleapis.com/auth/adwords
+    audience: null
+    token:
+      max-ttl: 900
+    escalation:
+      human-in-the-loop: conditional
+      triggers:
+      - abnormal
+      - high-value
+    audit: required
+- path: /v25/customers/{customersId}/assetGroupSignals:mutate
+  method: post
+  operationId: googleads_customers_assetGroupSignals_mutate
+  x-agentic-access:
+    action-class: acting
+    consequence: write
+    subject: required
+    scope:
+    - https://www.googleapis.com/auth/adwords
+    audience: null
+    token:
+      max-ttl: 900
+    escalation:
+      human-in-the-loop: conditional
+      triggers:
+      - abnormal
+      - high-value
+    audit: required
+- path: /v25/customers/{customersId}/assets:mutate
+  method: post
+  operationId: googleads_customers_assets_mutate
+  x-agentic-access:
+    action-class: acting
+    consequence: write
+    subject: required
+    scope:
+    - https://www.googleapis.com/auth/adwords
+    audience: null
+    token:
+      max-ttl: 900
+    escalation:
+      human-in-the-loop: conditional
+      triggers:
+      - abnormal
+      - high-value
+    audit: required
+- path: /v25/customers/{customersId}/assetSetAssets:mutate
+  method: post
+  operationId: googleads_customers_assetSetAssets_mutate
+  x-agentic-access:
+    action-class: acting
+    consequence: write
+    subject: required
+    scope:
+    - https://www.googleapis.com/auth/adwords
+    audience: null
+    token:
+      max-ttl: 900
+    escalation:
+      human-in-the-loop: conditional
+      triggers:
+      - abnormal
+      - high-value
+    audit: required
+- path: /v25/customers/{customersId}/assetSets:mutate
+  method: post
+  operationId: googleads_customers_assetSets_mutate
+  x-agentic-access:
+    action-class: acting
+    consequence: write
+    subject: required
+    scope:
+    - https://www.googleapis.com/auth/adwords
+    audience: null
+    token:
+      max-ttl: 900
+    escalation:
+      human-in-the-loop: conditional
+      triggers:
+      - abnormal
+      - high-value
+    audit: required
+- path: /v25/customers/{customersId}/audiences:mutate
+  method: post
+  operationId: googleads_customers_audiences_mutate
+  x-agentic-access:
+    action-class: acting
+    consequence: write
+    subject: required
+    scope:
+    - https://www.googleapis.com/auth/adwords
+    audience: null
+    token:
+      max-ttl: 900
+    escalation:
+      human-in-the-loop: conditional
+      triggers:
+      - abnormal
+      - high-value
+    audit: required
+- path: /v25/customers/{customersId}/batchJobs/{batchJobsId}:run
+  method: post
+  operationId: googleads_customers_batchJobs_run
+  x-agentic-access:
+    action-class: acting
+    consequence: write
+    subject: required
+    scope:
+    - https://www.googleapis.com/auth/adwords
+    audience: null
+    token:
+      max-ttl: 900
+    escalation:
+      human-in-the-loop: conditional
+      triggers:
+      - abnormal
+      - high-value
+    audit: required
+- path: /v25/customers/{customersId}/batchJobs/{batchJobsId}:addOperations
+  method: post
+  operationId: googleads_customers_batchJobs_addOperations
+  x-agentic-access:
+    action-class: acting
+    consequence: write
+    subject: required
+    scope:
+    - https://www.googleapis.com/auth/adwords
+    audience: null
+    token:
+      max-ttl: 900
+    escalation:
+      human-in-the-loop: conditional
+      triggers:
+      - abnormal
+      - high-value
+    audit: required
+- path: /v25/customers/{customersId}/batchJobs:mutate
+  method: post
+  operationId: googleads_customers_batchJobs_mutate
+  x-agentic-access:
+    action-class: acting
+    consequence: write
+    subject: required
+    scope:
+    - https://www.googleapis.com/auth/adwords
+    audience: null
+    token:
+      max-ttl: 900
+    escalation:
+      human-in-the-loop: conditional
+      triggers:
+      - abnormal
+      - high-value
+    audit: required
+- path: /v25/customers/{customersId}/batchJobs/{batchJobsId}:listResults
+  method: get
+  operationId: googleads_customers_batchJobs_listResults
+  x-agentic-access:
+    action-class: connected
+    consequence: read
+    subject: optional
+    scope:
+    - https://www.googleapis.com/auth/adwords
+    token:
+      max-ttl: 3600
+    audit: none
+- path: /v25/customers/{customersId}/biddingDataExclusions:mutate
+  method: post
+  operationId: googleads_customers_biddingDataExclusions_mutate
+  x-agentic-access:
+    action-class: acting
+    consequence: write
+    subject: required
+    scope:
+    - https://www.googleapis.com/auth/adwords
+    audience: null
+    token:
+      max-ttl: 900
+    escalation:
+      human-in-the-loop: conditional
+      triggers:
+      - abnormal
+      - high-value
+    audit: required
+- path: /v25/customers/{customersId}/biddingSeasonalityAdjustments:mutate
+  method: post
+  operationId: googleads_customers_biddingSeasonalityAdjustments_mutate
+  x-agentic-access:
+    action-class: acting
+    consequence: write
+    subject: required
+    scope:
+    - https://www.googleapis.com/auth/adwords
+    audience: null
+    token:
+      max-ttl: 900
+    escalation:
+      human-in-the-loop: conditional
+      triggers:
+      - abnormal
+      - high-value
+    audit: required
+- path: /v25/customers/{customersId}/biddingStrategies:mutate
+  method: post
+  operationId: googleads_customers_biddingStrategies_mutate
+  x-agentic-access:
+    action-class: acting
+    consequence: write
+    subject: required
+    scope:
+    - https://www.googleapis.com/auth/adwords
+    audience: null
+    token:
+      max-ttl: 900
+    escalation:
+      human-in-the-loop: conditional
+      triggers:
+      - abnormal
+      - high-value
+    audit: required
+- path: /v25/customers/{customersId}/billingSetups:mutate
+  method: post
+  operationId: googleads_customers_billingSetups_mutate
+  x-agentic-access:
+    action-class: acting
+    consequence: write
+    subject: required
+    scope:
+    - https://www.googleapis.com/auth/adwords
+    audience: null
+    token:
+      max-ttl: 900
+    escalation:
+      human-in-the-loop: conditional
+      triggers:
+      - abnormal
+      - high-value
+    audit: required
+- path: /v25/customers/{customersId}/campaignAssets:mutate
+  method: post
+  operationId: googleads_customers_campaignAssets_mutate
+  x-agentic-access:
+    action-class: acting
+    consequence: write
+    subject: required
+    scope:
+    - https://www.googleapis.com/auth/adwords
+    audience: null
+    token:
+      max-ttl: 900
+    escalation:
+      human-in-the-loop: conditional
+      triggers:
+      - abnormal
+      - high-value
+    audit: required
+- path: /v25/customers/{customersId}/campaignAssetSets:mutate
+  method: post
+  operationId: googleads_customers_campaignAssetSets_mutate
+  x-agentic-access:
+    action-class: acting
+    consequence: write
+    subject: required
+    scope:
+    - https://www.googleapis.com/auth/adwords
+    audience: null
+    token:
+      max-ttl: 900
+    escalation:
+      human-in-the-loop: conditional
+      triggers:
+      - abnormal
+      - high-value
+    audit: required
+- path: /v25/customers/{customersId}/campaignBidModifiers:mutate
+  method: post
+  operationId: googleads_customers_campaignBidModifiers_mutate
+  x-agentic-access:
+    action-class: acting
+    consequence: write
+    subject: required
+    scope:
+    - https://www.googleapis.com/auth/adwords
+    audience: null
+    token:
+      max-ttl: 900
+    escalation:
+      human-in-the-loop: conditional
+      triggers:
+      - abnormal
+      - high-value
+    audit: required
+- path: /v25/customers/{customersId}/campaignBudgets:mutate
+  method: post
+  operationId: googleads_customers_campaignBudgets_mutate
+  x-agentic-access:
+    action-class: acting
+    consequence: write
+    subject: required
+    scope:
+    - https://www.googleapis.com/auth/adwords
+    audience: null
+    token:
+      max-ttl: 900
+    escalation:
+      human-in-the-loop: conditional
+      triggers:
+      - abnormal
+      - high-value
+    audit: required
+- path: /v25/customers/{customersId}/campaignConversionGoals:mutate
+  method: post
+  operationId: googleads_customers_campaignConversionGoals_mutate
+  x-agentic-access:
+    action-class: acting
+    consequence: write
+    subject: required
+    scope:
+    - https://www.googleapis.com/auth/adwords
+    audience: null
+    token:
+      max-ttl: 900
+    escalation:
+      human-in-the-loop: conditional
+      triggers:
+      - abnormal
+      - high-value
+    audit: required
+- path: /v25/customers/{customersId}/campaignCriteria:mutate
+  method: post
+  operationId: googleads_customers_campaignCriteria_mutate
+  x-agentic-access:
+    action-class: acting
+    consequence: write
+    subject: required
+    scope:
+    - https://www.googleapis.com/auth/adwords
+    audience: null
+    token:
+      max-ttl: 900
+    escalation:
+      human-in-the-loop: conditional
+      triggers:
+      - abnormal
+      - high-value
+    audit: required
+- path: /v25/customers/{customersId}/campaignCustomizers:mutate
+  method: post
+  operationId: googleads_customers_campaignCustomizers_mutate
+  x-agentic-access:
+    action-class: acting
+    consequence: write
+    subject: required
+    scope:
+    - https://www.googleapis.com/auth/adwords
+    audience: null
+    token:
+      max-ttl: 900
+    escalation:
+      human-in-the-loop: conditional
+      triggers:
+      - abnormal
+      - high-value
+    audit: required
+- path: /v25/customers/{customersId}/campaignDrafts/{campaignDraftsId}:promote
+  method: post
+  operationId: googleads_customers_campaignDrafts_promote
+  x-agentic-access:
+    action-class: acting
+    consequence: write
+    subject: required
+    scope:
+    - https://www.googleapis.com/auth/adwords
+    audience: null
+    token:
+      max-ttl: 900
+    escalation:
+      human-in-the-loop: conditional
+      triggers:
+      - abnormal
+      - high-value
+    audit: required
+- path: /v25/customers/{customersId}/campaignDrafts/{campaignDraftsId}:listAsyncErrors
+  method: get
+  operationId: googleads_customers_campaignDrafts_listAsyncErrors
+  x-agentic-access:
+    action-class: connected
+    consequence: read
+    subject: optional
+    scope:
+    - https://www.googleapis.com/auth/adwords
+    token:
+      max-ttl: 3600
+    audit: none
+- path: /v25/customers/{customersId}/campaignDrafts:mutate
+  method: post
+  operationId: googleads_customers_campaignDrafts_mutate
+  x-agentic-access:
+    action-class: acting
+    consequence: write
+    subject: required
+    scope:
+    - https://www.googleapis.com/auth/adwords
+    audience: null
+    token:
+      max-ttl: 900
+    escalation:
+      human-in-the-loop: conditional
+      triggers:
+      - abnormal
+      - high-value
+    audit: required
+- path: /v25/customers/{customersId}/CampaignGoalConfigs:mutate
+  method: post
+  operationId: googleads_customers_CampaignGoalConfigs_mutate
+  x-agentic-access:
+    action-class: acting
+    consequence: write
+    subject: required
+    scope:
+    - https://www.googleapis.com/auth/adwords
+    audience: null
+    token:
+      max-ttl: 900
+    escalation:
+      human-in-the-loop: conditional
+      triggers:
+      - abnormal
+      - high-value
+    audit: required
+- path: /v25/customers/{customersId}/campaignGroups:mutate
+  method: post
+  operationId: googleads_customers_campaignGroups_mutate
+  x-agentic-access:
+    action-class: acting
+    consequence: write
+    subject: required
+    scope:
+    - https://www.googleapis.com/auth/adwords
+    audience: null
+    token:
+      max-ttl: 900
+    escalation:
+      human-in-the-loop: conditional
+      triggers:
+      - abnormal
+      - high-value
+    audit: required
+- path: /v25/customers/{customersId}/campaignLabels:mutate
+  method: post
+  operationId: googleads_customers_campaignLabels_mutate
+  x-agentic-access:
+    action-class: acting
+    consequence: physical
+    subject: required
+    scope:
+    - https://www.googleapis.com/auth/adwords
+    audience: null
+    token:
+      max-ttl: 300
+      exchange: true
+      purpose-required: true
+    escalation:
+      human-in-the-loop: conditional
+      triggers:
+      - abnormal
+      - high-value
+    audit: required
+- path: /v25/customers/{customersId}/campaigns:enablePMaxBrandGuidelines
+  method: post
+  operationId: googleads_customers_campaigns_enablePMaxBrandGuidelines
+  x-agentic-access:
+    action-class: acting
+    consequence: write
+    subject: required
+    scope:
+    - https://www.googleapis.com/auth/adwords
+    audience: null
+    token:
+      max-ttl: 900
+    escalation:
+      human-in-the-loop: conditional
+      triggers:
+      - abnormal
+      - high-value
+    audit: required
+- path: /v25/customers/{customersId}/campaigns:mutate
+  method: post
+  operationId: googleads_customers_campaigns_mutate
+  x-agentic-access:
+    action-class: acting
+    consequence: write
+    subject: required
+    scope:
+    - https://www.googleapis.com/auth/adwords
+    audience: null
+    token:
+      max-ttl: 900
+    escalation:
+      human-in-the-loop: conditional
+      triggers:
+      - abnormal
+      - high-value
+    audit: required
+- path: /v25/customers/{customersId}/campaignSharedSets:mutate
+  method: post
+  operationId: googleads_customers_campaignSharedSets_mutate
+  x-agentic-access:
+    action-class: acting
+    consequence: write
+    subject: required
+    scope:
+    - https://www.googleapis.com/auth/adwords
+    audience: null
+    token:
+      max-ttl: 900
+    escalation:
+      human-in-the-loop: conditional
+      triggers:
+      - abnormal
+      - high-value
+    audit: required
+- path: /v25/customers/{customersId}/conversionActions:mutate
+  method: post
+  operationId: googleads_customers_conversionActions_mutate
+  x-agentic-access:
+    action-class: acting
+    consequence: write
+    subject: required
+    scope:
+    - https://www.googleapis.com/auth/adwords
+    audience: null
+    token:
+      max-ttl: 900
+    escalation:
+      human-in-the-loop: conditional
+      triggers:
+      - abnormal
+      - high-value
+    audit: required
+- path: /v25/customers/{customersId}/conversionCustomVariables:mutate
+  method: post
+  operationId: googleads_customers_conversionCustomVariables_mutate
+  x-agentic-access:
+    action-class: acting
+    consequence: write
+    subject: required
+    scope:
+    - https://www.googleapis.com/auth/adwords
+    audience: null
+    token:
+      max-ttl: 900
+    escalation:
+      human-in-the-loop: conditional
+      triggers:
+      - abnormal
+      - high-value
+    audit: required
+- path: /v25/customers/{customersId}/conversionGoalCampaignConfigs:mutate
+  method: post
+  operationId: googleads_customers_conversionGoalCampaignConfigs_mutate
+  x-agentic-access:
+    action-class: acting
+    consequence: write
+    subject: required
+    scope:
+    - https://www.googleapis.com/auth/adwords
+    audience: null
+    token:
+      max-ttl: 900
+    escalation:
+      human-in-the-loop: conditional
+      triggers:
+      - abnormal
+      - high-value
+    audit: required
+- path: /v25/customers/{customersId}/conversionValueRules:mutate
+  method: post
+  operationId: googleads_customers_conversionValueRules_mutate
+  x-agentic-access:
+    action-class: acting
+    consequence: write
+    subject: required
+    scope:
+    - https://www.googleapis.com/auth/adwords
+    audience: null
+    token:
+      max-ttl: 900
+    escalation:
+      human-in-the-loop: conditional
+      triggers:
+      - abnormal
+      - high-value
+    audit: required
+- path: /v25/customers/{customersId}/conversionValueRuleSets:mutate
+  method: post
+  operationId: googleads_customers_conversionValueRuleSets_mutate
+  x-agentic-access:
+    action-class: acting
+    consequence: write
+    subject: required
+    scope:
+    - https://www.googleapis.com/auth/adwords
+    audience: null
+    token:
+      max-ttl: 900
+    escalation:
+      human-in-the-loop: conditional
+      triggers:
+      - abnormal
+      - high-value
+    audit: required
+- path: /v25/customers/{customersId}/customAudiences:mutate
+  method: post
+  operationId: googleads_customers_customAudiences_mutate
+  x-agentic-access:
+    action-class: acting
+    consequence: write
+    subject: required
+    scope:
+    - https://www.googleapis.com/auth/adwords
+    audience: null
+    token:
+      max-ttl: 900
+    escalation:
+      human-in-the-loop: conditional
+      triggers:
+      - abnormal
+      - high-value
+    audit: required
+- path: /v25/customers/{customersId}/customConversionGoals:mutate
+  method: post
+  operationId: googleads_customers_customConversionGoals_mutate
+  x-agentic-access:
+    action-class: acting
+    consequence: write
+    subject: required
+    scope:
+    - https://www.googleapis.com/auth/adwords
+    audience: null
+    token:
+      max-ttl: 900
+    escalation:
+      human-in-the-loop: conditional
+      triggers:
+      - abnormal
+      - high-value
+    audit: required
+- path: /v25/customers/{customersId}/customerAssets:mutate
+  method: post
+  operationId: googleads_customers_customerAssets_mutate
+  x-agentic-access:
+    action-class: acting
+    consequence: write
+    subject: required
+    scope:
+    - https://www.googleapis.com/auth/adwords
+    audience: null
+    token:
+      max-ttl: 900
+    escalation:
+      human-in-the-loop: conditional
+      triggers:
+      - abnormal
+      - high-value
+    audit: required
+- path: /v25/customers/{customersId}/customerAssetSets:mutate
+  method: post
+  operationId: googleads_customers_customerAssetSets_mutate
+  x-agentic-access:
+    action-class: acting
+    consequence: write
+    subject: required
+    scope:
+    - https://www.googleapis.com/auth/adwords
+    audience: null
+    token:
+      max-ttl: 900
+    escalation:
+      human-in-the-loop: conditional
+      triggers:
+      - abnormal
+      - high-value
+    audit: required
+- path: /v25/customers/{customersId}/customerClientLinks:mutate
+  method: post
+  operationId: googleads_customers_customerClientLinks_mutate
+  x-agentic-access:
+    action-class: acting
+    consequence: write
+    subject: required
+    scope:
+    - https://www.googleapis.com/auth/adwords
+    audience: null
+    token:
+      max-ttl: 900
+    escalation:
+      human-in-the-loop: conditional
+      triggers:
+      - abnormal
+      - high-value
+    audit: required
+- path: /v25/customers/{customersId}/customerConversionGoals:mutate
+  method: post
+  operationId: googleads_customers_customerConversionGoals_mutate
+  x-agentic-access:
+    action-class: acting
+    consequence: write
+    subject: required
+    scope:
+    - https://www.googleapis.com/auth/adwords
+    audience: null
+    token:
+      max-ttl: 900
+    escalation:
+      human-in-the-loop: conditional
+      triggers:
+      - abnormal
+      - high-value
+    audit: required
+- path: /v25/customers/{customersId}/CustomerCustomizers:mutate
+  method: post
+  operationId: googleads_customers_CustomerCustomizers_mutate
+  x-agentic-access:
+    action-class: acting
+    consequence: write
+    subject: required
+    scope:
+    - https://www.googleapis.com/auth/adwords
+    audience: null
+    token:
+      max-ttl: 900
+    escalation:
+      human-in-the-loop: conditional
+      triggers:
+      - abnormal
+      - high-value
+    audit: required
+- path: /v25/customers/{customersId}/customerLabels:mutate
+  method: post
+  operationId: googleads_customers_customerLabels_mutate
+  x-agentic-access:
+    action-class: acting
+    consequence: physical
+    subject: required
+    scope:
+    - https://www.googleapis.com/auth/adwords
+    audience: null
+    token:
+      max-ttl: 300
+      exchange: true
+      purpose-required: true
+    escalation:
+      human-in-the-loop: conditional
+      triggers:
+      - abnormal
+      - high-value
+    audit: required
+- path: /v25/customers/{customersId}/customerManagerLinks:moveManagerLink
+  method: post
+  operationId: googleads_customers_customerManagerLinks_moveManagerLink
+  x-agentic-access:
+    action-class: acting
+    consequence: write
+    subject: required
+    scope:
+    - https://www.googleapis.com/auth/adwords
+    audience: null
+    token:
+      max-ttl: 900
+    escalation:
+      human-in-the-loop: conditional
+      triggers:
+      - abnormal
+      - high-value
+    audit: required
+- path: /v25/customers/{customersId}/customerManagerLinks:mutate
+  method: post
+  operationId: googleads_customers_customerManagerLinks_mutate
+  x-agentic-access:
+    action-class: acting
+    consequence: write
+    subject: required
+    scope:
+    - https://www.googleapis.com/auth/adwords
+    audience: null
+    token:
+      max-ttl: 900
+    escalation:
+      human-in-the-loop: conditional
+      triggers:
+      - abnormal
+      - high-value
+    audit: required
+- path: /v25/customers/{customersId}/customerNegativeCriteria:mutate
+  method: post
+  operationId: googleads_customers_customerNegativeCriteria_mutate
+  x-agentic-access:
+    action-class: acting
+    consequence: write
+    subject: required
+    scope:
+    - https://www.googleapis.com/auth/adwords
+    audience: null
+    token:
+      max-ttl: 900
+    escalation:
+      human-in-the-loop: conditional
+      triggers:
+      - abnormal
+      - high-value
+    audit: required
+- path: /v25/customers/{customersId}/customerSkAdNetworkConversionValueSchemas:mutate
+  method: post
+  operationId: googleads_customers_customerSkAdNetworkConversionValueSchemas_mutate
+  x-agentic-access:
+    action-class: acting
+    consequence: write
+    subject: required
+    scope:
+    - https://www.googleapis.com/auth/adwords
+    audience: null
+    token:
+      max-ttl: 900
+    escalation:
+      human-in-the-loop: conditional
+      triggers:
+      - abnormal
+      - high-value
+    audit: required
+- path: /v25/customers/{customersId}/customerUserAccesses:mutate
+  method: post
+  operationId: googleads_customers_customerUserAccesses_mutate
+  x-agentic-access:
+    action-class: acting
+    consequence: write
+    subject: required
+    scope:
+    - https://www.googleapis.com/auth/adwords
+    audience: null
+    token:
+      max-ttl: 900
+    escalation:
+      human-in-the-loop: conditional
+      triggers:
+      - abnormal
+      - high-value
+    audit: required
+- path: /v25/customers/{customersId}/customerUserAccessInvitations:mutate
+  method: post
+  operationId: googleads_customers_customerUserAccessInvitations_mutate
+  x-agentic-access:
+    action-class: acting
+    consequence: write
+    subject: required
+    scope:
+    - https://www.googleapis.com/auth/adwords
+    audience: null
+    token:
+      max-ttl: 900
+    escalation:
+      human-in-the-loop: conditional
+      triggers:
+      - abnormal
+      - high-value
+    audit: required
+- path: /v25/customers/{customersId}/customInterests:mutate
+  method: post
+  operationId: googleads_customers_customInterests_mutate
+  x-agentic-access:
+    action-class: acting
+    consequence: write
+    subject: required
+    scope:
+    - https://www.googleapis.com/auth/adwords
+    audience: null
+    token:
+      max-ttl: 900
+    escalation:
+      human-in-the-loop: conditional
+      triggers:
+      - abnormal
+      - high-value
+    audit: required
+- path: /v25/customers/{customersId}/customizerAttributes:mutate
+  method: post
+  operationId: googleads_customers_customizerAttributes_mutate
+  x-agentic-access:
+    action-class: acting
+    consequence: write
+    subject: required
+    scope:
+    - https://www.googleapis.com/auth/adwords
+    audience: null
+    token:
+      max-ttl: 900
+    escalation:
+      human-in-the-loop: conditional
+      triggers:
+      - abnormal
+      - high-value
+    audit: required
+- path: /v25/customers/{customersId}/dataLinks:update
+  method: post
+  operationId: googleads_customers_dataLinks_update
+  x-agentic-access:
+    action-class: acting
+    consequence: write
+    subject: required
+    scope:
+    - https://www.googleapis.com/auth/adwords
+    audience: null
+    token:
+      max-ttl: 900
+    escalation:
+      human-in-the-loop: conditional
+      triggers:
+      - abnormal
+      - high-value
+    audit: required
+- path: /v25/customers/{customersId}/dataLinks:create
+  method: post
+  operationId: googleads_customers_dataLinks_create
+  x-agentic-access:
+    action-class: acting
+    consequence: write
+    subject: required
+    scope:
+    - https://www.googleapis.com/auth/adwords
+    audience: null
+    token:
+      max-ttl: 900
+    escalation:
+      human-in-the-loop: conditional
+      triggers:
+      - abnormal
+      - high-value
+    audit: required
+- path: /v25/customers/{customersId}/dataLinks:remove
+  method: post
+  operationId: googleads_customers_dataLinks_remove
+  x-agentic-access:
+    action-class: acting
+    consequence: write
+    subject: required
+    scope:
+    - https://www.googleapis.com/auth/adwords
+    audience: null
+    token:
+      max-ttl: 900
+    escalation:
+      human-in-the-loop: conditional
+      triggers:
+      - abnormal
+      - high-value
+    audit: required
+- path: /v25/customers/{customersId}/experimentArms:mutate
+  method: post
+  operationId: googleads_customers_experimentArms_mutate
+  x-agentic-access:
+    action-class: acting
+    consequence: write
+    subject: required
+    scope:
+    - https://www.googleapis.com/auth/adwords
+    audience: null
+    token:
+      max-ttl: 900
+    escalation:
+      human-in-the-loop: conditional
+      triggers:
+      - abnormal
+      - high-value
+    audit: required
+- path: /v25/customers/{customersId}/experiments/{experimentsId}:scheduleExperiment
+  method: post
+  operationId: googleads_customers_experiments_scheduleExperiment
+  x-agentic-access:
+    action-class: acting
+    consequence: write
+    subject: required
+    scope:
+    - https://www.googleapis.com/auth/adwords
+    audience: null
+    token:
+      max-ttl: 900
+    escalation:
+      human-in-the-loop: conditional
+      triggers:
+      - abnormal
+      - high-value
+    audit: required
+- path: /v25/customers/{customersId}/experiments/{experimentsId}:graduateExperiment
+  method: post
+  operationId: googleads_customers_experiments_graduateExperiment
+  x-agentic-access:
+    action-class: acting
+    consequence: write
+    subject: required
+    scope:
+    - https://www.googleapis.com/auth/adwords
+    audience: null
+    token:
+      max-ttl: 900
+    escalation:
+      human-in-the-loop: conditional
+      triggers:
+      - abnormal
+      - high-value
+    audit: required
+- path: /v25/customers/{customersId}/experiments/{experimentsId}:promoteExperiment
+  method: post
+  operationId: googleads_customers_experiments_promoteExperiment
+  x-agentic-access:
+    action-class: acting
+    consequence: write
+    subject: required
+    scope:
+    - https://www.googleapis.com/auth/adwords
+    audience: null
+    token:
+      max-ttl: 900
+    escalation:
+      human-in-the-loop: conditional
+      triggers:
+      - abnormal
+      - high-value
+    audit: required
+- path: /v25/customers/{customersId}/experiments:mutate
+  method: post
+  operationId: googleads_customers_experiments_mutate
+  x-agentic-access:
+    action-class: acting
+    consequence: write
+    subject: required
+    scope:
+    - https://www.googleapis.com/auth/adwords
+    audience: null
+    token:
+      max-ttl: 900
+    escalation:
+      human-in-the-loop: conditional
+      triggers:
+      - abnormal
+      - high-value
+    audit: required
+- path: /v25/customers/{customersId}/experiments/{experimentsId}:endExperiment
+  method: post
+  operationId: googleads_customers_experiments_endExperiment
+  x-agentic-access:
+    action-class: acting
+    consequence: write
+    subject: required
+    scope:
+    - https://www.googleapis.com/auth/adwords
+    audience: null
+    token:
+      max-ttl: 900
+    escalation:
+      human-in-the-loop: conditional
+      triggers:
+      - abnormal
+      - high-value
+    audit: required
+- path: /v25/customers/{customersId}/experiments/{experimentsId}:listExperimentAsyncErrors
+  method: get
+  operationId: googleads_customers_experiments_listExperimentAsyncErrors
+  x-agentic-access:
+    action-class: connected
+    consequence: read
+    subject: optional
+    scope:
+    - https://www.googleapis.com/auth/adwords
+    token:
+      max-ttl: 3600
+    audit: none
+- path: /v25/customers/{customersId}/Goals:mutate
+  method: post
+  operationId: googleads_customers_Goals_mutate
+  x-agentic-access:
+    action-class: acting
+    consequence: write
+    subject: required
+    scope:
+    - https://www.googleapis.com/auth/adwords
+    audience: null
+    token:
+      max-ttl: 900
+    escalation:
+      human-in-the-loop: conditional
+      triggers:
+      - abnormal
+      - high-value
+    audit: required
+- path: /v25/customers/{customersId}/googleAds:mutate
+  method: post
+  operationId: googleads_customers_googleAds_mutate
+  x-agentic-access:
+    action-class: acting
+    consequence: write
+    subject: required
+    scope:
+    - https://www.googleapis.com/auth/adwords
+    audience: null
+    token:
+      max-ttl: 900
+    escalation:
+      human-in-the-loop: conditional
+      triggers:
+      - abnormal
+      - high-value
+    audit: required
+- path: /v25/customers/{customersId}/googleAds:search
+  method: post
+  operationId: googleads_customers_googleAds_search
+  x-agentic-access:
+    action-class: acting
+    consequence: write
+    subject: required
+    scope:
+    - https://www.googleapis.com/auth/adwords
+    audience: null
+    token:
+      max-ttl: 900
+    escalation:
+      human-in-the-loop: conditional
+      triggers:
+      - abnormal
+      - high-value
+    audit: required
+- path: /v25/customers/{customersId}/googleAds:searchStream
+  method: post
+  operationId: googleads_customers_googleAds_searchStream
+  x-agentic-access:
+    action-class: acting
+    consequence: write
+    subject: required
+    scope:
+    - https://www.googleapis.com/auth/adwords
+    audience: null
+    token:
+      max-ttl: 900
+    escalation:
+      human-in-the-loop: conditional
+      triggers:
+      - abnormal
+      - high-value
+    audit: required
+- path: /v25/customers/{customersId}/incentives/{incentivesId}:applyIncentive
+  method: post
+  operationId: googleads_customers_incentives_applyIncentive
+  x-agentic-access:
+    action-class: acting
+    consequence: write
+    subject: required
+    scope:
+    - https://www.googleapis.com/auth/adwords
+    audience: null
+    token:
+      max-ttl: 900
+    escalation:
+      human-in-the-loop: conditional
+      triggers:
+      - abnormal
+      - high-value
+    audit: required
+- path: /v25/customers/{customersId}/invoices
+  method: get
+  operationId: googleads_customers_invoices_list
+  x-agentic-access:
+    action-class: connected
+    consequence: read
+    subject: optional
+    scope:
+    - https://www.googleapis.com/auth/adwords
+    token:
+      max-ttl: 3600
+    audit: none
+- path: /v25/customers/{customersId}/keywordPlanAdGroupKeywords:mutate
+  method: post
+  operationId: googleads_customers_keywordPlanAdGroupKeywords_mutate
+  x-agentic-access:
+    action-class: acting
+    consequence: write
+    subject: required
+    scope:
+    - https://www.googleapis.com/auth/adwords
+    audience: null
+    token:
+      max-ttl: 900
+    escalation:
+      human-in-the-loop: conditional
+      triggers:
+      - abnormal
+      - high-value
+    audit: required
+- path: /v25/customers/{customersId}/keywordPlanAdGroups:mutate
+  method: post
+  operationId: googleads_customers_keywordPlanAdGroups_mutate
+  x-agentic-access:
+    action-class: acting
+    consequence: write
+    subject: required
+    scope:
+    - https://www.googleapis.com/auth/adwords
+    audience: null
+    token:
+      max-ttl: 900
+    escalation:
+      human-in-the-loop: conditional
+      triggers:
+      - abnormal
+      - high-value
+    audit: required
+- path: /v25/customers/{customersId}/keywordPlanCampaignKeywords:mutate
+  method: post
+  operationId: googleads_customers_keywordPlanCampaignKeywords_mutate
+  x-agentic-access:
+    action-class: acting
+    consequence: write
+    subject: required
+    scope:
+    - https://www.googleapis.com/auth/adwords
+    audience: null
+    token:
+      max-ttl: 900
+    escalation:
+      human-in-the-loop: conditional
+      triggers:
+      - abnormal
+      - high-value
+    audit: required
+- path: /v25/customers/{customersId}/keywordPlanCampaigns:mutate
+  method: post
+  operationId: googleads_customers_keywordPlanCampaigns_mutate
+  x-agentic-access:
+    action-class: acting
+    consequence: write
+    subject: required
+    scope:
+    - https://www.googleapis.com/auth/adwords
+    audience: null
+    token:
+      max-ttl: 900
+    escalation:
+      human-in-the-loop: conditional
+      triggers:
+      - abnormal
+      - high-value
+    audit: required
+- path: /v25/customers/{customersId}/keywordPlans:mutate
+  method: post
+  operationId: googleads_customers_keywordPlans_mutate
+  x-agentic-access:
+    action-class: acting
+    consequence: write
+    subject: required
+    scope:
+    - https://www.googleapis.com/auth/adwords
+    audience: null
+    token:
+      max-ttl: 900
+    escalation:
+      human-in-the-loop: conditional
+      triggers:
+      - abnormal
+      - high-value
+    audit: required
+- path: /v25/customers/{customersId}/labels:mutate
+  method: post
+  operationId: googleads_customers_labels_mutate
+  x-agentic-access:
+    action-class: acting
+    consequence: write
+    subject: required
+    scope:
+    - https://www.googleapis.com/auth/adwords
+    audience: null
+    token:
+      max-ttl: 900
+    escalation:
+      human-in-the-loop: conditional
+      triggers:
+      - abnormal
+      - high-value
+    audit: required
+- path: /v25/customers/{customersId}/localServices:appendLeadConversation
+  method: post
+  operationId: googleads_customers_localServices_appendLeadConversation
+  x-agentic-access:
+    action-class: acting
+    consequence: write
+    subject: required
+    scope:
+    - https://www.googleapis.com/auth/adwords
+    audience: null
+    token:
+      max-ttl: 900
+    escalation:
+      human-in-the-loop: conditional
+      triggers:
+      - abnormal
+      - high-value
+    audit: required
+- path: /v25/customers/{customersId}/localServicesLeads/{localServicesLeadsId}:provideLeadFeedback
+  method: post
+  operationId: googleads_customers_localServicesLeads_provideLeadFeedback
+  x-agentic-access:
+    action-class: acting
+    consequence: write
+    subject: required
+    scope:
+    - https://www.googleapis.com/auth/adwords
+    audience: null
+    token:
+      max-ttl: 900
+    escalation:
+      human-in-the-loop: conditional
+      triggers:
+      - abnormal
+      - high-value
+    audit: required
+- path: /v25/customers/{customersId}/multiPartyAuthReview:resolve
+  method: post
+  operationId: googleads_customers_multiPartyAuthReview_resolve
+  x-agentic-access:
+    action-class: acting
+    consequence: write
+    subject: required
+    scope:
+    - https://www.googleapis.com/auth/adwords
+    audience: null
+    token:
+      max-ttl: 900
+    escalation:
+      human-in-the-loop: conditional
+      triggers:
+      - abnormal
+      - high-value
+    audit: required
+- path: /v25/customers/{customersId}/offlineUserDataJobs:create
+  method: post
+  operationId: googleads_customers_offlineUserDataJobs_create
+  x-agentic-access:
+    action-class: acting
+    consequence: write
+    subject: required
+    scope:
+    - https://www.googleapis.com/auth/adwords
+    audience: null
+    token:
+      max-ttl: 900
+    escalation:
+      human-in-the-loop: conditional
+      triggers:
+      - abnormal
+      - high-value
+    audit: required
+- path: /v25/customers/{customersId}/offlineUserDataJobs/{offlineUserDataJobsId}:addOperations
+  method: post
+  operationId: googleads_customers_offlineUserDataJobs_addOperations
+  x-agentic-access:
+    action-class: acting
+    consequence: write
+    subject: required
+    scope:
+    - https://www.googleapis.com/auth/adwords
+    audience: null
+    token:
+      max-ttl: 900
+    escalation:
+      human-in-the-loop: conditional
+      triggers:
+      - abnormal
+      - high-value
+    audit: required
+- path: /v25/customers/{customersId}/offlineUserDataJobs/{offlineUserDataJobsId}:run
+  method: post
+  operationId: googleads_customers_offlineUserDataJobs_run
+  x-agentic-access:
+    action-class: acting
+    consequence: write
+    subject: required
+    scope:
+    - https://www.googleapis.com/auth/adwords
+    audience: null
+    token:
+      max-ttl: 900
+    escalation:
+      human-in-the-loop: conditional
+      triggers:
+      - abnormal
+      - high-value
+    audit: required
+- path: /v25/customers/{customersId}/operations/{operationsId}
+  method: get
+  operationId: googleads_customers_operations_get
+  x-agentic-access:
+    action-class: connected
+    consequence: read
+    subject: optional
+    scope:
+    - https://www.googleapis.com/auth/adwords
+    token:
+      max-ttl: 3600
+    audit: none
+- path: /v25/customers/{customersId}/operations/{operationsId}
+  method: delete
+  operationId: googleads_customers_operations_delete
+  x-agentic-access:
+    action-class: acting
+    consequence: write
+    subject: required
+    scope:
+    - https://www.googleapis.com/auth/adwords
+    audience: null
+    token:
+      max-ttl: 900
+    escalation:
+      human-in-the-loop: conditional
+      triggers:
+      - abnormal
+      - high-value
+    audit: required
+- path: /v25/customers/{customersId}/operations
+  method: get
+  operationId: googleads_customers_operations_list
+  x-agentic-access:
+    action-class: connected
+    consequence: read
+    subject: optional
+    scope:
+    - https://www.googleapis.com/auth/adwords
+    token:
+      max-ttl: 3600
+    audit: none
+- path: /v25/customers/{customersId}/operations/{operationsId}:cancel
+  method: post
+  operationId: googleads_customers_operations_cancel
+  x-agentic-access:
+    action-class: acting
+    consequence: write
+    subject: required
+    scope:
+    - https://www.googleapis.com/auth/adwords
+    audience: null
+    token:
+      max-ttl: 900
+    escalation:
+      human-in-the-loop: conditional
+      triggers:
+      - abnormal
+      - high-value
+    audit: required
+- path: /v25/customers/{customersId}/operations/{operationsId}:wait
+  method: post
+  operationId: googleads_customers_operations_wait
+  x-agentic-access:
+    action-class: acting
+    consequence: write
+    subject: required
+    scope:
+    - https://www.googleapis.com/auth/adwords
+    audience: null
+    token:
+      max-ttl: 900
+    escalation:
+      human-in-the-loop: conditional
+      triggers:
+      - abnormal
+      - high-value
+    audit: required
+- path: /v25/customers/{customersId}/paymentsAccounts
+  method: get
+  operationId: googleads_customers_paymentsAccounts_list
+  x-agentic-access:
+    action-class: connected
+    consequence: read
+    subject: optional
+    scope:
+    - https://www.googleapis.com/auth/adwords
+    token:
+      max-ttl: 3600
+    audit: none
+- path: /v25/customers/{customersId}/productLinkInvitations:remove
+  method: post
+  operationId: googleads_customers_productLinkInvitations_remove
+  x-agentic-access:
+    action-class: acting
+    consequence: write
+    subject: required
+    scope:
+    - https://www.googleapis.com/auth/adwords
+    audience: null
+    token:
+      max-ttl: 900
+    escalation:
+      human-in-the-loop: conditional
+      triggers:
+      - abnormal
+      - high-value
+    audit: required
+- path: /v25/customers/{customersId}/productLinkInvitations:update
+  method: post
+  operationId: googleads_customers_productLinkInvitations_update
+  x-agentic-access:
+    action-class: acting
+    consequence: write
+    subject: required
+    scope:
+    - https://www.googleapis.com/auth/adwords
+    audience: null
+    token:
+      max-ttl: 900
+    escalation:
+      human-in-the-loop: conditional
+      triggers:
+      - abnormal
+      - high-value
+    audit: required
+- path: /v25/customers/{customersId}/productLinkInvitations:create
+  method: post
+  operationId: googleads_customers_productLinkInvitations_create
+  x-agentic-access:
+    action-class: acting
+    consequence: write
+    subject: required
+    scope:
+    - https://www.googleapis.com/auth/adwords
+    audience: null
+    token:
+      max-ttl: 900
+    escalation:
+      human-in-the-loop: conditional
+      triggers:
+      - abnormal
+      - high-value
+    audit: required
+- path: /v25/customers/{customersId}/productLinks:create
+  method: post
+  operationId: googleads_customers_productLinks_create
+  x-agentic-access:
+    action-class: acting
+    consequence: write
+    subject: required
+    scope:
+    - https://www.googleapis.com/auth/adwords
+    audience: null
+    token:
+      max-ttl: 900
+    escalation:
+      human-in-the-loop: conditional
+      triggers:
+      - abnormal
+      - high-value
+    audit: required
+- path: /v25/customers/{customersId}/productLinks:remove
+  method: post
+  operationId: googleads_customers_productLinks_remove
+  x-agentic-access:
+    action-class: acting
+    consequence: write
+    subject: required
+    scope:
+    - https://www.googleapis.com/auth/adwords
+    audience: null
+    token:
+      max-ttl: 900
+    escalation:
+      human-in-the-loop: conditional
+      triggers:
+      - abnormal
+      - high-value
+    audit: required
+- path: /v25/customers/{customersId}/recommendations:apply
+  method: post
+  operationId: googleads_customers_recommendations_apply
+  x-agentic-access:
+    action-class: acting
+    consequence: write
+    subject: required
+    scope:
+    - https://www.googleapis.com/auth/adwords
+    audience: null
+    token:
+      max-ttl: 900
+    escalation:
+      human-in-the-loop: conditional
+      triggers:
+      - abnormal
+      - high-value
+    audit: required
+- path: /v25/customers/{customersId}/recommendations:generate
+  method: post
+  operationId: googleads_customers_recommendations_generate
+  x-agentic-access:
+    action-class: acting
+    consequence: write
+    subject: required
+    scope:
+    - https://www.googleapis.com/auth/adwords
+    audience: null
+    token:
+      max-ttl: 900
+    escalation:
+      human-in-the-loop: conditional
+      triggers:
+      - abnormal
+      - high-value
+    audit: required
+- path: /v25/customers/{customersId}/recommendations:dismiss
+  method: post
+  operationId: googleads_customers_recommendations_dismiss
+  x-agentic-access:
+    action-class: acting
+    consequence: write
+    subject: required
+    scope:
+    - https://www.googleapis.com/auth/adwords
+    audience: null
+    token:
+      max-ttl: 900
+    escalation:
+      human-in-the-loop: conditional
+      triggers:
+      - abnormal
+      - high-value
+    audit: required
+- path: /v25/customers/{customersId}/recommendationSubscriptions:mutateRecommendationSubscription
+  method: post
+  operationId: googleads_customers_recommendationSubscriptions_mutateRecommendationSubscription
+  x-agentic-access:
+    action-class: acting
+    consequence: write
+    subject: required
+    scope:
+    - https://www.googleapis.com/auth/adwords
+    audience: null
+    token:
+      max-ttl: 900
+    escalation:
+      human-in-the-loop: conditional
+      triggers:
+      - abnormal
+      - high-value
+    audit: required
+- path: /v25/customers/{customersId}/remarketingActions:mutate
+  method: post
+  operationId: googleads_customers_remarketingActions_mutate
+  x-agentic-access:
+    action-class: acting
+    consequence: write
+    subject: required
+    scope:
+    - https://www.googleapis.com/auth/adwords
+    audience: null
+    token:
+      max-ttl: 900
+    escalation:
+      human-in-the-loop: conditional
+      triggers:
+      - abnormal
+      - high-value
+    audit: required
+- path: /v25/customers/{customersId}/reservations:quoteCampaigns
+  method: post
+  operationId: googleads_customers_reservations_quoteCampaigns
+  x-agentic-access:
+    action-class: acting
+    consequence: write
+    subject: required
+    scope:
+    - https://www.googleapis.com/auth/adwords
+    audience: null
+    token:
+      max-ttl: 900
+    escalation:
+      human-in-the-loop: conditional
+      triggers:
+      - abnormal
+      - high-value
+    audit: required
+- path: /v25/customers/{customersId}/reservations:bookCampaigns
+  method: post
+  operationId: googleads_customers_reservations_bookCampaigns
+  x-agentic-access:
+    action-class: acting
+    consequence: write
+    subject: required
+    scope:
+    - https://www.googleapis.com/auth/adwords
+    audience: null
+    token:
+      max-ttl: 900
+    escalation:
+      human-in-the-loop: conditional
+      triggers:
+      - abnormal
+      - high-value
+    audit: required
+- path: /v25/customers/{customersId}/sharedCriteria:mutate
+  method: post
+  operationId: googleads_customers_sharedCriteria_mutate
+  x-agentic-access:
+    action-class: acting
+    consequence: write
+    subject: required
+    scope:
+    - https://www.googleapis.com/auth/adwords
+    audience: null
+    token:
+      max-ttl: 900
+    escalation:
+      human-in-the-loop: conditional
+      triggers:
+      - abnormal
+      - high-value
+    audit: required
+- path: /v25/customers/{customersId}/sharedSets:mutate
+  method: post
+  operationId: googleads_customers_sharedSets_mutate
+  x-agentic-access:
+    action-class: acting
+    consequence: write
+    subject: required
+    scope:
+    - https://www.googleapis.com/auth/adwords
+    audience: null
+    token:
+      max-ttl: 900
+    escalation:
+      human-in-the-loop: conditional
+      triggers:
+      - abnormal
+      - high-value
+    audit: required
+- path: /v25/customers/{customersId}/smartCampaignSettings/{smartCampaignSettingsId}:getSmartCampaignStatus
+  method: get
+  operationId: googleads_customers_smartCampaignSettings_getSmartCampaignStatus
+  x-agentic-access:
+    action-class: connected
+    consequence: read
+    subject: optional
+    scope:
+    - https://www.googleapis.com/auth/adwords
+    token:
+      max-ttl: 3600
+    audit: none
+- path: /v25/customers/{customersId}/smartCampaignSettings:mutate
+  method: post
+  operationId: googleads_customers_smartCampaignSettings_mutate
+  x-agentic-access:
+    action-class: acting
+    consequence: write
+    subject: required
+    scope:
+    - https://www.googleapis.com/auth/adwords
+    audience: null
+    token:
+      max-ttl: 900
+    escalation:
+      human-in-the-loop: conditional
+      triggers:
+      - abnormal
+      - high-value
+    audit: required
+- path: /v25/customers/{customersId}/thirdPartyAppAnalyticsLinks/{thirdPartyAppAnalyticsLinksId}:regenerateShareableLinkId
+  method: post
+  operationId: googleads_customers_thirdPartyAppAnalyticsLinks_regenerateShareableLinkId
+  x-agentic-access:
+    action-class: acting
+    consequence: write
+    subject: required
+    scope:
+    - https://www.googleapis.com/auth/adwords
+    audience: null
+    token:
+      max-ttl: 900
+    escalation:
+      human-in-the-loop: conditional
+      triggers:
+      - abnormal
+      - high-value
+    audit: required
+- path: /v25/customers/{customersId}/userListCustomerTypes:mutate
+  method: post
+  operationId: googleads_customers_userListCustomerTypes_mutate
+  x-agentic-access:
+    action-class: acting
+    consequence: write
+    subject: required
+    scope:
+    - https://www.googleapis.com/auth/adwords
+    audience: null
+    token:
+      max-ttl: 900
+    escalation:
+      human-in-the-loop: conditional
+      triggers:
+      - abnormal
+      - high-value
+    audit: required
+- path: /v25/customers/{customersId}/userLists:mutate
+  method: post
+  operationId: googleads_customers_userLists_mutate
+  x-agentic-access:
+    action-class: acting
+    consequence: write
+    subject: required
+    scope:
+    - https://www.googleapis.com/auth/adwords
+    audience: null
+    token:
+      max-ttl: 900
+    escalation:
+      human-in-the-loop: conditional
+      triggers:
+      - abnormal
+      - high-value
+    audit: required
+- path: /v25/customers/{customersId}/youTubeVideoUploads:update
+  method: post
+  operationId: googleads_customers_youTubeVideoUploads_update
+  x-agentic-access:
+    action-class: acting
+    consequence: write
+    subject: required
+    scope:
+    - https://www.googleapis.com/auth/adwords
+    audience: null
+    token:
+      max-ttl: 900
+    escalation:
+      human-in-the-loop: conditional
+      triggers:
+      - abnormal
+      - high-value
+    audit: required
+- path: /v25/customers/{customersId}/youTubeVideoUploads:remove
+  method: post
+  operationId: googleads_customers_youTubeVideoUploads_remove
+  x-agentic-access:
+    action-class: acting
+    consequence: write
+    subject: required
+    scope:
+    - https://www.googleapis.com/auth/adwords
+    audience: null
+    token:
+      max-ttl: 900
+    escalation:
+      human-in-the-loop: conditional
+      triggers:
+      - abnormal
+      - high-value
+    audit: required
+- path: /v25/geoTargetConstants:suggest
+  method: post
+  operationId: googleads_geoTargetConstants_suggest
+  x-agentic-access:
+    action-class: acting
+    consequence: write
+    subject: required
+    scope:
+    - https://www.googleapis.com/auth/adwords
+    audience: null
+    token:
+      max-ttl: 900
+    escalation:
+      human-in-the-loop: conditional
+      triggers:
+      - abnormal
+      - high-value
+    audit: required
+- path: /v25/googleAdsFields/{googleAdsFieldsId}
+  method: get
+  operationId: googleads_googleAdsFields_get
+  x-agentic-access:
+    action-class: connected
+    consequence: read
+    subject: optional
+    scope:
+    - https://www.googleapis.com/auth/adwords
+    token:
+      max-ttl: 3600
+    audit: none
+- path: /v25/googleAdsFields:search
+  method: post
+  operationId: googleads_googleAdsFields_search
+  x-agentic-access:
+    action-class: acting
+    consequence: write
+    subject: required
+    scope:
+    - https://www.googleapis.com/auth/adwords
+    audience: null
+    token:
+      max-ttl: 900
+    escalation:
+      human-in-the-loop: conditional
+      triggers:
+      - abnormal
+      - high-value
+    audit: required
+- path: /v25/incentives:fetchIncentive
+  method: get
+  operationId: googleads_incentives_fetchIncentive
+  x-agentic-access:
+    action-class: connected
+    consequence: read
+    subject: optional
+    scope:
+    - https://www.googleapis.com/auth/adwords
+    token:
+      max-ttl: 3600
+    audit: none
+- path: /v18/customers/{customerId}/adGroupCriteria:mutate
+  method: post
+  operationId: mutateAdGroupCriteria
+  x-agentic-access:
+    action-class: acting
+    consequence: write
+    subject: required
+    audience: null
+    token:
+      max-ttl: 900
+    escalation:
+      human-in-the-loop: conditional
+      triggers:
+      - abnormal
+      - high-value
+    audit: required
+- path: /v25/keywordThemeConstants:suggest
+  method: post
+  operationId: googleads_keywordThemeConstants_suggest
+  x-agentic-access:
+    action-class: acting
+    consequence: write
+    subject: required
+    scope:
+    - https://www.googleapis.com/auth/adwords
+    audience: null
+    token:
+      max-ttl: 900
+    escalation:
+      human-in-the-loop: conditional
+      triggers:
+      - abnormal
+      - high-value
+    audit: required
+- path: /v25/customers/{customersId}/youTubeVideoUploads:create
+  method: post
+  operationId: googleads_media_upload
+  x-agentic-access:
+    action-class: acting
+    consequence: write
+    subject: required
+    scope:
+    - https://www.googleapis.com/auth/adwords
+    audience: null
+    token:
+      max-ttl: 900
+    escalation:
+      human-in-the-loop: conditional
+      triggers:
+      - abnormal
+      - high-value
+    audit: required
+- path: /v18/customers/{customerId}/googleAds:search
+  method: post
+  operationId: searchGoogleAds
+  x-agentic-access:
+    action-class: acting
+    consequence: write
+    subject: required
+    audience: null
+    token:
+      max-ttl: 900
+    escalation:
+      human-in-the-loop: conditional
+      triggers:
+      - abnormal
+      - high-value
+    audit: required
+- path: /v18/customers/{customerId}/googleAds:searchStream
+  method: post
+  operationId: searchStreamGoogleAds
+  x-agentic-access:
+    action-class: acting
+    consequence: write
+    subject: required
+    audience: null
+    token:
+      max-ttl: 900
+    escalation:
+      human-in-the-loop: conditional
+      triggers:
+      - abnormal
+      - high-value
+    audit: required
+- path: /v25:listBenchmarksLocations
+  method: post
+  operationId: googleads_listBenchmarksLocations
+  x-agentic-access:
+    action-class: acting
+    consequence: write
+    subject: required
+    scope:
+    - https://www.googleapis.com/auth/adwords
+    audience: null
+    token:
+      max-ttl: 900
+    escalation:
+      human-in-the-loop: conditional
+      triggers:
+      - abnormal
+      - high-value
+    audit: required
+- path: /v25:listPlannableProducts
+  method: post
+  operationId: googleads_listPlannableProducts
+  x-agentic-access:
+    action-class: acting
+    consequence: write
+    subject: required
+    scope:
+    - https://www.googleapis.com/auth/adwords
+    audience: null
+    token:
+      max-ttl: 900
+    escalation:
+      human-in-the-loop: conditional
+      triggers:
+      - abnormal
+      - high-value
+    audit: required
+- path: /v25:generateConversionRates
+  method: post
+  operationId: googleads_generateConversionRates
+  x-agentic-access:
+    action-class: acting
+    consequence: write
+    subject: required
+    scope:
+    - https://www.googleapis.com/auth/adwords
+    audience: null
+    token:
+      max-ttl: 900
+    escalation:
+      human-in-the-loop: conditional
+      triggers:
+      - abnormal
+      - high-value
+    audit: required
+- path: /v25:listBenchmarksAvailableDates
+  method: post
+  operationId: googleads_listBenchmarksAvailableDates
+  x-agentic-access:
+    action-class: acting
+    consequence: write
+    subject: required
+    scope:
+    - https://www.googleapis.com/auth/adwords
+    audience: null
+    token:
+      max-ttl: 900
+    escalation:
+      human-in-the-loop: conditional
+      triggers:
+      - abnormal
+      - high-value
+    audit: required
+- path: /v25:listPlannableUserLists
+  method: post
+  operationId: googleads_listPlannableUserLists
+  x-agentic-access:
+    action-class: acting
+    consequence: write
+    subject: required
+    scope:
+    - https://www.googleapis.com/auth/adwords
+    audience: null
+    token:
+      max-ttl: 900
+    escalation:
+      human-in-the-loop: conditional
+      triggers:
+      - abnormal
+      - high-value
+    audit: required
+- path: /v25:listPlannableUserInterests
+  method: post
+  operationId: googleads_listPlannableUserInterests
+  x-agentic-access:
+    action-class: acting
+    consequence: write
+    subject: required
+    scope:
+    - https://www.googleapis.com/auth/adwords
+    audience: null
+    token:
+      max-ttl: 900
+    escalation:
+      human-in-the-loop: conditional
+      triggers:
+      - abnormal
+      - high-value
+    audit: required
+- path: /v25:listBenchmarksProducts
+  method: post
+  operationId: googleads_listBenchmarksProducts
+  x-agentic-access:
+    action-class: acting
+    consequence: write
+    subject: required
+    scope:
+    - https://www.googleapis.com/auth/adwords
+    audience: null
+    token:
+      max-ttl: 900
+    escalation:
+      human-in-the-loop: conditional
+      triggers:
+      - abnormal
+      - high-value
+    audit: required
+- path: /v25:listPlannableLocations
+  method: post
+  operationId: googleads_listPlannableLocations
+  x-agentic-access:
+    action-class: acting
+    consequence: write
+    subject: required
+    scope:
+    - https://www.googleapis.com/auth/adwords
+    audience: null
+    token:
+      max-ttl: 900
+    escalation:
+      human-in-the-loop: conditional
+      triggers:
+      - abnormal
+      - high-value
+    audit: required
+- path: /v25:listBenchmarksSources
+  method: post
+  operationId: googleads_listBenchmarksSources
+  x-agentic-access:
+    action-class: acting
+    consequence: write
+    subject: required
+    scope:
+    - https://www.googleapis.com/auth/adwords
+    audience: null
+    token:
+      max-ttl: 900
+    escalation:
+      human-in-the-loop: conditional
+      triggers:
+      - abnormal
+      - high-value
+    audit: required
