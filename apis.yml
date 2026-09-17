@@ -41,6 +41,7 @@ tags:
 - Google
 - Marketing
 - PPC
+- Google Ads
 apis:
 - aid: google-ads:google-ads-scripts
   name: Google Ads Scripts
