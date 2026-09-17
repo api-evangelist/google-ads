@@ -44,9 +44,10 @@ tags:
 apis:
 - aid: google-ads:google-ads-scripts
   name: Google Ads Scripts
-  description: JavaScript-based scripting interface for programmatically managing and querying Google
-    Ads data directly in a browser-based IDE. Scripts enable automated changes to campaigns, ad groups,
-    and reporting without requiring a full API integration.
+  description: >-
+    JavaScript-based scripting interface for programmatically managing and querying Google Ads data directly
+    in a browser-based IDE. Scripts enable automated changes to campaigns, ad groups, and reporting without
+    requiring a full API integration.
   image: https://www.gstatic.com/images/branding/product/1x/google_ads_64dp.png
   humanURL: https://developers.google.com/google-ads/scripts/docs/start
   baseURL: https://googleads.googleapis.com
@@ -314,45 +315,10 @@ apis:
     url: https://developers.google.com/google-ads/api/docs/first-call/overview
   - type: GraphQL
     url: graphql/google-ads-graphql.md
-- aid: google-ads:google-ads-audienceinsights-api
-  name: Google Ads Audience Insights API
-  description: The audienceInsights API from Google Ads — 1 operation(s) for audienceinsights.
-  humanURL: https://developers.google.com/google-ads/scripts/docs/start
-  baseURL: https://googleads.googleapis.com
-  tags:
-  - Audience Insights
-  tags_raw:
-  - audienceInsights
-  properties:
-  - type: OpenAPI
-    url: openapi/google-ads-audienceinsights-api-openapi.yml
-  - type: Discovery
-    url: discovery/google-ads-api-v25-discovery.json
-  - type: Protobuf
-    url: grpc/google-ads-google-ads-service.proto
-  - type: DataModel
-    url: data-model/google-ads-data-model.yml
-  - type: Documentation
-    url: https://developers.google.com/google-ads/api/docs/start
-  - type: APIReference
-    url: https://developers.google.com/google-ads/api/reference/rpc/latest/overview
-  - type: Authentication
-    url: https://developers.google.com/google-ads/api/docs/oauth/overview
-  - type: GettingStarted
-    url: https://developers.google.com/google-ads/api/docs/first-call/overview
-  - type: RateLimits
-    url: https://developers.google.com/google-ads/api/docs/best-practices/quotas
-  - type: ChangeLog
-    url: https://developers.google.com/google-ads/api/docs/release-notes
-  - type: Deprecation
-    url: https://developers.google.com/google-ads/api/docs/sunset-dates
-  - type: SDKs
-    url: https://developers.google.com/google-ads/api/docs/client-libs
-  - type: Support
-    url: https://developers.google.com/google-ads/api/support
 - aid: google-ads:google-ads-customers-accountbudgetproposals-api
   name: Google Ads Customers.account Budget Proposals API
-  description: The customers.accountBudgetProposals API from Google Ads — 1 operation(s) for customers.accountbudgetproposals.
+  description: >-
+    The customers.accountBudgetProposals API from Google Ads — 1 operation(s) for customers.accountbudgetproposals.
   humanURL: https://developers.google.com/google-ads/scripts/docs/start
   baseURL: https://googleads.googleapis.com
   tags: []
@@ -387,7 +353,8 @@ apis:
     url: https://developers.google.com/google-ads/api/support
 - aid: google-ads:google-ads-customers-accountlinks-api
   name: Google Ads Customers.account Links API
-  description: The customers.accountLinks API from Google Ads — 2 operation(s) for customers.accountlinks.
+  description: >-
+    The customers.accountLinks API from Google Ads — 2 operation(s) for customers.accountlinks.
   humanURL: https://developers.google.com/google-ads/scripts/docs/start
   baseURL: https://googleads.googleapis.com
   tags: []
@@ -422,7 +389,8 @@ apis:
     url: https://developers.google.com/google-ads/api/support
 - aid: google-ads:google-ads-customers-adgroupadlabels-api
   name: Google Ads Customers.ad Group Ad Labels API
-  description: The customers.adGroupAdLabels API from Google Ads — 1 operation(s) for customers.adgroupadlabels.
+  description: >-
+    The customers.adGroupAdLabels API from Google Ads — 1 operation(s) for customers.adgroupadlabels.
   humanURL: https://developers.google.com/google-ads/scripts/docs/start
   baseURL: https://googleads.googleapis.com
   tags: []
@@ -492,7 +460,8 @@ apis:
     url: https://developers.google.com/google-ads/api/support
 - aid: google-ads:google-ads-customers-adgroupassets-api
   name: Google Ads Customers.ad Group Assets API
-  description: The customers.adGroupAssets API from Google Ads — 1 operation(s) for customers.adgroupassets.
+  description: >-
+    The customers.adGroupAssets API from Google Ads — 1 operation(s) for customers.adgroupassets.
   humanURL: https://developers.google.com/google-ads/scripts/docs/start
   baseURL: https://googleads.googleapis.com
   tags: []
@@ -527,7 +496,8 @@ apis:
     url: https://developers.google.com/google-ads/api/support
 - aid: google-ads:google-ads-customers-adgroupassetsets-api
   name: Google Ads Customers.ad Group Asset Sets API
-  description: The customers.adGroupAssetSets API from Google Ads — 1 operation(s) for customers.adgroupassetsets.
+  description: >-
+    The customers.adGroupAssetSets API from Google Ads — 1 operation(s) for customers.adgroupassetsets.
   humanURL: https://developers.google.com/google-ads/scripts/docs/start
   baseURL: https://googleads.googleapis.com
   tags: []
@@ -562,7 +532,8 @@ apis:
     url: https://developers.google.com/google-ads/api/support
 - aid: google-ads:google-ads-customers-adgroupbidmodifiers-api
   name: Google Ads Customers.ad Group Bid Modifiers API
-  description: The customers.adGroupBidModifiers API from Google Ads — 1 operation(s) for customers.adgroupbidmodifiers.
+  description: >-
+    The customers.adGroupBidModifiers API from Google Ads — 1 operation(s) for customers.adgroupbidmodifiers.
   humanURL: https://developers.google.com/google-ads/scripts/docs/start
   baseURL: https://googleads.googleapis.com
   tags: []
@@ -597,7 +568,8 @@ apis:
     url: https://developers.google.com/google-ads/api/support
 - aid: google-ads:google-ads-customers-adgroupcriteria-api
   name: Google Ads Customers.ad Group Criteria API
-  description: The customers.adGroupCriteria API from Google Ads — 1 operation(s) for customers.adgroupcriteria.
+  description: >-
+    The customers.adGroupCriteria API from Google Ads — 1 operation(s) for customers.adgroupcriteria.
   humanURL: https://developers.google.com/google-ads/scripts/docs/start
   baseURL: https://googleads.googleapis.com
   tags: []
@@ -632,7 +604,8 @@ apis:
     url: https://developers.google.com/google-ads/api/support
 - aid: google-ads:google-ads-customers-adgroupcriterioncustomizers-api
   name: Google Ads Customers.Ad Group Criterion Customizers API
-  description: The customers.AdGroupCriterionCustomizers API from Google Ads — 1 operation(s) for customers.adgroupcriterioncustomizers.
+  description: >-
+    The customers.AdGroupCriterionCustomizers API from Google Ads — 1 operation(s) for customers.adgroupcriterioncustomizers.
   humanURL: https://developers.google.com/google-ads/scripts/docs/start
   baseURL: https://googleads.googleapis.com
   tags: []
@@ -667,7 +640,8 @@ apis:
     url: https://developers.google.com/google-ads/api/support
 - aid: google-ads:google-ads-customers-adgroupcriterionlabels-api
   name: Google Ads Customers.ad Group Criterion Labels API
-  description: The customers.adGroupCriterionLabels API from Google Ads — 1 operation(s) for customers.adgroupcriterionlabels.
+  description: >-
+    The customers.adGroupCriterionLabels API from Google Ads — 1 operation(s) for customers.adgroupcriterionlabels.
   humanURL: https://developers.google.com/google-ads/scripts/docs/start
   baseURL: https://googleads.googleapis.com
   tags: []
@@ -702,7 +676,8 @@ apis:
     url: https://developers.google.com/google-ads/api/support
 - aid: google-ads:google-ads-customers-adgroupcustomizers-api
   name: Google Ads Customers.ad Group Customizers API
-  description: The customers.adGroupCustomizers API from Google Ads — 1 operation(s) for customers.adgroupcustomizers.
+  description: >-
+    The customers.adGroupCustomizers API from Google Ads — 1 operation(s) for customers.adgroupcustomizers.
   humanURL: https://developers.google.com/google-ads/scripts/docs/start
   baseURL: https://googleads.googleapis.com
   tags: []
@@ -737,7 +712,8 @@ apis:
     url: https://developers.google.com/google-ads/api/support
 - aid: google-ads:google-ads-customers-adgrouplabels-api
   name: Google Ads Customers.ad Group Labels API
-  description: The customers.adGroupLabels API from Google Ads — 1 operation(s) for customers.adgrouplabels.
+  description: >-
+    The customers.adGroupLabels API from Google Ads — 1 operation(s) for customers.adgrouplabels.
   humanURL: https://developers.google.com/google-ads/scripts/docs/start
   baseURL: https://googleads.googleapis.com
   tags: []
@@ -807,7 +783,8 @@ apis:
     url: https://developers.google.com/google-ads/api/support
 - aid: google-ads:google-ads-customers-adparameters-api
   name: Google Ads Customers.ad Parameters API
-  description: The customers.adParameters API from Google Ads — 1 operation(s) for customers.adparameters.
+  description: >-
+    The customers.adParameters API from Google Ads — 1 operation(s) for customers.adparameters.
   humanURL: https://developers.google.com/google-ads/scripts/docs/start
   baseURL: https://googleads.googleapis.com
   tags: []
@@ -877,7 +854,8 @@ apis:
     url: https://developers.google.com/google-ads/api/support
 - aid: google-ads:google-ads-customers-assetgenerations-api
   name: Google Ads Customers.asset Generations API
-  description: The customers.assetGenerations API from Google Ads — 2 operation(s) for customers.assetgenerations.
+  description: >-
+    The customers.assetGenerations API from Google Ads — 2 operation(s) for customers.assetgenerations.
   humanURL: https://developers.google.com/google-ads/scripts/docs/start
   baseURL: https://googleads.googleapis.com
   tags: []
@@ -912,7 +890,8 @@ apis:
     url: https://developers.google.com/google-ads/api/support
 - aid: google-ads:google-ads-customers-assetgroupassets-api
   name: Google Ads Customers.asset Group Assets API
-  description: The customers.assetGroupAssets API from Google Ads — 1 operation(s) for customers.assetgroupassets.
+  description: >-
+    The customers.assetGroupAssets API from Google Ads — 1 operation(s) for customers.assetgroupassets.
   humanURL: https://developers.google.com/google-ads/scripts/docs/start
   baseURL: https://googleads.googleapis.com
   tags: []
@@ -947,7 +926,8 @@ apis:
     url: https://developers.google.com/google-ads/api/support
 - aid: google-ads:google-ads-customers-assetgrouplistinggroupfilters-api
   name: Google Ads Customers.asset Group Listing Group Filters API
-  description: The customers.assetGroupListingGroupFilters API from Google Ads — 1 operation(s) for customers.assetgrouplistinggroupfilters.
+  description: >-
+    The customers.assetGroupListingGroupFilters API from Google Ads — 1 operation(s) for customers.assetgrouplistinggroupfilters.
   humanURL: https://developers.google.com/google-ads/scripts/docs/start
   baseURL: https://googleads.googleapis.com
   tags: []
@@ -982,7 +962,8 @@ apis:
     url: https://developers.google.com/google-ads/api/support
 - aid: google-ads:google-ads-customers-assetgroups-api
   name: Google Ads Customers.asset Groups API
-  description: The customers.assetGroups API from Google Ads — 1 operation(s) for customers.assetgroups.
+  description: >-
+    The customers.assetGroups API from Google Ads — 1 operation(s) for customers.assetgroups.
   humanURL: https://developers.google.com/google-ads/scripts/docs/start
   baseURL: https://googleads.googleapis.com
   tags: []
@@ -1017,7 +998,8 @@ apis:
     url: https://developers.google.com/google-ads/api/support
 - aid: google-ads:google-ads-customers-assetgroupsignals-api
   name: Google Ads Customers.asset Group Signals API
-  description: The customers.assetGroupSignals API from Google Ads — 1 operation(s) for customers.assetgroupsignals.
+  description: >-
+    The customers.assetGroupSignals API from Google Ads — 1 operation(s) for customers.assetgroupsignals.
   humanURL: https://developers.google.com/google-ads/scripts/docs/start
   baseURL: https://googleads.googleapis.com
   tags: []
@@ -1087,7 +1069,8 @@ apis:
     url: https://developers.google.com/google-ads/api/support
 - aid: google-ads:google-ads-customers-assetsetassets-api
   name: Google Ads Customers.asset Set Assets API
-  description: The customers.assetSetAssets API from Google Ads — 1 operation(s) for customers.assetsetassets.
+  description: >-
+    The customers.assetSetAssets API from Google Ads — 1 operation(s) for customers.assetsetassets.
   humanURL: https://developers.google.com/google-ads/scripts/docs/start
   baseURL: https://googleads.googleapis.com
   tags: []
@@ -1227,7 +1210,8 @@ apis:
     url: https://developers.google.com/google-ads/api/support
 - aid: google-ads:google-ads-customers-biddingdataexclusions-api
   name: Google Ads Customers.bidding Data Exclusions API
-  description: The customers.biddingDataExclusions API from Google Ads — 1 operation(s) for customers.biddingdataexclusions.
+  description: >-
+    The customers.biddingDataExclusions API from Google Ads — 1 operation(s) for customers.biddingdataexclusions.
   humanURL: https://developers.google.com/google-ads/scripts/docs/start
   baseURL: https://googleads.googleapis.com
   tags: []
@@ -1262,7 +1246,8 @@ apis:
     url: https://developers.google.com/google-ads/api/support
 - aid: google-ads:google-ads-customers-biddingseasonalityadjustments-api
   name: Google Ads Customers.bidding Seasonality Adjustments API
-  description: The customers.biddingSeasonalityAdjustments API from Google Ads — 1 operation(s) for customers.biddingseasonalityadjustments.
+  description: >-
+    The customers.biddingSeasonalityAdjustments API from Google Ads — 1 operation(s) for customers.biddingseasonalityadjustments.
   humanURL: https://developers.google.com/google-ads/scripts/docs/start
   baseURL: https://googleads.googleapis.com
   tags: []
@@ -1297,7 +1282,8 @@ apis:
     url: https://developers.google.com/google-ads/api/support
 - aid: google-ads:google-ads-customers-biddingstrategies-api
   name: Google Ads Customers.bidding Strategies API
-  description: The customers.biddingStrategies API from Google Ads — 1 operation(s) for customers.biddingstrategies.
+  description: >-
+    The customers.biddingStrategies API from Google Ads — 1 operation(s) for customers.biddingstrategies.
   humanURL: https://developers.google.com/google-ads/scripts/docs/start
   baseURL: https://googleads.googleapis.com
   tags: []
@@ -1332,7 +1318,8 @@ apis:
     url: https://developers.google.com/google-ads/api/support
 - aid: google-ads:google-ads-customers-billingsetups-api
   name: Google Ads Customers.billing Setups API
-  description: The customers.billingSetups API from Google Ads — 1 operation(s) for customers.billingsetups.
+  description: >-
+    The customers.billingSetups API from Google Ads — 1 operation(s) for customers.billingsetups.
   humanURL: https://developers.google.com/google-ads/scripts/docs/start
   baseURL: https://googleads.googleapis.com
   tags: []
@@ -1367,7 +1354,8 @@ apis:
     url: https://developers.google.com/google-ads/api/support
 - aid: google-ads:google-ads-customers-campaignassets-api
   name: Google Ads Customers.campaign Assets API
-  description: The customers.campaignAssets API from Google Ads — 1 operation(s) for customers.campaignassets.
+  description: >-
+    The customers.campaignAssets API from Google Ads — 1 operation(s) for customers.campaignassets.
   humanURL: https://developers.google.com/google-ads/scripts/docs/start
   baseURL: https://googleads.googleapis.com
   tags: []
@@ -1402,7 +1390,8 @@ apis:
     url: https://developers.google.com/google-ads/api/support
 - aid: google-ads:google-ads-customers-campaignassetsets-api
   name: Google Ads Customers.campaign Asset Sets API
-  description: The customers.campaignAssetSets API from Google Ads — 1 operation(s) for customers.campaignassetsets.
+  description: >-
+    The customers.campaignAssetSets API from Google Ads — 1 operation(s) for customers.campaignassetsets.
   humanURL: https://developers.google.com/google-ads/scripts/docs/start
   baseURL: https://googleads.googleapis.com
   tags: []
@@ -1437,7 +1426,8 @@ apis:
     url: https://developers.google.com/google-ads/api/support
 - aid: google-ads:google-ads-customers-campaignbidmodifiers-api
   name: Google Ads Customers.campaign Bid Modifiers API
-  description: The customers.campaignBidModifiers API from Google Ads — 1 operation(s) for customers.campaignbidmodifiers.
+  description: >-
+    The customers.campaignBidModifiers API from Google Ads — 1 operation(s) for customers.campaignbidmodifiers.
   humanURL: https://developers.google.com/google-ads/scripts/docs/start
   baseURL: https://googleads.googleapis.com
   tags: []
@@ -1472,7 +1462,8 @@ apis:
     url: https://developers.google.com/google-ads/api/support
 - aid: google-ads:google-ads-customers-campaignbudgets-api
   name: Google Ads Customers.campaign Budgets API
-  description: The customers.campaignBudgets API from Google Ads — 1 operation(s) for customers.campaignbudgets.
+  description: >-
+    The customers.campaignBudgets API from Google Ads — 1 operation(s) for customers.campaignbudgets.
   humanURL: https://developers.google.com/google-ads/scripts/docs/start
   baseURL: https://googleads.googleapis.com
   tags: []
@@ -1507,7 +1498,8 @@ apis:
     url: https://developers.google.com/google-ads/api/support
 - aid: google-ads:google-ads-customers-campaignconversiongoals-api
   name: Google Ads Customers.campaign Conversion Goals API
-  description: The customers.campaignConversionGoals API from Google Ads — 1 operation(s) for customers.campaignconversiongoals.
+  description: >-
+    The customers.campaignConversionGoals API from Google Ads — 1 operation(s) for customers.campaignconversiongoals.
   humanURL: https://developers.google.com/google-ads/scripts/docs/start
   baseURL: https://googleads.googleapis.com
   tags: []
@@ -1542,7 +1534,8 @@ apis:
     url: https://developers.google.com/google-ads/api/support
 - aid: google-ads:google-ads-customers-campaigncriteria-api
   name: Google Ads Customers.campaign Criteria API
-  description: The customers.campaignCriteria API from Google Ads — 1 operation(s) for customers.campaigncriteria.
+  description: >-
+    The customers.campaignCriteria API from Google Ads — 1 operation(s) for customers.campaigncriteria.
   humanURL: https://developers.google.com/google-ads/scripts/docs/start
   baseURL: https://googleads.googleapis.com
   tags: []
@@ -1577,7 +1570,8 @@ apis:
     url: https://developers.google.com/google-ads/api/support
 - aid: google-ads:google-ads-customers-campaigncustomizers-api
   name: Google Ads Customers.campaign Customizers API
-  description: The customers.campaignCustomizers API from Google Ads — 1 operation(s) for customers.campaigncustomizers.
+  description: >-
+    The customers.campaignCustomizers API from Google Ads — 1 operation(s) for customers.campaigncustomizers.
   humanURL: https://developers.google.com/google-ads/scripts/docs/start
   baseURL: https://googleads.googleapis.com
   tags: []
@@ -1612,7 +1606,8 @@ apis:
     url: https://developers.google.com/google-ads/api/support
 - aid: google-ads:google-ads-customers-campaigndrafts-api
   name: Google Ads Customers.campaign Drafts API
-  description: The customers.campaignDrafts API from Google Ads — 3 operation(s) for customers.campaigndrafts.
+  description: >-
+    The customers.campaignDrafts API from Google Ads — 3 operation(s) for customers.campaigndrafts.
   humanURL: https://developers.google.com/google-ads/scripts/docs/start
   baseURL: https://googleads.googleapis.com
   tags: []
@@ -1647,7 +1642,8 @@ apis:
     url: https://developers.google.com/google-ads/api/support
 - aid: google-ads:google-ads-customers-campaigngoalconfigs-api
   name: Google Ads Customers.Campaign Goal Configs API
-  description: The customers.CampaignGoalConfigs API from Google Ads — 1 operation(s) for customers.campaigngoalconfigs.
+  description: >-
+    The customers.CampaignGoalConfigs API from Google Ads — 1 operation(s) for customers.campaigngoalconfigs.
   humanURL: https://developers.google.com/google-ads/scripts/docs/start
   baseURL: https://googleads.googleapis.com
   tags: []
@@ -1682,7 +1678,8 @@ apis:
     url: https://developers.google.com/google-ads/api/support
 - aid: google-ads:google-ads-customers-campaigngroups-api
   name: Google Ads Customers.campaign Groups API
-  description: The customers.campaignGroups API from Google Ads — 1 operation(s) for customers.campaigngroups.
+  description: >-
+    The customers.campaignGroups API from Google Ads — 1 operation(s) for customers.campaigngroups.
   humanURL: https://developers.google.com/google-ads/scripts/docs/start
   baseURL: https://googleads.googleapis.com
   tags: []
@@ -1717,7 +1714,8 @@ apis:
     url: https://developers.google.com/google-ads/api/support
 - aid: google-ads:google-ads-customers-campaignlabels-api
   name: Google Ads Customers.campaign Labels API
-  description: The customers.campaignLabels API from Google Ads — 1 operation(s) for customers.campaignlabels.
+  description: >-
+    The customers.campaignLabels API from Google Ads — 1 operation(s) for customers.campaignlabels.
   humanURL: https://developers.google.com/google-ads/scripts/docs/start
   baseURL: https://googleads.googleapis.com
   tags: []
@@ -1787,7 +1785,8 @@ apis:
     url: https://developers.google.com/google-ads/api/support
 - aid: google-ads:google-ads-customers-campaignsharedsets-api
   name: Google Ads Customers.campaign Shared Sets API
-  description: The customers.campaignSharedSets API from Google Ads — 1 operation(s) for customers.campaignsharedsets.
+  description: >-
+    The customers.campaignSharedSets API from Google Ads — 1 operation(s) for customers.campaignsharedsets.
   humanURL: https://developers.google.com/google-ads/scripts/docs/start
   baseURL: https://googleads.googleapis.com
   tags: []
@@ -1822,7 +1821,8 @@ apis:
     url: https://developers.google.com/google-ads/api/support
 - aid: google-ads:google-ads-customers-conversionactions-api
   name: Google Ads Customers.conversion Actions API
-  description: The customers.conversionActions API from Google Ads — 1 operation(s) for customers.conversionactions.
+  description: >-
+    The customers.conversionActions API from Google Ads — 1 operation(s) for customers.conversionactions.
   humanURL: https://developers.google.com/google-ads/scripts/docs/start
   baseURL: https://googleads.googleapis.com
   tags: []
@@ -1857,7 +1857,8 @@ apis:
     url: https://developers.google.com/google-ads/api/support
 - aid: google-ads:google-ads-customers-conversioncustomvariables-api
   name: Google Ads Customers.conversion Custom Variables API
-  description: The customers.conversionCustomVariables API from Google Ads — 1 operation(s) for customers.conversioncustomvariables.
+  description: >-
+    The customers.conversionCustomVariables API from Google Ads — 1 operation(s) for customers.conversioncustomvariables.
   humanURL: https://developers.google.com/google-ads/scripts/docs/start
   baseURL: https://googleads.googleapis.com
   tags: []
@@ -1892,7 +1893,8 @@ apis:
     url: https://developers.google.com/google-ads/api/support
 - aid: google-ads:google-ads-customers-conversiongoalcampaignconfigs-api
   name: Google Ads Customers.conversion Goal Campaign Configs API
-  description: The customers.conversionGoalCampaignConfigs API from Google Ads — 1 operation(s) for customers.conversiongoalcampaignconfigs.
+  description: >-
+    The customers.conversionGoalCampaignConfigs API from Google Ads — 1 operation(s) for customers.conversiongoalcampaignconfigs.
   humanURL: https://developers.google.com/google-ads/scripts/docs/start
   baseURL: https://googleads.googleapis.com
   tags: []
@@ -1927,7 +1929,8 @@ apis:
     url: https://developers.google.com/google-ads/api/support
 - aid: google-ads:google-ads-customers-conversionvaluerules-api
   name: Google Ads Customers.conversion Value Rules API
-  description: The customers.conversionValueRules API from Google Ads — 1 operation(s) for customers.conversionvaluerules.
+  description: >-
+    The customers.conversionValueRules API from Google Ads — 1 operation(s) for customers.conversionvaluerules.
   humanURL: https://developers.google.com/google-ads/scripts/docs/start
   baseURL: https://googleads.googleapis.com
   tags: []
@@ -1962,7 +1965,8 @@ apis:
     url: https://developers.google.com/google-ads/api/support
 - aid: google-ads:google-ads-customers-conversionvaluerulesets-api
   name: Google Ads Customers.conversion Value Rule Sets API
-  description: The customers.conversionValueRuleSets API from Google Ads — 1 operation(s) for customers.conversionvaluerulesets.
+  description: >-
+    The customers.conversionValueRuleSets API from Google Ads — 1 operation(s) for customers.conversionvaluerulesets.
   humanURL: https://developers.google.com/google-ads/scripts/docs/start
   baseURL: https://googleads.googleapis.com
   tags: []
@@ -1997,7 +2001,8 @@ apis:
     url: https://developers.google.com/google-ads/api/support
 - aid: google-ads:google-ads-customers-customaudiences-api
   name: Google Ads Customers.custom Audiences API
-  description: The customers.customAudiences API from Google Ads — 1 operation(s) for customers.customaudiences.
+  description: >-
+    The customers.customAudiences API from Google Ads — 1 operation(s) for customers.customaudiences.
   humanURL: https://developers.google.com/google-ads/scripts/docs/start
   baseURL: https://googleads.googleapis.com
   tags: []
@@ -2032,7 +2037,8 @@ apis:
     url: https://developers.google.com/google-ads/api/support
 - aid: google-ads:google-ads-customers-customconversiongoals-api
   name: Google Ads Customers.custom Conversion Goals API
-  description: The customers.customConversionGoals API from Google Ads — 1 operation(s) for customers.customconversiongoals.
+  description: >-
+    The customers.customConversionGoals API from Google Ads — 1 operation(s) for customers.customconversiongoals.
   humanURL: https://developers.google.com/google-ads/scripts/docs/start
   baseURL: https://googleads.googleapis.com
   tags: []
@@ -2067,7 +2073,8 @@ apis:
     url: https://developers.google.com/google-ads/api/support
 - aid: google-ads:google-ads-customers-customerassets-api
   name: Google Ads Customers.customer Assets API
-  description: The customers.customerAssets API from Google Ads — 1 operation(s) for customers.customerassets.
+  description: >-
+    The customers.customerAssets API from Google Ads — 1 operation(s) for customers.customerassets.
   humanURL: https://developers.google.com/google-ads/scripts/docs/start
   baseURL: https://googleads.googleapis.com
   tags: []
@@ -2102,7 +2109,8 @@ apis:
     url: https://developers.google.com/google-ads/api/support
 - aid: google-ads:google-ads-customers-customerassetsets-api
   name: Google Ads Customers.customer Asset Sets API
-  description: The customers.customerAssetSets API from Google Ads — 1 operation(s) for customers.customerassetsets.
+  description: >-
+    The customers.customerAssetSets API from Google Ads — 1 operation(s) for customers.customerassetsets.
   humanURL: https://developers.google.com/google-ads/scripts/docs/start
   baseURL: https://googleads.googleapis.com
   tags: []
@@ -2137,7 +2145,8 @@ apis:
     url: https://developers.google.com/google-ads/api/support
 - aid: google-ads:google-ads-customers-customerclientlinks-api
   name: Google Ads Customers.customer Client Links API
-  description: The customers.customerClientLinks API from Google Ads — 1 operation(s) for customers.customerclientlinks.
+  description: >-
+    The customers.customerClientLinks API from Google Ads — 1 operation(s) for customers.customerclientlinks.
   humanURL: https://developers.google.com/google-ads/scripts/docs/start
   baseURL: https://googleads.googleapis.com
   tags: []
@@ -2172,7 +2181,8 @@ apis:
     url: https://developers.google.com/google-ads/api/support
 - aid: google-ads:google-ads-customers-customerconversiongoals-api
   name: Google Ads Customers.customer Conversion Goals API
-  description: The customers.customerConversionGoals API from Google Ads — 1 operation(s) for customers.customerconversiongoals.
+  description: >-
+    The customers.customerConversionGoals API from Google Ads — 1 operation(s) for customers.customerconversiongoals.
   humanURL: https://developers.google.com/google-ads/scripts/docs/start
   baseURL: https://googleads.googleapis.com
   tags: []
@@ -2207,7 +2217,8 @@ apis:
     url: https://developers.google.com/google-ads/api/support
 - aid: google-ads:google-ads-customers-customercustomizers-api
   name: Google Ads Customers.Customer Customizers API
-  description: The customers.CustomerCustomizers API from Google Ads — 1 operation(s) for customers.customercustomizers.
+  description: >-
+    The customers.CustomerCustomizers API from Google Ads — 1 operation(s) for customers.customercustomizers.
   humanURL: https://developers.google.com/google-ads/scripts/docs/start
   baseURL: https://googleads.googleapis.com
   tags: []
@@ -2242,7 +2253,8 @@ apis:
     url: https://developers.google.com/google-ads/api/support
 - aid: google-ads:google-ads-customers-customerlabels-api
   name: Google Ads Customers.customer Labels API
-  description: The customers.customerLabels API from Google Ads — 1 operation(s) for customers.customerlabels.
+  description: >-
+    The customers.customerLabels API from Google Ads — 1 operation(s) for customers.customerlabels.
   humanURL: https://developers.google.com/google-ads/scripts/docs/start
   baseURL: https://googleads.googleapis.com
   tags: []
@@ -2277,7 +2289,8 @@ apis:
     url: https://developers.google.com/google-ads/api/support
 - aid: google-ads:google-ads-customers-customermanagerlinks-api
   name: Google Ads Customers.customer Manager Links API
-  description: The customers.customerManagerLinks API from Google Ads — 2 operation(s) for customers.customermanagerlinks.
+  description: >-
+    The customers.customerManagerLinks API from Google Ads — 2 operation(s) for customers.customermanagerlinks.
   humanURL: https://developers.google.com/google-ads/scripts/docs/start
   baseURL: https://googleads.googleapis.com
   tags: []
@@ -2312,7 +2325,8 @@ apis:
     url: https://developers.google.com/google-ads/api/support
 - aid: google-ads:google-ads-customers-customernegativecriteria-api
   name: Google Ads Customers.customer Negative Criteria API
-  description: The customers.customerNegativeCriteria API from Google Ads — 1 operation(s) for customers.customernegativecriteria.
+  description: >-
+    The customers.customerNegativeCriteria API from Google Ads — 1 operation(s) for customers.customernegativecriteria.
   humanURL: https://developers.google.com/google-ads/scripts/docs/start
   baseURL: https://googleads.googleapis.com
   tags: []
@@ -2347,8 +2361,8 @@ apis:
     url: https://developers.google.com/google-ads/api/support
 - aid: google-ads:google-ads-customers-customerskadnetworkconversionvalueschemas-api
   name: Google Ads Customers.customer Sk Ad Network Conversion Value Schemas API
-  description: The customers.customerSkAdNetworkConversionValueSchemas API from Google Ads — 1 operation(s)
-    for customers.customerskadnetworkconversionvalueschemas.
+  description: >-
+    The customers.customerSkAdNetworkConversionValueSchemas API from Google Ads — 1 operation(s) for customers.customerskadnetworkconversionvalueschemas.
   humanURL: https://developers.google.com/google-ads/scripts/docs/start
   baseURL: https://googleads.googleapis.com
   tags: []
@@ -2383,7 +2397,8 @@ apis:
     url: https://developers.google.com/google-ads/api/support
 - aid: google-ads:google-ads-customers-customeruseraccesses-api
   name: Google Ads Customers.customer User Accesses API
-  description: The customers.customerUserAccesses API from Google Ads — 1 operation(s) for customers.customeruseraccesses.
+  description: >-
+    The customers.customerUserAccesses API from Google Ads — 1 operation(s) for customers.customeruseraccesses.
   humanURL: https://developers.google.com/google-ads/scripts/docs/start
   baseURL: https://googleads.googleapis.com
   tags: []
@@ -2418,7 +2433,8 @@ apis:
     url: https://developers.google.com/google-ads/api/support
 - aid: google-ads:google-ads-customers-customeruseraccessinvitations-api
   name: Google Ads Customers.customer User Access Invitations API
-  description: The customers.customerUserAccessInvitations API from Google Ads — 1 operation(s) for customers.customeruseraccessinvitations.
+  description: >-
+    The customers.customerUserAccessInvitations API from Google Ads — 1 operation(s) for customers.customeruseraccessinvitations.
   humanURL: https://developers.google.com/google-ads/scripts/docs/start
   baseURL: https://googleads.googleapis.com
   tags: []
@@ -2453,7 +2469,8 @@ apis:
     url: https://developers.google.com/google-ads/api/support
 - aid: google-ads:google-ads-customers-custominterests-api
   name: Google Ads Customers.custom Interests API
-  description: The customers.customInterests API from Google Ads — 1 operation(s) for customers.custominterests.
+  description: >-
+    The customers.customInterests API from Google Ads — 1 operation(s) for customers.custominterests.
   humanURL: https://developers.google.com/google-ads/scripts/docs/start
   baseURL: https://googleads.googleapis.com
   tags: []
@@ -2488,7 +2505,8 @@ apis:
     url: https://developers.google.com/google-ads/api/support
 - aid: google-ads:google-ads-customers-customizerattributes-api
   name: Google Ads Customers.customizer Attributes API
-  description: The customers.customizerAttributes API from Google Ads — 1 operation(s) for customers.customizerattributes.
+  description: >-
+    The customers.customizerAttributes API from Google Ads — 1 operation(s) for customers.customizerattributes.
   humanURL: https://developers.google.com/google-ads/scripts/docs/start
   baseURL: https://googleads.googleapis.com
   tags: []
@@ -2558,7 +2576,8 @@ apis:
     url: https://developers.google.com/google-ads/api/support
 - aid: google-ads:google-ads-customers-experimentarms-api
   name: Google Ads Customers.experiment Arms API
-  description: The customers.experimentArms API from Google Ads — 1 operation(s) for customers.experimentarms.
+  description: >-
+    The customers.experimentArms API from Google Ads — 1 operation(s) for customers.experimentarms.
   humanURL: https://developers.google.com/google-ads/scripts/docs/start
   baseURL: https://googleads.googleapis.com
   tags: []
@@ -2593,7 +2612,8 @@ apis:
     url: https://developers.google.com/google-ads/api/support
 - aid: google-ads:google-ads-customers-experiments-api
   name: Google Ads Customers.experiments API
-  description: The customers.experiments API from Google Ads — 6 operation(s) for customers.experiments.
+  description: >-
+    The customers.experiments API from Google Ads — 6 operation(s) for customers.experiments.
   humanURL: https://developers.google.com/google-ads/scripts/docs/start
   baseURL: https://googleads.googleapis.com
   tags: []
@@ -2768,7 +2788,8 @@ apis:
     url: https://developers.google.com/google-ads/api/support
 - aid: google-ads:google-ads-customers-keywordplanadgroupkeywords-api
   name: Google Ads Customers.keyword Plan Ad Group Keywords API
-  description: The customers.keywordPlanAdGroupKeywords API from Google Ads — 1 operation(s) for customers.keywordplanadgroupkeywords.
+  description: >-
+    The customers.keywordPlanAdGroupKeywords API from Google Ads — 1 operation(s) for customers.keywordplanadgroupkeywords.
   humanURL: https://developers.google.com/google-ads/scripts/docs/start
   baseURL: https://googleads.googleapis.com
   tags: []
@@ -2803,7 +2824,8 @@ apis:
     url: https://developers.google.com/google-ads/api/support
 - aid: google-ads:google-ads-customers-keywordplanadgroups-api
   name: Google Ads Customers.keyword Plan Ad Groups API
-  description: The customers.keywordPlanAdGroups API from Google Ads — 1 operation(s) for customers.keywordplanadgroups.
+  description: >-
+    The customers.keywordPlanAdGroups API from Google Ads — 1 operation(s) for customers.keywordplanadgroups.
   humanURL: https://developers.google.com/google-ads/scripts/docs/start
   baseURL: https://googleads.googleapis.com
   tags: []
@@ -2838,7 +2860,8 @@ apis:
     url: https://developers.google.com/google-ads/api/support
 - aid: google-ads:google-ads-customers-keywordplancampaignkeywords-api
   name: Google Ads Customers.keyword Plan Campaign Keywords API
-  description: The customers.keywordPlanCampaignKeywords API from Google Ads — 1 operation(s) for customers.keywordplancampaignkeywords.
+  description: >-
+    The customers.keywordPlanCampaignKeywords API from Google Ads — 1 operation(s) for customers.keywordplancampaignkeywords.
   humanURL: https://developers.google.com/google-ads/scripts/docs/start
   baseURL: https://googleads.googleapis.com
   tags: []
@@ -2873,7 +2896,8 @@ apis:
     url: https://developers.google.com/google-ads/api/support
 - aid: google-ads:google-ads-customers-keywordplancampaigns-api
   name: Google Ads Customers.keyword Plan Campaigns API
-  description: The customers.keywordPlanCampaigns API from Google Ads — 1 operation(s) for customers.keywordplancampaigns.
+  description: >-
+    The customers.keywordPlanCampaigns API from Google Ads — 1 operation(s) for customers.keywordplancampaigns.
   humanURL: https://developers.google.com/google-ads/scripts/docs/start
   baseURL: https://googleads.googleapis.com
   tags: []
@@ -2908,7 +2932,8 @@ apis:
     url: https://developers.google.com/google-ads/api/support
 - aid: google-ads:google-ads-customers-keywordplans-api
   name: Google Ads Customers.keyword Plans API
-  description: The customers.keywordPlans API from Google Ads — 1 operation(s) for customers.keywordplans.
+  description: >-
+    The customers.keywordPlans API from Google Ads — 1 operation(s) for customers.keywordplans.
   humanURL: https://developers.google.com/google-ads/scripts/docs/start
   baseURL: https://googleads.googleapis.com
   tags: []
@@ -2978,7 +3003,8 @@ apis:
     url: https://developers.google.com/google-ads/api/support
 - aid: google-ads:google-ads-customers-localservices-api
   name: Google Ads Customers.local Services API
-  description: The customers.localServices API from Google Ads — 1 operation(s) for customers.localservices.
+  description: >-
+    The customers.localServices API from Google Ads — 1 operation(s) for customers.localservices.
   humanURL: https://developers.google.com/google-ads/scripts/docs/start
   baseURL: https://googleads.googleapis.com
   tags: []
@@ -3013,7 +3039,8 @@ apis:
     url: https://developers.google.com/google-ads/api/support
 - aid: google-ads:google-ads-customers-localservicesleads-api
   name: Google Ads Customers.local Services Leads API
-  description: The customers.localServicesLeads API from Google Ads — 1 operation(s) for customers.localservicesleads.
+  description: >-
+    The customers.localServicesLeads API from Google Ads — 1 operation(s) for customers.localservicesleads.
   humanURL: https://developers.google.com/google-ads/scripts/docs/start
   baseURL: https://googleads.googleapis.com
   tags: []
@@ -3048,7 +3075,8 @@ apis:
     url: https://developers.google.com/google-ads/api/support
 - aid: google-ads:google-ads-customers-multipartyauthreview-api
   name: Google Ads Customers.multi Party Auth Review API
-  description: The customers.multiPartyAuthReview API from Google Ads — 1 operation(s) for customers.multipartyauthreview.
+  description: >-
+    The customers.multiPartyAuthReview API from Google Ads — 1 operation(s) for customers.multipartyauthreview.
   humanURL: https://developers.google.com/google-ads/scripts/docs/start
   baseURL: https://googleads.googleapis.com
   tags: []
@@ -3083,7 +3111,8 @@ apis:
     url: https://developers.google.com/google-ads/api/support
 - aid: google-ads:google-ads-customers-offlineuserdatajobs-api
   name: Google Ads Customers.offline User Data Jobs API
-  description: The customers.offlineUserDataJobs API from Google Ads — 3 operation(s) for customers.offlineuserdatajobs.
+  description: >-
+    The customers.offlineUserDataJobs API from Google Ads — 3 operation(s) for customers.offlineuserdatajobs.
   humanURL: https://developers.google.com/google-ads/scripts/docs/start
   baseURL: https://googleads.googleapis.com
   tags: []
@@ -3153,7 +3182,8 @@ apis:
     url: https://developers.google.com/google-ads/api/support
 - aid: google-ads:google-ads-customers-paymentsaccounts-api
   name: Google Ads Customers.payments Accounts API
-  description: The customers.paymentsAccounts API from Google Ads — 1 operation(s) for customers.paymentsaccounts.
+  description: >-
+    The customers.paymentsAccounts API from Google Ads — 1 operation(s) for customers.paymentsaccounts.
   humanURL: https://developers.google.com/google-ads/scripts/docs/start
   baseURL: https://googleads.googleapis.com
   tags: []
@@ -3188,7 +3218,8 @@ apis:
     url: https://developers.google.com/google-ads/api/support
 - aid: google-ads:google-ads-customers-productlinkinvitations-api
   name: Google Ads Customers.product Link Invitations API
-  description: The customers.productLinkInvitations API from Google Ads — 3 operation(s) for customers.productlinkinvitations.
+  description: >-
+    The customers.productLinkInvitations API from Google Ads — 3 operation(s) for customers.productlinkinvitations.
   humanURL: https://developers.google.com/google-ads/scripts/docs/start
   baseURL: https://googleads.googleapis.com
   tags: []
@@ -3223,7 +3254,8 @@ apis:
     url: https://developers.google.com/google-ads/api/support
 - aid: google-ads:google-ads-customers-productlinks-api
   name: Google Ads Customers.product Links API
-  description: The customers.productLinks API from Google Ads — 2 operation(s) for customers.productlinks.
+  description: >-
+    The customers.productLinks API from Google Ads — 2 operation(s) for customers.productlinks.
   humanURL: https://developers.google.com/google-ads/scripts/docs/start
   baseURL: https://googleads.googleapis.com
   tags: []
@@ -3258,7 +3290,8 @@ apis:
     url: https://developers.google.com/google-ads/api/support
 - aid: google-ads:google-ads-customers-recommendations-api
   name: Google Ads Customers.recommendations API
-  description: The customers.recommendations API from Google Ads — 3 operation(s) for customers.recommendations.
+  description: >-
+    The customers.recommendations API from Google Ads — 3 operation(s) for customers.recommendations.
   humanURL: https://developers.google.com/google-ads/scripts/docs/start
   baseURL: https://googleads.googleapis.com
   tags: []
@@ -3293,7 +3326,8 @@ apis:
     url: https://developers.google.com/google-ads/api/support
 - aid: google-ads:google-ads-customers-recommendationsubscriptions-api
   name: Google Ads Customers.recommendation Subscriptions API
-  description: The customers.recommendationSubscriptions API from Google Ads — 1 operation(s) for customers.recommendationsubscriptions.
+  description: >-
+    The customers.recommendationSubscriptions API from Google Ads — 1 operation(s) for customers.recommendationsubscriptions.
   humanURL: https://developers.google.com/google-ads/scripts/docs/start
   baseURL: https://googleads.googleapis.com
   tags: []
@@ -3328,7 +3362,8 @@ apis:
     url: https://developers.google.com/google-ads/api/support
 - aid: google-ads:google-ads-customers-remarketingactions-api
   name: Google Ads Customers.remarketing Actions API
-  description: The customers.remarketingActions API from Google Ads — 1 operation(s) for customers.remarketingactions.
+  description: >-
+    The customers.remarketingActions API from Google Ads — 1 operation(s) for customers.remarketingactions.
   humanURL: https://developers.google.com/google-ads/scripts/docs/start
   baseURL: https://googleads.googleapis.com
   tags: []
@@ -3363,7 +3398,8 @@ apis:
     url: https://developers.google.com/google-ads/api/support
 - aid: google-ads:google-ads-customers-reservations-api
   name: Google Ads Customers.reservations API
-  description: The customers.reservations API from Google Ads — 2 operation(s) for customers.reservations.
+  description: >-
+    The customers.reservations API from Google Ads — 2 operation(s) for customers.reservations.
   humanURL: https://developers.google.com/google-ads/scripts/docs/start
   baseURL: https://googleads.googleapis.com
   tags: []
@@ -3398,7 +3434,8 @@ apis:
     url: https://developers.google.com/google-ads/api/support
 - aid: google-ads:google-ads-customers-sharedcriteria-api
   name: Google Ads Customers.shared Criteria API
-  description: The customers.sharedCriteria API from Google Ads — 1 operation(s) for customers.sharedcriteria.
+  description: >-
+    The customers.sharedCriteria API from Google Ads — 1 operation(s) for customers.sharedcriteria.
   humanURL: https://developers.google.com/google-ads/scripts/docs/start
   baseURL: https://googleads.googleapis.com
   tags: []
@@ -3468,7 +3505,8 @@ apis:
     url: https://developers.google.com/google-ads/api/support
 - aid: google-ads:google-ads-customers-smartcampaignsettings-api
   name: Google Ads Customers.smart Campaign Settings API
-  description: The customers.smartCampaignSettings API from Google Ads — 2 operation(s) for customers.smartcampaignsettings.
+  description: >-
+    The customers.smartCampaignSettings API from Google Ads — 2 operation(s) for customers.smartcampaignsettings.
   humanURL: https://developers.google.com/google-ads/scripts/docs/start
   baseURL: https://googleads.googleapis.com
   tags: []
@@ -3503,7 +3541,8 @@ apis:
     url: https://developers.google.com/google-ads/api/support
 - aid: google-ads:google-ads-customers-thirdpartyappanalyticslinks-api
   name: Google Ads Customers.third Party App Analytics Links API
-  description: The customers.thirdPartyAppAnalyticsLinks API from Google Ads — 1 operation(s) for customers.thirdpartyappanalyticslinks.
+  description: >-
+    The customers.thirdPartyAppAnalyticsLinks API from Google Ads — 1 operation(s) for customers.thirdpartyappanalyticslinks.
   humanURL: https://developers.google.com/google-ads/scripts/docs/start
   baseURL: https://googleads.googleapis.com
   tags: []
@@ -3538,7 +3577,8 @@ apis:
     url: https://developers.google.com/google-ads/api/support
 - aid: google-ads:google-ads-customers-userlistcustomertypes-api
   name: Google Ads Customers.user List Customer Types API
-  description: The customers.userListCustomerTypes API from Google Ads — 1 operation(s) for customers.userlistcustomertypes.
+  description: >-
+    The customers.userListCustomerTypes API from Google Ads — 1 operation(s) for customers.userlistcustomertypes.
   humanURL: https://developers.google.com/google-ads/scripts/docs/start
   baseURL: https://googleads.googleapis.com
   tags: []
@@ -3608,7 +3648,8 @@ apis:
     url: https://developers.google.com/google-ads/api/support
 - aid: google-ads:google-ads-customers-youtubevideouploads-api
   name: Google Ads Customers.you Tube Video Uploads API
-  description: The customers.youTubeVideoUploads API from Google Ads — 2 operation(s) for customers.youtubevideouploads.
+  description: >-
+    The customers.youTubeVideoUploads API from Google Ads — 2 operation(s) for customers.youtubevideouploads.
   humanURL: https://developers.google.com/google-ads/scripts/docs/start
   baseURL: https://googleads.googleapis.com
   tags: []
@@ -3749,7 +3790,8 @@ apis:
     url: https://developers.google.com/google-ads/api/support
 - aid: google-ads:google-ads-keywordthemeconstants-api
   name: Google Ads Keyword Theme Constants API
-  description: The keywordThemeConstants API from Google Ads — 1 operation(s) for keywordthemeconstants.
+  description: >-
+    The keywordThemeConstants API from Google Ads — 1 operation(s) for keywordthemeconstants.
   humanURL: https://developers.google.com/google-ads/scripts/docs/start
   baseURL: https://googleads.googleapis.com
   tags: []
@@ -3828,6 +3870,40 @@ apis:
   properties:
   - type: OpenAPI
     url: openapi/google-ads-v25-api-openapi.yml
+  - type: Discovery
+    url: discovery/google-ads-api-v25-discovery.json
+  - type: Protobuf
+    url: grpc/google-ads-google-ads-service.proto
+  - type: DataModel
+    url: data-model/google-ads-data-model.yml
+  - type: Documentation
+    url: https://developers.google.com/google-ads/api/docs/start
+  - type: APIReference
+    url: https://developers.google.com/google-ads/api/reference/rpc/latest/overview
+  - type: Authentication
+    url: https://developers.google.com/google-ads/api/docs/oauth/overview
+  - type: GettingStarted
+    url: https://developers.google.com/google-ads/api/docs/first-call/overview
+  - type: RateLimits
+    url: https://developers.google.com/google-ads/api/docs/best-practices/quotas
+  - type: ChangeLog
+    url: https://developers.google.com/google-ads/api/docs/release-notes
+  - type: Deprecation
+    url: https://developers.google.com/google-ads/api/docs/sunset-dates
+  - type: SDKs
+    url: https://developers.google.com/google-ads/api/docs/client-libs
+  - type: Support
+    url: https://developers.google.com/google-ads/api/support
+- aid: google-ads:google-ads-audience-insights-api
+  name: Google Ads Audience Insights API
+  description: The Audience Insights API from Google Ads — 1 operation(s) for audience insights.
+  humanURL: https://developers.google.com/google-ads/scripts/docs/start
+  baseURL: https://googleads.googleapis.com
+  tags:
+  - Audience Insights
+  properties:
+  - type: OpenAPI
+    url: openapi/google-ads-audience-insights-api-openapi.yml
   - type: Discovery
     url: discovery/google-ads-api-v25-discovery.json
   - type: Protobuf
