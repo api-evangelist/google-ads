@@ -516,7 +516,8 @@ edges:
   reason: Shared sets (e.g. negative keyword/placement lists) attached to campaigns are paid-search targeting
     exclusions — digital marketing execution.
 - tag: audienceInsights
-  spec_file: google-ads-audienceinsights-api-openapi.yml
+  spec_file: google-ads-audience-insights-api-openapi.yml
+  reanchored_from: google-ads-audienceinsights-api-openapi.yml
   capability_id: BC-400
   capability_id_l1: BC-400
   capability_name: Marketing Management
