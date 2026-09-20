@@ -1,0 +1,676 @@
+slug: google-ads
+provider: Google Ads
+generated_by: planning/capability-mapping/scripts/classify_capabilities.py
+model: claude-opus-5
+frame:
+- Banking & Capital Markets
+- Software & Technology
+min_confidence: 0.7
+capability_model:
+  source: https://github.com/vincentmakes/turbo-ea-capabilities
+  license: CC-BY-4.0
+  attribution: Turbo EA Capabilities by Vincent Verdet — Turbo EA, https://github.com/vincentmakes/turbo-ea-capabilities,
+    CC BY 4.0
+  notice: NOTICE
+edge_count: 71
+edges:
+- tag: customers.adGroupAds
+  spec_file: google-ads-customers-adgroupads-api-openapi.yml
+  capability_id: BC-400.60
+  capability_id_l1: BC-400
+  capability_name: Digital Marketing Management
+  confidence: 0.9
+  evidence: '"Creates, updates, or removes ads"; schemas AdGroupAd, ExpandedTextAdInfo, ResponsiveDisplayAdInfo'
+  reason: Direct creation and management of digital ad creatives within campaigns — core paid digital
+    marketing execution.
+- tag: customers.campaigns
+  spec_file: google-ads-customers-campaigns-api-openapi.yml
+  capability_id: BC-400.60
+  capability_id_l1: BC-400
+  capability_name: Digital Marketing Management
+  confidence: 0.9
+  evidence: '"Creates, updates, or removes campaigns" and "Enables Brand Guidelines for Performance Max
+    campaigns" with ManualCpc, RealTimeBiddingSetting schemas'
+  reason: Direct lifecycle management of advertising campaigns with bidding strategies on Google Ads —
+    unambiguously digital/paid-media marketing management.
+- tag: Keywords
+  spec_file: google-ads-keywords-api-openapi.yml
+  capability_id: BC-400.60
+  capability_id_l1: BC-400
+  capability_name: Digital Marketing Management
+  confidence: 0.88
+  evidence: POST /v18/customers/{customerId}/adGroupCriteria:mutate — "Google Ads Create, Update, or Remove
+    Keywords and Criteria"; schema KeywordInfo, AdGroupCriterion
+  reason: Operations manage search-ad keywords/criteria within Google Ads ad groups — paid-search targeting
+    configuration, i.e. digital marketing execution.
+- tag: customers.adGroups
+  spec_file: google-ads-customers-adgroups-api-openapi.yml
+  capability_id: BC-400.60
+  capability_id_l1: BC-400
+  capability_name: Digital Marketing Management
+  confidence: 0.88
+  evidence: '"Creates, updates, or removes ad groups"; GoogleAdsGoogleadsV25Resources_AdGroup_AudienceSetting,
+    __TargetingSetting'
+  reason: Core ad group lifecycle with audience and targeting settings in Google Ads — paid media / digital
+    advertising campaign management.
+- tag: customers.ads
+  spec_file: google-ads-customers-ads-api-openapi.yml
+  capability_id: BC-400.60
+  capability_id_l1: BC-400
+  capability_name: Digital Marketing Management
+  confidence: 0.88
+  evidence: '"Updates ads"; schemas GoogleAdsGoogleadsV25Common__AppAdInfo, __ExpandedTextAdInfo, __InFeedVideoAdInfo'
+  reason: Direct management of ad creatives across search, display and video formats — digital/paid media
+    marketing execution.
+- tag: customers.campaignBidModifiers
+  spec_file: google-ads-customers-campaignbidmodifiers-api-openapi.yml
+  capability_id: BC-400.60
+  capability_id_l1: BC-400
+  capability_name: Digital Marketing Management
+  confidence: 0.88
+  evidence: '"Creates, updates, or removes campaign bid modifiers", GoogleAdsGoogleadsV25Resources__CampaignBidModifier'
+  reason: Bid modifiers adjust auction bids for ad campaigns — core paid-media buying management within
+    digital marketing.
+- tag: Ad Groups
+  spec_file: google-ads-ad-groups-api-openapi.yml
+  capability_id: BC-400.60
+  capability_id_l1: BC-400
+  capability_name: Digital Marketing Management
+  confidence: 0.85
+  evidence: POST /v18/customers/{customerId}/adGroups:mutate 'Create, Update, or Remove Ad Groups'
+  reason: Managing paid-media ad group structures is digital marketing campaign management.
+- tag: Ads
+  spec_file: google-ads-ads-api-openapi.yml
+  capability_id: BC-400.60
+  capability_id_l1: BC-400
+  capability_name: Digital Marketing Management
+  confidence: 0.85
+  evidence: POST /v18/customers/{customerId}/adGroupAds:mutate 'Create, Update, or Remove Ads'; ResponsiveSearchAdInfo
+  reason: Creation and management of search/display ad creatives is paid digital media management.
+- tag: Campaigns
+  spec_file: google-ads-campaigns-api-openapi.yml
+  capability_id: BC-400.60
+  capability_id_l1: BC-400
+  capability_name: Digital Marketing Management
+  confidence: 0.85
+  evidence: POST /v18/customers/{customerId}/campaigns:mutate 'Create, Update, or Remove Campaigns'; MutateCampaignBudgetsRequest
+  reason: Advertising campaign and budget management is core digital marketing capability.
+- tag: customers.adGroupBidModifiers
+  spec_file: google-ads-customers-adgroupbidmodifiers-api-openapi.yml
+  capability_id: BC-400.60
+  capability_id_l1: BC-400
+  capability_name: Digital Marketing Management
+  confidence: 0.85
+  evidence: '"Creates, updates, or removes ad group bid modifiers"; GoogleAdsGoogleadsV25Resources__AdGroupBidModifier'
+  reason: Bid modifiers by device/hotel criteria are paid-media bidding controls — clearly digital marketing
+    management, not any finance capability despite 'bid'.
+- tag: customers.adGroupCriteria
+  spec_file: google-ads-customers-adgroupcriteria-api-openapi.yml
+  capability_id: BC-400.60
+  capability_id_l1: BC-400
+  capability_name: Digital Marketing Management
+  confidence: 0.85
+  evidence: '"Creates, updates, or removes criteria"; schemas include GoogleAdsGoogleadsV25Common__PlacementInfo,
+    __TopicInfo, __LifeEventInfo'
+  reason: Ad group targeting criteria (placements, topics, audiences) are paid-media targeting configuration
+    — digital marketing.
+- tag: customers.campaignCriteria
+  spec_file: google-ads-customers-campaigncriteria-api-openapi.yml
+  capability_id: BC-400.60
+  capability_id_l1: BC-400
+  capability_name: Digital Marketing Management
+  confidence: 0.85
+  evidence: '"Creates, updates, or removes criteria" with AgeRangeInfo, PlacementInfo, GeoPointInfo, KeywordThemeInfo'
+  reason: Campaign criteria are ad targeting dimensions (demographics, placements, geo, keywords) — paid
+    media targeting, i.e. digital marketing.
+- tag: customers.smartCampaignSettings
+  spec_file: google-ads-customers-smartcampaignsettings-api-openapi.yml
+  capability_id: BC-400.60
+  capability_id_l1: BC-400
+  capability_name: Digital Marketing Management
+  confidence: 0.85
+  evidence: Updates Smart campaign settings for campaigns. / Returns the status of the requested Smart
+    campaign.
+  reason: Directly manages configuration and status of Google Ads Smart campaigns — paid digital advertising
+    campaign management.
+- tag: customers
+  spec_file: google-ads-customers-api-openapi.yml
+  capability_id: BC-400.60
+  capability_id_l1: BC-400
+  capability_name: Digital Marketing Management
+  confidence: 0.82
+  evidence: '"Returns a list of keyword historical metrics", "Suggests keyword themes to advertise on",
+    "Returns BudgetOption suggestions", "Processes the given click conversions"'
+  reason: Account-level Google Ads operations for keyword planning, audience definition, budget suggestion
+    and conversion upload — paid digital advertising management.
+- tag: customers.campaignAssetSets
+  spec_file: google-ads-customers-campaignassetsets-api-openapi.yml
+  capability_id: BC-400.60
+  capability_id_l1: BC-400
+  capability_name: Digital Marketing Management
+  confidence: 0.82
+  evidence: POST /v25/customers/{customersId}/campaignAssetSets:mutate — "Creates, updates or removes
+    campaign asset sets"
+  reason: Google Ads campaign asset sets link creative asset collections to paid-media campaigns; this
+    is advertising campaign configuration, squarely digital/paid-media marketing management, not a generic
+    content or IT capability.
+- tag: customers.campaignAssets
+  spec_file: google-ads-customers-campaignassets-api-openapi.yml
+  capability_id: BC-400.60
+  capability_id_l1: BC-400
+  capability_name: Digital Marketing Management
+  confidence: 0.82
+  evidence: '"Creates, updates, or removes campaign assets" with schema GoogleAdsGoogleadsV25Common__AssetDisapproved'
+  reason: Attaching and moderating creative assets on Google Ads campaigns is paid-media/digital advertising
+    operation; asset disapproval schema confirms ad creative context.
+- tag: Bidding Strategies
+  spec_file: google-ads-bidding-strategies-api-openapi.yml
+  capability_id: BC-400.60
+  capability_id_l1: BC-400
+  capability_name: Digital Marketing Management
+  confidence: 0.8
+  evidence: POST /v18/customers/{customerId}/biddingStrategies:mutate 'Create, Update, or Remove Bidding
+    Strategies'; TargetCpa, TargetRoas
+  reason: Paid media bidding configuration sits within digital marketing (paid media) management.
+- tag: customers.adGroupAssetSets
+  spec_file: google-ads-customers-adgroupassetsets-api-openapi.yml
+  capability_id: BC-400.60
+  capability_id_l1: BC-400
+  capability_name: Digital Marketing Management
+  confidence: 0.8
+  evidence: POST /v25/customers/{customersId}/adGroupAssetSets:mutate — "Creates, or removes ad group
+    asset sets"
+  reason: Operation manipulates ad group asset sets within Google Ads campaigns — paid-media/digital advertising
+    configuration, i.e. Digital Marketing Management.
+- tag: customers.adGroupAssets
+  spec_file: google-ads-customers-adgroupassets-api-openapi.yml
+  capability_id: BC-400.60
+  capability_id_l1: BC-400
+  capability_name: Digital Marketing Management
+  confidence: 0.8
+  evidence: '"Creates, updates, or removes ad group assets"; schema GoogleAdsGoogleadsV25Resources__AdGroupAsset'
+  reason: Manages creative assets attached to ad groups in a paid search/display platform — digital marketing
+    (paid media) execution.
+- tag: customers.assetGroupAssets
+  spec_file: google-ads-customers-assetgroupassets-api-openapi.yml
+  capability_id: BC-400.60
+  capability_id_l1: BC-400
+  capability_name: Digital Marketing Management
+  confidence: 0.8
+  evidence: '"Creates, updates or removes asset group assets"; GoogleAdsGoogleadsV25Resources__AssetGroupAsset
+    with __PolicySummary/__PolicyTopicEntry'
+  reason: Manages creative assets in Performance Max asset groups including ad policy review status —
+    paid-media campaign creative management.
+- tag: customers.assetGroups
+  spec_file: google-ads-customers-assetgroups-api-openapi.yml
+  capability_id: BC-400.60
+  capability_id_l1: BC-400
+  capability_name: Digital Marketing Management
+  confidence: 0.8
+  evidence: '"Creates, updates or removes asset groups"; schemas AssetGroup, AssetCoverage, AdStrengthActionItem'
+  reason: Asset groups are the creative/targeting containers of Google Ads Performance Max campaigns;
+    managing them is paid digital advertising campaign management.
+- tag: customers.biddingStrategies
+  spec_file: google-ads-customers-biddingstrategies-api-openapi.yml
+  capability_id: BC-400.60
+  capability_id_l1: BC-400
+  capability_name: Digital Marketing Management
+  confidence: 0.8
+  evidence: '"Creates, updates, or removes bidding strategies"; schemas TargetCpa, TargetRoas, MaximizeConversions,
+    TargetImpressionShare'
+  reason: Ad bidding strategies (tCPA, tROAS, impression share) governing paid media spend on Google Ads
+    — squarely digital/paid media marketing management.
+- tag: customers.campaignConversionGoals
+  spec_file: google-ads-customers-campaignconversiongoals-api-openapi.yml
+  capability_id: BC-400.60
+  capability_id_l1: BC-400
+  capability_name: Digital Marketing Management
+  confidence: 0.8
+  evidence: '"Creates, updates or removes campaign conversion goals", GoogleAdsGoogleadsV25Resources__CampaignConversionGoal'
+  reason: Conversion goals steer ad campaign optimisation and measurement in a paid-media platform — digital
+    marketing management.
+- tag: customers.campaignDrafts
+  spec_file: google-ads-customers-campaigndrafts-api-openapi.yml
+  capability_id: BC-400.60
+  capability_id_l1: BC-400
+  capability_name: Digital Marketing Management
+  confidence: 0.8
+  evidence: '"Promotes the changes in a draft back to the base campaign" and "Creates, updates, or removes
+    campaign drafts"'
+  reason: Drafting and promoting ad campaign changes is campaign authoring within a paid-media platform;
+    digital marketing management.
+- tag: customers.conversionActions
+  spec_file: google-ads-customers-conversionactions-api-openapi.yml
+  capability_id: BC-400.60
+  capability_id_l1: BC-400
+  capability_name: Digital Marketing Management
+  confidence: 0.8
+  evidence: POST /v25/customers/{customersId}/conversionActions:mutate — "Creates, updates or removes
+    conversion actions"; schemas include TagSnippet, GoogleAnalytics4Settings, AttributionModelSettings
+  reason: Configuration of ad conversion tracking actions, tag snippets and attribution settings in Google
+    Ads — digital marketing measurement/automation, not a banking capability.
+- tag: customers.customerNegativeCriteria
+  spec_file: google-ads-customers-customernegativecriteria-api-openapi.yml
+  capability_id: BC-400.60
+  capability_id_l1: BC-400
+  capability_name: Digital Marketing Management
+  confidence: 0.8
+  evidence: Creates or removes criteria ... GoogleAdsGoogleadsV25Common__NegativeKeywordListInfo, ...PlacementInfo,
+    ...YouTubeChannelInfo, ...ContentLabelInfo
+  reason: Account-level negative targeting criteria (negative keywords, excluded placements, content labels,
+    YouTube channels) are direct paid-media targeting controls, squarely digital marketing campaign management.
+- tag: customers.keywordPlanAdGroupKeywords
+  spec_file: google-ads-customers-keywordplanadgroupkeywords-api-openapi.yml
+  capability_id: BC-400.60
+  capability_id_l1: BC-400
+  capability_name: Digital Marketing Management
+  confidence: 0.8
+  evidence: POST .../keywordPlanAdGroupKeywords:mutate — "Creates, updates, or removes Keyword Plan ad
+    group keywords"
+  reason: Keyword planning for search advertising is digital marketing / paid media campaign construction.
+- tag: customers.keywordPlanAdGroups
+  spec_file: google-ads-customers-keywordplanadgroups-api-openapi.yml
+  capability_id: BC-400.60
+  capability_id_l1: BC-400
+  capability_name: Digital Marketing Management
+  confidence: 0.8
+  evidence: '"Creates, updates, or removes Keyword Plan ad groups"; GoogleAdsGoogleadsV25Resources__KeywordPlanAdGroup'
+  reason: Manages keyword plan ad group structures for search ads — digital marketing (paid media/SEO)
+    planning.
+- tag: customers.keywordPlanCampaignKeywords
+  spec_file: google-ads-customers-keywordplancampaignkeywords-api-openapi.yml
+  capability_id: BC-400.60
+  capability_id_l1: BC-400
+  capability_name: Digital Marketing Management
+  confidence: 0.8
+  evidence: '"Creates, updates, or removes Keyword Plan campaign keywords"'
+  reason: Campaign-level keyword planning for paid search — digital marketing management.
+- tag: customers.keywordPlanCampaigns
+  spec_file: google-ads-customers-keywordplancampaigns-api-openapi.yml
+  capability_id: BC-400.60
+  capability_id_l1: BC-400
+  capability_name: Digital Marketing Management
+  confidence: 0.8
+  evidence: '"Creates, updates, or removes Keyword Plan campaigns"; GoogleAdsGoogleadsV25Resources__KeywordPlanGeoTarget'
+  reason: Keyword plan campaigns with geo targeting are paid-search campaign planning, a digital marketing
+    capability.
+- tag: customers.keywordPlans
+  spec_file: google-ads-customers-keywordplans-api-openapi.yml
+  capability_id: BC-400.60
+  capability_id_l1: BC-400
+  capability_name: Digital Marketing Management
+  confidence: 0.8
+  evidence: '"Creates, updates, or removes keyword plans"; GoogleAdsGoogleadsV25Resources__KeywordPlanForecastPeriod'
+  reason: Keyword plans with forecast periods are search-advertising planning/forecasting — digital marketing
+    management.
+- tag: customers.recommendations
+  spec_file: google-ads-customers-recommendations-api-openapi.yml
+  capability_id: BC-400.60
+  capability_id_l1: BC-400
+  capability_name: Digital Marketing Management
+  confidence: 0.8
+  evidence: Generates Recommendations based off the requested recommendation_types / Recommendation_MoveUnusedBudgetRecommendation,
+    Recommendation_RaiseTargetCpaBidTooLowRecommendation
+  reason: Operations generate, apply and dismiss paid-search optimisation recommendations covering budgets,
+    bids and keywords — squarely paid-media/digital marketing campaign optimisation.
+- tag: Reporting
+  spec_file: google-ads-reporting-api-openapi.yml
+  capability_id: BC-400
+  capability_id_l1: BC-400
+  capability_name: Marketing Management
+  confidence: 0.78
+  evidence: '"Search Using Google Ads Query Language"; schemas GoogleAdsRow, Metrics, Segments, AdGroupAd'
+  reason: Retrieval of advertising performance metrics/reports — marketing measurement; ambiguous between
+    digital marketing and marketing operations measurement, so L1 only.
+- tag: customers.AdGroupCriterionCustomizers
+  spec_file: google-ads-customers-adgroupcriterioncustomizers-api-openapi.yml
+  capability_id: BC-400.60
+  capability_id_l1: BC-400
+  capability_name: Digital Marketing Management
+  confidence: 0.78
+  evidence: '"Creates, updates or removes ad group criterion customizers"; schema AdGroupCriterionCustomizer,
+    CustomizerValue'
+  reason: Configures dynamic ad customizer values at the ad-group-criterion level — part of paid digital
+    ad campaign setup.
+- tag: customers.assetGroupListingGroupFilters
+  spec_file: google-ads-customers-assetgrouplistinggroupfilters-api-openapi.yml
+  capability_id: BC-400.60
+  capability_id_l1: BC-400
+  capability_name: Digital Marketing Management
+  confidence: 0.78
+  evidence: POST .../assetGroupListingGroupFilters:mutate — "Creates, updates or removes asset group listing
+    group filters" with ListingGroupFilterDimension_ProductBrand / ProductCategory / Webpage
+  reason: 'Configures product/webpage targeting filters for Google Ads Performance Max asset groups —
+    paid digital advertising campaign setup, i.e. digital marketing management. Not a product-catalogue
+    capability: the objects are ad targeting dimensions, not product masters.'
+- tag: customers.assetGroupSignals
+  spec_file: google-ads-customers-assetgroupsignals-api-openapi.yml
+  capability_id: BC-400.60
+  capability_id_l1: BC-400
+  capability_name: Digital Marketing Management
+  confidence: 0.78
+  evidence: '"Creates or removes asset group signals"; schemas AudienceInfo, SearchThemeInfo, PolicyViolationKey'
+  reason: Audience and search-theme signals attached to ad asset groups to steer paid campaign targeting
+    — digital/paid media management within Marketing Management.
+- tag: customers.assets
+  spec_file: google-ads-customers-assets-api-openapi.yml
+  capability_id: BC-400.60
+  capability_id_l1: BC-400
+  capability_name: Digital Marketing Management
+  confidence: 0.78
+  evidence: '"Creates assets"; schemas CallAsset, AdVideoAsset, PageFeedAsset, PolicyTopicEvidence, LeadFormCustomQuestionField'
+  reason: Creation of ad creative assets (video, call, lead form, page feed) with ad-policy review evidence
+    — advertising creative management on a paid digital media platform.
+- tag: customers.CampaignGoalConfigs
+  spec_file: google-ads-customers-campaigngoalconfigs-api-openapi.yml
+  capability_id: BC-400.60
+  capability_id_l1: BC-400
+  capability_name: Digital Marketing Management
+  confidence: 0.75
+  evidence: '"Create or update campaign goal configs"; CampaignGoalSettings_CampaignNewCustomerAcquisitionGoalSettings'
+  reason: Sets optimisation goals on advertising campaigns (acquisition, retention, loyalty) within the
+    ads platform — digital campaign configuration.
+- tag: customers.adGroupCustomizers
+  spec_file: google-ads-customers-adgroupcustomizers-api-openapi.yml
+  capability_id: BC-400.60
+  capability_id_l1: BC-400
+  capability_name: Digital Marketing Management
+  confidence: 0.75
+  evidence: '"Creates, updates or removes ad group customizers"; GoogleAdsGoogleadsV25Common__CustomizerValue'
+  reason: Customizers dynamically populate ad text at the ad group level — configuration of paid-media
+    creative delivery.
+- tag: customers.adParameters
+  spec_file: google-ads-customers-adparameters-api-openapi.yml
+  capability_id: BC-400.60
+  capability_id_l1: BC-400
+  capability_name: Digital Marketing Management
+  confidence: 0.75
+  evidence: '"Creates, updates, or removes ad parameters"; GoogleAdsGoogleadsV25Resources__AdParameter'
+  reason: Ad parameters substitute dynamic values into ad text — part of paid-search creative configuration.
+- tag: customers.assetSets
+  spec_file: google-ads-customers-assetsets-api-openapi.yml
+  capability_id: BC-400.60
+  capability_id_l1: BC-400
+  capability_name: Digital Marketing Management
+  confidence: 0.75
+  evidence: '"Creates, updates or removes asset sets"; schemas AssetSet_MerchantCenterFeed, BusinessProfileLocationSet,
+    AssetSet_HotelPropertyData'
+  reason: Asset sets group ad feeds (Merchant Center, location, hotel) used in Google Ads campaigns —
+    configuration of paid digital advertising, not inventory or product management.
+- tag: customers.campaignCustomizers
+  spec_file: google-ads-customers-campaigncustomizers-api-openapi.yml
+  capability_id: BC-400.60
+  capability_id_l1: BC-400
+  capability_name: Digital Marketing Management
+  confidence: 0.75
+  evidence: '"Creates, updates or removes campaign customizers", GoogleAdsGoogleadsV25Common__CustomizerValue'
+  reason: Customizers dynamically populate ad text per campaign — an ad creative/serving configuration
+    within digital advertising management.
+- tag: customers.campaignGroups
+  spec_file: google-ads-customers-campaigngroups-api-openapi.yml
+  capability_id: BC-400.60
+  capability_id_l1: BC-400
+  capability_name: Digital Marketing Management
+  confidence: 0.75
+  evidence: '"Creates, updates, or removes campaign groups", GoogleAdsGoogleadsV25Resources__CampaignGroup'
+  reason: Grouping of advertising campaigns for shared management/performance targets — organisational
+    structure of paid-media campaigns.
+- tag: customers.conversionCustomVariables
+  spec_file: google-ads-customers-conversioncustomvariables-api-openapi.yml
+  capability_id: BC-400.60
+  capability_id_l1: BC-400
+  capability_name: Digital Marketing Management
+  confidence: 0.75
+  evidence: '"Creates or updates conversion custom variables" — ConversionCustomVariableOperation'
+  reason: Custom variables attached to advertising conversion tracking; part of digital marketing measurement
+    configuration on an ad platform.
+- tag: customers.conversionGoalCampaignConfigs
+  spec_file: google-ads-customers-conversiongoalcampaignconfigs-api-openapi.yml
+  capability_id: BC-400.60
+  capability_id_l1: BC-400
+  capability_name: Digital Marketing Management
+  confidence: 0.75
+  evidence: '"Creates, updates or removes conversion goal campaign config" — ConversionGoalCampaignConfig'
+  reason: Sets which conversion goals a paid-media campaign optimises toward; digital marketing campaign
+    configuration.
+- tag: customers.conversionValueRules
+  spec_file: google-ads-customers-conversionvaluerules-api-openapi.yml
+  capability_id: BC-400.60
+  capability_id_l1: BC-400
+  capability_name: Digital Marketing Management
+  confidence: 0.75
+  evidence: '"Creates, updates, or removes conversion value rules" with ValueRuleDeviceCondition, ValueRuleAudienceCondition,
+    ValueRuleGeoLocationCondition'
+  reason: Device/audience/geo conditions adjusting conversion values for ad bidding — clearly paid digital
+    media management.
+- tag: customers.customConversionGoals
+  spec_file: google-ads-customers-customconversiongoals-api-openapi.yml
+  capability_id: BC-400.60
+  capability_id_l1: BC-400
+  capability_name: Digital Marketing Management
+  confidence: 0.75
+  evidence: '"Creates, updates or removes custom conversion goals" — CustomConversionGoal'
+  reason: Defines custom conversion goals used to steer ad campaign optimisation; digital marketing measurement
+    configuration.
+- tag: customers.customerConversionGoals
+  spec_file: google-ads-customers-customerconversiongoals-api-openapi.yml
+  capability_id: BC-400.60
+  capability_id_l1: BC-400
+  capability_name: Digital Marketing Management
+  confidence: 0.75
+  evidence: '"Creates, updates or removes customer conversion goals" — CustomerConversionGoal'
+  reason: Account-level conversion goal configuration driving ad campaign optimisation; digital marketing
+    measurement setup.
+- tag: customers.experiments
+  spec_file: google-ads-customers-experiments-api-openapi.yml
+  capability_id: BC-400.60
+  capability_id_l1: BC-400
+  capability_name: Digital Marketing Management
+  confidence: 0.75
+  evidence: Promotes the trial campaign thus applying changes in the trial campaign to the base campaign
+  reason: Lifecycle of ad campaign experiments (schedule, graduate to full campaign, promote, end) is
+    paid-media campaign testing and optimisation — digital marketing management.
+- tag: customers.remarketingActions
+  spec_file: google-ads-customers-remarketingactions-api-openapi.yml
+  capability_id: BC-400.60
+  capability_id_l1: BC-400
+  capability_name: Digital Marketing Management
+  confidence: 0.75
+  evidence: Creates or updates remarketing actions / GoogleAdsGoogleadsV25Common__TagSnippet
+  reason: Remarketing actions with site tag snippets are retargeting instrumentation for paid digital
+    campaigns, a digital marketing capability.
+- tag: customers.assetSetAssets
+  spec_file: google-ads-customers-assetsetassets-api-openapi.yml
+  capability_id: BC-400.60
+  capability_id_l1: BC-400
+  capability_name: Digital Marketing Management
+  confidence: 0.72
+  evidence: '"Creates, updates or removes asset set assets"; schema AssetSetAsset'
+  reason: Links advertising creative assets into asset sets used by Google Ads campaigns — digital marketing
+    asset/campaign configuration. Thin context, so moderate confidence.
+- tag: customers.biddingDataExclusions
+  spec_file: google-ads-customers-biddingdataexclusions-api-openapi.yml
+  capability_id: BC-400.60
+  capability_id_l1: BC-400
+  capability_name: Digital Marketing Management
+  confidence: 0.72
+  evidence: '"Creates, updates, or removes data exclusions"; schema BiddingDataExclusion'
+  reason: Bidding data exclusions tune Google Ads smart-bidding behaviour for paid search/display campaigns
+    — paid media (digital marketing) management.
+- tag: customers.biddingSeasonalityAdjustments
+  spec_file: google-ads-customers-biddingseasonalityadjustments-api-openapi.yml
+  capability_id: BC-400.60
+  capability_id_l1: BC-400
+  capability_name: Digital Marketing Management
+  confidence: 0.72
+  evidence: '"Creates, updates, or removes seasonality adjustments"; schema BiddingSeasonalityAdjustment'
+  reason: Seasonality adjustments to automated ad bidding — configuration of paid digital media buying,
+    not pricing of the buyer's own products.
+- tag: customers.campaignSharedSets
+  spec_file: google-ads-customers-campaignsharedsets-api-openapi.yml
+  capability_id: BC-400.60
+  capability_id_l1: BC-400
+  capability_name: Digital Marketing Management
+  confidence: 0.72
+  evidence: '"Creates or removes campaign shared sets", GoogleAdsGoogleadsV25Resources__CampaignSharedSet'
+  reason: Shared sets (e.g. negative keyword/placement lists) attached to campaigns are paid-search targeting
+    exclusions — digital marketing execution.
+- tag: audienceInsights
+  spec_file: google-ads-audienceinsights-api-openapi.yml
+  capability_id: BC-400
+  capability_id_l1: BC-400
+  capability_name: Marketing Management
+  confidence: 0.7
+  evidence: '"Lists date ranges for which audience insights data can be requested"'
+  reason: Audience insight data availability for ad planning is a marketing capability, but the single
+    utility operation is too thin to pin a sub-capability.
+- tag: customers.CustomerCustomizers
+  spec_file: google-ads-customers-customercustomizers-api-openapi.yml
+  capability_id: BC-400.60
+  capability_id_l1: BC-400
+  capability_name: Digital Marketing Management
+  confidence: 0.7
+  evidence: '"Creates, updates or removes customer customizers"; schema CustomizerValue'
+  reason: Account-level ad customizer values used to populate dynamic ad creative — digital advertising
+    configuration, not customer data management.
+- tag: customers.Goals
+  spec_file: google-ads-customers-goals-api-openapi.yml
+  capability_id: BC-400.60
+  capability_id_l1: BC-400
+  capability_name: Digital Marketing Management
+  confidence: 0.7
+  evidence: '"Create or update goals"; GoalSetting_NewCustomerAcquisitionGoal, GoalSetting_RetentionGoal'
+  reason: Advertising optimisation goals configured on the Google Ads account driving bidding/targeting
+    — digital marketing configuration rather than enterprise objective setting.
+- tag: customers.accountBudgetProposals
+  spec_file: google-ads-customers-accountbudgetproposals-api-openapi.yml
+  capability_id: BC-400.50
+  capability_id_l1: BC-400
+  capability_name: Marketing Operations Management
+  confidence: 0.7
+  evidence: '"Creates, updates, or removes account budget proposals"; AccountBudgetProposal'
+  reason: Managing advertising account budgets maps to marketing operations (marketing budget management).
+- tag: customers.adGroupCriterionLabels
+  spec_file: google-ads-customers-adgroupcriterionlabels-api-openapi.yml
+  capability_id: BC-400.60
+  capability_id_l1: BC-400
+  capability_name: Digital Marketing Management
+  confidence: 0.7
+  evidence: '"Creates and removes ad group criterion labels"'
+  reason: Labeling of ad group criteria is an organisational feature inside the ad platform; still part
+    of paid-media campaign administration, though thin and arguably marketing operations.
+- tag: customers.adGroupLabels
+  spec_file: google-ads-customers-adgrouplabels-api-openapi.yml
+  capability_id: BC-400.60
+  capability_id_l1: BC-400
+  capability_name: Digital Marketing Management
+  confidence: 0.7
+  evidence: '"Creates and removes ad group labels"; GoogleAdsGoogleadsV25Resources__AdGroupLabel'
+  reason: Labels organise ad groups within the advertising account; supports paid-media campaign management,
+    though it is an organisational primitive.
+- tag: customers.audiences
+  spec_file: google-ads-customers-audiences-api-openapi.yml
+  capability_id: BC-400.60
+  capability_id_l1: BC-400
+  capability_name: Digital Marketing Management
+  confidence: 0.7
+  evidence: '"Creates audiences"; schemas AudienceSegment, UserListSegment, DetailedDemographicSegment,
+    HouseholdIncomeDimension'
+  reason: Defines ad-targeting audience segments (demographics, interests, user lists) for Google Ads.
+    This is paid-media audience targeting; it could also be read as customer segmentation (BC-420.20),
+    hence moderate confidence on the sub-capability.
+- tag: customers.campaignBudgets
+  spec_file: google-ads-customers-campaignbudgets-api-openapi.yml
+  capability_id: BC-400.60
+  capability_id_l1: BC-400
+  capability_name: Digital Marketing Management
+  confidence: 0.7
+  evidence: '"Creates, updates, or removes campaign budgets", GoogleAdsGoogleadsV25Resources__CampaignBudget'
+  reason: Ad campaign spend budgets in Google Ads are a paid-media control; could arguably be marketing
+    operations budgeting, hence moderate confidence on the sub-capability, but clearly Marketing Management
+    at L1.
+- tag: customers.conversionValueRuleSets
+  spec_file: google-ads-customers-conversionvaluerulesets-api-openapi.yml
+  capability_id: BC-400.60
+  capability_id_l1: BC-400
+  capability_name: Digital Marketing Management
+  confidence: 0.7
+  evidence: '"Creates, updates or removes conversion value rule sets" — ConversionValueRuleSetOperation'
+  reason: Rules adjusting reported conversion value used for paid-media bidding; digital marketing configuration,
+    not pricing or financial capability.
+- tag: customers.customAudiences
+  spec_file: google-ads-customers-customaudiences-api-openapi.yml
+  capability_id: BC-400.60
+  capability_id_l1: BC-400
+  capability_name: Digital Marketing Management
+  confidence: 0.7
+  evidence: '"Creates or updates custom audiences" — CustomAudience, CustomAudienceMember'
+  reason: Audience targeting definitions for ad campaigns; digital media targeting rather than enterprise
+    customer segmentation of a CRM.
+- tag: customers.customInterests
+  spec_file: google-ads-customers-custominterests-api-openapi.yml
+  capability_id: BC-400.60
+  capability_id_l1: BC-400
+  capability_name: Digital Marketing Management
+  confidence: 0.7
+  evidence: '"Creates or updates custom interests" — CustomInterest, CustomInterestMember'
+  reason: Interest-based targeting lists for ad campaigns; digital advertising targeting configuration.
+- tag: customers.customerAssets
+  spec_file: google-ads-customers-customerassets-api-openapi.yml
+  capability_id: BC-400.60
+  capability_id_l1: BC-400
+  capability_name: Digital Marketing Management
+  confidence: 0.7
+  evidence: '"Creates, updates, or removes customer assets"; schemas AssetDisapproved, AssetLinkPrimaryStatusDetails'
+  reason: Linking ad creative assets (with approval status) at account level; digital advertising creative
+    management, not fixed-asset accounting.
+- tag: customers.customerSkAdNetworkConversionValueSchemas
+  spec_file: google-ads-customers-customerskadnetworkconversionvalueschemas-api-openapi.yml
+  capability_id: BC-400.60
+  capability_id_l1: BC-400
+  capability_name: Digital Marketing Management
+  confidence: 0.7
+  evidence: Creates or updates the CustomerSkAdNetworkConversionValueSchema ... SkAdNetworkConversionValueSchema_ConversionValueMapping,
+    ..._PostbackMapping
+  reason: Configures SKAdNetwork conversion-value mappings used to measure iOS app-install ad conversions
+    — paid digital media measurement configuration. Some ambiguity between digital marketing execution
+    and marketing measurement/ops, hence moderate confidence.
+- tag: customers.experimentArms
+  spec_file: google-ads-customers-experimentarms-api-openapi.yml
+  capability_id: BC-400.60
+  capability_id_l1: BC-400
+  capability_name: Digital Marketing Management
+  confidence: 0.7
+  evidence: Creates, updates, or removes experiment arms ... ExperimentArm_AssetTestingInfo, ..._ExperimentalPerformanceMaxCampaignSettings
+  reason: Experiment arms define control/treatment variants of ad campaigns and asset tests — campaign
+    A/B testing within paid digital media, i.e. digital marketing management rather than SaaS product
+    experimentation.
+- tag: customers.googleAds
+  spec_file: google-ads-customers-googleads-api-openapi.yml
+  capability_id: BC-400.60
+  capability_id_l1: BC-400
+  capability_name: Digital Marketing Management
+  confidence: 0.7
+  evidence: Returns all rows that match the search query ... Executes mutate and actions operations
+  reason: The catch-all GoogleAdsService surface queries and mutates campaign, ad group, ad, budget and
+    conversion resources (schemas include AdGroupAd, Campaign, BudgetSimulationPoint), i.e. general management
+    and reporting of paid digital advertising.
+- tag: customers.reservations
+  spec_file: google-ads-customers-reservations-api-openapi.yml
+  capability_id: BC-400.60
+  capability_id_l1: BC-400
+  capability_name: Digital Marketing Management
+  confidence: 0.7
+  evidence: Proposes quotes for booking campaigns / Books the requested campaigns / GoogleAdsGoogleadsV25Common__CampaignReservationQuote
+  reason: 'Reservation-based media buying: quoting and booking ad campaigns. This is paid digital media
+    purchasing, not sales quoting (CPQ) — the object quoted is an advertising campaign.'
+- tag: customers.sharedCriteria
+  spec_file: google-ads-customers-sharedcriteria-api-openapi.yml
+  capability_id: BC-400.60
+  capability_id_l1: BC-400
+  capability_name: Digital Marketing Management
+  confidence: 0.7
+  evidence: Creates or removes shared criteria / GoogleAdsGoogleadsV25Common__KeywordInfo, PlacementInfo,
+    YouTubeChannelInfo
+  reason: Manages shared targeting/exclusion criteria (keywords, placements, channels) used across ad
+    campaigns — paid digital campaign targeting configuration.
