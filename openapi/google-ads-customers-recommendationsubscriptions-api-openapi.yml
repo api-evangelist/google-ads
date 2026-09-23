@@ -106,7 +106,7 @@ paths:
       summary: Mutates given subscription with corresponding apply parameters
       tags:
       - customers.recommendationSubscriptions
-      description: 'Mutates given subscription with corresponding apply parameters. List of thrown errors: [AuthenticationError]() [AuthorizationError]() [DatabaseError]() [FieldError]() [HeaderError]() [InternalError]() [MutateError]() [QuotaError]() [RecommendationError]() [RecommendationSubscriptionError]() [RequestError]() [UrlFieldError]()'
+      description: 'Mutates given subscription with corresponding apply parameters. List of thrown errors: AuthenticationError AuthorizationError DatabaseError FieldError HeaderError InternalError MutateError QuotaError RecommendationError RecommendationSubscriptionError RequestError UrlFieldError'
       parameters:
       - name: customerId
         in: path
@@ -302,16 +302,6 @@ components:
         resourceName:
           description: Immutable. The resource name of the recommendation subscription. `customers/{customer_id}/recommendationSubscriptions/{recommendation_type}`
           type: string
-    GoogleAdsGoogleadsV25Services__MutateRecommendationSubscriptionResult:
-      type: object
-      properties:
-        resourceName:
-          type: string
-          description: Resource name of the subscription that was modified.
-        recommendationSubscription:
-          description: The mutated recommendation subscription with only mutable fields after mutate. The field will only be returned when response_content_type is set to "MUTABLE_RESOURCE".
-          $ref: '#/components/schemas/GoogleAdsGoogleadsV25Resources__RecommendationSubscription'
-      description: Result message for RecommendationSubscriptionService.MutateRecommendationSubscription
     GoogleRpc__Status:
       description: 'The `Status` type defines a logical error model that is suitable for different programming environments, including REST APIs and RPC APIs. It is used by [gRPC](https://github.com/grpc). Each `Status` message contains three pieces of data: error code, error message, and error details. You can find out more about this error model and how to work with it in the [API Design Guide](https://cloud.google.com/apis/design/errors).'
       type: object
@@ -330,6 +320,16 @@ components:
             type: object
             additionalProperties:
               description: Properties of the object. Contains field @type with type URL.
+    GoogleAdsGoogleadsV25Services__MutateRecommendationSubscriptionResult:
+      type: object
+      properties:
+        resourceName:
+          type: string
+          description: Resource name of the subscription that was modified.
+        recommendationSubscription:
+          description: The mutated recommendation subscription with only mutable fields after mutate. The field will only be returned when response_content_type is set to "MUTABLE_RESOURCE".
+          $ref: '#/components/schemas/GoogleAdsGoogleadsV25Resources__RecommendationSubscription'
+      description: Result message for RecommendationSubscriptionService.MutateRecommendationSubscription
     GoogleAdsGoogleadsV25Services__MutateRecommendationSubscriptionResponse:
       type: object
       properties:

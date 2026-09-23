@@ -106,7 +106,7 @@ paths:
       summary: Creates, updates, or removes ad parameters
       tags:
       - customers.adParameters
-      description: 'Creates, updates, or removes ad parameters. Operation statuses are returned. List of thrown errors: [AdParameterError]() [AuthenticationError]() [AuthorizationError]() [ContextError]() [DatabaseError]() [FieldError]() [FieldMaskError]() [HeaderError]() [InternalError]() [MutateError]() [QuotaError]() [RequestError]()'
+      description: 'Creates, updates, or removes ad parameters. Operation statuses are returned. List of thrown errors: AdParameterError AuthenticationError AuthorizationError ContextError DatabaseError FieldError FieldMaskError HeaderError InternalError MutateError QuotaError RequestError'
       parameters:
       - name: customerId
         in: path
@@ -133,6 +133,62 @@ paths:
         - https://www.googleapis.com/auth/adwords
 components:
   schemas:
+    GoogleAdsGoogleadsV25Services__MutateAdParametersResponse:
+      description: Response message for an ad parameter mutate.
+      type: object
+      properties:
+        partialFailureError:
+          $ref: '#/components/schemas/GoogleRpc__Status'
+          description: Errors that pertain to operation failures in the partial failure mode. Returned only when partial_failure = true and all errors occur inside the operations. If any errors occur outside the operations (for example, auth errors), we return an RPC level error.
+        results:
+          type: array
+          description: All results for the mutate.
+          items:
+            $ref: '#/components/schemas/GoogleAdsGoogleadsV25Services__MutateAdParameterResult'
+    GoogleAdsGoogleadsV25Services__MutateAdParametersRequest:
+      type: object
+      properties:
+        partialFailure:
+          description: If true, successful operations will be carried out and invalid operations will return errors. If false, all operations will be carried out in one transaction if and only if they are all valid. Default is false.
+          type: boolean
+        operations:
+          type: array
+          description: Required. The list of operations to perform on individual ad parameters.
+          items:
+            $ref: '#/components/schemas/GoogleAdsGoogleadsV25Services__AdParameterOperation'
+        validateOnly:
+          type: boolean
+          description: If true, the request is validated but not executed. Only errors are returned, not results.
+        responseContentType:
+          x-enumDescriptions:
+          - Not specified. Will return the resource name only in the response.
+          - The mutate response will be the resource name.
+          - The mutate response will contain the resource name and the resource with mutable fields if possible. Otherwise, only the resource name will be returned.
+          enum:
+          - UNSPECIFIED
+          - RESOURCE_NAME_ONLY
+          - MUTABLE_RESOURCE
+          description: The response content type setting. Determines whether the mutable resource or just the resource name should be returned post mutation.
+          type: string
+      description: Request message for AdParameterService.MutateAdParameters
+    GoogleRpc__Status:
+      description: 'The `Status` type defines a logical error model that is suitable for different programming environments, including REST APIs and RPC APIs. It is used by [gRPC](https://github.com/grpc). Each `Status` message contains three pieces of data: error code, error message, and error details. You can find out more about this error model and how to work with it in the [API Design Guide](https://cloud.google.com/apis/design/errors).'
+      type: object
+      properties:
+        message:
+          description: A developer-facing error message, which should be in English. Any user-facing error message should be localized and sent in the google.rpc.Status.details field, or localized by the client.
+          type: string
+        code:
+          type: integer
+          description: The status code, which should be an enum value of google.rpc.Code.
+          format: int32
+        details:
+          type: array
+          description: A list of messages that carry the error details. There is a common set of message types for APIs to use.
+          items:
+            type: object
+            additionalProperties:
+              description: Properties of the object. Contains field @type with type URL.
     GoogleAdsGoogleadsV25Resources__AdParameter:
       type: object
       properties:
@@ -167,24 +223,6 @@ components:
           description: 'Remove operation: A resource name for the ad parameter to remove is expected in this format: `customers/{customer_id}/adParameters/{ad_group_id}~{criterion_id}~{parameter_index}`'
           type: string
       description: A single operation (create, update, remove) on ad parameter.
-    GoogleRpc__Status:
-      description: 'The `Status` type defines a logical error model that is suitable for different programming environments, including REST APIs and RPC APIs. It is used by [gRPC](https://github.com/grpc). Each `Status` message contains three pieces of data: error code, error message, and error details. You can find out more about this error model and how to work with it in the [API Design Guide](https://cloud.google.com/apis/design/errors).'
-      type: object
-      properties:
-        message:
-          description: A developer-facing error message, which should be in English. Any user-facing error message should be localized and sent in the google.rpc.Status.details field, or localized by the client.
-          type: string
-        code:
-          type: integer
-          description: The status code, which should be an enum value of google.rpc.Code.
-          format: int32
-        details:
-          type: array
-          description: A list of messages that carry the error details. There is a common set of message types for APIs to use.
-          items:
-            type: object
-            additionalProperties:
-              description: Properties of the object. Contains field @type with type URL.
     GoogleAdsGoogleadsV25Services__MutateAdParameterResult:
       description: The result for the ad parameter mutate.
       type: object
@@ -195,44 +233,6 @@ components:
         resourceName:
           description: The resource name returned for successful operations.
           type: string
-    GoogleAdsGoogleadsV25Services__MutateAdParametersRequest:
-      type: object
-      properties:
-        partialFailure:
-          description: If true, successful operations will be carried out and invalid operations will return errors. If false, all operations will be carried out in one transaction if and only if they are all valid. Default is false.
-          type: boolean
-        operations:
-          type: array
-          description: Required. The list of operations to perform on individual ad parameters.
-          items:
-            $ref: '#/components/schemas/GoogleAdsGoogleadsV25Services__AdParameterOperation'
-        validateOnly:
-          type: boolean
-          description: If true, the request is validated but not executed. Only errors are returned, not results.
-        responseContentType:
-          x-enumDescriptions:
-          - Not specified. Will return the resource name only in the response.
-          - The mutate response will be the resource name.
-          - The mutate response will contain the resource name and the resource with mutable fields if possible. Otherwise, only the resource name will be returned.
-          enum:
-          - UNSPECIFIED
-          - RESOURCE_NAME_ONLY
-          - MUTABLE_RESOURCE
-          description: The response content type setting. Determines whether the mutable resource or just the resource name should be returned post mutation.
-          type: string
-      description: Request message for AdParameterService.MutateAdParameters
-    GoogleAdsGoogleadsV25Services__MutateAdParametersResponse:
-      description: Response message for an ad parameter mutate.
-      type: object
-      properties:
-        partialFailureError:
-          $ref: '#/components/schemas/GoogleRpc__Status'
-          description: Errors that pertain to operation failures in the partial failure mode. Returned only when partial_failure = true and all errors occur inside the operations. If any errors occur outside the operations (for example, auth errors), we return an RPC level error.
-        results:
-          type: array
-          description: All results for the mutate.
-          items:
-            $ref: '#/components/schemas/GoogleAdsGoogleadsV25Services__MutateAdParameterResult'
   securitySchemes:
     oauth2:
       type: oauth2

@@ -106,7 +106,7 @@ paths:
       summary: Update a data link
       tags:
       - customers.dataLinks
-      description: 'Update a data link. List of thrown errors: [AuthenticationError]() [AuthorizationError]() [DatabaseError]() [DataLinkError]() [FieldError]() [HeaderError]() [InternalError]() [MutateError]() [QuotaError]() [RequestError]()'
+      description: 'Update a data link. List of thrown errors: AuthenticationError AuthorizationError DatabaseError DataLinkError FieldError HeaderError InternalError MutateError QuotaError RequestError'
       parameters:
       - name: customerId
         in: path
@@ -220,7 +220,7 @@ paths:
       summary: Creates a data link
       tags:
       - customers.dataLinks
-      description: 'Creates a data link. The requesting Google Ads account name and account ID will be shared with the third party (such as YouTube creators for video links) to whom you are creating the link with. List of thrown errors: [AuthenticationError]() [AuthorizationError]() [DatabaseError]() [DataLinkError]() [FieldError]() [HeaderError]() [InternalError]() [MutateError]() [QuotaError]() [RequestError]()'
+      description: 'Creates a data link. The requesting Google Ads account name and account ID will be shared with the third party (such as YouTube creators for video links) to whom you are creating the link with. List of thrown errors: AuthenticationError AuthorizationError DatabaseError DataLinkError FieldError HeaderError InternalError MutateError QuotaError RequestError'
       parameters:
       - name: customerId
         in: path
@@ -334,7 +334,7 @@ paths:
       summary: Remove a data link
       tags:
       - customers.dataLinks
-      description: 'Remove a data link. List of thrown errors: [AuthenticationError]() [AuthorizationError]() [DatabaseError]() [DataLinkError]() [FieldError]() [HeaderError]() [InternalError]() [MutateError]() [QuotaError]() [RequestError]()'
+      description: 'Remove a data link. List of thrown errors: AuthenticationError AuthorizationError DatabaseError DataLinkError FieldError HeaderError InternalError MutateError QuotaError RequestError'
       parameters:
       - name: customerId
         in: path
@@ -361,44 +361,6 @@ paths:
         - https://www.googleapis.com/auth/adwords
 components:
   schemas:
-    GoogleAdsGoogleadsV25Services__RemoveDataLinkRequest:
-      description: Request message for DataLinkService.RemoveDataLink.
-      type: object
-      properties:
-        resourceName:
-          type: string
-          description: Required. The data link is expected to have a valid resource name.
-    GoogleAdsGoogleadsV25Services__RemoveDataLinkResponse:
-      type: object
-      properties:
-        resourceName:
-          description: Result for the remove request.
-          type: string
-      description: Response message for DataLinkService.RemoveDataLink.
-    GoogleAdsGoogleadsV25Services__UpdateDataLinkResponse:
-      type: object
-      properties:
-        resourceName:
-          description: Returned for successful operations. Resource name of the data link.
-          type: string
-      description: Response message for DataLinkService.UpdateDataLink.
-    GoogleAdsGoogleadsV25Resources__YoutubeVideoIdentifier:
-      description: The identifier for YouTube video
-      type: object
-      properties:
-        videoId:
-          description: Immutable. The ID of the video associated with the video link. This is the 11 character string value used in the YouTube video URL. For example, video ID is jV1vkHv4zq8 from the YouTube video URL "https://www.youtube.com/watch?v=jV1vkHv4zq8&t=2s".
-          type: string
-        channelId:
-          type: string
-          description: Immutable. The ID of the hosting channel of the video. This is a string value with “UC” prefix. For example, "UCK8sQmJBp8GCxrOtXWBpyEA".
-    GoogleAdsGoogleadsV25Resources__YoutubeLinkMetadata:
-      type: object
-      properties:
-        brandChannelId:
-          description: Immutable. The ID of a YouTube brand channel to help creators understand your brand. The channel must be linked to this account. This is a string value with “UC” prefix. For example, "UCK8sQmJBp8GCxrOtXWBpyEA".
-          type: string
-      description: Metadata specific to YouTube links.
     GoogleAdsGoogleadsV25Services__UpdateDataLinkRequest:
       description: Request message for DataLinkService.UpdateDataLink.
       type: object
@@ -427,6 +389,51 @@ components:
         resourceName:
           type: string
           description: Required. The data link is expected to have a valid resource name.
+    GoogleAdsGoogleadsV25Services__RemoveDataLinkRequest:
+      description: Request message for DataLinkService.RemoveDataLink.
+      type: object
+      properties:
+        resourceName:
+          type: string
+          description: Required. The data link is expected to have a valid resource name.
+    GoogleAdsGoogleadsV25Resources__YoutubeVideoIdentifier:
+      description: The identifier for YouTube video
+      type: object
+      properties:
+        videoId:
+          description: Immutable. The ID of the video associated with the video link. This is the 11 character string value used in the YouTube video URL. For example, video ID is jV1vkHv4zq8 from the YouTube video URL "https://www.youtube.com/watch?v=jV1vkHv4zq8&t=2s".
+          type: string
+        channelId:
+          type: string
+          description: Immutable. The ID of the hosting channel of the video. This is a string value with “UC” prefix. For example, "UCK8sQmJBp8GCxrOtXWBpyEA".
+    GoogleAdsGoogleadsV25Services__CreateDataLinkResponse:
+      type: object
+      properties:
+        resourceName:
+          description: Returned for successful operations. Resource name of the data link.
+          type: string
+      description: Response message for DataLinkService.CreateDataLink.
+    GoogleAdsGoogleadsV25Services__CreateDataLinkRequest:
+      description: Request message for DataLinkService.CreateDataLink.
+      type: object
+      properties:
+        dataLink:
+          $ref: '#/components/schemas/GoogleAdsGoogleadsV25Resources__DataLink'
+          description: Required. The data link to be created.
+    GoogleAdsGoogleadsV25Services__UpdateDataLinkResponse:
+      type: object
+      properties:
+        resourceName:
+          description: Returned for successful operations. Resource name of the data link.
+          type: string
+      description: Response message for DataLinkService.UpdateDataLink.
+    GoogleAdsGoogleadsV25Resources__YoutubeLinkMetadata:
+      type: object
+      properties:
+        brandChannelId:
+          description: Immutable. The ID of a YouTube brand channel to help creators understand your brand. The channel must be linked to this account. This is a string value with “UC” prefix. For example, "UCK8sQmJBp8GCxrOtXWBpyEA".
+          type: string
+      description: Metadata specific to YouTube links.
     GoogleAdsGoogleadsV25Resources__DataLink:
       description: Represents the data sharing connection between a Google Ads customer and another product's data.
       type: object
@@ -480,20 +487,13 @@ components:
         resourceName:
           description: 'Immutable. Resource name of the product data link. DataLink resource names have the form: `customers/{customer_id}/dataLinks/{product_link_id}~{data_link_id}`'
           type: string
-    GoogleAdsGoogleadsV25Services__CreateDataLinkResponse:
+    GoogleAdsGoogleadsV25Services__RemoveDataLinkResponse:
       type: object
       properties:
         resourceName:
-          description: Returned for successful operations. Resource name of the data link.
+          description: Result for the remove request.
           type: string
-      description: Response message for DataLinkService.CreateDataLink.
-    GoogleAdsGoogleadsV25Services__CreateDataLinkRequest:
-      description: Request message for DataLinkService.CreateDataLink.
-      type: object
-      properties:
-        dataLink:
-          $ref: '#/components/schemas/GoogleAdsGoogleadsV25Resources__DataLink'
-          description: Required. The data link to be created.
+      description: Response message for DataLinkService.RemoveDataLink.
   securitySchemes:
     oauth2:
       type: oauth2

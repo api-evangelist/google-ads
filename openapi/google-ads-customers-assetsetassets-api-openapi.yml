@@ -133,6 +133,24 @@ paths:
         - https://www.googleapis.com/auth/adwords
 components:
   schemas:
+    GoogleRpc__Status:
+      description: 'The `Status` type defines a logical error model that is suitable for different programming environments, including REST APIs and RPC APIs. It is used by [gRPC](https://github.com/grpc). Each `Status` message contains three pieces of data: error code, error message, and error details. You can find out more about this error model and how to work with it in the [API Design Guide](https://cloud.google.com/apis/design/errors).'
+      type: object
+      properties:
+        message:
+          description: A developer-facing error message, which should be in English. Any user-facing error message should be localized and sent in the google.rpc.Status.details field, or localized by the client.
+          type: string
+        code:
+          type: integer
+          description: The status code, which should be an enum value of google.rpc.Code.
+          format: int32
+        details:
+          type: array
+          description: A list of messages that carry the error details. There is a common set of message types for APIs to use.
+          items:
+            type: object
+            additionalProperties:
+              description: Properties of the object. Contains field @type with type URL.
     GoogleAdsGoogleadsV25Resources__AssetSetAsset:
       description: AssetSetAsset is the link between an asset and an asset set. Adding an AssetSetAsset links an asset with an asset set.
       type: object
@@ -159,15 +177,15 @@ components:
         asset:
           type: string
           description: Immutable. The asset which this asset set asset is linking to.
-    GoogleAdsGoogleadsV25Services__AssetSetAssetOperation:
-      description: A single operation (create, remove) on an asset set asset.
+    GoogleAdsGoogleadsV25Services__MutateAssetSetAssetResult:
+      description: The result for the asset set asset mutate.
       type: object
       properties:
-        create:
-          description: 'Create operation: No resource name is expected for the new asset set asset'
+        assetSetAsset:
+          description: The mutated asset set asset with only mutable fields after mutate. The field will only be returned when response_content_type is set to "MUTABLE_RESOURCE".
           $ref: '#/components/schemas/GoogleAdsGoogleadsV25Resources__AssetSetAsset'
-        remove:
-          description: 'Remove operation: A resource name for the removed asset set asset is expected, in this format: `customers/{customer_id}/assetSetAssets/{asset_set_id}~{asset_id}`'
+        resourceName:
+          description: Returned for successful operations.
           type: string
     GoogleAdsGoogleadsV25Services__MutateAssetSetAssetsResponse:
       description: Response message for an asset set asset mutate.
@@ -181,6 +199,16 @@ components:
         partialFailureError:
           $ref: '#/components/schemas/GoogleRpc__Status'
           description: Errors that pertain to operation failures in the partial failure mode. Returned only when partial_failure = true and all errors occur inside the operations. If any errors occur outside the operations (for example, auth errors), we return an RPC level error.
+    GoogleAdsGoogleadsV25Services__AssetSetAssetOperation:
+      description: A single operation (create, remove) on an asset set asset.
+      type: object
+      properties:
+        create:
+          description: 'Create operation: No resource name is expected for the new asset set asset'
+          $ref: '#/components/schemas/GoogleAdsGoogleadsV25Resources__AssetSetAsset'
+        remove:
+          description: 'Remove operation: A resource name for the removed asset set asset is expected, in this format: `customers/{customer_id}/assetSetAssets/{asset_set_id}~{asset_id}`'
+          type: string
     GoogleAdsGoogleadsV25Services__MutateAssetSetAssetsRequest:
       description: Request message for AssetSetAssetService.MutateAssetSetAssets.
       type: object
@@ -207,34 +235,6 @@ components:
           - UNSPECIFIED
           - RESOURCE_NAME_ONLY
           - MUTABLE_RESOURCE
-    GoogleRpc__Status:
-      description: 'The `Status` type defines a logical error model that is suitable for different programming environments, including REST APIs and RPC APIs. It is used by [gRPC](https://github.com/grpc). Each `Status` message contains three pieces of data: error code, error message, and error details. You can find out more about this error model and how to work with it in the [API Design Guide](https://cloud.google.com/apis/design/errors).'
-      type: object
-      properties:
-        message:
-          description: A developer-facing error message, which should be in English. Any user-facing error message should be localized and sent in the google.rpc.Status.details field, or localized by the client.
-          type: string
-        code:
-          type: integer
-          description: The status code, which should be an enum value of google.rpc.Code.
-          format: int32
-        details:
-          type: array
-          description: A list of messages that carry the error details. There is a common set of message types for APIs to use.
-          items:
-            type: object
-            additionalProperties:
-              description: Properties of the object. Contains field @type with type URL.
-    GoogleAdsGoogleadsV25Services__MutateAssetSetAssetResult:
-      description: The result for the asset set asset mutate.
-      type: object
-      properties:
-        assetSetAsset:
-          description: The mutated asset set asset with only mutable fields after mutate. The field will only be returned when response_content_type is set to "MUTABLE_RESOURCE".
-          $ref: '#/components/schemas/GoogleAdsGoogleadsV25Resources__AssetSetAsset'
-        resourceName:
-          description: Returned for successful operations.
-          type: string
   securitySchemes:
     oauth2:
       type: oauth2

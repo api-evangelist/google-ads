@@ -106,7 +106,7 @@ paths:
       summary: Schedule an experiment
       tags:
       - customers.experiments
-      description: 'Schedule an experiment. The in design campaign will be converted into a real campaign (called the experiment campaign) that will begin serving ads if successfully created. The experiment is scheduled immediately with status INITIALIZING. This method returns a long running operation that tracks the forking of the in design campaign. If the forking fails, a list of errors can be retrieved using the ListExperimentAsyncErrors method. The operation''s metadata will be a string containing the resource name of the created experiment. List of thrown errors: [AuthenticationError]() [AuthorizationError]() [ExperimentError]() [DatabaseError]() [DateError]() [DateRangeError]() [FieldError]() [HeaderError]() [InternalError]() [QuotaError]() [RangeError]() [RequestError]()'
+      description: 'Schedule an experiment. The in design campaign will be converted into a real campaign (called the experiment campaign) that will begin serving ads if successfully created. The experiment is scheduled immediately with status INITIALIZING. This method returns a long running operation that tracks the forking of the in design campaign. If the forking fails, a list of errors can be retrieved using the ListExperimentAsyncErrors method. The operation''s metadata will be a string containing the resource name of the created experiment. List of thrown errors: AuthenticationError AuthorizationError ExperimentError DatabaseError DateError DateRangeError FieldError HeaderError InternalError QuotaError RangeError RequestError'
       parameters:
       - name: resourceName
         in: path
@@ -220,7 +220,7 @@ paths:
       summary: Graduates an experiment to a full campaign
       tags:
       - customers.experiments
-      description: 'Graduates an experiment to a full campaign. List of thrown errors: [AuthenticationError]() [AuthorizationError]() [ExperimentError]() [HeaderError]() [InternalError]() [MutateError]() [QuotaError]() [RequestError]()'
+      description: 'Graduates an experiment to a full campaign. List of thrown errors: AuthenticationError AuthorizationError ExperimentError HeaderError InternalError MutateError QuotaError RequestError'
       parameters:
       - name: experiment
         in: path
@@ -331,10 +331,10 @@ paths:
       description: Data format for response.
     post:
       operationId: googleads_customers_experiments_promoteExperiment
-      summary: Promotes the trial campaign thus applying changes in the trial campaign to the base campaign
+      summary: Promotes the trial campaign thus applying changes in the trial campaign to the…
       tags:
       - customers.experiments
-      description: 'Promotes the trial campaign thus applying changes in the trial campaign to the base campaign. This method returns a long running operation that tracks the promotion of the experiment campaign. If it fails, a list of errors can be retrieved using the ListExperimentAsyncErrors method. The operation''s metadata will be a string containing the resource name of the created experiment. List of thrown errors: [AuthenticationError]() [AuthorizationError]() [ExperimentError]() [HeaderError]() [InternalError]() [QuotaError]() [RequestError]()'
+      description: 'Promotes the trial campaign thus applying changes in the trial campaign to the base campaign. This method returns a long running operation that tracks the promotion of the experiment campaign. If it fails, a list of errors can be retrieved using the ListExperimentAsyncErrors method. The operation''s metadata will be a string containing the resource name of the created experiment. List of thrown errors: AuthenticationError AuthorizationError ExperimentError HeaderError InternalError QuotaError RequestError'
       parameters:
       - name: resourceName
         in: path
@@ -448,7 +448,7 @@ paths:
       summary: Creates, updates, or removes experiments
       tags:
       - customers.experiments
-      description: 'Creates, updates, or removes experiments. Operation statuses are returned. List of thrown errors: [AuthenticationError]() [AuthorizationError]() [ExperimentError]() [HeaderError]() [InternalError]() [QuotaError]() [RequestError]()'
+      description: 'Creates, updates, or removes experiments. Operation statuses are returned. List of thrown errors: AuthenticationError AuthorizationError ExperimentError HeaderError InternalError QuotaError RequestError'
       parameters:
       - name: customerId
         in: path
@@ -559,10 +559,10 @@ paths:
       description: Data format for response.
     post:
       operationId: googleads_customers_experiments_endExperiment
-      summary: Immediately ends an experiment, changing the experiment's scheduled end date and without waiting for end of day
+      summary: Immediately ends an experiment, changing the experiment's scheduled end date…
       tags:
       - customers.experiments
-      description: 'Immediately ends an experiment, changing the experiment''s scheduled end date and without waiting for end of day. End date is updated to be the time of the request. List of thrown errors: [AuthenticationError]() [AuthorizationError]() [ExperimentError]() [HeaderError]() [InternalError]() [QuotaError]() [RequestError]()'
+      description: 'Immediately ends an experiment, changing the experiment''s scheduled end date and without waiting for end of day. End date is updated to be the time of the request. List of thrown errors: AuthenticationError AuthorizationError ExperimentError HeaderError InternalError QuotaError RequestError'
       parameters:
       - name: experiment
         in: path
@@ -673,10 +673,10 @@ paths:
       description: Data format for response.
     get:
       operationId: googleads_customers_experiments_listExperimentAsyncErrors
-      summary: Returns all errors that occurred during the last Experiment update (either scheduling or promotion)
+      summary: Returns all errors that occurred during the last Experiment update (either…
       tags:
       - customers.experiments
-      description: 'Returns all errors that occurred during the last Experiment update (either scheduling or promotion). Supports standard list paging. List of thrown errors: [AuthenticationError]() [AuthorizationError]() [HeaderError]() [InternalError]() [QuotaError]() [RequestError]()'
+      description: 'Returns all errors that occurred during the last Experiment update (either scheduling or promotion). Supports standard list paging. List of thrown errors: AuthenticationError AuthorizationError HeaderError InternalError QuotaError RequestError'
       parameters:
       - name: pageToken
         in: query
@@ -710,104 +710,6 @@ paths:
         - https://www.googleapis.com/auth/adwords
 components:
   schemas:
-    GoogleLongrunning__Operation:
-      type: object
-      properties:
-        done:
-          description: If the value is `false`, it means the operation is still in progress. If `true`, the operation is completed, and either `error` or `response` is available.
-          type: boolean
-        name:
-          description: The server-assigned name, which is only unique within the same service that originally returns it. If you use the default HTTP mapping, the `name` should be a resource name ending with `operations/{unique_id}`.
-          type: string
-        response:
-          type: object
-          description: The normal, successful response of the operation. If the original method returns no data on success, such as `Delete`, the response is `google.protobuf.Empty`. If the original method is standard `Get`/`Create`/`Update`, the response should be the resource. For other methods, the response should have the type `XxxResponse`, where `Xxx` is the original method name. For example, if the original method name is `TakeSnapshot()`, the inferred response type is `TakeSnapshotResponse`.
-          additionalProperties:
-            description: Properties of the object. Contains field @type with type URL.
-        error:
-          $ref: '#/components/schemas/GoogleRpc__Status'
-          description: The error result of the operation in case of failure or cancellation.
-        metadata:
-          type: object
-          description: Service-specific metadata associated with the operation. It typically contains progress information and common metadata such as create time. Some services might not provide such metadata. Any method that returns a long-running operation should document the metadata type, if any.
-          additionalProperties:
-            description: Properties of the object. Contains field @type with type URL.
-      description: This resource represents a long-running operation that is the result of a network API call.
-    GoogleAdsGoogleadsV25Services__MutateExperimentsRequest:
-      type: object
-      properties:
-        partialFailure:
-          type: boolean
-          description: If true, successful operations will be carried out and invalid operations will return errors. If false, all operations will be carried out in one transaction if and only if they are all valid. Default is false.
-        operations:
-          description: Required. The list of operations to perform on individual experiments.
-          items:
-            $ref: '#/components/schemas/GoogleAdsGoogleadsV25Services__ExperimentOperation'
-          type: array
-        validateOnly:
-          type: boolean
-          description: If true, the request is validated but not executed. Only errors are returned, not results.
-      description: Request message for ExperimentService.MutateExperiments.
-    GoogleAdsGoogleadsV25Services__GraduateExperimentRequest:
-      type: object
-      properties:
-        campaignBudgetMappings:
-          description: Required. List of campaign budget mappings for graduation. Each campaign that appears here will graduate, and will be assigned a new budget that is paired with it in the mapping. The maximum size is one.
-          items:
-            $ref: '#/components/schemas/GoogleAdsGoogleadsV25Services__CampaignBudgetMapping'
-          type: array
-        validateOnly:
-          description: If true, the request is validated but not executed. Only errors are returned, not results.
-          type: boolean
-      description: Request message for ExperimentService.GraduateExperiment.
-    GoogleAdsGoogleadsV25Services__ListExperimentAsyncErrorsResponse:
-      type: object
-      properties:
-        errors:
-          type: array
-          description: details of the errors when performing the asynchronous operation.
-          items:
-            $ref: '#/components/schemas/GoogleRpc__Status'
-        nextPageToken:
-          description: Pagination token used to retrieve the next page of results. Pass the content of this string as the `page_token` attribute of the next request. `next_page_token` is not returned for the last page.
-          type: string
-      description: Response message for ExperimentService.ListExperimentAsyncErrors.
-    GoogleAdsGoogleadsV25Services__MutateExperimentsResponse:
-      type: object
-      properties:
-        results:
-          description: All results for the mutate.
-          items:
-            $ref: '#/components/schemas/GoogleAdsGoogleadsV25Services__MutateExperimentResult'
-          type: array
-        partialFailureError:
-          $ref: '#/components/schemas/GoogleRpc__Status'
-          description: Errors that pertain to operation failures in the partial failure mode. Returned only when partial_failure = true and all errors occur inside the operations. If any errors occur outside the operations (for example, auth errors), we return an RPC level error.
-      description: Response message for experiment mutate.
-    GoogleAdsGoogleadsV25Services__MutateExperimentResult:
-      description: The result for the campaign experiment mutate.
-      type: object
-      properties:
-        resourceName:
-          type: string
-          description: Returned for successful operations.
-    GoogleAdsGoogleadsV25Services__CampaignBudgetMapping:
-      type: object
-      properties:
-        experimentCampaign:
-          description: Required. The experiment campaign to graduate.
-          type: string
-        campaignBudget:
-          description: Required. The budget that should be attached to the graduating experiment campaign.
-          type: string
-      description: The mapping of experiment campaign and budget to be graduated.
-    GoogleAdsGoogleadsV25Services__PromoteExperimentRequest:
-      description: Request message for ExperimentService.PromoteExperiment.
-      type: object
-      properties:
-        validateOnly:
-          type: boolean
-          description: If true, the request is validated but not executed. Only errors are returned, not results.
     GoogleAdsGoogleadsV25Common__VideoExperimentInfo:
       type: object
       properties:
@@ -827,132 +729,33 @@ components:
           description: The subtype of the Video experiment.
           type: string
       description: Configuration for a Video experiment.
-    GoogleAdsGoogleadsV25Common__OptimizeAssetsExperimentInfo:
-      description: Configuration for an Optimize Assets experiment.
+    GoogleAdsGoogleadsV25Services__MutateExperimentsResponse:
       type: object
       properties:
-        optimizeAssetsExperimentSubtype:
-          description: The subtype of the Optimize Assets experiment.
-          type: string
-          x-enumDescriptions:
-          - Not specified.
-          - The value is unknown in this version.
-          - The experiment is testing adding assets to assetless retail PMax experiment.
-          - The experiment is testing adding video assets to videoless PMax experiment.
-          - The experiment is testing comparing two different sets of assets in a PMax experiment.
-          enum:
-          - UNSPECIFIED
-          - UNKNOWN
-          - ADD_ASSETS_TO_ASSETLESS_RETAIL
-          - ADD_VIDEO_ASSETS_TO_VIDEOLESS
-          - COMPARE_ASSETS
-    GoogleAdsGoogleadsV25Services__ScheduleExperimentRequest:
-      type: object
-      properties:
-        validateOnly:
-          type: boolean
-          description: If true, the request is validated but not executed. Only errors are returned, not results.
-      description: Request message for ExperimentService.ScheduleExperiment.
-    GoogleRpc__Status:
-      description: 'The `Status` type defines a logical error model that is suitable for different programming environments, including REST APIs and RPC APIs. It is used by [gRPC](https://github.com/grpc). Each `Status` message contains three pieces of data: error code, error message, and error details. You can find out more about this error model and how to work with it in the [API Design Guide](https://cloud.google.com/apis/design/errors).'
-      type: object
-      properties:
-        message:
-          description: A developer-facing error message, which should be in English. Any user-facing error message should be localized and sent in the google.rpc.Status.details field, or localized by the client.
-          type: string
-        code:
-          type: integer
-          description: The status code, which should be an enum value of google.rpc.Code.
-          format: int32
-        details:
-          type: array
-          description: A list of messages that carry the error details. There is a common set of message types for APIs to use.
+        results:
+          description: All results for the mutate.
           items:
-            type: object
-            additionalProperties:
-              description: Properties of the object. Contains field @type with type URL.
-    GoogleAdsGoogleadsV25Services__ExperimentOperation:
+            $ref: '#/components/schemas/GoogleAdsGoogleadsV25Services__MutateExperimentResult'
+          type: array
+        partialFailureError:
+          $ref: '#/components/schemas/GoogleRpc__Status'
+          description: Errors that pertain to operation failures in the partial failure mode. Returned only when partial_failure = true and all errors occur inside the operations. If any errors occur outside the operations (for example, auth errors), we return an RPC level error.
+      description: Response message for experiment mutate.
+    GoogleAdsGoogleadsV25Services__MutateExperimentsRequest:
       type: object
       properties:
-        remove:
-          description: 'Remove operation: The experiment is expected to have a valid resource name, in this format: `customers/{customer_id}/experiments/{campaign_experiment_id}`'
-          type: string
-        update:
-          $ref: '#/components/schemas/GoogleAdsGoogleadsV25Resources__Experiment'
-          description: 'Update operation: The experiment is expected to have a valid resource name.'
-        updateMask:
-          format: google-fieldmask
-          type: string
-          description: FieldMask that determines which resource fields are modified in an update.
-        create:
-          description: Create operation
-          $ref: '#/components/schemas/GoogleAdsGoogleadsV25Resources__Experiment'
-      description: A single operation on an experiment.
-    GoogleAdsGoogleadsV25Services__EndExperimentRequest:
-      type: object
-      properties:
+        partialFailure:
+          type: boolean
+          description: If true, successful operations will be carried out and invalid operations will return errors. If false, all operations will be carried out in one transaction if and only if they are all valid. Default is false.
+        operations:
+          description: Required. The list of operations to perform on individual experiments.
+          items:
+            $ref: '#/components/schemas/GoogleAdsGoogleadsV25Services__ExperimentOperation'
+          type: array
         validateOnly:
           type: boolean
           description: If true, the request is validated but not executed. Only errors are returned, not results.
-      description: Request message for ExperimentService.EndExperiment.
-    GoogleAdsGoogleadsV25Common__MetricGoal:
-      type: object
-      properties:
-        metric:
-          type: string
-          description: The metric of the goal. For example, clicks, impressions, cost, conversions, etc.
-          x-enumDescriptions:
-          - Not specified.
-          - The value is unknown in this version.
-          - The goal of the experiment is clicks.
-          - The goal of the experiment is impressions.
-          - The goal of the experiment is cost.
-          - The goal of the experiment is conversion rate.
-          - The goal of the experiment is cost per conversion.
-          - The goal of the experiment is conversion value per cost.
-          - The goal of the experiment is avg cpc.
-          - The goal of the experiment is ctr.
-          - The goal of the experiment is incremental conversions.
-          - The goal of the experiment is completed video views.
-          - The goal of the experiment is custom algorithms.
-          - The goal of the experiment is conversions.
-          - The goal of the experiment is conversion value.
-          enum:
-          - UNSPECIFIED
-          - UNKNOWN
-          - CLICKS
-          - IMPRESSIONS
-          - COST
-          - CONVERSIONS_PER_INTERACTION_RATE
-          - COST_PER_CONVERSION
-          - CONVERSIONS_VALUE_PER_COST
-          - AVERAGE_CPC
-          - CTR
-          - INCREMENTAL_CONVERSIONS
-          - COMPLETED_VIDEO_VIEWS
-          - CUSTOM_ALGORITHMS
-          - CONVERSIONS
-          - CONVERSION_VALUE
-        direction:
-          x-enumDescriptions:
-          - Not specified.
-          - The value is unknown in this version.
-          - The goal of the experiment is to not change the metric.
-          - The goal of the experiment is to increate the metric.
-          - The goal of the experiment is to decrease the metric.
-          - The goal of the experiment is to either not change or increase the metric.
-          - The goal of the experiment is to either not change or decrease the metric.
-          enum:
-          - UNSPECIFIED
-          - UNKNOWN
-          - NO_CHANGE
-          - INCREASE
-          - DECREASE
-          - NO_CHANGE_OR_INCREASE
-          - NO_CHANGE_OR_DECREASE
-          type: string
-          description: The metric direction of the goal. For example, increase, decrease, no change.
-      description: A metric goal for an experiment.
+      description: Request message for ExperimentService.MutateExperiments.
     GoogleAdsGoogleadsV25Resources__Experiment:
       type: object
       properties:
@@ -1079,10 +882,207 @@ components:
             $ref: '#/components/schemas/GoogleAdsGoogleadsV25Common__MetricGoal'
           type: array
       description: A Google ads experiment for users to experiment changes on multiple campaigns, compare the performance, and apply the effective changes.
+    GoogleRpc__Status:
+      description: 'The `Status` type defines a logical error model that is suitable for different programming environments, including REST APIs and RPC APIs. It is used by [gRPC](https://github.com/grpc). Each `Status` message contains three pieces of data: error code, error message, and error details. You can find out more about this error model and how to work with it in the [API Design Guide](https://cloud.google.com/apis/design/errors).'
+      type: object
+      properties:
+        message:
+          description: A developer-facing error message, which should be in English. Any user-facing error message should be localized and sent in the google.rpc.Status.details field, or localized by the client.
+          type: string
+        code:
+          type: integer
+          description: The status code, which should be an enum value of google.rpc.Code.
+          format: int32
+        details:
+          type: array
+          description: A list of messages that carry the error details. There is a common set of message types for APIs to use.
+          items:
+            type: object
+            additionalProperties:
+              description: Properties of the object. Contains field @type with type URL.
+    GoogleAdsGoogleadsV25Services__GraduateExperimentRequest:
+      type: object
+      properties:
+        campaignBudgetMappings:
+          description: Required. List of campaign budget mappings for graduation. Each campaign that appears here will graduate, and will be assigned a new budget that is paired with it in the mapping. The maximum size is one.
+          items:
+            $ref: '#/components/schemas/GoogleAdsGoogleadsV25Services__CampaignBudgetMapping'
+          type: array
+        validateOnly:
+          description: If true, the request is validated but not executed. Only errors are returned, not results.
+          type: boolean
+      description: Request message for ExperimentService.GraduateExperiment.
+    GoogleLongrunning__Operation:
+      type: object
+      properties:
+        done:
+          description: If the value is `false`, it means the operation is still in progress. If `true`, the operation is completed, and either `error` or `response` is available.
+          type: boolean
+        name:
+          description: The server-assigned name, which is only unique within the same service that originally returns it. If you use the default HTTP mapping, the `name` should be a resource name ending with `operations/{unique_id}`.
+          type: string
+        response:
+          type: object
+          description: The normal, successful response of the operation. If the original method returns no data on success, such as `Delete`, the response is `google.protobuf.Empty`. If the original method is standard `Get`/`Create`/`Update`, the response should be the resource. For other methods, the response should have the type `XxxResponse`, where `Xxx` is the original method name. For example, if the original method name is `TakeSnapshot()`, the inferred response type is `TakeSnapshotResponse`.
+          additionalProperties:
+            description: Properties of the object. Contains field @type with type URL.
+        error:
+          $ref: '#/components/schemas/GoogleRpc__Status'
+          description: The error result of the operation in case of failure or cancellation.
+        metadata:
+          type: object
+          description: Service-specific metadata associated with the operation. It typically contains progress information and common metadata such as create time. Some services might not provide such metadata. Any method that returns a long-running operation should document the metadata type, if any.
+          additionalProperties:
+            description: Properties of the object. Contains field @type with type URL.
+      description: This resource represents a long-running operation that is the result of a network API call.
+    GoogleAdsGoogleadsV25Services__ExperimentOperation:
+      type: object
+      properties:
+        remove:
+          description: 'Remove operation: The experiment is expected to have a valid resource name, in this format: `customers/{customer_id}/experiments/{campaign_experiment_id}`'
+          type: string
+        update:
+          $ref: '#/components/schemas/GoogleAdsGoogleadsV25Resources__Experiment'
+          description: 'Update operation: The experiment is expected to have a valid resource name.'
+        updateMask:
+          format: google-fieldmask
+          type: string
+          description: FieldMask that determines which resource fields are modified in an update.
+        create:
+          description: Create operation
+          $ref: '#/components/schemas/GoogleAdsGoogleadsV25Resources__Experiment'
+      description: A single operation on an experiment.
+    GoogleAdsGoogleadsV25Services__EndExperimentRequest:
+      type: object
+      properties:
+        validateOnly:
+          type: boolean
+          description: If true, the request is validated but not executed. Only errors are returned, not results.
+      description: Request message for ExperimentService.EndExperiment.
+    GoogleAdsGoogleadsV25Services__ScheduleExperimentRequest:
+      type: object
+      properties:
+        validateOnly:
+          type: boolean
+          description: If true, the request is validated but not executed. Only errors are returned, not results.
+      description: Request message for ExperimentService.ScheduleExperiment.
+    GoogleAdsGoogleadsV25Common__OptimizeAssetsExperimentInfo:
+      description: Configuration for an Optimize Assets experiment.
+      type: object
+      properties:
+        optimizeAssetsExperimentSubtype:
+          description: The subtype of the Optimize Assets experiment.
+          type: string
+          x-enumDescriptions:
+          - Not specified.
+          - The value is unknown in this version.
+          - The experiment is testing adding assets to assetless retail PMax experiment.
+          - The experiment is testing adding video assets to videoless PMax experiment.
+          - The experiment is testing comparing two different sets of assets in a PMax experiment.
+          enum:
+          - UNSPECIFIED
+          - UNKNOWN
+          - ADD_ASSETS_TO_ASSETLESS_RETAIL
+          - ADD_VIDEO_ASSETS_TO_VIDEOLESS
+          - COMPARE_ASSETS
+    GoogleAdsGoogleadsV25Services__MutateExperimentResult:
+      description: The result for the campaign experiment mutate.
+      type: object
+      properties:
+        resourceName:
+          type: string
+          description: Returned for successful operations.
+    GoogleAdsGoogleadsV25Services__PromoteExperimentRequest:
+      description: Request message for ExperimentService.PromoteExperiment.
+      type: object
+      properties:
+        validateOnly:
+          type: boolean
+          description: If true, the request is validated but not executed. Only errors are returned, not results.
+    GoogleAdsGoogleadsV25Services__CampaignBudgetMapping:
+      type: object
+      properties:
+        experimentCampaign:
+          description: Required. The experiment campaign to graduate.
+          type: string
+        campaignBudget:
+          description: Required. The budget that should be attached to the graduating experiment campaign.
+          type: string
+      description: The mapping of experiment campaign and budget to be graduated.
+    GoogleAdsGoogleadsV25Services__ListExperimentAsyncErrorsResponse:
+      type: object
+      properties:
+        errors:
+          type: array
+          description: details of the errors when performing the asynchronous operation.
+          items:
+            $ref: '#/components/schemas/GoogleRpc__Status'
+        nextPageToken:
+          description: Pagination token used to retrieve the next page of results. Pass the content of this string as the `page_token` attribute of the next request. `next_page_token` is not returned for the last page.
+          type: string
+      description: Response message for ExperimentService.ListExperimentAsyncErrors.
     GoogleProtobuf__Empty:
       description: 'A generic empty message that you can re-use to avoid defining duplicated empty messages in your APIs. A typical example is to use it as the request or the response type of an API method. For instance: service Foo { rpc Bar(google.protobuf.Empty) returns (google.protobuf.Empty); }'
       type: object
       properties: {}
+    GoogleAdsGoogleadsV25Common__MetricGoal:
+      type: object
+      properties:
+        metric:
+          type: string
+          description: The metric of the goal. For example, clicks, impressions, cost, conversions, etc.
+          x-enumDescriptions:
+          - Not specified.
+          - The value is unknown in this version.
+          - The goal of the experiment is clicks.
+          - The goal of the experiment is impressions.
+          - The goal of the experiment is cost.
+          - The goal of the experiment is conversion rate.
+          - The goal of the experiment is cost per conversion.
+          - The goal of the experiment is conversion value per cost.
+          - The goal of the experiment is avg cpc.
+          - The goal of the experiment is ctr.
+          - The goal of the experiment is incremental conversions.
+          - The goal of the experiment is completed video views.
+          - The goal of the experiment is custom algorithms.
+          - The goal of the experiment is conversions.
+          - The goal of the experiment is conversion value.
+          enum:
+          - UNSPECIFIED
+          - UNKNOWN
+          - CLICKS
+          - IMPRESSIONS
+          - COST
+          - CONVERSIONS_PER_INTERACTION_RATE
+          - COST_PER_CONVERSION
+          - CONVERSIONS_VALUE_PER_COST
+          - AVERAGE_CPC
+          - CTR
+          - INCREMENTAL_CONVERSIONS
+          - COMPLETED_VIDEO_VIEWS
+          - CUSTOM_ALGORITHMS
+          - CONVERSIONS
+          - CONVERSION_VALUE
+        direction:
+          x-enumDescriptions:
+          - Not specified.
+          - The value is unknown in this version.
+          - The goal of the experiment is to not change the metric.
+          - The goal of the experiment is to increate the metric.
+          - The goal of the experiment is to decrease the metric.
+          - The goal of the experiment is to either not change or increase the metric.
+          - The goal of the experiment is to either not change or decrease the metric.
+          enum:
+          - UNSPECIFIED
+          - UNKNOWN
+          - NO_CHANGE
+          - INCREASE
+          - DECREASE
+          - NO_CHANGE_OR_INCREASE
+          - NO_CHANGE_OR_DECREASE
+          type: string
+          description: The metric direction of the goal. For example, increase, decrease, no change.
+      description: A metric goal for an experiment.
   securitySchemes:
     oauth2:
       type: oauth2

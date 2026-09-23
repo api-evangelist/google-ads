@@ -106,7 +106,7 @@ paths:
       summary: Creates, updates, or removes Keyword Plan ad group keywords
       tags:
       - customers.keywordPlanAdGroupKeywords
-      description: 'Creates, updates, or removes Keyword Plan ad group keywords. Operation statuses are returned. List of thrown errors: [AuthenticationError]() [AuthorizationError]() [DatabaseError]() [FieldError]() [HeaderError]() [InternalError]() [KeywordPlanAdGroupKeywordError]() [KeywordPlanError]() [MutateError]() [QuotaError]() [RequestError]() [ResourceCountLimitExceededError]()'
+      description: 'Creates, updates, or removes Keyword Plan ad group keywords. Operation statuses are returned. List of thrown errors: AuthenticationError AuthorizationError DatabaseError FieldError HeaderError InternalError KeywordPlanAdGroupKeywordError KeywordPlanError MutateError QuotaError RequestError ResourceCountLimitExceededError'
       parameters:
       - name: customerId
         in: path
@@ -133,6 +133,75 @@ paths:
         - https://www.googleapis.com/auth/adwords
 components:
   schemas:
+    GoogleAdsGoogleadsV25Services__KeywordPlanAdGroupKeywordOperation:
+      description: A single operation (create, update, remove) on a Keyword Plan ad group keyword.
+      type: object
+      properties:
+        update:
+          description: 'Update operation: The Keyword Plan ad group keyword is expected to have a valid resource name.'
+          $ref: '#/components/schemas/GoogleAdsGoogleadsV25Resources__KeywordPlanAdGroupKeyword'
+        updateMask:
+          format: google-fieldmask
+          description: The FieldMask that determines which resource fields are modified in an update.
+          type: string
+        create:
+          $ref: '#/components/schemas/GoogleAdsGoogleadsV25Resources__KeywordPlanAdGroupKeyword'
+          description: 'Create operation: No resource name is expected for the new Keyword Plan ad group keyword.'
+        remove:
+          type: string
+          description: 'Remove operation: A resource name for the removed Keyword Plan ad group keyword is expected, in this format: `customers/{customer_id}/keywordPlanAdGroupKeywords/{kp_ad_group_keyword_id}`'
+    GoogleRpc__Status:
+      description: 'The `Status` type defines a logical error model that is suitable for different programming environments, including REST APIs and RPC APIs. It is used by [gRPC](https://github.com/grpc). Each `Status` message contains three pieces of data: error code, error message, and error details. You can find out more about this error model and how to work with it in the [API Design Guide](https://cloud.google.com/apis/design/errors).'
+      type: object
+      properties:
+        message:
+          description: A developer-facing error message, which should be in English. Any user-facing error message should be localized and sent in the google.rpc.Status.details field, or localized by the client.
+          type: string
+        code:
+          type: integer
+          description: The status code, which should be an enum value of google.rpc.Code.
+          format: int32
+        details:
+          type: array
+          description: A list of messages that carry the error details. There is a common set of message types for APIs to use.
+          items:
+            type: object
+            additionalProperties:
+              description: Properties of the object. Contains field @type with type URL.
+    GoogleAdsGoogleadsV25Services__MutateKeywordPlanAdGroupKeywordResult:
+      description: The result for the Keyword Plan ad group keyword mutate.
+      type: object
+      properties:
+        resourceName:
+          type: string
+          description: Returned for successful operations.
+    GoogleAdsGoogleadsV25Services__MutateKeywordPlanAdGroupKeywordsRequest:
+      type: object
+      properties:
+        partialFailure:
+          type: boolean
+          description: If true, successful operations will be carried out and invalid operations will return errors. If false, all operations will be carried out in one transaction if and only if they are all valid. Default is false.
+        operations:
+          type: array
+          description: Required. The list of operations to perform on individual Keyword Plan ad group keywords.
+          items:
+            $ref: '#/components/schemas/GoogleAdsGoogleadsV25Services__KeywordPlanAdGroupKeywordOperation'
+        validateOnly:
+          type: boolean
+          description: If true, the request is validated but not executed. Only errors are returned, not results.
+      description: Request message for KeywordPlanAdGroupKeywordService.MutateKeywordPlanAdGroupKeywords.
+    GoogleAdsGoogleadsV25Services__MutateKeywordPlanAdGroupKeywordsResponse:
+      description: Response message for a Keyword Plan ad group keyword mutate.
+      type: object
+      properties:
+        results:
+          type: array
+          description: All results for the mutate.
+          items:
+            $ref: '#/components/schemas/GoogleAdsGoogleadsV25Services__MutateKeywordPlanAdGroupKeywordResult'
+        partialFailureError:
+          $ref: '#/components/schemas/GoogleRpc__Status'
+          description: Errors that pertain to operation failures in the partial failure mode. Returned only when partial_failure = true and all errors occur inside the operations. If any errors occur outside the operations (for example, auth errors), we return an RPC level error.
     GoogleAdsGoogleadsV25Resources__KeywordPlanAdGroupKeyword:
       type: object
       properties:
@@ -172,75 +241,6 @@ components:
           type: string
           description: The keyword text.
       description: 'A Keyword Plan ad group keyword. Max number of keyword plan keywords per plan: 10000.'
-    GoogleAdsGoogleadsV25Services__KeywordPlanAdGroupKeywordOperation:
-      description: A single operation (create, update, remove) on a Keyword Plan ad group keyword.
-      type: object
-      properties:
-        update:
-          description: 'Update operation: The Keyword Plan ad group keyword is expected to have a valid resource name.'
-          $ref: '#/components/schemas/GoogleAdsGoogleadsV25Resources__KeywordPlanAdGroupKeyword'
-        updateMask:
-          format: google-fieldmask
-          description: The FieldMask that determines which resource fields are modified in an update.
-          type: string
-        create:
-          $ref: '#/components/schemas/GoogleAdsGoogleadsV25Resources__KeywordPlanAdGroupKeyword'
-          description: 'Create operation: No resource name is expected for the new Keyword Plan ad group keyword.'
-        remove:
-          type: string
-          description: 'Remove operation: A resource name for the removed Keyword Plan ad group keyword is expected, in this format: `customers/{customer_id}/keywordPlanAdGroupKeywords/{kp_ad_group_keyword_id}`'
-    GoogleAdsGoogleadsV25Services__MutateKeywordPlanAdGroupKeywordsResponse:
-      description: Response message for a Keyword Plan ad group keyword mutate.
-      type: object
-      properties:
-        results:
-          type: array
-          description: All results for the mutate.
-          items:
-            $ref: '#/components/schemas/GoogleAdsGoogleadsV25Services__MutateKeywordPlanAdGroupKeywordResult'
-        partialFailureError:
-          $ref: '#/components/schemas/GoogleRpc__Status'
-          description: Errors that pertain to operation failures in the partial failure mode. Returned only when partial_failure = true and all errors occur inside the operations. If any errors occur outside the operations (for example, auth errors), we return an RPC level error.
-    GoogleAdsGoogleadsV25Services__MutateKeywordPlanAdGroupKeywordResult:
-      description: The result for the Keyword Plan ad group keyword mutate.
-      type: object
-      properties:
-        resourceName:
-          type: string
-          description: Returned for successful operations.
-    GoogleRpc__Status:
-      description: 'The `Status` type defines a logical error model that is suitable for different programming environments, including REST APIs and RPC APIs. It is used by [gRPC](https://github.com/grpc). Each `Status` message contains three pieces of data: error code, error message, and error details. You can find out more about this error model and how to work with it in the [API Design Guide](https://cloud.google.com/apis/design/errors).'
-      type: object
-      properties:
-        message:
-          description: A developer-facing error message, which should be in English. Any user-facing error message should be localized and sent in the google.rpc.Status.details field, or localized by the client.
-          type: string
-        code:
-          type: integer
-          description: The status code, which should be an enum value of google.rpc.Code.
-          format: int32
-        details:
-          type: array
-          description: A list of messages that carry the error details. There is a common set of message types for APIs to use.
-          items:
-            type: object
-            additionalProperties:
-              description: Properties of the object. Contains field @type with type URL.
-    GoogleAdsGoogleadsV25Services__MutateKeywordPlanAdGroupKeywordsRequest:
-      type: object
-      properties:
-        partialFailure:
-          type: boolean
-          description: If true, successful operations will be carried out and invalid operations will return errors. If false, all operations will be carried out in one transaction if and only if they are all valid. Default is false.
-        operations:
-          type: array
-          description: Required. The list of operations to perform on individual Keyword Plan ad group keywords.
-          items:
-            $ref: '#/components/schemas/GoogleAdsGoogleadsV25Services__KeywordPlanAdGroupKeywordOperation'
-        validateOnly:
-          type: boolean
-          description: If true, the request is validated but not executed. Only errors are returned, not results.
-      description: Request message for KeywordPlanAdGroupKeywordService.MutateKeywordPlanAdGroupKeywords.
   securitySchemes:
     oauth2:
       type: oauth2

@@ -106,7 +106,7 @@ paths:
       summary: Returns just the requested field
       tags:
       - googleAdsFields
-      description: 'Returns just the requested field. List of thrown errors: [AuthenticationError]() [AuthorizationError]() [HeaderError]() [InternalError]() [QuotaError]() [RequestError]()'
+      description: 'Returns just the requested field. List of thrown errors: AuthenticationError AuthorizationError HeaderError InternalError QuotaError RequestError'
       parameters:
       - name: resourceName
         in: path
@@ -214,7 +214,7 @@ paths:
       summary: Returns all fields that match the search query
       tags:
       - googleAdsFields
-      description: 'Returns all fields that match the search query. List of thrown errors: [AuthenticationError]() [AuthorizationError]() [HeaderError]() [InternalError]() [QueryError]() [QuotaError]() [RequestError]()'
+      description: 'Returns all fields that match the search query. List of thrown errors: AuthenticationError AuthorizationError HeaderError InternalError QueryError QuotaError RequestError'
       requestBody:
         required: true
         content:
@@ -247,22 +247,6 @@ components:
           type: integer
           description: Number of elements to retrieve in a single page. When too large a page is requested, the server may decide to further limit the number of returned resources.
       description: Request message for GoogleAdsFieldService.SearchGoogleAdsFields.
-    GoogleAdsGoogleadsV25Services__SearchGoogleAdsFieldsResponse:
-      description: Response message for GoogleAdsFieldService.SearchGoogleAdsFields.
-      type: object
-      properties:
-        nextPageToken:
-          description: Pagination token used to retrieve the next page of results. Pass the content of this string as the `page_token` attribute of the next request. `next_page_token` is not returned for the last page.
-          type: string
-        results:
-          type: array
-          description: The list of fields that matched the query.
-          items:
-            $ref: '#/components/schemas/GoogleAdsGoogleadsV25Resources__GoogleAdsField'
-        totalResultsCount:
-          format: int64
-          description: Total number of results that match the query ignoring the LIMIT clause.
-          type: string
     GoogleAdsGoogleadsV25Resources__GoogleAdsField:
       description: A field or resource (artifact) used by GoogleAdsService.
       type: object
@@ -361,6 +345,22 @@ components:
           items:
             type: string
           type: array
+    GoogleAdsGoogleadsV25Services__SearchGoogleAdsFieldsResponse:
+      description: Response message for GoogleAdsFieldService.SearchGoogleAdsFields.
+      type: object
+      properties:
+        nextPageToken:
+          description: Pagination token used to retrieve the next page of results. Pass the content of this string as the `page_token` attribute of the next request. `next_page_token` is not returned for the last page.
+          type: string
+        results:
+          type: array
+          description: The list of fields that matched the query.
+          items:
+            $ref: '#/components/schemas/GoogleAdsGoogleadsV25Resources__GoogleAdsField'
+        totalResultsCount:
+          format: int64
+          description: Total number of results that match the query ignoring the LIMIT clause.
+          type: string
   securitySchemes:
     oauth2:
       type: oauth2

@@ -106,7 +106,7 @@ paths:
       summary: Create or update goals
       tags:
       - customers.Goals
-      description: 'Create or update goals. List of thrown errors: [AuthenticationError]() [AuthorizationError]() [HeaderError]() [InternalError]() [QuotaError]() [RequestError]() [GoalError]()'
+      description: 'Create or update goals. List of thrown errors: AuthenticationError AuthorizationError HeaderError InternalError QuotaError RequestError GoalError'
       parameters:
       - name: customerId
         in: path
@@ -133,74 +133,27 @@ paths:
         - https://www.googleapis.com/auth/adwords
 components:
   schemas:
-    GoogleAdsGoogleadsV25Common__CustomerLifecycleOptimizationValueSettings:
+    GoogleAdsGoogleadsV25Services__GoalOperation:
+      description: A single mutate operation on the goal.
       type: object
       properties:
-        valueMultiplier:
-          format: double
-          type: number
-          description: Conversion value multiplier.
-        additionalValue:
-          description: Incremental conversion value.
-          type: number
-          format: double
-        additionalHighLifetimeValue:
-          description: Incremental high lifetime conversion value.
-          type: number
-          format: double
-        highLifetimeValueMultiplier:
-          format: double
-          type: number
-          description: High lifetime conversion value multiplier.
-      description: Lifecycle goal optimization value settings.
-    GoogleAdsGoogleadsV25Common_GoalSetting_LoyaltyRetentionGoal:
-      type: object
-      properties:
-        valueSettings:
-          $ref: '#/components/schemas/GoogleAdsGoogleadsV25Common__CustomerLifecycleOptimizationValueSettings'
-          description: Loyalty retention goal value settings.
-      description: Loyalty retention goal settings.
-    GoogleAdsGoogleadsV25Services__MutateGoalsRequest:
-      description: Request message for GoalService.MutateGoals.
-      type: object
-      properties:
-        partialFailure:
-          description: Optional. If true, successful operations will be carried out and invalid operations will return errors. If false, all operations will be carried out in one transaction if and only if they are all valid. Default is false.
-          type: boolean
-        operations:
-          description: Required. The list of operations to perform on the goals.
-          items:
-            $ref: '#/components/schemas/GoogleAdsGoogleadsV25Services__GoalOperation'
-          type: array
-        validateOnly:
-          type: boolean
-          description: Optional. If true, the request is validated but not executed. Only errors are returned, not results.
-    GoogleAdsGoogleadsV25Common_GoalSetting_RetentionGoal:
-      type: object
-      properties:
-        valueSettings:
-          description: Retention goal value settings.
-          $ref: '#/components/schemas/GoogleAdsGoogleadsV25Common__CustomerLifecycleOptimizationValueSettings'
-      description: Retention goal settings.
-    GoogleAdsGoogleadsV25Services__MutateGoalResult:
-      description: The result for the goal mutate.
-      type: object
-      properties:
-        resourceName:
+        updateMask:
           type: string
-          description: Returned for successful operations.
-    GoogleAdsGoogleadsV25Services__MutateGoalsResponse:
+          description: FieldMask that determines which resource fields are modified in an update.
+          format: google-fieldmask
+        create:
+          $ref: '#/components/schemas/GoogleAdsGoogleadsV25Resources__Goal'
+          description: Create a new goal.
+        update:
+          description: Update an existing goal.
+          $ref: '#/components/schemas/GoogleAdsGoogleadsV25Resources__Goal'
+    GoogleAdsGoogleadsV25Common_GoalSetting_NewCustomerAcquisitionGoal:
+      description: New Customer Acquisition goal settings.
       type: object
       properties:
-        results:
-          description: All results for the mutate.
-          items:
-            $ref: '#/components/schemas/GoogleAdsGoogleadsV25Services__MutateGoalResult'
-          type: array
-        partialFailureError:
-          $ref: '#/components/schemas/GoogleRpc__Status'
-          description: Errors that pertain to operation failures in the partial failure mode.
-      description: Response message for a goal mutate.
+        valueSettings:
+          $ref: '#/components/schemas/GoogleAdsGoogleadsV25Common__CustomerLifecycleOptimizationValueSettings'
+          description: New Customer Acquisition goal value settings.
     GoogleRpc__Status:
       description: 'The `Status` type defines a logical error model that is suitable for different programming environments, including REST APIs and RPC APIs. It is used by [gRPC](https://github.com/grpc). Each `Status` message contains three pieces of data: error code, error message, and error details. You can find out more about this error model and how to work with it in the [API Design Guide](https://cloud.google.com/apis/design/errors).'
       type: object
@@ -219,6 +172,32 @@ components:
             type: object
             additionalProperties:
               description: Properties of the object. Contains field @type with type URL.
+    GoogleAdsGoogleadsV25Common_GoalSetting_RetentionGoal:
+      type: object
+      properties:
+        valueSettings:
+          description: Retention goal value settings.
+          $ref: '#/components/schemas/GoogleAdsGoogleadsV25Common__CustomerLifecycleOptimizationValueSettings'
+      description: Retention goal settings.
+    GoogleAdsGoogleadsV25Services__MutateGoalsResponse:
+      type: object
+      properties:
+        results:
+          description: All results for the mutate.
+          items:
+            $ref: '#/components/schemas/GoogleAdsGoogleadsV25Services__MutateGoalResult'
+          type: array
+        partialFailureError:
+          $ref: '#/components/schemas/GoogleRpc__Status'
+          description: Errors that pertain to operation failures in the partial failure mode.
+      description: Response message for a goal mutate.
+    GoogleAdsGoogleadsV25Common_GoalSetting_LoyaltyRetentionGoal:
+      type: object
+      properties:
+        valueSettings:
+          $ref: '#/components/schemas/GoogleAdsGoogleadsV25Common__CustomerLifecycleOptimizationValueSettings'
+          description: Loyalty retention goal value settings.
+      description: Loyalty retention goal settings.
     GoogleAdsGoogleadsV25Resources__Goal:
       type: object
       properties:
@@ -270,27 +249,48 @@ components:
           description: Output only. The ID of this goal.
           format: int64
       description: Representation of goals.
-    GoogleAdsGoogleadsV25Services__GoalOperation:
-      description: A single mutate operation on the goal.
+    GoogleAdsGoogleadsV25Services__MutateGoalsRequest:
+      description: Request message for GoalService.MutateGoals.
       type: object
       properties:
-        updateMask:
+        partialFailure:
+          description: Optional. If true, successful operations will be carried out and invalid operations will return errors. If false, all operations will be carried out in one transaction if and only if they are all valid. Default is false.
+          type: boolean
+        operations:
+          description: Required. The list of operations to perform on the goals.
+          items:
+            $ref: '#/components/schemas/GoogleAdsGoogleadsV25Services__GoalOperation'
+          type: array
+        validateOnly:
+          type: boolean
+          description: Optional. If true, the request is validated but not executed. Only errors are returned, not results.
+    GoogleAdsGoogleadsV25Services__MutateGoalResult:
+      description: The result for the goal mutate.
+      type: object
+      properties:
+        resourceName:
           type: string
-          description: FieldMask that determines which resource fields are modified in an update.
-          format: google-fieldmask
-        create:
-          $ref: '#/components/schemas/GoogleAdsGoogleadsV25Resources__Goal'
-          description: Create a new goal.
-        update:
-          description: Update an existing goal.
-          $ref: '#/components/schemas/GoogleAdsGoogleadsV25Resources__Goal'
-    GoogleAdsGoogleadsV25Common_GoalSetting_NewCustomerAcquisitionGoal:
-      description: New Customer Acquisition goal settings.
+          description: Returned for successful operations.
+    GoogleAdsGoogleadsV25Common__CustomerLifecycleOptimizationValueSettings:
       type: object
       properties:
-        valueSettings:
-          $ref: '#/components/schemas/GoogleAdsGoogleadsV25Common__CustomerLifecycleOptimizationValueSettings'
-          description: New Customer Acquisition goal value settings.
+        valueMultiplier:
+          format: double
+          type: number
+          description: Conversion value multiplier.
+        additionalValue:
+          description: Incremental conversion value.
+          type: number
+          format: double
+        additionalHighLifetimeValue:
+          description: Incremental high lifetime conversion value.
+          type: number
+          format: double
+        highLifetimeValueMultiplier:
+          format: double
+          type: number
+          description: High lifetime conversion value multiplier.
+      description: Lifecycle goal optimization value settings.
   securitySchemes:
     oauth2:
       type: oauth2

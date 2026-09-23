@@ -106,7 +106,7 @@ paths:
       summary: Creates or removes an access invitation
       tags:
       - customers.customerUserAccessInvitations
-      description: 'Creates or removes an access invitation. List of thrown errors: [AccessInvitationError]() [AuthenticationError]() [AuthorizationError]() [HeaderError]() [InternalError]() [QuotaError]() [RequestError]()'
+      description: 'Creates or removes an access invitation. List of thrown errors: AccessInvitationError AuthenticationError AuthorizationError HeaderError InternalError QuotaError RequestError'
       parameters:
       - name: customerId
         in: path
@@ -150,6 +150,13 @@ components:
         multiPartyAuthReview:
           type: string
           description: The resource name of the multi-party authorization review associated with this mutate.
+    GoogleAdsGoogleadsV25Services__MutateCustomerUserAccessInvitationResponse:
+      description: Response message for access invitation mutate.
+      type: object
+      properties:
+        result:
+          description: Result for the mutate.
+          $ref: '#/components/schemas/GoogleAdsGoogleadsV25Services__MutateCustomerUserAccessInvitationResult'
     GoogleAdsGoogleadsV25Services__CustomerUserAccessInvitationOperation:
       description: A single operation (create or remove) on customer user access invitation.
       type: object
@@ -209,13 +216,6 @@ components:
           - EMAIL_ONLY
           description: Immutable. Access role of the user.
           type: string
-    GoogleAdsGoogleadsV25Services__MutateCustomerUserAccessInvitationResponse:
-      description: Response message for access invitation mutate.
-      type: object
-      properties:
-        result:
-          description: Result for the mutate.
-          $ref: '#/components/schemas/GoogleAdsGoogleadsV25Services__MutateCustomerUserAccessInvitationResult'
   securitySchemes:
     oauth2:
       type: oauth2

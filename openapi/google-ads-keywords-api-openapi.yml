@@ -1,6 +1,6 @@
 openapi: 3.2.0
 info:
-  title: Google Ads Ad Groups Keywords API
+  title: Google Ads Keywords API
   description: 'The Google Ads API is the modern programmatic interface to Google Ads and the
 
     next generation of the AdWords API. It enables developers to interact directly
@@ -11,9 +11,7 @@ info:
 
     creating, reading, updating, and removing campaigns, ad groups, ads, keywords,
 
-    and retrieving performance reports using Google Ads Query Language (GAQL).
-
-    '
+    and retrieving performance reports using Google Ads Query Language (GAQL).'
   version: v18
   contact:
     name: Google Ads API Support
@@ -39,9 +37,7 @@ paths:
 
         ads to appear in search results. Supports broad match, phrase match,
 
-        and exact match types.
-
-        '
+        and exact match types.'
       operationId: mutateAdGroupCriteria
       tags:
       - Keywords
@@ -99,6 +95,42 @@ components:
           type: string
         updateMask:
           type: string
+    QualityInfo:
+      type: object
+      description: Quality score and component metrics for a keyword.
+      properties:
+        qualityScore:
+          type: integer
+          minimum: 1
+          maximum: 10
+          description: Quality Score on a 1-10 scale.
+        creativeQualityScore:
+          type: string
+          enum:
+          - ABOVE_AVERAGE
+          - AVERAGE
+          - BELOW_AVERAGE
+          - UNKNOWN
+          - UNSPECIFIED
+          description: Ad relevance quality component.
+        postClickQualityScore:
+          type: string
+          enum:
+          - ABOVE_AVERAGE
+          - AVERAGE
+          - BELOW_AVERAGE
+          - UNKNOWN
+          - UNSPECIFIED
+          description: Landing page experience quality component.
+        searchPredictedCtr:
+          type: string
+          enum:
+          - ABOVE_AVERAGE
+          - AVERAGE
+          - BELOW_AVERAGE
+          - UNKNOWN
+          - UNSPECIFIED
+          description: Expected click-through rate quality component.
     MutateAdGroupCriteriaRequest:
       type: object
       required:
@@ -112,49 +144,6 @@ components:
           type: boolean
         validateOnly:
           type: boolean
-    GoogleAdsError:
-      type: object
-      properties:
-        errorCode:
-          type: object
-          description: The error code with a specific error enum and value.
-          additionalProperties:
-            type: string
-        message:
-          type: string
-          description: Human-readable error message.
-        trigger:
-          type: object
-          description: The value that triggered the error.
-        location:
-          type: object
-          description: Location of the error in the request.
-          properties:
-            fieldPathElements:
-              type: array
-              items:
-                type: object
-                properties:
-                  fieldName:
-                    type: string
-                  index:
-                    type: integer
-    KeywordInfo:
-      type: object
-      description: Keyword targeting information.
-      properties:
-        text:
-          type: string
-          description: The keyword text.
-        matchType:
-          type: string
-          enum:
-          - EXACT
-          - PHRASE
-          - BROAD
-          - UNKNOWN
-          - UNSPECIFIED
-          description: The match type of the keyword.
     AdGroupCriterion:
       type: object
       description: A targeting criterion within an ad group, such as a keyword.
@@ -216,6 +205,61 @@ components:
         negative:
           type: boolean
           description: Whether this is a negative criterion (excluded from targeting).
+    MutateAdGroupCriteriaResponse:
+      type: object
+      properties:
+        results:
+          type: array
+          items:
+            type: object
+            properties:
+              resourceName:
+                type: string
+        partialFailureError:
+          $ref: '#/components/schemas/Status'
+    GoogleAdsError:
+      type: object
+      properties:
+        errorCode:
+          type: object
+          description: The error code with a specific error enum and value.
+          additionalProperties:
+            type: string
+        message:
+          type: string
+          description: Human-readable error message.
+        trigger:
+          type: object
+          description: The value that triggered the error.
+        location:
+          type: object
+          description: Location of the error in the request.
+          properties:
+            fieldPathElements:
+              type: array
+              items:
+                type: object
+                properties:
+                  fieldName:
+                    type: string
+                  index:
+                    type: integer
+    KeywordInfo:
+      type: object
+      description: Keyword targeting information.
+      properties:
+        text:
+          type: string
+          description: The keyword text.
+        matchType:
+          type: string
+          enum:
+          - EXACT
+          - PHRASE
+          - BROAD
+          - UNKNOWN
+          - UNSPECIFIED
+          description: The match type of the keyword.
     Status:
       type: object
       description: Standard gRPC status for partial failure errors.
@@ -230,54 +274,44 @@ components:
           type: array
           items:
             type: object
-    MutateAdGroupCriteriaResponse:
-      type: object
-      properties:
-        results:
-          type: array
-          items:
-            type: object
-            properties:
-              resourceName:
-                type: string
-        partialFailureError:
-          $ref: '#/components/schemas/Status'
-    QualityInfo:
-      type: object
-      description: Quality score and component metrics for a keyword.
-      properties:
-        qualityScore:
-          type: integer
-          minimum: 1
-          maximum: 10
-          description: Quality Score on a 1-10 scale.
-        creativeQualityScore:
-          type: string
-          enum:
-          - ABOVE_AVERAGE
-          - AVERAGE
-          - BELOW_AVERAGE
-          - UNKNOWN
-          - UNSPECIFIED
-          description: Ad relevance quality component.
-        postClickQualityScore:
-          type: string
-          enum:
-          - ABOVE_AVERAGE
-          - AVERAGE
-          - BELOW_AVERAGE
-          - UNKNOWN
-          - UNSPECIFIED
-          description: Landing page experience quality component.
-        searchPredictedCtr:
-          type: string
-          enum:
-          - ABOVE_AVERAGE
-          - AVERAGE
-          - BELOW_AVERAGE
-          - UNKNOWN
-          - UNSPECIFIED
-          description: Expected click-through rate quality component.
+  parameters:
+    DeveloperTokenHeader:
+      name: developer-token
+      in: header
+      required: true
+      description: 'Developer token for API access. Obtain from the Google Ads API Center
+
+        in your manager account.
+
+        '
+      schema:
+        type: string
+    AuthorizationHeader:
+      name: Authorization
+      in: header
+      required: true
+      description: OAuth 2.0 Bearer token for authentication.
+      schema:
+        type: string
+    CustomerIdPath:
+      name: customerId
+      in: path
+      required: true
+      description: The Google Ads customer ID (without dashes), e.g. 1234567890.
+      schema:
+        type: string
+        pattern: ^\d{10}$
+    LoginCustomerIdHeader:
+      name: login-customer-id
+      in: header
+      required: false
+      description: 'The customer ID of the manager account making the request on behalf
+
+        of a client account. Required when authenticating as a manager account.
+
+        '
+      schema:
+        type: string
   examples:
     AddKeywordsExample:
       summary: Add keywords to an ad group
@@ -306,44 +340,6 @@ components:
             cpcBidMicros: 1500000
             negative: false
         partialFailure: false
-  parameters:
-    LoginCustomerIdHeader:
-      name: login-customer-id
-      in: header
-      required: false
-      description: 'The customer ID of the manager account making the request on behalf
-
-        of a client account. Required when authenticating as a manager account.
-
-        '
-      schema:
-        type: string
-    DeveloperTokenHeader:
-      name: developer-token
-      in: header
-      required: true
-      description: 'Developer token for API access. Obtain from the Google Ads API Center
-
-        in your manager account.
-
-        '
-      schema:
-        type: string
-    AuthorizationHeader:
-      name: Authorization
-      in: header
-      required: true
-      description: OAuth 2.0 Bearer token for authentication.
-      schema:
-        type: string
-    CustomerIdPath:
-      name: customerId
-      in: path
-      required: true
-      description: The Google Ads customer ID (without dashes), e.g. 1234567890.
-      schema:
-        type: string
-        pattern: ^\d{10}$
   securitySchemes:
     oauth2Auth:
       type: oauth2

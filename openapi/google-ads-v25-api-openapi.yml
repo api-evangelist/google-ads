@@ -106,7 +106,7 @@ paths:
       summary: Returns the list of locations that support benchmarks (for example, countries)
       tags:
       - v25
-      description: 'Returns the list of locations that support benchmarks (for example, countries). List of thrown errors: [AuthenticationError]() [AuthorizationError]() [FieldError]() [HeaderError]() [InternalError]() [QuotaError]() [RequestError]()'
+      description: 'Returns the list of locations that support benchmarks (for example, countries). List of thrown errors: AuthenticationError AuthorizationError FieldError HeaderError InternalError QuotaError RequestError'
       requestBody:
         required: true
         content:
@@ -209,10 +209,10 @@ paths:
       description: Data format for response.
     post:
       operationId: googleads_listPlannableProducts
-      summary: Returns the list of per-location plannable YouTube ad formats with allowed targeting
+      summary: Returns the list of per-location plannable YouTube ad formats with allowed…
       tags:
       - v25
-      description: 'Returns the list of per-location plannable YouTube ad formats with allowed targeting. List of thrown errors: [AuthenticationError]() [AuthorizationError]() [HeaderError]() [InternalError]() [QuotaError]() [RequestError]()'
+      description: 'Returns the list of per-location plannable YouTube ad formats with allowed targeting. List of thrown errors: AuthenticationError AuthorizationError HeaderError InternalError QuotaError RequestError'
       requestBody:
         required: true
         content:
@@ -315,10 +315,10 @@ paths:
       description: Data format for response.
     post:
       operationId: googleads_generateConversionRates
-      summary: Returns a collection of conversion rate suggestions for supported plannable products
+      summary: Returns a collection of conversion rate suggestions for supported plannable…
       tags:
       - v25
-      description: 'Returns a collection of conversion rate suggestions for supported plannable products. List of thrown errors: [AuthenticationError]() [AuthorizationError]() [HeaderError]() [InternalError]() [QuotaError]() [RequestError]()'
+      description: 'Returns a collection of conversion rate suggestions for supported plannable products. List of thrown errors: AuthenticationError AuthorizationError HeaderError InternalError QuotaError RequestError'
       requestBody:
         required: true
         content:
@@ -424,7 +424,7 @@ paths:
       summary: Returns a date range that supports benchmarks
       tags:
       - v25
-      description: 'Returns a date range that supports benchmarks. List of thrown errors: [AuthenticationError]() [AuthorizationError]() [FieldError]() [HeaderError]() [InternalError]() [QuotaError]() [RequestError]()'
+      description: 'Returns a date range that supports benchmarks. List of thrown errors: AuthenticationError AuthorizationError FieldError HeaderError InternalError QuotaError RequestError'
       requestBody:
         required: true
         content:
@@ -530,7 +530,7 @@ paths:
       summary: Returns the list of plannable user lists with their plannable status
       tags:
       - v25
-      description: 'Returns the list of plannable user lists with their plannable status. User lists may not be plannable for a number of reasons, including: - They are less than 10 days old. - They have a membership lifespan that is less than 30 days - They have less than 10,000 or more than 700,000 users. List of thrown errors: [AuthenticationError]() [AuthorizationError]() [FieldError]() [HeaderError]() [InternalError]() [QuotaError]() [RangeError]() [ReachPlanError]() [RequestError]()'
+      description: 'Returns the list of plannable user lists with their plannable status. User lists may not be plannable for a number of reasons, including: - They are less than 10 days old. - They have a membership lifespan that is less than 30 days - They have less than 10,000 or more than 700,000 users. List of thrown errors: AuthenticationError AuthorizationError FieldError HeaderError InternalError QuotaError RangeError ReachPlanError RequestError'
       requestBody:
         required: true
         content:
@@ -636,7 +636,7 @@ paths:
       summary: Returns the list of plannable user interests
       tags:
       - v25
-      description: 'Returns the list of plannable user interests. A plannable user interest is one that can be targeted in a reach forecast using ReachPlanService.GenerateReachForecast. List of thrown errors: [AuthenticationError]() [AuthorizationError]() [FieldError]() [HeaderError]() [InternalError]() [ListOperationError]() [QuotaError]() [RequestError]() [StringLengthError]()'
+      description: 'Returns the list of plannable user interests. A plannable user interest is one that can be targeted in a reach forecast using ReachPlanService.GenerateReachForecast. List of thrown errors: AuthenticationError AuthorizationError FieldError HeaderError InternalError ListOperationError QuotaError RequestError StringLengthError'
       requestBody:
         required: true
         content:
@@ -742,7 +742,7 @@ paths:
       summary: Returns the list of products that supports benchmarks
       tags:
       - v25
-      description: 'Returns the list of products that supports benchmarks. List of thrown errors: [AuthenticationError]() [AuthorizationError]() [FieldError]() [HeaderError]() [InternalError]() [QuotaError]() [RequestError]()'
+      description: 'Returns the list of products that supports benchmarks. List of thrown errors: AuthenticationError AuthorizationError FieldError HeaderError InternalError QuotaError RequestError'
       requestBody:
         required: true
         content:
@@ -848,7 +848,7 @@ paths:
       summary: Returns the list of plannable locations (for example, countries)
       tags:
       - v25
-      description: 'Returns the list of plannable locations (for example, countries). List of thrown errors: [AuthenticationError]() [AuthorizationError]() [HeaderError]() [InternalError]() [QuotaError]() [RequestError]()'
+      description: 'Returns the list of plannable locations (for example, countries). List of thrown errors: AuthenticationError AuthorizationError HeaderError InternalError QuotaError RequestError'
       requestBody:
         required: true
         content:
@@ -954,7 +954,7 @@ paths:
       summary: Returns the list of benchmarks sources (for example, Industry Verticals)
       tags:
       - v25
-      description: 'Returns the list of benchmarks sources (for example, Industry Verticals). List of thrown errors: [AuthenticationError]() [AuthorizationError]() [FieldError]() [HeaderError]() [InternalError]() [QuotaError]() [RequestError]()'
+      description: 'Returns the list of benchmarks sources (for example, Industry Verticals). List of thrown errors: AuthenticationError AuthorizationError FieldError HeaderError InternalError QuotaError RequestError'
       requestBody:
         required: true
         content:
@@ -973,76 +973,80 @@ paths:
         - https://www.googleapis.com/auth/adwords
 components:
   schemas:
-    GoogleAdsGoogleadsV25Services__PlannableUserListMetadata:
+    GoogleAdsGoogleadsV25Services__ListPlannableProductsRequest:
+      description: Request to list available products in a given location.
       type: object
       properties:
-        userListCrmDataSourceType:
-          description: The data source type of a CRM based user list.
+        plannableLocationId:
+          description: Required. The ID of the selected location for planning. To list the available plannable location IDs use ReachPlanService.ListPlannableLocations.
           type: string
-          x-enumDescriptions:
-          - Not specified.
-          - Used for return value only. Represents value unknown in this version.
-          - The uploaded data is first-party data.
-          - The uploaded data is from a third-party credit bureau.
-          - The uploaded data is from a third-party voter file.
-          - The uploaded data is third party partner data.
-          enum:
-          - UNSPECIFIED
-          - UNKNOWN
-          - FIRST_PARTY
-          - THIRD_PARTY_CREDIT_BUREAU
-          - THIRD_PARTY_VOTER_FILE
-          - THIRD_PARTY_PARTNER_DATA
-      description: The metadata associated with a plannable user list.
-    GoogleAdsGoogleadsV25Services__SurfaceTargeting:
-      type: object
-      properties:
-        surfaces:
-          type: array
-          description: List of surfaces available to target.
-          items:
-            type: string
-            x-enumDescriptions:
-            - Not specified.
-            - The value is unknown in this version.
-            - Discover feed ad surface.
-            - Gmail ad surface.
-            - In-Feed ad surface.
-            - In-Stream bumper ad surface.
-            - In-Stream non-skippable ad surface.
-            - In-Stream skippable ad surface.
-            - Shorts ad surface.
-            - Google Display Network ad surface.
-            - In-Stream non-skippable (30 seconds) ad surface.
-            enum:
-            - UNSPECIFIED
-            - UNKNOWN
-            - DISCOVER_FEED
-            - GMAIL
-            - IN_FEED
-            - IN_STREAM_BUMPER
-            - IN_STREAM_NON_SKIPPABLE
-            - IN_STREAM_SKIPPABLE
-            - SHORTS
-            - GOOGLE_DISPLAY_NETWORK
-            - IN_STREAM_NON_SKIPPABLE_THIRTY_SECONDS
-      description: Container for surfaces for a product. Surfaces refer to the available types of ad inventories such as In-Feed, In-Stream, and Shorts.
-    GoogleAdsGoogleadsV25Services__ListBenchmarksAvailableDatesRequest:
+        reachApplicationInfo:
+          $ref: '#/components/schemas/GoogleAdsGoogleadsV25Common__AdditionalApplicationInfo'
+          description: Optional. Additional information on the application issuing the request.
+    GoogleAdsGoogleadsV25Services__ListBenchmarksProductsRequest:
+      description: Request message for BenchmarksService.ListBenchmarksProducts.
       type: object
       properties:
         applicationInfo:
           description: Additional information on the application issuing the request.
           $ref: '#/components/schemas/GoogleAdsGoogleadsV25Common__AdditionalApplicationInfo'
-      description: Request message for BenchmarksService.ListBenchmarksAvailableDates.
-    GoogleAdsGoogleadsV25Services__ListBenchmarksLocationsResponse:
-      description: Response message for BenchmarksService.ListBenchmarksLocations.
+    GoogleAdsGoogleadsV25Services__PlannableUserInterest:
+      description: A plannable user interest that can be targeted in a reach forecast using ReachPlanService.GenerateReachForecast.
       type: object
       properties:
-        benchmarksLocations:
-          description: The list of locations supported for benchmarks data.
-          items:
-            $ref: '#/components/schemas/GoogleAdsGoogleadsV25Services__BenchmarksLocation'
-          type: array
+        userInterestType:
+          description: The user interest type.
+          type: string
+          x-enumDescriptions:
+          - Not specified.
+          - Used for return value only. Represents value unknown in this version.
+          - The affinity for this user interest.
+          - The market for this user interest.
+          - Users known to have installed applications in the specified categories.
+          - The geographical location of the interest-based vertical.
+          - User interest criteria for new smart phone users.
+          enum:
+          - UNSPECIFIED
+          - UNKNOWN
+          - AFFINITY
+          - IN_MARKET
+          - MOBILE_APP_INSTALL_USER
+          - VERTICAL_GEO
+          - NEW_SMART_PHONE_USER
+        userInterestDisplayName:
+          description: The user interest display name. For example, "Autos & Vehicles"
+          type: string
+        userInterest:
+          description: The user interest id.
+          $ref: '#/components/schemas/GoogleAdsGoogleadsV25Common__UserInterestInfo'
+        userInterestPath:
+          type: string
+          description: The user interest path. For example, "/Autos & Vehicles/Motor Vehicles/Motor Vehicles by Type/Off-Road Vehicles"
+    GoogleAdsGoogleadsV25Services__ListBenchmarksAvailableDatesResponse:
+      type: object
+      properties:
+        supportedDates:
+          description: The dates that support benchmarks metrics. Data is supported for any dates within this date range inclusive.
+          $ref: '#/components/schemas/GoogleAdsGoogleadsV25Common__DateRange'
+      description: Response message for BenchmarksService.ListBenchmarksAvailableDates.
+    GoogleAdsGoogleadsV25Services__BenchmarksSourceMetadata:
+      description: The metadata associated with a benchmarks source.
+      type: object
+      properties:
+        industryVerticalInfo:
+          $ref: '#/components/schemas/GoogleAdsGoogleadsV25Services__IndustryVerticalInfo'
+          description: Information on the Industry Vertical.
+        benchmarksSourceType:
+          x-enumDescriptions:
+          - Not specified.
+          - The value is unknown in this version.
+          - The classification of ad categories for benchmarking. (for example, "Technology" or "Finance").
+          enum:
+          - UNSPECIFIED
+          - UNKNOWN
+          - INDUSTRY_VERTICAL
+          description: The type of benchmarks source.
+          type: string
     GoogleAdsGoogleadsV25Services__ProductCoreAttributes:
       description: A collection of attributes that offer more information about a specific product.
       type: object
@@ -1092,202 +1096,32 @@ components:
           - CPV
           - CPC
           - CPA
-    GoogleAdsGoogleadsV25Services__ListBenchmarksSourcesRequest:
+    GoogleAdsGoogleadsV25Common__DateRange:
       type: object
       properties:
-        applicationInfo:
-          description: Additional information on the application issuing the request.
-          $ref: '#/components/schemas/GoogleAdsGoogleadsV25Common__AdditionalApplicationInfo'
-        benchmarksSources:
-          description: Required. The types of benchmarks sources to be returned
+        startDate:
+          type: string
+          description: The start date, in yyyy-mm-dd format. This date is inclusive.
+        endDate:
+          description: The end date, in yyyy-mm-dd format. This date is inclusive.
+          type: string
+      description: A date range.
+    GoogleAdsGoogleadsV25Services__ListBenchmarksLocationsResponse:
+      description: Response message for BenchmarksService.ListBenchmarksLocations.
+      type: object
+      properties:
+        benchmarksLocations:
+          description: The list of locations supported for benchmarks data.
           items:
-            type: string
-            x-enumDescriptions:
-            - Not specified.
-            - The value is unknown in this version.
-            - The classification of ad categories for benchmarking. (for example, "Technology" or "Finance").
-            enum:
-            - UNSPECIFIED
-            - UNKNOWN
-            - INDUSTRY_VERTICAL
+            $ref: '#/components/schemas/GoogleAdsGoogleadsV25Services__BenchmarksLocation'
           type: array
-      description: Request message for BenchmarksService.ListBenchmarksSources.
-    GoogleAdsGoogleadsV25Services__ListBenchmarksProductsRequest:
-      description: Request message for BenchmarksService.ListBenchmarksProducts.
+    GoogleAdsGoogleadsV25Common__UserInterestInfo:
+      description: Represents a particular interest-based topic to be targeted.
       type: object
       properties:
-        applicationInfo:
-          description: Additional information on the application issuing the request.
-          $ref: '#/components/schemas/GoogleAdsGoogleadsV25Common__AdditionalApplicationInfo'
-    GoogleAdsGoogleadsV25Services__SurfaceTargetingCombinations:
-      description: The surface targeting combinations available for an ad product.
-      type: object
-      properties:
-        defaultTargeting:
-          description: Default surface targeting applied to the ad product.
-          $ref: '#/components/schemas/GoogleAdsGoogleadsV25Services__SurfaceTargeting'
-        availableTargetingCombinations:
-          type: array
-          description: Available surface target combinations for the ad product.
-          items:
-            $ref: '#/components/schemas/GoogleAdsGoogleadsV25Services__SurfaceTargeting'
-    GoogleAdsGoogleadsV25Services__ProductMetadata:
-      type: object
-      properties:
-        plannableProductDescription:
+        userInterestCategory:
           type: string
-          description: 'The plain-text description of the ad product. For example: "Video view campaign allows you to plan for a configurable mix of skippable in-stream, in-feed, and Shorts video ads in a single campaign designed to drive more views."'
-        plannableTargeting:
-          description: The allowed plannable targeting for this product.
-          $ref: '#/components/schemas/GoogleAdsGoogleadsV25Services__PlannableTargeting'
-        plannableProductCode:
-          description: 'The code associated with the ad product. For example: "VIDEO_VIEW_CAMPAIGN". To list the available plannable product codes use ReachPlanService.ListPlannableProducts.'
-          type: string
-        plannableProductName:
-          description: 'The name associated with the ad product. For example: "Video View Campaign".'
-          type: string
-        plannableProductCoreAttributes:
-          $ref: '#/components/schemas/GoogleAdsGoogleadsV25Services__ProductCoreAttributes'
-          description: Descriptive attributes of the ad product to further describe its capabilities.
-      description: The metadata associated with an available plannable product.
-    GoogleAdsGoogleadsV25Common__AdditionalApplicationInfo:
-      description: Additional information about the application/tool issuing the request. This field is only used by ContentCreatorInsightsService, AudienceInsightsService, and ReachPlanService APIs.
-      type: object
-      properties:
-        applicationId:
-          description: The unique identifier of the agency proprietary application. This identifier is generated by Google. Reach out to your Google representative to request an application_id for each new application being integrated.
-          type: string
-        applicationInstance:
-          description: The instance type of the application sending the request.
-          type: string
-          x-enumDescriptions:
-          - Not specified.
-          - The value is unknown in this version.
-          - The instance is for development and testing purposes.
-          - The instance is for production purposes.
-          enum:
-          - UNSPECIFIED
-          - UNKNOWN
-          - DEVELOPMENT_AND_TESTING
-          - PRODUCTION
-    GoogleAdsGoogleadsV25Services__ListBenchmarksProductsResponse:
-      description: Response message for BenchmarksService.ListBenchmarksProducts.
-      type: object
-      properties:
-        benchmarksProducts:
-          description: The list of products available for benchmarks data.
-          items:
-            $ref: '#/components/schemas/GoogleAdsGoogleadsV25Services__BenchmarksProductMetadata'
-          type: array
-    GoogleAdsGoogleadsV25Services__BenchmarksSourceMetadata:
-      description: The metadata associated with a benchmarks source.
-      type: object
-      properties:
-        industryVerticalInfo:
-          $ref: '#/components/schemas/GoogleAdsGoogleadsV25Services__IndustryVerticalInfo'
-          description: Information on the Industry Vertical.
-        benchmarksSourceType:
-          x-enumDescriptions:
-          - Not specified.
-          - The value is unknown in this version.
-          - The classification of ad categories for benchmarking. (for example, "Technology" or "Finance").
-          enum:
-          - UNSPECIFIED
-          - UNKNOWN
-          - INDUSTRY_VERTICAL
-          description: The type of benchmarks source.
-          type: string
-    GoogleAdsGoogleadsV25Services__ListBenchmarksSourcesResponse:
-      type: object
-      properties:
-        benchmarksSources:
-          type: array
-          description: The list of available source used to generate benchmarks data for.
-          items:
-            $ref: '#/components/schemas/GoogleAdsGoogleadsV25Services__BenchmarksSourceMetadata'
-      description: Response message for BenchmarksService.ListBenchmarksSources.
-    GoogleAdsGoogleadsV25Services__YouTubeSelectLineUpTargeting:
-      description: Targetable YouTube Select Lineups for the ad product and the default Lineup.
-      type: object
-      properties:
-        youtubeSelectLineups:
-          type: array
-          description: Targetable YouTube Select Lineups for the ad product.
-          items:
-            $ref: '#/components/schemas/GoogleAdsGoogleadsV25Services__YouTubeSelectLineUp'
-        defaultYoutubeSelectLineup:
-          description: The default YouTube Select Lineup for the ad product if available.
-          $ref: '#/components/schemas/GoogleAdsGoogleadsV25Services__YouTubeSelectLineUp'
-    GoogleAdsGoogleadsV25Services__BenchmarksLocation:
-      description: A location that supports benchmarks data.
-      type: object
-      properties:
-        locationType:
-          description: The location's type. Location types correspond to target_type returned by searching location type in GoogleAdsService.Search/SearchStream.
-          type: string
-        locationInfo:
-          description: Information on the geographic location, including the location ID.
-          $ref: '#/components/schemas/GoogleAdsGoogleadsV25Common__LocationInfo'
-        locationName:
-          description: The unique location name in English.
-          type: string
-    GoogleAdsGoogleadsV25Common__LocationInfo:
-      type: object
-      properties:
-        geoTargetConstant:
-          type: string
-          description: The geo target constant resource name.
-      description: A location criterion.
-    GoogleAdsGoogleadsV25Services__ConversionRateSuggestion:
-      type: object
-      properties:
-        conversionRateModel:
-          description: Model type used to calculate the suggested conversion rate.
-          type: string
-          x-enumDescriptions:
-          - Not specified.
-          - The value is unknown in this version.
-          - Suggested conversion rate for the authenticated customer based on the previous 70 days.
-          - Suggested conversion rate based on an aggressive rate for the entire inventory.
-          - Suggested conversion rate based on a conservative rate for the entire inventory.
-          - Suggested conversion rate based on the median rate for the entire inventory.
-          enum:
-          - UNSPECIFIED
-          - UNKNOWN
-          - CUSTOMER_HISTORY
-          - INVENTORY_AGGRESSIVE
-          - INVENTORY_CONSERVATIVE
-          - INVENTORY_MEDIAN
-        surfaceTargeting:
-          $ref: '#/components/schemas/GoogleAdsGoogleadsV25Services__SurfaceTargeting'
-          description: The surfaces associated with the plannable product. If not present, the conversion rate is considered surface agnostic for this product.
-        conversionRate:
-          description: The suggested conversion rate. The value is between 0 and 1 (exclusive).
-          type: number
-          format: double
-        plannableProductCode:
-          type: string
-          description: 'The code associated with the plannable product (for example: DEMAND_GEN). To list all plannable product codes, use ReachPlanService.ListPlannableProducts.'
-      description: A conversion rate suggestion.
-    GoogleAdsGoogleadsV25Services__ListPlannableLocationsResponse:
-      description: The list of plannable locations.
-      type: object
-      properties:
-        plannableLocations:
-          description: The list of locations available for planning. See https://developers.google.com/google-ads/api/reference/data/geotargets for sample locations.
-          items:
-            $ref: '#/components/schemas/GoogleAdsGoogleadsV25Services__PlannableLocation'
-          type: array
-    GoogleAdsGoogleadsV25Services__ListPlannableProductsRequest:
-      description: Request to list available products in a given location.
-      type: object
-      properties:
-        plannableLocationId:
-          description: Required. The ID of the selected location for planning. To list the available plannable location IDs use ReachPlanService.ListPlannableLocations.
-          type: string
-        reachApplicationInfo:
-          $ref: '#/components/schemas/GoogleAdsGoogleadsV25Common__AdditionalApplicationInfo'
-          description: Optional. Additional information on the application issuing the request.
+          description: The UserInterest resource name.
     GoogleAdsGoogleadsV25Services__PlannableTargeting:
       description: The targeting for which traffic metrics will be reported.
       type: object
@@ -1398,21 +1232,56 @@ components:
             - YOUTUBE_AND_GOOGLE_VIDEO_PARTNERS
             type: string
           type: array
-    GoogleAdsGoogleadsV25Services__IndustryVerticalInfo:
-      description: The information associated with an Industry Vertical.
+    GoogleAdsGoogleadsV25Services__YouTubeSelectLineUpTargeting:
+      description: Targetable YouTube Select Lineups for the ad product and the default Lineup.
       type: object
       properties:
-        industryVerticalName:
-          description: The name of the Industry Vertical.
+        youtubeSelectLineups:
+          type: array
+          description: Targetable YouTube Select Lineups for the ad product.
+          items:
+            $ref: '#/components/schemas/GoogleAdsGoogleadsV25Services__YouTubeSelectLineUp'
+        defaultYoutubeSelectLineup:
+          description: The default YouTube Select Lineup for the ad product if available.
+          $ref: '#/components/schemas/GoogleAdsGoogleadsV25Services__YouTubeSelectLineUp'
+    GoogleAdsGoogleadsV25Services__GenerateConversionRatesResponse:
+      description: Response message for ReachPlanService.GenerateConversionRates, containing conversion rate suggestions for supported plannable products.
+      type: object
+      properties:
+        conversionRateSuggestions:
+          description: A list containing conversion rate suggestions. Each repeated element will have an associated product code. Multiple suggestions may share the same product code.
+          items:
+            $ref: '#/components/schemas/GoogleAdsGoogleadsV25Services__ConversionRateSuggestion'
+          type: array
+    GoogleAdsGoogleadsV25Services__ListBenchmarksAvailableDatesRequest:
+      type: object
+      properties:
+        applicationInfo:
+          description: Additional information on the application issuing the request.
+          $ref: '#/components/schemas/GoogleAdsGoogleadsV25Common__AdditionalApplicationInfo'
+      description: Request message for BenchmarksService.ListBenchmarksAvailableDates.
+    GoogleAdsGoogleadsV25Services__BenchmarksLocation:
+      description: A location that supports benchmarks data.
+      type: object
+      properties:
+        locationType:
+          description: The location's type. Location types correspond to target_type returned by searching location type in GoogleAdsService.Search/SearchStream.
           type: string
-        industryVerticalId:
-          format: int64
-          description: The unique identifier of the Industry Vertical.
+        locationInfo:
+          description: Information on the geographic location, including the location ID.
+          $ref: '#/components/schemas/GoogleAdsGoogleadsV25Common__LocationInfo'
+        locationName:
+          description: The unique location name in English.
           type: string
-        parentIndustryVerticalId:
-          description: The unique identifier of the parent Industry Vertical, if exists.
-          type: string
-          format: int64
+    GoogleAdsGoogleadsV25Services__ListBenchmarksProductsResponse:
+      description: Response message for BenchmarksService.ListBenchmarksProducts.
+      type: object
+      properties:
+        benchmarksProducts:
+          description: The list of products available for benchmarks data.
+          items:
+            $ref: '#/components/schemas/GoogleAdsGoogleadsV25Services__BenchmarksProductMetadata'
+          type: array
     GoogleAdsGoogleadsV25Services__ListPlannableLocationsRequest:
       type: object
       properties:
@@ -1420,69 +1289,15 @@ components:
           description: Optional. Additional information on the application issuing the request.
           $ref: '#/components/schemas/GoogleAdsGoogleadsV25Common__AdditionalApplicationInfo'
       description: Request message for ReachPlanService.ListPlannableLocations.
-    GoogleAdsGoogleadsV25Services__PlannableLocation:
-      description: 'A plannable location: country, metro region, province, etc.'
+    GoogleAdsGoogleadsV25Services__ListPlannableProductsResponse:
       type: object
       properties:
-        locationType:
-          description: The location's type. Location types correspond to target_type returned by searching location type in GoogleAdsService.Search/SearchStream.
-          type: string
-        id:
-          type: string
-          description: The location identifier.
-        parentCountryId:
-          format: int64
-          description: The parent country (not present if location is a country). If present, will always be a GeoTargetConstant ID. Additional information such as country name is provided by ReachPlanService.ListPlannableLocations or GoogleAdsService.Search/SearchStream.
-          type: string
-        countryCode:
-          description: The ISO-3166-1 alpha-2 country code that is associated with the location.
-          type: string
-        name:
-          description: The unique location name in English.
-          type: string
-    GoogleAdsGoogleadsV25Common__DeviceInfo:
-      description: A device criterion.
-      type: object
-      properties:
-        type:
-          x-enumDescriptions:
-          - Not specified.
-          - The value is unknown in this version.
-          - Mobile devices with full browsers.
-          - Tablets with full browsers.
-          - Computers.
-          - Smart TVs and game consoles.
-          - Other device types.
-          enum:
-          - UNSPECIFIED
-          - UNKNOWN
-          - MOBILE
-          - TABLET
-          - DESKTOP
-          - CONNECTED_TV
-          - OTHER
-          description: Type of the device.
-          type: string
-    GoogleAdsGoogleadsV25Services__ListPlannableUserListsRequest:
-      type: object
-      properties:
-        reachApplicationInfo:
-          description: Optional. Additional information on the application issuing the request.
-          $ref: '#/components/schemas/GoogleAdsGoogleadsV25Common__AdditionalApplicationInfo'
-        customerId:
-          type: string
-          description: Required. The ID of the customer.
-        customerReachGroup:
-          type: string
-          description: The name of the customer being planned for. This is a user-defined value.
-      description: Request message for ReachPlanService.ListPlannableUserLists that lists the available user lists for a customer.
-    GoogleAdsGoogleadsV25Services__ListBenchmarksAvailableDatesResponse:
-      type: object
-      properties:
-        supportedDates:
-          description: The dates that support benchmarks metrics. Data is supported for any dates within this date range inclusive.
-          $ref: '#/components/schemas/GoogleAdsGoogleadsV25Common__DateRange'
-      description: Response message for BenchmarksService.ListBenchmarksAvailableDates.
+        productMetadata:
+          type: array
+          description: The list of products available for planning and related targeting metadata.
+          items:
+            $ref: '#/components/schemas/GoogleAdsGoogleadsV25Services__ProductMetadata'
+      description: A response with all available products.
     GoogleAdsGoogleadsV25Services__BenchmarksProductMetadata:
       description: The metadata associated with a product supported for benchmarks data.
       type: object
@@ -1508,6 +1323,43 @@ components:
         productName:
           type: string
           description: The name of the product.
+    GoogleAdsGoogleadsV25Services__IndustryVerticalInfo:
+      description: The information associated with an Industry Vertical.
+      type: object
+      properties:
+        industryVerticalName:
+          description: The name of the Industry Vertical.
+          type: string
+        industryVerticalId:
+          format: int64
+          description: The unique identifier of the Industry Vertical.
+          type: string
+        parentIndustryVerticalId:
+          description: The unique identifier of the parent Industry Vertical, if exists.
+          type: string
+          format: int64
+    GoogleAdsGoogleadsV25Services__ListPlannableUserListsRequest:
+      type: object
+      properties:
+        reachApplicationInfo:
+          description: Optional. Additional information on the application issuing the request.
+          $ref: '#/components/schemas/GoogleAdsGoogleadsV25Common__AdditionalApplicationInfo'
+        customerId:
+          type: string
+          description: Required. The ID of the customer.
+        customerReachGroup:
+          type: string
+          description: The name of the customer being planned for. This is a user-defined value.
+      description: Request message for ReachPlanService.ListPlannableUserLists that lists the available user lists for a customer.
+    GoogleAdsGoogleadsV25Services__ListPlannableLocationsResponse:
+      description: The list of plannable locations.
+      type: object
+      properties:
+        plannableLocations:
+          description: The list of locations available for planning. See https://developers.google.com/google-ads/api/reference/data/geotargets for sample locations.
+          items:
+            $ref: '#/components/schemas/GoogleAdsGoogleadsV25Services__PlannableLocation'
+          type: array
     GoogleAdsGoogleadsV25Services__GenerateConversionRatesRequest:
       description: Request message for ReachPlanService.GenerateConversionRates.
       type: object
@@ -1521,66 +1373,25 @@ components:
         reachApplicationInfo:
           description: Optional. Additional information on the application issuing the request.
           $ref: '#/components/schemas/GoogleAdsGoogleadsV25Common__AdditionalApplicationInfo'
-    GoogleAdsGoogleadsV25Services__ListBenchmarksLocationsRequest:
+    GoogleAdsGoogleadsV25Services__ProductMetadata:
       type: object
       properties:
-        applicationInfo:
-          description: Additional information on the application issuing the request.
-          $ref: '#/components/schemas/GoogleAdsGoogleadsV25Common__AdditionalApplicationInfo'
-      description: Request message for BenchmarksService.ListBenchmarksLocations.
-    GoogleAdsGoogleadsV25Common__GenderInfo:
-      type: object
-      properties:
-        type:
+        plannableProductDescription:
           type: string
-          description: Type of the gender.
-          x-enumDescriptions:
-          - Not specified.
-          - Used for return value only. Represents value unknown in this version.
-          - Male.
-          - Female.
-          - Undetermined gender.
-          enum:
-          - UNSPECIFIED
-          - UNKNOWN
-          - MALE
-          - FEMALE
-          - UNDETERMINED
-      description: A gender criterion.
-    GoogleAdsGoogleadsV25Services__ListPlannableUserListsResponse:
-      description: A response with all available user lists with their plannable status.
-      type: object
-      properties:
-        plannableUserLists:
-          type: array
-          description: The list of user lists available for planning and related targeting metadata.
-          items:
-            $ref: '#/components/schemas/GoogleAdsGoogleadsV25Services__PlannableUserList'
-    GoogleAdsGoogleadsV25Common__UserInterestInfo:
-      description: Represents a particular interest-based topic to be targeted.
-      type: object
-      properties:
-        userInterestCategory:
+          description: 'The plain-text description of the ad product. For example: "Video view campaign allows you to plan for a configurable mix of skippable in-stream, in-feed, and Shorts video ads in a single campaign designed to drive more views."'
+        plannableTargeting:
+          description: The allowed plannable targeting for this product.
+          $ref: '#/components/schemas/GoogleAdsGoogleadsV25Services__PlannableTargeting'
+        plannableProductCode:
+          description: 'The code associated with the ad product. For example: "VIDEO_VIEW_CAMPAIGN". To list the available plannable product codes use ReachPlanService.ListPlannableProducts.'
           type: string
-          description: The UserInterest resource name.
-    GoogleAdsGoogleadsV25Services__GenerateConversionRatesResponse:
-      description: Response message for ReachPlanService.GenerateConversionRates, containing conversion rate suggestions for supported plannable products.
-      type: object
-      properties:
-        conversionRateSuggestions:
-          description: A list containing conversion rate suggestions. Each repeated element will have an associated product code. Multiple suggestions may share the same product code.
-          items:
-            $ref: '#/components/schemas/GoogleAdsGoogleadsV25Services__ConversionRateSuggestion'
-          type: array
-    GoogleAdsGoogleadsV25Services__ListPlannableProductsResponse:
-      type: object
-      properties:
-        productMetadata:
-          type: array
-          description: The list of products available for planning and related targeting metadata.
-          items:
-            $ref: '#/components/schemas/GoogleAdsGoogleadsV25Services__ProductMetadata'
-      description: A response with all available products.
+        plannableProductName:
+          description: 'The name associated with the ad product. For example: "Video View Campaign".'
+          type: string
+        plannableProductCoreAttributes:
+          $ref: '#/components/schemas/GoogleAdsGoogleadsV25Services__ProductCoreAttributes'
+          description: Descriptive attributes of the ad product to further describe its capabilities.
+      description: The metadata associated with an available plannable product.
     GoogleAdsGoogleadsV25Services__ListPlannableUserInterestsRequest:
       type: object
       properties:
@@ -1618,49 +1429,26 @@ components:
           description: Optional. Additional information on the application issuing the request.
           $ref: '#/components/schemas/GoogleAdsGoogleadsV25Common__AdditionalApplicationInfo'
       description: Request message for ReachPlanService.ListPlannableUserInterests.
-    GoogleAdsGoogleadsV25Services__PlannableUserInterest:
-      description: A plannable user interest that can be targeted in a reach forecast using ReachPlanService.GenerateReachForecast.
+    GoogleAdsGoogleadsV25Services__ListBenchmarksSourcesRequest:
       type: object
       properties:
-        userInterestType:
-          description: The user interest type.
-          type: string
-          x-enumDescriptions:
-          - Not specified.
-          - Used for return value only. Represents value unknown in this version.
-          - The affinity for this user interest.
-          - The market for this user interest.
-          - Users known to have installed applications in the specified categories.
-          - The geographical location of the interest-based vertical.
-          - User interest criteria for new smart phone users.
-          enum:
-          - UNSPECIFIED
-          - UNKNOWN
-          - AFFINITY
-          - IN_MARKET
-          - MOBILE_APP_INSTALL_USER
-          - VERTICAL_GEO
-          - NEW_SMART_PHONE_USER
-        userInterestDisplayName:
-          description: The user interest display name. For example, "Autos & Vehicles"
-          type: string
-        userInterest:
-          description: The user interest id.
-          $ref: '#/components/schemas/GoogleAdsGoogleadsV25Common__UserInterestInfo'
-        userInterestPath:
-          type: string
-          description: The user interest path. For example, "/Autos & Vehicles/Motor Vehicles/Motor Vehicles by Type/Off-Road Vehicles"
-    GoogleAdsGoogleadsV25Services__YouTubeSelectLineUp:
-      description: A Plannable YouTube Select Lineup for product targeting.
-      type: object
-      properties:
-        lineupName:
-          type: string
-          description: The unique name of the YouTube Select Lineup.
-        lineupId:
-          format: int64
-          type: string
-          description: The ID of the YouTube Select Lineup.
+        applicationInfo:
+          description: Additional information on the application issuing the request.
+          $ref: '#/components/schemas/GoogleAdsGoogleadsV25Common__AdditionalApplicationInfo'
+        benchmarksSources:
+          description: Required. The types of benchmarks sources to be returned
+          items:
+            type: string
+            x-enumDescriptions:
+            - Not specified.
+            - The value is unknown in this version.
+            - The classification of ad categories for benchmarking. (for example, "Technology" or "Finance").
+            enum:
+            - UNSPECIFIED
+            - UNKNOWN
+            - INDUSTRY_VERTICAL
+          type: array
+      description: Request message for BenchmarksService.ListBenchmarksSources.
     GoogleAdsGoogleadsV25Services__ListPlannableUserInterestsResponse:
       description: Response message for ReachPlanService.ListPlannableUserInterests.
       type: object
@@ -1670,23 +1458,29 @@ components:
           items:
             $ref: '#/components/schemas/GoogleAdsGoogleadsV25Services__PlannableUserInterest'
           type: array
-    GoogleAdsGoogleadsV25Common__UserListInfo:
+    GoogleAdsGoogleadsV25Common__LocationInfo:
       type: object
       properties:
-        userList:
+        geoTargetConstant:
           type: string
-          description: The User List resource name.
-      description: A User List criterion. Represents a user list that is defined by the advertiser to be targeted.
-    GoogleAdsGoogleadsV25Common__DateRange:
+          description: The geo target constant resource name.
+      description: A location criterion.
+    GoogleAdsGoogleadsV25Services__ListPlannableUserListsResponse:
+      description: A response with all available user lists with their plannable status.
       type: object
       properties:
-        startDate:
-          type: string
-          description: The start date, in yyyy-mm-dd format. This date is inclusive.
-        endDate:
-          description: The end date, in yyyy-mm-dd format. This date is inclusive.
-          type: string
-      description: A date range.
+        plannableUserLists:
+          type: array
+          description: The list of user lists available for planning and related targeting metadata.
+          items:
+            $ref: '#/components/schemas/GoogleAdsGoogleadsV25Services__PlannableUserList'
+    GoogleAdsGoogleadsV25Services__ListBenchmarksLocationsRequest:
+      type: object
+      properties:
+        applicationInfo:
+          description: Additional information on the application issuing the request.
+          $ref: '#/components/schemas/GoogleAdsGoogleadsV25Common__AdditionalApplicationInfo'
+      description: Request message for BenchmarksService.ListBenchmarksLocations.
     GoogleAdsGoogleadsV25Services__PlannableUserList:
       description: A plannable user list.
       type: object
@@ -1736,6 +1530,212 @@ components:
         plannableUserListMetadata:
           $ref: '#/components/schemas/GoogleAdsGoogleadsV25Services__PlannableUserListMetadata'
           description: The relevant metadata for this user list.
+    GoogleAdsGoogleadsV25Services__ListBenchmarksSourcesResponse:
+      type: object
+      properties:
+        benchmarksSources:
+          type: array
+          description: The list of available source used to generate benchmarks data for.
+          items:
+            $ref: '#/components/schemas/GoogleAdsGoogleadsV25Services__BenchmarksSourceMetadata'
+      description: Response message for BenchmarksService.ListBenchmarksSources.
+    GoogleAdsGoogleadsV25Services__YouTubeSelectLineUp:
+      description: A Plannable YouTube Select Lineup for product targeting.
+      type: object
+      properties:
+        lineupName:
+          type: string
+          description: The unique name of the YouTube Select Lineup.
+        lineupId:
+          format: int64
+          type: string
+          description: The ID of the YouTube Select Lineup.
+    GoogleAdsGoogleadsV25Services__PlannableLocation:
+      description: 'A plannable location: country, metro region, province, etc.'
+      type: object
+      properties:
+        locationType:
+          description: The location's type. Location types correspond to target_type returned by searching location type in GoogleAdsService.Search/SearchStream.
+          type: string
+        id:
+          type: string
+          description: The location identifier.
+        parentCountryId:
+          format: int64
+          description: The parent country (not present if location is a country). If present, will always be a GeoTargetConstant ID. Additional information such as country name is provided by ReachPlanService.ListPlannableLocations or GoogleAdsService.Search/SearchStream.
+          type: string
+        countryCode:
+          description: The ISO-3166-1 alpha-2 country code that is associated with the location.
+          type: string
+        name:
+          description: The unique location name in English.
+          type: string
+    GoogleAdsGoogleadsV25Services__SurfaceTargeting:
+      type: object
+      properties:
+        surfaces:
+          type: array
+          description: List of surfaces available to target.
+          items:
+            type: string
+            x-enumDescriptions:
+            - Not specified.
+            - The value is unknown in this version.
+            - Discover feed ad surface.
+            - Gmail ad surface.
+            - In-Feed ad surface.
+            - In-Stream bumper ad surface.
+            - In-Stream non-skippable ad surface.
+            - In-Stream skippable ad surface.
+            - Shorts ad surface.
+            - Google Display Network ad surface.
+            - In-Stream non-skippable (30 seconds) ad surface.
+            enum:
+            - UNSPECIFIED
+            - UNKNOWN
+            - DISCOVER_FEED
+            - GMAIL
+            - IN_FEED
+            - IN_STREAM_BUMPER
+            - IN_STREAM_NON_SKIPPABLE
+            - IN_STREAM_SKIPPABLE
+            - SHORTS
+            - GOOGLE_DISPLAY_NETWORK
+            - IN_STREAM_NON_SKIPPABLE_THIRTY_SECONDS
+      description: Container for surfaces for a product. Surfaces refer to the available types of ad inventories such as In-Feed, In-Stream, and Shorts.
+    GoogleAdsGoogleadsV25Common__GenderInfo:
+      type: object
+      properties:
+        type:
+          type: string
+          description: Type of the gender.
+          x-enumDescriptions:
+          - Not specified.
+          - Used for return value only. Represents value unknown in this version.
+          - Male.
+          - Female.
+          - Undetermined gender.
+          enum:
+          - UNSPECIFIED
+          - UNKNOWN
+          - MALE
+          - FEMALE
+          - UNDETERMINED
+      description: A gender criterion.
+    GoogleAdsGoogleadsV25Common__AdditionalApplicationInfo:
+      description: Additional information about the application/tool issuing the request. This field is only used by ContentCreatorInsightsService, AudienceInsightsService, and ReachPlanService APIs.
+      type: object
+      properties:
+        applicationId:
+          description: The unique identifier of the agency proprietary application. This identifier is generated by Google. Reach out to your Google representative to request an application_id for each new application being integrated.
+          type: string
+        applicationInstance:
+          description: The instance type of the application sending the request.
+          type: string
+          x-enumDescriptions:
+          - Not specified.
+          - The value is unknown in this version.
+          - The instance is for development and testing purposes.
+          - The instance is for production purposes.
+          enum:
+          - UNSPECIFIED
+          - UNKNOWN
+          - DEVELOPMENT_AND_TESTING
+          - PRODUCTION
+    GoogleAdsGoogleadsV25Services__PlannableUserListMetadata:
+      type: object
+      properties:
+        userListCrmDataSourceType:
+          description: The data source type of a CRM based user list.
+          type: string
+          x-enumDescriptions:
+          - Not specified.
+          - Used for return value only. Represents value unknown in this version.
+          - The uploaded data is first-party data.
+          - The uploaded data is from a third-party credit bureau.
+          - The uploaded data is from a third-party voter file.
+          - The uploaded data is third party partner data.
+          enum:
+          - UNSPECIFIED
+          - UNKNOWN
+          - FIRST_PARTY
+          - THIRD_PARTY_CREDIT_BUREAU
+          - THIRD_PARTY_VOTER_FILE
+          - THIRD_PARTY_PARTNER_DATA
+      description: The metadata associated with a plannable user list.
+    GoogleAdsGoogleadsV25Common__UserListInfo:
+      type: object
+      properties:
+        userList:
+          type: string
+          description: The User List resource name.
+      description: A User List criterion. Represents a user list that is defined by the advertiser to be targeted.
+    GoogleAdsGoogleadsV25Services__ConversionRateSuggestion:
+      type: object
+      properties:
+        conversionRateModel:
+          description: Model type used to calculate the suggested conversion rate.
+          type: string
+          x-enumDescriptions:
+          - Not specified.
+          - The value is unknown in this version.
+          - Suggested conversion rate for the authenticated customer based on the previous 70 days.
+          - Suggested conversion rate based on an aggressive rate for the entire inventory.
+          - Suggested conversion rate based on a conservative rate for the entire inventory.
+          - Suggested conversion rate based on the median rate for the entire inventory.
+          enum:
+          - UNSPECIFIED
+          - UNKNOWN
+          - CUSTOMER_HISTORY
+          - INVENTORY_AGGRESSIVE
+          - INVENTORY_CONSERVATIVE
+          - INVENTORY_MEDIAN
+        surfaceTargeting:
+          $ref: '#/components/schemas/GoogleAdsGoogleadsV25Services__SurfaceTargeting'
+          description: The surfaces associated with the plannable product. If not present, the conversion rate is considered surface agnostic for this product.
+        conversionRate:
+          description: The suggested conversion rate. The value is between 0 and 1 (exclusive).
+          type: number
+          format: double
+        plannableProductCode:
+          type: string
+          description: 'The code associated with the plannable product (for example: DEMAND_GEN). To list all plannable product codes, use ReachPlanService.ListPlannableProducts.'
+      description: A conversion rate suggestion.
+    GoogleAdsGoogleadsV25Services__SurfaceTargetingCombinations:
+      description: The surface targeting combinations available for an ad product.
+      type: object
+      properties:
+        defaultTargeting:
+          description: Default surface targeting applied to the ad product.
+          $ref: '#/components/schemas/GoogleAdsGoogleadsV25Services__SurfaceTargeting'
+        availableTargetingCombinations:
+          type: array
+          description: Available surface target combinations for the ad product.
+          items:
+            $ref: '#/components/schemas/GoogleAdsGoogleadsV25Services__SurfaceTargeting'
+    GoogleAdsGoogleadsV25Common__DeviceInfo:
+      description: A device criterion.
+      type: object
+      properties:
+        type:
+          x-enumDescriptions:
+          - Not specified.
+          - The value is unknown in this version.
+          - Mobile devices with full browsers.
+          - Tablets with full browsers.
+          - Computers.
+          - Smart TVs and game consoles.
+          - Other device types.
+          enum:
+          - UNSPECIFIED
+          - UNKNOWN
+          - MOBILE
+          - TABLET
+          - DESKTOP
+          - CONNECTED_TV
+          - OTHER
+          description: Type of the device.
+          type: string
   securitySchemes:
     oauth2:
       type: oauth2

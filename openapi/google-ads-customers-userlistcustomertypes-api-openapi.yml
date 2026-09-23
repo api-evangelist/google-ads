@@ -106,7 +106,7 @@ paths:
       summary: Attach or remove user list customer types
       tags:
       - customers.userListCustomerTypes
-      description: 'Attach or remove user list customer types. Operation statuses are returned. List of thrown errors: [AuthenticationError]() [AuthorizationError]() [UserListCustomerTypeError]() [HeaderError]() [InternalError]() [QuotaError]() [RequestError]()'
+      description: 'Attach or remove user list customer types. Operation statuses are returned. List of thrown errors: AuthenticationError AuthorizationError UserListCustomerTypeError HeaderError InternalError QuotaError RequestError'
       parameters:
       - name: customerId
         in: path
@@ -133,21 +133,31 @@ paths:
         - https://www.googleapis.com/auth/adwords
 components:
   schemas:
-    GoogleAdsGoogleadsV25Services__MutateUserListCustomerTypesRequest:
-      description: Request message for UserListCustomerTypeService.MutateUserListCustomerTypes.
+    GoogleAdsGoogleadsV25Services__MutateUserListCustomerTypeResult:
+      description: The result for the user list customer type mutate.
       type: object
       properties:
-        validateOnly:
-          description: Optional. If true, the request is validated but not executed. Only errors are returned, not results.
-          type: boolean
-        operations:
+        resourceName:
+          type: string
+          description: Returned for successful operations.
+    GoogleRpc__Status:
+      description: 'The `Status` type defines a logical error model that is suitable for different programming environments, including REST APIs and RPC APIs. It is used by [gRPC](https://github.com/grpc). Each `Status` message contains three pieces of data: error code, error message, and error details. You can find out more about this error model and how to work with it in the [API Design Guide](https://cloud.google.com/apis/design/errors).'
+      type: object
+      properties:
+        message:
+          description: A developer-facing error message, which should be in English. Any user-facing error message should be localized and sent in the google.rpc.Status.details field, or localized by the client.
+          type: string
+        code:
+          type: integer
+          description: The status code, which should be an enum value of google.rpc.Code.
+          format: int32
+        details:
           type: array
-          description: Required. The list of operations to perform on the user list customer types.
+          description: A list of messages that carry the error details. There is a common set of message types for APIs to use.
           items:
-            $ref: '#/components/schemas/GoogleAdsGoogleadsV25Services__UserListCustomerTypeOperation'
-        partialFailure:
-          description: Optional. If true, successful operations will be carried out and invalid operations will return errors. If false, all operations will be carried out in one transaction if and only if they are all valid. Default is false.
-          type: boolean
+            type: object
+            additionalProperties:
+              description: Properties of the object. Contains field @type with type URL.
     GoogleAdsGoogleadsV25Services__MutateUserListCustomerTypesResponse:
       description: Response message for a user list customer type mutate.
       type: object
@@ -209,6 +219,21 @@ components:
         userList:
           description: Immutable. The resource name for the user list this user list customer type is associated with
           type: string
+    GoogleAdsGoogleadsV25Services__MutateUserListCustomerTypesRequest:
+      description: Request message for UserListCustomerTypeService.MutateUserListCustomerTypes.
+      type: object
+      properties:
+        validateOnly:
+          description: Optional. If true, the request is validated but not executed. Only errors are returned, not results.
+          type: boolean
+        operations:
+          type: array
+          description: Required. The list of operations to perform on the user list customer types.
+          items:
+            $ref: '#/components/schemas/GoogleAdsGoogleadsV25Services__UserListCustomerTypeOperation'
+        partialFailure:
+          description: Optional. If true, successful operations will be carried out and invalid operations will return errors. If false, all operations will be carried out in one transaction if and only if they are all valid. Default is false.
+          type: boolean
     GoogleAdsGoogleadsV25Services__UserListCustomerTypeOperation:
       type: object
       properties:
@@ -219,31 +244,6 @@ components:
           description: 'Remove an existing user list customer type. A resource name for the removed user list customer type is expected, in this format: `customers/{customer_id}/userListCustomerTypes/{user_list_id}~{customer_type_category}`'
           type: string
       description: A single mutate operation on the user list customer type.
-    GoogleRpc__Status:
-      description: 'The `Status` type defines a logical error model that is suitable for different programming environments, including REST APIs and RPC APIs. It is used by [gRPC](https://github.com/grpc). Each `Status` message contains three pieces of data: error code, error message, and error details. You can find out more about this error model and how to work with it in the [API Design Guide](https://cloud.google.com/apis/design/errors).'
-      type: object
-      properties:
-        message:
-          description: A developer-facing error message, which should be in English. Any user-facing error message should be localized and sent in the google.rpc.Status.details field, or localized by the client.
-          type: string
-        code:
-          type: integer
-          description: The status code, which should be an enum value of google.rpc.Code.
-          format: int32
-        details:
-          type: array
-          description: A list of messages that carry the error details. There is a common set of message types for APIs to use.
-          items:
-            type: object
-            additionalProperties:
-              description: Properties of the object. Contains field @type with type URL.
-    GoogleAdsGoogleadsV25Services__MutateUserListCustomerTypeResult:
-      description: The result for the user list customer type mutate.
-      type: object
-      properties:
-        resourceName:
-          type: string
-          description: Returned for successful operations.
   securitySchemes:
     oauth2:
       type: oauth2

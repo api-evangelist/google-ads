@@ -106,7 +106,7 @@ paths:
       summary: Creates, updates, or removes account budget proposals
       tags:
       - customers.accountBudgetProposals
-      description: 'Creates, updates, or removes account budget proposals. Operation statuses are returned. List of thrown errors: [AccountBudgetProposalError]() [AuthenticationError]() [AuthorizationError]() [DatabaseError]() [DateError]() [FieldError]() [FieldMaskError]() [HeaderError]() [InternalError]() [MutateError]() [QuotaError]() [RequestError]() [StringLengthError]()'
+      description: 'Creates, updates, or removes account budget proposals. Operation statuses are returned. List of thrown errors: AccountBudgetProposalError AuthenticationError AuthorizationError DatabaseError DateError FieldError FieldMaskError HeaderError InternalError MutateError QuotaError RequestError StringLengthError'
       parameters:
       - name: customerId
         in: path
@@ -133,16 +133,13 @@ paths:
         - https://www.googleapis.com/auth/adwords
 components:
   schemas:
-    GoogleAdsGoogleadsV25Services__MutateAccountBudgetProposalRequest:
+    GoogleAdsGoogleadsV25Services__MutateAccountBudgetProposalResponse:
+      description: Response message for account-level budget mutate operations.
       type: object
       properties:
-        operation:
-          $ref: '#/components/schemas/GoogleAdsGoogleadsV25Services__AccountBudgetProposalOperation'
-          description: Required. The operation to perform on an individual account-level budget proposal.
-        validateOnly:
-          description: If true, the request is validated but not executed. Only errors are returned, not results.
-          type: boolean
-      description: Request message for AccountBudgetProposalService.MutateAccountBudgetProposal.
+        result:
+          $ref: '#/components/schemas/GoogleAdsGoogleadsV25Services__MutateAccountBudgetProposalResult'
+          description: The result of the mutate.
     GoogleAdsGoogleadsV25Services__MutateAccountBudgetProposalResult:
       description: The result for the account budget proposal mutate.
       type: object
@@ -299,6 +296,16 @@ components:
           - Used for return value only. Represents value unknown in this version.
           - As soon as possible.
           - An infinite point in the future.
+    GoogleAdsGoogleadsV25Services__MutateAccountBudgetProposalRequest:
+      type: object
+      properties:
+        operation:
+          $ref: '#/components/schemas/GoogleAdsGoogleadsV25Services__AccountBudgetProposalOperation'
+          description: Required. The operation to perform on an individual account-level budget proposal.
+        validateOnly:
+          description: If true, the request is validated but not executed. Only errors are returned, not results.
+          type: boolean
+      description: Request message for AccountBudgetProposalService.MutateAccountBudgetProposal.
     GoogleAdsGoogleadsV25Services__AccountBudgetProposalOperation:
       description: A single operation to propose the creation of a new account-level budget or edit/end/remove an existing one.
       type: object
@@ -313,13 +320,6 @@ components:
         remove:
           type: string
           description: 'Remove operation: A resource name for the removed proposal is expected, in this format: `customers/{customer_id}/accountBudgetProposals/{account_budget_proposal_id}` A request may be cancelled iff it is pending.'
-    GoogleAdsGoogleadsV25Services__MutateAccountBudgetProposalResponse:
-      description: Response message for account-level budget mutate operations.
-      type: object
-      properties:
-        result:
-          $ref: '#/components/schemas/GoogleAdsGoogleadsV25Services__MutateAccountBudgetProposalResult'
-          description: The result of the mutate.
   securitySchemes:
     oauth2:
       type: oauth2

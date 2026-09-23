@@ -133,76 +133,113 @@ paths:
         - https://www.googleapis.com/auth/adwords
 components:
   schemas:
-    GoogleAdsGoogleadsV25Resources_ConversionValueRule_ValueRuleDeviceCondition:
-      description: Condition on Device dimension.
+    GoogleAdsGoogleadsV25Resources_ConversionValueRule_ValueRuleItineraryTravelLength:
+      description: Range for the itinerary length in number of nights.
       type: object
       properties:
-        deviceTypes:
-          description: Value for device type condition.
-          items:
-            type: string
-            x-enumDescriptions:
-            - Not specified.
-            - Used for return value only. Represents value unknown in this version.
-            - Mobile device.
-            - Desktop device.
-            - Tablet device.
-            enum:
-            - UNSPECIFIED
-            - UNKNOWN
-            - MOBILE
-            - DESKTOP
-            - TABLET
-          type: array
-    GoogleAdsGoogleadsV25Resources_ConversionValueRule_ValueRuleAction:
+        maxNights:
+          description: Maximum number of days between the start date and the end date.
+          type: integer
+          format: int32
+        minNights:
+          description: Minimum number of nights between the start date and the end date.
+          type: integer
+          format: int32
+    GoogleAdsGoogleadsV25Resources_ConversionValueRule_ValueRuleItineraryAdvanceBookingWindow:
+      description: Range for the number of days between the date of the booking and the start of the itinerary.
       type: object
       properties:
-        value:
-          type: number
-          description: Specifies applied value.
-          format: double
-        operation:
-          type: string
-          description: Specifies applied operation.
-          x-enumDescriptions:
-          - Not specified.
-          - Used for return value only. Represents value unknown in this version.
-          - Add provided value to conversion value.
-          - Multiply conversion value by provided value.
-          - Set conversion value to provided value.
-          enum:
-          - UNSPECIFIED
-          - UNKNOWN
-          - ADD
-          - MULTIPLY
-          - SET
-      description: Action applied when rule is applied.
-    GoogleAdsGoogleadsV25Services__MutateConversionValueRulesRequest:
+        minDays:
+          description: Minimum number of days between the date of the booking the start date.
+          type: integer
+          format: int32
+        maxDays:
+          type: integer
+          description: Maximum number of days between the date of the booking the start date.
+          format: int32
+    GoogleAdsGoogleadsV25Resources_ConversionValueRule_ValueRuleItineraryCondition:
       type: object
       properties:
-        partialFailure:
+        travelLength:
+          description: Range for the itinerary length in number of nights.
+          $ref: '#/components/schemas/GoogleAdsGoogleadsV25Resources_ConversionValueRule_ValueRuleItineraryTravelLength'
+        advanceBookingWindow:
+          $ref: '#/components/schemas/GoogleAdsGoogleadsV25Resources_ConversionValueRule_ValueRuleItineraryAdvanceBookingWindow'
+          description: Range for the number of days between the date of the booking and the start of the itinerary.
+        travelStartDay:
+          description: The days of the week on which this itinerary's travel can start.
+          $ref: '#/components/schemas/GoogleAdsGoogleadsV25Resources_ConversionValueRule_ValueRuleItineraryTravelStartDay'
+      description: Condition on Itinerary dimension.
+    GoogleAdsGoogleadsV25Resources_ConversionValueRule_ValueRuleItineraryTravelStartDay:
+      type: object
+      properties:
+        sunday:
+          description: The travel can start on Sunday.
           type: boolean
-          description: If true, successful operations will be carried out and invalid operations will return errors. If false, all operations will be carried out in one transaction if and only if they are all valid. Default is false.
-        operations:
-          type: array
-          description: Required. The list of operations to perform on individual conversion value rules.
-          items:
-            $ref: '#/components/schemas/GoogleAdsGoogleadsV25Services__ConversionValueRuleOperation'
-        validateOnly:
-          description: If true, the request is validated but not executed. Only errors are returned, not results.
+        wednesday:
+          description: The travel can start on Wednesday.
           type: boolean
-        responseContentType:
-          x-enumDescriptions:
-          - Not specified. Will return the resource name only in the response.
-          - The mutate response will be the resource name.
-          - The mutate response will contain the resource name and the resource with mutable fields if possible. Otherwise, only the resource name will be returned.
-          enum:
-          - UNSPECIFIED
-          - RESOURCE_NAME_ONLY
-          - MUTABLE_RESOURCE
-          description: The response content type setting. Determines whether the mutable resource or just the resource name should be returned post mutation.
+        saturday:
+          type: boolean
+          description: The travel can start on Saturday.
+        friday:
+          description: The travel can start on Friday.
+          type: boolean
+        tuesday:
+          description: The travel can start on Tuesday.
+          type: boolean
+        thursday:
+          description: The travel can start on Thursday.
+          type: boolean
+        monday:
+          description: The travel can start on Monday.
+          type: boolean
+      description: The days of the week on which an itinerary's travel can start.
+    GoogleAdsGoogleadsV25Services__ConversionValueRuleOperation:
+      description: A single operation (create, update, remove) on a conversion value rule.
+      type: object
+      properties:
+        update:
+          $ref: '#/components/schemas/GoogleAdsGoogleadsV25Resources__ConversionValueRule'
+          description: 'Update operation: The conversion value rule is expected to have a valid resource name.'
+        updateMask:
+          description: FieldMask that determines which resource fields are modified in an update.
           type: string
-      description: Request message for ConversionValueRuleService.MutateConversionValueRules.
+          format: google-fieldmask
+        create:
+          description: 'Create operation: No resource name is expected for the new conversion value rule.'
+          $ref: '#/components/schemas/GoogleAdsGoogleadsV25Resources__ConversionValueRule'
+        remove:
+          description: 'Remove operation: A resource name for the removed conversion value rule is expected, in this format: `customers/{customer_id}/conversionValueRules/{conversion_value_rule_id}`'
+          type: string
+    GoogleRpc__Status:
+      description: 'The `Status` type defines a logical error model that is suitable for different programming environments, including REST APIs and RPC APIs. It is used by [gRPC](https://github.com/grpc). Each `Status` message contains three pieces of data: error code, error message, and error details. You can find out more about this error model and how to work with it in the [API Design Guide](https://cloud.google.com/apis/design/errors).'
+      type: object
+      properties:
+        message:
+          description: A developer-facing error message, which should be in English. Any user-facing error message should be localized and sent in the google.rpc.Status.details field, or localized by the client.
+          type: string
+        code:
+          type: integer
+          description: The status code, which should be an enum value of google.rpc.Code.
+          format: int32
+        details:
+          type: array
+          description: A list of messages that carry the error details. There is a common set of message types for APIs to use.
+          items:
+            type: object
+            additionalProperties:
+              description: Properties of the object. Contains field @type with type URL.
+    GoogleAdsGoogleadsV25Services__MutateConversionValueRuleResult:
+      description: The result for the conversion value rule mutate.
+      type: object
+      properties:
+        resourceName:
+          description: Returned for successful operations.
+          type: string
+        conversionValueRule:
+          $ref: '#/components/schemas/GoogleAdsGoogleadsV25Resources__ConversionValueRule'
+          description: The mutated conversion value rule with only mutable fields after mutate. The field will only be returned when response_content_type is set to "MUTABLE_RESOURCE".
     GoogleAdsGoogleadsV25Resources_ConversionValueRule_ValueRuleAudienceCondition:
       type: object
       properties:
@@ -217,70 +254,6 @@ components:
           items:
             type: string
       description: Condition on Audience dimension.
-    GoogleAdsGoogleadsV25Resources_ConversionValueRule_ValueRuleGeoLocationCondition:
-      description: Condition on Geo dimension.
-      type: object
-      properties:
-        excludedGeoTargetConstants:
-          type: array
-          description: Geo locations that advertisers want to exclude.
-          items:
-            type: string
-        geoMatchType:
-          x-enumDescriptions:
-          - Not specified.
-          - Used for return value only. Represents value unknown in this version.
-          - Either Area of Interest or Location of Presence can be used to match.
-          - Only Location of Presence can be used to match.
-          enum:
-          - UNSPECIFIED
-          - UNKNOWN
-          - ANY
-          - LOCATION_OF_PRESENCE
-          description: Included Geo location match type.
-          type: string
-        geoTargetConstants:
-          type: array
-          description: Geo locations that advertisers want to include.
-          items:
-            type: string
-        excludedGeoMatchType:
-          x-enumDescriptions:
-          - Not specified.
-          - Used for return value only. Represents value unknown in this version.
-          - Either Area of Interest or Location of Presence can be used to match.
-          - Only Location of Presence can be used to match.
-          enum:
-          - UNSPECIFIED
-          - UNKNOWN
-          - ANY
-          - LOCATION_OF_PRESENCE
-          description: Excluded Geo location match type.
-          type: string
-    GoogleAdsGoogleadsV25Resources_ConversionValueRule_ValueRuleItineraryTravelLength:
-      description: Range for the itinerary length in number of nights.
-      type: object
-      properties:
-        maxNights:
-          description: Maximum number of days between the start date and the end date.
-          type: integer
-          format: int32
-        minNights:
-          description: Minimum number of nights between the start date and the end date.
-          type: integer
-          format: int32
-    GoogleAdsGoogleadsV25Services__MutateConversionValueRulesResponse:
-      type: object
-      properties:
-        results:
-          description: All results for the mutate.
-          items:
-            $ref: '#/components/schemas/GoogleAdsGoogleadsV25Services__MutateConversionValueRuleResult'
-          type: array
-        partialFailureError:
-          description: Errors that pertain to operation failures in the partial failure mode. Returned only when partial_failure = true and all errors occur inside the operations. If any errors occur outside the operations (for example, auth errors), we return an RPC level error.
-          $ref: '#/components/schemas/GoogleRpc__Status'
-      description: Response message for ConversionValueRuleService.MutateConversionValueRules.
     GoogleAdsGoogleadsV25Resources__ConversionValueRule:
       description: A conversion value rule
       type: object
@@ -325,101 +298,128 @@ components:
         ownerCustomer:
           description: Output only. The resource name of the conversion value rule's owner customer. When the value rule is inherited from a manager customer, owner_customer will be the resource name of the manager whereas the customer in the resource_name will be of the requesting serving customer. ** Read-only **
           type: string
-    GoogleAdsGoogleadsV25Resources_ConversionValueRule_ValueRuleItineraryCondition:
+    GoogleAdsGoogleadsV25Resources_ConversionValueRule_ValueRuleAction:
       type: object
       properties:
-        travelLength:
-          description: Range for the itinerary length in number of nights.
-          $ref: '#/components/schemas/GoogleAdsGoogleadsV25Resources_ConversionValueRule_ValueRuleItineraryTravelLength'
-        advanceBookingWindow:
-          $ref: '#/components/schemas/GoogleAdsGoogleadsV25Resources_ConversionValueRule_ValueRuleItineraryAdvanceBookingWindow'
-          description: Range for the number of days between the date of the booking and the start of the itinerary.
-        travelStartDay:
-          description: The days of the week on which this itinerary's travel can start.
-          $ref: '#/components/schemas/GoogleAdsGoogleadsV25Resources_ConversionValueRule_ValueRuleItineraryTravelStartDay'
-      description: Condition on Itinerary dimension.
-    GoogleRpc__Status:
-      description: 'The `Status` type defines a logical error model that is suitable for different programming environments, including REST APIs and RPC APIs. It is used by [gRPC](https://github.com/grpc). Each `Status` message contains three pieces of data: error code, error message, and error details. You can find out more about this error model and how to work with it in the [API Design Guide](https://cloud.google.com/apis/design/errors).'
-      type: object
-      properties:
-        message:
-          description: A developer-facing error message, which should be in English. Any user-facing error message should be localized and sent in the google.rpc.Status.details field, or localized by the client.
+        value:
+          type: number
+          description: Specifies applied value.
+          format: double
+        operation:
           type: string
-        code:
-          type: integer
-          description: The status code, which should be an enum value of google.rpc.Code.
-          format: int32
-        details:
-          type: array
-          description: A list of messages that carry the error details. There is a common set of message types for APIs to use.
+          description: Specifies applied operation.
+          x-enumDescriptions:
+          - Not specified.
+          - Used for return value only. Represents value unknown in this version.
+          - Add provided value to conversion value.
+          - Multiply conversion value by provided value.
+          - Set conversion value to provided value.
+          enum:
+          - UNSPECIFIED
+          - UNKNOWN
+          - ADD
+          - MULTIPLY
+          - SET
+      description: Action applied when rule is applied.
+    GoogleAdsGoogleadsV25Resources_ConversionValueRule_ValueRuleDeviceCondition:
+      description: Condition on Device dimension.
+      type: object
+      properties:
+        deviceTypes:
+          description: Value for device type condition.
           items:
-            type: object
-            additionalProperties:
-              description: Properties of the object. Contains field @type with type URL.
-    GoogleAdsGoogleadsV25Resources_ConversionValueRule_ValueRuleItineraryAdvanceBookingWindow:
-      description: Range for the number of days between the date of the booking and the start of the itinerary.
+            type: string
+            x-enumDescriptions:
+            - Not specified.
+            - Used for return value only. Represents value unknown in this version.
+            - Mobile device.
+            - Desktop device.
+            - Tablet device.
+            enum:
+            - UNSPECIFIED
+            - UNKNOWN
+            - MOBILE
+            - DESKTOP
+            - TABLET
+          type: array
+    GoogleAdsGoogleadsV25Services__MutateConversionValueRulesResponse:
       type: object
       properties:
-        minDays:
-          description: Minimum number of days between the date of the booking the start date.
-          type: integer
-          format: int32
-        maxDays:
-          type: integer
-          description: Maximum number of days between the date of the booking the start date.
-          format: int32
-    GoogleAdsGoogleadsV25Services__ConversionValueRuleOperation:
-      description: A single operation (create, update, remove) on a conversion value rule.
+        results:
+          description: All results for the mutate.
+          items:
+            $ref: '#/components/schemas/GoogleAdsGoogleadsV25Services__MutateConversionValueRuleResult'
+          type: array
+        partialFailureError:
+          description: Errors that pertain to operation failures in the partial failure mode. Returned only when partial_failure = true and all errors occur inside the operations. If any errors occur outside the operations (for example, auth errors), we return an RPC level error.
+          $ref: '#/components/schemas/GoogleRpc__Status'
+      description: Response message for ConversionValueRuleService.MutateConversionValueRules.
+    GoogleAdsGoogleadsV25Services__MutateConversionValueRulesRequest:
       type: object
       properties:
-        update:
-          $ref: '#/components/schemas/GoogleAdsGoogleadsV25Resources__ConversionValueRule'
-          description: 'Update operation: The conversion value rule is expected to have a valid resource name.'
-        updateMask:
-          description: FieldMask that determines which resource fields are modified in an update.
+        partialFailure:
+          type: boolean
+          description: If true, successful operations will be carried out and invalid operations will return errors. If false, all operations will be carried out in one transaction if and only if they are all valid. Default is false.
+        operations:
+          type: array
+          description: Required. The list of operations to perform on individual conversion value rules.
+          items:
+            $ref: '#/components/schemas/GoogleAdsGoogleadsV25Services__ConversionValueRuleOperation'
+        validateOnly:
+          description: If true, the request is validated but not executed. Only errors are returned, not results.
+          type: boolean
+        responseContentType:
+          x-enumDescriptions:
+          - Not specified. Will return the resource name only in the response.
+          - The mutate response will be the resource name.
+          - The mutate response will contain the resource name and the resource with mutable fields if possible. Otherwise, only the resource name will be returned.
+          enum:
+          - UNSPECIFIED
+          - RESOURCE_NAME_ONLY
+          - MUTABLE_RESOURCE
+          description: The response content type setting. Determines whether the mutable resource or just the resource name should be returned post mutation.
           type: string
-          format: google-fieldmask
-        create:
-          description: 'Create operation: No resource name is expected for the new conversion value rule.'
-          $ref: '#/components/schemas/GoogleAdsGoogleadsV25Resources__ConversionValueRule'
-        remove:
-          description: 'Remove operation: A resource name for the removed conversion value rule is expected, in this format: `customers/{customer_id}/conversionValueRules/{conversion_value_rule_id}`'
-          type: string
-    GoogleAdsGoogleadsV25Resources_ConversionValueRule_ValueRuleItineraryTravelStartDay:
+      description: Request message for ConversionValueRuleService.MutateConversionValueRules.
+    GoogleAdsGoogleadsV25Resources_ConversionValueRule_ValueRuleGeoLocationCondition:
+      description: Condition on Geo dimension.
       type: object
       properties:
-        sunday:
-          description: The travel can start on Sunday.
-          type: boolean
-        wednesday:
-          description: The travel can start on Wednesday.
-          type: boolean
-        saturday:
-          type: boolean
-          description: The travel can start on Saturday.
-        friday:
-          description: The travel can start on Friday.
-          type: boolean
-        tuesday:
-          description: The travel can start on Tuesday.
-          type: boolean
-        thursday:
-          description: The travel can start on Thursday.
-          type: boolean
-        monday:
-          description: The travel can start on Monday.
-          type: boolean
-      description: The days of the week on which an itinerary's travel can start.
-    GoogleAdsGoogleadsV25Services__MutateConversionValueRuleResult:
-      description: The result for the conversion value rule mutate.
-      type: object
-      properties:
-        resourceName:
-          description: Returned for successful operations.
+        excludedGeoTargetConstants:
+          type: array
+          description: Geo locations that advertisers want to exclude.
+          items:
+            type: string
+        geoMatchType:
+          x-enumDescriptions:
+          - Not specified.
+          - Used for return value only. Represents value unknown in this version.
+          - Either Area of Interest or Location of Presence can be used to match.
+          - Only Location of Presence can be used to match.
+          enum:
+          - UNSPECIFIED
+          - UNKNOWN
+          - ANY
+          - LOCATION_OF_PRESENCE
+          description: Included Geo location match type.
           type: string
-        conversionValueRule:
-          $ref: '#/components/schemas/GoogleAdsGoogleadsV25Resources__ConversionValueRule'
-          description: The mutated conversion value rule with only mutable fields after mutate. The field will only be returned when response_content_type is set to "MUTABLE_RESOURCE".
+        geoTargetConstants:
+          type: array
+          description: Geo locations that advertisers want to include.
+          items:
+            type: string
+        excludedGeoMatchType:
+          x-enumDescriptions:
+          - Not specified.
+          - Used for return value only. Represents value unknown in this version.
+          - Either Area of Interest or Location of Presence can be used to match.
+          - Only Location of Presence can be used to match.
+          enum:
+          - UNSPECIFIED
+          - UNKNOWN
+          - ANY
+          - LOCATION_OF_PRESENCE
+          description: Excluded Geo location match type.
+          type: string
   securitySchemes:
     oauth2:
       type: oauth2

@@ -133,72 +133,6 @@ paths:
         - https://www.googleapis.com/auth/adwords
 components:
   schemas:
-    GoogleAdsGoogleadsV25Resources__CustomerAssetSet:
-      description: CustomerAssetSet is the linkage between a customer and an asset set. Adding a CustomerAssetSet links an asset set with a customer.
-      type: object
-      properties:
-        assetSet:
-          type: string
-          description: Immutable. The asset set which is linked to the customer.
-        resourceName:
-          type: string
-          description: 'Immutable. The resource name of the customer asset set. Asset set asset resource names have the form: `customers/{customer_id}/customerAssetSets/{asset_set_id}`'
-        customer:
-          type: string
-          description: Immutable. The customer to which this asset set is linked.
-        status:
-          description: Output only. The status of the customer asset set asset. Read-only.
-          type: string
-          enum:
-          - UNSPECIFIED
-          - UNKNOWN
-          - ENABLED
-          - REMOVED
-          x-enumDescriptions:
-          - The status has not been specified.
-          - The received value is not known in this version. This is a response-only value.
-          - The linkage between asset set and its container is enabled.
-          - The linkage between asset set and its container is removed.
-    GoogleAdsGoogleadsV25Services__MutateCustomerAssetSetsResponse:
-      description: Response message for a customer asset set mutate.
-      type: object
-      properties:
-        partialFailureError:
-          $ref: '#/components/schemas/GoogleRpc__Status'
-          description: Errors that pertain to operation failures in the partial failure mode. Returned only when partial_failure = true and all errors occur inside the operations. If any errors occur outside the operations (e.g. auth errors), we return an RPC level error.
-        results:
-          description: All results for the mutate.
-          items:
-            $ref: '#/components/schemas/GoogleAdsGoogleadsV25Services__MutateCustomerAssetSetResult'
-          type: array
-    GoogleAdsGoogleadsV25Services__MutateCustomerAssetSetResult:
-      type: object
-      properties:
-        customerAssetSet:
-          description: The mutated customer asset set with only mutable fields after mutate. The field will only be returned when response_content_type is set to "MUTABLE_RESOURCE".
-          $ref: '#/components/schemas/GoogleAdsGoogleadsV25Resources__CustomerAssetSet'
-        resourceName:
-          type: string
-          description: Returned for successful operations.
-      description: The result for the customer asset set mutate.
-    GoogleRpc__Status:
-      description: 'The `Status` type defines a logical error model that is suitable for different programming environments, including REST APIs and RPC APIs. It is used by [gRPC](https://github.com/grpc). Each `Status` message contains three pieces of data: error code, error message, and error details. You can find out more about this error model and how to work with it in the [API Design Guide](https://cloud.google.com/apis/design/errors).'
-      type: object
-      properties:
-        message:
-          description: A developer-facing error message, which should be in English. Any user-facing error message should be localized and sent in the google.rpc.Status.details field, or localized by the client.
-          type: string
-        code:
-          type: integer
-          description: The status code, which should be an enum value of google.rpc.Code.
-          format: int32
-        details:
-          type: array
-          description: A list of messages that carry the error details. There is a common set of message types for APIs to use.
-          items:
-            type: object
-            additionalProperties:
-              description: Properties of the object. Contains field @type with type URL.
     GoogleAdsGoogleadsV25Services__MutateCustomerAssetSetsRequest:
       description: Request message for CustomerAssetSetService.MutateCustomerAssetSets.
       type: object
@@ -235,6 +169,72 @@ components:
         remove:
           type: string
           description: 'Remove operation: A resource name for the removed customer asset set is expected, in this format: `customers/{customer_id}/customerAssetSets/{asset_set_id}`'
+    GoogleRpc__Status:
+      description: 'The `Status` type defines a logical error model that is suitable for different programming environments, including REST APIs and RPC APIs. It is used by [gRPC](https://github.com/grpc). Each `Status` message contains three pieces of data: error code, error message, and error details. You can find out more about this error model and how to work with it in the [API Design Guide](https://cloud.google.com/apis/design/errors).'
+      type: object
+      properties:
+        message:
+          description: A developer-facing error message, which should be in English. Any user-facing error message should be localized and sent in the google.rpc.Status.details field, or localized by the client.
+          type: string
+        code:
+          type: integer
+          description: The status code, which should be an enum value of google.rpc.Code.
+          format: int32
+        details:
+          type: array
+          description: A list of messages that carry the error details. There is a common set of message types for APIs to use.
+          items:
+            type: object
+            additionalProperties:
+              description: Properties of the object. Contains field @type with type URL.
+    GoogleAdsGoogleadsV25Services__MutateCustomerAssetSetsResponse:
+      description: Response message for a customer asset set mutate.
+      type: object
+      properties:
+        partialFailureError:
+          $ref: '#/components/schemas/GoogleRpc__Status'
+          description: Errors that pertain to operation failures in the partial failure mode. Returned only when partial_failure = true and all errors occur inside the operations. If any errors occur outside the operations (e.g. auth errors), we return an RPC level error.
+        results:
+          description: All results for the mutate.
+          items:
+            $ref: '#/components/schemas/GoogleAdsGoogleadsV25Services__MutateCustomerAssetSetResult'
+          type: array
+    GoogleAdsGoogleadsV25Resources__CustomerAssetSet:
+      description: CustomerAssetSet is the linkage between a customer and an asset set. Adding a CustomerAssetSet links an asset set with a customer.
+      type: object
+      properties:
+        assetSet:
+          type: string
+          description: Immutable. The asset set which is linked to the customer.
+        resourceName:
+          type: string
+          description: 'Immutable. The resource name of the customer asset set. Asset set asset resource names have the form: `customers/{customer_id}/customerAssetSets/{asset_set_id}`'
+        customer:
+          type: string
+          description: Immutable. The customer to which this asset set is linked.
+        status:
+          description: Output only. The status of the customer asset set asset. Read-only.
+          type: string
+          enum:
+          - UNSPECIFIED
+          - UNKNOWN
+          - ENABLED
+          - REMOVED
+          x-enumDescriptions:
+          - The status has not been specified.
+          - The received value is not known in this version. This is a response-only value.
+          - The linkage between asset set and its container is enabled.
+          - The linkage between asset set and its container is removed.
+    GoogleAdsGoogleadsV25Services__MutateCustomerAssetSetResult:
+      type: object
+      properties:
+        customerAssetSet:
+          description: The mutated customer asset set with only mutable fields after mutate. The field will only be returned when response_content_type is set to "MUTABLE_RESOURCE".
+          $ref: '#/components/schemas/GoogleAdsGoogleadsV25Resources__CustomerAssetSet'
+        resourceName:
+          type: string
+          description: Returned for successful operations.
+      description: The result for the customer asset set mutate.
   securitySchemes:
     oauth2:
       type: oauth2

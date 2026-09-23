@@ -106,7 +106,7 @@ paths:
       summary: Creates a billing setup, or cancels an existing billing setup
       tags:
       - customers.billingSetups
-      description: 'Creates a billing setup, or cancels an existing billing setup. List of thrown errors: [AuthenticationError]() [AuthorizationError]() [BillingSetupError]() [DateError]() [FieldError]() [HeaderError]() [InternalError]() [MutateError]() [QuotaError]() [RequestError]()'
+      description: 'Creates a billing setup, or cancels an existing billing setup. List of thrown errors: AuthenticationError AuthorizationError BillingSetupError DateError FieldError HeaderError InternalError MutateError QuotaError RequestError'
       parameters:
       - name: customerId
         in: path
@@ -133,6 +133,13 @@ paths:
         - https://www.googleapis.com/auth/adwords
 components:
   schemas:
+    GoogleAdsGoogleadsV25Services__MutateBillingSetupResponse:
+      description: Response message for a billing setup operation.
+      type: object
+      properties:
+        result:
+          $ref: '#/components/schemas/GoogleAdsGoogleadsV25Services__MutateBillingSetupResult'
+          description: A result that identifies the resource affected by the mutate request.
     GoogleAdsGoogleadsV25Resources__BillingSetup:
       description: A billing setup, which associates a payments account and an advertiser. A billing setup is specific to one advertiser.
       type: object
@@ -199,6 +206,23 @@ components:
         endDateTime:
           description: Output only. The end date time in yyyy-MM-dd or yyyy-MM-dd HH:mm:ss format.
           type: string
+    GoogleAdsGoogleadsV25Services__MutateBillingSetupRequest:
+      description: Request message for billing setup mutate operations.
+      type: object
+      properties:
+        operation:
+          $ref: '#/components/schemas/GoogleAdsGoogleadsV25Services__BillingSetupOperation'
+          description: Required. The operation to perform.
+    GoogleAdsGoogleadsV25Services__BillingSetupOperation:
+      type: object
+      properties:
+        create:
+          description: Creates a billing setup. No resource name is expected for the new billing setup.
+          $ref: '#/components/schemas/GoogleAdsGoogleadsV25Resources__BillingSetup'
+        remove:
+          description: Resource name of the billing setup to remove. A setup cannot be removed unless it is in a pending state or its scheduled start time is in the future. The resource name looks like `customers/{customer_id}/billingSetups/{billing_id}`.
+          type: string
+      description: A single operation on a billing setup, which describes the cancellation of an existing billing setup.
     GoogleAdsGoogleadsV25Services__MutateBillingSetupResult:
       type: object
       properties:
@@ -225,30 +249,6 @@ components:
         paymentsProfileName:
           description: Output only. The name of the payments profile associated with the billing setup.
           type: string
-    GoogleAdsGoogleadsV25Services__MutateBillingSetupResponse:
-      description: Response message for a billing setup operation.
-      type: object
-      properties:
-        result:
-          $ref: '#/components/schemas/GoogleAdsGoogleadsV25Services__MutateBillingSetupResult'
-          description: A result that identifies the resource affected by the mutate request.
-    GoogleAdsGoogleadsV25Services__BillingSetupOperation:
-      type: object
-      properties:
-        create:
-          description: Creates a billing setup. No resource name is expected for the new billing setup.
-          $ref: '#/components/schemas/GoogleAdsGoogleadsV25Resources__BillingSetup'
-        remove:
-          description: Resource name of the billing setup to remove. A setup cannot be removed unless it is in a pending state or its scheduled start time is in the future. The resource name looks like `customers/{customer_id}/billingSetups/{billing_id}`.
-          type: string
-      description: A single operation on a billing setup, which describes the cancellation of an existing billing setup.
-    GoogleAdsGoogleadsV25Services__MutateBillingSetupRequest:
-      description: Request message for billing setup mutate operations.
-      type: object
-      properties:
-        operation:
-          $ref: '#/components/schemas/GoogleAdsGoogleadsV25Services__BillingSetupOperation'
-          description: Required. The operation to perform.
   securitySchemes:
     oauth2:
       type: oauth2

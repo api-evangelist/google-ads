@@ -106,7 +106,7 @@ paths:
       summary: Returns KeywordThemeConstant suggestions by keyword themes
       tags:
       - keywordThemeConstants
-      description: 'Returns KeywordThemeConstant suggestions by keyword themes. List of thrown errors: [AuthenticationError]() [AuthorizationError]() [HeaderError]() [InternalError]() [QuotaError]() [RequestError]()'
+      description: 'Returns KeywordThemeConstant suggestions by keyword themes. List of thrown errors: AuthenticationError AuthorizationError HeaderError InternalError QuotaError RequestError'
       requestBody:
         required: true
         content:
@@ -134,19 +134,6 @@ components:
           items:
             $ref: '#/components/schemas/GoogleAdsGoogleadsV25Resources__KeywordThemeConstant'
       description: Response message for KeywordThemeConstantService.SuggestKeywordThemeConstants.
-    GoogleAdsGoogleadsV25Services__SuggestKeywordThemeConstantsRequest:
-      description: Request message for KeywordThemeConstantService.SuggestKeywordThemeConstants.
-      type: object
-      properties:
-        queryText:
-          type: string
-          description: The query text of a keyword theme that will be used to map to similar keyword themes. For example, "plumber" or "roofer".
-        countryCode:
-          description: Upper-case, two-letter country code as defined by ISO-3166. This for refining the scope of the query, default to 'US' if not set.
-          type: string
-        languageCode:
-          type: string
-          description: The two letter language code for get corresponding keyword theme for refining the scope of the query, default to 'en' if not set.
     GoogleAdsGoogleadsV25Resources__KeywordThemeConstant:
       description: A Smart Campaign keyword theme constant.
       type: object
@@ -163,6 +150,19 @@ components:
         languageCode:
           description: Output only. The ISO-639-1 language code with 2 letters of the constant, eg. "en". To display and query matching purpose, the keyword theme needs to be localized.
           type: string
+    GoogleAdsGoogleadsV25Services__SuggestKeywordThemeConstantsRequest:
+      description: Request message for KeywordThemeConstantService.SuggestKeywordThemeConstants.
+      type: object
+      properties:
+        queryText:
+          type: string
+          description: The query text of a keyword theme that will be used to map to similar keyword themes. For example, "plumber" or "roofer".
+        countryCode:
+          description: Upper-case, two-letter country code as defined by ISO-3166. This for refining the scope of the query, default to 'US' if not set.
+          type: string
+        languageCode:
+          type: string
+          description: The two letter language code for get corresponding keyword theme for refining the scope of the query, default to 'en' if not set.
   securitySchemes:
     oauth2:
       type: oauth2

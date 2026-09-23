@@ -106,7 +106,7 @@ paths:
       summary: Creates or removes campaign shared sets
       tags:
       - customers.campaignSharedSets
-      description: 'Creates or removes campaign shared sets. Operation statuses are returned. List of thrown errors: [AuthenticationError]() [AuthorizationError]() [CampaignSharedSetError]() [ContextError]() [DatabaseError]() [DateError]() [DistinctError]() [FieldError]() [HeaderError]() [IdError]() [InternalError]() [MutateError]() [NewResourceCreationError]() [NotEmptyError]() [NullError]() [OperatorError]() [QuotaError]() [RangeError]() [RequestError]() [SizeLimitError]() [StringFormatError]() [StringLengthError]()'
+      description: 'Creates or removes campaign shared sets. Operation statuses are returned. List of thrown errors: AuthenticationError AuthorizationError CampaignSharedSetError ContextError DatabaseError DateError DistinctError FieldError HeaderError IdError InternalError MutateError NewResourceCreationError NotEmptyError NullError OperatorError QuotaError RangeError RequestError SizeLimitError StringFormatError StringLengthError'
       parameters:
       - name: customerId
         in: path
@@ -133,32 +133,6 @@ paths:
         - https://www.googleapis.com/auth/adwords
 components:
   schemas:
-    GoogleAdsGoogleadsV25Resources__CampaignSharedSet:
-      description: CampaignSharedSets are used for managing the shared sets associated with a campaign.
-      type: object
-      properties:
-        resourceName:
-          description: 'Immutable. The resource name of the campaign shared set. Campaign shared set resource names have the form: `customers/{customer_id}/campaignSharedSets/{campaign_id}~{shared_set_id}`'
-          type: string
-        sharedSet:
-          type: string
-          description: Immutable. The shared set associated with the campaign. This may be a negative keyword shared set of another customer. This customer should be a manager of the other customer, otherwise the campaign shared set will exist but have no serving effect. Only negative keyword shared sets can be associated with Shopping campaigns. Only negative placement shared sets can be associated with Display mobile app campaigns.
-        campaign:
-          description: Immutable. The campaign to which the campaign shared set belongs.
-          type: string
-        status:
-          description: Output only. The status of this campaign shared set. Read only.
-          type: string
-          enum:
-          - UNSPECIFIED
-          - UNKNOWN
-          - ENABLED
-          - REMOVED
-          x-enumDescriptions:
-          - Not specified.
-          - Used for return value only. Represents value unknown in this version.
-          - The campaign shared set is enabled.
-          - The campaign shared set is removed and can no longer be used.
     GoogleAdsGoogleadsV25Services__MutateCampaignSharedSetResult:
       type: object
       properties:
@@ -169,32 +143,6 @@ components:
           description: The mutated campaign shared set with only mutable fields after mutate. The field will only be returned when response_content_type is set to "MUTABLE_RESOURCE".
           $ref: '#/components/schemas/GoogleAdsGoogleadsV25Resources__CampaignSharedSet'
       description: The result for the campaign shared set mutate.
-    GoogleAdsGoogleadsV25Services__MutateCampaignSharedSetsRequest:
-      description: Request message for CampaignSharedSetService.MutateCampaignSharedSets.
-      type: object
-      properties:
-        partialFailure:
-          type: boolean
-          description: If true, successful operations will be carried out and invalid operations will return errors. If false, all operations will be carried out in one transaction if and only if they are all valid. Default is false.
-        validateOnly:
-          type: boolean
-          description: If true, the request is validated but not executed. Only errors are returned, not results.
-        responseContentType:
-          description: The response content type setting. Determines whether the mutable resource or just the resource name should be returned post mutation.
-          type: string
-          x-enumDescriptions:
-          - Not specified. Will return the resource name only in the response.
-          - The mutate response will be the resource name.
-          - The mutate response will contain the resource name and the resource with mutable fields if possible. Otherwise, only the resource name will be returned.
-          enum:
-          - UNSPECIFIED
-          - RESOURCE_NAME_ONLY
-          - MUTABLE_RESOURCE
-        operations:
-          description: Required. The list of operations to perform on individual campaign shared sets.
-          items:
-            $ref: '#/components/schemas/GoogleAdsGoogleadsV25Services__CampaignSharedSetOperation'
-          type: array
     GoogleAdsGoogleadsV25Services__MutateCampaignSharedSetsResponse:
       description: Response message for a campaign shared set mutate.
       type: object
@@ -235,6 +183,58 @@ components:
             type: object
             additionalProperties:
               description: Properties of the object. Contains field @type with type URL.
+    GoogleAdsGoogleadsV25Services__MutateCampaignSharedSetsRequest:
+      description: Request message for CampaignSharedSetService.MutateCampaignSharedSets.
+      type: object
+      properties:
+        partialFailure:
+          type: boolean
+          description: If true, successful operations will be carried out and invalid operations will return errors. If false, all operations will be carried out in one transaction if and only if they are all valid. Default is false.
+        validateOnly:
+          type: boolean
+          description: If true, the request is validated but not executed. Only errors are returned, not results.
+        responseContentType:
+          description: The response content type setting. Determines whether the mutable resource or just the resource name should be returned post mutation.
+          type: string
+          x-enumDescriptions:
+          - Not specified. Will return the resource name only in the response.
+          - The mutate response will be the resource name.
+          - The mutate response will contain the resource name and the resource with mutable fields if possible. Otherwise, only the resource name will be returned.
+          enum:
+          - UNSPECIFIED
+          - RESOURCE_NAME_ONLY
+          - MUTABLE_RESOURCE
+        operations:
+          description: Required. The list of operations to perform on individual campaign shared sets.
+          items:
+            $ref: '#/components/schemas/GoogleAdsGoogleadsV25Services__CampaignSharedSetOperation'
+          type: array
+    GoogleAdsGoogleadsV25Resources__CampaignSharedSet:
+      description: CampaignSharedSets are used for managing the shared sets associated with a campaign.
+      type: object
+      properties:
+        resourceName:
+          description: 'Immutable. The resource name of the campaign shared set. Campaign shared set resource names have the form: `customers/{customer_id}/campaignSharedSets/{campaign_id}~{shared_set_id}`'
+          type: string
+        sharedSet:
+          type: string
+          description: Immutable. The shared set associated with the campaign. This may be a negative keyword shared set of another customer. This customer should be a manager of the other customer, otherwise the campaign shared set will exist but have no serving effect. Only negative keyword shared sets can be associated with Shopping campaigns. Only negative placement shared sets can be associated with Display mobile app campaigns.
+        campaign:
+          description: Immutable. The campaign to which the campaign shared set belongs.
+          type: string
+        status:
+          description: Output only. The status of this campaign shared set. Read only.
+          type: string
+          enum:
+          - UNSPECIFIED
+          - UNKNOWN
+          - ENABLED
+          - REMOVED
+          x-enumDescriptions:
+          - Not specified.
+          - Used for return value only. Represents value unknown in this version.
+          - The campaign shared set is enabled.
+          - The campaign shared set is removed and can no longer be used.
   securitySchemes:
     oauth2:
       type: oauth2

@@ -106,7 +106,7 @@ paths:
       summary: Creates or updates custom audiences
       tags:
       - customers.customAudiences
-      description: 'Creates or updates custom audiences. Operation statuses are returned. List of thrown errors: [AuthenticationError]() [AuthorizationError]() [CustomAudienceError]() [CustomInterestError]() [FieldError]() [FieldMaskError]() [HeaderError]() [InternalError]() [MutateError]() [OperationAccessDeniedError]() [PolicyViolationError]() [QuotaError]() [RequestError]()'
+      description: 'Creates or updates custom audiences. Operation statuses are returned. List of thrown errors: AuthenticationError AuthorizationError CustomAudienceError CustomInterestError FieldError FieldMaskError HeaderError InternalError MutateError OperationAccessDeniedError PolicyViolationError QuotaError RequestError'
       parameters:
       - name: customerId
         in: path
@@ -133,6 +133,85 @@ paths:
         - https://www.googleapis.com/auth/adwords
 components:
   schemas:
+    GoogleAdsGoogleadsV25Resources__CustomAudienceMember:
+      description: A member of custom audience. A member can be a KEYWORD, URL, PLACE_CATEGORY or APP. It can only be created or removed but not changed.
+      type: object
+      properties:
+        app:
+          type: string
+          description: A package name of Android apps which users installed such as com.google.example.
+        keyword:
+          description: A keyword or keyword phrase — at most 10 words and 80 characters. Languages with double-width characters such as Chinese, Japanese, or Korean, are allowed 40 characters, which describes the user's interests or actions.
+          type: string
+        memberType:
+          type: string
+          description: The type of custom audience member, KEYWORD, URL, PLACE_CATEGORY or APP.
+          x-enumDescriptions:
+          - Not specified.
+          - Used for return value only. Represents value unknown in this version.
+          - Users whose interests or actions are described by a keyword.
+          - Users who have interests related to the website's content.
+          - Users who visit place types described by a place category.
+          - Users who have installed a mobile app.
+          enum:
+          - UNSPECIFIED
+          - UNKNOWN
+          - KEYWORD
+          - URL
+          - PLACE_CATEGORY
+          - APP
+        placeCategory:
+          format: int64
+          description: A place type described by a place category users visit.
+          type: string
+        url:
+          type: string
+          description: An HTTP URL, protocol-included — at most 2048 characters, which includes contents users have interests in.
+    GoogleAdsGoogleadsV25Services__MutateCustomAudiencesRequest:
+      description: Request message for CustomAudienceService.MutateCustomAudiences.
+      type: object
+      properties:
+        operations:
+          type: array
+          description: Required. The list of operations to perform on individual custom audiences.
+          items:
+            $ref: '#/components/schemas/GoogleAdsGoogleadsV25Services__CustomAudienceOperation'
+        validateOnly:
+          type: boolean
+          description: If true, the request is validated but not executed. Only errors are returned, not results.
+    GoogleAdsGoogleadsV25Services__CustomAudienceOperation:
+      description: A single operation (create, update) on a custom audience.
+      type: object
+      properties:
+        remove:
+          description: 'Remove operation: A resource name for the removed custom audience is expected, in this format: `customers/{customer_id}/customAudiences/{custom_audience_id}`'
+          type: string
+        update:
+          description: 'Update operation: The custom audience is expected to have a valid resource name.'
+          $ref: '#/components/schemas/GoogleAdsGoogleadsV25Resources__CustomAudience'
+        updateMask:
+          type: string
+          description: FieldMask that determines which resource fields are modified in an update.
+          format: google-fieldmask
+        create:
+          $ref: '#/components/schemas/GoogleAdsGoogleadsV25Resources__CustomAudience'
+          description: 'Create operation: No resource name is expected for the new custom audience.'
+    GoogleAdsGoogleadsV25Services__MutateCustomAudiencesResponse:
+      description: Response message for custom audience mutate.
+      type: object
+      properties:
+        results:
+          description: All results for the mutate.
+          items:
+            $ref: '#/components/schemas/GoogleAdsGoogleadsV25Services__MutateCustomAudienceResult'
+          type: array
+    GoogleAdsGoogleadsV25Services__MutateCustomAudienceResult:
+      type: object
+      properties:
+        resourceName:
+          description: Returned for successful operations.
+          type: string
+      description: The result for the custom audience mutate.
     GoogleAdsGoogleadsV25Resources__CustomAudience:
       description: 'A custom audience. This is a list of users by interest. The unique key of a custom audience consists of the following fields: name. Violating the unique key constraint produces error: CustomAudienceError.NAME_ALREADY_USED'
       type: object
@@ -185,85 +264,6 @@ components:
         resourceName:
           type: string
           description: 'Immutable. The resource name of the custom audience. Custom audience resource names have the form: `customers/{customer_id}/customAudiences/{custom_audience_id}`'
-    GoogleAdsGoogleadsV25Services__MutateCustomAudienceResult:
-      type: object
-      properties:
-        resourceName:
-          description: Returned for successful operations.
-          type: string
-      description: The result for the custom audience mutate.
-    GoogleAdsGoogleadsV25Services__MutateCustomAudiencesResponse:
-      description: Response message for custom audience mutate.
-      type: object
-      properties:
-        results:
-          description: All results for the mutate.
-          items:
-            $ref: '#/components/schemas/GoogleAdsGoogleadsV25Services__MutateCustomAudienceResult'
-          type: array
-    GoogleAdsGoogleadsV25Resources__CustomAudienceMember:
-      description: A member of custom audience. A member can be a KEYWORD, URL, PLACE_CATEGORY or APP. It can only be created or removed but not changed.
-      type: object
-      properties:
-        app:
-          type: string
-          description: A package name of Android apps which users installed such as com.google.example.
-        keyword:
-          description: A keyword or keyword phrase — at most 10 words and 80 characters. Languages with double-width characters such as Chinese, Japanese, or Korean, are allowed 40 characters, which describes the user's interests or actions.
-          type: string
-        memberType:
-          type: string
-          description: The type of custom audience member, KEYWORD, URL, PLACE_CATEGORY or APP.
-          x-enumDescriptions:
-          - Not specified.
-          - Used for return value only. Represents value unknown in this version.
-          - Users whose interests or actions are described by a keyword.
-          - Users who have interests related to the website's content.
-          - Users who visit place types described by a place category.
-          - Users who have installed a mobile app.
-          enum:
-          - UNSPECIFIED
-          - UNKNOWN
-          - KEYWORD
-          - URL
-          - PLACE_CATEGORY
-          - APP
-        placeCategory:
-          format: int64
-          description: A place type described by a place category users visit.
-          type: string
-        url:
-          type: string
-          description: An HTTP URL, protocol-included — at most 2048 characters, which includes contents users have interests in.
-    GoogleAdsGoogleadsV25Services__CustomAudienceOperation:
-      description: A single operation (create, update) on a custom audience.
-      type: object
-      properties:
-        remove:
-          description: 'Remove operation: A resource name for the removed custom audience is expected, in this format: `customers/{customer_id}/customAudiences/{custom_audience_id}`'
-          type: string
-        update:
-          description: 'Update operation: The custom audience is expected to have a valid resource name.'
-          $ref: '#/components/schemas/GoogleAdsGoogleadsV25Resources__CustomAudience'
-        updateMask:
-          type: string
-          description: FieldMask that determines which resource fields are modified in an update.
-          format: google-fieldmask
-        create:
-          $ref: '#/components/schemas/GoogleAdsGoogleadsV25Resources__CustomAudience'
-          description: 'Create operation: No resource name is expected for the new custom audience.'
-    GoogleAdsGoogleadsV25Services__MutateCustomAudiencesRequest:
-      description: Request message for CustomAudienceService.MutateCustomAudiences.
-      type: object
-      properties:
-        operations:
-          type: array
-          description: Required. The list of operations to perform on individual custom audiences.
-          items:
-            $ref: '#/components/schemas/GoogleAdsGoogleadsV25Services__CustomAudienceOperation'
-        validateOnly:
-          type: boolean
-          description: If true, the request is validated but not executed. Only errors are returned, not results.
   securitySchemes:
     oauth2:
       type: oauth2

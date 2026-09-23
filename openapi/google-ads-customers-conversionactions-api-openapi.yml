@@ -106,7 +106,7 @@ paths:
       summary: Creates, updates or removes conversion actions
       tags:
       - customers.conversionActions
-      description: 'Creates, updates or removes conversion actions. Operation statuses are returned. List of thrown errors: [AuthenticationError]() [AuthorizationError]() [ConversionActionError]() [CurrencyCodeError]() [DatabaseError]() [FieldError]() [FieldMaskError]() [HeaderError]() [InternalError]() [MutateError]() [NewResourceCreationError]() [QuotaError]() [RangeError]() [RequestError]() [ResourceCountLimitExceededError]() [StringLengthError]()'
+      description: 'Creates, updates or removes conversion actions. Operation statuses are returned. List of thrown errors: AuthenticationError AuthorizationError ConversionActionError CurrencyCodeError DatabaseError FieldError FieldMaskError HeaderError InternalError MutateError NewResourceCreationError QuotaError RangeError RequestError ResourceCountLimitExceededError StringLengthError'
       parameters:
       - name: customerId
         in: path
@@ -133,44 +133,20 @@ paths:
         - https://www.googleapis.com/auth/adwords
 components:
   schemas:
-    GoogleAdsGoogleadsV25Services__MutateConversionActionsRequest:
+    GoogleAdsGoogleadsV25Resources_ConversionAction_ValueSettings:
+      description: Settings related to the value for conversion events associated with this conversion action.
       type: object
       properties:
-        validateOnly:
-          type: boolean
-          description: If true, the request is validated but not executed. Only errors are returned, not results.
-        responseContentType:
-          description: The response content type setting. Determines whether the mutable resource or just the resource name should be returned post mutation.
+        defaultValue:
+          format: double
+          type: number
+          description: The value to use when conversion events for this conversion action are sent with an invalid, disallowed or missing value, or when this conversion action is configured to always use the default value.
+        defaultCurrencyCode:
+          description: The currency code to use when conversion events for this conversion action are sent with an invalid or missing currency code, or when this conversion action is configured to always use the default value.
           type: string
-          x-enumDescriptions:
-          - Not specified. Will return the resource name only in the response.
-          - The mutate response will be the resource name.
-          - The mutate response will contain the resource name and the resource with mutable fields if possible. Otherwise, only the resource name will be returned.
-          enum:
-          - UNSPECIFIED
-          - RESOURCE_NAME_ONLY
-          - MUTABLE_RESOURCE
-        operations:
-          description: Required. The list of operations to perform on individual conversion actions.
-          items:
-            $ref: '#/components/schemas/GoogleAdsGoogleadsV25Services__ConversionActionOperation'
-          type: array
-        partialFailure:
+        alwaysUseDefaultValue:
           type: boolean
-          description: If true, successful operations will be carried out and invalid operations will return errors. If false, all operations will be carried out in one transaction if and only if they are all valid. Default is false.
-      description: Request message for ConversionActionService.MutateConversionActions.
-    GoogleAdsGoogleadsV25Services__MutateConversionActionsResponse:
-      type: object
-      properties:
-        partialFailureError:
-          $ref: '#/components/schemas/GoogleRpc__Status'
-          description: Errors that pertain to operation failures in the partial failure mode. Returned only when partial_failure = true and all errors occur inside the operations. If any errors occur outside the operations (for example, auth errors), we return an RPC level error.
-        results:
-          type: array
-          description: All results for the mutate.
-          items:
-            $ref: '#/components/schemas/GoogleAdsGoogleadsV25Services__MutateConversionActionResult'
-      description: Response message for ConversionActionService.MutateConversionActions.
+          description: Controls whether the default value and default currency code are used in place of the value and currency code specified in conversion events for this conversion action.
     GoogleAdsGoogleadsV25Common__TagSnippet:
       description: The site tag and event snippet pair for a TrackingCodeType.
       type: object
@@ -211,6 +187,116 @@ components:
         eventSnippet:
           type: string
           description: The event snippet that works with the site tag to track actions that should be counted as conversions.
+    GoogleAdsGoogleadsV25Services__ConversionActionOperation:
+      type: object
+      properties:
+        remove:
+          description: 'Remove operation: A resource name for the removed conversion action is expected, in this format: `customers/{customer_id}/conversionActions/{conversion_action_id}`'
+          type: string
+        updateMask:
+          format: google-fieldmask
+          type: string
+          description: FieldMask that determines which resource fields are modified in an update.
+        create:
+          $ref: '#/components/schemas/GoogleAdsGoogleadsV25Resources__ConversionAction'
+          description: 'Create operation: No resource name is expected for the new conversion action.'
+        update:
+          description: 'Update operation: The conversion action is expected to have a valid resource name.'
+          $ref: '#/components/schemas/GoogleAdsGoogleadsV25Resources__ConversionAction'
+      description: A single operation (create, update, remove) on a conversion action.
+    GoogleAdsGoogleadsV25Resources_ConversionAction_ThirdPartyAppAnalyticsSettings:
+      description: Settings related to a third party app analytics conversion action.
+      type: object
+      properties:
+        eventName:
+          type: string
+          description: Output only. The event name of a third-party app analytics conversion.
+        providerName:
+          type: string
+          description: Output only. Name of the third-party app analytics provider.
+    GoogleRpc__Status:
+      description: 'The `Status` type defines a logical error model that is suitable for different programming environments, including REST APIs and RPC APIs. It is used by [gRPC](https://github.com/grpc). Each `Status` message contains three pieces of data: error code, error message, and error details. You can find out more about this error model and how to work with it in the [API Design Guide](https://cloud.google.com/apis/design/errors).'
+      type: object
+      properties:
+        message:
+          description: A developer-facing error message, which should be in English. Any user-facing error message should be localized and sent in the google.rpc.Status.details field, or localized by the client.
+          type: string
+        code:
+          type: integer
+          description: The status code, which should be an enum value of google.rpc.Code.
+          format: int32
+        details:
+          type: array
+          description: A list of messages that carry the error details. There is a common set of message types for APIs to use.
+          items:
+            type: object
+            additionalProperties:
+              description: Properties of the object. Contains field @type with type URL.
+    GoogleAdsGoogleadsV25Services__MutateConversionActionsResponse:
+      type: object
+      properties:
+        partialFailureError:
+          $ref: '#/components/schemas/GoogleRpc__Status'
+          description: Errors that pertain to operation failures in the partial failure mode. Returned only when partial_failure = true and all errors occur inside the operations. If any errors occur outside the operations (for example, auth errors), we return an RPC level error.
+        results:
+          type: array
+          description: All results for the mutate.
+          items:
+            $ref: '#/components/schemas/GoogleAdsGoogleadsV25Services__MutateConversionActionResult'
+      description: Response message for ConversionActionService.MutateConversionActions.
+    GoogleAdsGoogleadsV25Resources_ConversionAction_FirebaseSettings:
+      type: object
+      properties:
+        propertyId:
+          type: string
+          description: Output only. The GA property ID of the conversion.
+          format: int64
+        eventName:
+          description: Output only. The event name of a Firebase conversion.
+          type: string
+        projectId:
+          description: Output only. The Firebase project ID of the conversion.
+          type: string
+        propertyName:
+          type: string
+          description: Output only. The GA property name of the conversion.
+      description: Settings related to a Firebase conversion action.
+    GoogleAdsGoogleadsV25Services__MutateConversionActionResult:
+      description: The result for the conversion action mutate.
+      type: object
+      properties:
+        resourceName:
+          description: Returned for successful operations.
+          type: string
+        conversionAction:
+          $ref: '#/components/schemas/GoogleAdsGoogleadsV25Resources__ConversionAction'
+          description: The mutated conversion action with only mutable fields after mutate. The field will only be returned when response_content_type is set to "MUTABLE_RESOURCE".
+    GoogleAdsGoogleadsV25Services__MutateConversionActionsRequest:
+      type: object
+      properties:
+        validateOnly:
+          type: boolean
+          description: If true, the request is validated but not executed. Only errors are returned, not results.
+        responseContentType:
+          description: The response content type setting. Determines whether the mutable resource or just the resource name should be returned post mutation.
+          type: string
+          x-enumDescriptions:
+          - Not specified. Will return the resource name only in the response.
+          - The mutate response will be the resource name.
+          - The mutate response will contain the resource name and the resource with mutable fields if possible. Otherwise, only the resource name will be returned.
+          enum:
+          - UNSPECIFIED
+          - RESOURCE_NAME_ONLY
+          - MUTABLE_RESOURCE
+        operations:
+          description: Required. The list of operations to perform on individual conversion actions.
+          items:
+            $ref: '#/components/schemas/GoogleAdsGoogleadsV25Services__ConversionActionOperation'
+          type: array
+        partialFailure:
+          type: boolean
+          description: If true, successful operations will be carried out and invalid operations will return errors. If false, all operations will be carried out in one transaction if and only if they are all valid. Default is false.
+      description: Request message for ConversionActionService.MutateConversionActions.
     GoogleAdsGoogleadsV25Resources_ConversionAction_AttributionModelSettings:
       type: object
       properties:
@@ -592,48 +678,6 @@ components:
         name:
           type: string
           description: The name of the conversion action. This field is required and should not be empty when creating new conversion actions.
-    GoogleAdsGoogleadsV25Resources_ConversionAction_ValueSettings:
-      description: Settings related to the value for conversion events associated with this conversion action.
-      type: object
-      properties:
-        defaultValue:
-          format: double
-          type: number
-          description: The value to use when conversion events for this conversion action are sent with an invalid, disallowed or missing value, or when this conversion action is configured to always use the default value.
-        defaultCurrencyCode:
-          description: The currency code to use when conversion events for this conversion action are sent with an invalid or missing currency code, or when this conversion action is configured to always use the default value.
-          type: string
-        alwaysUseDefaultValue:
-          type: boolean
-          description: Controls whether the default value and default currency code are used in place of the value and currency code specified in conversion events for this conversion action.
-    GoogleAdsGoogleadsV25Resources_ConversionAction_ThirdPartyAppAnalyticsSettings:
-      description: Settings related to a third party app analytics conversion action.
-      type: object
-      properties:
-        eventName:
-          type: string
-          description: Output only. The event name of a third-party app analytics conversion.
-        providerName:
-          type: string
-          description: Output only. Name of the third-party app analytics provider.
-    GoogleRpc__Status:
-      description: 'The `Status` type defines a logical error model that is suitable for different programming environments, including REST APIs and RPC APIs. It is used by [gRPC](https://github.com/grpc). Each `Status` message contains three pieces of data: error code, error message, and error details. You can find out more about this error model and how to work with it in the [API Design Guide](https://cloud.google.com/apis/design/errors).'
-      type: object
-      properties:
-        message:
-          description: A developer-facing error message, which should be in English. Any user-facing error message should be localized and sent in the google.rpc.Status.details field, or localized by the client.
-          type: string
-        code:
-          type: integer
-          description: The status code, which should be an enum value of google.rpc.Code.
-          format: int32
-        details:
-          type: array
-          description: A list of messages that carry the error details. There is a common set of message types for APIs to use.
-          items:
-            type: object
-            additionalProperties:
-              description: Properties of the object. Contains field @type with type URL.
     GoogleAdsGoogleadsV25Resources_ConversionAction_GoogleAnalytics4Settings:
       description: Settings related to a Google Analytics 4 conversion action.
       type: object
@@ -648,50 +692,6 @@ components:
         eventName:
           description: Output only. The name of the GA 4 event.
           type: string
-    GoogleAdsGoogleadsV25Services__ConversionActionOperation:
-      type: object
-      properties:
-        remove:
-          description: 'Remove operation: A resource name for the removed conversion action is expected, in this format: `customers/{customer_id}/conversionActions/{conversion_action_id}`'
-          type: string
-        updateMask:
-          format: google-fieldmask
-          type: string
-          description: FieldMask that determines which resource fields are modified in an update.
-        create:
-          $ref: '#/components/schemas/GoogleAdsGoogleadsV25Resources__ConversionAction'
-          description: 'Create operation: No resource name is expected for the new conversion action.'
-        update:
-          description: 'Update operation: The conversion action is expected to have a valid resource name.'
-          $ref: '#/components/schemas/GoogleAdsGoogleadsV25Resources__ConversionAction'
-      description: A single operation (create, update, remove) on a conversion action.
-    GoogleAdsGoogleadsV25Services__MutateConversionActionResult:
-      description: The result for the conversion action mutate.
-      type: object
-      properties:
-        resourceName:
-          description: Returned for successful operations.
-          type: string
-        conversionAction:
-          $ref: '#/components/schemas/GoogleAdsGoogleadsV25Resources__ConversionAction'
-          description: The mutated conversion action with only mutable fields after mutate. The field will only be returned when response_content_type is set to "MUTABLE_RESOURCE".
-    GoogleAdsGoogleadsV25Resources_ConversionAction_FirebaseSettings:
-      type: object
-      properties:
-        propertyId:
-          type: string
-          description: Output only. The GA property ID of the conversion.
-          format: int64
-        eventName:
-          description: Output only. The event name of a Firebase conversion.
-          type: string
-        projectId:
-          description: Output only. The Firebase project ID of the conversion.
-          type: string
-        propertyName:
-          type: string
-          description: Output only. The GA property name of the conversion.
-      description: Settings related to a Firebase conversion action.
   securitySchemes:
     oauth2:
       type: oauth2

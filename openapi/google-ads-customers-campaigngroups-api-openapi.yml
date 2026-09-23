@@ -133,18 +133,24 @@ paths:
         - https://www.googleapis.com/auth/adwords
 components:
   schemas:
-    GoogleAdsGoogleadsV25Services__MutateCampaignGroupsResponse:
+    GoogleRpc__Status:
+      description: 'The `Status` type defines a logical error model that is suitable for different programming environments, including REST APIs and RPC APIs. It is used by [gRPC](https://github.com/grpc). Each `Status` message contains three pieces of data: error code, error message, and error details. You can find out more about this error model and how to work with it in the [API Design Guide](https://cloud.google.com/apis/design/errors).'
       type: object
       properties:
-        partialFailureError:
-          $ref: '#/components/schemas/GoogleRpc__Status'
-          description: Errors that pertain to operation failures in the partial failure mode. Returned only when partial_failure = true and all errors occur inside the operations. If any errors occur outside the operations (for example, auth errors), we return an RPC level error.
-        results:
+        message:
+          description: A developer-facing error message, which should be in English. Any user-facing error message should be localized and sent in the google.rpc.Status.details field, or localized by the client.
+          type: string
+        code:
+          type: integer
+          description: The status code, which should be an enum value of google.rpc.Code.
+          format: int32
+        details:
           type: array
-          description: All results for the mutate.
+          description: A list of messages that carry the error details. There is a common set of message types for APIs to use.
           items:
-            $ref: '#/components/schemas/GoogleAdsGoogleadsV25Services__MutateCampaignGroupResult'
-      description: Response message for campaign group mutate.
+            type: object
+            additionalProperties:
+              description: Properties of the object. Contains field @type with type URL.
     GoogleAdsGoogleadsV25Services__MutateCampaignGroupsRequest:
       type: object
       properties:
@@ -171,6 +177,18 @@ components:
           - RESOURCE_NAME_ONLY
           - MUTABLE_RESOURCE
       description: Request message for CampaignGroupService.MutateCampaignGroups.
+    GoogleAdsGoogleadsV25Services__MutateCampaignGroupsResponse:
+      type: object
+      properties:
+        partialFailureError:
+          $ref: '#/components/schemas/GoogleRpc__Status'
+          description: Errors that pertain to operation failures in the partial failure mode. Returned only when partial_failure = true and all errors occur inside the operations. If any errors occur outside the operations (for example, auth errors), we return an RPC level error.
+        results:
+          type: array
+          description: All results for the mutate.
+          items:
+            $ref: '#/components/schemas/GoogleAdsGoogleadsV25Services__MutateCampaignGroupResult'
+      description: Response message for campaign group mutate.
     GoogleAdsGoogleadsV25Resources__CampaignGroup:
       description: A campaign group.
       type: object
@@ -198,34 +216,6 @@ components:
           - UNKNOWN
           - ENABLED
           - REMOVED
-    GoogleAdsGoogleadsV25Services__MutateCampaignGroupResult:
-      description: The result for the campaign group mutate.
-      type: object
-      properties:
-        campaignGroup:
-          $ref: '#/components/schemas/GoogleAdsGoogleadsV25Resources__CampaignGroup'
-          description: The mutated campaign group with only mutable fields after mutate. The field will only be returned when response_content_type is set to "MUTABLE_RESOURCE".
-        resourceName:
-          type: string
-          description: Required. Returned for successful operations.
-    GoogleRpc__Status:
-      description: 'The `Status` type defines a logical error model that is suitable for different programming environments, including REST APIs and RPC APIs. It is used by [gRPC](https://github.com/grpc). Each `Status` message contains three pieces of data: error code, error message, and error details. You can find out more about this error model and how to work with it in the [API Design Guide](https://cloud.google.com/apis/design/errors).'
-      type: object
-      properties:
-        message:
-          description: A developer-facing error message, which should be in English. Any user-facing error message should be localized and sent in the google.rpc.Status.details field, or localized by the client.
-          type: string
-        code:
-          type: integer
-          description: The status code, which should be an enum value of google.rpc.Code.
-          format: int32
-        details:
-          type: array
-          description: A list of messages that carry the error details. There is a common set of message types for APIs to use.
-          items:
-            type: object
-            additionalProperties:
-              description: Properties of the object. Contains field @type with type URL.
     GoogleAdsGoogleadsV25Services__CampaignGroupOperation:
       type: object
       properties:
@@ -243,6 +233,16 @@ components:
           description: 'Remove operation: A resource name for the removed campaign group is expected, in this format: `customers/{customer_id}/campaignGroups/{campaign_group_id}`'
           type: string
       description: A single operation (create, update, remove) on a campaign group.
+    GoogleAdsGoogleadsV25Services__MutateCampaignGroupResult:
+      description: The result for the campaign group mutate.
+      type: object
+      properties:
+        campaignGroup:
+          $ref: '#/components/schemas/GoogleAdsGoogleadsV25Resources__CampaignGroup'
+          description: The mutated campaign group with only mutable fields after mutate. The field will only be returned when response_content_type is set to "MUTABLE_RESOURCE".
+        resourceName:
+          type: string
+          description: Required. Returned for successful operations.
   securitySchemes:
     oauth2:
       type: oauth2

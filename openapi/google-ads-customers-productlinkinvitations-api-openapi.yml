@@ -103,7 +103,7 @@ paths:
       description: Data format for response.
     post:
       operationId: googleads_customers_productLinkInvitations_remove
-      summary: Remove a product link invitation.
+      summary: Remove a product link invitation
       tags:
       - customers.productLinkInvitations
       description: Remove a product link invitation.
@@ -217,7 +217,7 @@ paths:
       description: Data format for response.
     post:
       operationId: googleads_customers_productLinkInvitations_update
-      summary: Update a product link invitation.
+      summary: Update a product link invitation
       tags:
       - customers.productLinkInvitations
       description: Update a product link invitation.
@@ -331,7 +331,7 @@ paths:
       description: Data format for response.
     post:
       operationId: googleads_customers_productLinkInvitations_create
-      summary: Creates a product link invitation.
+      summary: Creates a product link invitation
       tags:
       - customers.productLinkInvitations
       description: Creates a product link invitation.
@@ -361,14 +361,35 @@ paths:
         - https://www.googleapis.com/auth/adwords
 components:
   schemas:
-    GoogleAdsGoogleadsV25Resources__HotelCenterLinkInvitationIdentifier:
-      description: The identifier for Hotel account.
+    GoogleAdsGoogleadsV25Resources__AdvertisingPartnerLinkInvitationProperties:
       type: object
       properties:
-        hotelCenterId:
-          format: int64
-          description: Output only. The hotel center id of the hotel account. This field is read only
+        allowedDomain:
+          description: Immutable. The allowed domain for the Advertising Partner link invitation. The advertising partner will only be able to advertise on this domain. The field is immutable after the creation of the link invitation.
           type: string
+      description: Properties specific to an Advertising Partner link invitation.
+    GoogleAdsGoogleadsV25Services__CreateProductLinkInvitationResponse:
+      description: Response message for product link invitation create.
+      type: object
+      properties:
+        resourceName:
+          type: string
+          description: Resource name of the product link invitation.
+    GoogleAdsGoogleadsV25Services__CreateProductLinkInvitationRequest:
+      description: Request message for ProductLinkInvitationService.CreateProductLinkInvitation.
+      type: object
+      properties:
+        productLinkInvitation:
+          description: Required. The product link invitation to be created.
+          $ref: '#/components/schemas/GoogleAdsGoogleadsV25Resources__ProductLinkInvitation'
+    GoogleAdsGoogleadsV25Resources__MerchantCenterLinkInvitationIdentifier:
+      type: object
+      properties:
+        merchantCenterId:
+          type: string
+          description: Output only. The Merchant Center id of the Merchant account. This field is read only
+          format: int64
+      description: The identifier for Merchant Center Account.
     GoogleAdsGoogleadsV25Services__UpdateProductLinkInvitationResponse:
       type: object
       properties:
@@ -383,28 +404,42 @@ components:
         customer:
           description: Immutable. The resource name of the advertising partner Google Ads account. This field is read only.
           type: string
-    GoogleAdsGoogleadsV25Resources__MerchantCenterLinkInvitationIdentifier:
+    GoogleAdsGoogleadsV25Services__UpdateProductLinkInvitationRequest:
       type: object
       properties:
-        merchantCenterId:
+        productLinkInvitationStatus:
           type: string
-          description: Output only. The Merchant Center id of the Merchant account. This field is read only
-          format: int64
-      description: The identifier for Merchant Center Account.
-    GoogleAdsGoogleadsV25Services__RemoveProductLinkInvitationResponse:
-      type: object
-      properties:
+          description: Required. The product link invitation to be created.
+          x-enumDescriptions:
+          - Not specified.
+          - Used for return value only. Represents value unknown in this version.
+          - The invitation is accepted.
+          - An invitation has been sent to the other account. A user on the other account may now accept the invitation by setting the status to ACCEPTED.
+          - This invitation has been sent by a user on the other account. It may be accepted by a user on this account by setting the status to ACCEPTED.
+          - The invitation is revoked by the user who sent the invitation.
+          - The invitation has been rejected by the invitee.
+          - The invitation has timed out before being accepted by the invitee.
+          enum:
+          - UNSPECIFIED
+          - UNKNOWN
+          - ACCEPTED
+          - REQUESTED
+          - PENDING_APPROVAL
+          - REVOKED
+          - REJECTED
+          - EXPIRED
         resourceName:
+          description: Required. Resource name of the product link invitation.
           type: string
-          description: Result for the remove request.
-      description: Response message for product link invitation removal.
-    GoogleAdsGoogleadsV25Resources__AdvertisingPartnerLinkInvitationProperties:
+      description: Request message for ProductLinkInvitationService.UpdateProductLinkInvitation.
+    GoogleAdsGoogleadsV25Resources__HotelCenterLinkInvitationIdentifier:
+      description: The identifier for Hotel account.
       type: object
       properties:
-        allowedDomain:
-          description: Immutable. The allowed domain for the Advertising Partner link invitation. The advertising partner will only be able to advertise on this domain. The field is immutable after the creation of the link invitation.
+        hotelCenterId:
+          format: int64
+          description: Output only. The hotel center id of the hotel account. This field is read only
           type: string
-      description: Properties specific to an Advertising Partner link invitation.
     GoogleAdsGoogleadsV25Resources__ProductLinkInvitation:
       description: Represents an invitation for data sharing connection between a Google Ads account and another account.
       type: object
@@ -475,48 +510,13 @@ components:
           type: string
           description: 'Required. The resource name of the product link invitation being removed is expected, in this format: `customers/{customer_id}/productLinkInvitations/{product_link_invitation_id} `'
       description: Request message for ProductLinkInvitationService.RemoveProductLinkInvitation.
-    GoogleAdsGoogleadsV25Services__CreateProductLinkInvitationRequest:
-      description: Request message for ProductLinkInvitationService.CreateProductLinkInvitation.
-      type: object
-      properties:
-        productLinkInvitation:
-          description: Required. The product link invitation to be created.
-          $ref: '#/components/schemas/GoogleAdsGoogleadsV25Resources__ProductLinkInvitation'
-    GoogleAdsGoogleadsV25Services__UpdateProductLinkInvitationRequest:
-      type: object
-      properties:
-        productLinkInvitationStatus:
-          type: string
-          description: Required. The product link invitation to be created.
-          x-enumDescriptions:
-          - Not specified.
-          - Used for return value only. Represents value unknown in this version.
-          - The invitation is accepted.
-          - An invitation has been sent to the other account. A user on the other account may now accept the invitation by setting the status to ACCEPTED.
-          - This invitation has been sent by a user on the other account. It may be accepted by a user on this account by setting the status to ACCEPTED.
-          - The invitation is revoked by the user who sent the invitation.
-          - The invitation has been rejected by the invitee.
-          - The invitation has timed out before being accepted by the invitee.
-          enum:
-          - UNSPECIFIED
-          - UNKNOWN
-          - ACCEPTED
-          - REQUESTED
-          - PENDING_APPROVAL
-          - REVOKED
-          - REJECTED
-          - EXPIRED
-        resourceName:
-          description: Required. Resource name of the product link invitation.
-          type: string
-      description: Request message for ProductLinkInvitationService.UpdateProductLinkInvitation.
-    GoogleAdsGoogleadsV25Services__CreateProductLinkInvitationResponse:
-      description: Response message for product link invitation create.
+    GoogleAdsGoogleadsV25Services__RemoveProductLinkInvitationResponse:
       type: object
       properties:
         resourceName:
           type: string
-          description: Resource name of the product link invitation.
+          description: Result for the remove request.
+      description: Response message for product link invitation removal.
   securitySchemes:
     oauth2:
       type: oauth2

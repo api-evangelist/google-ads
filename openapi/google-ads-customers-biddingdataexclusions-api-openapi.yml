@@ -133,32 +133,23 @@ paths:
         - https://www.googleapis.com/auth/adwords
 components:
   schemas:
-    GoogleAdsGoogleadsV25Services__MutateBiddingDataExclusionsRequest:
+    GoogleAdsGoogleadsV25Services__BiddingDataExclusionOperation:
       type: object
       properties:
-        operations:
-          type: array
-          description: Required. The list of operations to perform on individual data exclusions.
-          items:
-            $ref: '#/components/schemas/GoogleAdsGoogleadsV25Services__BiddingDataExclusionOperation'
-        validateOnly:
-          description: If true, the request is validated but not executed. Only errors are returned, not results.
-          type: boolean
-        responseContentType:
-          description: The response content type setting. Determines whether the mutable resource or just the resource name should be returned post mutation.
+        updateMask:
+          format: google-fieldmask
+          description: FieldMask that determines which resource fields are modified in an update.
           type: string
-          x-enumDescriptions:
-          - Not specified. Will return the resource name only in the response.
-          - The mutate response will be the resource name.
-          - The mutate response will contain the resource name and the resource with mutable fields if possible. Otherwise, only the resource name will be returned.
-          enum:
-          - UNSPECIFIED
-          - RESOURCE_NAME_ONLY
-          - MUTABLE_RESOURCE
-        partialFailure:
-          type: boolean
-          description: If true, successful operations will be carried out and invalid operations will return errors. If false, all operations will be carried out in one transaction if and only if they are all valid. Default is false.
-      description: Request message for BiddingDataExclusionService.MutateBiddingDataExclusions.
+        create:
+          description: 'Create operation: No resource name is expected for the new data exclusion.'
+          $ref: '#/components/schemas/GoogleAdsGoogleadsV25Resources__BiddingDataExclusion'
+        update:
+          description: 'Update operation: The data exclusion is expected to have a valid resource name.'
+          $ref: '#/components/schemas/GoogleAdsGoogleadsV25Resources__BiddingDataExclusion'
+        remove:
+          description: 'Remove operation: A resource name for the removed data exclusion is expected, in this format: `customers/{customer_id}/biddingDataExclusions/{data_exclusion_id}`'
+          type: string
+      description: A single operation (create, remove, update) on a data exclusion.
     GoogleAdsGoogleadsV25Resources__BiddingDataExclusion:
       description: 'Represents a bidding data exclusion. Bidding data exclusions can be set in client accounts only, and cannot be used in manager accounts. See "About data exclusions" at https://support.google.com/google-ads/answer/10370710. Note: A customer account can have a maximum of 500 active bidding data exclusions.'
       type: object
@@ -271,18 +262,6 @@ components:
         name:
           type: string
           description: The name of the data exclusion. The name can be at most 255 characters.
-    GoogleAdsGoogleadsV25Services__MutateBiddingDataExclusionsResponse:
-      description: Response message for data exclusions mutate.
-      type: object
-      properties:
-        partialFailureError:
-          $ref: '#/components/schemas/GoogleRpc__Status'
-          description: Errors that pertain to operation failures in the partial failure mode. Returned only when partial_failure = true and all errors occur inside the operations. If any errors occur outside the operations (for example, auth errors), we return an RPC level error.
-        results:
-          type: array
-          description: All results for the mutate.
-          items:
-            $ref: '#/components/schemas/GoogleAdsGoogleadsV25Services__MutateBiddingDataExclusionsResult'
     GoogleRpc__Status:
       description: 'The `Status` type defines a logical error model that is suitable for different programming environments, including REST APIs and RPC APIs. It is used by [gRPC](https://github.com/grpc). Each `Status` message contains three pieces of data: error code, error message, and error details. You can find out more about this error model and how to work with it in the [API Design Guide](https://cloud.google.com/apis/design/errors).'
       type: object
@@ -301,23 +280,44 @@ components:
             type: object
             additionalProperties:
               description: Properties of the object. Contains field @type with type URL.
-    GoogleAdsGoogleadsV25Services__BiddingDataExclusionOperation:
+    GoogleAdsGoogleadsV25Services__MutateBiddingDataExclusionsRequest:
       type: object
       properties:
-        updateMask:
-          format: google-fieldmask
-          description: FieldMask that determines which resource fields are modified in an update.
+        operations:
+          type: array
+          description: Required. The list of operations to perform on individual data exclusions.
+          items:
+            $ref: '#/components/schemas/GoogleAdsGoogleadsV25Services__BiddingDataExclusionOperation'
+        validateOnly:
+          description: If true, the request is validated but not executed. Only errors are returned, not results.
+          type: boolean
+        responseContentType:
+          description: The response content type setting. Determines whether the mutable resource or just the resource name should be returned post mutation.
           type: string
-        create:
-          description: 'Create operation: No resource name is expected for the new data exclusion.'
-          $ref: '#/components/schemas/GoogleAdsGoogleadsV25Resources__BiddingDataExclusion'
-        update:
-          description: 'Update operation: The data exclusion is expected to have a valid resource name.'
-          $ref: '#/components/schemas/GoogleAdsGoogleadsV25Resources__BiddingDataExclusion'
-        remove:
-          description: 'Remove operation: A resource name for the removed data exclusion is expected, in this format: `customers/{customer_id}/biddingDataExclusions/{data_exclusion_id}`'
-          type: string
-      description: A single operation (create, remove, update) on a data exclusion.
+          x-enumDescriptions:
+          - Not specified. Will return the resource name only in the response.
+          - The mutate response will be the resource name.
+          - The mutate response will contain the resource name and the resource with mutable fields if possible. Otherwise, only the resource name will be returned.
+          enum:
+          - UNSPECIFIED
+          - RESOURCE_NAME_ONLY
+          - MUTABLE_RESOURCE
+        partialFailure:
+          type: boolean
+          description: If true, successful operations will be carried out and invalid operations will return errors. If false, all operations will be carried out in one transaction if and only if they are all valid. Default is false.
+      description: Request message for BiddingDataExclusionService.MutateBiddingDataExclusions.
+    GoogleAdsGoogleadsV25Services__MutateBiddingDataExclusionsResponse:
+      description: Response message for data exclusions mutate.
+      type: object
+      properties:
+        partialFailureError:
+          $ref: '#/components/schemas/GoogleRpc__Status'
+          description: Errors that pertain to operation failures in the partial failure mode. Returned only when partial_failure = true and all errors occur inside the operations. If any errors occur outside the operations (for example, auth errors), we return an RPC level error.
+        results:
+          type: array
+          description: All results for the mutate.
+          items:
+            $ref: '#/components/schemas/GoogleAdsGoogleadsV25Services__MutateBiddingDataExclusionsResult'
     GoogleAdsGoogleadsV25Services__MutateBiddingDataExclusionsResult:
       type: object
       properties:

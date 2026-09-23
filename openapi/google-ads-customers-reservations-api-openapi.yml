@@ -259,13 +259,20 @@ components:
           description: If provided, the signature of the previous quote. Clients should always provide the quote signature from previous quotes if they haven't changed the campaigns to prevent price fluctuations within a user session.
           type: string
       description: Request message for the QuoteCampaigns action. Request including this operation can have a latency of up to 30 seconds. This feature is not publicly available.
-    GoogleAdsGoogleadsV25Services__QuoteCampaignsRequest:
+    GoogleAdsGoogleadsV25Services__BookCampaignsRequest:
+      description: Request message for ReservationService.BookCampaigns.
       type: object
       properties:
         operation:
-          description: The operation to quote the campaigns.
-          $ref: '#/components/schemas/GoogleAdsGoogleadsV25Actions__QuoteCampaignsOperation'
-      description: Request message for ReservationService.QuoteCampaigns.
+          description: The operation to book the campaigns.
+          $ref: '#/components/schemas/GoogleAdsGoogleadsV25Actions__BookCampaignsOperation'
+    GoogleAdsGoogleadsV25Actions_QuoteCampaignsOperation_Campaign:
+      type: object
+      properties:
+        campaign:
+          description: 'Campaign for which the quote is requested. Format: customers/{customer_id}/campaigns/{campaign_id}'
+          type: string
+      description: A campaign for which the quote is requested.
     GoogleAdsGoogleadsV25Services__BookCampaignsResponse:
       description: Response message for ReservationService.BookCampaigns.
       type: object
@@ -285,20 +292,38 @@ components:
           description: If provided, the signature of the previous quote. Clients should always provide the quote signature from previous quotes if they haven't changed the campaigns to prevent price fluctuations within a user session.
           type: string
       description: Request message for the BookCampaigns action. Request including this operation can have a latency of up to 30 seconds. This feature is not publicly available.
-    GoogleAdsGoogleadsV25Services__BookCampaignsRequest:
-      description: Request message for ReservationService.BookCampaigns.
+    GoogleAdsGoogleadsV25Actions__QuoteCampaignsResult:
+      description: The response of the QuoteCampaigns action, when the action is successful. Note that if the response contains errors, the action response will not be returned, but a quote may still be returned in the ErrorDetails.reservation_error_details field.
       type: object
       properties:
-        operation:
-          description: The operation to book the campaigns.
-          $ref: '#/components/schemas/GoogleAdsGoogleadsV25Actions__BookCampaignsOperation'
-    GoogleAdsGoogleadsV25Actions_QuoteCampaignsOperation_Campaign:
+        quotes:
+          description: The quotes for the requested campaigns.
+          items:
+            $ref: '#/components/schemas/GoogleAdsGoogleadsV25Common__CampaignReservationQuote'
+          type: array
+        quoteSignature:
+          type: string
+          description: The signature of the quote. This signature should be used when booking the quote.
+    GoogleAdsGoogleadsV25Actions_BookCampaignsOperation_Campaign:
       type: object
       properties:
         campaign:
-          description: 'Campaign for which the quote is requested. Format: customers/{customer_id}/campaigns/{campaign_id}'
           type: string
-      description: A campaign for which the quote is requested.
+          description: 'Campaign resource to book. Format: customers/{customer_id}/campaigns/{campaign_id}'
+        requestType:
+          x-enumDescriptions:
+          - Not specified.
+          - Used for return value only. Represents value unknown in this version.
+          - Book the campaign. The campaign must have ENABLED status. If the campaign has a hold, it will remove the hold and confirm the contract.
+          - Hold the inventory for the campaign. The campaign must have PAUSED status to request a hold.
+          enum:
+          - UNSPECIFIED
+          - UNKNOWN
+          - BOOK
+          - HOLD
+          type: string
+          description: Determines if the current request should book the inventory or hold it.
+      description: A single campaign to book.
     GoogleAdsGoogleadsV25Services__QuoteCampaignsResponse:
       description: Response message for ReservationService.QuoteCampaigns.
       type: object
@@ -325,42 +350,17 @@ components:
           description: 'The campaign resource name, as it was specified in the request. It could contain a temp ID. Format: customers/{customer_id}/campaigns/{campaign_id}'
           type: string
       description: The campaign reservation quote.
-    GoogleAdsGoogleadsV25Actions_BookCampaignsOperation_Campaign:
-      type: object
-      properties:
-        campaign:
-          type: string
-          description: 'Campaign resource to book. Format: customers/{customer_id}/campaigns/{campaign_id}'
-        requestType:
-          x-enumDescriptions:
-          - Not specified.
-          - Used for return value only. Represents value unknown in this version.
-          - Book the campaign. The campaign must have ENABLED status. If the campaign has a hold, it will remove the hold and confirm the contract.
-          - Hold the inventory for the campaign. The campaign must have PAUSED status to request a hold.
-          enum:
-          - UNSPECIFIED
-          - UNKNOWN
-          - BOOK
-          - HOLD
-          type: string
-          description: Determines if the current request should book the inventory or hold it.
-      description: A single campaign to book.
-    GoogleAdsGoogleadsV25Actions__QuoteCampaignsResult:
-      description: The response of the QuoteCampaigns action, when the action is successful. Note that if the response contains errors, the action response will not be returned, but a quote may still be returned in the ErrorDetails.reservation_error_details field.
-      type: object
-      properties:
-        quotes:
-          description: The quotes for the requested campaigns.
-          items:
-            $ref: '#/components/schemas/GoogleAdsGoogleadsV25Common__CampaignReservationQuote'
-          type: array
-        quoteSignature:
-          type: string
-          description: The signature of the quote. This signature should be used when booking the quote.
     GoogleAdsGoogleadsV25Actions__BookCampaignsResult:
       type: object
       properties: {}
       description: Response message for the BookCampaigns action. Note that if the response contains errors, the action response will not be returned, but a quote may still be returned in the ErrorDetails.reservation_error_details field.
+    GoogleAdsGoogleadsV25Services__QuoteCampaignsRequest:
+      type: object
+      properties:
+        operation:
+          description: The operation to quote the campaigns.
+          $ref: '#/components/schemas/GoogleAdsGoogleadsV25Actions__QuoteCampaignsOperation'
+      description: Request message for ReservationService.QuoteCampaigns.
   securitySchemes:
     oauth2:
       type: oauth2

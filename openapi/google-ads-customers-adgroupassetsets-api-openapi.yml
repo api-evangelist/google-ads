@@ -133,32 +133,32 @@ paths:
         - https://www.googleapis.com/auth/adwords
 components:
   schemas:
-    GoogleAdsGoogleadsV25Resources__AdGroupAssetSet:
+    GoogleAdsGoogleadsV25Services__MutateAdGroupAssetSetsRequest:
+      description: Request message for AdGroupAssetSetService.MutateAdGroupAssetSets.
       type: object
       properties:
-        assetSet:
-          description: Immutable. The asset set which is linked to the ad group.
-          type: string
-        resourceName:
-          description: 'Immutable. The resource name of the ad group asset set. Ad group asset set resource names have the form: `customers/{customer_id}/adGroupAssetSets/{ad_group_id}~{asset_set_id}`'
-          type: string
-        adGroup:
-          description: Immutable. The ad group to which this asset set is linked.
-          type: string
-        status:
+        validateOnly:
+          description: If true, the request is validated but not executed. Only errors are returned, not results.
+          type: boolean
+        responseContentType:
           x-enumDescriptions:
-          - The status has not been specified.
-          - The received value is not known in this version. This is a response-only value.
-          - The linkage between asset set and its container is enabled.
-          - The linkage between asset set and its container is removed.
-          description: Output only. The status of the ad group asset set. Read-only.
-          type: string
+          - Not specified. Will return the resource name only in the response.
+          - The mutate response will be the resource name.
+          - The mutate response will contain the resource name and the resource with mutable fields if possible. Otherwise, only the resource name will be returned.
           enum:
           - UNSPECIFIED
-          - UNKNOWN
-          - ENABLED
-          - REMOVED
-      description: AdGroupAssetSet is the linkage between an ad group and an asset set. Creating an AdGroupAssetSet links an asset set with an ad group.
+          - RESOURCE_NAME_ONLY
+          - MUTABLE_RESOURCE
+          type: string
+          description: The response content type setting. Determines whether the mutable resource or just the resource name should be returned post mutation.
+        operations:
+          description: Required. The list of operations to perform on individual ad group asset sets.
+          items:
+            $ref: '#/components/schemas/GoogleAdsGoogleadsV25Services__AdGroupAssetSetOperation'
+          type: array
+        partialFailure:
+          type: boolean
+          description: If true, successful operations will be carried out and invalid operations will return errors. If false, all operations will be carried out in one transaction if and only if they are all valid. Default is false.
     GoogleRpc__Status:
       description: 'The `Status` type defines a logical error model that is suitable for different programming environments, including REST APIs and RPC APIs. It is used by [gRPC](https://github.com/grpc). Each `Status` message contains three pieces of data: error code, error message, and error details. You can find out more about this error model and how to work with it in the [API Design Guide](https://cloud.google.com/apis/design/errors).'
       type: object
@@ -189,16 +189,6 @@ components:
           description: All results for the mutate.
           items:
             $ref: '#/components/schemas/GoogleAdsGoogleadsV25Services__MutateAdGroupAssetSetResult'
-    GoogleAdsGoogleadsV25Services__MutateAdGroupAssetSetResult:
-      description: The result for the ad group asset set mutate.
-      type: object
-      properties:
-        resourceName:
-          type: string
-          description: Returned for successful operations.
-        adGroupAssetSet:
-          $ref: '#/components/schemas/GoogleAdsGoogleadsV25Resources__AdGroupAssetSet'
-          description: The mutated ad group asset set with only mutable fields after mutate. The field will only be returned when response_content_type is set to "MUTABLE_RESOURCE".
     GoogleAdsGoogleadsV25Services__AdGroupAssetSetOperation:
       description: A single operation (create, remove) on an ad group asset set.
       type: object
@@ -209,32 +199,42 @@ components:
         remove:
           type: string
           description: 'Remove operation: A resource name for the removed ad group asset set is expected, in this format: `customers/{customer_id}/adGroupAssetSets/{ad_group_id}~{asset_set_id}`'
-    GoogleAdsGoogleadsV25Services__MutateAdGroupAssetSetsRequest:
-      description: Request message for AdGroupAssetSetService.MutateAdGroupAssetSets.
+    GoogleAdsGoogleadsV25Services__MutateAdGroupAssetSetResult:
+      description: The result for the ad group asset set mutate.
       type: object
       properties:
-        validateOnly:
-          description: If true, the request is validated but not executed. Only errors are returned, not results.
-          type: boolean
-        responseContentType:
+        resourceName:
+          type: string
+          description: Returned for successful operations.
+        adGroupAssetSet:
+          $ref: '#/components/schemas/GoogleAdsGoogleadsV25Resources__AdGroupAssetSet'
+          description: The mutated ad group asset set with only mutable fields after mutate. The field will only be returned when response_content_type is set to "MUTABLE_RESOURCE".
+    GoogleAdsGoogleadsV25Resources__AdGroupAssetSet:
+      type: object
+      properties:
+        assetSet:
+          description: Immutable. The asset set which is linked to the ad group.
+          type: string
+        resourceName:
+          description: 'Immutable. The resource name of the ad group asset set. Ad group asset set resource names have the form: `customers/{customer_id}/adGroupAssetSets/{ad_group_id}~{asset_set_id}`'
+          type: string
+        adGroup:
+          description: Immutable. The ad group to which this asset set is linked.
+          type: string
+        status:
           x-enumDescriptions:
-          - Not specified. Will return the resource name only in the response.
-          - The mutate response will be the resource name.
-          - The mutate response will contain the resource name and the resource with mutable fields if possible. Otherwise, only the resource name will be returned.
+          - The status has not been specified.
+          - The received value is not known in this version. This is a response-only value.
+          - The linkage between asset set and its container is enabled.
+          - The linkage between asset set and its container is removed.
+          description: Output only. The status of the ad group asset set. Read-only.
+          type: string
           enum:
           - UNSPECIFIED
-          - RESOURCE_NAME_ONLY
-          - MUTABLE_RESOURCE
-          type: string
-          description: The response content type setting. Determines whether the mutable resource or just the resource name should be returned post mutation.
-        operations:
-          description: Required. The list of operations to perform on individual ad group asset sets.
-          items:
-            $ref: '#/components/schemas/GoogleAdsGoogleadsV25Services__AdGroupAssetSetOperation'
-          type: array
-        partialFailure:
-          type: boolean
-          description: If true, successful operations will be carried out and invalid operations will return errors. If false, all operations will be carried out in one transaction if and only if they are all valid. Default is false.
+          - UNKNOWN
+          - ENABLED
+          - REMOVED
+      description: AdGroupAssetSet is the linkage between an ad group and an asset set. Creating an AdGroupAssetSet links an asset set with an ad group.
   securitySchemes:
     oauth2:
       type: oauth2

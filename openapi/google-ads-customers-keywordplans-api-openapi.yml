@@ -106,7 +106,7 @@ paths:
       summary: Creates, updates, or removes keyword plans
       tags:
       - customers.keywordPlans
-      description: 'Creates, updates, or removes keyword plans. Operation statuses are returned. List of thrown errors: [AuthenticationError]() [AuthorizationError]() [DatabaseError]() [FieldError]() [HeaderError]() [InternalError]() [KeywordPlanError]() [MutateError]() [NewResourceCreationError]() [QuotaError]() [RequestError]() [ResourceCountLimitExceededError]() [StringLengthError]()'
+      description: 'Creates, updates, or removes keyword plans. Operation statuses are returned. List of thrown errors: AuthenticationError AuthorizationError DatabaseError FieldError HeaderError InternalError KeywordPlanError MutateError NewResourceCreationError QuotaError RequestError ResourceCountLimitExceededError StringLengthError'
       parameters:
       - name: customerId
         in: path
@@ -133,57 +133,6 @@ paths:
         - https://www.googleapis.com/auth/adwords
 components:
   schemas:
-    GoogleAdsGoogleadsV25Resources__KeywordPlan:
-      description: 'A Keyword Planner plan. Max number of saved keyword plans: 10000. It''s possible to remove plans if limit is reached.'
-      type: object
-      properties:
-        resourceName:
-          type: string
-          description: 'Immutable. The resource name of the Keyword Planner plan. KeywordPlan resource names have the form: `customers/{customer_id}/keywordPlans/{kp_plan_id}`'
-        forecastPeriod:
-          description: The date period used for forecasting the plan.
-          $ref: '#/components/schemas/GoogleAdsGoogleadsV25Resources__KeywordPlanForecastPeriod'
-        id:
-          format: int64
-          description: Output only. The ID of the keyword plan.
-          type: string
-        name:
-          description: The name of the keyword plan. This field is required and should not be empty when creating new keyword plans.
-          type: string
-    GoogleAdsGoogleadsV25Services__MutateKeywordPlansRequest:
-      description: Request message for KeywordPlanService.MutateKeywordPlans.
-      type: object
-      properties:
-        partialFailure:
-          description: If true, successful operations will be carried out and invalid operations will return errors. If false, all operations will be carried out in one transaction if and only if they are all valid. Default is false.
-          type: boolean
-        operations:
-          type: array
-          description: Required. The list of operations to perform on individual keyword plans.
-          items:
-            $ref: '#/components/schemas/GoogleAdsGoogleadsV25Services__KeywordPlanOperation'
-        validateOnly:
-          type: boolean
-          description: If true, the request is validated but not executed. Only errors are returned, not results.
-    GoogleAdsGoogleadsV25Services__MutateKeywordPlansResult:
-      type: object
-      properties:
-        resourceName:
-          description: Returned for successful operations.
-          type: string
-      description: The result for the keyword plan mutate.
-    GoogleAdsGoogleadsV25Services__MutateKeywordPlansResponse:
-      description: Response message for a keyword plan mutate.
-      type: object
-      properties:
-        results:
-          description: All results for the mutate.
-          items:
-            $ref: '#/components/schemas/GoogleAdsGoogleadsV25Services__MutateKeywordPlansResult'
-          type: array
-        partialFailureError:
-          description: Errors that pertain to operation failures in the partial failure mode. Returned only when partial_failure = true and all errors occur inside the operations. If any errors occur outside the operations (for example, auth errors), we return an RPC level error.
-          $ref: '#/components/schemas/GoogleRpc__Status'
     GoogleRpc__Status:
       description: 'The `Status` type defines a logical error model that is suitable for different programming environments, including REST APIs and RPC APIs. It is used by [gRPC](https://github.com/grpc). Each `Status` message contains three pieces of data: error code, error message, and error details. You can find out more about this error model and how to work with it in the [API Design Guide](https://cloud.google.com/apis/design/errors).'
       type: object
@@ -202,6 +151,69 @@ components:
             type: object
             additionalProperties:
               description: Properties of the object. Contains field @type with type URL.
+    GoogleAdsGoogleadsV25Resources__KeywordPlan:
+      description: 'A Keyword Planner plan. Max number of saved keyword plans: 10000. It''s possible to remove plans if limit is reached.'
+      type: object
+      properties:
+        resourceName:
+          type: string
+          description: 'Immutable. The resource name of the Keyword Planner plan. KeywordPlan resource names have the form: `customers/{customer_id}/keywordPlans/{kp_plan_id}`'
+        forecastPeriod:
+          description: The date period used for forecasting the plan.
+          $ref: '#/components/schemas/GoogleAdsGoogleadsV25Resources__KeywordPlanForecastPeriod'
+        id:
+          format: int64
+          description: Output only. The ID of the keyword plan.
+          type: string
+        name:
+          description: The name of the keyword plan. This field is required and should not be empty when creating new keyword plans.
+          type: string
+    GoogleAdsGoogleadsV25Common__DateRange:
+      type: object
+      properties:
+        startDate:
+          type: string
+          description: The start date, in yyyy-mm-dd format. This date is inclusive.
+        endDate:
+          description: The end date, in yyyy-mm-dd format. This date is inclusive.
+          type: string
+      description: A date range.
+    GoogleAdsGoogleadsV25Services__MutateKeywordPlansResponse:
+      description: Response message for a keyword plan mutate.
+      type: object
+      properties:
+        results:
+          description: All results for the mutate.
+          items:
+            $ref: '#/components/schemas/GoogleAdsGoogleadsV25Services__MutateKeywordPlansResult'
+          type: array
+        partialFailureError:
+          description: Errors that pertain to operation failures in the partial failure mode. Returned only when partial_failure = true and all errors occur inside the operations. If any errors occur outside the operations (for example, auth errors), we return an RPC level error.
+          $ref: '#/components/schemas/GoogleRpc__Status'
+    GoogleAdsGoogleadsV25Services__MutateKeywordPlansResult:
+      type: object
+      properties:
+        resourceName:
+          description: Returned for successful operations.
+          type: string
+      description: The result for the keyword plan mutate.
+    GoogleAdsGoogleadsV25Services__KeywordPlanOperation:
+      type: object
+      properties:
+        remove:
+          type: string
+          description: 'Remove operation: A resource name for the removed keyword plan is expected in this format: `customers/{customer_id}/keywordPlans/{keyword_plan_id}`'
+        update:
+          $ref: '#/components/schemas/GoogleAdsGoogleadsV25Resources__KeywordPlan'
+          description: 'Update operation: The keyword plan is expected to have a valid resource name.'
+        updateMask:
+          type: string
+          description: The FieldMask that determines which resource fields are modified in an update.
+          format: google-fieldmask
+        create:
+          description: 'Create operation: No resource name is expected for the new keyword plan.'
+          $ref: '#/components/schemas/GoogleAdsGoogleadsV25Resources__KeywordPlan'
+      description: A single operation (create, update, remove) on a keyword plan.
     GoogleAdsGoogleadsV25Resources__KeywordPlanForecastPeriod:
       description: The forecasting period associated with the keyword plan.
       type: object
@@ -224,33 +236,21 @@ components:
         dateRange:
           description: The custom date range used for forecasting. It cannot be greater than a year. The start and end dates must be in the future. Otherwise, an error will be returned when the forecasting action is performed. The start and end dates are inclusive.
           $ref: '#/components/schemas/GoogleAdsGoogleadsV25Common__DateRange'
-    GoogleAdsGoogleadsV25Services__KeywordPlanOperation:
+    GoogleAdsGoogleadsV25Services__MutateKeywordPlansRequest:
+      description: Request message for KeywordPlanService.MutateKeywordPlans.
       type: object
       properties:
-        remove:
-          type: string
-          description: 'Remove operation: A resource name for the removed keyword plan is expected in this format: `customers/{customer_id}/keywordPlans/{keyword_plan_id}`'
-        update:
-          $ref: '#/components/schemas/GoogleAdsGoogleadsV25Resources__KeywordPlan'
-          description: 'Update operation: The keyword plan is expected to have a valid resource name.'
-        updateMask:
-          type: string
-          description: The FieldMask that determines which resource fields are modified in an update.
-          format: google-fieldmask
-        create:
-          description: 'Create operation: No resource name is expected for the new keyword plan.'
-          $ref: '#/components/schemas/GoogleAdsGoogleadsV25Resources__KeywordPlan'
-      description: A single operation (create, update, remove) on a keyword plan.
-    GoogleAdsGoogleadsV25Common__DateRange:
-      type: object
-      properties:
-        startDate:
-          type: string
-          description: The start date, in yyyy-mm-dd format. This date is inclusive.
-        endDate:
-          description: The end date, in yyyy-mm-dd format. This date is inclusive.
-          type: string
-      description: A date range.
+        partialFailure:
+          description: If true, successful operations will be carried out and invalid operations will return errors. If false, all operations will be carried out in one transaction if and only if they are all valid. Default is false.
+          type: boolean
+        operations:
+          type: array
+          description: Required. The list of operations to perform on individual keyword plans.
+          items:
+            $ref: '#/components/schemas/GoogleAdsGoogleadsV25Services__KeywordPlanOperation'
+        validateOnly:
+          type: boolean
+          description: If true, the request is validated but not executed. Only errors are returned, not results.
   securitySchemes:
     oauth2:
       type: oauth2

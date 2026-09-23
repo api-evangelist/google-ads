@@ -103,7 +103,7 @@ paths:
       description: Data format for response.
     post:
       operationId: googleads_customers_localServices_appendLeadConversation
-      summary: RPC to append Local Services Lead Conversation resources to Local Services Lead resources.
+      summary: RPC to append Local Services Lead Conversation resources to Local Services Lead…
       tags:
       - customers.localServices
       description: RPC to append Local Services Lead Conversation resources to Local Services Lead resources.
@@ -143,6 +143,34 @@ components:
           description: Required. Text message that user wanted to append to lead.
           type: string
       description: Details of the conversation that needs to be appended.
+    GoogleAdsGoogleadsV25Services__AppendLeadConversationRequest:
+      type: object
+      properties:
+        conversations:
+          description: Required. Conversations that are being appended.
+          items:
+            $ref: '#/components/schemas/GoogleAdsGoogleadsV25Services__Conversation'
+          type: array
+      description: Request message for LocalServicesLeadService.AppendLeadConversation.
+    GoogleAdsGoogleadsV25Services__AppendLeadConversationResponse:
+      description: Response message for LocalServicesLeadService.AppendLeadConversation.
+      type: object
+      properties:
+        responses:
+          type: array
+          description: Required. List of append conversation operation results.
+          items:
+            $ref: '#/components/schemas/GoogleAdsGoogleadsV25Services__ConversationOrError'
+    GoogleAdsGoogleadsV25Services__ConversationOrError:
+      description: Result of the append conversation operation.
+      type: object
+      properties:
+        localServicesLeadConversation:
+          description: The resource name of the appended local services lead conversation.
+          type: string
+        partialFailureError:
+          $ref: '#/components/schemas/GoogleRpc__Status'
+          description: Failure status when the request could not be processed.
     GoogleRpc__Status:
       description: 'The `Status` type defines a logical error model that is suitable for different programming environments, including REST APIs and RPC APIs. It is used by [gRPC](https://github.com/grpc). Each `Status` message contains three pieces of data: error code, error message, and error details. You can find out more about this error model and how to work with it in the [API Design Guide](https://cloud.google.com/apis/design/errors).'
       type: object
@@ -161,34 +189,6 @@ components:
             type: object
             additionalProperties:
               description: Properties of the object. Contains field @type with type URL.
-    GoogleAdsGoogleadsV25Services__AppendLeadConversationRequest:
-      type: object
-      properties:
-        conversations:
-          description: Required. Conversations that are being appended.
-          items:
-            $ref: '#/components/schemas/GoogleAdsGoogleadsV25Services__Conversation'
-          type: array
-      description: Request message for LocalServicesLeadService.AppendLeadConversation.
-    GoogleAdsGoogleadsV25Services__ConversationOrError:
-      description: Result of the append conversation operation.
-      type: object
-      properties:
-        localServicesLeadConversation:
-          description: The resource name of the appended local services lead conversation.
-          type: string
-        partialFailureError:
-          $ref: '#/components/schemas/GoogleRpc__Status'
-          description: Failure status when the request could not be processed.
-    GoogleAdsGoogleadsV25Services__AppendLeadConversationResponse:
-      description: Response message for LocalServicesLeadService.AppendLeadConversation.
-      type: object
-      properties:
-        responses:
-          type: array
-          description: Required. List of append conversation operation results.
-          items:
-            $ref: '#/components/schemas/GoogleAdsGoogleadsV25Services__ConversationOrError'
   securitySchemes:
     oauth2:
       type: oauth2

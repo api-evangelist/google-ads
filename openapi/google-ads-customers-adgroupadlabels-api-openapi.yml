@@ -106,7 +106,7 @@ paths:
       summary: Creates and removes ad group ad labels
       tags:
       - customers.adGroupAdLabels
-      description: 'Creates and removes ad group ad labels. Operation statuses are returned. List of thrown errors: [AuthenticationError]() [AuthorizationError]() [DatabaseError]() [HeaderError]() [InternalError]() [LabelError]() [MutateError]() [NewResourceCreationError]() [QuotaError]() [RequestError]()'
+      description: 'Creates and removes ad group ad labels. Operation statuses are returned. List of thrown errors: AuthenticationError AuthorizationError DatabaseError HeaderError InternalError LabelError MutateError NewResourceCreationError QuotaError RequestError'
       parameters:
       - name: customerId
         in: path
@@ -133,41 +133,6 @@ paths:
         - https://www.googleapis.com/auth/adwords
 components:
   schemas:
-    GoogleAdsGoogleadsV25Resources__AdGroupAdLabel:
-      description: A relationship between an ad group ad and a label.
-      type: object
-      properties:
-        adGroupAd:
-          description: Immutable. The ad group ad to which the label is attached.
-          type: string
-        label:
-          description: Immutable. The label assigned to the ad group ad.
-          type: string
-        resourceName:
-          type: string
-          description: 'Immutable. The resource name of the ad group ad label. Ad group ad label resource names have the form: `customers/{customer_id}/adGroupAdLabels/{ad_group_id}~{ad_id}~{label_id}`'
-    GoogleAdsGoogleadsV25Services__MutateAdGroupAdLabelsResponse:
-      type: object
-      properties:
-        partialFailureError:
-          $ref: '#/components/schemas/GoogleRpc__Status'
-          description: Errors that pertain to operation failures in the partial failure mode. Returned only when partial_failure = true and all errors occur inside the operations. If any errors occur outside the operations (for example, auth errors), we return an RPC level error.
-        results:
-          type: array
-          description: All results for the mutate.
-          items:
-            $ref: '#/components/schemas/GoogleAdsGoogleadsV25Services__MutateAdGroupAdLabelResult'
-      description: Response message for an ad group ad labels mutate.
-    GoogleAdsGoogleadsV25Services__AdGroupAdLabelOperation:
-      type: object
-      properties:
-        create:
-          description: 'Create operation: No resource name is expected for the new ad group ad label.'
-          $ref: '#/components/schemas/GoogleAdsGoogleadsV25Resources__AdGroupAdLabel'
-        remove:
-          description: 'Remove operation: A resource name for the ad group ad label being removed, in this format: `customers/{customer_id}/adGroupAdLabels/{ad_group_id}~{ad_id}~{label_id}`'
-          type: string
-      description: A single operation (create, remove) on an ad group ad label.
     GoogleRpc__Status:
       description: 'The `Status` type defines a logical error model that is suitable for different programming environments, including REST APIs and RPC APIs. It is used by [gRPC](https://github.com/grpc). Each `Status` message contains three pieces of data: error code, error message, and error details. You can find out more about this error model and how to work with it in the [API Design Guide](https://cloud.google.com/apis/design/errors).'
       type: object
@@ -201,6 +166,29 @@ components:
           description: If true, successful operations will be carried out and invalid operations will return errors. If false, all operations will be carried out in one transaction if and only if they are all valid. Default is false.
           type: boolean
       description: Request message for AdGroupAdLabelService.MutateAdGroupAdLabels.
+    GoogleAdsGoogleadsV25Services__AdGroupAdLabelOperation:
+      type: object
+      properties:
+        create:
+          description: 'Create operation: No resource name is expected for the new ad group ad label.'
+          $ref: '#/components/schemas/GoogleAdsGoogleadsV25Resources__AdGroupAdLabel'
+        remove:
+          description: 'Remove operation: A resource name for the ad group ad label being removed, in this format: `customers/{customer_id}/adGroupAdLabels/{ad_group_id}~{ad_id}~{label_id}`'
+          type: string
+      description: A single operation (create, remove) on an ad group ad label.
+    GoogleAdsGoogleadsV25Resources__AdGroupAdLabel:
+      description: A relationship between an ad group ad and a label.
+      type: object
+      properties:
+        adGroupAd:
+          description: Immutable. The ad group ad to which the label is attached.
+          type: string
+        label:
+          description: Immutable. The label assigned to the ad group ad.
+          type: string
+        resourceName:
+          type: string
+          description: 'Immutable. The resource name of the ad group ad label. Ad group ad label resource names have the form: `customers/{customer_id}/adGroupAdLabels/{ad_group_id}~{ad_id}~{label_id}`'
     GoogleAdsGoogleadsV25Services__MutateAdGroupAdLabelResult:
       description: The result for an ad group ad label mutate.
       type: object
@@ -208,6 +196,18 @@ components:
         resourceName:
           description: Returned for successful operations.
           type: string
+    GoogleAdsGoogleadsV25Services__MutateAdGroupAdLabelsResponse:
+      type: object
+      properties:
+        partialFailureError:
+          $ref: '#/components/schemas/GoogleRpc__Status'
+          description: Errors that pertain to operation failures in the partial failure mode. Returned only when partial_failure = true and all errors occur inside the operations. If any errors occur outside the operations (for example, auth errors), we return an RPC level error.
+        results:
+          type: array
+          description: All results for the mutate.
+          items:
+            $ref: '#/components/schemas/GoogleAdsGoogleadsV25Services__MutateAdGroupAdLabelResult'
+      description: Response message for an ad group ad labels mutate.
   securitySchemes:
     oauth2:
       type: oauth2

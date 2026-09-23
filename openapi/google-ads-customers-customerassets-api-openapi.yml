@@ -106,7 +106,7 @@ paths:
       summary: Creates, updates, or removes customer assets
       tags:
       - customers.customerAssets
-      description: 'Creates, updates, or removes customer assets. Operation statuses are returned. List of thrown errors: [AssetLinkError]() [AuthenticationError]() [AuthorizationError]() [FieldError]() [HeaderError]() [InternalError]() [MutateError]() [QuotaError]() [RequestError]()'
+      description: 'Creates, updates, or removes customer assets. Operation statuses are returned. List of thrown errors: AssetLinkError AuthenticationError AuthorizationError FieldError HeaderError InternalError MutateError QuotaError RequestError'
       parameters:
       - name: customerId
         in: path
@@ -133,35 +133,51 @@ paths:
         - https://www.googleapis.com/auth/adwords
 components:
   schemas:
-    GoogleAdsGoogleadsV25Common__AssetDisapproved:
+    GoogleAdsGoogleadsV25Services__MutateCustomerAssetResult:
       type: object
       properties:
-        offlineEvaluationErrorReasons:
+        resourceName:
+          type: string
+          description: Returned for successful operations.
+        customerAsset:
+          $ref: '#/components/schemas/GoogleAdsGoogleadsV25Resources__CustomerAsset'
+          description: The mutated customer asset with only mutable fields after mutate. The field will only be returned when response_content_type is set to "MUTABLE_RESOURCE".
+      description: The result for the customer asset mutate.
+    GoogleAdsGoogleadsV25Services__CustomerAssetOperation:
+      description: A single operation (create, update, remove) on a customer asset.
+      type: object
+      properties:
+        updateMask:
+          type: string
+          description: FieldMask that determines which resource fields are modified in an update.
+          format: google-fieldmask
+        create:
+          $ref: '#/components/schemas/GoogleAdsGoogleadsV25Resources__CustomerAsset'
+          description: 'Create operation: No resource name is expected for the new customer asset.'
+        update:
+          $ref: '#/components/schemas/GoogleAdsGoogleadsV25Resources__CustomerAsset'
+          description: 'Update operation: The customer asset is expected to have a valid resource name.'
+        remove:
+          type: string
+          description: 'Remove operation: A resource name for the removed customer asset is expected, in this format: `customers/{customer_id}/customerAssets/{asset_id}~{field_type}`'
+    GoogleRpc__Status:
+      description: 'The `Status` type defines a logical error model that is suitable for different programming environments, including REST APIs and RPC APIs. It is used by [gRPC](https://github.com/grpc). Each `Status` message contains three pieces of data: error code, error message, and error details. You can find out more about this error model and how to work with it in the [API Design Guide](https://cloud.google.com/apis/design/errors).'
+      type: object
+      properties:
+        message:
+          description: A developer-facing error message, which should be in English. Any user-facing error message should be localized and sent in the google.rpc.Status.details field, or localized by the client.
+          type: string
+        code:
+          type: integer
+          description: The status code, which should be an enum value of google.rpc.Code.
+          format: int32
+        details:
           type: array
-          description: Provides the quality evaluation disapproval reason of an asset.
+          description: A list of messages that carry the error details. There is a common set of message types for APIs to use.
           items:
-            x-enumDescriptions:
-            - Not specified.
-            - Used for return value only. Represents value unknown in this version.
-            - One or more descriptions repeats its corresponding row header.
-            - Price asset contains repetitive headers.
-            - Price item header is not relevant to the price type.
-            - Price item description is not relevant to the item header.
-            - Price asset has a price qualifier in a description.
-            - Unsupported language for price assets
-            - Human raters identified an issue with the price asset that isn't captured by other error reasons. The primary purpose of this value is to represent legacy FeedItem disapprovals that are no longer produced.
-            enum:
-            - UNSPECIFIED
-            - UNKNOWN
-            - PRICE_ASSET_DESCRIPTION_REPEATS_ROW_HEADER
-            - PRICE_ASSET_REPETITIVE_HEADERS
-            - PRICE_ASSET_HEADER_INCOMPATIBLE_WITH_PRICE_TYPE
-            - PRICE_ASSET_DESCRIPTION_INCOMPATIBLE_WITH_ITEM_HEADER
-            - PRICE_ASSET_DESCRIPTION_HAS_PRICE_QUALIFIER
-            - PRICE_ASSET_UNSUPPORTED_LANGUAGE
-            - PRICE_ASSET_OTHER_ERROR
-            type: string
-      description: Details related to AssetLinkPrimaryStatusReasonPB.ASSET_DISAPPROVED
+            type: object
+            additionalProperties:
+              description: Properties of the object. Contains field @type with type URL.
     GoogleAdsGoogleadsV25Resources__CustomerAsset:
       type: object
       properties:
@@ -326,41 +342,6 @@ components:
           description: Required. Immutable. The asset which is linked to the customer.
           type: string
       description: A link between a customer and an asset.
-    GoogleRpc__Status:
-      description: 'The `Status` type defines a logical error model that is suitable for different programming environments, including REST APIs and RPC APIs. It is used by [gRPC](https://github.com/grpc). Each `Status` message contains three pieces of data: error code, error message, and error details. You can find out more about this error model and how to work with it in the [API Design Guide](https://cloud.google.com/apis/design/errors).'
-      type: object
-      properties:
-        message:
-          description: A developer-facing error message, which should be in English. Any user-facing error message should be localized and sent in the google.rpc.Status.details field, or localized by the client.
-          type: string
-        code:
-          type: integer
-          description: The status code, which should be an enum value of google.rpc.Code.
-          format: int32
-        details:
-          type: array
-          description: A list of messages that carry the error details. There is a common set of message types for APIs to use.
-          items:
-            type: object
-            additionalProperties:
-              description: Properties of the object. Contains field @type with type URL.
-    GoogleAdsGoogleadsV25Services__CustomerAssetOperation:
-      description: A single operation (create, update, remove) on a customer asset.
-      type: object
-      properties:
-        updateMask:
-          type: string
-          description: FieldMask that determines which resource fields are modified in an update.
-          format: google-fieldmask
-        create:
-          $ref: '#/components/schemas/GoogleAdsGoogleadsV25Resources__CustomerAsset'
-          description: 'Create operation: No resource name is expected for the new customer asset.'
-        update:
-          $ref: '#/components/schemas/GoogleAdsGoogleadsV25Resources__CustomerAsset'
-          description: 'Update operation: The customer asset is expected to have a valid resource name.'
-        remove:
-          type: string
-          description: 'Remove operation: A resource name for the removed customer asset is expected, in this format: `customers/{customer_id}/customerAssets/{asset_id}~{field_type}`'
     GoogleAdsGoogleadsV25Services__MutateCustomerAssetsResponse:
       type: object
       properties:
@@ -373,32 +354,6 @@ components:
           description: Errors that pertain to operation failures in the partial failure mode. Returned only when partial_failure = true and all errors occur inside the operations. If any errors occur outside the operations (for example, auth errors), we return an RPC level error.
           $ref: '#/components/schemas/GoogleRpc__Status'
       description: Response message for a customer asset mutate.
-    GoogleAdsGoogleadsV25Services__MutateCustomerAssetsRequest:
-      description: Request message for CustomerAssetService.MutateCustomerAssets.
-      type: object
-      properties:
-        validateOnly:
-          description: If true, the request is validated but not executed. Only errors are returned, not results.
-          type: boolean
-        responseContentType:
-          x-enumDescriptions:
-          - Not specified. Will return the resource name only in the response.
-          - The mutate response will be the resource name.
-          - The mutate response will contain the resource name and the resource with mutable fields if possible. Otherwise, only the resource name will be returned.
-          enum:
-          - UNSPECIFIED
-          - RESOURCE_NAME_ONLY
-          - MUTABLE_RESOURCE
-          description: The response content type setting. Determines whether the mutable resource or just the resource name should be returned post mutation.
-          type: string
-        operations:
-          description: Required. The list of operations to perform on individual customer assets.
-          items:
-            $ref: '#/components/schemas/GoogleAdsGoogleadsV25Services__CustomerAssetOperation'
-          type: array
-        partialFailure:
-          description: If true, successful operations will be carried out and invalid operations will return errors. If false, all operations will be carried out in one transaction if and only if they are all valid. Default is false.
-          type: boolean
     GoogleAdsGoogleadsV25Common__AssetLinkPrimaryStatusDetails:
       type: object
       properties:
@@ -446,16 +401,61 @@ components:
           description: Provides the details for AssetLinkPrimaryStatusReason.ASSET_DISAPPROVED
           $ref: '#/components/schemas/GoogleAdsGoogleadsV25Common__AssetDisapproved'
       description: Provides the detail of a PrimaryStatus. Each asset link has a PrimaryStatus value (e.g. NOT_ELIGIBLE, meaning not serving), and list of corroborating PrimaryStatusReasons (e.g. [ASSET_DISAPPROVED]). Each reason may have some additional details annotated with it. For instance, when the reason is ASSET_DISAPPROVED, the details field will contain additional information about the offline evaluation errors which led to the asset being disapproved.
-    GoogleAdsGoogleadsV25Services__MutateCustomerAssetResult:
+    GoogleAdsGoogleadsV25Services__MutateCustomerAssetsRequest:
+      description: Request message for CustomerAssetService.MutateCustomerAssets.
       type: object
       properties:
-        resourceName:
+        validateOnly:
+          description: If true, the request is validated but not executed. Only errors are returned, not results.
+          type: boolean
+        responseContentType:
+          x-enumDescriptions:
+          - Not specified. Will return the resource name only in the response.
+          - The mutate response will be the resource name.
+          - The mutate response will contain the resource name and the resource with mutable fields if possible. Otherwise, only the resource name will be returned.
+          enum:
+          - UNSPECIFIED
+          - RESOURCE_NAME_ONLY
+          - MUTABLE_RESOURCE
+          description: The response content type setting. Determines whether the mutable resource or just the resource name should be returned post mutation.
           type: string
-          description: Returned for successful operations.
-        customerAsset:
-          $ref: '#/components/schemas/GoogleAdsGoogleadsV25Resources__CustomerAsset'
-          description: The mutated customer asset with only mutable fields after mutate. The field will only be returned when response_content_type is set to "MUTABLE_RESOURCE".
-      description: The result for the customer asset mutate.
+        operations:
+          description: Required. The list of operations to perform on individual customer assets.
+          items:
+            $ref: '#/components/schemas/GoogleAdsGoogleadsV25Services__CustomerAssetOperation'
+          type: array
+        partialFailure:
+          description: If true, successful operations will be carried out and invalid operations will return errors. If false, all operations will be carried out in one transaction if and only if they are all valid. Default is false.
+          type: boolean
+    GoogleAdsGoogleadsV25Common__AssetDisapproved:
+      type: object
+      properties:
+        offlineEvaluationErrorReasons:
+          type: array
+          description: Provides the quality evaluation disapproval reason of an asset.
+          items:
+            x-enumDescriptions:
+            - Not specified.
+            - Used for return value only. Represents value unknown in this version.
+            - One or more descriptions repeats its corresponding row header.
+            - Price asset contains repetitive headers.
+            - Price item header is not relevant to the price type.
+            - Price item description is not relevant to the item header.
+            - Price asset has a price qualifier in a description.
+            - Unsupported language for price assets
+            - Human raters identified an issue with the price asset that isn't captured by other error reasons. The primary purpose of this value is to represent legacy FeedItem disapprovals that are no longer produced.
+            enum:
+            - UNSPECIFIED
+            - UNKNOWN
+            - PRICE_ASSET_DESCRIPTION_REPEATS_ROW_HEADER
+            - PRICE_ASSET_REPETITIVE_HEADERS
+            - PRICE_ASSET_HEADER_INCOMPATIBLE_WITH_PRICE_TYPE
+            - PRICE_ASSET_DESCRIPTION_INCOMPATIBLE_WITH_ITEM_HEADER
+            - PRICE_ASSET_DESCRIPTION_HAS_PRICE_QUALIFIER
+            - PRICE_ASSET_UNSUPPORTED_LANGUAGE
+            - PRICE_ASSET_OTHER_ERROR
+            type: string
+      description: Details related to AssetLinkPrimaryStatusReasonPB.ASSET_DISAPPROVED
   securitySchemes:
     oauth2:
       type: oauth2

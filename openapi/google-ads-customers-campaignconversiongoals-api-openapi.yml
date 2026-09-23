@@ -133,33 +133,18 @@ paths:
         - https://www.googleapis.com/auth/adwords
 components:
   schemas:
-    GoogleAdsGoogleadsV25Services__CampaignConversionGoalOperation:
+    GoogleAdsGoogleadsV25Services__MutateCampaignConversionGoalsRequest:
       type: object
       properties:
-        updateMask:
-          format: google-fieldmask
-          description: FieldMask that determines which resource fields are modified in an update.
-          type: string
-        update:
-          $ref: '#/components/schemas/GoogleAdsGoogleadsV25Resources__CampaignConversionGoal'
-          description: 'Update operation: The customer conversion goal is expected to have a valid resource name.'
-      description: A single operation (update) on a campaign conversion goal.
-    GoogleAdsGoogleadsV25Services__MutateCampaignConversionGoalResult:
-      type: object
-      properties:
-        resourceName:
-          description: Returned for successful operations.
-          type: string
-      description: The result for the campaign conversion goal mutate.
-    GoogleAdsGoogleadsV25Services__MutateCampaignConversionGoalsResponse:
-      description: Response message for a campaign conversion goal mutate.
-      type: object
-      properties:
-        results:
-          description: All results for the mutate.
-          items:
-            $ref: '#/components/schemas/GoogleAdsGoogleadsV25Services__MutateCampaignConversionGoalResult'
+        operations:
           type: array
+          description: Required. The list of operations to perform on individual campaign conversion goal.
+          items:
+            $ref: '#/components/schemas/GoogleAdsGoogleadsV25Services__CampaignConversionGoalOperation'
+        validateOnly:
+          description: If true, the request is validated but not executed. Only errors are returned, not results.
+          type: boolean
+      description: Request message for CampaignConversionGoalService.MutateCampaignConversionGoals.
     GoogleAdsGoogleadsV25Resources__CampaignConversionGoal:
       description: The biddability setting for the specified campaign only for all conversion actions with a matching category and origin.
       type: object
@@ -249,18 +234,33 @@ components:
           - QUALIFIED_LEAD
           - CONVERTED_LEAD
           - YOUTUBE_FOLLOW_ON_VIEWS
-    GoogleAdsGoogleadsV25Services__MutateCampaignConversionGoalsRequest:
+    GoogleAdsGoogleadsV25Services__CampaignConversionGoalOperation:
       type: object
       properties:
-        operations:
-          type: array
-          description: Required. The list of operations to perform on individual campaign conversion goal.
+        updateMask:
+          format: google-fieldmask
+          description: FieldMask that determines which resource fields are modified in an update.
+          type: string
+        update:
+          $ref: '#/components/schemas/GoogleAdsGoogleadsV25Resources__CampaignConversionGoal'
+          description: 'Update operation: The customer conversion goal is expected to have a valid resource name.'
+      description: A single operation (update) on a campaign conversion goal.
+    GoogleAdsGoogleadsV25Services__MutateCampaignConversionGoalsResponse:
+      description: Response message for a campaign conversion goal mutate.
+      type: object
+      properties:
+        results:
+          description: All results for the mutate.
           items:
-            $ref: '#/components/schemas/GoogleAdsGoogleadsV25Services__CampaignConversionGoalOperation'
-        validateOnly:
-          description: If true, the request is validated but not executed. Only errors are returned, not results.
-          type: boolean
-      description: Request message for CampaignConversionGoalService.MutateCampaignConversionGoals.
+            $ref: '#/components/schemas/GoogleAdsGoogleadsV25Services__MutateCampaignConversionGoalResult'
+          type: array
+    GoogleAdsGoogleadsV25Services__MutateCampaignConversionGoalResult:
+      type: object
+      properties:
+        resourceName:
+          description: Returned for successful operations.
+          type: string
+      description: The result for the campaign conversion goal mutate.
   securitySchemes:
     oauth2:
       type: oauth2

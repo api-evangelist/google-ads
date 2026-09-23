@@ -103,10 +103,10 @@ paths:
       description: Data format for response.
     post:
       operationId: googleads_customers_thirdPartyAppAnalyticsLinks_regenerateShareableLinkId
-      summary: Regenerate ThirdPartyAppAnalyticsLink.shareable_link_id that should be provided to the third party when setting up app analytics
+      summary: Regenerate ThirdPartyAppAnalyticsLink.shareable_link_id that should be provided…
       tags:
       - customers.thirdPartyAppAnalyticsLinks
-      description: 'Regenerate ThirdPartyAppAnalyticsLink.shareable_link_id that should be provided to the third party when setting up app analytics. List of thrown errors: [AuthenticationError]() [AuthorizationError]() [HeaderError]() [InternalError]() [QuotaError]() [RequestError]()'
+      description: 'Regenerate ThirdPartyAppAnalyticsLink.shareable_link_id that should be provided to the third party when setting up app analytics. List of thrown errors: AuthenticationError AuthorizationError HeaderError InternalError QuotaError RequestError'
       parameters:
       - name: resourceName
         in: path

@@ -106,7 +106,7 @@ paths:
       summary: Creates, updates, or removes Keyword Plan ad groups
       tags:
       - customers.keywordPlanAdGroups
-      description: 'Creates, updates, or removes Keyword Plan ad groups. Operation statuses are returned. List of thrown errors: [AuthenticationError]() [AuthorizationError]() [DatabaseError]() [FieldError]() [FieldMaskError]() [HeaderError]() [InternalError]() [KeywordPlanAdGroupError]() [KeywordPlanError]() [MutateError]() [NewResourceCreationError]() [QuotaError]() [RequestError]() [ResourceCountLimitExceededError]()'
+      description: 'Creates, updates, or removes Keyword Plan ad groups. Operation statuses are returned. List of thrown errors: AuthenticationError AuthorizationError DatabaseError FieldError FieldMaskError HeaderError InternalError KeywordPlanAdGroupError KeywordPlanError MutateError NewResourceCreationError QuotaError RequestError ResourceCountLimitExceededError'
       parameters:
       - name: customerId
         in: path
@@ -145,30 +145,6 @@ components:
         partialFailureError:
           $ref: '#/components/schemas/GoogleRpc__Status'
           description: Errors that pertain to operation failures in the partial failure mode. Returned only when partial_failure = true and all errors occur inside the operations. If any errors occur outside the operations (for example, auth errors), we return an RPC level error.
-    GoogleAdsGoogleadsV25Services__KeywordPlanAdGroupOperation:
-      type: object
-      properties:
-        remove:
-          type: string
-          description: 'Remove operation: A resource name for the removed Keyword Plan ad group is expected, in this format: `customers/{customer_id}/keywordPlanAdGroups/{kp_ad_group_id}`'
-        updateMask:
-          description: The FieldMask that determines which resource fields are modified in an update.
-          type: string
-          format: google-fieldmask
-        create:
-          $ref: '#/components/schemas/GoogleAdsGoogleadsV25Resources__KeywordPlanAdGroup'
-          description: 'Create operation: No resource name is expected for the new Keyword Plan ad group.'
-        update:
-          description: 'Update operation: The Keyword Plan ad group is expected to have a valid resource name.'
-          $ref: '#/components/schemas/GoogleAdsGoogleadsV25Resources__KeywordPlanAdGroup'
-      description: A single operation (create, update, remove) on a Keyword Plan ad group.
-    GoogleAdsGoogleadsV25Services__MutateKeywordPlanAdGroupResult:
-      type: object
-      properties:
-        resourceName:
-          type: string
-          description: Returned for successful operations.
-      description: The result for the Keyword Plan ad group mutate.
     GoogleAdsGoogleadsV25Resources__KeywordPlanAdGroup:
       description: 'A Keyword Planner ad group. Max number of keyword plan ad groups per plan: 200.'
       type: object
@@ -223,6 +199,30 @@ components:
             type: object
             additionalProperties:
               description: Properties of the object. Contains field @type with type URL.
+    GoogleAdsGoogleadsV25Services__KeywordPlanAdGroupOperation:
+      type: object
+      properties:
+        remove:
+          type: string
+          description: 'Remove operation: A resource name for the removed Keyword Plan ad group is expected, in this format: `customers/{customer_id}/keywordPlanAdGroups/{kp_ad_group_id}`'
+        updateMask:
+          description: The FieldMask that determines which resource fields are modified in an update.
+          type: string
+          format: google-fieldmask
+        create:
+          $ref: '#/components/schemas/GoogleAdsGoogleadsV25Resources__KeywordPlanAdGroup'
+          description: 'Create operation: No resource name is expected for the new Keyword Plan ad group.'
+        update:
+          description: 'Update operation: The Keyword Plan ad group is expected to have a valid resource name.'
+          $ref: '#/components/schemas/GoogleAdsGoogleadsV25Resources__KeywordPlanAdGroup'
+      description: A single operation (create, update, remove) on a Keyword Plan ad group.
+    GoogleAdsGoogleadsV25Services__MutateKeywordPlanAdGroupResult:
+      type: object
+      properties:
+        resourceName:
+          type: string
+          description: Returned for successful operations.
+      description: The result for the Keyword Plan ad group mutate.
   securitySchemes:
     oauth2:
       type: oauth2

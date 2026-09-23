@@ -11,9 +11,7 @@ info:
 
     creating, reading, updating, and removing campaigns, ad groups, ads, keywords,
 
-    and retrieving performance reports using Google Ads Query Language (GAQL).
-
-    '
+    and retrieving performance reports using Google Ads Query Language (GAQL).'
   version: v18
   contact:
     name: Google Ads API Support
@@ -37,9 +35,7 @@ paths:
 
         that share the same targeting criteria. Each ad group belongs to
 
-        exactly one campaign.
-
-        '
+        exactly one campaign.'
       operationId: mutateAdGroups
       tags:
       - Ad Groups
@@ -78,33 +74,19 @@ paths:
                 $ref: '#/components/schemas/GoogleAdsFailure'
 components:
   schemas:
-    GoogleAdsError:
+    MutateAdGroupsRequest:
       type: object
+      required:
+      - operations
       properties:
-        errorCode:
-          type: object
-          description: The error code with a specific error enum and value.
-          additionalProperties:
-            type: string
-        message:
-          type: string
-          description: Human-readable error message.
-        trigger:
-          type: object
-          description: The value that triggered the error.
-        location:
-          type: object
-          description: Location of the error in the request.
-          properties:
-            fieldPathElements:
-              type: array
-              items:
-                type: object
-                properties:
-                  fieldName:
-                    type: string
-                  index:
-                    type: integer
+        operations:
+          type: array
+          items:
+            $ref: '#/components/schemas/AdGroupOperation'
+        partialFailure:
+          type: boolean
+        validateOnly:
+          type: boolean
     AdGroup:
       type: object
       description: An ad group containing a set of ads and targeting criteria within a campaign.
@@ -172,6 +154,14 @@ components:
           - UNKNOWN
           - UNSPECIFIED
           description: Ad rotation mode for ads within this ad group.
+    GoogleAdsFailure:
+      type: object
+      description: Error response from the Google Ads API.
+      properties:
+        errors:
+          type: array
+          items:
+            $ref: '#/components/schemas/GoogleAdsError'
     AdGroupOperation:
       type: object
       properties:
@@ -183,19 +173,45 @@ components:
           type: string
         updateMask:
           type: string
-    MutateAdGroupsRequest:
+    MutateAdGroupsResponse:
       type: object
-      required:
-      - operations
       properties:
-        operations:
+        results:
           type: array
           items:
-            $ref: '#/components/schemas/AdGroupOperation'
-        partialFailure:
-          type: boolean
-        validateOnly:
-          type: boolean
+            type: object
+            properties:
+              resourceName:
+                type: string
+        partialFailureError:
+          $ref: '#/components/schemas/Status'
+    GoogleAdsError:
+      type: object
+      properties:
+        errorCode:
+          type: object
+          description: The error code with a specific error enum and value.
+          additionalProperties:
+            type: string
+        message:
+          type: string
+          description: Human-readable error message.
+        trigger:
+          type: object
+          description: The value that triggered the error.
+        location:
+          type: object
+          description: Location of the error in the request.
+          properties:
+            fieldPathElements:
+              type: array
+              items:
+                type: object
+                properties:
+                  fieldName:
+                    type: string
+                  index:
+                    type: integer
     Status:
       type: object
       description: Standard gRPC status for partial failure errors.
@@ -210,45 +226,7 @@ components:
           type: array
           items:
             type: object
-    GoogleAdsFailure:
-      type: object
-      description: Error response from the Google Ads API.
-      properties:
-        errors:
-          type: array
-          items:
-            $ref: '#/components/schemas/GoogleAdsError'
-    MutateAdGroupsResponse:
-      type: object
-      properties:
-        results:
-          type: array
-          items:
-            type: object
-            properties:
-              resourceName:
-                type: string
-        partialFailureError:
-          $ref: '#/components/schemas/Status'
   parameters:
-    LoginCustomerIdHeader:
-      name: login-customer-id
-      in: header
-      required: false
-      description: 'The customer ID of the manager account making the request on behalf
-
-        of a client account. Required when authenticating as a manager account.
-
-        '
-      schema:
-        type: string
-    AuthorizationHeader:
-      name: Authorization
-      in: header
-      required: true
-      description: OAuth 2.0 Bearer token for authentication.
-      schema:
-        type: string
     DeveloperTokenHeader:
       name: developer-token
       in: header
@@ -260,6 +238,13 @@ components:
         '
       schema:
         type: string
+    AuthorizationHeader:
+      name: Authorization
+      in: header
+      required: true
+      description: OAuth 2.0 Bearer token for authentication.
+      schema:
+        type: string
     CustomerIdPath:
       name: customerId
       in: path
@@ -268,6 +253,17 @@ components:
       schema:
         type: string
         pattern: ^\d{10}$
+    LoginCustomerIdHeader:
+      name: login-customer-id
+      in: header
+      required: false
+      description: 'The customer ID of the manager account making the request on behalf
+
+        of a client account. Required when authenticating as a manager account.
+
+        '
+      schema:
+        type: string
   examples:
     CreateAdGroupExample:
       summary: Create a new ad group

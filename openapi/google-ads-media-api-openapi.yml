@@ -15,7 +15,7 @@ security:
 - oauth2:
   - https://www.googleapis.com/auth/adwords
 tags:
-- name: media
+- name: Media
 paths:
   /v25/customers/{customersId}/youTubeVideoUploads:create:
     parameters:
@@ -103,9 +103,9 @@ paths:
       description: Data format for response.
     post:
       operationId: googleads_media_upload
-      summary: Uploads a video to Google-managed or advertiser owned (brand) YouTube channel.
+      summary: Uploads a video to Google-managed or advertiser owned (brand) YouTube channel
       tags:
-      - media
+      - Media
       description: Uploads a video to Google-managed or advertiser owned (brand) YouTube channel.
       parameters:
       - name: customerId
@@ -190,13 +190,6 @@ components:
         videoDescription:
           type: string
           description: Input only. Immutable. The description of the video. Only mutable on YouTube video upload creation. Immutable after creation.
-    GoogleAdsGoogleadsV25Services__CreateYouTubeVideoUploadResponse:
-      description: Response message for YouTubeVideoUploadService.CreateYouTubeVideoUpload.
-      type: object
-      properties:
-        resourceName:
-          type: string
-          description: The resource name of the successfully created YouTube video upload.
     GoogleAdsGoogleadsV25Services__CreateYouTubeVideoUploadRequest:
       description: Request message for YouTubeVideoUploadService.CreateYouTubeVideoUpload.
       type: object
@@ -204,6 +197,13 @@ components:
         youTubeVideoUpload:
           $ref: '#/components/schemas/GoogleAdsGoogleadsV25Resources__YouTubeVideoUpload'
           description: Required. The initial details of the video to upload. Required.
+    GoogleAdsGoogleadsV25Services__CreateYouTubeVideoUploadResponse:
+      description: Response message for YouTubeVideoUploadService.CreateYouTubeVideoUpload.
+      type: object
+      properties:
+        resourceName:
+          type: string
+          description: The resource name of the successfully created YouTube video upload.
   securitySchemes:
     oauth2:
       type: oauth2

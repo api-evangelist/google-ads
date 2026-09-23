@@ -106,7 +106,7 @@ paths:
       summary: Creates, updates, or removes bidding strategies
       tags:
       - customers.biddingStrategies
-      description: 'Creates, updates, or removes bidding strategies. Operation statuses are returned. List of thrown errors: [AdxError]() [AuthenticationError]() [AuthorizationError]() [BiddingError]() [BiddingStrategyError]() [ContextError]() [DatabaseError]() [DateError]() [DistinctError]() [FieldError]() [FieldMaskError]() [HeaderError]() [IdError]() [InternalError]() [MutateError]() [NewResourceCreationError]() [NotEmptyError]() [NullError]() [OperationAccessDeniedError]() [OperatorError]() [QuotaError]() [RangeError]() [RequestError]() [SizeLimitError]() [StringFormatError]() [StringLengthError]()'
+      description: 'Creates, updates, or removes bidding strategies. Operation statuses are returned. List of thrown errors: AdxError AuthenticationError AuthorizationError BiddingError BiddingStrategyError ContextError DatabaseError DateError DistinctError FieldError FieldMaskError HeaderError IdError InternalError MutateError NewResourceCreationError NotEmptyError NullError OperationAccessDeniedError OperatorError QuotaError RangeError RequestError SizeLimitError StringFormatError StringLengthError'
       parameters:
       - name: customerId
         in: path
@@ -133,21 +133,18 @@ paths:
         - https://www.googleapis.com/auth/adwords
 components:
   schemas:
-    GoogleAdsGoogleadsV25Common__TargetCpa:
-      description: An automated bid strategy that sets bids to help get as many conversions as possible at the target cost-per-acquisition (CPA) you set.
+    GoogleAdsGoogleadsV25Common__TargetSpend:
+      description: An automated bid strategy that sets your bids to help get as many clicks as possible within your budget.
       type: object
       properties:
-        cpcBidFloorMicros:
-          description: Minimum bid limit that can be set by the bid strategy. The limit applies to all keywords managed by the strategy. This should only be set for portfolio bid strategies.
+        targetSpendMicros:
+          description: 'Deprecated: The spend target under which to maximize clicks. A TargetSpend bidder will attempt to spend the smaller of this value or the natural throttling spend amount. If not specified, the budget is used as the spend target. This field is deprecated and should no longer be used. See https://ads-developers.googleblog.com/2020/05/reminder-about-sunset-creation-of.html for details.'
+          deprecated: true
           type: string
           format: int64
         cpcBidCeilingMicros:
-          format: int64
-          description: Maximum bid limit that can be set by the bid strategy. The limit applies to all keywords managed by the strategy. This should only be set for portfolio bid strategies.
           type: string
-        targetCpaMicros:
-          description: Average CPA target. This target should be greater than or equal to minimum billable unit based on the currency for the account.
-          type: string
+          description: Maximum bid limit that can be set by the bid strategy. The limit applies to all keywords managed by the strategy.
           format: int64
     GoogleAdsGoogleadsV25Services__MutateBiddingStrategiesResponse:
       type: object
@@ -278,61 +275,6 @@ components:
           $ref: '#/components/schemas/GoogleAdsGoogleadsV25Common__TargetSpend'
           description: A bid strategy that sets your bids to help get as many clicks as possible within your budget.
       description: A bidding strategy.
-    GoogleAdsGoogleadsV25Common__MaximizeConversions:
-      description: An automated bidding strategy to help get the most conversions for your campaigns while spending your budget.
-      type: object
-      properties:
-        cpcBidFloorMicros:
-          format: int64
-          description: Minimum bid limit that can be set by the bid strategy. The limit applies to all keywords managed by the strategy. Mutable for portfolio bidding strategies only.
-          type: string
-        cpcBidCeilingMicros:
-          description: Maximum bid limit that can be set by the bid strategy. The limit applies to all keywords managed by the strategy. Mutable for portfolio bidding strategies only.
-          type: string
-          format: int64
-        targetCpaMicros:
-          description: The target cost-per-action (CPA) option. This is the average amount that you would like to spend per conversion action specified in micro units of the bidding strategy's currency. If set, the bid strategy will get as many conversions as possible at or below the target cost-per-action. If the target CPA is not set, the bid strategy will aim to achieve the lowest possible CPA given the budget.
-          type: string
-          format: int64
-    GoogleAdsGoogleadsV25Common__TargetSpend:
-      description: An automated bid strategy that sets your bids to help get as many clicks as possible within your budget.
-      type: object
-      properties:
-        targetSpendMicros:
-          description: 'Deprecated: The spend target under which to maximize clicks. A TargetSpend bidder will attempt to spend the smaller of this value or the natural throttling spend amount. If not specified, the budget is used as the spend target. This field is deprecated and should no longer be used. See https://ads-developers.googleblog.com/2020/05/reminder-about-sunset-creation-of.html for details.'
-          deprecated: true
-          type: string
-          format: int64
-        cpcBidCeilingMicros:
-          type: string
-          description: Maximum bid limit that can be set by the bid strategy. The limit applies to all keywords managed by the strategy.
-          format: int64
-    GoogleAdsGoogleadsV25Services__MutateBiddingStrategiesRequest:
-      type: object
-      properties:
-        operations:
-          type: array
-          description: Required. The list of operations to perform on individual bidding strategies.
-          items:
-            $ref: '#/components/schemas/GoogleAdsGoogleadsV25Services__BiddingStrategyOperation'
-        validateOnly:
-          type: boolean
-          description: If true, the request is validated but not executed. Only errors are returned, not results.
-        responseContentType:
-          x-enumDescriptions:
-          - Not specified. Will return the resource name only in the response.
-          - The mutate response will be the resource name.
-          - The mutate response will contain the resource name and the resource with mutable fields if possible. Otherwise, only the resource name will be returned.
-          enum:
-          - UNSPECIFIED
-          - RESOURCE_NAME_ONLY
-          - MUTABLE_RESOURCE
-          type: string
-          description: The response content type setting. Determines whether the mutable resource or just the resource name should be returned post mutation.
-        partialFailure:
-          type: boolean
-          description: If true, successful operations will be carried out and invalid operations will return errors. If false, all operations will be carried out in one transaction if and only if they are all valid. Default is false.
-      description: Request message for BiddingStrategyService.MutateBiddingStrategies.
     GoogleRpc__Status:
       description: 'The `Status` type defines a logical error model that is suitable for different programming environments, including REST APIs and RPC APIs. It is used by [gRPC](https://github.com/grpc). Each `Status` message contains three pieces of data: error code, error message, and error details. You can find out more about this error model and how to work with it in the [API Design Guide](https://cloud.google.com/apis/design/errors).'
       type: object
@@ -351,30 +293,6 @@ components:
             type: object
             additionalProperties:
               description: Properties of the object. Contains field @type with type URL.
-    GoogleAdsGoogleadsV25Common__EnhancedCpc:
-      type: object
-      properties: {}
-      description: An automated bidding strategy that raises bids for clicks that seem more likely to lead to a conversion and lowers them for clicks where they seem less likely. This bidding strategy is deprecated and cannot be created anymore. Use ManualCpc with enhanced_cpc_enabled set to true for equivalent functionality.
-    GoogleAdsGoogleadsV25Common__MaximizeConversionValue:
-      type: object
-      properties:
-        cpcBidCeilingMicros:
-          format: int64
-          description: Maximum bid limit that can be set by the bid strategy. The limit applies to all keywords managed by the strategy. Mutable for portfolio bidding strategies only.
-          type: string
-        targetRoas:
-          type: number
-          description: The target return on ad spend (ROAS) option. If set, the bid strategy will maximize revenue while averaging the target return on ad spend. If the target ROAS is high, the bid strategy may not be able to spend the full budget. If the target ROAS is not set, the bid strategy will aim to achieve the highest possible ROAS for the budget.
-          format: double
-        cpcBidFloorMicros:
-          description: Minimum bid limit that can be set by the bid strategy. The limit applies to all keywords managed by the strategy. Mutable for portfolio bidding strategies only.
-          type: string
-          format: int64
-        targetRoasTolerancePercentMillis:
-          format: int64
-          description: The percent of ROAS(return on advertising spend) degradation tolerance allowed to increase traffic diversity and conversion volume, specified in millis (for example, 10,000 = 10%). A value of 10,000 means that the advertiser can expect ROAS degradation of up to 10% of the specified target ROAS.
-          type: string
-      description: An automated bidding strategy to help get the most conversion value for your campaigns while spending your budget.
     GoogleAdsGoogleadsV25Common__TargetImpressionShare:
       description: An automated bidding strategy that sets bids so that a certain percentage of search ads are shown at the top of the first page (or other targeted location).
       type: object
@@ -402,16 +320,26 @@ components:
           - ANYWHERE_ON_PAGE
           - TOP_OF_PAGE
           - ABSOLUTE_TOP_OF_PAGE
-    GoogleAdsGoogleadsV25Services__MutateBiddingStrategyResult:
-      description: The result for the bidding strategy mutate.
+    GoogleAdsGoogleadsV25Common__MaximizeConversionValue:
       type: object
       properties:
-        resourceName:
+        cpcBidCeilingMicros:
+          format: int64
+          description: Maximum bid limit that can be set by the bid strategy. The limit applies to all keywords managed by the strategy. Mutable for portfolio bidding strategies only.
           type: string
-          description: Returned for successful operations.
-        biddingStrategy:
-          $ref: '#/components/schemas/GoogleAdsGoogleadsV25Resources__BiddingStrategy'
-          description: The mutated bidding strategy with only mutable fields after mutate. The field will only be returned when response_content_type is set to "MUTABLE_RESOURCE".
+        targetRoas:
+          type: number
+          description: The target return on ad spend (ROAS) option. If set, the bid strategy will maximize revenue while averaging the target return on ad spend. If the target ROAS is high, the bid strategy may not be able to spend the full budget. If the target ROAS is not set, the bid strategy will aim to achieve the highest possible ROAS for the budget.
+          format: double
+        cpcBidFloorMicros:
+          description: Minimum bid limit that can be set by the bid strategy. The limit applies to all keywords managed by the strategy. Mutable for portfolio bidding strategies only.
+          type: string
+          format: int64
+        targetRoasTolerancePercentMillis:
+          format: int64
+          description: The percent of ROAS(return on advertising spend) degradation tolerance allowed to increase traffic diversity and conversion volume, specified in millis (for example, 10,000 = 10%). A value of 10,000 means that the advertiser can expect ROAS degradation of up to 10% of the specified target ROAS.
+          type: string
+      description: An automated bidding strategy to help get the most conversion value for your campaigns while spending your budget.
     GoogleAdsGoogleadsV25Services__BiddingStrategyOperation:
       description: A single operation (create, update, remove) on a bidding strategy.
       type: object
@@ -429,6 +357,78 @@ components:
         create:
           $ref: '#/components/schemas/GoogleAdsGoogleadsV25Resources__BiddingStrategy'
           description: 'Create operation: No resource name is expected for the new bidding strategy.'
+    GoogleAdsGoogleadsV25Services__MutateBiddingStrategyResult:
+      description: The result for the bidding strategy mutate.
+      type: object
+      properties:
+        resourceName:
+          type: string
+          description: Returned for successful operations.
+        biddingStrategy:
+          $ref: '#/components/schemas/GoogleAdsGoogleadsV25Resources__BiddingStrategy'
+          description: The mutated bidding strategy with only mutable fields after mutate. The field will only be returned when response_content_type is set to "MUTABLE_RESOURCE".
+    GoogleAdsGoogleadsV25Services__MutateBiddingStrategiesRequest:
+      type: object
+      properties:
+        operations:
+          type: array
+          description: Required. The list of operations to perform on individual bidding strategies.
+          items:
+            $ref: '#/components/schemas/GoogleAdsGoogleadsV25Services__BiddingStrategyOperation'
+        validateOnly:
+          type: boolean
+          description: If true, the request is validated but not executed. Only errors are returned, not results.
+        responseContentType:
+          x-enumDescriptions:
+          - Not specified. Will return the resource name only in the response.
+          - The mutate response will be the resource name.
+          - The mutate response will contain the resource name and the resource with mutable fields if possible. Otherwise, only the resource name will be returned.
+          enum:
+          - UNSPECIFIED
+          - RESOURCE_NAME_ONLY
+          - MUTABLE_RESOURCE
+          type: string
+          description: The response content type setting. Determines whether the mutable resource or just the resource name should be returned post mutation.
+        partialFailure:
+          type: boolean
+          description: If true, successful operations will be carried out and invalid operations will return errors. If false, all operations will be carried out in one transaction if and only if they are all valid. Default is false.
+      description: Request message for BiddingStrategyService.MutateBiddingStrategies.
+    GoogleAdsGoogleadsV25Common__EnhancedCpc:
+      type: object
+      properties: {}
+      description: An automated bidding strategy that raises bids for clicks that seem more likely to lead to a conversion and lowers them for clicks where they seem less likely. This bidding strategy is deprecated and cannot be created anymore. Use ManualCpc with enhanced_cpc_enabled set to true for equivalent functionality.
+    GoogleAdsGoogleadsV25Common__MaximizeConversions:
+      description: An automated bidding strategy to help get the most conversions for your campaigns while spending your budget.
+      type: object
+      properties:
+        cpcBidFloorMicros:
+          format: int64
+          description: Minimum bid limit that can be set by the bid strategy. The limit applies to all keywords managed by the strategy. Mutable for portfolio bidding strategies only.
+          type: string
+        cpcBidCeilingMicros:
+          description: Maximum bid limit that can be set by the bid strategy. The limit applies to all keywords managed by the strategy. Mutable for portfolio bidding strategies only.
+          type: string
+          format: int64
+        targetCpaMicros:
+          description: The target cost-per-action (CPA) option. This is the average amount that you would like to spend per conversion action specified in micro units of the bidding strategy's currency. If set, the bid strategy will get as many conversions as possible at or below the target cost-per-action. If the target CPA is not set, the bid strategy will aim to achieve the lowest possible CPA given the budget.
+          type: string
+          format: int64
+    GoogleAdsGoogleadsV25Common__TargetCpa:
+      description: An automated bid strategy that sets bids to help get as many conversions as possible at the target cost-per-acquisition (CPA) you set.
+      type: object
+      properties:
+        cpcBidFloorMicros:
+          description: Minimum bid limit that can be set by the bid strategy. The limit applies to all keywords managed by the strategy. This should only be set for portfolio bid strategies.
+          type: string
+          format: int64
+        cpcBidCeilingMicros:
+          format: int64
+          description: Maximum bid limit that can be set by the bid strategy. The limit applies to all keywords managed by the strategy. This should only be set for portfolio bid strategies.
+          type: string
+        targetCpaMicros:
+          description: Average CPA target. This target should be greater than or equal to minimum billable unit based on the currency for the account.
+          type: string
+          format: int64
     GoogleAdsGoogleadsV25Common__TargetRoas:
       type: object
       properties:

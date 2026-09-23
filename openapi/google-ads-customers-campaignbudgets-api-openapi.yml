@@ -106,7 +106,7 @@ paths:
       summary: Creates, updates, or removes campaign budgets
       tags:
       - customers.campaignBudgets
-      description: 'Creates, updates, or removes campaign budgets. Operation statuses are returned. List of thrown errors: [AuthenticationError]() [AuthorizationError]() [CampaignBudgetError]() [DatabaseError]() [DistinctError]() [FieldError]() [FieldMaskError]() [HeaderError]() [InternalError]() [MutateError]() [NewResourceCreationError]() [OperationAccessDeniedError]() [QuotaError]() [RangeError]() [RequestError]() [ResourceCountLimitExceededError]() [StringLengthError]()'
+      description: 'Creates, updates, or removes campaign budgets. Operation statuses are returned. List of thrown errors: AuthenticationError AuthorizationError CampaignBudgetError DatabaseError DistinctError FieldError FieldMaskError HeaderError InternalError MutateError NewResourceCreationError OperationAccessDeniedError QuotaError RangeError RequestError ResourceCountLimitExceededError StringLengthError'
       parameters:
       - name: customerId
         in: path
@@ -133,18 +133,6 @@ paths:
         - https://www.googleapis.com/auth/adwords
 components:
   schemas:
-    GoogleAdsGoogleadsV25Services__MutateCampaignBudgetsResponse:
-      type: object
-      properties:
-        results:
-          description: All results for the mutate.
-          items:
-            $ref: '#/components/schemas/GoogleAdsGoogleadsV25Services__MutateCampaignBudgetResult'
-          type: array
-        partialFailureError:
-          $ref: '#/components/schemas/GoogleRpc__Status'
-          description: Errors that pertain to operation failures in the partial failure mode. Returned only when partial_failure = true and all errors occur inside the operations. If any errors occur outside the operations (for example, auth errors), we return an RPC level error.
-      description: Response message for campaign budget mutate.
     GoogleRpc__Status:
       description: 'The `Status` type defines a logical error model that is suitable for different programming environments, including REST APIs and RPC APIs. It is used by [gRPC](https://github.com/grpc). Each `Status` message contains three pieces of data: error code, error message, and error details. You can find out more about this error model and how to work with it in the [API Design Guide](https://cloud.google.com/apis/design/errors).'
       type: object
@@ -163,23 +151,18 @@ components:
             type: object
             additionalProperties:
               description: Properties of the object. Contains field @type with type URL.
-    GoogleAdsGoogleadsV25Services__CampaignBudgetOperation:
-      description: A single operation (create, update, remove) on a campaign budget.
+    GoogleAdsGoogleadsV25Services__MutateCampaignBudgetsResponse:
       type: object
       properties:
-        update:
-          description: 'Update operation: The campaign budget is expected to have a valid resource name.'
-          $ref: '#/components/schemas/GoogleAdsGoogleadsV25Resources__CampaignBudget'
-        updateMask:
-          type: string
-          description: FieldMask that determines which resource fields are modified in an update.
-          format: google-fieldmask
-        create:
-          description: 'Create operation: No resource name is expected for the new budget.'
-          $ref: '#/components/schemas/GoogleAdsGoogleadsV25Resources__CampaignBudget'
-        remove:
-          description: 'Remove operation: A resource name for the removed budget is expected, in this format: `customers/{customer_id}/campaignBudgets/{budget_id}`'
-          type: string
+        results:
+          description: All results for the mutate.
+          items:
+            $ref: '#/components/schemas/GoogleAdsGoogleadsV25Services__MutateCampaignBudgetResult'
+          type: array
+        partialFailureError:
+          $ref: '#/components/schemas/GoogleRpc__Status'
+          description: Errors that pertain to operation failures in the partial failure mode. Returned only when partial_failure = true and all errors occur inside the operations. If any errors occur outside the operations (for example, auth errors), we return an RPC level error.
+      description: Response message for campaign budget mutate.
     GoogleAdsGoogleadsV25Services__MutateCampaignBudgetResult:
       description: The result for the campaign budget mutate.
       type: object
@@ -190,6 +173,32 @@ components:
         campaignBudget:
           $ref: '#/components/schemas/GoogleAdsGoogleadsV25Resources__CampaignBudget'
           description: The mutated campaign budget with only mutable fields after mutate. The field will only be returned when response_content_type is set to "MUTABLE_RESOURCE".
+    GoogleAdsGoogleadsV25Services__MutateCampaignBudgetsRequest:
+      description: Request message for CampaignBudgetService.MutateCampaignBudgets.
+      type: object
+      properties:
+        partialFailure:
+          type: boolean
+          description: If true, successful operations will be carried out and invalid operations will return errors. If false, all operations will be carried out in one transaction if and only if they are all valid. Default is false.
+        operations:
+          type: array
+          description: Required. The list of operations to perform on individual campaign budgets.
+          items:
+            $ref: '#/components/schemas/GoogleAdsGoogleadsV25Services__CampaignBudgetOperation'
+        validateOnly:
+          description: If true, the request is validated but not executed. Only errors are returned, not results.
+          type: boolean
+        responseContentType:
+          type: string
+          description: The response content type setting. Determines whether the mutable resource or just the resource name should be returned post mutation.
+          x-enumDescriptions:
+          - Not specified. Will return the resource name only in the response.
+          - The mutate response will be the resource name.
+          - The mutate response will contain the resource name and the resource with mutable fields if possible. Otherwise, only the resource name will be returned.
+          enum:
+          - UNSPECIFIED
+          - RESOURCE_NAME_ONLY
+          - MUTABLE_RESOURCE
     GoogleAdsGoogleadsV25Resources__CampaignBudget:
       description: A campaign budget.
       type: object
@@ -302,32 +311,23 @@ components:
           type: string
           description: Output only. The estimated change in weekly interactions if the recommended budget is applied. This field is read-only.
           format: int64
-    GoogleAdsGoogleadsV25Services__MutateCampaignBudgetsRequest:
-      description: Request message for CampaignBudgetService.MutateCampaignBudgets.
+    GoogleAdsGoogleadsV25Services__CampaignBudgetOperation:
+      description: A single operation (create, update, remove) on a campaign budget.
       type: object
       properties:
-        partialFailure:
-          type: boolean
-          description: If true, successful operations will be carried out and invalid operations will return errors. If false, all operations will be carried out in one transaction if and only if they are all valid. Default is false.
-        operations:
-          type: array
-          description: Required. The list of operations to perform on individual campaign budgets.
-          items:
-            $ref: '#/components/schemas/GoogleAdsGoogleadsV25Services__CampaignBudgetOperation'
-        validateOnly:
-          description: If true, the request is validated but not executed. Only errors are returned, not results.
-          type: boolean
-        responseContentType:
+        update:
+          description: 'Update operation: The campaign budget is expected to have a valid resource name.'
+          $ref: '#/components/schemas/GoogleAdsGoogleadsV25Resources__CampaignBudget'
+        updateMask:
           type: string
-          description: The response content type setting. Determines whether the mutable resource or just the resource name should be returned post mutation.
-          x-enumDescriptions:
-          - Not specified. Will return the resource name only in the response.
-          - The mutate response will be the resource name.
-          - The mutate response will contain the resource name and the resource with mutable fields if possible. Otherwise, only the resource name will be returned.
-          enum:
-          - UNSPECIFIED
-          - RESOURCE_NAME_ONLY
-          - MUTABLE_RESOURCE
+          description: FieldMask that determines which resource fields are modified in an update.
+          format: google-fieldmask
+        create:
+          description: 'Create operation: No resource name is expected for the new budget.'
+          $ref: '#/components/schemas/GoogleAdsGoogleadsV25Resources__CampaignBudget'
+        remove:
+          description: 'Remove operation: A resource name for the removed budget is expected, in this format: `customers/{customer_id}/campaignBudgets/{budget_id}`'
+          type: string
   securitySchemes:
     oauth2:
       type: oauth2

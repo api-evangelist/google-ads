@@ -103,7 +103,7 @@ paths:
       description: Data format for response.
     post:
       operationId: googleads_customers_localServicesLeads_provideLeadFeedback
-      summary: RPC to provide feedback on Local Services Lead resources.
+      summary: RPC to provide feedback on Local Services Lead resources
       tags:
       - customers.localServicesLeads
       description: RPC to provide feedback on Local Services Lead resources.
@@ -133,6 +133,35 @@ paths:
         - https://www.googleapis.com/auth/adwords
 components:
   schemas:
+    GoogleAdsGoogleadsV25Services__ProvideLeadFeedbackRequest:
+      description: Request message for LocalServicesLeadService.ProvideLeadFeedback.
+      type: object
+      properties:
+        surveyAnswer:
+          type: string
+          description: Required. Survey answer for Local Services Ads Lead.
+          x-enumDescriptions:
+          - Not specified.
+          - Used for return value only. Represents value unknown in this version.
+          - Very satisfied with the lead.
+          - Satisfied with the lead.
+          - Neutral with the lead.
+          - Dissatisfied with the lead.
+          - Very dissatisfied with the lead.
+          enum:
+          - UNSPECIFIED
+          - UNKNOWN
+          - VERY_SATISFIED
+          - SATISFIED
+          - NEUTRAL
+          - DISSATISFIED
+          - VERY_DISSATISFIED
+        surveySatisfied:
+          $ref: '#/components/schemas/GoogleAdsGoogleadsV25Services__SurveySatisfied'
+          description: Details about various factors for being satisfied with the lead.
+        surveyDissatisfied:
+          description: Details about various factors for not being satisfied with the lead.
+          $ref: '#/components/schemas/GoogleAdsGoogleadsV25Services__SurveyDissatisfied'
     GoogleAdsGoogleadsV25Services__ProvideLeadFeedbackResponse:
       type: object
       properties:
@@ -210,35 +239,6 @@ components:
           description: Optional. Provider's free form comments. This field is required when OTHER_SATISFIED_REASON is selected as the reason.
           type: string
       description: Details about various factors for being satisfied with the lead.
-    GoogleAdsGoogleadsV25Services__ProvideLeadFeedbackRequest:
-      description: Request message for LocalServicesLeadService.ProvideLeadFeedback.
-      type: object
-      properties:
-        surveyAnswer:
-          type: string
-          description: Required. Survey answer for Local Services Ads Lead.
-          x-enumDescriptions:
-          - Not specified.
-          - Used for return value only. Represents value unknown in this version.
-          - Very satisfied with the lead.
-          - Satisfied with the lead.
-          - Neutral with the lead.
-          - Dissatisfied with the lead.
-          - Very dissatisfied with the lead.
-          enum:
-          - UNSPECIFIED
-          - UNKNOWN
-          - VERY_SATISFIED
-          - SATISFIED
-          - NEUTRAL
-          - DISSATISFIED
-          - VERY_DISSATISFIED
-        surveySatisfied:
-          $ref: '#/components/schemas/GoogleAdsGoogleadsV25Services__SurveySatisfied'
-          description: Details about various factors for being satisfied with the lead.
-        surveyDissatisfied:
-          description: Details about various factors for not being satisfied with the lead.
-          $ref: '#/components/schemas/GoogleAdsGoogleadsV25Services__SurveyDissatisfied'
   securitySchemes:
     oauth2:
       type: oauth2

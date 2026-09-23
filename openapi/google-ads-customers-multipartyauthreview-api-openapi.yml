@@ -106,7 +106,7 @@ paths:
       summary: Resolves the status of a Multi-Party Authorization review
       tags:
       - customers.multiPartyAuthReview
-      description: 'Resolves the status of a Multi-Party Authorization review. List of thrown errors: [AccessInvitationError]() [AuthenticationError]() [AuthorizationError]() [CustomerUserAccessError]() [FieldError]() [HeaderError]() [InternalError]() [MultiPartyAuthReviewError]() [MutateError]() [QuotaError]() [RangeError]() [RequestError]()'
+      description: 'Resolves the status of a Multi-Party Authorization review. List of thrown errors: AccessInvitationError AuthenticationError AuthorizationError CustomerUserAccessError FieldError HeaderError InternalError MultiPartyAuthReviewError MutateError QuotaError RangeError RequestError'
       parameters:
       - name: customerId
         in: path
@@ -133,41 +133,19 @@ paths:
         - https://www.googleapis.com/auth/adwords
 components:
   schemas:
-    GoogleAdsGoogleadsV25Services__ResolveMultiPartyAuthReviewResponse:
-      description: Response message for MultiPartyAuthReviewService.ResolveMultiPartyAuthReview.
+    GoogleAdsGoogleadsV25Services__ResolveMultiPartyAuthReviewResult:
       type: object
       properties:
-        resultOrError:
-          type: array
-          description: The results of the operations.
-          items:
-            $ref: '#/components/schemas/GoogleAdsGoogleadsV25Services__ResolveMultiPartyAuthReviewResultOrError'
-    GoogleAdsGoogleadsV25Services__ResolveMultiPartyAuthReviewOperation:
-      description: Operation to resolve a Multi-Party Authorization review.
-      type: object
-      properties:
+        customerUserAccess:
+          description: Output only. The resource name of the CustomerUserAccess resource.
+          type: string
+        customerUserAccessInvitation:
+          type: string
+          description: Output only. The resource name of the CustomerUserAccessInvitation resource.
         multiPartyAuthReview:
+          description: Output only. The resource name of the Multi-Party Auth review itself.
           type: string
-          description: Required. The resource name of the Multi-Party Authorization review.
-        newStatus:
-          description: 'Required. The status to which the Multi-Party Authorization review should be resolved. Valid values for requests are limited to: APPROVED, REJECTED, REVOKED.'
-          type: string
-          x-enumDescriptions:
-          - Not specified.
-          - Value unknown in this version.
-          - The Multi-Party Authorization request has been approved by another admin.
-          - The Multi-Party Authorization request has been sent but not yet approved by another admin.
-          - The Multi-Party Authorization request has been revoked by the requester.
-          - The Multi-Party Authorization request has been rejected by another admin.
-          - The Multi-Party Authorization request has expired.
-          enum:
-          - UNSPECIFIED
-          - UNKNOWN
-          - APPROVED
-          - PENDING
-          - REVOKED
-          - REJECTED
-          - EXPIRED
+      description: Result of the ResolveMultiPartyAuthReview action.
     GoogleAdsGoogleadsV25Services__ResolveMultiPartyAuthReviewResultOrError:
       type: object
       properties:
@@ -196,19 +174,15 @@ components:
             type: object
             additionalProperties:
               description: Properties of the object. Contains field @type with type URL.
-    GoogleAdsGoogleadsV25Services__ResolveMultiPartyAuthReviewResult:
+    GoogleAdsGoogleadsV25Services__ResolveMultiPartyAuthReviewResponse:
+      description: Response message for MultiPartyAuthReviewService.ResolveMultiPartyAuthReview.
       type: object
       properties:
-        customerUserAccess:
-          description: Output only. The resource name of the CustomerUserAccess resource.
-          type: string
-        customerUserAccessInvitation:
-          type: string
-          description: Output only. The resource name of the CustomerUserAccessInvitation resource.
-        multiPartyAuthReview:
-          description: Output only. The resource name of the Multi-Party Auth review itself.
-          type: string
-      description: Result of the ResolveMultiPartyAuthReview action.
+        resultOrError:
+          type: array
+          description: The results of the operations.
+          items:
+            $ref: '#/components/schemas/GoogleAdsGoogleadsV25Services__ResolveMultiPartyAuthReviewResultOrError'
     GoogleAdsGoogleadsV25Services__ResolveMultiPartyAuthReviewRequest:
       description: Request message for MultiPartyAuthReviewService.ResolveMultiPartyAuthReview.
       type: object
@@ -218,6 +192,32 @@ components:
           description: Required. The operations to perform. Currently only one operation is supported.
           items:
             $ref: '#/components/schemas/GoogleAdsGoogleadsV25Services__ResolveMultiPartyAuthReviewOperation'
+    GoogleAdsGoogleadsV25Services__ResolveMultiPartyAuthReviewOperation:
+      description: Operation to resolve a Multi-Party Authorization review.
+      type: object
+      properties:
+        multiPartyAuthReview:
+          type: string
+          description: Required. The resource name of the Multi-Party Authorization review.
+        newStatus:
+          description: 'Required. The status to which the Multi-Party Authorization review should be resolved. Valid values for requests are limited to: APPROVED, REJECTED, REVOKED.'
+          type: string
+          x-enumDescriptions:
+          - Not specified.
+          - Value unknown in this version.
+          - The Multi-Party Authorization request has been approved by another admin.
+          - The Multi-Party Authorization request has been sent but not yet approved by another admin.
+          - The Multi-Party Authorization request has been revoked by the requester.
+          - The Multi-Party Authorization request has been rejected by another admin.
+          - The Multi-Party Authorization request has expired.
+          enum:
+          - UNSPECIFIED
+          - UNKNOWN
+          - APPROVED
+          - PENDING
+          - REVOKED
+          - REJECTED
+          - EXPIRED
   securitySchemes:
     oauth2:
       type: oauth2

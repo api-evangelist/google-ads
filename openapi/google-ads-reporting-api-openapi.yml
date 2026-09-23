@@ -1,6 +1,6 @@
 openapi: 3.2.0
 info:
-  title: Google Ads Ad Groups Reporting API
+  title: Google Ads Reporting API
   description: 'The Google Ads API is the modern programmatic interface to Google Ads and the
 
     next generation of the AdWords API. It enables developers to interact directly
@@ -11,9 +11,7 @@ info:
 
     creating, reading, updating, and removing campaigns, ad groups, ads, keywords,
 
-    and retrieving performance reports using Google Ads Query Language (GAQL).
-
-    '
+    and retrieving performance reports using Google Ads Query Language (GAQL).'
   version: v18
   contact:
     name: Google Ads API Support
@@ -39,9 +37,7 @@ paths:
 
         campaigns, ad groups, ads, keywords, and more. This is the primary
 
-        method for retrieving reporting data and resource details.
-
-        '
+        method for retrieving reporting data and resource details.'
       operationId: searchGoogleAds
       tags:
       - Reporting
@@ -102,9 +98,7 @@ paths:
 
         Identical to the search method but returns results as a stream,
 
-        which is more efficient for large result sets.
-
-        '
+        which is more efficient for large result sets.'
       operationId: searchStreamGoogleAds
       tags:
       - Reporting
@@ -141,38 +135,34 @@ paths:
               schema:
                 $ref: '#/components/schemas/GoogleAdsFailure'
 components:
-  schemas:
-    SearchGoogleAdsStreamResponse:
-      type: object
-      properties:
+  examples:
+    KeywordPerformanceQueryExample:
+      summary: Query keyword performance metrics
+      value:
+        query: SELECT ad_group_criterion.keyword.text, ad_group_criterion.keyword.match_type, ad_group_criterion.quality_info.quality_score, metrics.impressions, metrics.clicks, metrics.cost_micros, metrics.conversions, metrics.ctr FROM keyword_view WHERE campaign.status = 'ENABLED' AND ad_group.status = 'ENABLED' AND segments.date DURING LAST_7_DAYS ORDER BY metrics.impressions DESC
+    CampaignPerformanceResponseExample:
+      summary: Campaign performance response
+      value:
         results:
-          type: array
-          items:
-            $ref: '#/components/schemas/GoogleAdsRow'
-        fieldMask:
-          type: string
-        summaryRow:
-          $ref: '#/components/schemas/GoogleAdsRow'
-        requestId:
-          type: string
-          description: Unique ID of the request for debugging.
-    ResponsiveDisplayAdInfo:
-      type: object
-      description: A responsive display ad that automatically adjusts size, appearance, and format.
-      properties:
-        headlines:
-          type: array
-          items:
-            $ref: '#/components/schemas/AdTextAsset'
-        longHeadline:
-          $ref: '#/components/schemas/AdTextAsset'
-        descriptions:
-          type: array
-          items:
-            $ref: '#/components/schemas/AdTextAsset'
-        businessName:
-          type: string
-          description: The advertiser business name.
+        - campaign:
+            resourceName: customers/1234567890/campaigns/111111
+            id: 111111
+            name: Brand Awareness Campaign
+            status: ENABLED
+          metrics:
+            impressions: 125000
+            clicks: 4500
+            costMicros: 2250000000
+            conversions: 180
+            ctr: 0.036
+            averageCpc: 500000
+        nextPageToken: null
+        totalResultsCount: 1
+    CampaignPerformanceQueryExample:
+      summary: Query campaign performance metrics
+      value:
+        query: SELECT campaign.id, campaign.name, campaign.status, metrics.impressions, metrics.clicks, metrics.cost_micros, metrics.conversions, metrics.ctr, metrics.average_cpc FROM campaign WHERE campaign.status != 'REMOVED' AND segments.date DURING LAST_30_DAYS ORDER BY metrics.impressions DESC LIMIT 50
+  schemas:
     AdGroupAd:
       type: object
       description: An ad within an ad group.
@@ -207,231 +197,50 @@ components:
           - UNKNOWN
           - UNSPECIFIED
           description: Overall ad strength rating for responsive search ads.
-    SearchGoogleAdsStreamRequest:
+    Ad:
       type: object
-      required:
-      - query
-      properties:
-        query:
-          type: string
-          description: Google Ads Query Language (GAQL) query string.
-        summaryRowSetting:
-          type: string
-          enum:
-          - NO_SUMMARY_ROW
-          - SUMMARY_ROW_WITH_RESULTS
-          - SUMMARY_ROW_ONLY
-          description: Determines whether a summary row is returned.
-    TargetCpa:
-      type: object
-      description: Target CPA (cost per acquisition) bidding strategy configuration.
-      properties:
-        targetCpaMicros:
-          type: integer
-          format: int64
-          description: Target CPA amount in micros (1,000,000 micros = 1 unit of currency).
-    SearchGoogleAdsResponse:
-      type: object
-      properties:
-        results:
-          type: array
-          description: List of rows matching the query.
-          items:
-            $ref: '#/components/schemas/GoogleAdsRow'
-        nextPageToken:
-          type: string
-          description: Token for retrieving the next page of results.
-        totalResultsCount:
-          type: integer
-          format: int64
-          description: Total number of results matching the query.
-        fieldMask:
-          type: string
-          description: Fields requested in the query.
-        summaryRow:
-          $ref: '#/components/schemas/GoogleAdsRow'
-    AdGroup:
-      type: object
-      description: An ad group containing a set of ads and targeting criteria within a campaign.
+      description: The creative content of an ad.
       properties:
         resourceName:
           type: string
-          description: Resource name of the ad group, e.g. customers/{customerId}/adGroups/{adGroupId}.
+          description: Resource name of the ad.
         id:
           type: integer
           format: int64
-          description: The unique ID of the ad group.
-        name:
+          description: The unique ID of the ad.
+        finalUrls:
+          type: array
+          items:
+            type: string
+            format: uri
+          description: The list of landing page URLs for the ad.
+        finalMobileUrls:
+          type: array
+          items:
+            type: string
+            format: uri
+          description: Landing page URLs for mobile devices.
+        trackingUrlTemplate:
           type: string
-          description: The name of the ad group.
-        status:
-          type: string
-          enum:
-          - ENABLED
-          - PAUSED
-          - REMOVED
-          - UNKNOWN
-          - UNSPECIFIED
-          description: The status of the ad group.
-        campaign:
-          type: string
-          description: Resource name of the campaign this ad group belongs to.
+          description: URL template for tracking clicks.
         type:
           type: string
           enum:
-          - SEARCH_STANDARD
-          - DISPLAY_STANDARD
-          - SHOPPING_PRODUCT_ADS
-          - VIDEO_TRUE_VIEW_IN_STREAM
-          - VIDEO_BUMPER
-          - HOTEL_ADS
-          - SHOPPING_SMART_ADS
-          - SMART_CAMPAIGN_ADS
+          - RESPONSIVE_SEARCH_AD
+          - EXPANDED_TEXT_AD
+          - RESPONSIVE_DISPLAY_AD
+          - IMAGE_AD
+          - VIDEO_AD
+          - CALL_AD
+          - APP_AD
+          - SHOPPING_PRODUCT_AD
           - UNKNOWN
           - UNSPECIFIED
-          description: The type of the ad group.
-        cpcBidMicros:
-          type: integer
-          format: int64
-          description: Maximum CPC bid in micros at the ad group level.
-        cpmBidMicros:
-          type: integer
-          format: int64
-          description: Maximum CPM bid in micros at the ad group level.
-        targetCpaMicros:
-          type: integer
-          format: int64
-          description: Target CPA in micros at the ad group level.
-        effectiveTargetCpaMicros:
-          type: integer
-          format: int64
-          description: Effective target CPA considering campaign-level settings.
-        effectiveTargetRoas:
-          type: number
-          description: Effective target ROAS considering campaign-level settings.
-        adRotationMode:
-          type: string
-          enum:
-          - OPTIMIZE
-          - ROTATE_FOREVER
-          - UNKNOWN
-          - UNSPECIFIED
-          description: Ad rotation mode for ads within this ad group.
-    GoogleAdsRow:
-      type: object
-      description: A single row returned from a GAQL query containing resource fields, segments, and metrics.
-      properties:
-        campaign:
-          $ref: '#/components/schemas/Campaign'
-        adGroup:
-          $ref: '#/components/schemas/AdGroup'
-        adGroupAd:
-          $ref: '#/components/schemas/AdGroupAd'
-        adGroupCriterion:
-          $ref: '#/components/schemas/AdGroupCriterion'
-        customer:
-          $ref: '#/components/schemas/Customer'
-        metrics:
-          $ref: '#/components/schemas/Metrics'
-        segments:
-          $ref: '#/components/schemas/Segments'
-    Metrics:
-      type: object
-      description: Performance metrics returned in query results.
-      properties:
-        impressions:
-          type: integer
-          format: int64
-          description: Number of times the ad was shown.
-        clicks:
-          type: integer
-          format: int64
-          description: Number of clicks on the ad.
-        costMicros:
-          type: integer
-          format: int64
-          description: Total cost in micros (1,000,000 micros = 1 unit of currency).
-        conversions:
-          type: number
-          description: Number of conversions.
-        conversionsValue:
-          type: number
-          description: Total value of conversions.
-        ctr:
-          type: number
-          description: Click-through rate (clicks / impressions).
-        averageCpc:
-          type: integer
-          format: int64
-          description: Average cost per click in micros.
-        averageCpm:
-          type: number
-          description: Average cost per thousand impressions in micros.
-        costPerConversion:
-          type: number
-          description: Cost per conversion in micros.
-        conversionRate:
-          type: number
-          description: Conversion rate (conversions / clicks).
-        searchImpressionShare:
-          type: number
-          description: Search impression share as a fraction.
-        searchRankLostImpressionShare:
-          type: number
-          description: Search impression share lost due to ad rank.
-        searchBudgetLostImpressionShare:
-          type: number
-          description: Search impression share lost due to budget.
-        allConversions:
-          type: number
-          description: Total of all conversions including cross-device.
-        viewThroughConversions:
-          type: integer
-          format: int64
-          description: View-through conversions from display and video ads.
-        interactionRate:
-          type: number
-          description: Interaction rate (interactions / impressions).
-        averageCost:
-          type: integer
-          format: int64
-          description: Average cost per interaction in micros.
-    QualityInfo:
-      type: object
-      description: Quality score and component metrics for a keyword.
-      properties:
-        qualityScore:
-          type: integer
-          minimum: 1
-          maximum: 10
-          description: Quality Score on a 1-10 scale.
-        creativeQualityScore:
-          type: string
-          enum:
-          - ABOVE_AVERAGE
-          - AVERAGE
-          - BELOW_AVERAGE
-          - UNKNOWN
-          - UNSPECIFIED
-          description: Ad relevance quality component.
-        postClickQualityScore:
-          type: string
-          enum:
-          - ABOVE_AVERAGE
-          - AVERAGE
-          - BELOW_AVERAGE
-          - UNKNOWN
-          - UNSPECIFIED
-          description: Landing page experience quality component.
-        searchPredictedCtr:
-          type: string
-          enum:
-          - ABOVE_AVERAGE
-          - AVERAGE
-          - BELOW_AVERAGE
-          - UNKNOWN
-          - UNSPECIFIED
-          description: Expected click-through rate quality component.
+          description: The type of ad.
+        responsiveSearchAd:
+          $ref: '#/components/schemas/ResponsiveSearchAdInfo'
+        responsiveDisplayAd:
+          $ref: '#/components/schemas/ResponsiveDisplayAdInfo'
     Segments:
       type: object
       description: Segment dimensions for slicing report data.
@@ -504,161 +313,31 @@ components:
             adGroupCriterion:
               type: string
               description: Resource name of the keyword criterion.
-    Ad:
+    ManualCpc:
       type: object
-      description: The creative content of an ad.
+      description: Manual CPC (cost per click) bidding strategy configuration.
       properties:
-        resourceName:
-          type: string
-          description: Resource name of the ad.
-        id:
-          type: integer
-          format: int64
-          description: The unique ID of the ad.
-        finalUrls:
-          type: array
-          items:
-            type: string
-            format: uri
-          description: The list of landing page URLs for the ad.
-        finalMobileUrls:
-          type: array
-          items:
-            type: string
-            format: uri
-          description: Landing page URLs for mobile devices.
-        trackingUrlTemplate:
-          type: string
-          description: URL template for tracking clicks.
-        type:
-          type: string
-          enum:
-          - RESPONSIVE_SEARCH_AD
-          - EXPANDED_TEXT_AD
-          - RESPONSIVE_DISPLAY_AD
-          - IMAGE_AD
-          - VIDEO_AD
-          - CALL_AD
-          - APP_AD
-          - SHOPPING_PRODUCT_AD
-          - UNKNOWN
-          - UNSPECIFIED
-          description: The type of ad.
-        responsiveSearchAd:
-          $ref: '#/components/schemas/ResponsiveSearchAdInfo'
-        responsiveDisplayAd:
-          $ref: '#/components/schemas/ResponsiveDisplayAdInfo'
-    MaximizeConversions:
-      type: object
-      description: Maximize Conversions bidding strategy configuration.
-      properties:
-        targetCpaMicros:
-          type: integer
-          format: int64
-          description: Optional target CPA in micros when using maximize conversions.
-    GoogleAdsError:
-      type: object
-      properties:
-        errorCode:
-          type: object
-          description: The error code with a specific error enum and value.
-          additionalProperties:
-            type: string
-        message:
-          type: string
-          description: Human-readable error message.
-        trigger:
-          type: object
-          description: The value that triggered the error.
-        location:
-          type: object
-          description: Location of the error in the request.
-          properties:
-            fieldPathElements:
-              type: array
-              items:
-                type: object
-                properties:
-                  fieldName:
-                    type: string
-                  index:
-                    type: integer
-    AdTextAsset:
-      type: object
-      description: A text asset used in responsive ads.
-      properties:
-        text:
-          type: string
-          description: The text content of the asset.
-        pinnedField:
-          type: string
-          enum:
-          - HEADLINE_1
-          - HEADLINE_2
-          - HEADLINE_3
-          - DESCRIPTION_1
-          - DESCRIPTION_2
-          - UNSPECIFIED
-          description: Pin position for this text asset in ad rendering.
-    Customer:
-      type: object
-      description: A Google Ads customer account.
-      properties:
-        resourceName:
-          type: string
-          description: Resource name of the customer.
-        id:
-          type: integer
-          format: int64
-          description: The customer account ID.
-        descriptiveName:
-          type: string
-          description: The descriptive name of the customer account.
-        currencyCode:
-          type: string
-          description: ISO 4217 three-letter currency code for the account.
-        timeZone:
-          type: string
-          description: IANA time zone ID for the account.
-        manager:
+        enhancedCpcEnabled:
           type: boolean
-          description: Whether this is a manager account (MCC).
-        testAccount:
-          type: boolean
-          description: Whether this is a test account.
-        autoTaggingEnabled:
-          type: boolean
-          description: Whether auto-tagging is enabled for the account.
-        hasPartnersBadge:
-          type: boolean
-          description: Whether the account has a Google Partners badge.
-    ResponsiveSearchAdInfo:
+          description: Whether Enhanced CPC is enabled for automatic bid adjustments.
+    GoogleAdsRow:
       type: object
-      description: A responsive search ad composed of multiple headlines and descriptions that Google optimizes.
+      description: A single row returned from a GAQL query containing resource fields, segments, and metrics.
       properties:
-        headlines:
-          type: array
-          description: List of headline assets (minimum 3, maximum 15).
-          items:
-            $ref: '#/components/schemas/AdTextAsset'
-        descriptions:
-          type: array
-          description: List of description assets (minimum 2, maximum 4).
-          items:
-            $ref: '#/components/schemas/AdTextAsset'
-        path1:
-          type: string
-          description: First part of the display URL path appended to the domain.
-        path2:
-          type: string
-          description: Second part of the display URL path.
-    TargetRoas:
-      type: object
-      description: Target ROAS (return on ad spend) bidding strategy configuration.
-      properties:
-        targetRoas:
-          type: number
-          description: Target return on ad spend as a ratio, e.g. 3.5 means 350% ROAS.
+        campaign:
+          $ref: '#/components/schemas/Campaign'
+        adGroup:
+          $ref: '#/components/schemas/AdGroup'
+        adGroupAd:
+          $ref: '#/components/schemas/AdGroupAd'
+        adGroupCriterion:
+          $ref: '#/components/schemas/AdGroupCriterion'
+        customer:
+          $ref: '#/components/schemas/Customer'
+        metrics:
+          $ref: '#/components/schemas/Metrics'
+        segments:
+          $ref: '#/components/schemas/Segments'
     SearchGoogleAdsRequest:
       type: object
       required:
@@ -694,6 +373,187 @@ components:
           - SUMMARY_ROW_WITH_RESULTS
           - SUMMARY_ROW_ONLY
           description: Determines whether a summary row is returned.
+    SearchGoogleAdsStreamRequest:
+      type: object
+      required:
+      - query
+      properties:
+        query:
+          type: string
+          description: Google Ads Query Language (GAQL) query string.
+        summaryRowSetting:
+          type: string
+          enum:
+          - NO_SUMMARY_ROW
+          - SUMMARY_ROW_WITH_RESULTS
+          - SUMMARY_ROW_ONLY
+          description: Determines whether a summary row is returned.
+    GoogleAdsFailure:
+      type: object
+      description: Error response from the Google Ads API.
+      properties:
+        errors:
+          type: array
+          items:
+            $ref: '#/components/schemas/GoogleAdsError'
+    GeoTargetTypeSetting:
+      type: object
+      description: Geographic targeting settings for a campaign.
+      properties:
+        positiveGeoTargetType:
+          type: string
+          enum:
+          - PRESENCE_OR_INTEREST
+          - SEARCH_INTEREST
+          - PRESENCE
+          description: How positive geo targeting is applied.
+        negativeGeoTargetType:
+          type: string
+          enum:
+          - PRESENCE_OR_INTEREST
+          - PRESENCE
+          description: How negative geo targeting is applied.
+    AdTextAsset:
+      type: object
+      description: A text asset used in responsive ads.
+      properties:
+        text:
+          type: string
+          description: The text content of the asset.
+        pinnedField:
+          type: string
+          enum:
+          - HEADLINE_1
+          - HEADLINE_2
+          - HEADLINE_3
+          - DESCRIPTION_1
+          - DESCRIPTION_2
+          - UNSPECIFIED
+          description: Pin position for this text asset in ad rendering.
+    ResponsiveSearchAdInfo:
+      type: object
+      description: A responsive search ad composed of multiple headlines and descriptions that Google optimizes.
+      properties:
+        headlines:
+          type: array
+          description: List of headline assets (minimum 3, maximum 15).
+          items:
+            $ref: '#/components/schemas/AdTextAsset'
+        descriptions:
+          type: array
+          description: List of description assets (minimum 2, maximum 4).
+          items:
+            $ref: '#/components/schemas/AdTextAsset'
+        path1:
+          type: string
+          description: First part of the display URL path appended to the domain.
+        path2:
+          type: string
+          description: Second part of the display URL path.
+    PolicySummary:
+      type: object
+      description: Policy review status and approval information.
+      properties:
+        approvalStatus:
+          type: string
+          enum:
+          - APPROVED
+          - APPROVED_LIMITED
+          - AREA_OF_INTEREST_ONLY
+          - DISAPPROVED
+          - UNKNOWN
+          - UNSPECIFIED
+          description: Overall approval status of the ad.
+        reviewStatus:
+          type: string
+          enum:
+          - REVIEW_IN_PROGRESS
+          - REVIEWED
+          - UNDER_APPEAL
+          - ELIGIBLE_MAY_SERVE
+          - UNKNOWN
+          - UNSPECIFIED
+          description: Current review status of the ad.
+        policyTopicEntries:
+          type: array
+          items:
+            type: object
+            properties:
+              type:
+                type: string
+                description: The policy topic type.
+              topic:
+                type: string
+                description: The policy topic name.
+    Metrics:
+      type: object
+      description: Performance metrics returned in query results.
+      properties:
+        impressions:
+          type: integer
+          format: int64
+          description: Number of times the ad was shown.
+        clicks:
+          type: integer
+          format: int64
+          description: Number of clicks on the ad.
+        costMicros:
+          type: integer
+          format: int64
+          description: Total cost in micros (1,000,000 micros = 1 unit of currency).
+        conversions:
+          type: number
+          description: Number of conversions.
+        conversionsValue:
+          type: number
+          description: Total value of conversions.
+        ctr:
+          type: number
+          description: Click-through rate (clicks / impressions).
+        averageCpc:
+          type: integer
+          format: int64
+          description: Average cost per click in micros.
+        averageCpm:
+          type: number
+          description: Average cost per thousand impressions in micros.
+        costPerConversion:
+          type: number
+          description: Cost per conversion in micros.
+        conversionRate:
+          type: number
+          description: Conversion rate (conversions / clicks).
+        searchImpressionShare:
+          type: number
+          description: Search impression share as a fraction.
+        searchRankLostImpressionShare:
+          type: number
+          description: Search impression share lost due to ad rank.
+        searchBudgetLostImpressionShare:
+          type: number
+          description: Search impression share lost due to budget.
+        allConversions:
+          type: number
+          description: Total of all conversions including cross-device.
+        viewThroughConversions:
+          type: integer
+          format: int64
+          description: View-through conversions from display and video ads.
+        interactionRate:
+          type: number
+          description: Interaction rate (interactions / impressions).
+        averageCost:
+          type: integer
+          format: int64
+          description: Average cost per interaction in micros.
+    TargetCpa:
+      type: object
+      description: Target CPA (cost per acquisition) bidding strategy configuration.
+      properties:
+        targetCpaMicros:
+          type: integer
+          format: int64
+          description: Target CPA amount in micros (1,000,000 micros = 1 unit of currency).
     KeywordInfo:
       type: object
       description: Keyword targeting information.
@@ -710,6 +570,174 @@ components:
           - UNKNOWN
           - UNSPECIFIED
           description: The match type of the keyword.
+    NetworkSettings:
+      type: object
+      description: Network targeting settings for a campaign.
+      properties:
+        targetGoogleSearch:
+          type: boolean
+          description: Whether ads are served on the Google Search Network.
+        targetSearchNetwork:
+          type: boolean
+          description: Whether ads are served on Google search partner sites.
+        targetContentNetwork:
+          type: boolean
+          description: Whether ads are served on the Google Display Network.
+        targetPartnerSearchNetwork:
+          type: boolean
+          description: Whether ads are served on the Google Partner Network.
+    MaximizeConversions:
+      type: object
+      description: Maximize Conversions bidding strategy configuration.
+      properties:
+        targetCpaMicros:
+          type: integer
+          format: int64
+          description: Optional target CPA in micros when using maximize conversions.
+    SearchGoogleAdsResponse:
+      type: object
+      properties:
+        results:
+          type: array
+          description: List of rows matching the query.
+          items:
+            $ref: '#/components/schemas/GoogleAdsRow'
+        nextPageToken:
+          type: string
+          description: Token for retrieving the next page of results.
+        totalResultsCount:
+          type: integer
+          format: int64
+          description: Total number of results matching the query.
+        fieldMask:
+          type: string
+          description: Fields requested in the query.
+        summaryRow:
+          $ref: '#/components/schemas/GoogleAdsRow'
+    SearchGoogleAdsStreamResponse:
+      type: object
+      properties:
+        results:
+          type: array
+          items:
+            $ref: '#/components/schemas/GoogleAdsRow'
+        fieldMask:
+          type: string
+        summaryRow:
+          $ref: '#/components/schemas/GoogleAdsRow'
+        requestId:
+          type: string
+          description: Unique ID of the request for debugging.
+    AdGroup:
+      type: object
+      description: An ad group containing a set of ads and targeting criteria within a campaign.
+      properties:
+        resourceName:
+          type: string
+          description: Resource name of the ad group, e.g. customers/{customerId}/adGroups/{adGroupId}.
+        id:
+          type: integer
+          format: int64
+          description: The unique ID of the ad group.
+        name:
+          type: string
+          description: The name of the ad group.
+        status:
+          type: string
+          enum:
+          - ENABLED
+          - PAUSED
+          - REMOVED
+          - UNKNOWN
+          - UNSPECIFIED
+          description: The status of the ad group.
+        campaign:
+          type: string
+          description: Resource name of the campaign this ad group belongs to.
+        type:
+          type: string
+          enum:
+          - SEARCH_STANDARD
+          - DISPLAY_STANDARD
+          - SHOPPING_PRODUCT_ADS
+          - VIDEO_TRUE_VIEW_IN_STREAM
+          - VIDEO_BUMPER
+          - HOTEL_ADS
+          - SHOPPING_SMART_ADS
+          - SMART_CAMPAIGN_ADS
+          - UNKNOWN
+          - UNSPECIFIED
+          description: The type of the ad group.
+        cpcBidMicros:
+          type: integer
+          format: int64
+          description: Maximum CPC bid in micros at the ad group level.
+        cpmBidMicros:
+          type: integer
+          format: int64
+          description: Maximum CPM bid in micros at the ad group level.
+        targetCpaMicros:
+          type: integer
+          format: int64
+          description: Target CPA in micros at the ad group level.
+        effectiveTargetCpaMicros:
+          type: integer
+          format: int64
+          description: Effective target CPA considering campaign-level settings.
+        effectiveTargetRoas:
+          type: number
+          description: Effective target ROAS considering campaign-level settings.
+        adRotationMode:
+          type: string
+          enum:
+          - OPTIMIZE
+          - ROTATE_FOREVER
+          - UNKNOWN
+          - UNSPECIFIED
+          description: Ad rotation mode for ads within this ad group.
+    TargetRoas:
+      type: object
+      description: Target ROAS (return on ad spend) bidding strategy configuration.
+      properties:
+        targetRoas:
+          type: number
+          description: Target return on ad spend as a ratio, e.g. 3.5 means 350% ROAS.
+    QualityInfo:
+      type: object
+      description: Quality score and component metrics for a keyword.
+      properties:
+        qualityScore:
+          type: integer
+          minimum: 1
+          maximum: 10
+          description: Quality Score on a 1-10 scale.
+        creativeQualityScore:
+          type: string
+          enum:
+          - ABOVE_AVERAGE
+          - AVERAGE
+          - BELOW_AVERAGE
+          - UNKNOWN
+          - UNSPECIFIED
+          description: Ad relevance quality component.
+        postClickQualityScore:
+          type: string
+          enum:
+          - ABOVE_AVERAGE
+          - AVERAGE
+          - BELOW_AVERAGE
+          - UNKNOWN
+          - UNSPECIFIED
+          description: Landing page experience quality component.
+        searchPredictedCtr:
+          type: string
+          enum:
+          - ABOVE_AVERAGE
+          - AVERAGE
+          - BELOW_AVERAGE
+          - UNKNOWN
+          - UNSPECIFIED
+          description: Expected click-through rate quality component.
     AdGroupCriterion:
       type: object
       description: A targeting criterion within an ad group, such as a keyword.
@@ -771,6 +799,23 @@ components:
         negative:
           type: boolean
           description: Whether this is a negative criterion (excluded from targeting).
+    ResponsiveDisplayAdInfo:
+      type: object
+      description: A responsive display ad that automatically adjusts size, appearance, and format.
+      properties:
+        headlines:
+          type: array
+          items:
+            $ref: '#/components/schemas/AdTextAsset'
+        longHeadline:
+          $ref: '#/components/schemas/AdTextAsset'
+        descriptions:
+          type: array
+          items:
+            $ref: '#/components/schemas/AdTextAsset'
+        businessName:
+          type: string
+          description: The advertiser business name.
     Campaign:
       type: object
       description: A Google Ads campaign. Campaigns group ad groups and set budgets, bidding strategies, and targeting.
@@ -851,101 +896,66 @@ components:
           $ref: '#/components/schemas/ManualCpc'
         geoTargetTypeSetting:
           $ref: '#/components/schemas/GeoTargetTypeSetting'
-    GoogleAdsFailure:
+    Customer:
       type: object
-      description: Error response from the Google Ads API.
+      description: A Google Ads customer account.
       properties:
-        errors:
-          type: array
-          items:
-            $ref: '#/components/schemas/GoogleAdsError'
-    GeoTargetTypeSetting:
-      type: object
-      description: Geographic targeting settings for a campaign.
-      properties:
-        positiveGeoTargetType:
+        resourceName:
           type: string
-          enum:
-          - PRESENCE_OR_INTEREST
-          - SEARCH_INTEREST
-          - PRESENCE
-          description: How positive geo targeting is applied.
-        negativeGeoTargetType:
+          description: Resource name of the customer.
+        id:
+          type: integer
+          format: int64
+          description: The customer account ID.
+        descriptiveName:
           type: string
-          enum:
-          - PRESENCE_OR_INTEREST
-          - PRESENCE
-          description: How negative geo targeting is applied.
-    PolicySummary:
-      type: object
-      description: Policy review status and approval information.
-      properties:
-        approvalStatus:
+          description: The descriptive name of the customer account.
+        currencyCode:
           type: string
-          enum:
-          - APPROVED
-          - APPROVED_LIMITED
-          - AREA_OF_INTEREST_ONLY
-          - DISAPPROVED
-          - UNKNOWN
-          - UNSPECIFIED
-          description: Overall approval status of the ad.
-        reviewStatus:
+          description: ISO 4217 three-letter currency code for the account.
+        timeZone:
           type: string
-          enum:
-          - REVIEW_IN_PROGRESS
-          - REVIEWED
-          - UNDER_APPEAL
-          - ELIGIBLE_MAY_SERVE
-          - UNKNOWN
-          - UNSPECIFIED
-          description: Current review status of the ad.
-        policyTopicEntries:
-          type: array
-          items:
-            type: object
-            properties:
-              type:
-                type: string
-                description: The policy topic type.
-              topic:
-                type: string
-                description: The policy topic name.
-    ManualCpc:
+          description: IANA time zone ID for the account.
+        manager:
+          type: boolean
+          description: Whether this is a manager account (MCC).
+        testAccount:
+          type: boolean
+          description: Whether this is a test account.
+        autoTaggingEnabled:
+          type: boolean
+          description: Whether auto-tagging is enabled for the account.
+        hasPartnersBadge:
+          type: boolean
+          description: Whether the account has a Google Partners badge.
+    GoogleAdsError:
       type: object
-      description: Manual CPC (cost per click) bidding strategy configuration.
       properties:
-        enhancedCpcEnabled:
-          type: boolean
-          description: Whether Enhanced CPC is enabled for automatic bid adjustments.
-    NetworkSettings:
-      type: object
-      description: Network targeting settings for a campaign.
-      properties:
-        targetGoogleSearch:
-          type: boolean
-          description: Whether ads are served on the Google Search Network.
-        targetSearchNetwork:
-          type: boolean
-          description: Whether ads are served on Google search partner sites.
-        targetContentNetwork:
-          type: boolean
-          description: Whether ads are served on the Google Display Network.
-        targetPartnerSearchNetwork:
-          type: boolean
-          description: Whether ads are served on the Google Partner Network.
+        errorCode:
+          type: object
+          description: The error code with a specific error enum and value.
+          additionalProperties:
+            type: string
+        message:
+          type: string
+          description: Human-readable error message.
+        trigger:
+          type: object
+          description: The value that triggered the error.
+        location:
+          type: object
+          description: Location of the error in the request.
+          properties:
+            fieldPathElements:
+              type: array
+              items:
+                type: object
+                properties:
+                  fieldName:
+                    type: string
+                  index:
+                    type: integer
   parameters:
-    LoginCustomerIdHeader:
-      name: login-customer-id
-      in: header
-      required: false
-      description: 'The customer ID of the manager account making the request on behalf
-
-        of a client account. Required when authenticating as a manager account.
-
-        '
-      schema:
-        type: string
     AuthorizationHeader:
       name: Authorization
       in: header
@@ -953,14 +963,6 @@ components:
       description: OAuth 2.0 Bearer token for authentication.
       schema:
         type: string
-    CustomerIdPath:
-      name: customerId
-      in: path
-      required: true
-      description: The Google Ads customer ID (without dashes), e.g. 1234567890.
-      schema:
-        type: string
-        pattern: ^\d{10}$
     DeveloperTokenHeader:
       name: developer-token
       in: header
@@ -972,33 +974,25 @@ components:
         '
       schema:
         type: string
-  examples:
-    CampaignPerformanceQueryExample:
-      summary: Query campaign performance metrics
-      value:
-        query: SELECT campaign.id, campaign.name, campaign.status, metrics.impressions, metrics.clicks, metrics.cost_micros, metrics.conversions, metrics.ctr, metrics.average_cpc FROM campaign WHERE campaign.status != 'REMOVED' AND segments.date DURING LAST_30_DAYS ORDER BY metrics.impressions DESC LIMIT 50
-    CampaignPerformanceResponseExample:
-      summary: Campaign performance response
-      value:
-        results:
-        - campaign:
-            resourceName: customers/1234567890/campaigns/111111
-            id: 111111
-            name: Brand Awareness Campaign
-            status: ENABLED
-          metrics:
-            impressions: 125000
-            clicks: 4500
-            costMicros: 2250000000
-            conversions: 180
-            ctr: 0.036
-            averageCpc: 500000
-        nextPageToken: null
-        totalResultsCount: 1
-    KeywordPerformanceQueryExample:
-      summary: Query keyword performance metrics
-      value:
-        query: SELECT ad_group_criterion.keyword.text, ad_group_criterion.keyword.match_type, ad_group_criterion.quality_info.quality_score, metrics.impressions, metrics.clicks, metrics.cost_micros, metrics.conversions, metrics.ctr FROM keyword_view WHERE campaign.status = 'ENABLED' AND ad_group.status = 'ENABLED' AND segments.date DURING LAST_7_DAYS ORDER BY metrics.impressions DESC
+    CustomerIdPath:
+      name: customerId
+      in: path
+      required: true
+      description: The Google Ads customer ID (without dashes), e.g. 1234567890.
+      schema:
+        type: string
+        pattern: ^\d{10}$
+    LoginCustomerIdHeader:
+      name: login-customer-id
+      in: header
+      required: false
+      description: 'The customer ID of the manager account making the request on behalf
+
+        of a client account. Required when authenticating as a manager account.
+
+        '
+      schema:
+        type: string
   securitySchemes:
     oauth2Auth:
       type: oauth2

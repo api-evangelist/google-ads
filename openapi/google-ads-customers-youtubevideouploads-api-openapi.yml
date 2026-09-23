@@ -103,7 +103,7 @@ paths:
       description: Data format for response.
     post:
       operationId: googleads_customers_youTubeVideoUploads_update
-      summary: Updates YouTube video's metadata, but only for videos uploaded using this API.
+      summary: Updates YouTube video's metadata, but only for videos uploaded using this API
       tags:
       - customers.youTubeVideoUploads
       description: Updates YouTube video's metadata, but only for videos uploaded using this API.
@@ -217,7 +217,7 @@ paths:
       description: Data format for response.
     post:
       operationId: googleads_customers_youTubeVideoUploads_remove
-      summary: Removes YouTube videos uploaded using this API.
+      summary: Removes YouTube videos uploaded using this API
       tags:
       - customers.youTubeVideoUploads
       description: Removes YouTube videos uploaded using this API.
@@ -247,33 +247,6 @@ paths:
         - https://www.googleapis.com/auth/adwords
 components:
   schemas:
-    GoogleAdsGoogleadsV25Services__UpdateYouTubeVideoUploadResponse:
-      description: Response message for YouTubeVideoUploadService.UpdateYouTubeVideoUpload.
-      type: object
-      properties:
-        resourceName:
-          description: The resource name of the successfully updated YouTube video upload.
-          type: string
-    GoogleAdsGoogleadsV25Services__UpdateYouTubeVideoUploadRequest:
-      description: Request message for YouTubeVideoUploadService.UpdateYouTubeVideoUpload.
-      type: object
-      properties:
-        youTubeVideoUpload:
-          $ref: '#/components/schemas/GoogleAdsGoogleadsV25Resources__YouTubeVideoUpload'
-          description: Required. The YouTube video upload resource to be updated. It's expected to have a valid resource name. Required.
-        updateMask:
-          description: Required. FieldMask that determines which resource fields are modified in an update.
-          type: string
-          format: google-fieldmask
-    GoogleAdsGoogleadsV25Services__RemoveYouTubeVideoUploadRequest:
-      description: Request message for YouTubeVideoUploadService.RemoveYouTubeVideoUpload.
-      type: object
-      properties:
-        resourceNames:
-          description: The resource names of the YouTube video uploads to be removed. Required.
-          items:
-            type: string
-          type: array
     GoogleAdsGoogleadsV25Services__RemoveYouTubeVideoUploadResponse:
       type: object
       properties:
@@ -283,6 +256,13 @@ components:
             type: string
           type: array
       description: Response message for YouTubeVideoUploadService.RemoveYouTubeVideoUpload.
+    GoogleAdsGoogleadsV25Services__UpdateYouTubeVideoUploadResponse:
+      description: Response message for YouTubeVideoUploadService.UpdateYouTubeVideoUpload.
+      type: object
+      properties:
+        resourceName:
+          description: The resource name of the successfully updated YouTube video upload.
+          type: string
     GoogleAdsGoogleadsV25Resources__YouTubeVideoUpload:
       description: Represents a video upload to YouTube using the Google Ads API.
       type: object
@@ -340,6 +320,26 @@ components:
         videoDescription:
           type: string
           description: Input only. Immutable. The description of the video. Only mutable on YouTube video upload creation. Immutable after creation.
+    GoogleAdsGoogleadsV25Services__UpdateYouTubeVideoUploadRequest:
+      description: Request message for YouTubeVideoUploadService.UpdateYouTubeVideoUpload.
+      type: object
+      properties:
+        youTubeVideoUpload:
+          $ref: '#/components/schemas/GoogleAdsGoogleadsV25Resources__YouTubeVideoUpload'
+          description: Required. The YouTube video upload resource to be updated. It's expected to have a valid resource name. Required.
+        updateMask:
+          description: Required. FieldMask that determines which resource fields are modified in an update.
+          type: string
+          format: google-fieldmask
+    GoogleAdsGoogleadsV25Services__RemoveYouTubeVideoUploadRequest:
+      description: Request message for YouTubeVideoUploadService.RemoveYouTubeVideoUpload.
+      type: object
+      properties:
+        resourceNames:
+          description: The resource names of the YouTube video uploads to be removed. Required.
+          items:
+            type: string
+          type: array
   securitySchemes:
     oauth2:
       type: oauth2

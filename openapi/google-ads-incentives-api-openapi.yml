@@ -15,7 +15,7 @@ security:
 - oauth2:
   - https://www.googleapis.com/auth/adwords
 tags:
-- name: incentives
+- name: Incentives
 paths:
   /v25/incentives:fetchIncentive:
     parameters:
@@ -103,9 +103,9 @@ paths:
       description: Data format for response.
     get:
       operationId: googleads_incentives_fetchIncentive
-      summary: Returns incentives for a given user.
+      summary: Returns incentives for a given user
       tags:
-      - incentives
+      - Incentives
       description: Returns incentives for a given user.
       parameters:
       - name: languageCode
@@ -162,19 +162,6 @@ components:
           description: Required. Amount that user must spend to receive the award amount. Denominated in the currency of the country passed in the get request.
           $ref: '#/components/schemas/GoogleType__Money'
       description: Spend requirements for an incentive.
-    GoogleAdsGoogleadsV25Services__CyoIncentives:
-      type: object
-      properties:
-        mediumOffer:
-          $ref: '#/components/schemas/GoogleAdsGoogleadsV25Services__Incentive'
-          description: Required. The CYO incentive with medium target and award amounts.
-        lowOffer:
-          $ref: '#/components/schemas/GoogleAdsGoogleadsV25Services__Incentive'
-          description: Required. The CYO incentive with low target and award amounts.
-        highOffer:
-          description: Required. The CYO incentive with high target and award amounts.
-          $ref: '#/components/schemas/GoogleAdsGoogleadsV25Services__Incentive'
-      description: An incentive offer in the Choose-Your-Own Incentive feature where a user can select from a set of incentives with different money amounts.
     GoogleAdsGoogleadsV25Services__IncentiveOffer:
       type: object
       properties:
@@ -198,6 +185,26 @@ components:
           - NO_INCENTIVE
           - CYO_INCENTIVE
       description: An acquisition incentive offer for a user. An offer means how the user is treated. An offer can have no incentive or multiple incentives.
+    GoogleAdsGoogleadsV25Services__CyoIncentives:
+      type: object
+      properties:
+        mediumOffer:
+          $ref: '#/components/schemas/GoogleAdsGoogleadsV25Services__Incentive'
+          description: Required. The CYO incentive with medium target and award amounts.
+        lowOffer:
+          $ref: '#/components/schemas/GoogleAdsGoogleadsV25Services__Incentive'
+          description: Required. The CYO incentive with low target and award amounts.
+        highOffer:
+          description: Required. The CYO incentive with high target and award amounts.
+          $ref: '#/components/schemas/GoogleAdsGoogleadsV25Services__Incentive'
+      description: An incentive offer in the Choose-Your-Own Incentive feature where a user can select from a set of incentives with different money amounts.
+    GoogleAdsGoogleadsV25Services__FetchIncentiveResponse:
+      description: Response from getting the acquisition incentive for a user when they visit a specific marketing page.
+      type: object
+      properties:
+        incentiveOffer:
+          $ref: '#/components/schemas/GoogleAdsGoogleadsV25Services__IncentiveOffer'
+          description: Required. The acquisition incentive offer for the user.
     GoogleType__Money:
       description: Represents an amount of money with its currency type.
       type: object
@@ -213,6 +220,13 @@ components:
           description: The whole units of the amount. For example if `currencyCode` is `"USD"`, then 1 unit is one US dollar.
           type: string
           format: int64
+    GoogleAdsGoogleadsV25Services_Incentive_Requirement:
+      description: Requirement for an incentive.
+      type: object
+      properties:
+        spend:
+          $ref: '#/components/schemas/GoogleAdsGoogleadsV25Services_IncentiveRequirement_Spend'
+          description: Optional. Spend requirement for an incentive.
     GoogleAdsGoogleadsV25Services__Incentive:
       description: An incentive that a user can claim for their account.
       type: object
@@ -238,20 +252,6 @@ components:
           - UNSPECIFIED
           - UNKNOWN
           - ACQUISITION
-    GoogleAdsGoogleadsV25Services_Incentive_Requirement:
-      description: Requirement for an incentive.
-      type: object
-      properties:
-        spend:
-          $ref: '#/components/schemas/GoogleAdsGoogleadsV25Services_IncentiveRequirement_Spend'
-          description: Optional. Spend requirement for an incentive.
-    GoogleAdsGoogleadsV25Services__FetchIncentiveResponse:
-      description: Response from getting the acquisition incentive for a user when they visit a specific marketing page.
-      type: object
-      properties:
-        incentiveOffer:
-          $ref: '#/components/schemas/GoogleAdsGoogleadsV25Services__IncentiveOffer'
-          description: Required. The acquisition incentive offer for the user.
   securitySchemes:
     oauth2:
       type: oauth2

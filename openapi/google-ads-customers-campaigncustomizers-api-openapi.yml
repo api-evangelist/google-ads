@@ -133,16 +133,36 @@ paths:
         - https://www.googleapis.com/auth/adwords
 components:
   schemas:
-    GoogleAdsGoogleadsV25Services__CampaignCustomizerOperation:
-      description: A single operation (create, remove) on a customizer attribute.
+    GoogleAdsGoogleadsV25Services__MutateCampaignCustomizersResponse:
+      description: Response message for a campaign customizer mutate.
       type: object
       properties:
-        create:
-          description: 'Create operation: No resource name is expected for the new campaign customizer'
-          $ref: '#/components/schemas/GoogleAdsGoogleadsV25Resources__CampaignCustomizer'
-        remove:
+        partialFailureError:
+          $ref: '#/components/schemas/GoogleRpc__Status'
+          description: Errors that pertain to operation failures in the partial failure mode. Returned only when partial_failure = true and all errors occur inside the operations. If any errors occur outside the operations (for example, auth errors), we return an RPC level error.
+        results:
+          type: array
+          description: All results for the mutate.
+          items:
+            $ref: '#/components/schemas/GoogleAdsGoogleadsV25Services__MutateCampaignCustomizerResult'
+    GoogleRpc__Status:
+      description: 'The `Status` type defines a logical error model that is suitable for different programming environments, including REST APIs and RPC APIs. It is used by [gRPC](https://github.com/grpc). Each `Status` message contains three pieces of data: error code, error message, and error details. You can find out more about this error model and how to work with it in the [API Design Guide](https://cloud.google.com/apis/design/errors).'
+      type: object
+      properties:
+        message:
+          description: A developer-facing error message, which should be in English. Any user-facing error message should be localized and sent in the google.rpc.Status.details field, or localized by the client.
           type: string
-          description: 'Remove operation: A resource name for the removed campaign customizer is expected, in this format: `customers/{customer_id}/campaignCustomizers/{campaign_id}~{customizer_attribute_id}`'
+        code:
+          type: integer
+          description: The status code, which should be an enum value of google.rpc.Code.
+          format: int32
+        details:
+          type: array
+          description: A list of messages that carry the error details. There is a common set of message types for APIs to use.
+          items:
+            type: object
+            additionalProperties:
+              description: Properties of the object. Contains field @type with type URL.
     GoogleAdsGoogleadsV25Services__MutateCampaignCustomizerResult:
       description: The result for the campaign customizer mutate.
       type: object
@@ -153,6 +173,66 @@ components:
         campaignCustomizer:
           $ref: '#/components/schemas/GoogleAdsGoogleadsV25Resources__CampaignCustomizer'
           description: The mutated CampaignCustomizer with only mutable fields after mutate. The field will only be returned when response_content_type is set to "MUTABLE_RESOURCE".
+    GoogleAdsGoogleadsV25Common__CustomizerValue:
+      description: A customizer value that is referenced in customizer linkage entities like CustomerCustomizer, CampaignCustomizer, etc.
+      type: object
+      properties:
+        type:
+          type: string
+          description: Required. The data type for the customizer value. It must match the attribute type. The string_value content must match the constraints associated with the type.
+          x-enumDescriptions:
+          - The status has not been specified.
+          - The received value is not known in this version.
+          - Text customizer.
+          - Number customizer.
+          - Price customizer consisting of a number and a currency.
+          - Percentage customizer consisting of a number and a '%'.
+          enum:
+          - UNSPECIFIED
+          - UNKNOWN
+          - TEXT
+          - NUMBER
+          - PRICE
+          - PERCENT
+        stringValue:
+          description: Required. Value to insert in creative text. Customizer values of all types are stored as string to make formatting unambiguous.
+          type: string
+    GoogleAdsGoogleadsV25Services__CampaignCustomizerOperation:
+      description: A single operation (create, remove) on a customizer attribute.
+      type: object
+      properties:
+        create:
+          description: 'Create operation: No resource name is expected for the new campaign customizer'
+          $ref: '#/components/schemas/GoogleAdsGoogleadsV25Resources__CampaignCustomizer'
+        remove:
+          type: string
+          description: 'Remove operation: A resource name for the removed campaign customizer is expected, in this format: `customers/{customer_id}/campaignCustomizers/{campaign_id}~{customizer_attribute_id}`'
+    GoogleAdsGoogleadsV25Services__MutateCampaignCustomizersRequest:
+      type: object
+      properties:
+        partialFailure:
+          description: If true, successful operations will be carried out and invalid operations will return errors. If false, all operations will be carried out in one transaction if and only if they are all valid. Default is false.
+          type: boolean
+        operations:
+          description: Required. The list of operations to perform on individual campaign customizers.
+          items:
+            $ref: '#/components/schemas/GoogleAdsGoogleadsV25Services__CampaignCustomizerOperation'
+          type: array
+        validateOnly:
+          type: boolean
+          description: If true, the request is validated but not executed. Only errors are returned, not results.
+        responseContentType:
+          x-enumDescriptions:
+          - Not specified. Will return the resource name only in the response.
+          - The mutate response will be the resource name.
+          - The mutate response will contain the resource name and the resource with mutable fields if possible. Otherwise, only the resource name will be returned.
+          enum:
+          - UNSPECIFIED
+          - RESOURCE_NAME_ONLY
+          - MUTABLE_RESOURCE
+          type: string
+          description: The response content type setting. Determines whether the mutable resource or just the resource name should be returned post mutation.
+      description: Request message for CampaignCustomizerService.MutateCampaignCustomizers.
     GoogleAdsGoogleadsV25Resources__CampaignCustomizer:
       description: A customizer value for the associated CustomizerAttribute at the Campaign level.
       type: object
@@ -182,86 +262,6 @@ components:
         value:
           description: Required. The value to associate with the customizer attribute at this level. The value must be of the type specified for the CustomizerAttribute.
           $ref: '#/components/schemas/GoogleAdsGoogleadsV25Common__CustomizerValue'
-    GoogleRpc__Status:
-      description: 'The `Status` type defines a logical error model that is suitable for different programming environments, including REST APIs and RPC APIs. It is used by [gRPC](https://github.com/grpc). Each `Status` message contains three pieces of data: error code, error message, and error details. You can find out more about this error model and how to work with it in the [API Design Guide](https://cloud.google.com/apis/design/errors).'
-      type: object
-      properties:
-        message:
-          description: A developer-facing error message, which should be in English. Any user-facing error message should be localized and sent in the google.rpc.Status.details field, or localized by the client.
-          type: string
-        code:
-          type: integer
-          description: The status code, which should be an enum value of google.rpc.Code.
-          format: int32
-        details:
-          type: array
-          description: A list of messages that carry the error details. There is a common set of message types for APIs to use.
-          items:
-            type: object
-            additionalProperties:
-              description: Properties of the object. Contains field @type with type URL.
-    GoogleAdsGoogleadsV25Services__MutateCampaignCustomizersResponse:
-      description: Response message for a campaign customizer mutate.
-      type: object
-      properties:
-        partialFailureError:
-          $ref: '#/components/schemas/GoogleRpc__Status'
-          description: Errors that pertain to operation failures in the partial failure mode. Returned only when partial_failure = true and all errors occur inside the operations. If any errors occur outside the operations (for example, auth errors), we return an RPC level error.
-        results:
-          type: array
-          description: All results for the mutate.
-          items:
-            $ref: '#/components/schemas/GoogleAdsGoogleadsV25Services__MutateCampaignCustomizerResult'
-    GoogleAdsGoogleadsV25Services__MutateCampaignCustomizersRequest:
-      type: object
-      properties:
-        partialFailure:
-          description: If true, successful operations will be carried out and invalid operations will return errors. If false, all operations will be carried out in one transaction if and only if they are all valid. Default is false.
-          type: boolean
-        operations:
-          description: Required. The list of operations to perform on individual campaign customizers.
-          items:
-            $ref: '#/components/schemas/GoogleAdsGoogleadsV25Services__CampaignCustomizerOperation'
-          type: array
-        validateOnly:
-          type: boolean
-          description: If true, the request is validated but not executed. Only errors are returned, not results.
-        responseContentType:
-          x-enumDescriptions:
-          - Not specified. Will return the resource name only in the response.
-          - The mutate response will be the resource name.
-          - The mutate response will contain the resource name and the resource with mutable fields if possible. Otherwise, only the resource name will be returned.
-          enum:
-          - UNSPECIFIED
-          - RESOURCE_NAME_ONLY
-          - MUTABLE_RESOURCE
-          type: string
-          description: The response content type setting. Determines whether the mutable resource or just the resource name should be returned post mutation.
-      description: Request message for CampaignCustomizerService.MutateCampaignCustomizers.
-    GoogleAdsGoogleadsV25Common__CustomizerValue:
-      description: A customizer value that is referenced in customizer linkage entities like CustomerCustomizer, CampaignCustomizer, etc.
-      type: object
-      properties:
-        type:
-          type: string
-          description: Required. The data type for the customizer value. It must match the attribute type. The string_value content must match the constraints associated with the type.
-          x-enumDescriptions:
-          - The status has not been specified.
-          - The received value is not known in this version.
-          - Text customizer.
-          - Number customizer.
-          - Price customizer consisting of a number and a currency.
-          - Percentage customizer consisting of a number and a '%'.
-          enum:
-          - UNSPECIFIED
-          - UNKNOWN
-          - TEXT
-          - NUMBER
-          - PRICE
-          - PERCENT
-        stringValue:
-          description: Required. Value to insert in creative text. Customizer values of all types are stored as string to make formatting unambiguous.
-          type: string
   securitySchemes:
     oauth2:
       type: oauth2

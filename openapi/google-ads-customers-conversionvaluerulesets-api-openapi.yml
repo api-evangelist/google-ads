@@ -159,6 +159,24 @@ components:
         partialFailure:
           type: boolean
           description: If true, successful operations will be carried out and invalid operations will return errors. If false, all operations will be carried out in one transaction if and only if they are all valid. Default is false.
+    GoogleRpc__Status:
+      description: 'The `Status` type defines a logical error model that is suitable for different programming environments, including REST APIs and RPC APIs. It is used by [gRPC](https://github.com/grpc). Each `Status` message contains three pieces of data: error code, error message, and error details. You can find out more about this error model and how to work with it in the [API Design Guide](https://cloud.google.com/apis/design/errors).'
+      type: object
+      properties:
+        message:
+          description: A developer-facing error message, which should be in English. Any user-facing error message should be localized and sent in the google.rpc.Status.details field, or localized by the client.
+          type: string
+        code:
+          type: integer
+          description: The status code, which should be an enum value of google.rpc.Code.
+          format: int32
+        details:
+          type: array
+          description: A list of messages that carry the error details. There is a common set of message types for APIs to use.
+          items:
+            type: object
+            additionalProperties:
+              description: Properties of the object. Contains field @type with type URL.
     GoogleAdsGoogleadsV25Resources__ConversionValueRuleSet:
       description: A conversion value rule set is a collection of conversion value rules that lets you adjust conversion values based on the dimensions specified in the `dimensions` field.
       type: object
@@ -285,18 +303,6 @@ components:
             - NO_CONDITION
             - ITINERARY
           type: array
-    GoogleAdsGoogleadsV25Services__MutateConversionValueRuleSetsResponse:
-      description: Response message for ConversionValueRuleSetService.MutateConversionValueRuleSets.
-      type: object
-      properties:
-        partialFailureError:
-          description: Errors that pertain to operation failures in the partial failure mode. Returned only when partial_failure = true and all errors occur inside the operations. If any errors occur outside the operations (for example, auth errors), we return an RPC level error.
-          $ref: '#/components/schemas/GoogleRpc__Status'
-        results:
-          type: array
-          description: All results for the mutate.
-          items:
-            $ref: '#/components/schemas/GoogleAdsGoogleadsV25Services__MutateConversionValueRuleSetResult'
     GoogleAdsGoogleadsV25Services__ConversionValueRuleSetOperation:
       description: A single operation (create, update, remove) on a conversion value rule set.
       type: object
@@ -314,24 +320,18 @@ components:
         create:
           description: 'Create operation: No resource name is expected for the new conversion value rule set.'
           $ref: '#/components/schemas/GoogleAdsGoogleadsV25Resources__ConversionValueRuleSet'
-    GoogleRpc__Status:
-      description: 'The `Status` type defines a logical error model that is suitable for different programming environments, including REST APIs and RPC APIs. It is used by [gRPC](https://github.com/grpc). Each `Status` message contains three pieces of data: error code, error message, and error details. You can find out more about this error model and how to work with it in the [API Design Guide](https://cloud.google.com/apis/design/errors).'
+    GoogleAdsGoogleadsV25Services__MutateConversionValueRuleSetsResponse:
+      description: Response message for ConversionValueRuleSetService.MutateConversionValueRuleSets.
       type: object
       properties:
-        message:
-          description: A developer-facing error message, which should be in English. Any user-facing error message should be localized and sent in the google.rpc.Status.details field, or localized by the client.
-          type: string
-        code:
-          type: integer
-          description: The status code, which should be an enum value of google.rpc.Code.
-          format: int32
-        details:
+        partialFailureError:
+          description: Errors that pertain to operation failures in the partial failure mode. Returned only when partial_failure = true and all errors occur inside the operations. If any errors occur outside the operations (for example, auth errors), we return an RPC level error.
+          $ref: '#/components/schemas/GoogleRpc__Status'
+        results:
           type: array
-          description: A list of messages that carry the error details. There is a common set of message types for APIs to use.
+          description: All results for the mutate.
           items:
-            type: object
-            additionalProperties:
-              description: Properties of the object. Contains field @type with type URL.
+            $ref: '#/components/schemas/GoogleAdsGoogleadsV25Services__MutateConversionValueRuleSetResult'
     GoogleAdsGoogleadsV25Services__MutateConversionValueRuleSetResult:
       description: The result for the conversion value rule set mutate.
       type: object

@@ -1,6 +1,6 @@
 openapi: 3.2.0
 info:
-  title: Google Ads Ad Groups Bidding Strategies API
+  title: Google Ads Bidding Strategies API
   description: 'The Google Ads API is the modern programmatic interface to Google Ads and the
 
     next generation of the AdWords API. It enables developers to interact directly
@@ -11,9 +11,7 @@ info:
 
     creating, reading, updating, and removing campaigns, ad groups, ads, keywords,
 
-    and retrieving performance reports using Google Ads Query Language (GAQL).
-
-    '
+    and retrieving performance reports using Google Ads Query Language (GAQL).'
   version: v18
   contact:
     name: Google Ads API Support
@@ -37,9 +35,7 @@ paths:
 
         determine how bids are set for your ads. Supports strategies such as
 
-        Target CPA, Target ROAS, Maximize Conversions, and Manual CPC.
-
-        '
+        Target CPA, Target ROAS, Maximize Conversions, and Manual CPC.'
       operationId: mutateBiddingStrategies
       tags:
       - Bidding Strategies
@@ -69,6 +65,52 @@ paths:
                 $ref: '#/components/schemas/GoogleAdsFailure'
 components:
   schemas:
+    BiddingStrategyOperation:
+      type: object
+      properties:
+        create:
+          $ref: '#/components/schemas/BiddingStrategy'
+        update:
+          $ref: '#/components/schemas/BiddingStrategy'
+        remove:
+          type: string
+        updateMask:
+          type: string
+    GoogleAdsFailure:
+      type: object
+      description: Error response from the Google Ads API.
+      properties:
+        errors:
+          type: array
+          items:
+            $ref: '#/components/schemas/GoogleAdsError'
+    GoogleAdsError:
+      type: object
+      properties:
+        errorCode:
+          type: object
+          description: The error code with a specific error enum and value.
+          additionalProperties:
+            type: string
+        message:
+          type: string
+          description: Human-readable error message.
+        trigger:
+          type: object
+          description: The value that triggered the error.
+        location:
+          type: object
+          description: Location of the error in the request.
+          properties:
+            fieldPathElements:
+              type: array
+              items:
+                type: object
+                properties:
+                  fieldName:
+                    type: string
+                  index:
+                    type: integer
     BiddingStrategy:
       type: object
       description: A portfolio bidding strategy shared across multiple campaigns.
@@ -106,45 +148,6 @@ components:
           type: integer
           format: int64
           description: Number of campaigns using this bidding strategy.
-    MutateBiddingStrategiesResponse:
-      type: object
-      properties:
-        results:
-          type: array
-          items:
-            type: object
-            properties:
-              resourceName:
-                type: string
-        partialFailureError:
-          $ref: '#/components/schemas/Status'
-    GoogleAdsError:
-      type: object
-      properties:
-        errorCode:
-          type: object
-          description: The error code with a specific error enum and value.
-          additionalProperties:
-            type: string
-        message:
-          type: string
-          description: Human-readable error message.
-        trigger:
-          type: object
-          description: The value that triggered the error.
-        location:
-          type: object
-          description: Location of the error in the request.
-          properties:
-            fieldPathElements:
-              type: array
-              items:
-                type: object
-                properties:
-                  fieldName:
-                    type: string
-                  index:
-                    type: integer
     MutateBiddingStrategiesRequest:
       type: object
       required:
@@ -158,17 +161,18 @@ components:
           type: boolean
         validateOnly:
           type: boolean
-    BiddingStrategyOperation:
+    MutateBiddingStrategiesResponse:
       type: object
       properties:
-        create:
-          $ref: '#/components/schemas/BiddingStrategy'
-        update:
-          $ref: '#/components/schemas/BiddingStrategy'
-        remove:
-          type: string
-        updateMask:
-          type: string
+        results:
+          type: array
+          items:
+            type: object
+            properties:
+              resourceName:
+                type: string
+        partialFailureError:
+          $ref: '#/components/schemas/Status'
     Status:
       type: object
       description: Standard gRPC status for partial failure errors.
@@ -183,26 +187,7 @@ components:
           type: array
           items:
             type: object
-    GoogleAdsFailure:
-      type: object
-      description: Error response from the Google Ads API.
-      properties:
-        errors:
-          type: array
-          items:
-            $ref: '#/components/schemas/GoogleAdsError'
   parameters:
-    LoginCustomerIdHeader:
-      name: login-customer-id
-      in: header
-      required: false
-      description: 'The customer ID of the manager account making the request on behalf
-
-        of a client account. Required when authenticating as a manager account.
-
-        '
-      schema:
-        type: string
     DeveloperTokenHeader:
       name: developer-token
       in: header
@@ -229,6 +214,17 @@ components:
       schema:
         type: string
         pattern: ^\d{10}$
+    LoginCustomerIdHeader:
+      name: login-customer-id
+      in: header
+      required: false
+      description: 'The customer ID of the manager account making the request on behalf
+
+        of a client account. Required when authenticating as a manager account.
+
+        '
+      schema:
+        type: string
   securitySchemes:
     oauth2Auth:
       type: oauth2

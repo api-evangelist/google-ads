@@ -133,281 +133,49 @@ paths:
         - https://www.googleapis.com/auth/adwords
 components:
   schemas:
-    GoogleAdsGoogleadsV25Common_PolicyTopicEvidence_WebsiteList:
-      description: A list of websites that caused a policy finding. Used for ONE_WEBSITE_PER_AD_GROUP policy topic, for example. In case there are more than five websites, only the top five (those that appear in resources the most) will be listed here.
+    GoogleAdsGoogleadsV25Common__PolicySummary:
       type: object
       properties:
-        websites:
-          type: array
-          description: Websites that caused the policy finding.
-          items:
-            type: string
-    GoogleAdsGoogleadsV25Common__PolicyTopicConstraint:
-      type: object
-      properties:
-        resellerConstraint:
-          description: Reseller constraint.
-          $ref: '#/components/schemas/GoogleAdsGoogleadsV25Common_PolicyTopicConstraint_ResellerConstraint'
-        certificateMissingInCountryList:
-          $ref: '#/components/schemas/GoogleAdsGoogleadsV25Common_PolicyTopicConstraint_CountryConstraintList'
-          description: Countries where a certificate is required for serving.
-        countryConstraintList:
-          description: Countries where the resource cannot serve.
-          $ref: '#/components/schemas/GoogleAdsGoogleadsV25Common_PolicyTopicConstraint_CountryConstraintList'
-        certificateDomainMismatchInCountryList:
-          $ref: '#/components/schemas/GoogleAdsGoogleadsV25Common_PolicyTopicConstraint_CountryConstraintList'
-          description: Countries where the resource's domain is not covered by the certificates associated with it.
-      description: Describes the effect on serving that a policy topic entry will have.
-    GoogleAdsGoogleadsV25Services__MutateAssetGroupAssetResult:
-      description: The result for the asset group asset mutate.
-      type: object
-      properties:
-        resourceName:
-          type: string
-          description: Returned for successful operations.
-    GoogleAdsGoogleadsV25Common__AssetDisapproved:
-      type: object
-      properties:
-        offlineEvaluationErrorReasons:
-          type: array
-          description: Provides the quality evaluation disapproval reason of an asset.
-          items:
-            x-enumDescriptions:
-            - Not specified.
-            - Used for return value only. Represents value unknown in this version.
-            - One or more descriptions repeats its corresponding row header.
-            - Price asset contains repetitive headers.
-            - Price item header is not relevant to the price type.
-            - Price item description is not relevant to the item header.
-            - Price asset has a price qualifier in a description.
-            - Unsupported language for price assets
-            - Human raters identified an issue with the price asset that isn't captured by other error reasons. The primary purpose of this value is to represent legacy FeedItem disapprovals that are no longer produced.
-            enum:
-            - UNSPECIFIED
-            - UNKNOWN
-            - PRICE_ASSET_DESCRIPTION_REPEATS_ROW_HEADER
-            - PRICE_ASSET_REPETITIVE_HEADERS
-            - PRICE_ASSET_HEADER_INCOMPATIBLE_WITH_PRICE_TYPE
-            - PRICE_ASSET_DESCRIPTION_INCOMPATIBLE_WITH_ITEM_HEADER
-            - PRICE_ASSET_DESCRIPTION_HAS_PRICE_QUALIFIER
-            - PRICE_ASSET_UNSUPPORTED_LANGUAGE
-            - PRICE_ASSET_OTHER_ERROR
-            type: string
-      description: Details related to AssetLinkPrimaryStatusReasonPB.ASSET_DISAPPROVED
-    GoogleAdsGoogleadsV25Common_PolicyTopicEvidence_TextList:
-      type: object
-      properties:
-        texts:
-          description: The fragments of text from the resource that caused the policy finding.
-          items:
-            type: string
-          type: array
-      description: A list of fragments of text that violated a policy.
-    GoogleAdsGoogleadsV25Common_PolicyTopicEvidence_DestinationNotWorking:
-      type: object
-      properties:
-        httpErrorCode:
-          format: int64
-          type: string
-          description: The HTTP error code.
-        expandedUrl:
-          type: string
-          description: The full URL that didn't work.
-        device:
+        reviewStatus:
           x-enumDescriptions:
           - No value has been specified.
           - The received value is not known in this version. This is a response-only value.
-          - Landing page doesn't work on desktop device.
-          - Landing page doesn't work on Android device.
-          - Landing page doesn't work on iOS device.
+          - Currently under review.
+          - Primary review complete. Other reviews may be continuing.
+          - The resource has been resubmitted for approval or its policy decision has been appealed.
+          - The resource is eligible and may be serving but could still undergo further review.
           enum:
           - UNSPECIFIED
           - UNKNOWN
-          - DESKTOP
-          - ANDROID
-          - IOS
+          - REVIEW_IN_PROGRESS
+          - REVIEWED
+          - UNDER_APPEAL
+          - ELIGIBLE_MAY_SERVE
+          description: Where in the review process the resource is.
           type: string
-          description: The type of device that failed to load the URL.
-        dnsErrorType:
-          description: The type of DNS error.
-          type: string
+        policyTopicEntries:
+          type: array
+          description: The list of policy findings.
+          items:
+            $ref: '#/components/schemas/GoogleAdsGoogleadsV25Common__PolicyTopicEntry'
+        approvalStatus:
           x-enumDescriptions:
           - No value has been specified.
           - The received value is not known in this version. This is a response-only value.
-          - Host name not found in DNS when fetching landing page.
-          - Google internal crawler issue when communicating with DNS. This error doesn't mean the landing page doesn't work. Google will recrawl the landing page.
+          - Will not serve.
+          - Serves with restrictions.
+          - Serves without restrictions.
+          - Will not serve in targeted countries, but may serve for users who are searching for information about the targeted countries.
           enum:
           - UNSPECIFIED
           - UNKNOWN
-          - HOSTNAME_NOT_FOUND
-          - GOOGLE_CRAWLER_DNS_ISSUE
-        lastCheckedDateTime:
-          description: 'The time the URL was last checked. The format is "YYYY-MM-DD HH:MM:SS". Examples: "2018-03-05 09:15:00" or "2018-02-01 14:34:30"'
-          type: string
-      description: Evidence details when the destination is returning an HTTP error code or isn't functional in all locations for commonly used devices.
-    GoogleRpc__Status:
-      description: 'The `Status` type defines a logical error model that is suitable for different programming environments, including REST APIs and RPC APIs. It is used by [gRPC](https://github.com/grpc). Each `Status` message contains three pieces of data: error code, error message, and error details. You can find out more about this error model and how to work with it in the [API Design Guide](https://cloud.google.com/apis/design/errors).'
-      type: object
-      properties:
-        message:
-          description: A developer-facing error message, which should be in English. Any user-facing error message should be localized and sent in the google.rpc.Status.details field, or localized by the client.
-          type: string
-        code:
-          type: integer
-          description: The status code, which should be an enum value of google.rpc.Code.
-          format: int32
-        details:
-          type: array
-          description: A list of messages that carry the error details. There is a common set of message types for APIs to use.
-          items:
-            type: object
-            additionalProperties:
-              description: Properties of the object. Contains field @type with type URL.
-    GoogleAdsGoogleadsV25Common__PolicyTopicEvidence:
-      description: Additional information that explains a policy finding.
-      type: object
-      properties:
-        websiteList:
-          $ref: '#/components/schemas/GoogleAdsGoogleadsV25Common_PolicyTopicEvidence_WebsiteList'
-          description: List of websites linked with this resource.
-        languageCode:
-          description: The language the resource was detected to be written in. This is an IETF language tag such as "en-US".
-          type: string
-        destinationTextList:
-          $ref: '#/components/schemas/GoogleAdsGoogleadsV25Common_PolicyTopicEvidence_DestinationTextList'
-          description: The text in the destination of the resource that is causing a policy finding.
-        destinationMismatch:
-          $ref: '#/components/schemas/GoogleAdsGoogleadsV25Common_PolicyTopicEvidence_DestinationMismatch'
-          description: Mismatch between the destinations of a resource's URLs.
-        destinationNotWorking:
-          $ref: '#/components/schemas/GoogleAdsGoogleadsV25Common_PolicyTopicEvidence_DestinationNotWorking'
-          description: Details when the destination is returning an HTTP error code or isn't functional in all locations for commonly used devices.
-        textList:
-          description: List of evidence found in the text of a resource.
-          $ref: '#/components/schemas/GoogleAdsGoogleadsV25Common_PolicyTopicEvidence_TextList'
-    GoogleAdsGoogleadsV25Common__AssetLinkPrimaryStatusDetails:
-      type: object
-      properties:
-        status:
-          type: string
-          description: Provides the PrimaryStatus of this status detail.
-          x-enumDescriptions:
-          - Not specified.
-          - Used for return value only. Represents value unknown in this version.
-          - The asset is eligible to serve.
-          - The user-specified asset link status is paused.
-          - The user-specified asset link status is removed.
-          - The asset may serve in the future.
-          - The asset is serving in a partial capacity.
-          - The asset is not eligible to serve.
-          enum:
-          - UNSPECIFIED
-          - UNKNOWN
-          - ELIGIBLE
-          - PAUSED
-          - REMOVED
-          - PENDING
-          - LIMITED
-          - NOT_ELIGIBLE
-        reason:
-          x-enumDescriptions:
-          - Not specified.
-          - Used for return value only. Represents value unknown in this version.
-          - The asset is paused for its linked rollup level. Contributes to a PrimaryStatus of PAUSED.
-          - The asset is removed for its linked rollup level. Contributes to a PrimaryStatus of REMOVED.
-          - The asset has been marked as disapproved. Contributes to a PrimaryStatus of NOT_ELIGIBLE
-          - The asset has not completed policy review. Contributes to a PrimaryStatus of PENDING.
-          - The asset is approved with policies applied. Contributes to a PrimaryStatus of LIMITED.
-          enum:
-          - UNSPECIFIED
-          - UNKNOWN
-          - ASSET_LINK_PAUSED
-          - ASSET_LINK_REMOVED
-          - ASSET_DISAPPROVED
-          - ASSET_UNDER_REVIEW
-          - ASSET_APPROVED_LABELED
-          type: string
-          description: Provides the reason of this PrimaryStatus.
-        assetDisapproved:
-          description: Provides the details for AssetLinkPrimaryStatusReason.ASSET_DISAPPROVED
-          $ref: '#/components/schemas/GoogleAdsGoogleadsV25Common__AssetDisapproved'
-      description: Provides the detail of a PrimaryStatus. Each asset link has a PrimaryStatus value (e.g. NOT_ELIGIBLE, meaning not serving), and list of corroborating PrimaryStatusReasons (e.g. [ASSET_DISAPPROVED]). Each reason may have some additional details annotated with it. For instance, when the reason is ASSET_DISAPPROVED, the details field will contain additional information about the offline evaluation errors which led to the asset being disapproved.
-    GoogleAdsGoogleadsV25Common_PolicyTopicEvidence_DestinationMismatch:
-      type: object
-      properties:
-        urlTypes:
-          type: array
-          description: The set of URLs that did not match each other.
-          items:
-            x-enumDescriptions:
-            - No value has been specified.
-            - The received value is not known in this version. This is a response-only value.
-            - The display url.
-            - The final url.
-            - The final mobile url.
-            - The tracking url template, with substituted desktop url.
-            - The tracking url template, with substituted mobile url.
-            enum:
-            - UNSPECIFIED
-            - UNKNOWN
-            - DISPLAY_URL
-            - FINAL_URL
-            - FINAL_MOBILE_URL
-            - TRACKING_URL
-            - MOBILE_TRACKING_URL
-            type: string
-      description: Evidence of mismatches between the URLs of a resource.
-    GoogleAdsGoogleadsV25Common__PolicyTopicEntry:
-      type: object
-      properties:
-        topic:
-          description: Policy topic this finding refers to. For example, "ALCOHOL", "TRADEMARKS_IN_AD_TEXT", or "DESTINATION_NOT_WORKING". The set of possible policy topics is not fixed for a particular API version and may change at any time.
-          type: string
-        type:
-          type: string
-          description: Describes the negative or positive effect this policy will have on serving.
-          x-enumDescriptions:
-          - No value has been specified.
-          - The received value is not known in this version. This is a response-only value.
-          - The resource will not be served.
-          - The resource will not be served under some circumstances.
-          - The resource cannot serve at all because of the current targeting criteria.
-          - May be of interest, but does not limit how the resource is served.
-          - Could increase coverage beyond normal.
-          - Constrained for all targeted countries, but may serve in other countries through area of interest.
-          enum:
-          - UNSPECIFIED
-          - UNKNOWN
-          - PROHIBITED
-          - LIMITED
-          - FULLY_LIMITED
-          - DESCRIPTIVE
-          - BROADENING
+          - DISAPPROVED
+          - APPROVED_LIMITED
+          - APPROVED
           - AREA_OF_INTEREST_ONLY
-        constraints:
-          description: Indicates how serving of this resource may be affected (for example, not serving in a country).
-          items:
-            $ref: '#/components/schemas/GoogleAdsGoogleadsV25Common__PolicyTopicConstraint'
-          type: array
-        evidences:
-          type: array
-          description: Additional information that explains policy finding (for example, the brand name for a trademark finding).
-          items:
-            $ref: '#/components/schemas/GoogleAdsGoogleadsV25Common__PolicyTopicEvidence'
-      description: Policy finding attached to a resource (for example, alcohol policy associated with a site that sells alcohol). Each PolicyTopicEntry has a topic that indicates the specific ads policy the entry is about and a type to indicate the effect that the entry will have on serving. It may optionally have one or more evidences that indicate the reason for the finding. It may also optionally have one or more constraints that provide details about how serving may be restricted.
-    GoogleAdsGoogleadsV25Common_PolicyTopicConstraint_CountryConstraintList:
-      description: A list of countries where a resource's serving is constrained.
-      type: object
-      properties:
-        totalTargetedCountries:
-          format: int32
-          type: integer
-          description: Total number of countries targeted by the resource.
-        countries:
-          type: array
-          description: Countries in which serving is restricted.
-          items:
-            $ref: '#/components/schemas/GoogleAdsGoogleadsV25Common_PolicyTopicConstraint_CountryConstraint'
+          type: string
+          description: The overall approval status, which is calculated based on the status of its individual policy topic entries.
+      description: Contains policy summary information.
     GoogleAdsGoogleadsV25Resources__AssetGroupAsset:
       type: object
       properties:
@@ -578,6 +346,174 @@ components:
           type: string
           description: Output only. Provides the PrimaryStatus of this asset link. Primary status is meant essentially to differentiate between the plain "status" field, which has advertiser set values of enabled, paused, or removed. The primary status takes into account other signals (for assets its mainly policy and quality approvals) to come up with a more comprehensive status to indicate its serving state.
       description: AssetGroupAsset is the link between an asset and an asset group. Adding an AssetGroupAsset links an asset with an asset group.
+    GoogleAdsGoogleadsV25Common_PolicyTopicEvidence_WebsiteList:
+      description: A list of websites that caused a policy finding. Used for ONE_WEBSITE_PER_AD_GROUP policy topic, for example. In case there are more than five websites, only the top five (those that appear in resources the most) will be listed here.
+      type: object
+      properties:
+        websites:
+          type: array
+          description: Websites that caused the policy finding.
+          items:
+            type: string
+    GoogleAdsGoogleadsV25Common_PolicyTopicEvidence_DestinationTextList:
+      type: object
+      properties:
+        destinationTexts:
+          type: array
+          description: List of text found in the resource's destination page.
+          items:
+            type: string
+      description: A list of strings found in a destination page that caused a policy finding.
+    GoogleAdsGoogleadsV25Common__PolicyTopicEntry:
+      type: object
+      properties:
+        topic:
+          description: Policy topic this finding refers to. For example, "ALCOHOL", "TRADEMARKS_IN_AD_TEXT", or "DESTINATION_NOT_WORKING". The set of possible policy topics is not fixed for a particular API version and may change at any time.
+          type: string
+        type:
+          type: string
+          description: Describes the negative or positive effect this policy will have on serving.
+          x-enumDescriptions:
+          - No value has been specified.
+          - The received value is not known in this version. This is a response-only value.
+          - The resource will not be served.
+          - The resource will not be served under some circumstances.
+          - The resource cannot serve at all because of the current targeting criteria.
+          - May be of interest, but does not limit how the resource is served.
+          - Could increase coverage beyond normal.
+          - Constrained for all targeted countries, but may serve in other countries through area of interest.
+          enum:
+          - UNSPECIFIED
+          - UNKNOWN
+          - PROHIBITED
+          - LIMITED
+          - FULLY_LIMITED
+          - DESCRIPTIVE
+          - BROADENING
+          - AREA_OF_INTEREST_ONLY
+        constraints:
+          description: Indicates how serving of this resource may be affected (for example, not serving in a country).
+          items:
+            $ref: '#/components/schemas/GoogleAdsGoogleadsV25Common__PolicyTopicConstraint'
+          type: array
+        evidences:
+          type: array
+          description: Additional information that explains policy finding (for example, the brand name for a trademark finding).
+          items:
+            $ref: '#/components/schemas/GoogleAdsGoogleadsV25Common__PolicyTopicEvidence'
+      description: Policy finding attached to a resource (for example, alcohol policy associated with a site that sells alcohol). Each PolicyTopicEntry has a topic that indicates the specific ads policy the entry is about and a type to indicate the effect that the entry will have on serving. It may optionally have one or more evidences that indicate the reason for the finding. It may also optionally have one or more constraints that provide details about how serving may be restricted.
+    GoogleRpc__Status:
+      description: 'The `Status` type defines a logical error model that is suitable for different programming environments, including REST APIs and RPC APIs. It is used by [gRPC](https://github.com/grpc). Each `Status` message contains three pieces of data: error code, error message, and error details. You can find out more about this error model and how to work with it in the [API Design Guide](https://cloud.google.com/apis/design/errors).'
+      type: object
+      properties:
+        message:
+          description: A developer-facing error message, which should be in English. Any user-facing error message should be localized and sent in the google.rpc.Status.details field, or localized by the client.
+          type: string
+        code:
+          type: integer
+          description: The status code, which should be an enum value of google.rpc.Code.
+          format: int32
+        details:
+          type: array
+          description: A list of messages that carry the error details. There is a common set of message types for APIs to use.
+          items:
+            type: object
+            additionalProperties:
+              description: Properties of the object. Contains field @type with type URL.
+    GoogleAdsGoogleadsV25Common_PolicyTopicEvidence_DestinationMismatch:
+      type: object
+      properties:
+        urlTypes:
+          type: array
+          description: The set of URLs that did not match each other.
+          items:
+            x-enumDescriptions:
+            - No value has been specified.
+            - The received value is not known in this version. This is a response-only value.
+            - The display url.
+            - The final url.
+            - The final mobile url.
+            - The tracking url template, with substituted desktop url.
+            - The tracking url template, with substituted mobile url.
+            enum:
+            - UNSPECIFIED
+            - UNKNOWN
+            - DISPLAY_URL
+            - FINAL_URL
+            - FINAL_MOBILE_URL
+            - TRACKING_URL
+            - MOBILE_TRACKING_URL
+            type: string
+      description: Evidence of mismatches between the URLs of a resource.
+    GoogleAdsGoogleadsV25Common__AssetLinkPrimaryStatusDetails:
+      type: object
+      properties:
+        status:
+          type: string
+          description: Provides the PrimaryStatus of this status detail.
+          x-enumDescriptions:
+          - Not specified.
+          - Used for return value only. Represents value unknown in this version.
+          - The asset is eligible to serve.
+          - The user-specified asset link status is paused.
+          - The user-specified asset link status is removed.
+          - The asset may serve in the future.
+          - The asset is serving in a partial capacity.
+          - The asset is not eligible to serve.
+          enum:
+          - UNSPECIFIED
+          - UNKNOWN
+          - ELIGIBLE
+          - PAUSED
+          - REMOVED
+          - PENDING
+          - LIMITED
+          - NOT_ELIGIBLE
+        reason:
+          x-enumDescriptions:
+          - Not specified.
+          - Used for return value only. Represents value unknown in this version.
+          - The asset is paused for its linked rollup level. Contributes to a PrimaryStatus of PAUSED.
+          - The asset is removed for its linked rollup level. Contributes to a PrimaryStatus of REMOVED.
+          - The asset has been marked as disapproved. Contributes to a PrimaryStatus of NOT_ELIGIBLE
+          - The asset has not completed policy review. Contributes to a PrimaryStatus of PENDING.
+          - The asset is approved with policies applied. Contributes to a PrimaryStatus of LIMITED.
+          enum:
+          - UNSPECIFIED
+          - UNKNOWN
+          - ASSET_LINK_PAUSED
+          - ASSET_LINK_REMOVED
+          - ASSET_DISAPPROVED
+          - ASSET_UNDER_REVIEW
+          - ASSET_APPROVED_LABELED
+          type: string
+          description: Provides the reason of this PrimaryStatus.
+        assetDisapproved:
+          description: Provides the details for AssetLinkPrimaryStatusReason.ASSET_DISAPPROVED
+          $ref: '#/components/schemas/GoogleAdsGoogleadsV25Common__AssetDisapproved'
+      description: Provides the detail of a PrimaryStatus. Each asset link has a PrimaryStatus value (e.g. NOT_ELIGIBLE, meaning not serving), and list of corroborating PrimaryStatusReasons (e.g. [ASSET_DISAPPROVED]). Each reason may have some additional details annotated with it. For instance, when the reason is ASSET_DISAPPROVED, the details field will contain additional information about the offline evaluation errors which led to the asset being disapproved.
+    GoogleAdsGoogleadsV25Common__PolicyTopicEvidence:
+      description: Additional information that explains a policy finding.
+      type: object
+      properties:
+        websiteList:
+          $ref: '#/components/schemas/GoogleAdsGoogleadsV25Common_PolicyTopicEvidence_WebsiteList'
+          description: List of websites linked with this resource.
+        languageCode:
+          description: The language the resource was detected to be written in. This is an IETF language tag such as "en-US".
+          type: string
+        destinationTextList:
+          $ref: '#/components/schemas/GoogleAdsGoogleadsV25Common_PolicyTopicEvidence_DestinationTextList'
+          description: The text in the destination of the resource that is causing a policy finding.
+        destinationMismatch:
+          $ref: '#/components/schemas/GoogleAdsGoogleadsV25Common_PolicyTopicEvidence_DestinationMismatch'
+          description: Mismatch between the destinations of a resource's URLs.
+        destinationNotWorking:
+          $ref: '#/components/schemas/GoogleAdsGoogleadsV25Common_PolicyTopicEvidence_DestinationNotWorking'
+          description: Details when the destination is returning an HTTP error code or isn't functional in all locations for commonly used devices.
+        textList:
+          description: List of evidence found in the text of a resource.
+          $ref: '#/components/schemas/GoogleAdsGoogleadsV25Common_PolicyTopicEvidence_TextList'
     GoogleAdsGoogleadsV25Services__MutateAssetGroupAssetsRequest:
       description: Request message for AssetGroupAssetService.MutateAssetGroupAssets.
       type: object
@@ -593,6 +529,75 @@ components:
         partialFailure:
           description: If true, successful operations will be carried out and invalid operations will return errors. If false, all operations will be carried out in one transaction if and only if they are all valid. Default is false.
           type: boolean
+    GoogleAdsGoogleadsV25Common__AssetDisapproved:
+      type: object
+      properties:
+        offlineEvaluationErrorReasons:
+          type: array
+          description: Provides the quality evaluation disapproval reason of an asset.
+          items:
+            x-enumDescriptions:
+            - Not specified.
+            - Used for return value only. Represents value unknown in this version.
+            - One or more descriptions repeats its corresponding row header.
+            - Price asset contains repetitive headers.
+            - Price item header is not relevant to the price type.
+            - Price item description is not relevant to the item header.
+            - Price asset has a price qualifier in a description.
+            - Unsupported language for price assets
+            - Human raters identified an issue with the price asset that isn't captured by other error reasons. The primary purpose of this value is to represent legacy FeedItem disapprovals that are no longer produced.
+            enum:
+            - UNSPECIFIED
+            - UNKNOWN
+            - PRICE_ASSET_DESCRIPTION_REPEATS_ROW_HEADER
+            - PRICE_ASSET_REPETITIVE_HEADERS
+            - PRICE_ASSET_HEADER_INCOMPATIBLE_WITH_PRICE_TYPE
+            - PRICE_ASSET_DESCRIPTION_INCOMPATIBLE_WITH_ITEM_HEADER
+            - PRICE_ASSET_DESCRIPTION_HAS_PRICE_QUALIFIER
+            - PRICE_ASSET_UNSUPPORTED_LANGUAGE
+            - PRICE_ASSET_OTHER_ERROR
+            type: string
+      description: Details related to AssetLinkPrimaryStatusReasonPB.ASSET_DISAPPROVED
+    GoogleAdsGoogleadsV25Common_PolicyTopicConstraint_ResellerConstraint:
+      description: Indicates that a policy topic was constrained due to disapproval of the website for reseller purposes.
+      type: object
+      properties: {}
+    GoogleAdsGoogleadsV25Common_PolicyTopicConstraint_CountryConstraintList:
+      description: A list of countries where a resource's serving is constrained.
+      type: object
+      properties:
+        totalTargetedCountries:
+          format: int32
+          type: integer
+          description: Total number of countries targeted by the resource.
+        countries:
+          type: array
+          description: Countries in which serving is restricted.
+          items:
+            $ref: '#/components/schemas/GoogleAdsGoogleadsV25Common_PolicyTopicConstraint_CountryConstraint'
+    GoogleAdsGoogleadsV25Services__MutateAssetGroupAssetResult:
+      description: The result for the asset group asset mutate.
+      type: object
+      properties:
+        resourceName:
+          type: string
+          description: Returned for successful operations.
+    GoogleAdsGoogleadsV25Common__PolicyTopicConstraint:
+      type: object
+      properties:
+        resellerConstraint:
+          description: Reseller constraint.
+          $ref: '#/components/schemas/GoogleAdsGoogleadsV25Common_PolicyTopicConstraint_ResellerConstraint'
+        certificateMissingInCountryList:
+          $ref: '#/components/schemas/GoogleAdsGoogleadsV25Common_PolicyTopicConstraint_CountryConstraintList'
+          description: Countries where a certificate is required for serving.
+        countryConstraintList:
+          description: Countries where the resource cannot serve.
+          $ref: '#/components/schemas/GoogleAdsGoogleadsV25Common_PolicyTopicConstraint_CountryConstraintList'
+        certificateDomainMismatchInCountryList:
+          $ref: '#/components/schemas/GoogleAdsGoogleadsV25Common_PolicyTopicConstraint_CountryConstraintList'
+          description: Countries where the resource's domain is not covered by the certificates associated with it.
+      description: Describes the effect on serving that a policy topic entry will have.
     GoogleAdsGoogleadsV25Services__MutateAssetGroupAssetsResponse:
       type: object
       properties:
@@ -605,69 +610,6 @@ components:
             $ref: '#/components/schemas/GoogleAdsGoogleadsV25Services__MutateAssetGroupAssetResult'
           type: array
       description: Response message for an asset group asset mutate.
-    GoogleAdsGoogleadsV25Common_PolicyTopicConstraint_ResellerConstraint:
-      description: Indicates that a policy topic was constrained due to disapproval of the website for reseller purposes.
-      type: object
-      properties: {}
-    GoogleAdsGoogleadsV25Common__PolicySummary:
-      type: object
-      properties:
-        reviewStatus:
-          x-enumDescriptions:
-          - No value has been specified.
-          - The received value is not known in this version. This is a response-only value.
-          - Currently under review.
-          - Primary review complete. Other reviews may be continuing.
-          - The resource has been resubmitted for approval or its policy decision has been appealed.
-          - The resource is eligible and may be serving but could still undergo further review.
-          enum:
-          - UNSPECIFIED
-          - UNKNOWN
-          - REVIEW_IN_PROGRESS
-          - REVIEWED
-          - UNDER_APPEAL
-          - ELIGIBLE_MAY_SERVE
-          description: Where in the review process the resource is.
-          type: string
-        policyTopicEntries:
-          type: array
-          description: The list of policy findings.
-          items:
-            $ref: '#/components/schemas/GoogleAdsGoogleadsV25Common__PolicyTopicEntry'
-        approvalStatus:
-          x-enumDescriptions:
-          - No value has been specified.
-          - The received value is not known in this version. This is a response-only value.
-          - Will not serve.
-          - Serves with restrictions.
-          - Serves without restrictions.
-          - Will not serve in targeted countries, but may serve for users who are searching for information about the targeted countries.
-          enum:
-          - UNSPECIFIED
-          - UNKNOWN
-          - DISAPPROVED
-          - APPROVED_LIMITED
-          - APPROVED
-          - AREA_OF_INTEREST_ONLY
-          type: string
-          description: The overall approval status, which is calculated based on the status of its individual policy topic entries.
-      description: Contains policy summary information.
-    GoogleAdsGoogleadsV25Common_PolicyTopicEvidence_DestinationTextList:
-      type: object
-      properties:
-        destinationTexts:
-          type: array
-          description: List of text found in the resource's destination page.
-          items:
-            type: string
-      description: A list of strings found in a destination page that caused a policy finding.
-    GoogleAdsGoogleadsV25Common_PolicyTopicConstraint_CountryConstraint:
-      type: object
-      properties:
-        countryCriterion:
-          description: Geo target constant resource name of the country in which serving is constrained.
-          type: string
-      description: Indicates that a resource's ability to serve in a particular country is constrained.
     GoogleAdsGoogleadsV25Services__AssetGroupAssetOperation:
       type: object
       properties:
@@ -685,6 +627,64 @@ components:
           $ref: '#/components/schemas/GoogleAdsGoogleadsV25Resources__AssetGroupAsset'
           description: 'Create operation: No resource name is expected for the new asset group asset.'
       description: A single operation (create, remove) on an asset group asset.
+    GoogleAdsGoogleadsV25Common_PolicyTopicEvidence_DestinationNotWorking:
+      type: object
+      properties:
+        httpErrorCode:
+          format: int64
+          type: string
+          description: The HTTP error code.
+        expandedUrl:
+          type: string
+          description: The full URL that didn't work.
+        device:
+          x-enumDescriptions:
+          - No value has been specified.
+          - The received value is not known in this version. This is a response-only value.
+          - Landing page doesn't work on desktop device.
+          - Landing page doesn't work on Android device.
+          - Landing page doesn't work on iOS device.
+          enum:
+          - UNSPECIFIED
+          - UNKNOWN
+          - DESKTOP
+          - ANDROID
+          - IOS
+          type: string
+          description: The type of device that failed to load the URL.
+        dnsErrorType:
+          description: The type of DNS error.
+          type: string
+          x-enumDescriptions:
+          - No value has been specified.
+          - The received value is not known in this version. This is a response-only value.
+          - Host name not found in DNS when fetching landing page.
+          - Google internal crawler issue when communicating with DNS. This error doesn't mean the landing page doesn't work. Google will recrawl the landing page.
+          enum:
+          - UNSPECIFIED
+          - UNKNOWN
+          - HOSTNAME_NOT_FOUND
+          - GOOGLE_CRAWLER_DNS_ISSUE
+        lastCheckedDateTime:
+          description: 'The time the URL was last checked. The format is "YYYY-MM-DD HH:MM:SS". Examples: "2018-03-05 09:15:00" or "2018-02-01 14:34:30"'
+          type: string
+      description: Evidence details when the destination is returning an HTTP error code or isn't functional in all locations for commonly used devices.
+    GoogleAdsGoogleadsV25Common_PolicyTopicEvidence_TextList:
+      type: object
+      properties:
+        texts:
+          description: The fragments of text from the resource that caused the policy finding.
+          items:
+            type: string
+          type: array
+      description: A list of fragments of text that violated a policy.
+    GoogleAdsGoogleadsV25Common_PolicyTopicConstraint_CountryConstraint:
+      type: object
+      properties:
+        countryCriterion:
+          description: Geo target constant resource name of the country in which serving is constrained.
+          type: string
+      description: Indicates that a resource's ability to serve in a particular country is constrained.
   securitySchemes:
     oauth2:
       type: oauth2

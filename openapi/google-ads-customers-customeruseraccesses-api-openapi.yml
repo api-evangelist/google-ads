@@ -106,7 +106,7 @@ paths:
       summary: Updates, removes permission of a user on a given customer
       tags:
       - customers.customerUserAccesses
-      description: 'Updates, removes permission of a user on a given customer. Operation statuses are returned. List of thrown errors: [AuthenticationError]() [AuthorizationError]() [CustomerUserAccessError]() [FieldMaskError]() [HeaderError]() [InternalError]() [MutateError]() [QuotaError]() [RequestError]()'
+      description: 'Updates, removes permission of a user on a given customer. Operation statuses are returned. List of thrown errors: AuthenticationError AuthorizationError CustomerUserAccessError FieldMaskError HeaderError InternalError MutateError QuotaError RequestError'
       parameters:
       - name: customerId
         in: path
@@ -140,16 +140,6 @@ components:
         operation:
           $ref: '#/components/schemas/GoogleAdsGoogleadsV25Services__CustomerUserAccessOperation'
           description: Required. The operation to perform on the customer
-    GoogleAdsGoogleadsV25Services__MutateCustomerUserAccessResult:
-      description: The result for the customer user access mutate.
-      type: object
-      properties:
-        multiPartyAuthReview:
-          type: string
-          description: The resource name of the multi-party authorization review associated with this mutate.
-        resourceName:
-          description: Returned for successful operations.
-          type: string
     GoogleAdsGoogleadsV25Resources__CustomerUserAccess:
       type: object
       properties:
@@ -214,6 +204,16 @@ components:
           format: google-fieldmask
           type: string
           description: FieldMask that determines which resource fields are modified in an update.
+    GoogleAdsGoogleadsV25Services__MutateCustomerUserAccessResult:
+      description: The result for the customer user access mutate.
+      type: object
+      properties:
+        multiPartyAuthReview:
+          type: string
+          description: The resource name of the multi-party authorization review associated with this mutate.
+        resourceName:
+          description: Returned for successful operations.
+          type: string
   securitySchemes:
     oauth2:
       type: oauth2

@@ -482,7 +482,7 @@ paths:
       description: Data format for response.
     post:
       operationId: googleads_customers_operations_wait
-      summary: Waits until the specified long-running operation is done or reaches at most a specified timeout, returning the latest state
+      summary: Waits until the specified long-running operation is done or reaches at most a…
       tags:
       - customers.operations
       description: Waits until the specified long-running operation is done or reaches at most a specified timeout, returning the latest state. If the operation is already done, the latest state is immediately returned. If the timeout specified is greater than the default HTTP/RPC timeout, the HTTP/RPC timeout is used. If the server does not support this method, it returns `google.rpc.Code.UNIMPLEMENTED`. Note that this method is on a best-effort basis. It may return the latest state before the specified timeout (including immediately), meaning even an immediate response is no guarantee that the operation is done.
@@ -512,6 +512,23 @@ paths:
         - https://www.googleapis.com/auth/adwords
 components:
   schemas:
+    GoogleLongrunning__ListOperationsResponse:
+      type: object
+      properties:
+        nextPageToken:
+          description: The standard List next-page token.
+          type: string
+        operations:
+          type: array
+          description: A list of operations that matches the specified filter in the request.
+          items:
+            $ref: '#/components/schemas/GoogleLongrunning__Operation'
+        unreachable:
+          description: Unordered list. Unreachable resources. Populated when the request sets `ListOperationsRequest.return_partial_success` and reads across collections. For example, when attempting to list all resources across all supported locations.
+          items:
+            type: string
+          type: array
+      description: The response message for Operations.ListOperations.
     GoogleLongrunning__Operation:
       type: object
       properties:
@@ -565,23 +582,6 @@ components:
             type: object
             additionalProperties:
               description: Properties of the object. Contains field @type with type URL.
-    GoogleLongrunning__ListOperationsResponse:
-      type: object
-      properties:
-        nextPageToken:
-          description: The standard List next-page token.
-          type: string
-        operations:
-          type: array
-          description: A list of operations that matches the specified filter in the request.
-          items:
-            $ref: '#/components/schemas/GoogleLongrunning__Operation'
-        unreachable:
-          description: Unordered list. Unreachable resources. Populated when the request sets `ListOperationsRequest.return_partial_success` and reads across collections. For example, when attempting to list all resources across all supported locations.
-          items:
-            type: string
-          type: array
-      description: The response message for Operations.ListOperations.
     GoogleProtobuf__Empty:
       description: 'A generic empty message that you can re-use to avoid defining duplicated empty messages in your APIs. A typical example is to use it as the request or the response type of an API method. For instance: service Foo { rpc Bar(google.protobuf.Empty) returns (google.protobuf.Empty); }'
       type: object

@@ -103,7 +103,7 @@ paths:
       description: Data format for response.
     post:
       operationId: googleads_customers_incentives_applyIncentive
-      summary: Applies the incentive for the ads customer.
+      summary: Applies the incentive for the ads customer
       tags:
       - customers.incentives
       description: Applies the incentive for the ads customer.

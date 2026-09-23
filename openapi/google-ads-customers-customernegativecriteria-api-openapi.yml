@@ -106,7 +106,7 @@ paths:
       summary: Creates or removes criteria
       tags:
       - customers.customerNegativeCriteria
-      description: 'Creates or removes criteria. Operation statuses are returned. List of thrown errors: [AuthenticationError]() [AuthorizationError]() [CriterionError]() [DatabaseError]() [FieldError]() [HeaderError]() [InternalError]() [MutateError]() [QuotaError]() [RequestError]()'
+      description: 'Creates or removes criteria. Operation statuses are returned. List of thrown errors: AuthenticationError AuthorizationError CriterionError DatabaseError FieldError HeaderError InternalError MutateError QuotaError RequestError'
       parameters:
       - name: customerId
         in: path
@@ -133,20 +133,39 @@ paths:
         - https://www.googleapis.com/auth/adwords
 components:
   schemas:
-    GoogleAdsGoogleadsV25Common__YouTubeChannelInfo:
+    GoogleAdsGoogleadsV25Common__MobileAppCategoryInfo:
+      description: A mobile app category criterion.
       type: object
       properties:
-        channelId:
+        mobileAppCategoryConstant:
           type: string
-          description: The YouTube uploader channel id or the channel code of a YouTube channel.
-      description: A YouTube Channel criterion.
-    GoogleAdsGoogleadsV25Common__NegativeKeywordListInfo:
-      description: A Negative Keyword List criterion. Represents a shared set of negative keywords that can be excluded at the account-level. Only one negative keyword list criterion can be attached per account.
+          description: The mobile app category constant resource name.
+    GoogleAdsGoogleadsV25Services__MutateCustomerNegativeCriteriaRequest:
+      description: Request message for CustomerNegativeCriterionService.MutateCustomerNegativeCriteria.
       type: object
       properties:
-        sharedSet:
-          description: The NegativeKeywordListInfo shared set resource name.
+        validateOnly:
+          description: If true, the request is validated but not executed. Only errors are returned, not results.
+          type: boolean
+        responseContentType:
+          x-enumDescriptions:
+          - Not specified. Will return the resource name only in the response.
+          - The mutate response will be the resource name.
+          - The mutate response will contain the resource name and the resource with mutable fields if possible. Otherwise, only the resource name will be returned.
+          enum:
+          - UNSPECIFIED
+          - RESOURCE_NAME_ONLY
+          - MUTABLE_RESOURCE
+          description: The response content type setting. Determines whether the mutable resource or just the resource name should be returned post mutation.
           type: string
+        operations:
+          type: array
+          description: Required. The list of operations to perform on individual criteria.
+          items:
+            $ref: '#/components/schemas/GoogleAdsGoogleadsV25Services__CustomerNegativeCriterionOperation'
+        partialFailure:
+          description: If true, successful operations will be carried out and invalid operations will return errors. If false, all operations will be carried out in one transaction if and only if they are all valid. Default is false.
+          type: boolean
     GoogleAdsGoogleadsV25Common__MobileApplicationInfo:
       type: object
       properties:
@@ -157,76 +176,6 @@ components:
           description: Name of this mobile application.
           type: string
       description: A mobile application criterion.
-    GoogleAdsGoogleadsV25Common__ContentLabelInfo:
-      type: object
-      properties:
-        type:
-          x-enumDescriptions:
-          - Not specified.
-          - Used for return value only. Represents value unknown in this version.
-          - Sexually suggestive content.
-          - Below the fold placement.
-          - Parked domain.
-          - Juvenile, gross & bizarre content.
-          - Profanity & rough language.
-          - Death & tragedy.
-          - Video.
-          - 'Content rating: G.'
-          - 'Content rating: PG.'
-          - 'Content rating: T.'
-          - 'Content rating: MA.'
-          - 'Content rating: not yet rated.'
-          - Embedded video.
-          - Live streaming video.
-          - Sensitive social issues.
-          - Content that's suitable for families to view together, including Made for Kids videos on YouTube.
-          - Video games that simulate hand-to-hand fighting or combat with the use of modern or medieval weapons.
-          - Video games that feature mature content, such as violence, inappropriate language, or sexual suggestiveness.
-          - Health content that people might find sensitive or upsetting, such as medical procedures or images and descriptions of various medical conditions.
-          - Health content from sources that may provide accurate information but aren't as commonly cited as other, more well-known sources.
-          - News content that's been recently announced, regardless of the themes or people being reported on.
-          - News content that people might find sensitive or upsetting, such as crimes, accidents, and natural incidents, or commentary on potentially controversial social and political issues.
-          - News content from sources that aren't featured on Google News or YouTube News.
-          - Political content, such as political statements made by well-known politicians, political elections, or events widely perceived to be political in nature.
-          - Content with religious themes, such as religious teachings or customs, holy sites or places of worship, well-known religious figures or people dressed in religious attire, or religious opinions on social and political issues.
-          enum:
-          - UNSPECIFIED
-          - UNKNOWN
-          - SEXUALLY_SUGGESTIVE
-          - BELOW_THE_FOLD
-          - PARKED_DOMAIN
-          - JUVENILE
-          - PROFANITY
-          - TRAGEDY
-          - VIDEO
-          - VIDEO_RATING_DV_G
-          - VIDEO_RATING_DV_PG
-          - VIDEO_RATING_DV_T
-          - VIDEO_RATING_DV_MA
-          - VIDEO_NOT_YET_RATED
-          - EMBEDDED_VIDEO
-          - LIVE_STREAMING_VIDEO
-          - SOCIAL_ISSUES
-          - BRAND_SUITABILITY_CONTENT_FOR_FAMILIES
-          - BRAND_SUITABILITY_GAMES_FIGHTING
-          - BRAND_SUITABILITY_GAMES_MATURE
-          - BRAND_SUITABILITY_HEALTH_SENSITIVE
-          - BRAND_SUITABILITY_HEALTH_SOURCE_UNDETERMINED
-          - BRAND_SUITABILITY_NEWS_RECENT
-          - BRAND_SUITABILITY_NEWS_SENSITIVE
-          - BRAND_SUITABILITY_NEWS_SOURCE_NOT_FEATURED
-          - BRAND_SUITABILITY_POLITICS
-          - BRAND_SUITABILITY_RELIGION
-          description: Content label type, required for CREATE operations.
-          type: string
-      description: Content Label for category exclusion.
-    GoogleAdsGoogleadsV25Common__MobileAppCategoryInfo:
-      description: A mobile app category criterion.
-      type: object
-      properties:
-        mobileAppCategoryConstant:
-          type: string
-          description: The mobile app category constant resource name.
     GoogleAdsGoogleadsV25Services__MutateCustomerNegativeCriteriaResponse:
       description: Response message for customer negative criterion mutate.
       type: object
@@ -239,16 +188,6 @@ components:
         partialFailureError:
           $ref: '#/components/schemas/GoogleRpc__Status'
           description: Errors that pertain to operation failures in the partial failure mode. Returned only when partial_failure = true and all errors occur inside the operations. If any errors occur outside the operations (for example, auth errors), we return an RPC level error.
-    GoogleAdsGoogleadsV25Services__MutateCustomerNegativeCriteriaResult:
-      type: object
-      properties:
-        customerNegativeCriterion:
-          description: The mutated criterion with only mutable fields after mutate. The field will only be returned when response_content_type is set to "MUTABLE_RESOURCE".
-          $ref: '#/components/schemas/GoogleAdsGoogleadsV25Resources__CustomerNegativeCriterion'
-        resourceName:
-          type: string
-          description: Returned for successful operations.
-      description: The result for the criterion mutate.
     GoogleAdsGoogleadsV25Common__PlacementListInfo:
       description: A Placement List criterion. Represents a shared set of placements that can be excluded at the account-level.
       type: object
@@ -256,13 +195,6 @@ components:
         sharedSet:
           type: string
           description: The PlacementListInfo shared set resource name.
-    GoogleAdsGoogleadsV25Common__IpBlockInfo:
-      type: object
-      properties:
-        ipAddress:
-          type: string
-          description: The IP address or the CIDR block to be excluded.
-      description: 'An IpBlock criterion used for excluding IP addresses. We support excluding individual IP addresses or CIDR blocks. Create one IpBlockInfo criterion for each individual IP address or CIDR block you want to exclude. You can exclude up to 500 IP addresses per campaign. For more details, see [Exclude IP addresses](//support.google.com/google-ads/answer/2456098). IPv4 examples: * Individual address: 192.168.0.1 * Individual address as CIDR block: 192.168.0.1/32 * CIDR block: 192.168.0.0/24 IPv6 examples: * Individual address: 2001:db8:a0b:12f0::1 * Individual address as CIDR block: 2001:db8:a0b:12f0::1/128 * CIDR block: 2001:db8::/48'
     GoogleAdsGoogleadsV25Services__CustomerNegativeCriterionOperation:
       type: object
       properties:
@@ -273,31 +205,6 @@ components:
           description: 'Remove operation: A resource name for the removed criterion is expected, in this format: `customers/{customer_id}/customerNegativeCriteria/{criterion_id}`'
           type: string
       description: A single operation (create or remove) on a customer level negative criterion.
-    GoogleRpc__Status:
-      description: 'The `Status` type defines a logical error model that is suitable for different programming environments, including REST APIs and RPC APIs. It is used by [gRPC](https://github.com/grpc). Each `Status` message contains three pieces of data: error code, error message, and error details. You can find out more about this error model and how to work with it in the [API Design Guide](https://cloud.google.com/apis/design/errors).'
-      type: object
-      properties:
-        message:
-          description: A developer-facing error message, which should be in English. Any user-facing error message should be localized and sent in the google.rpc.Status.details field, or localized by the client.
-          type: string
-        code:
-          type: integer
-          description: The status code, which should be an enum value of google.rpc.Code.
-          format: int32
-        details:
-          type: array
-          description: A list of messages that carry the error details. There is a common set of message types for APIs to use.
-          items:
-            type: object
-            additionalProperties:
-              description: Properties of the object. Contains field @type with type URL.
-    GoogleAdsGoogleadsV25Common__YouTubeVideoInfo:
-      description: A YouTube Video criterion.
-      type: object
-      properties:
-        videoId:
-          type: string
-          description: YouTube video id as it appears on the YouTube watch page.
     GoogleAdsGoogleadsV25Resources__CustomerNegativeCriterion:
       description: A negative criterion for exclusions at the customer level.
       type: object
@@ -439,32 +346,101 @@ components:
         mobileAppCategory:
           description: Immutable. MobileAppCategory.
           $ref: '#/components/schemas/GoogleAdsGoogleadsV25Common__MobileAppCategoryInfo'
-    GoogleAdsGoogleadsV25Services__MutateCustomerNegativeCriteriaRequest:
-      description: Request message for CustomerNegativeCriterionService.MutateCustomerNegativeCriteria.
+    GoogleRpc__Status:
+      description: 'The `Status` type defines a logical error model that is suitable for different programming environments, including REST APIs and RPC APIs. It is used by [gRPC](https://github.com/grpc). Each `Status` message contains three pieces of data: error code, error message, and error details. You can find out more about this error model and how to work with it in the [API Design Guide](https://cloud.google.com/apis/design/errors).'
       type: object
       properties:
-        validateOnly:
-          description: If true, the request is validated but not executed. Only errors are returned, not results.
-          type: boolean
-        responseContentType:
+        message:
+          description: A developer-facing error message, which should be in English. Any user-facing error message should be localized and sent in the google.rpc.Status.details field, or localized by the client.
+          type: string
+        code:
+          type: integer
+          description: The status code, which should be an enum value of google.rpc.Code.
+          format: int32
+        details:
+          type: array
+          description: A list of messages that carry the error details. There is a common set of message types for APIs to use.
+          items:
+            type: object
+            additionalProperties:
+              description: Properties of the object. Contains field @type with type URL.
+    GoogleAdsGoogleadsV25Common__YouTubeChannelInfo:
+      type: object
+      properties:
+        channelId:
+          type: string
+          description: The YouTube uploader channel id or the channel code of a YouTube channel.
+      description: A YouTube Channel criterion.
+    GoogleAdsGoogleadsV25Common__ContentLabelInfo:
+      type: object
+      properties:
+        type:
           x-enumDescriptions:
-          - Not specified. Will return the resource name only in the response.
-          - The mutate response will be the resource name.
-          - The mutate response will contain the resource name and the resource with mutable fields if possible. Otherwise, only the resource name will be returned.
+          - Not specified.
+          - Used for return value only. Represents value unknown in this version.
+          - Sexually suggestive content.
+          - Below the fold placement.
+          - Parked domain.
+          - Juvenile, gross & bizarre content.
+          - Profanity & rough language.
+          - Death & tragedy.
+          - Video.
+          - 'Content rating: G.'
+          - 'Content rating: PG.'
+          - 'Content rating: T.'
+          - 'Content rating: MA.'
+          - 'Content rating: not yet rated.'
+          - Embedded video.
+          - Live streaming video.
+          - Sensitive social issues.
+          - Content that's suitable for families to view together, including Made for Kids videos on YouTube.
+          - Video games that simulate hand-to-hand fighting or combat with the use of modern or medieval weapons.
+          - Video games that feature mature content, such as violence, inappropriate language, or sexual suggestiveness.
+          - Health content that people might find sensitive or upsetting, such as medical procedures or images and descriptions of various medical conditions.
+          - Health content from sources that may provide accurate information but aren't as commonly cited as other, more well-known sources.
+          - News content that's been recently announced, regardless of the themes or people being reported on.
+          - News content that people might find sensitive or upsetting, such as crimes, accidents, and natural incidents, or commentary on potentially controversial social and political issues.
+          - News content from sources that aren't featured on Google News or YouTube News.
+          - Political content, such as political statements made by well-known politicians, political elections, or events widely perceived to be political in nature.
+          - Content with religious themes, such as religious teachings or customs, holy sites or places of worship, well-known religious figures or people dressed in religious attire, or religious opinions on social and political issues.
           enum:
           - UNSPECIFIED
-          - RESOURCE_NAME_ONLY
-          - MUTABLE_RESOURCE
-          description: The response content type setting. Determines whether the mutable resource or just the resource name should be returned post mutation.
+          - UNKNOWN
+          - SEXUALLY_SUGGESTIVE
+          - BELOW_THE_FOLD
+          - PARKED_DOMAIN
+          - JUVENILE
+          - PROFANITY
+          - TRAGEDY
+          - VIDEO
+          - VIDEO_RATING_DV_G
+          - VIDEO_RATING_DV_PG
+          - VIDEO_RATING_DV_T
+          - VIDEO_RATING_DV_MA
+          - VIDEO_NOT_YET_RATED
+          - EMBEDDED_VIDEO
+          - LIVE_STREAMING_VIDEO
+          - SOCIAL_ISSUES
+          - BRAND_SUITABILITY_CONTENT_FOR_FAMILIES
+          - BRAND_SUITABILITY_GAMES_FIGHTING
+          - BRAND_SUITABILITY_GAMES_MATURE
+          - BRAND_SUITABILITY_HEALTH_SENSITIVE
+          - BRAND_SUITABILITY_HEALTH_SOURCE_UNDETERMINED
+          - BRAND_SUITABILITY_NEWS_RECENT
+          - BRAND_SUITABILITY_NEWS_SENSITIVE
+          - BRAND_SUITABILITY_NEWS_SOURCE_NOT_FEATURED
+          - BRAND_SUITABILITY_POLITICS
+          - BRAND_SUITABILITY_RELIGION
+          description: Content label type, required for CREATE operations.
           type: string
-        operations:
-          type: array
-          description: Required. The list of operations to perform on individual criteria.
-          items:
-            $ref: '#/components/schemas/GoogleAdsGoogleadsV25Services__CustomerNegativeCriterionOperation'
-        partialFailure:
-          description: If true, successful operations will be carried out and invalid operations will return errors. If false, all operations will be carried out in one transaction if and only if they are all valid. Default is false.
-          type: boolean
+      description: Content Label for category exclusion.
+    GoogleAdsGoogleadsV25Common__IpBlockInfo:
+      type: object
+      properties:
+        ipAddress:
+          type: string
+          description: The IP address or the CIDR block to be excluded.
+      description: 'An IpBlock criterion used for excluding IP addresses. We support excluding individual IP addresses or CIDR blocks. Create one IpBlockInfo criterion for each individual IP address or CIDR block you want to exclude. You can exclude up to 500 IP addresses per campaign. For more details, see [Exclude IP addresses](//support.google.com/google-ads/answer/2456098). IPv4 examples: * Individual address: 192.168.0.1 * Individual address as CIDR block: 192.168.0.1/32 * CIDR block: 192.168.0.0/24 IPv6 examples: * Individual address: 2001:db8:a0b:12f0::1 * Individual address as CIDR block: 2001:db8:a0b:12f0::1/128 * CIDR block: 2001:db8::/48'
     GoogleAdsGoogleadsV25Common__PlacementInfo:
       description: A placement criterion. This can be used to modify bids for sites when targeting the content network.
       type: object
@@ -472,6 +448,30 @@ components:
         url:
           type: string
           description: URL of the placement. For example, "http://www.domain.com".
+    GoogleAdsGoogleadsV25Common__YouTubeVideoInfo:
+      description: A YouTube Video criterion.
+      type: object
+      properties:
+        videoId:
+          type: string
+          description: YouTube video id as it appears on the YouTube watch page.
+    GoogleAdsGoogleadsV25Common__NegativeKeywordListInfo:
+      description: A Negative Keyword List criterion. Represents a shared set of negative keywords that can be excluded at the account-level. Only one negative keyword list criterion can be attached per account.
+      type: object
+      properties:
+        sharedSet:
+          description: The NegativeKeywordListInfo shared set resource name.
+          type: string
+    GoogleAdsGoogleadsV25Services__MutateCustomerNegativeCriteriaResult:
+      type: object
+      properties:
+        customerNegativeCriterion:
+          description: The mutated criterion with only mutable fields after mutate. The field will only be returned when response_content_type is set to "MUTABLE_RESOURCE".
+          $ref: '#/components/schemas/GoogleAdsGoogleadsV25Resources__CustomerNegativeCriterion'
+        resourceName:
+          type: string
+          description: Returned for successful operations.
+      description: The result for the criterion mutate.
   securitySchemes:
     oauth2:
       type: oauth2

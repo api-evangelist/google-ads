@@ -106,7 +106,7 @@ paths:
       summary: Create or update campaign goal configs
       tags:
       - customers.CampaignGoalConfigs
-      description: 'Create or update campaign goal configs. List of thrown errors: [AuthenticationError]() [AuthorizationError]() [HeaderError]() [InternalError]() [QuotaError]() [RequestError]() [CampaignGoalConfigError]()'
+      description: 'Create or update campaign goal configs. List of thrown errors: AuthenticationError AuthorizationError HeaderError InternalError QuotaError RequestError CampaignGoalConfigError'
       parameters:
       - name: customerId
         in: path
@@ -133,26 +133,43 @@ paths:
         - https://www.googleapis.com/auth/adwords
 components:
   schemas:
-    GoogleAdsGoogleadsV25Common__CustomerLifecycleOptimizationValueSettings:
+    GoogleAdsGoogleadsV25Services__CampaignGoalConfigOperation:
       type: object
       properties:
-        valueMultiplier:
-          format: double
-          type: number
-          description: Conversion value multiplier.
-        additionalValue:
-          description: Incremental conversion value.
-          type: number
-          format: double
-        additionalHighLifetimeValue:
-          description: Incremental high lifetime conversion value.
-          type: number
-          format: double
-        highLifetimeValueMultiplier:
-          format: double
-          type: number
-          description: High lifetime conversion value multiplier.
-      description: Lifecycle goal optimization value settings.
+        update:
+          description: Update an existing campaign goal config.
+          $ref: '#/components/schemas/GoogleAdsGoogleadsV25Resources__CampaignGoalConfig'
+        updateMask:
+          description: FieldMask that determines which fields are modified in an update.
+          type: string
+          format: google-fieldmask
+        create:
+          $ref: '#/components/schemas/GoogleAdsGoogleadsV25Resources__CampaignGoalConfig'
+          description: Create a new campaign goal config.
+        remove:
+          description: Remove an existing campaign goal config.
+          type: string
+      description: A single mutate operation on the campaign goal config.
+    GoogleAdsGoogleadsV25Common_CampaignGoalSettings_CampaignRetentionGoalSettings:
+      type: object
+      properties:
+        targetOption:
+          description: Retention goal optimization mode for this campaign. Defaults to TARGET_ALL. Only customers on the allowlist can set target_option.
+          type: string
+          x-enumDescriptions:
+          - Not specified.
+          - Used for return value only. Represents value unknown in this version.
+          - The mode is used when the campaign optimizes for all customers, which is the default value.
+          - This mode configures the campaign to target only customers who have previously interacted but are now lapsed or disengaged.
+          enum:
+          - UNSPECIFIED
+          - UNKNOWN
+          - TARGET_ALL
+          - TARGET_SPECIFIC
+        valueSettingsOverride:
+          $ref: '#/components/schemas/GoogleAdsGoogleadsV25Common__CustomerLifecycleOptimizationValueSettings'
+          description: Retention goal campaign specific value settings.
+      description: Retention campaign goal settings.
     GoogleAdsGoogleadsV25Services__MutateCampaignGoalConfigsResponse:
       description: Response message for a campaign goal config mutate.
       type: object
@@ -202,36 +219,39 @@ components:
           description: 'Immutable. The resource name of the campaign goal config. campaign goal config resource names have the form: `customers/{customer_id}/campaignGoalConfigs/{campaign_id}~{goal_id}`'
           type: string
       description: A link between a campaign and a goal enabling campaign-specific optimization.
-    GoogleAdsGoogleadsV25Common_CampaignGoalSettings_CampaignLoyaltyRetentionGoalSettings:
-      description: Loyalty retention campaign goal settings.
+    GoogleAdsGoogleadsV25Services__MutateCampaignGoalConfigsRequest:
       type: object
       properties:
-        enableBidAdjustmentsForLoyaltyMembers:
+        operations:
+          description: Required. The list of operations to perform on the campaign goal configs.
+          items:
+            $ref: '#/components/schemas/GoogleAdsGoogleadsV25Services__CampaignGoalConfigOperation'
+          type: array
+        validateOnly:
+          description: Optional. If true, the request is validated but not executed. Only errors are returned, not results.
           type: boolean
-          description: Whether to adjust bids for loyalty members.
-        showTargetedLoyaltyMemberBenefitsInPla:
-          description: Whether to show targeted loyalty member benefits in PLA format in eligible countries.
+        partialFailure:
           type: boolean
-        valueSettingsOverride:
-          description: Loyalty retention goal campaign specific value settings.
-          $ref: '#/components/schemas/GoogleAdsGoogleadsV25Common__CustomerLifecycleOptimizationValueSettings'
-    GoogleAdsGoogleadsV25Services__CampaignGoalConfigOperation:
+          description: Optional. If true, successful operations will be carried out and invalid operations will return errors. If false, all operations will be carried out in one transaction if and only if they are all valid. Default is false.
+      description: Request message for CampaignGoalConfigService.MutateCampaignGoalConfigs.
+    GoogleRpc__Status:
+      description: 'The `Status` type defines a logical error model that is suitable for different programming environments, including REST APIs and RPC APIs. It is used by [gRPC](https://github.com/grpc). Each `Status` message contains three pieces of data: error code, error message, and error details. You can find out more about this error model and how to work with it in the [API Design Guide](https://cloud.google.com/apis/design/errors).'
       type: object
       properties:
-        update:
-          description: Update an existing campaign goal config.
-          $ref: '#/components/schemas/GoogleAdsGoogleadsV25Resources__CampaignGoalConfig'
-        updateMask:
-          description: FieldMask that determines which fields are modified in an update.
+        message:
+          description: A developer-facing error message, which should be in English. Any user-facing error message should be localized and sent in the google.rpc.Status.details field, or localized by the client.
           type: string
-          format: google-fieldmask
-        create:
-          $ref: '#/components/schemas/GoogleAdsGoogleadsV25Resources__CampaignGoalConfig'
-          description: Create a new campaign goal config.
-        remove:
-          description: Remove an existing campaign goal config.
-          type: string
-      description: A single mutate operation on the campaign goal config.
+        code:
+          type: integer
+          description: The status code, which should be an enum value of google.rpc.Code.
+          format: int32
+        details:
+          type: array
+          description: A list of messages that carry the error details. There is a common set of message types for APIs to use.
+          items:
+            type: object
+            additionalProperties:
+              description: Properties of the object. Contains field @type with type URL.
     GoogleAdsGoogleadsV25Common_CampaignGoalSettings_CampaignNewCustomerAcquisitionGoalSettings:
       description: New Customer Acquisition campaign goal settings.
       type: object
@@ -252,44 +272,6 @@ components:
         valueSettingsOverride:
           description: New Customer Acquisition goal campaign specific value settings.
           $ref: '#/components/schemas/GoogleAdsGoogleadsV25Common__CustomerLifecycleOptimizationValueSettings'
-    GoogleAdsGoogleadsV25Common_CampaignGoalSettings_CampaignRetentionGoalSettings:
-      type: object
-      properties:
-        targetOption:
-          description: Retention goal optimization mode for this campaign. Defaults to TARGET_ALL. Only customers on the allowlist can set target_option.
-          type: string
-          x-enumDescriptions:
-          - Not specified.
-          - Used for return value only. Represents value unknown in this version.
-          - The mode is used when the campaign optimizes for all customers, which is the default value.
-          - This mode configures the campaign to target only customers who have previously interacted but are now lapsed or disengaged.
-          enum:
-          - UNSPECIFIED
-          - UNKNOWN
-          - TARGET_ALL
-          - TARGET_SPECIFIC
-        valueSettingsOverride:
-          $ref: '#/components/schemas/GoogleAdsGoogleadsV25Common__CustomerLifecycleOptimizationValueSettings'
-          description: Retention goal campaign specific value settings.
-      description: Retention campaign goal settings.
-    GoogleRpc__Status:
-      description: 'The `Status` type defines a logical error model that is suitable for different programming environments, including REST APIs and RPC APIs. It is used by [gRPC](https://github.com/grpc). Each `Status` message contains three pieces of data: error code, error message, and error details. You can find out more about this error model and how to work with it in the [API Design Guide](https://cloud.google.com/apis/design/errors).'
-      type: object
-      properties:
-        message:
-          description: A developer-facing error message, which should be in English. Any user-facing error message should be localized and sent in the google.rpc.Status.details field, or localized by the client.
-          type: string
-        code:
-          type: integer
-          description: The status code, which should be an enum value of google.rpc.Code.
-          format: int32
-        details:
-          type: array
-          description: A list of messages that carry the error details. There is a common set of message types for APIs to use.
-          items:
-            type: object
-            additionalProperties:
-              description: Properties of the object. Contains field @type with type URL.
     GoogleAdsGoogleadsV25Services__MutateCampaignGoalConfigResult:
       type: object
       properties:
@@ -297,21 +279,39 @@ components:
           type: string
           description: Returned for successful operations.
       description: The result for the campaign goal config mutate.
-    GoogleAdsGoogleadsV25Services__MutateCampaignGoalConfigsRequest:
+    GoogleAdsGoogleadsV25Common_CampaignGoalSettings_CampaignLoyaltyRetentionGoalSettings:
+      description: Loyalty retention campaign goal settings.
       type: object
       properties:
-        operations:
-          description: Required. The list of operations to perform on the campaign goal configs.
-          items:
-            $ref: '#/components/schemas/GoogleAdsGoogleadsV25Services__CampaignGoalConfigOperation'
-          type: array
-        validateOnly:
-          description: Optional. If true, the request is validated but not executed. Only errors are returned, not results.
+        enableBidAdjustmentsForLoyaltyMembers:
           type: boolean
-        partialFailure:
+          description: Whether to adjust bids for loyalty members.
+        showTargetedLoyaltyMemberBenefitsInPla:
+          description: Whether to show targeted loyalty member benefits in PLA format in eligible countries.
           type: boolean
-          description: Optional. If true, successful operations will be carried out and invalid operations will return errors. If false, all operations will be carried out in one transaction if and only if they are all valid. Default is false.
-      description: Request message for CampaignGoalConfigService.MutateCampaignGoalConfigs.
+        valueSettingsOverride:
+          description: Loyalty retention goal campaign specific value settings.
+          $ref: '#/components/schemas/GoogleAdsGoogleadsV25Common__CustomerLifecycleOptimizationValueSettings'
+    GoogleAdsGoogleadsV25Common__CustomerLifecycleOptimizationValueSettings:
+      type: object
+      properties:
+        valueMultiplier:
+          format: double
+          type: number
+          description: Conversion value multiplier.
+        additionalValue:
+          description: Incremental conversion value.
+          type: number
+          format: double
+        additionalHighLifetimeValue:
+          description: Incremental high lifetime conversion value.
+          type: number
+          format: double
+        highLifetimeValueMultiplier:
+          format: double
+          type: number
+          description: High lifetime conversion value multiplier.
+      description: Lifecycle goal optimization value settings.
   securitySchemes:
     oauth2:
       type: oauth2

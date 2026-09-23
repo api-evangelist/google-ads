@@ -103,10 +103,10 @@ paths:
       description: Data format for response.
     get:
       operationId: googleads_customers_paymentsAccounts_list
-      summary: Returns all payments accounts associated with all managers between the login customer ID and specified serving customer in the hierarchy, inclusive
+      summary: Returns all payments accounts associated with all managers between the login…
       tags:
       - customers.paymentsAccounts
-      description: 'Returns all payments accounts associated with all managers between the login customer ID and specified serving customer in the hierarchy, inclusive. List of thrown errors: [AuthenticationError]() [AuthorizationError]() [HeaderError]() [InternalError]() [PaymentsAccountError]() [QuotaError]() [RequestError]()'
+      description: 'Returns all payments accounts associated with all managers between the login customer ID and specified serving customer in the hierarchy, inclusive. List of thrown errors: AuthenticationError AuthorizationError HeaderError InternalError PaymentsAccountError QuotaError RequestError'
       parameters:
       - name: customerId
         in: path

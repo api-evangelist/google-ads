@@ -133,6 +133,26 @@ paths:
         - https://www.googleapis.com/auth/adwords
 components:
   schemas:
+    GoogleAdsGoogleadsV25Services__CustomerCustomizerOperation:
+      description: A single operation (create, remove) on a customizer attribute.
+      type: object
+      properties:
+        create:
+          description: 'Create operation: No resource name is expected for the new customer customizer'
+          $ref: '#/components/schemas/GoogleAdsGoogleadsV25Resources__CustomerCustomizer'
+        remove:
+          description: 'Remove operation: A resource name for the removed customer customizer is expected, in this format: `customers/{customer_id}/customerCustomizers/{customizer_attribute_id}`'
+          type: string
+    GoogleAdsGoogleadsV25Services__MutateCustomerCustomizerResult:
+      type: object
+      properties:
+        resourceName:
+          type: string
+          description: Returned for successful operations.
+        customerCustomizer:
+          description: The mutated CustomerCustomizer with only mutable fields after mutate. The field will only be returned when response_content_type is set to "MUTABLE_RESOURCE".
+          $ref: '#/components/schemas/GoogleAdsGoogleadsV25Resources__CustomerCustomizer'
+      description: The result for the customizer attribute mutate.
     GoogleAdsGoogleadsV25Services__MutateCustomerCustomizersResponse:
       type: object
       properties:
@@ -145,32 +165,6 @@ components:
             $ref: '#/components/schemas/GoogleAdsGoogleadsV25Services__MutateCustomerCustomizerResult'
           type: array
       description: Response message for a customizer attribute mutate.
-    GoogleAdsGoogleadsV25Resources__CustomerCustomizer:
-      description: A customizer value for the associated CustomizerAttribute at the Customer level.
-      type: object
-      properties:
-        customizerAttribute:
-          description: Required. Immutable. The customizer attribute which is linked to the customer.
-          type: string
-        status:
-          x-enumDescriptions:
-          - The status has not been specified.
-          - The received value is not known in this version.
-          - The customizer value is enabled.
-          - The customizer value is removed.
-          enum:
-          - UNSPECIFIED
-          - UNKNOWN
-          - ENABLED
-          - REMOVED
-          type: string
-          description: Output only. The status of the customer customizer attribute.
-        resourceName:
-          description: 'Immutable. The resource name of the customer customizer. Customer customizer resource names have the form: `customers/{customer_id}/customerCustomizers/{customizer_attribute_id}`'
-          type: string
-        value:
-          description: Required. The value to associate with the customizer attribute at this level. The value must be of the type specified for the CustomizerAttribute.
-          $ref: '#/components/schemas/GoogleAdsGoogleadsV25Common__CustomizerValue'
     GoogleRpc__Status:
       description: 'The `Status` type defines a logical error model that is suitable for different programming environments, including REST APIs and RPC APIs. It is used by [gRPC](https://github.com/grpc). Each `Status` message contains three pieces of data: error code, error message, and error details. You can find out more about this error model and how to work with it in the [API Design Guide](https://cloud.google.com/apis/design/errors).'
       type: object
@@ -189,16 +183,6 @@ components:
             type: object
             additionalProperties:
               description: Properties of the object. Contains field @type with type URL.
-    GoogleAdsGoogleadsV25Services__MutateCustomerCustomizerResult:
-      type: object
-      properties:
-        resourceName:
-          type: string
-          description: Returned for successful operations.
-        customerCustomizer:
-          description: The mutated CustomerCustomizer with only mutable fields after mutate. The field will only be returned when response_content_type is set to "MUTABLE_RESOURCE".
-          $ref: '#/components/schemas/GoogleAdsGoogleadsV25Resources__CustomerCustomizer'
-      description: The result for the customizer attribute mutate.
     GoogleAdsGoogleadsV25Services__MutateCustomerCustomizersRequest:
       description: Request message for CustomerCustomizerService.MutateCustomerCustomizers.
       type: object
@@ -225,16 +209,6 @@ components:
           items:
             $ref: '#/components/schemas/GoogleAdsGoogleadsV25Services__CustomerCustomizerOperation'
           type: array
-    GoogleAdsGoogleadsV25Services__CustomerCustomizerOperation:
-      description: A single operation (create, remove) on a customizer attribute.
-      type: object
-      properties:
-        create:
-          description: 'Create operation: No resource name is expected for the new customer customizer'
-          $ref: '#/components/schemas/GoogleAdsGoogleadsV25Resources__CustomerCustomizer'
-        remove:
-          description: 'Remove operation: A resource name for the removed customer customizer is expected, in this format: `customers/{customer_id}/customerCustomizers/{customizer_attribute_id}`'
-          type: string
     GoogleAdsGoogleadsV25Common__CustomizerValue:
       description: A customizer value that is referenced in customizer linkage entities like CustomerCustomizer, CampaignCustomizer, etc.
       type: object
@@ -259,6 +233,32 @@ components:
         stringValue:
           description: Required. Value to insert in creative text. Customizer values of all types are stored as string to make formatting unambiguous.
           type: string
+    GoogleAdsGoogleadsV25Resources__CustomerCustomizer:
+      description: A customizer value for the associated CustomizerAttribute at the Customer level.
+      type: object
+      properties:
+        customizerAttribute:
+          description: Required. Immutable. The customizer attribute which is linked to the customer.
+          type: string
+        status:
+          x-enumDescriptions:
+          - The status has not been specified.
+          - The received value is not known in this version.
+          - The customizer value is enabled.
+          - The customizer value is removed.
+          enum:
+          - UNSPECIFIED
+          - UNKNOWN
+          - ENABLED
+          - REMOVED
+          type: string
+          description: Output only. The status of the customer customizer attribute.
+        resourceName:
+          description: 'Immutable. The resource name of the customer customizer. Customer customizer resource names have the form: `customers/{customer_id}/customerCustomizers/{customizer_attribute_id}`'
+          type: string
+        value:
+          description: Required. The value to associate with the customizer attribute at this level. The value must be of the type specified for the CustomizerAttribute.
+          $ref: '#/components/schemas/GoogleAdsGoogleadsV25Common__CustomizerValue'
   securitySchemes:
     oauth2:
       type: oauth2

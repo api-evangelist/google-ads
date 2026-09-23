@@ -106,7 +106,7 @@ paths:
       summary: Creates, updates, or removes Keyword Plan campaign keywords
       tags:
       - customers.keywordPlanCampaignKeywords
-      description: 'Creates, updates, or removes Keyword Plan campaign keywords. Operation statuses are returned. List of thrown errors: [AuthenticationError]() [AuthorizationError]() [DatabaseError]() [FieldError]() [HeaderError]() [InternalError]() [KeywordPlanAdGroupKeywordError]() [KeywordPlanCampaignKeywordError]() [QuotaError]() [RequestError]() [ResourceCountLimitExceededError]()'
+      description: 'Creates, updates, or removes Keyword Plan campaign keywords. Operation statuses are returned. List of thrown errors: AuthenticationError AuthorizationError DatabaseError FieldError HeaderError InternalError KeywordPlanAdGroupKeywordError KeywordPlanCampaignKeywordError QuotaError RequestError ResourceCountLimitExceededError'
       parameters:
       - name: customerId
         in: path
@@ -140,6 +140,24 @@ components:
           description: Returned for successful operations.
           type: string
       description: The result for the Keyword Plan campaign keyword mutate.
+    GoogleRpc__Status:
+      description: 'The `Status` type defines a logical error model that is suitable for different programming environments, including REST APIs and RPC APIs. It is used by [gRPC](https://github.com/grpc). Each `Status` message contains three pieces of data: error code, error message, and error details. You can find out more about this error model and how to work with it in the [API Design Guide](https://cloud.google.com/apis/design/errors).'
+      type: object
+      properties:
+        message:
+          description: A developer-facing error message, which should be in English. Any user-facing error message should be localized and sent in the google.rpc.Status.details field, or localized by the client.
+          type: string
+        code:
+          type: integer
+          description: The status code, which should be an enum value of google.rpc.Code.
+          format: int32
+        details:
+          type: array
+          description: A list of messages that carry the error details. There is a common set of message types for APIs to use.
+          items:
+            type: object
+            additionalProperties:
+              description: Properties of the object. Contains field @type with type URL.
     GoogleAdsGoogleadsV25Resources__KeywordPlanCampaignKeyword:
       description: A Keyword Plan Campaign keyword. Only negative keywords are supported for Campaign Keyword.
       type: object
@@ -175,24 +193,6 @@ components:
           format: int64
           description: Output only. The ID of the Keyword Plan negative keyword.
           type: string
-    GoogleRpc__Status:
-      description: 'The `Status` type defines a logical error model that is suitable for different programming environments, including REST APIs and RPC APIs. It is used by [gRPC](https://github.com/grpc). Each `Status` message contains three pieces of data: error code, error message, and error details. You can find out more about this error model and how to work with it in the [API Design Guide](https://cloud.google.com/apis/design/errors).'
-      type: object
-      properties:
-        message:
-          description: A developer-facing error message, which should be in English. Any user-facing error message should be localized and sent in the google.rpc.Status.details field, or localized by the client.
-          type: string
-        code:
-          type: integer
-          description: The status code, which should be an enum value of google.rpc.Code.
-          format: int32
-        details:
-          type: array
-          description: A list of messages that carry the error details. There is a common set of message types for APIs to use.
-          items:
-            type: object
-            additionalProperties:
-              description: Properties of the object. Contains field @type with type URL.
     GoogleAdsGoogleadsV25Services__MutateKeywordPlanCampaignKeywordsRequest:
       type: object
       properties:
@@ -208,6 +208,18 @@ components:
           type: boolean
           description: If true, successful operations will be carried out and invalid operations will return errors. If false, all operations will be carried out in one transaction if and only if they are all valid. Default is false.
       description: Request message for KeywordPlanCampaignKeywordService.MutateKeywordPlanCampaignKeywords.
+    GoogleAdsGoogleadsV25Services__MutateKeywordPlanCampaignKeywordsResponse:
+      type: object
+      properties:
+        partialFailureError:
+          $ref: '#/components/schemas/GoogleRpc__Status'
+          description: Errors that pertain to operation failures in the partial failure mode. Returned only when partial_failure = true and all errors occur inside the operations. If any errors occur outside the operations (for example, auth errors), we return an RPC level error.
+        results:
+          type: array
+          description: All results for the mutate.
+          items:
+            $ref: '#/components/schemas/GoogleAdsGoogleadsV25Services__MutateKeywordPlanCampaignKeywordResult'
+      description: Response message for a Keyword Plan campaign keyword mutate.
     GoogleAdsGoogleadsV25Services__KeywordPlanCampaignKeywordOperation:
       type: object
       properties:
@@ -225,18 +237,6 @@ components:
           description: 'Remove operation: A resource name for the removed Keyword Plan campaign keywords expected in this format: `customers/{customer_id}/keywordPlanCampaignKeywords/{kp_campaign_keyword_id}`'
           type: string
       description: A single operation (create, update, remove) on a Keyword Plan campaign keyword.
-    GoogleAdsGoogleadsV25Services__MutateKeywordPlanCampaignKeywordsResponse:
-      type: object
-      properties:
-        partialFailureError:
-          $ref: '#/components/schemas/GoogleRpc__Status'
-          description: Errors that pertain to operation failures in the partial failure mode. Returned only when partial_failure = true and all errors occur inside the operations. If any errors occur outside the operations (for example, auth errors), we return an RPC level error.
-        results:
-          type: array
-          description: All results for the mutate.
-          items:
-            $ref: '#/components/schemas/GoogleAdsGoogleadsV25Services__MutateKeywordPlanCampaignKeywordResult'
-      description: Response message for a Keyword Plan campaign keyword mutate.
   securitySchemes:
     oauth2:
       type: oauth2

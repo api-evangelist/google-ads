@@ -106,7 +106,7 @@ paths:
       summary: Creates or updates a customer client link
       tags:
       - customers.customerClientLinks
-      description: 'Creates or updates a customer client link. Operation statuses are returned. List of thrown errors: [AuthenticationError]() [AuthorizationError]() [DatabaseError]() [FieldError]() [FieldMaskError]() [HeaderError]() [InternalError]() [ManagerLinkError]() [MutateError]() [NewResourceCreationError]() [QuotaError]() [RequestError]()'
+      description: 'Creates or updates a customer client link. Operation statuses are returned. List of thrown errors: AuthenticationError AuthorizationError DatabaseError FieldError FieldMaskError HeaderError InternalError ManagerLinkError MutateError NewResourceCreationError QuotaError RequestError'
       parameters:
       - name: customerId
         in: path
@@ -133,13 +133,6 @@ paths:
         - https://www.googleapis.com/auth/adwords
 components:
   schemas:
-    GoogleAdsGoogleadsV25Services__MutateCustomerClientLinkResult:
-      description: The result for a single customer client link mutate.
-      type: object
-      properties:
-        resourceName:
-          type: string
-          description: Returned for successful operations.
     GoogleAdsGoogleadsV25Services__CustomerClientLinkOperation:
       type: object
       properties:
@@ -154,23 +147,13 @@ components:
           $ref: '#/components/schemas/GoogleAdsGoogleadsV25Resources__CustomerClientLink'
           description: 'Update operation: The link is expected to have a valid resource name.'
       description: A single operation (create, update) on a CustomerClientLink.
-    GoogleAdsGoogleadsV25Services__MutateCustomerClientLinkResponse:
+    GoogleAdsGoogleadsV25Services__MutateCustomerClientLinkResult:
+      description: The result for a single customer client link mutate.
       type: object
       properties:
-        result:
-          description: A result that identifies the resource affected by the mutate request.
-          $ref: '#/components/schemas/GoogleAdsGoogleadsV25Services__MutateCustomerClientLinkResult'
-      description: Response message for a CustomerClientLink mutate.
-    GoogleAdsGoogleadsV25Services__MutateCustomerClientLinkRequest:
-      type: object
-      properties:
-        operation:
-          $ref: '#/components/schemas/GoogleAdsGoogleadsV25Services__CustomerClientLinkOperation'
-          description: Required. The operation to perform on the individual CustomerClientLink.
-        validateOnly:
-          description: If true, the request is validated but not executed. Only errors are returned, not results.
-          type: boolean
-      description: Request message for CustomerClientLinkService.MutateCustomerClientLink.
+        resourceName:
+          type: string
+          description: Returned for successful operations.
     GoogleAdsGoogleadsV25Resources__CustomerClientLink:
       type: object
       properties:
@@ -207,6 +190,23 @@ components:
           description: 'Immutable. Name of the resource. CustomerClientLink resource names have the form: `customers/{customer_id}/customerClientLinks/{client_customer_id}~{manager_link_id}`'
           type: string
       description: Represents customer client link relationship.
+    GoogleAdsGoogleadsV25Services__MutateCustomerClientLinkRequest:
+      type: object
+      properties:
+        operation:
+          $ref: '#/components/schemas/GoogleAdsGoogleadsV25Services__CustomerClientLinkOperation'
+          description: Required. The operation to perform on the individual CustomerClientLink.
+        validateOnly:
+          description: If true, the request is validated but not executed. Only errors are returned, not results.
+          type: boolean
+      description: Request message for CustomerClientLinkService.MutateCustomerClientLink.
+    GoogleAdsGoogleadsV25Services__MutateCustomerClientLinkResponse:
+      type: object
+      properties:
+        result:
+          description: A result that identifies the resource affected by the mutate request.
+          $ref: '#/components/schemas/GoogleAdsGoogleadsV25Services__MutateCustomerClientLinkResult'
+      description: Response message for a CustomerClientLink mutate.
   securitySchemes:
     oauth2:
       type: oauth2

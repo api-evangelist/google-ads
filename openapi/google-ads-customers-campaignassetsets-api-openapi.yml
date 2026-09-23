@@ -181,16 +181,6 @@ components:
           description: All results for the mutate.
           items:
             $ref: '#/components/schemas/GoogleAdsGoogleadsV25Services__MutateCampaignAssetSetResult'
-    GoogleAdsGoogleadsV25Services__CampaignAssetSetOperation:
-      description: A single operation (create, remove) on a campaign asset set.
-      type: object
-      properties:
-        create:
-          description: 'Create operation: No resource name is expected for the new campaign asset set.'
-          $ref: '#/components/schemas/GoogleAdsGoogleadsV25Resources__CampaignAssetSet'
-        remove:
-          type: string
-          description: 'Remove operation: A resource name for the removed campaign asset set is expected, in this format: `customers/{customer_id}/campaignAssetSets/{campaign_id}~{asset_set_id}`'
     GoogleRpc__Status:
       description: 'The `Status` type defines a logical error model that is suitable for different programming environments, including REST APIs and RPC APIs. It is used by [gRPC](https://github.com/grpc). Each `Status` message contains three pieces of data: error code, error message, and error details. You can find out more about this error model and how to work with it in the [API Design Guide](https://cloud.google.com/apis/design/errors).'
       type: object
@@ -235,6 +225,16 @@ components:
           description: Immutable. The campaign to which this asset set is linked.
           type: string
       description: CampaignAssetSet is the linkage between a campaign and an asset set. Adding a CampaignAssetSet links an asset set with a campaign.
+    GoogleAdsGoogleadsV25Services__CampaignAssetSetOperation:
+      description: A single operation (create, remove) on a campaign asset set.
+      type: object
+      properties:
+        create:
+          description: 'Create operation: No resource name is expected for the new campaign asset set.'
+          $ref: '#/components/schemas/GoogleAdsGoogleadsV25Resources__CampaignAssetSet'
+        remove:
+          type: string
+          description: 'Remove operation: A resource name for the removed campaign asset set is expected, in this format: `customers/{customer_id}/campaignAssetSets/{campaign_id}~{asset_set_id}`'
   securitySchemes:
     oauth2:
       type: oauth2

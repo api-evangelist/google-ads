@@ -1,6 +1,6 @@
 openapi: 3.2.0
 info:
-  title: Google Ad Groups Ads API
+  title: Google Ads API
   description: 'The Google Ads API is the modern programmatic interface to Google Ads and the
 
     next generation of the AdWords API. It enables developers to interact directly
@@ -11,9 +11,7 @@ info:
 
     creating, reading, updating, and removing campaigns, ad groups, ads, keywords,
 
-    and retrieving performance reports using Google Ads Query Language (GAQL).
-
-    '
+    and retrieving performance reports using Google Ads Query Language (GAQL).'
   version: v18
   contact:
     name: Google Ads API Support
@@ -37,9 +35,7 @@ paths:
 
         creative content shown to users. Supports responsive search ads,
 
-        expanded text ads, display ads, and other ad formats.
-
-        '
+        expanded text ads, display ads, and other ad formats.'
       operationId: mutateAdGroupAds
       tags:
       - Ads
@@ -78,6 +74,128 @@ paths:
                 $ref: '#/components/schemas/GoogleAdsFailure'
 components:
   schemas:
+    AdGroupAdOperation:
+      type: object
+      properties:
+        create:
+          $ref: '#/components/schemas/AdGroupAd'
+        update:
+          $ref: '#/components/schemas/AdGroupAd'
+        remove:
+          type: string
+        updateMask:
+          type: string
+    MutateAdGroupAdsRequest:
+      type: object
+      required:
+      - operations
+      properties:
+        operations:
+          type: array
+          items:
+            $ref: '#/components/schemas/AdGroupAdOperation'
+        partialFailure:
+          type: boolean
+        validateOnly:
+          type: boolean
+    GoogleAdsFailure:
+      type: object
+      description: Error response from the Google Ads API.
+      properties:
+        errors:
+          type: array
+          items:
+            $ref: '#/components/schemas/GoogleAdsError'
+    MutateAdGroupAdsResponse:
+      type: object
+      properties:
+        results:
+          type: array
+          items:
+            type: object
+            properties:
+              resourceName:
+                type: string
+        partialFailureError:
+          $ref: '#/components/schemas/Status'
+    AdGroupAd:
+      type: object
+      description: An ad within an ad group.
+      properties:
+        resourceName:
+          type: string
+          description: Resource name of the ad group ad.
+        status:
+          type: string
+          enum:
+          - ENABLED
+          - PAUSED
+          - REMOVED
+          - UNKNOWN
+          - UNSPECIFIED
+          description: The status of the ad.
+        adGroup:
+          type: string
+          description: Resource name of the ad group this ad belongs to.
+        ad:
+          $ref: '#/components/schemas/Ad'
+        policySummary:
+          $ref: '#/components/schemas/PolicySummary'
+        adStrength:
+          type: string
+          enum:
+          - EXCELLENT
+          - GOOD
+          - AVERAGE
+          - POOR
+          - NO_ADS
+          - UNKNOWN
+          - UNSPECIFIED
+          description: Overall ad strength rating for responsive search ads.
+    AdTextAsset:
+      type: object
+      description: A text asset used in responsive ads.
+      properties:
+        text:
+          type: string
+          description: The text content of the asset.
+        pinnedField:
+          type: string
+          enum:
+          - HEADLINE_1
+          - HEADLINE_2
+          - HEADLINE_3
+          - DESCRIPTION_1
+          - DESCRIPTION_2
+          - UNSPECIFIED
+          description: Pin position for this text asset in ad rendering.
+    GoogleAdsError:
+      type: object
+      properties:
+        errorCode:
+          type: object
+          description: The error code with a specific error enum and value.
+          additionalProperties:
+            type: string
+        message:
+          type: string
+          description: Human-readable error message.
+        trigger:
+          type: object
+          description: The value that triggered the error.
+        location:
+          type: object
+          description: Location of the error in the request.
+          properties:
+            fieldPathElements:
+              type: array
+              items:
+                type: object
+                properties:
+                  fieldName:
+                    type: string
+                  index:
+                    type: integer
     Ad:
       type: object
       description: The creative content of an ad.
@@ -122,97 +240,6 @@ components:
           $ref: '#/components/schemas/ResponsiveSearchAdInfo'
         responsiveDisplayAd:
           $ref: '#/components/schemas/ResponsiveDisplayAdInfo'
-    GoogleAdsError:
-      type: object
-      properties:
-        errorCode:
-          type: object
-          description: The error code with a specific error enum and value.
-          additionalProperties:
-            type: string
-        message:
-          type: string
-          description: Human-readable error message.
-        trigger:
-          type: object
-          description: The value that triggered the error.
-        location:
-          type: object
-          description: Location of the error in the request.
-          properties:
-            fieldPathElements:
-              type: array
-              items:
-                type: object
-                properties:
-                  fieldName:
-                    type: string
-                  index:
-                    type: integer
-    MutateAdGroupAdsRequest:
-      type: object
-      required:
-      - operations
-      properties:
-        operations:
-          type: array
-          items:
-            $ref: '#/components/schemas/AdGroupAdOperation'
-        partialFailure:
-          type: boolean
-        validateOnly:
-          type: boolean
-    AdTextAsset:
-      type: object
-      description: A text asset used in responsive ads.
-      properties:
-        text:
-          type: string
-          description: The text content of the asset.
-        pinnedField:
-          type: string
-          enum:
-          - HEADLINE_1
-          - HEADLINE_2
-          - HEADLINE_3
-          - DESCRIPTION_1
-          - DESCRIPTION_2
-          - UNSPECIFIED
-          description: Pin position for this text asset in ad rendering.
-    AdGroupAd:
-      type: object
-      description: An ad within an ad group.
-      properties:
-        resourceName:
-          type: string
-          description: Resource name of the ad group ad.
-        status:
-          type: string
-          enum:
-          - ENABLED
-          - PAUSED
-          - REMOVED
-          - UNKNOWN
-          - UNSPECIFIED
-          description: The status of the ad.
-        adGroup:
-          type: string
-          description: Resource name of the ad group this ad belongs to.
-        ad:
-          $ref: '#/components/schemas/Ad'
-        policySummary:
-          $ref: '#/components/schemas/PolicySummary'
-        adStrength:
-          type: string
-          enum:
-          - EXCELLENT
-          - GOOD
-          - AVERAGE
-          - POOR
-          - NO_ADS
-          - UNKNOWN
-          - UNSPECIFIED
-          description: Overall ad strength rating for responsive search ads.
     ResponsiveSearchAdInfo:
       type: object
       description: A responsive search ad composed of multiple headlines and descriptions that Google optimizes.
@@ -233,17 +260,23 @@ components:
         path2:
           type: string
           description: Second part of the display URL path.
-    AdGroupAdOperation:
+    ResponsiveDisplayAdInfo:
       type: object
+      description: A responsive display ad that automatically adjusts size, appearance, and format.
       properties:
-        create:
-          $ref: '#/components/schemas/AdGroupAd'
-        update:
-          $ref: '#/components/schemas/AdGroupAd'
-        remove:
+        headlines:
+          type: array
+          items:
+            $ref: '#/components/schemas/AdTextAsset'
+        longHeadline:
+          $ref: '#/components/schemas/AdTextAsset'
+        descriptions:
+          type: array
+          items:
+            $ref: '#/components/schemas/AdTextAsset'
+        businessName:
           type: string
-        updateMask:
-          type: string
+          description: The advertiser business name.
     PolicySummary:
       type: object
       description: Policy review status and approval information.
@@ -279,23 +312,6 @@ components:
               topic:
                 type: string
                 description: The policy topic name.
-    ResponsiveDisplayAdInfo:
-      type: object
-      description: A responsive display ad that automatically adjusts size, appearance, and format.
-      properties:
-        headlines:
-          type: array
-          items:
-            $ref: '#/components/schemas/AdTextAsset'
-        longHeadline:
-          $ref: '#/components/schemas/AdTextAsset'
-        descriptions:
-          type: array
-          items:
-            $ref: '#/components/schemas/AdTextAsset'
-        businessName:
-          type: string
-          description: The advertiser business name.
     Status:
       type: object
       description: Standard gRPC status for partial failure errors.
@@ -310,60 +326,7 @@ components:
           type: array
           items:
             type: object
-    GoogleAdsFailure:
-      type: object
-      description: Error response from the Google Ads API.
-      properties:
-        errors:
-          type: array
-          items:
-            $ref: '#/components/schemas/GoogleAdsError'
-    MutateAdGroupAdsResponse:
-      type: object
-      properties:
-        results:
-          type: array
-          items:
-            type: object
-            properties:
-              resourceName:
-                type: string
-        partialFailureError:
-          $ref: '#/components/schemas/Status'
-  examples:
-    CreateResponsiveSearchAdExample:
-      summary: Create a responsive search ad
-      value:
-        operations:
-        - create:
-            adGroup: customers/1234567890/adGroups/444444
-            status: ENABLED
-            ad:
-              finalUrls:
-              - https://www.example.com/products
-              responsiveSearchAd:
-                headlines:
-                - text: Buy Products Online
-                - text: Free Shipping Available
-                - text: Shop the Best Deals
-                descriptions:
-                - text: Browse our wide selection of quality products with fast, free shipping.
-                - text: Save big on your favorite brands. Shop now and get exclusive deals.
-                path1: products
-                path2: deals
-        partialFailure: false
   parameters:
-    LoginCustomerIdHeader:
-      name: login-customer-id
-      in: header
-      required: false
-      description: 'The customer ID of the manager account making the request on behalf
-
-        of a client account. Required when authenticating as a manager account.
-
-        '
-      schema:
-        type: string
     DeveloperTokenHeader:
       name: developer-token
       in: header
@@ -390,6 +353,39 @@ components:
       schema:
         type: string
         pattern: ^\d{10}$
+    LoginCustomerIdHeader:
+      name: login-customer-id
+      in: header
+      required: false
+      description: 'The customer ID of the manager account making the request on behalf
+
+        of a client account. Required when authenticating as a manager account.
+
+        '
+      schema:
+        type: string
+  examples:
+    CreateResponsiveSearchAdExample:
+      summary: Create a responsive search ad
+      value:
+        operations:
+        - create:
+            adGroup: customers/1234567890/adGroups/444444
+            status: ENABLED
+            ad:
+              finalUrls:
+              - https://www.example.com/products
+              responsiveSearchAd:
+                headlines:
+                - text: Buy Products Online
+                - text: Free Shipping Available
+                - text: Shop the Best Deals
+                descriptions:
+                - text: Browse our wide selection of quality products with fast, free shipping.
+                - text: Save big on your favorite brands. Shop now and get exclusive deals.
+                path1: products
+                path2: deals
+        partialFailure: false
   securitySchemes:
     oauth2Auth:
       type: oauth2

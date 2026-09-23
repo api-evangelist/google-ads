@@ -133,20 +133,6 @@ paths:
         - https://www.googleapis.com/auth/adwords
 components:
   schemas:
-    GoogleAdsGoogleadsV25Services__CustomizerAttributeOperation:
-      type: object
-      properties:
-        updateMask:
-          description: FieldMask that determines which resource fields are modified in an update.
-          type: string
-          format: google-fieldmask
-        create:
-          description: 'Create operation: No resource name is expected for the new customizer attribute'
-          $ref: '#/components/schemas/GoogleAdsGoogleadsV25Resources__CustomizerAttribute'
-        remove:
-          description: 'Remove operation: A resource name for the removed customizer attribute is expected, in this format: `customers/{customer_id}/customizerAttributes/{customizer_attribute_id}`'
-          type: string
-      description: A single operation (create, remove) on a customizer attribute.
     GoogleAdsGoogleadsV25Services__MutateCustomizerAttributesRequest:
       type: object
       properties:
@@ -173,18 +159,6 @@ components:
           description: The response content type setting. Determines whether the mutable resource or just the resource name should be returned post mutation.
           type: string
       description: Request message for CustomizerAttributeService.MutateCustomizerAttributes.
-    GoogleAdsGoogleadsV25Services__MutateCustomizerAttributesResponse:
-      description: Response message for a customizer attribute mutate.
-      type: object
-      properties:
-        results:
-          type: array
-          description: All results for the mutate.
-          items:
-            $ref: '#/components/schemas/GoogleAdsGoogleadsV25Services__MutateCustomizerAttributeResult'
-        partialFailureError:
-          $ref: '#/components/schemas/GoogleRpc__Status'
-          description: Errors that pertain to operation failures in the partial failure mode. Returned only when partial_failure = true and all errors occur inside the operations. If any errors occur outside the operations (for example, auth errors), we return an RPC level error.
     GoogleAdsGoogleadsV25Resources__CustomizerAttribute:
       type: object
       properties:
@@ -247,6 +221,32 @@ components:
             type: object
             additionalProperties:
               description: Properties of the object. Contains field @type with type URL.
+    GoogleAdsGoogleadsV25Services__MutateCustomizerAttributesResponse:
+      description: Response message for a customizer attribute mutate.
+      type: object
+      properties:
+        results:
+          type: array
+          description: All results for the mutate.
+          items:
+            $ref: '#/components/schemas/GoogleAdsGoogleadsV25Services__MutateCustomizerAttributeResult'
+        partialFailureError:
+          $ref: '#/components/schemas/GoogleRpc__Status'
+          description: Errors that pertain to operation failures in the partial failure mode. Returned only when partial_failure = true and all errors occur inside the operations. If any errors occur outside the operations (for example, auth errors), we return an RPC level error.
+    GoogleAdsGoogleadsV25Services__CustomizerAttributeOperation:
+      type: object
+      properties:
+        updateMask:
+          description: FieldMask that determines which resource fields are modified in an update.
+          type: string
+          format: google-fieldmask
+        create:
+          description: 'Create operation: No resource name is expected for the new customizer attribute'
+          $ref: '#/components/schemas/GoogleAdsGoogleadsV25Resources__CustomizerAttribute'
+        remove:
+          description: 'Remove operation: A resource name for the removed customizer attribute is expected, in this format: `customers/{customer_id}/customizerAttributes/{customizer_attribute_id}`'
+          type: string
+      description: A single operation (create, remove) on a customizer attribute.
     GoogleAdsGoogleadsV25Services__MutateCustomizerAttributeResult:
       description: The result for the customizer attribute mutate.
       type: object

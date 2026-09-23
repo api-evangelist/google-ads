@@ -106,7 +106,7 @@ paths:
       summary: Creates or updates conversion custom variables
       tags:
       - customers.conversionCustomVariables
-      description: 'Creates or updates conversion custom variables. Operation statuses are returned. List of thrown errors: [AuthenticationError]() [AuthorizationError]() [ConversionCustomVariableError]() [DatabaseError]() [HeaderError]() [InternalError]() [QuotaError]() [RequestError]()'
+      description: 'Creates or updates conversion custom variables. Operation statuses are returned. List of thrown errors: AuthenticationError AuthorizationError ConversionCustomVariableError DatabaseError HeaderError InternalError QuotaError RequestError'
       parameters:
       - name: customerId
         in: path
@@ -133,41 +133,6 @@ paths:
         - https://www.googleapis.com/auth/adwords
 components:
   schemas:
-    GoogleAdsGoogleadsV25Resources__ConversionCustomVariable:
-      description: A conversion custom variable See "About custom variables for conversions" at https://support.google.com/google-ads/answer/9964350
-      type: object
-      properties:
-        id:
-          format: int64
-          type: string
-          description: Output only. The ID of the conversion custom variable.
-        status:
-          x-enumDescriptions:
-          - Not specified.
-          - Used for return value only. Represents value unknown in this version.
-          - The conversion custom variable is pending activation and will not accrue stats until set to ENABLED. This status can't be used in CREATE and UPDATE requests.
-          - The conversion custom variable is enabled and will accrue stats.
-          - The conversion custom variable is paused and will not accrue stats until set to ENABLED again.
-          enum:
-          - UNSPECIFIED
-          - UNKNOWN
-          - ACTIVATION_NEEDED
-          - ENABLED
-          - PAUSED
-          description: The status of the conversion custom variable for conversion event accrual.
-          type: string
-        name:
-          type: string
-          description: Required. The name of the conversion custom variable. Name should be unique. The maximum length of name is 100 characters. There should not be any extra spaces before and after.
-        resourceName:
-          type: string
-          description: 'Immutable. The resource name of the conversion custom variable. Conversion custom variable resource names have the form: `customers/{customer_id}/conversionCustomVariables/{conversion_custom_variable_id}`'
-        tag:
-          description: Required. Immutable. The tag of the conversion custom variable. It is used in the event snippet and sent to Google Ads along with conversion pings. For conversion uploads in Google Ads API, the resource name of the conversion custom variable is used. Tag should be unique. The maximum size of tag is 100 bytes. There should not be any extra spaces before and after. Currently only lowercase letters, numbers and underscores are allowed in the tag.
-          type: string
-        ownerCustomer:
-          type: string
-          description: Output only. The resource name of the customer that owns the conversion custom variable.
     GoogleAdsGoogleadsV25Services__ConversionCustomVariableOperation:
       description: A single operation (create, update) on a conversion custom variable.
       type: object
@@ -182,6 +147,24 @@ components:
         create:
           description: 'Create operation: No resource name is expected for the new conversion custom variable.'
           $ref: '#/components/schemas/GoogleAdsGoogleadsV25Resources__ConversionCustomVariable'
+    GoogleRpc__Status:
+      description: 'The `Status` type defines a logical error model that is suitable for different programming environments, including REST APIs and RPC APIs. It is used by [gRPC](https://github.com/grpc). Each `Status` message contains three pieces of data: error code, error message, and error details. You can find out more about this error model and how to work with it in the [API Design Guide](https://cloud.google.com/apis/design/errors).'
+      type: object
+      properties:
+        message:
+          description: A developer-facing error message, which should be in English. Any user-facing error message should be localized and sent in the google.rpc.Status.details field, or localized by the client.
+          type: string
+        code:
+          type: integer
+          description: The status code, which should be an enum value of google.rpc.Code.
+          format: int32
+        details:
+          type: array
+          description: A list of messages that carry the error details. There is a common set of message types for APIs to use.
+          items:
+            type: object
+            additionalProperties:
+              description: Properties of the object. Contains field @type with type URL.
     GoogleAdsGoogleadsV25Services__MutateConversionCustomVariablesRequest:
       description: Request message for ConversionCustomVariableService.MutateConversionCustomVariables.
       type: object
@@ -218,24 +201,41 @@ components:
           description: The mutated conversion custom variable with only mutable fields after mutate. The field will only be returned when response_content_type is set to "MUTABLE_RESOURCE".
           $ref: '#/components/schemas/GoogleAdsGoogleadsV25Resources__ConversionCustomVariable'
       description: The result for the conversion custom variable mutate.
-    GoogleRpc__Status:
-      description: 'The `Status` type defines a logical error model that is suitable for different programming environments, including REST APIs and RPC APIs. It is used by [gRPC](https://github.com/grpc). Each `Status` message contains three pieces of data: error code, error message, and error details. You can find out more about this error model and how to work with it in the [API Design Guide](https://cloud.google.com/apis/design/errors).'
+    GoogleAdsGoogleadsV25Resources__ConversionCustomVariable:
+      description: A conversion custom variable See "About custom variables for conversions" at https://support.google.com/google-ads/answer/9964350
       type: object
       properties:
-        message:
-          description: A developer-facing error message, which should be in English. Any user-facing error message should be localized and sent in the google.rpc.Status.details field, or localized by the client.
+        id:
+          format: int64
           type: string
-        code:
-          type: integer
-          description: The status code, which should be an enum value of google.rpc.Code.
-          format: int32
-        details:
-          type: array
-          description: A list of messages that carry the error details. There is a common set of message types for APIs to use.
-          items:
-            type: object
-            additionalProperties:
-              description: Properties of the object. Contains field @type with type URL.
+          description: Output only. The ID of the conversion custom variable.
+        status:
+          x-enumDescriptions:
+          - Not specified.
+          - Used for return value only. Represents value unknown in this version.
+          - The conversion custom variable is pending activation and will not accrue stats until set to ENABLED. This status can't be used in CREATE and UPDATE requests.
+          - The conversion custom variable is enabled and will accrue stats.
+          - The conversion custom variable is paused and will not accrue stats until set to ENABLED again.
+          enum:
+          - UNSPECIFIED
+          - UNKNOWN
+          - ACTIVATION_NEEDED
+          - ENABLED
+          - PAUSED
+          description: The status of the conversion custom variable for conversion event accrual.
+          type: string
+        name:
+          type: string
+          description: Required. The name of the conversion custom variable. Name should be unique. The maximum length of name is 100 characters. There should not be any extra spaces before and after.
+        resourceName:
+          type: string
+          description: 'Immutable. The resource name of the conversion custom variable. Conversion custom variable resource names have the form: `customers/{customer_id}/conversionCustomVariables/{conversion_custom_variable_id}`'
+        tag:
+          description: Required. Immutable. The tag of the conversion custom variable. It is used in the event snippet and sent to Google Ads along with conversion pings. For conversion uploads in Google Ads API, the resource name of the conversion custom variable is used. Tag should be unique. The maximum size of tag is 100 bytes. There should not be any extra spaces before and after. Currently only lowercase letters, numbers and underscores are allowed in the tag.
+          type: string
+        ownerCustomer:
+          type: string
+          description: Output only. The resource name of the customer that owns the conversion custom variable.
     GoogleAdsGoogleadsV25Services__MutateConversionCustomVariablesResponse:
       type: object
       properties:

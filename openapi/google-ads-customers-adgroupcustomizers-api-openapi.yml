@@ -133,83 +133,6 @@ paths:
         - https://www.googleapis.com/auth/adwords
 components:
   schemas:
-    GoogleAdsGoogleadsV25Services__MutateAdGroupCustomizersRequest:
-      type: object
-      properties:
-        validateOnly:
-          type: boolean
-          description: If true, the request is validated but not executed. Only errors are returned, not results.
-        responseContentType:
-          description: The response content type setting. Determines whether the mutable resource or just the resource name should be returned post mutation.
-          type: string
-          x-enumDescriptions:
-          - Not specified. Will return the resource name only in the response.
-          - The mutate response will be the resource name.
-          - The mutate response will contain the resource name and the resource with mutable fields if possible. Otherwise, only the resource name will be returned.
-          enum:
-          - UNSPECIFIED
-          - RESOURCE_NAME_ONLY
-          - MUTABLE_RESOURCE
-        operations:
-          description: Required. The list of operations to perform on individual ad group customizers.
-          items:
-            $ref: '#/components/schemas/GoogleAdsGoogleadsV25Services__AdGroupCustomizerOperation'
-          type: array
-        partialFailure:
-          description: If true, successful operations will be carried out and invalid operations will return errors. If false, all operations will be carried out in one transaction if and only if they are all valid. Default is false.
-          type: boolean
-      description: Request message for AdGroupCustomizerService.MutateAdGroupCustomizers.
-    GoogleAdsGoogleadsV25Services__MutateAdGroupCustomizerResult:
-      type: object
-      properties:
-        resourceName:
-          type: string
-          description: Returned for successful operations.
-        adGroupCustomizer:
-          description: The mutated AdGroupCustomizer with only mutable fields after mutate. The field will only be returned when response_content_type is set to "MUTABLE_RESOURCE".
-          $ref: '#/components/schemas/GoogleAdsGoogleadsV25Resources__AdGroupCustomizer'
-      description: The result for the ad group customizer mutate.
-    GoogleAdsGoogleadsV25Services__MutateAdGroupCustomizersResponse:
-      description: Response message for an ad group customizer mutate.
-      type: object
-      properties:
-        partialFailureError:
-          $ref: '#/components/schemas/GoogleRpc__Status'
-          description: Errors that pertain to operation failures in the partial failure mode. Returned only when partial_failure = true and all errors occur inside the operations. If any errors occur outside the operations (for example, auth errors), we return an RPC level error.
-        results:
-          type: array
-          description: All results for the mutate.
-          items:
-            $ref: '#/components/schemas/GoogleAdsGoogleadsV25Services__MutateAdGroupCustomizerResult'
-    GoogleAdsGoogleadsV25Resources__AdGroupCustomizer:
-      type: object
-      properties:
-        resourceName:
-          type: string
-          description: 'Immutable. The resource name of the ad group customizer. Ad group customizer resource names have the form: `customers/{customer_id}/adGroupCustomizers/{ad_group_id}~{customizer_attribute_id}`'
-        value:
-          $ref: '#/components/schemas/GoogleAdsGoogleadsV25Common__CustomizerValue'
-          description: Required. The value to associate with the customizer attribute at this level. The value must be of the type specified for the CustomizerAttribute.
-        customizerAttribute:
-          description: Required. Immutable. The customizer attribute which is linked to the ad group.
-          type: string
-        adGroup:
-          description: Immutable. The ad group to which the customizer attribute is linked.
-          type: string
-        status:
-          enum:
-          - UNSPECIFIED
-          - UNKNOWN
-          - ENABLED
-          - REMOVED
-          description: Output only. The status of the ad group customizer.
-          type: string
-          x-enumDescriptions:
-          - The status has not been specified.
-          - The received value is not known in this version.
-          - The customizer value is enabled.
-          - The customizer value is removed.
-      description: A customizer value for the associated CustomizerAttribute at the AdGroup level.
     GoogleRpc__Status:
       description: 'The `Status` type defines a logical error model that is suitable for different programming environments, including REST APIs and RPC APIs. It is used by [gRPC](https://github.com/grpc). Each `Status` message contains three pieces of data: error code, error message, and error details. You can find out more about this error model and how to work with it in the [API Design Guide](https://cloud.google.com/apis/design/errors).'
       type: object
@@ -228,6 +151,16 @@ components:
             type: object
             additionalProperties:
               description: Properties of the object. Contains field @type with type URL.
+    GoogleAdsGoogleadsV25Services__MutateAdGroupCustomizerResult:
+      type: object
+      properties:
+        resourceName:
+          type: string
+          description: Returned for successful operations.
+        adGroupCustomizer:
+          description: The mutated AdGroupCustomizer with only mutable fields after mutate. The field will only be returned when response_content_type is set to "MUTABLE_RESOURCE".
+          $ref: '#/components/schemas/GoogleAdsGoogleadsV25Resources__AdGroupCustomizer'
+      description: The result for the ad group customizer mutate.
     GoogleAdsGoogleadsV25Services__AdGroupCustomizerOperation:
       type: object
       properties:
@@ -262,6 +195,73 @@ components:
         stringValue:
           description: Required. Value to insert in creative text. Customizer values of all types are stored as string to make formatting unambiguous.
           type: string
+    GoogleAdsGoogleadsV25Services__MutateAdGroupCustomizersRequest:
+      type: object
+      properties:
+        validateOnly:
+          type: boolean
+          description: If true, the request is validated but not executed. Only errors are returned, not results.
+        responseContentType:
+          description: The response content type setting. Determines whether the mutable resource or just the resource name should be returned post mutation.
+          type: string
+          x-enumDescriptions:
+          - Not specified. Will return the resource name only in the response.
+          - The mutate response will be the resource name.
+          - The mutate response will contain the resource name and the resource with mutable fields if possible. Otherwise, only the resource name will be returned.
+          enum:
+          - UNSPECIFIED
+          - RESOURCE_NAME_ONLY
+          - MUTABLE_RESOURCE
+        operations:
+          description: Required. The list of operations to perform on individual ad group customizers.
+          items:
+            $ref: '#/components/schemas/GoogleAdsGoogleadsV25Services__AdGroupCustomizerOperation'
+          type: array
+        partialFailure:
+          description: If true, successful operations will be carried out and invalid operations will return errors. If false, all operations will be carried out in one transaction if and only if they are all valid. Default is false.
+          type: boolean
+      description: Request message for AdGroupCustomizerService.MutateAdGroupCustomizers.
+    GoogleAdsGoogleadsV25Resources__AdGroupCustomizer:
+      type: object
+      properties:
+        resourceName:
+          type: string
+          description: 'Immutable. The resource name of the ad group customizer. Ad group customizer resource names have the form: `customers/{customer_id}/adGroupCustomizers/{ad_group_id}~{customizer_attribute_id}`'
+        value:
+          $ref: '#/components/schemas/GoogleAdsGoogleadsV25Common__CustomizerValue'
+          description: Required. The value to associate with the customizer attribute at this level. The value must be of the type specified for the CustomizerAttribute.
+        customizerAttribute:
+          description: Required. Immutable. The customizer attribute which is linked to the ad group.
+          type: string
+        adGroup:
+          description: Immutable. The ad group to which the customizer attribute is linked.
+          type: string
+        status:
+          enum:
+          - UNSPECIFIED
+          - UNKNOWN
+          - ENABLED
+          - REMOVED
+          description: Output only. The status of the ad group customizer.
+          type: string
+          x-enumDescriptions:
+          - The status has not been specified.
+          - The received value is not known in this version.
+          - The customizer value is enabled.
+          - The customizer value is removed.
+      description: A customizer value for the associated CustomizerAttribute at the AdGroup level.
+    GoogleAdsGoogleadsV25Services__MutateAdGroupCustomizersResponse:
+      description: Response message for an ad group customizer mutate.
+      type: object
+      properties:
+        partialFailureError:
+          $ref: '#/components/schemas/GoogleRpc__Status'
+          description: Errors that pertain to operation failures in the partial failure mode. Returned only when partial_failure = true and all errors occur inside the operations. If any errors occur outside the operations (for example, auth errors), we return an RPC level error.
+        results:
+          type: array
+          description: All results for the mutate.
+          items:
+            $ref: '#/components/schemas/GoogleAdsGoogleadsV25Services__MutateAdGroupCustomizerResult'
   securitySchemes:
     oauth2:
       type: oauth2

@@ -133,6 +133,43 @@ paths:
         - https://www.googleapis.com/auth/adwords
 components:
   schemas:
+    GoogleAdsGoogleadsV25Resources__GoogleLocalServicesInfo:
+      type: object
+      properties:
+        categoryId:
+          type: string
+          description: Immutable. The local services category associated with this asset group. That is, XCAT format - xcat:service_area_business_plumber. See https://developers.google.com/google-ads/api/data/codes-formats#local-services-category-ids This field cannot be modified after the AssetGroup has been created.
+        callouts:
+          description: Callouts selected by the advertiser to show.
+          items:
+            $ref: '#/components/schemas/GoogleAdsGoogleadsV25Resources__LocalServicesCallout'
+          type: array
+      description: Local services info for the asset group.
+    GoogleAdsGoogleadsV25Services__MutateAssetGroupResult:
+      type: object
+      properties:
+        resourceName:
+          description: Returned for successful operations.
+          type: string
+      description: The result for the asset group mutate.
+    GoogleRpc__Status:
+      description: 'The `Status` type defines a logical error model that is suitable for different programming environments, including REST APIs and RPC APIs. It is used by [gRPC](https://github.com/grpc). Each `Status` message contains three pieces of data: error code, error message, and error details. You can find out more about this error model and how to work with it in the [API Design Guide](https://cloud.google.com/apis/design/errors).'
+      type: object
+      properties:
+        message:
+          description: A developer-facing error message, which should be in English. Any user-facing error message should be localized and sent in the google.rpc.Status.details field, or localized by the client.
+          type: string
+        code:
+          type: integer
+          description: The status code, which should be an enum value of google.rpc.Code.
+          format: int32
+        details:
+          type: array
+          description: A list of messages that carry the error details. There is a common set of message types for APIs to use.
+          items:
+            type: object
+            additionalProperties:
+              description: Properties of the object. Contains field @type with type URL.
     GoogleAdsGoogleadsV25Services__MutateAssetGroupsResponse:
       description: Response message for an asset group mutate.
       type: object
@@ -145,6 +182,153 @@ components:
           description: All results for the mutate.
           items:
             $ref: '#/components/schemas/GoogleAdsGoogleadsV25Services__MutateAssetGroupResult'
+    GoogleAdsGoogleadsV25Resources_AdStrengthActionItem_AddAssetDetails:
+      description: The details of the asset to add.
+      type: object
+      properties:
+        assetCount:
+          format: int32
+          type: integer
+          description: Output only. The number of assets to add.
+        videoAspectRatioRequirement:
+          x-enumDescriptions:
+          - Not specified.
+          - The received value is not known in this version.
+          - The video requires a horizontal aspect ratio.
+          - The video requires a square aspect ratio.
+          - The video requires a vertical aspect ratio.
+          enum:
+          - UNSPECIFIED
+          - UNKNOWN
+          - HORIZONTAL
+          - SQUARE
+          - VERTICAL
+          description: Output only. For video field types, the required aspect ratio of the video. When unset and asset_field_type is YOUTUBE_VIDEO, the system recommends the advertiser upload any YouTube video, regardless of aspect ratio.
+          type: string
+        assetFieldType:
+          enum:
+          - UNSPECIFIED
+          - UNKNOWN
+          - HEADLINE
+          - DESCRIPTION
+          - MANDATORY_AD_TEXT
+          - MARKETING_IMAGE
+          - MEDIA_BUNDLE
+          - YOUTUBE_VIDEO
+          - BOOK_ON_GOOGLE
+          - LEAD_FORM
+          - PROMOTION
+          - CALLOUT
+          - STRUCTURED_SNIPPET
+          - SITELINK
+          - MOBILE_APP
+          - HOTEL_CALLOUT
+          - CALL
+          - PRICE
+          - LONG_HEADLINE
+          - BUSINESS_NAME
+          - SQUARE_MARKETING_IMAGE
+          - PORTRAIT_MARKETING_IMAGE
+          - LOGO
+          - LANDSCAPE_LOGO
+          - VIDEO
+          - CALL_TO_ACTION_SELECTION
+          - AD_IMAGE
+          - BUSINESS_LOGO
+          - HOTEL_PROPERTY
+          - DEMAND_GEN_CAROUSEL_CARD
+          - BUSINESS_MESSAGE
+          - TALL_PORTRAIT_MARKETING_IMAGE
+          - RELATED_YOUTUBE_VIDEOS
+          - LANDING_PAGE_PREVIEW
+          - LONG_DESCRIPTION
+          - CALL_TO_ACTION
+          - CLASSIC_DISPLAY_IMAGE
+          description: Output only. The asset field type of the asset(s) to add.
+          type: string
+          x-enumDescriptions:
+          - Not specified.
+          - Used for return value only. Represents value unknown in this version.
+          - The asset is linked for use as a headline.
+          - The asset is linked for use as a description.
+          - The asset is linked for use as mandatory ad text.
+          - The asset is linked for use as a marketing image.
+          - The asset is linked for use as a media bundle.
+          - The asset is linked for use as a YouTube video.
+          - The asset is linked to indicate that a hotels campaign is "Book on Google" enabled.
+          - The asset is linked for use as a Lead Form extension.
+          - The asset is linked for use as a Promotion extension.
+          - The asset is linked for use as a Callout extension.
+          - The asset is linked for use as a Structured Snippet extension.
+          - The asset is linked for use as a Sitelink.
+          - The asset is linked for use as a Mobile App extension.
+          - The asset is linked for use as a Hotel Callout extension.
+          - The asset is linked for use as a Call extension.
+          - The asset is linked for use as a Price extension.
+          - The asset is linked for use as a long headline.
+          - The asset is linked for use as a business name.
+          - The asset is linked for use as a square marketing image.
+          - The asset is linked for use as a portrait marketing image.
+          - The asset is linked for use as a logo.
+          - The asset is linked for use as a landscape logo.
+          - The asset is linked for use as a non YouTube logo.
+          - The asset is linked for use to select a call-to-action.
+          - The asset is linked for use to select an ad image.
+          - The asset is linked for use as a business logo.
+          - The asset is linked for use as a hotel property in a Performance Max for travel goals campaign.
+          - The asset is linked for use as a Demand Gen carousel card.
+          - The asset is linked for use as a Business Message.
+          - The asset is linked for use as a tall portrait marketing image.
+          - The asset is linked for use as related YouTube videos.
+          - The asset is linked for use as a landing page preview image.
+          - The asset is linked for use as a long description.
+          - The asset is linked for use as a call-to-action.
+          - The asset is linked for use as a classic display image.
+    GoogleAdsGoogleadsV25Services__MutateAssetGroupsRequest:
+      description: Request message for AssetGroupService.MutateAssetGroups.
+      type: object
+      properties:
+        validateOnly:
+          type: boolean
+          description: If true, the request is validated but not executed. Only errors are returned, not results.
+        operations:
+          description: Required. The list of operations to perform on individual asset groups.
+          items:
+            $ref: '#/components/schemas/GoogleAdsGoogleadsV25Services__AssetGroupOperation'
+          type: array
+    GoogleAdsGoogleadsV25Services__AssetGroupOperation:
+      type: object
+      properties:
+        remove:
+          type: string
+          description: 'Remove operation: A resource name for the removed asset group is expected, in this format: `customers/{customer_id}/assetGroups/{asset_group_id}`'
+        updateMask:
+          description: FieldMask that determines which resource fields are modified in an update.
+          type: string
+          format: google-fieldmask
+        create:
+          $ref: '#/components/schemas/GoogleAdsGoogleadsV25Resources__AssetGroup'
+          description: 'Create operation: No resource name is expected for the new asset group'
+        update:
+          description: 'Update operation: The asset group is expected to have a valid resource name.'
+          $ref: '#/components/schemas/GoogleAdsGoogleadsV25Resources__AssetGroup'
+      description: A single operation (create, remove) on an asset group.
+    GoogleAdsGoogleadsV25Resources__AssetCoverage:
+      type: object
+      properties:
+        adStrengthActionItems:
+          description: Output only. A list of action items to improve the ad strength of an asset group.
+          items:
+            $ref: '#/components/schemas/GoogleAdsGoogleadsV25Resources__AdStrengthActionItem'
+          type: array
+      description: Information about the asset coverage of an asset group.
+    GoogleAdsGoogleadsV25Resources__LocalServicesCallout:
+      description: Local services callout of the asset group.
+      type: object
+      properties:
+        calloutId:
+          type: string
+          description: Required. The unique ID of the callout.
     GoogleAdsGoogleadsV25Resources__AssetGroup:
       description: An asset group. AssetGroupAsset is used to link an asset to the asset group. AssetGroupSignal is used to associate a signal to an asset group.
       type: object
@@ -270,15 +454,6 @@ components:
         path1:
           type: string
           description: First part of text that may appear appended to the url displayed in the ad.
-    GoogleAdsGoogleadsV25Resources__AssetCoverage:
-      type: object
-      properties:
-        adStrengthActionItems:
-          description: Output only. A list of action items to improve the ad strength of an asset group.
-          items:
-            $ref: '#/components/schemas/GoogleAdsGoogleadsV25Resources__AdStrengthActionItem'
-          type: array
-      description: Information about the asset coverage of an asset group.
     GoogleAdsGoogleadsV25Resources__AdStrengthActionItem:
       type: object
       properties:
@@ -297,181 +472,6 @@ components:
           $ref: '#/components/schemas/GoogleAdsGoogleadsV25Resources_AdStrengthActionItem_AddAssetDetails'
           description: Output only. The action item details for action item type ADD_ASSET.
       description: An action item to improve the ad strength of an asset group.
-    GoogleAdsGoogleadsV25Resources__GoogleLocalServicesInfo:
-      type: object
-      properties:
-        categoryId:
-          type: string
-          description: Immutable. The local services category associated with this asset group. That is, XCAT format - xcat:service_area_business_plumber. See https://developers.google.com/google-ads/api/data/codes-formats#local-services-category-ids This field cannot be modified after the AssetGroup has been created.
-        callouts:
-          description: Callouts selected by the advertiser to show.
-          items:
-            $ref: '#/components/schemas/GoogleAdsGoogleadsV25Resources__LocalServicesCallout'
-          type: array
-      description: Local services info for the asset group.
-    GoogleAdsGoogleadsV25Services__MutateAssetGroupsRequest:
-      description: Request message for AssetGroupService.MutateAssetGroups.
-      type: object
-      properties:
-        validateOnly:
-          type: boolean
-          description: If true, the request is validated but not executed. Only errors are returned, not results.
-        operations:
-          description: Required. The list of operations to perform on individual asset groups.
-          items:
-            $ref: '#/components/schemas/GoogleAdsGoogleadsV25Services__AssetGroupOperation'
-          type: array
-    GoogleAdsGoogleadsV25Services__AssetGroupOperation:
-      type: object
-      properties:
-        remove:
-          type: string
-          description: 'Remove operation: A resource name for the removed asset group is expected, in this format: `customers/{customer_id}/assetGroups/{asset_group_id}`'
-        updateMask:
-          description: FieldMask that determines which resource fields are modified in an update.
-          type: string
-          format: google-fieldmask
-        create:
-          $ref: '#/components/schemas/GoogleAdsGoogleadsV25Resources__AssetGroup'
-          description: 'Create operation: No resource name is expected for the new asset group'
-        update:
-          description: 'Update operation: The asset group is expected to have a valid resource name.'
-          $ref: '#/components/schemas/GoogleAdsGoogleadsV25Resources__AssetGroup'
-      description: A single operation (create, remove) on an asset group.
-    GoogleRpc__Status:
-      description: 'The `Status` type defines a logical error model that is suitable for different programming environments, including REST APIs and RPC APIs. It is used by [gRPC](https://github.com/grpc). Each `Status` message contains three pieces of data: error code, error message, and error details. You can find out more about this error model and how to work with it in the [API Design Guide](https://cloud.google.com/apis/design/errors).'
-      type: object
-      properties:
-        message:
-          description: A developer-facing error message, which should be in English. Any user-facing error message should be localized and sent in the google.rpc.Status.details field, or localized by the client.
-          type: string
-        code:
-          type: integer
-          description: The status code, which should be an enum value of google.rpc.Code.
-          format: int32
-        details:
-          type: array
-          description: A list of messages that carry the error details. There is a common set of message types for APIs to use.
-          items:
-            type: object
-            additionalProperties:
-              description: Properties of the object. Contains field @type with type URL.
-    GoogleAdsGoogleadsV25Services__MutateAssetGroupResult:
-      type: object
-      properties:
-        resourceName:
-          description: Returned for successful operations.
-          type: string
-      description: The result for the asset group mutate.
-    GoogleAdsGoogleadsV25Resources_AdStrengthActionItem_AddAssetDetails:
-      description: The details of the asset to add.
-      type: object
-      properties:
-        assetCount:
-          format: int32
-          type: integer
-          description: Output only. The number of assets to add.
-        videoAspectRatioRequirement:
-          x-enumDescriptions:
-          - Not specified.
-          - The received value is not known in this version.
-          - The video requires a horizontal aspect ratio.
-          - The video requires a square aspect ratio.
-          - The video requires a vertical aspect ratio.
-          enum:
-          - UNSPECIFIED
-          - UNKNOWN
-          - HORIZONTAL
-          - SQUARE
-          - VERTICAL
-          description: Output only. For video field types, the required aspect ratio of the video. When unset and asset_field_type is YOUTUBE_VIDEO, the system recommends the advertiser upload any YouTube video, regardless of aspect ratio.
-          type: string
-        assetFieldType:
-          enum:
-          - UNSPECIFIED
-          - UNKNOWN
-          - HEADLINE
-          - DESCRIPTION
-          - MANDATORY_AD_TEXT
-          - MARKETING_IMAGE
-          - MEDIA_BUNDLE
-          - YOUTUBE_VIDEO
-          - BOOK_ON_GOOGLE
-          - LEAD_FORM
-          - PROMOTION
-          - CALLOUT
-          - STRUCTURED_SNIPPET
-          - SITELINK
-          - MOBILE_APP
-          - HOTEL_CALLOUT
-          - CALL
-          - PRICE
-          - LONG_HEADLINE
-          - BUSINESS_NAME
-          - SQUARE_MARKETING_IMAGE
-          - PORTRAIT_MARKETING_IMAGE
-          - LOGO
-          - LANDSCAPE_LOGO
-          - VIDEO
-          - CALL_TO_ACTION_SELECTION
-          - AD_IMAGE
-          - BUSINESS_LOGO
-          - HOTEL_PROPERTY
-          - DEMAND_GEN_CAROUSEL_CARD
-          - BUSINESS_MESSAGE
-          - TALL_PORTRAIT_MARKETING_IMAGE
-          - RELATED_YOUTUBE_VIDEOS
-          - LANDING_PAGE_PREVIEW
-          - LONG_DESCRIPTION
-          - CALL_TO_ACTION
-          - CLASSIC_DISPLAY_IMAGE
-          description: Output only. The asset field type of the asset(s) to add.
-          type: string
-          x-enumDescriptions:
-          - Not specified.
-          - Used for return value only. Represents value unknown in this version.
-          - The asset is linked for use as a headline.
-          - The asset is linked for use as a description.
-          - The asset is linked for use as mandatory ad text.
-          - The asset is linked for use as a marketing image.
-          - The asset is linked for use as a media bundle.
-          - The asset is linked for use as a YouTube video.
-          - The asset is linked to indicate that a hotels campaign is "Book on Google" enabled.
-          - The asset is linked for use as a Lead Form extension.
-          - The asset is linked for use as a Promotion extension.
-          - The asset is linked for use as a Callout extension.
-          - The asset is linked for use as a Structured Snippet extension.
-          - The asset is linked for use as a Sitelink.
-          - The asset is linked for use as a Mobile App extension.
-          - The asset is linked for use as a Hotel Callout extension.
-          - The asset is linked for use as a Call extension.
-          - The asset is linked for use as a Price extension.
-          - The asset is linked for use as a long headline.
-          - The asset is linked for use as a business name.
-          - The asset is linked for use as a square marketing image.
-          - The asset is linked for use as a portrait marketing image.
-          - The asset is linked for use as a logo.
-          - The asset is linked for use as a landscape logo.
-          - The asset is linked for use as a non YouTube logo.
-          - The asset is linked for use to select a call-to-action.
-          - The asset is linked for use to select an ad image.
-          - The asset is linked for use as a business logo.
-          - The asset is linked for use as a hotel property in a Performance Max for travel goals campaign.
-          - The asset is linked for use as a Demand Gen carousel card.
-          - The asset is linked for use as a Business Message.
-          - The asset is linked for use as a tall portrait marketing image.
-          - The asset is linked for use as related YouTube videos.
-          - The asset is linked for use as a landing page preview image.
-          - The asset is linked for use as a long description.
-          - The asset is linked for use as a call-to-action.
-          - The asset is linked for use as a classic display image.
-    GoogleAdsGoogleadsV25Resources__LocalServicesCallout:
-      description: Local services callout of the asset group.
-      type: object
-      properties:
-        calloutId:
-          type: string
-          description: Required. The unique ID of the callout.
   securitySchemes:
     oauth2:
       type: oauth2

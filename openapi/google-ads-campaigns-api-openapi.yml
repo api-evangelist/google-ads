@@ -1,6 +1,6 @@
 openapi: 3.2.0
 info:
-  title: Google Ads Ad Groups Campaigns API
+  title: Google Ads Campaigns API
   description: 'The Google Ads API is the modern programmatic interface to Google Ads and the
 
     next generation of the AdWords API. It enables developers to interact directly
@@ -11,9 +11,7 @@ info:
 
     creating, reading, updating, and removing campaigns, ad groups, ads, keywords,
 
-    and retrieving performance reports using Google Ads Query Language (GAQL).
-
-    '
+    and retrieving performance reports using Google Ads Query Language (GAQL).'
   version: v18
   contact:
     name: Google Ads API Support
@@ -35,9 +33,7 @@ paths:
       summary: Google Ads Create, Update, or Remove Campaigns
       description: 'Creates, updates, or removes campaigns. Operation statuses are returned.
 
-        Supports partial failure where some operations succeed while others fail.
-
-        '
+        Supports partial failure where some operations succeed while others fail.'
       operationId: mutateCampaigns
       tags:
       - Campaigns
@@ -88,9 +84,7 @@ paths:
       summary: Google Ads Create, Update, or Remove Campaign Budgets
       description: 'Creates, updates, or removes campaign budgets. Campaign budgets
 
-        define the daily or total spending limits for one or more campaigns.
-
-        '
+        define the daily or total spending limits for one or more campaigns.'
       operationId: mutateCampaignBudgets
       tags:
       - Campaigns
@@ -126,19 +120,6 @@ paths:
                 $ref: '#/components/schemas/GoogleAdsFailure'
 components:
   schemas:
-    MutateCampaignBudgetsRequest:
-      type: object
-      required:
-      - operations
-      properties:
-        operations:
-          type: array
-          items:
-            $ref: '#/components/schemas/CampaignBudgetOperation'
-        partialFailure:
-          type: boolean
-        validateOnly:
-          type: boolean
     MutateCampaignsRequest:
       type: object
       required:
@@ -167,18 +148,6 @@ components:
                 description: Resource name of the mutated campaign.
         partialFailureError:
           $ref: '#/components/schemas/Status'
-    MutateCampaignBudgetsResponse:
-      type: object
-      properties:
-        results:
-          type: array
-          items:
-            type: object
-            properties:
-              resourceName:
-                type: string
-        partialFailureError:
-          $ref: '#/components/schemas/Status'
     CampaignOperation:
       type: object
       properties:
@@ -192,6 +161,49 @@ components:
         updateMask:
           type: string
           description: FieldMask specifying which fields to update.
+    CampaignBudgetOperation:
+      type: object
+      properties:
+        create:
+          $ref: '#/components/schemas/CampaignBudget'
+        update:
+          $ref: '#/components/schemas/CampaignBudget'
+        remove:
+          type: string
+        updateMask:
+          type: string
+    ManualCpc:
+      type: object
+      description: Manual CPC (cost per click) bidding strategy configuration.
+      properties:
+        enhancedCpcEnabled:
+          type: boolean
+          description: Whether Enhanced CPC is enabled for automatic bid adjustments.
+    GoogleAdsFailure:
+      type: object
+      description: Error response from the Google Ads API.
+      properties:
+        errors:
+          type: array
+          items:
+            $ref: '#/components/schemas/GoogleAdsError'
+    GeoTargetTypeSetting:
+      type: object
+      description: Geographic targeting settings for a campaign.
+      properties:
+        positiveGeoTargetType:
+          type: string
+          enum:
+          - PRESENCE_OR_INTEREST
+          - SEARCH_INTEREST
+          - PRESENCE
+          description: How positive geo targeting is applied.
+        negativeGeoTargetType:
+          type: string
+          enum:
+          - PRESENCE_OR_INTEREST
+          - PRESENCE
+          description: How negative geo targeting is applied.
     TargetCpa:
       type: object
       description: Target CPA (cost per acquisition) bidding strategy configuration.
@@ -200,48 +212,6 @@ components:
           type: integer
           format: int64
           description: Target CPA amount in micros (1,000,000 micros = 1 unit of currency).
-    MaximizeConversions:
-      type: object
-      description: Maximize Conversions bidding strategy configuration.
-      properties:
-        targetCpaMicros:
-          type: integer
-          format: int64
-          description: Optional target CPA in micros when using maximize conversions.
-    GoogleAdsError:
-      type: object
-      properties:
-        errorCode:
-          type: object
-          description: The error code with a specific error enum and value.
-          additionalProperties:
-            type: string
-        message:
-          type: string
-          description: Human-readable error message.
-        trigger:
-          type: object
-          description: The value that triggered the error.
-        location:
-          type: object
-          description: Location of the error in the request.
-          properties:
-            fieldPathElements:
-              type: array
-              items:
-                type: object
-                properties:
-                  fieldName:
-                    type: string
-                  index:
-                    type: integer
-    TargetRoas:
-      type: object
-      description: Target ROAS (return on ad spend) bidding strategy configuration.
-      properties:
-        targetRoas:
-          type: number
-          description: Target return on ad spend as a ratio, e.g. 3.5 means 350% ROAS.
     CampaignBudget:
       type: object
       description: A campaign budget that defines spending limits for one or more campaigns.
@@ -283,6 +253,55 @@ components:
         explicitlyShared:
           type: boolean
           description: Whether this budget is shared across multiple campaigns.
+    NetworkSettings:
+      type: object
+      description: Network targeting settings for a campaign.
+      properties:
+        targetGoogleSearch:
+          type: boolean
+          description: Whether ads are served on the Google Search Network.
+        targetSearchNetwork:
+          type: boolean
+          description: Whether ads are served on Google search partner sites.
+        targetContentNetwork:
+          type: boolean
+          description: Whether ads are served on the Google Display Network.
+        targetPartnerSearchNetwork:
+          type: boolean
+          description: Whether ads are served on the Google Partner Network.
+    MaximizeConversions:
+      type: object
+      description: Maximize Conversions bidding strategy configuration.
+      properties:
+        targetCpaMicros:
+          type: integer
+          format: int64
+          description: Optional target CPA in micros when using maximize conversions.
+    MutateCampaignBudgetsResponse:
+      type: object
+      properties:
+        results:
+          type: array
+          items:
+            type: object
+            properties:
+              resourceName:
+                type: string
+        partialFailureError:
+          $ref: '#/components/schemas/Status'
+    MutateCampaignBudgetsRequest:
+      type: object
+      required:
+      - operations
+      properties:
+        operations:
+          type: array
+          items:
+            $ref: '#/components/schemas/CampaignBudgetOperation'
+        partialFailure:
+          type: boolean
+        validateOnly:
+          type: boolean
     Status:
       type: object
       description: Standard gRPC status for partial failure errors.
@@ -297,6 +316,13 @@ components:
           type: array
           items:
             type: object
+    TargetRoas:
+      type: object
+      description: Target ROAS (return on ad spend) bidding strategy configuration.
+      properties:
+        targetRoas:
+          type: number
+          description: Target return on ad spend as a ratio, e.g. 3.5 means 350% ROAS.
     Campaign:
       type: object
       description: A Google Ads campaign. Campaigns group ad groups and set budgets, bidding strategies, and targeting.
@@ -377,82 +403,50 @@ components:
           $ref: '#/components/schemas/ManualCpc'
         geoTargetTypeSetting:
           $ref: '#/components/schemas/GeoTargetTypeSetting'
-    GoogleAdsFailure:
-      type: object
-      description: Error response from the Google Ads API.
-      properties:
-        errors:
-          type: array
-          items:
-            $ref: '#/components/schemas/GoogleAdsError'
-    CampaignBudgetOperation:
+    GoogleAdsError:
       type: object
       properties:
-        create:
-          $ref: '#/components/schemas/CampaignBudget'
-        update:
-          $ref: '#/components/schemas/CampaignBudget'
-        remove:
+        errorCode:
+          type: object
+          description: The error code with a specific error enum and value.
+          additionalProperties:
+            type: string
+        message:
           type: string
-        updateMask:
-          type: string
-    GeoTargetTypeSetting:
-      type: object
-      description: Geographic targeting settings for a campaign.
-      properties:
-        positiveGeoTargetType:
-          type: string
-          enum:
-          - PRESENCE_OR_INTEREST
-          - SEARCH_INTEREST
-          - PRESENCE
-          description: How positive geo targeting is applied.
-        negativeGeoTargetType:
-          type: string
-          enum:
-          - PRESENCE_OR_INTEREST
-          - PRESENCE
-          description: How negative geo targeting is applied.
-    ManualCpc:
-      type: object
-      description: Manual CPC (cost per click) bidding strategy configuration.
-      properties:
-        enhancedCpcEnabled:
-          type: boolean
-          description: Whether Enhanced CPC is enabled for automatic bid adjustments.
-    NetworkSettings:
-      type: object
-      description: Network targeting settings for a campaign.
-      properties:
-        targetGoogleSearch:
-          type: boolean
-          description: Whether ads are served on the Google Search Network.
-        targetSearchNetwork:
-          type: boolean
-          description: Whether ads are served on Google search partner sites.
-        targetContentNetwork:
-          type: boolean
-          description: Whether ads are served on the Google Display Network.
-        targetPartnerSearchNetwork:
-          type: boolean
-          description: Whether ads are served on the Google Partner Network.
+          description: Human-readable error message.
+        trigger:
+          type: object
+          description: The value that triggered the error.
+        location:
+          type: object
+          description: Location of the error in the request.
+          properties:
+            fieldPathElements:
+              type: array
+              items:
+                type: object
+                properties:
+                  fieldName:
+                    type: string
+                  index:
+                    type: integer
   parameters:
-    LoginCustomerIdHeader:
-      name: login-customer-id
-      in: header
-      required: false
-      description: 'The customer ID of the manager account making the request on behalf
-
-        of a client account. Required when authenticating as a manager account.
-
-        '
-      schema:
-        type: string
     AuthorizationHeader:
       name: Authorization
       in: header
       required: true
       description: OAuth 2.0 Bearer token for authentication.
+      schema:
+        type: string
+    DeveloperTokenHeader:
+      name: developer-token
+      in: header
+      required: true
+      description: 'Developer token for API access. Obtain from the Google Ads API Center
+
+        in your manager account.
+
+        '
       schema:
         type: string
     CustomerIdPath:
@@ -463,13 +457,13 @@ components:
       schema:
         type: string
         pattern: ^\d{10}$
-    DeveloperTokenHeader:
-      name: developer-token
+    LoginCustomerIdHeader:
+      name: login-customer-id
       in: header
-      required: true
-      description: 'Developer token for API access. Obtain from the Google Ads API Center
+      required: false
+      description: 'The customer ID of the manager account making the request on behalf
 
-        in your manager account.
+        of a client account. Required when authenticating as a manager account.
 
         '
       schema:

@@ -1,6 +1,6 @@
 openapi: 3.2.0
 info:
-  title: Google Ads Customers.customer Sk Ad Network Conversion Value Schemas API
+  title: Google Ads Customers.customer Sk Ad Network Conversion…
   description: Manage your Google Ads accounts, campaigns, and reports with this API.
   version: v25
   x-discovery-revision: '20260721'
@@ -106,7 +106,7 @@ paths:
       summary: Creates or updates the CustomerSkAdNetworkConversionValueSchema
       tags:
       - customers.customerSkAdNetworkConversionValueSchemas
-      description: 'Creates or updates the CustomerSkAdNetworkConversionValueSchema. List of thrown errors: [AuthenticationError]() [AuthorizationError]() [FieldError]() [InternalError]() [MutateError]()'
+      description: 'Creates or updates the CustomerSkAdNetworkConversionValueSchema. List of thrown errors: AuthenticationError AuthorizationError FieldError InternalError MutateError'
       parameters:
       - name: customerId
         in: path
@@ -133,54 +133,37 @@ paths:
         - https://www.googleapis.com/auth/adwords
 components:
   schemas:
-    GoogleAdsGoogleadsV25Resources_CustomerSkAdNetworkConversionValueSchemaSkAdNetworkConversionValueSchema_Event:
-      description: Defines a Google conversion event that the conversion value is mapped to.
+    ? GoogleAdsGoogleadsV25Resources_CustomerSkAdNetworkConversionValueSchemaSkAdNetworkConversionValueSchema_CoarseGrainedConversionValueMappings
+    : description: Mappings for coarse grained conversion values.
       type: object
       properties:
-        eventOccurrenceRange:
-          description: Output only. The event counter range.
-          $ref: '#/components/schemas/GoogleAdsGoogleadsV25Resources_CustomerSkAdNetworkConversionValueSchemaSkAdNetworkConversionValueSchemaEvent_EventOccurrenceRange'
-        eventCounter:
-          type: string
-          description: Output only. For specific event counter values.
-          format: int64
-        eventRevenueRange:
-          $ref: '#/components/schemas/GoogleAdsGoogleadsV25Resources_CustomerSkAdNetworkConversionValueSchemaSkAdNetworkConversionValueSchemaEvent_RevenueRange'
-          description: Output only. The event revenue range.
-        currencyCode:
-          description: Output only. The reported currency for the event_revenue. ISO 4217 three-letter currency code, for example, "USD"
-          type: string
-        eventRevenueValue:
-          type: number
-          description: Output only. The specific event revenue value.
-          format: double
-        mappedEventName:
-          type: string
-          description: Output only. Google event name represented by this conversion value.
-    ? GoogleAdsGoogleadsV25Resources_CustomerSkAdNetworkConversionValueSchemaSkAdNetworkConversionValueSchemaEvent_EventOccurrenceRange
-    : description: Defines a range for event counter values.
+        lowConversionValueMapping:
+          description: Output only. Mapping for "low" coarse conversion value.
+          $ref: '#/components/schemas/GoogleAdsGoogleadsV25Resources_CustomerSkAdNetworkConversionValueSchemaSkAdNetworkConversionValueSchema_ConversionValueMapping'
+        highConversionValueMapping:
+          description: Output only. Mapping for "high" coarse conversion value.
+          $ref: '#/components/schemas/GoogleAdsGoogleadsV25Resources_CustomerSkAdNetworkConversionValueSchemaSkAdNetworkConversionValueSchema_ConversionValueMapping'
+        mediumConversionValueMapping:
+          description: Output only. Mapping for "medium" coarse conversion value.
+          $ref: '#/components/schemas/GoogleAdsGoogleadsV25Resources_CustomerSkAdNetworkConversionValueSchemaSkAdNetworkConversionValueSchema_ConversionValueMapping'
+    GoogleRpc__Status:
+      description: 'The `Status` type defines a logical error model that is suitable for different programming environments, including REST APIs and RPC APIs. It is used by [gRPC](https://github.com/grpc). Each `Status` message contains three pieces of data: error code, error message, and error details. You can find out more about this error model and how to work with it in the [API Design Guide](https://cloud.google.com/apis/design/errors).'
       type: object
       properties:
-        minEventCount:
+        message:
+          description: A developer-facing error message, which should be in English. Any user-facing error message should be localized and sent in the google.rpc.Status.details field, or localized by the client.
           type: string
-          description: Output only. For event counter ranges, the minimum of the defined range. A value of 0 will be treated as unset.
-          format: int64
-        maxEventCount:
-          type: string
-          description: Output only. For event counter ranges, the maximum of the defined range. A value of 0 will be treated as unset.
-          format: int64
-    GoogleAdsGoogleadsV25Resources_CustomerSkAdNetworkConversionValueSchemaSkAdNetworkConversionValueSchemaEvent_RevenueRange:
-      description: Defines a range for revenue values.
-      type: object
-      properties:
-        minEventRevenue:
-          type: number
-          description: Output only. For revenue ranges, the minimum value in `currency_code` for which this conversion value would be updated. A value of 0 will be treated as unset.
-          format: double
-        maxEventRevenue:
-          format: double
-          description: Output only. For revenue ranges, the maximum value in `currency_code` for which this conversion value would be updated. A value of 0 will be treated as unset.
-          type: number
+        code:
+          type: integer
+          description: The status code, which should be an enum value of google.rpc.Code.
+          format: int32
+        details:
+          type: array
+          description: A list of messages that carry the error details. There is a common set of message types for APIs to use.
+          items:
+            type: object
+            additionalProperties:
+              description: Properties of the object. Contains field @type with type URL.
     GoogleAdsGoogleadsV25Resources_CustomerSkAdNetworkConversionValueSchema_SkAdNetworkConversionValueSchema:
       type: object
       properties:
@@ -202,36 +185,18 @@ components:
           items:
             $ref: '#/components/schemas/GoogleAdsGoogleadsV25Resources_CustomerSkAdNetworkConversionValueSchemaSkAdNetworkConversionValueSchema_FineGrainedConversionValueMappings'
       description: The CustomerLink specific SkAdNetworkConversionValueSchema.
-    GoogleAdsGoogleadsV25Resources__CustomerSkAdNetworkConversionValueSchema:
-      description: A CustomerSkAdNetworkConversionValueSchema.
+    GoogleAdsGoogleadsV25Resources_CustomerSkAdNetworkConversionValueSchemaSkAdNetworkConversionValueSchemaEvent_RevenueRange:
+      description: Defines a range for revenue values.
       type: object
       properties:
-        resourceName:
-          type: string
-          description: 'Output only. The resource name of the schema. CustomerSkAdNetworkConversionValueSchema resource names have the form: customers/{customer_id}/customerSkAdNetworkConversionValueSchemas/{account_link_id}'
-        schema:
-          $ref: '#/components/schemas/GoogleAdsGoogleadsV25Resources_CustomerSkAdNetworkConversionValueSchema_SkAdNetworkConversionValueSchema'
-          description: Output only. The schema for the specified resource.
-    GoogleAdsGoogleadsV25Services__MutateCustomerSkAdNetworkConversionValueSchemaRequest:
-      type: object
-      properties:
-        operation:
-          description: The operation to perform.
-          $ref: '#/components/schemas/GoogleAdsGoogleadsV25Services__CustomerSkAdNetworkConversionValueSchemaOperation'
-        validateOnly:
-          type: boolean
-          description: If true, the request is validated but not executed. Only errors are returned, not results.
-        enableWarnings:
-          description: Optional. If true, enables returning warnings. Warnings return error messages and error codes without blocking the execution of the mutate operation.
-          type: boolean
-      description: Request message for CustomerSkAdNetworkConversionValueSchemaService.MutateCustomerSkAdNetworkConversionValueSchema.
-    GoogleAdsGoogleadsV25Services__CustomerSkAdNetworkConversionValueSchemaOperation:
-      type: object
-      properties:
-        update:
-          description: 'Update operation: The schema is expected to have a valid resource name.'
-          $ref: '#/components/schemas/GoogleAdsGoogleadsV25Resources__CustomerSkAdNetworkConversionValueSchema'
-      description: A single update operation for a CustomerSkAdNetworkConversionValueSchema.
+        minEventRevenue:
+          type: number
+          description: Output only. For revenue ranges, the minimum value in `currency_code` for which this conversion value would be updated. A value of 0 will be treated as unset.
+          format: double
+        maxEventRevenue:
+          format: double
+          description: Output only. For revenue ranges, the maximum value in `currency_code` for which this conversion value would be updated. A value of 0 will be treated as unset.
+          type: number
     GoogleAdsGoogleadsV25Resources_CustomerSkAdNetworkConversionValueSchemaSkAdNetworkConversionValueSchema_PostbackMapping:
       type: object
       properties:
@@ -269,24 +234,16 @@ components:
           type: integer
           format: int32
       description: Mappings for each postback in multiple conversion windows.
-    GoogleRpc__Status:
-      description: 'The `Status` type defines a logical error model that is suitable for different programming environments, including REST APIs and RPC APIs. It is used by [gRPC](https://github.com/grpc). Each `Status` message contains three pieces of data: error code, error message, and error details. You can find out more about this error model and how to work with it in the [API Design Guide](https://cloud.google.com/apis/design/errors).'
+    GoogleAdsGoogleadsV25Services__MutateCustomerSkAdNetworkConversionValueSchemaResponse:
       type: object
       properties:
-        message:
-          description: A developer-facing error message, which should be in English. Any user-facing error message should be localized and sent in the google.rpc.Status.details field, or localized by the client.
-          type: string
-        code:
-          type: integer
-          description: The status code, which should be an enum value of google.rpc.Code.
-          format: int32
-        details:
-          type: array
-          description: A list of messages that carry the error details. There is a common set of message types for APIs to use.
-          items:
-            type: object
-            additionalProperties:
-              description: Properties of the object. Contains field @type with type URL.
+        result:
+          description: All results for the mutate.
+          $ref: '#/components/schemas/GoogleAdsGoogleadsV25Services__MutateCustomerSkAdNetworkConversionValueSchemaResult'
+        warning:
+          description: Non blocking errors that provides schema validation failure details. Returned only when enable_warnings = true.
+          $ref: '#/components/schemas/GoogleRpc__Status'
+      description: Response message for MutateCustomerSkAdNetworkConversionValueSchema.
     GoogleAdsGoogleadsV25Services__MutateCustomerSkAdNetworkConversionValueSchemaResult:
       type: object
       properties:
@@ -314,29 +271,49 @@ components:
           items:
             $ref: '#/components/schemas/GoogleAdsGoogleadsV25Resources_CustomerSkAdNetworkConversionValueSchemaSkAdNetworkConversionValueSchema_Event'
       description: Represents mapping from one conversion value to one or more conversion events.
-    GoogleAdsGoogleadsV25Services__MutateCustomerSkAdNetworkConversionValueSchemaResponse:
+    GoogleAdsGoogleadsV25Resources_CustomerSkAdNetworkConversionValueSchemaSkAdNetworkConversionValueSchema_Event:
+      description: Defines a Google conversion event that the conversion value is mapped to.
       type: object
       properties:
-        result:
-          description: All results for the mutate.
-          $ref: '#/components/schemas/GoogleAdsGoogleadsV25Services__MutateCustomerSkAdNetworkConversionValueSchemaResult'
-        warning:
-          description: Non blocking errors that provides schema validation failure details. Returned only when enable_warnings = true.
-          $ref: '#/components/schemas/GoogleRpc__Status'
-      description: Response message for MutateCustomerSkAdNetworkConversionValueSchema.
-    ? GoogleAdsGoogleadsV25Resources_CustomerSkAdNetworkConversionValueSchemaSkAdNetworkConversionValueSchema_CoarseGrainedConversionValueMappings
-    : description: Mappings for coarse grained conversion values.
+        eventOccurrenceRange:
+          description: Output only. The event counter range.
+          $ref: '#/components/schemas/GoogleAdsGoogleadsV25Resources_CustomerSkAdNetworkConversionValueSchemaSkAdNetworkConversionValueSchemaEvent_EventOccurrenceRange'
+        eventCounter:
+          type: string
+          description: Output only. For specific event counter values.
+          format: int64
+        eventRevenueRange:
+          $ref: '#/components/schemas/GoogleAdsGoogleadsV25Resources_CustomerSkAdNetworkConversionValueSchemaSkAdNetworkConversionValueSchemaEvent_RevenueRange'
+          description: Output only. The event revenue range.
+        currencyCode:
+          description: Output only. The reported currency for the event_revenue. ISO 4217 three-letter currency code, for example, "USD"
+          type: string
+        eventRevenueValue:
+          type: number
+          description: Output only. The specific event revenue value.
+          format: double
+        mappedEventName:
+          type: string
+          description: Output only. Google event name represented by this conversion value.
+    ? GoogleAdsGoogleadsV25Resources_CustomerSkAdNetworkConversionValueSchemaSkAdNetworkConversionValueSchemaEvent_EventOccurrenceRange
+    : description: Defines a range for event counter values.
       type: object
       properties:
-        lowConversionValueMapping:
-          description: Output only. Mapping for "low" coarse conversion value.
-          $ref: '#/components/schemas/GoogleAdsGoogleadsV25Resources_CustomerSkAdNetworkConversionValueSchemaSkAdNetworkConversionValueSchema_ConversionValueMapping'
-        highConversionValueMapping:
-          description: Output only. Mapping for "high" coarse conversion value.
-          $ref: '#/components/schemas/GoogleAdsGoogleadsV25Resources_CustomerSkAdNetworkConversionValueSchemaSkAdNetworkConversionValueSchema_ConversionValueMapping'
-        mediumConversionValueMapping:
-          description: Output only. Mapping for "medium" coarse conversion value.
-          $ref: '#/components/schemas/GoogleAdsGoogleadsV25Resources_CustomerSkAdNetworkConversionValueSchemaSkAdNetworkConversionValueSchema_ConversionValueMapping'
+        minEventCount:
+          type: string
+          description: Output only. For event counter ranges, the minimum of the defined range. A value of 0 will be treated as unset.
+          format: int64
+        maxEventCount:
+          type: string
+          description: Output only. For event counter ranges, the maximum of the defined range. A value of 0 will be treated as unset.
+          format: int64
+    GoogleAdsGoogleadsV25Services__CustomerSkAdNetworkConversionValueSchemaOperation:
+      type: object
+      properties:
+        update:
+          description: 'Update operation: The schema is expected to have a valid resource name.'
+          $ref: '#/components/schemas/GoogleAdsGoogleadsV25Resources__CustomerSkAdNetworkConversionValueSchema'
+      description: A single update operation for a CustomerSkAdNetworkConversionValueSchema.
     ? GoogleAdsGoogleadsV25Resources_CustomerSkAdNetworkConversionValueSchemaSkAdNetworkConversionValueSchema_FineGrainedConversionValueMappings
     : description: Mappings for fine grained conversion value.
       type: object
@@ -348,6 +325,29 @@ components:
         conversionValueMapping:
           $ref: '#/components/schemas/GoogleAdsGoogleadsV25Resources_CustomerSkAdNetworkConversionValueSchemaSkAdNetworkConversionValueSchema_ConversionValueMapping'
           description: Output only. Conversion events the fine grained conversion value maps to.
+    GoogleAdsGoogleadsV25Services__MutateCustomerSkAdNetworkConversionValueSchemaRequest:
+      type: object
+      properties:
+        operation:
+          description: The operation to perform.
+          $ref: '#/components/schemas/GoogleAdsGoogleadsV25Services__CustomerSkAdNetworkConversionValueSchemaOperation'
+        validateOnly:
+          type: boolean
+          description: If true, the request is validated but not executed. Only errors are returned, not results.
+        enableWarnings:
+          description: Optional. If true, enables returning warnings. Warnings return error messages and error codes without blocking the execution of the mutate operation.
+          type: boolean
+      description: Request message for CustomerSkAdNetworkConversionValueSchemaService.MutateCustomerSkAdNetworkConversionValueSchema.
+    GoogleAdsGoogleadsV25Resources__CustomerSkAdNetworkConversionValueSchema:
+      description: A CustomerSkAdNetworkConversionValueSchema.
+      type: object
+      properties:
+        resourceName:
+          type: string
+          description: 'Output only. The resource name of the schema. CustomerSkAdNetworkConversionValueSchema resource names have the form: customers/{customer_id}/customerSkAdNetworkConversionValueSchemas/{account_link_id}'
+        schema:
+          $ref: '#/components/schemas/GoogleAdsGoogleadsV25Resources_CustomerSkAdNetworkConversionValueSchema_SkAdNetworkConversionValueSchema'
+          description: Output only. The schema for the specified resource.
   securitySchemes:
     oauth2:
       type: oauth2

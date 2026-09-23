@@ -156,6 +156,16 @@ components:
           - UNSPECIFIED
           - RESOURCE_NAME_ONLY
           - MUTABLE_RESOURCE
+    GoogleAdsGoogleadsV25Services__MutateCustomConversionGoalResult:
+      type: object
+      properties:
+        resourceName:
+          description: Returned for successful operations.
+          type: string
+        customConversionGoal:
+          description: The mutated CustomConversionGoal with only mutable fields after mutate. The field will only be returned when response_content_type is set to "MUTABLE_RESOURCE".
+          $ref: '#/components/schemas/GoogleAdsGoogleadsV25Resources__CustomConversionGoal'
+      description: The result for the custom conversion goal mutate.
     GoogleAdsGoogleadsV25Services__MutateCustomConversionGoalsResponse:
       description: Response message for a custom conversion goal mutate.
       type: object
@@ -214,16 +224,6 @@ components:
         name:
           description: The name for this custom conversion goal.
           type: string
-    GoogleAdsGoogleadsV25Services__MutateCustomConversionGoalResult:
-      type: object
-      properties:
-        resourceName:
-          description: Returned for successful operations.
-          type: string
-        customConversionGoal:
-          description: The mutated CustomConversionGoal with only mutable fields after mutate. The field will only be returned when response_content_type is set to "MUTABLE_RESOURCE".
-          $ref: '#/components/schemas/GoogleAdsGoogleadsV25Resources__CustomConversionGoal'
-      description: The result for the custom conversion goal mutate.
   securitySchemes:
     oauth2:
       type: oauth2

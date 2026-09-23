@@ -106,7 +106,7 @@ paths:
       summary: Creates or updates remarketing actions
       tags:
       - customers.remarketingActions
-      description: 'Creates or updates remarketing actions. Operation statuses are returned. List of thrown errors: [AuthenticationError]() [AuthorizationError]() [ConversionActionError]() [HeaderError]() [InternalError]() [QuotaError]() [RequestError]()'
+      description: 'Creates or updates remarketing actions. Operation statuses are returned. List of thrown errors: AuthenticationError AuthorizationError ConversionActionError HeaderError InternalError QuotaError RequestError'
       parameters:
       - name: customerId
         in: path
@@ -133,58 +133,6 @@ paths:
         - https://www.googleapis.com/auth/adwords
 components:
   schemas:
-    GoogleAdsGoogleadsV25Services__MutateRemarketingActionsResponse:
-      description: Response message for remarketing action mutate.
-      type: object
-      properties:
-        partialFailureError:
-          $ref: '#/components/schemas/GoogleRpc__Status'
-          description: Errors that pertain to operation failures in the partial failure mode. Returned only when partial_failure = true and all errors occur inside the operations. If any errors occur outside the operations (for example, auth errors), we return an RPC level error.
-        results:
-          description: All results for the mutate.
-          items:
-            $ref: '#/components/schemas/GoogleAdsGoogleadsV25Services__MutateRemarketingActionResult'
-          type: array
-    GoogleAdsGoogleadsV25Services__MutateRemarketingActionResult:
-      type: object
-      properties:
-        resourceName:
-          description: Returned for successful operations.
-          type: string
-      description: The result for the remarketing action mutate.
-    GoogleAdsGoogleadsV25Resources__RemarketingAction:
-      description: A remarketing action. A snippet of JavaScript code that will collect the product id and the type of page people visited (product page, shopping cart page, purchase page, general site visit) on an advertiser's website.
-      type: object
-      properties:
-        id:
-          description: Output only. Id of the remarketing action.
-          type: string
-          format: int64
-        name:
-          type: string
-          description: The name of the remarketing action. This field is required and should not be empty when creating new remarketing actions.
-        resourceName:
-          type: string
-          description: 'Immutable. The resource name of the remarketing action. Remarketing action resource names have the form: `customers/{customer_id}/remarketingActions/{remarketing_action_id}`'
-        tagSnippets:
-          description: Output only. The snippets used for tracking remarketing actions.
-          items:
-            $ref: '#/components/schemas/GoogleAdsGoogleadsV25Common__TagSnippet'
-          type: array
-    GoogleAdsGoogleadsV25Services__RemarketingActionOperation:
-      type: object
-      properties:
-        update:
-          description: 'Update operation: The remarketing action is expected to have a valid resource name.'
-          $ref: '#/components/schemas/GoogleAdsGoogleadsV25Resources__RemarketingAction'
-        updateMask:
-          description: FieldMask that determines which resource fields are modified in an update.
-          type: string
-          format: google-fieldmask
-        create:
-          description: 'Create operation: No resource name is expected for the new remarketing action.'
-          $ref: '#/components/schemas/GoogleAdsGoogleadsV25Resources__RemarketingAction'
-      description: A single operation (create, update) on a remarketing action.
     GoogleAdsGoogleadsV25Common__TagSnippet:
       description: The site tag and event snippet pair for a TrackingCodeType.
       type: object
@@ -243,6 +191,46 @@ components:
             type: object
             additionalProperties:
               description: Properties of the object. Contains field @type with type URL.
+    GoogleAdsGoogleadsV25Services__RemarketingActionOperation:
+      type: object
+      properties:
+        update:
+          description: 'Update operation: The remarketing action is expected to have a valid resource name.'
+          $ref: '#/components/schemas/GoogleAdsGoogleadsV25Resources__RemarketingAction'
+        updateMask:
+          description: FieldMask that determines which resource fields are modified in an update.
+          type: string
+          format: google-fieldmask
+        create:
+          description: 'Create operation: No resource name is expected for the new remarketing action.'
+          $ref: '#/components/schemas/GoogleAdsGoogleadsV25Resources__RemarketingAction'
+      description: A single operation (create, update) on a remarketing action.
+    GoogleAdsGoogleadsV25Resources__RemarketingAction:
+      description: A remarketing action. A snippet of JavaScript code that will collect the product id and the type of page people visited (product page, shopping cart page, purchase page, general site visit) on an advertiser's website.
+      type: object
+      properties:
+        id:
+          description: Output only. Id of the remarketing action.
+          type: string
+          format: int64
+        name:
+          type: string
+          description: The name of the remarketing action. This field is required and should not be empty when creating new remarketing actions.
+        resourceName:
+          type: string
+          description: 'Immutable. The resource name of the remarketing action. Remarketing action resource names have the form: `customers/{customer_id}/remarketingActions/{remarketing_action_id}`'
+        tagSnippets:
+          description: Output only. The snippets used for tracking remarketing actions.
+          items:
+            $ref: '#/components/schemas/GoogleAdsGoogleadsV25Common__TagSnippet'
+          type: array
+    GoogleAdsGoogleadsV25Services__MutateRemarketingActionResult:
+      type: object
+      properties:
+        resourceName:
+          description: Returned for successful operations.
+          type: string
+      description: The result for the remarketing action mutate.
     GoogleAdsGoogleadsV25Services__MutateRemarketingActionsRequest:
       description: Request message for RemarketingActionService.MutateRemarketingActions.
       type: object
@@ -258,6 +246,18 @@ components:
         partialFailure:
           description: If true, successful operations will be carried out and invalid operations will return errors. If false, all operations will be carried out in one transaction if and only if they are all valid. Default is false.
           type: boolean
+    GoogleAdsGoogleadsV25Services__MutateRemarketingActionsResponse:
+      description: Response message for remarketing action mutate.
+      type: object
+      properties:
+        partialFailureError:
+          $ref: '#/components/schemas/GoogleRpc__Status'
+          description: Errors that pertain to operation failures in the partial failure mode. Returned only when partial_failure = true and all errors occur inside the operations. If any errors occur outside the operations (for example, auth errors), we return an RPC level error.
+        results:
+          description: All results for the mutate.
+          items:
+            $ref: '#/components/schemas/GoogleAdsGoogleadsV25Services__MutateRemarketingActionResult'
+          type: array
   securitySchemes:
     oauth2:
       type: oauth2
