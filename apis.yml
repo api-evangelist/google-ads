@@ -42,6 +42,7 @@ tags:
 - Marketing
 - PPC
 - Google Ads
+- AdTech
 apis:
 - aid: google-ads:google-ads-scripts
   name: Google Ads Scripts
@@ -98,8 +99,6 @@ apis:
     url: https://developers.google.com/google-ads/api/docs/release-notes
   - type: GettingStarted
     url: https://developers.google.com/google-ads/api/docs/first-call/overview
-  - type: GraphQL
-    url: graphql/google-ads-graphql.md
 - aid: google-ads:google-ads-ads-api
   name: Google Ads API
   description: Create and manage individual ads within ad groups
@@ -134,8 +133,6 @@ apis:
     url: https://developers.google.com/google-ads/api/docs/release-notes
   - type: GettingStarted
     url: https://developers.google.com/google-ads/api/docs/first-call/overview
-  - type: GraphQL
-    url: graphql/google-ads-graphql.md
 - aid: google-ads:google-ads-bidding-strategies-api
   name: Google Ads Bidding Strategies API
   description: Manage bidding strategies for campaigns
@@ -170,8 +167,6 @@ apis:
     url: https://developers.google.com/google-ads/api/docs/release-notes
   - type: GettingStarted
     url: https://developers.google.com/google-ads/api/docs/first-call/overview
-  - type: GraphQL
-    url: graphql/google-ads-graphql.md
 - aid: google-ads:google-ads-campaigns-api
   name: Google Ads Campaigns API
   description: Create, read, update, and remove advertising campaigns
@@ -206,8 +201,6 @@ apis:
     url: https://developers.google.com/google-ads/api/docs/release-notes
   - type: GettingStarted
     url: https://developers.google.com/google-ads/api/docs/first-call/overview
-  - type: GraphQL
-    url: graphql/google-ads-graphql.md
 - aid: google-ads:google-ads-customers-api
   name: Google Ads Customers API
   description: Access and manage Google Ads customer account information
@@ -242,8 +235,6 @@ apis:
     url: https://developers.google.com/google-ads/api/docs/release-notes
   - type: GettingStarted
     url: https://developers.google.com/google-ads/api/docs/first-call/overview
-  - type: GraphQL
-    url: graphql/google-ads-graphql.md
 - aid: google-ads:google-ads-keywords-api
   name: Google Ads Keywords API
   description: Manage keyword targeting criteria for ad groups
@@ -278,8 +269,6 @@ apis:
     url: https://developers.google.com/google-ads/api/docs/release-notes
   - type: GettingStarted
     url: https://developers.google.com/google-ads/api/docs/first-call/overview
-  - type: GraphQL
-    url: graphql/google-ads-graphql.md
 - aid: google-ads:google-ads-reporting-api
   name: Google Ads Reporting API
   description: Query performance data using Google Ads Query Language (GAQL)
@@ -314,8 +303,6 @@ apis:
     url: https://developers.google.com/google-ads/api/docs/release-notes
   - type: GettingStarted
     url: https://developers.google.com/google-ads/api/docs/first-call/overview
-  - type: GraphQL
-    url: graphql/google-ads-graphql.md
 - aid: google-ads:google-ads-customers-accountbudgetproposals-api
   name: Google Ads Customers.account Budget Proposals API
   description: >-
