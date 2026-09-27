@@ -133,51 +133,6 @@ paths:
         - https://www.googleapis.com/auth/adwords
 components:
   schemas:
-    GoogleAdsGoogleadsV25Services__MutateCustomerAssetResult:
-      type: object
-      properties:
-        resourceName:
-          type: string
-          description: Returned for successful operations.
-        customerAsset:
-          $ref: '#/components/schemas/GoogleAdsGoogleadsV25Resources__CustomerAsset'
-          description: The mutated customer asset with only mutable fields after mutate. The field will only be returned when response_content_type is set to "MUTABLE_RESOURCE".
-      description: The result for the customer asset mutate.
-    GoogleAdsGoogleadsV25Services__CustomerAssetOperation:
-      description: A single operation (create, update, remove) on a customer asset.
-      type: object
-      properties:
-        updateMask:
-          type: string
-          description: FieldMask that determines which resource fields are modified in an update.
-          format: google-fieldmask
-        create:
-          $ref: '#/components/schemas/GoogleAdsGoogleadsV25Resources__CustomerAsset'
-          description: 'Create operation: No resource name is expected for the new customer asset.'
-        update:
-          $ref: '#/components/schemas/GoogleAdsGoogleadsV25Resources__CustomerAsset'
-          description: 'Update operation: The customer asset is expected to have a valid resource name.'
-        remove:
-          type: string
-          description: 'Remove operation: A resource name for the removed customer asset is expected, in this format: `customers/{customer_id}/customerAssets/{asset_id}~{field_type}`'
-    GoogleRpc__Status:
-      description: 'The `Status` type defines a logical error model that is suitable for different programming environments, including REST APIs and RPC APIs. It is used by [gRPC](https://github.com/grpc). Each `Status` message contains three pieces of data: error code, error message, and error details. You can find out more about this error model and how to work with it in the [API Design Guide](https://cloud.google.com/apis/design/errors).'
-      type: object
-      properties:
-        message:
-          description: A developer-facing error message, which should be in English. Any user-facing error message should be localized and sent in the google.rpc.Status.details field, or localized by the client.
-          type: string
-        code:
-          type: integer
-          description: The status code, which should be an enum value of google.rpc.Code.
-          format: int32
-        details:
-          type: array
-          description: A list of messages that carry the error details. There is a common set of message types for APIs to use.
-          items:
-            type: object
-            additionalProperties:
-              description: Properties of the object. Contains field @type with type URL.
     GoogleAdsGoogleadsV25Resources__CustomerAsset:
       type: object
       properties:
@@ -342,6 +297,23 @@ components:
           description: Required. Immutable. The asset which is linked to the customer.
           type: string
       description: A link between a customer and an asset.
+    GoogleAdsGoogleadsV25Services__CustomerAssetOperation:
+      description: A single operation (create, update, remove) on a customer asset.
+      type: object
+      properties:
+        updateMask:
+          type: string
+          description: FieldMask that determines which resource fields are modified in an update.
+          format: google-fieldmask
+        create:
+          $ref: '#/components/schemas/GoogleAdsGoogleadsV25Resources__CustomerAsset'
+          description: 'Create operation: No resource name is expected for the new customer asset.'
+        update:
+          $ref: '#/components/schemas/GoogleAdsGoogleadsV25Resources__CustomerAsset'
+          description: 'Update operation: The customer asset is expected to have a valid resource name.'
+        remove:
+          type: string
+          description: 'Remove operation: A resource name for the removed customer asset is expected, in this format: `customers/{customer_id}/customerAssets/{asset_id}~{field_type}`'
     GoogleAdsGoogleadsV25Services__MutateCustomerAssetsResponse:
       type: object
       properties:
@@ -456,6 +428,34 @@ components:
             - PRICE_ASSET_OTHER_ERROR
             type: string
       description: Details related to AssetLinkPrimaryStatusReasonPB.ASSET_DISAPPROVED
+    GoogleAdsGoogleadsV25Services__MutateCustomerAssetResult:
+      type: object
+      properties:
+        resourceName:
+          type: string
+          description: Returned for successful operations.
+        customerAsset:
+          $ref: '#/components/schemas/GoogleAdsGoogleadsV25Resources__CustomerAsset'
+          description: The mutated customer asset with only mutable fields after mutate. The field will only be returned when response_content_type is set to "MUTABLE_RESOURCE".
+      description: The result for the customer asset mutate.
+    GoogleRpc__Status:
+      description: 'The `Status` type defines a logical error model that is suitable for different programming environments, including REST APIs and RPC APIs. It is used by [gRPC](https://github.com/grpc). Each `Status` message contains three pieces of data: error code, error message, and error details. You can find out more about this error model and how to work with it in the [API Design Guide](https://cloud.google.com/apis/design/errors).'
+      type: object
+      properties:
+        message:
+          description: A developer-facing error message, which should be in English. Any user-facing error message should be localized and sent in the google.rpc.Status.details field, or localized by the client.
+          type: string
+        code:
+          type: integer
+          description: The status code, which should be an enum value of google.rpc.Code.
+          format: int32
+        details:
+          type: array
+          description: A list of messages that carry the error details. There is a common set of message types for APIs to use.
+          items:
+            type: object
+            additionalProperties:
+              description: Properties of the object. Contains field @type with type URL.
   securitySchemes:
     oauth2:
       type: oauth2

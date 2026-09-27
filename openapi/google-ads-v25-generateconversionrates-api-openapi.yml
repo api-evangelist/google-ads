@@ -1,6 +1,6 @@
 openapi: 3.2.0
 info:
-  title: Google Ads Audience Insights API
+  title: Google Ads V25:generate Conversion Rates API
   description: Manage your Google Ads accounts, campaigns, and reports with this API.
   version: v25
   x-discovery-revision: '20260721'
@@ -15,9 +15,9 @@ security:
 - oauth2:
   - https://www.googleapis.com/auth/adwords
 tags:
-- name: Audience Insights
+- name: V25:generateConversionRates
 paths:
-  /v25/audienceInsights:listInsightsEligibleDates:
+  /v25:generateConversionRates:
     parameters:
     - name: upload_protocol
       in: query
@@ -102,41 +102,82 @@ paths:
         - proto
       description: Data format for response.
     post:
-      operationId: googleads_audienceInsights_listInsightsEligibleDates
-      summary: Lists date ranges for which audience insights data can be requested
+      operationId: googleads_generateConversionRates
+      summary: Returns a collection of conversion rate suggestions for supported plannable…
       tags:
-      - Audience Insights
-      description: 'Lists date ranges for which audience insights data can be requested. List of thrown errors: AuthenticationError AuthorizationError FieldError HeaderError InternalError QuotaError RangeError RequestError'
+      - V25:generateConversionRates
+      description: 'Returns a collection of conversion rate suggestions for supported plannable products. List of thrown errors: AuthenticationError AuthorizationError HeaderError InternalError QuotaError RequestError'
       requestBody:
         required: true
         content:
           application/json:
             schema:
-              $ref: '#/components/schemas/GoogleAdsGoogleadsV25Services__ListInsightsEligibleDatesRequest'
+              $ref: '#/components/schemas/GoogleAdsGoogleadsV25Services__GenerateConversionRatesRequest'
       responses:
         '200':
           description: Successful response
           content:
             application/json:
               schema:
-                $ref: '#/components/schemas/GoogleAdsGoogleadsV25Services__ListInsightsEligibleDatesResponse'
+                $ref: '#/components/schemas/GoogleAdsGoogleadsV25Services__GenerateConversionRatesResponse'
       security:
       - oauth2:
         - https://www.googleapis.com/auth/adwords
 components:
   schemas:
-    GoogleAdsGoogleadsV25Services__ListInsightsEligibleDatesResponse:
+    GoogleAdsGoogleadsV25Services__ConversionRateSuggestion:
       type: object
       properties:
-        dataMonths:
-          type: array
-          description: The months for which AudienceInsights data is currently available, each represented as a string in the form "YYYY-MM".
+        conversionRateModel:
+          description: Model type used to calculate the suggested conversion rate.
+          type: string
+          x-enumDescriptions:
+          - Not specified.
+          - The value is unknown in this version.
+          - Suggested conversion rate for the authenticated customer based on the previous 70 days.
+          - Suggested conversion rate based on an aggressive rate for the entire inventory.
+          - Suggested conversion rate based on a conservative rate for the entire inventory.
+          - Suggested conversion rate based on the median rate for the entire inventory.
+          enum:
+          - UNSPECIFIED
+          - UNKNOWN
+          - CUSTOMER_HISTORY
+          - INVENTORY_AGGRESSIVE
+          - INVENTORY_CONSERVATIVE
+          - INVENTORY_MEDIAN
+        surfaceTargeting:
+          $ref: '#/components/schemas/GoogleAdsGoogleadsV25Services__SurfaceTargeting'
+          description: The surfaces associated with the plannable product. If not present, the conversion rate is considered surface agnostic for this product.
+        conversionRate:
+          description: The suggested conversion rate. The value is between 0 and 1 (exclusive).
+          type: number
+          format: double
+        plannableProductCode:
+          type: string
+          description: 'The code associated with the plannable product (for example: DEMAND_GEN). To list all plannable product codes, use ReachPlanService.ListPlannableProducts.'
+      description: A conversion rate suggestion.
+    GoogleAdsGoogleadsV25Services__GenerateConversionRatesResponse:
+      description: Response message for ReachPlanService.GenerateConversionRates, containing conversion rate suggestions for supported plannable products.
+      type: object
+      properties:
+        conversionRateSuggestions:
+          description: A list containing conversion rate suggestions. Each repeated element will have an associated product code. Multiple suggestions may share the same product code.
           items:
-            type: string
-        lastThirtyDays:
-          description: The actual dates covered by the "last 30 days" date range that will be used implicitly for AudienceInsightsService.GenerateAudienceCompositionInsights requests that have no data_month set.
-          $ref: '#/components/schemas/GoogleAdsGoogleadsV25Common__DateRange'
-      description: Response message for AudienceInsightsService.ListInsightsEligibleDates.
+            $ref: '#/components/schemas/GoogleAdsGoogleadsV25Services__ConversionRateSuggestion'
+          type: array
+    GoogleAdsGoogleadsV25Services__GenerateConversionRatesRequest:
+      description: Request message for ReachPlanService.GenerateConversionRates.
+      type: object
+      properties:
+        customerReachGroup:
+          description: The name of the customer being planned for. This is a user-defined value.
+          type: string
+        customerId:
+          description: Required. The ID of the customer. A conversion rate based on the historical data of this customer may be suggested.
+          type: string
+        reachApplicationInfo:
+          description: Optional. Additional information on the application issuing the request.
+          $ref: '#/components/schemas/GoogleAdsGoogleadsV25Common__AdditionalApplicationInfo'
     GoogleAdsGoogleadsV25Common__AdditionalApplicationInfo:
       description: Additional information about the application/tool issuing the request. This field is only used by ContentCreatorInsightsService, AudienceInsightsService, and ReachPlanService APIs.
       type: object
@@ -157,23 +198,39 @@ components:
           - UNKNOWN
           - DEVELOPMENT_AND_TESTING
           - PRODUCTION
-    GoogleAdsGoogleadsV25Services__ListInsightsEligibleDatesRequest:
-      description: Request message for AudienceInsightsService.ListInsightsEligibleDates.
+    GoogleAdsGoogleadsV25Services__SurfaceTargeting:
       type: object
       properties:
-        insightsApplicationInfo:
-          $ref: '#/components/schemas/GoogleAdsGoogleadsV25Common__AdditionalApplicationInfo'
-          description: Optional. Additional information on the application issuing the request.
-    GoogleAdsGoogleadsV25Common__DateRange:
-      type: object
-      properties:
-        startDate:
-          type: string
-          description: The start date, in yyyy-mm-dd format. This date is inclusive.
-        endDate:
-          description: The end date, in yyyy-mm-dd format. This date is inclusive.
-          type: string
-      description: A date range.
+        surfaces:
+          type: array
+          description: List of surfaces available to target.
+          items:
+            type: string
+            x-enumDescriptions:
+            - Not specified.
+            - The value is unknown in this version.
+            - Discover feed ad surface.
+            - Gmail ad surface.
+            - In-Feed ad surface.
+            - In-Stream bumper ad surface.
+            - In-Stream non-skippable ad surface.
+            - In-Stream skippable ad surface.
+            - Shorts ad surface.
+            - Google Display Network ad surface.
+            - In-Stream non-skippable (30 seconds) ad surface.
+            enum:
+            - UNSPECIFIED
+            - UNKNOWN
+            - DISCOVER_FEED
+            - GMAIL
+            - IN_FEED
+            - IN_STREAM_BUMPER
+            - IN_STREAM_NON_SKIPPABLE
+            - IN_STREAM_SKIPPABLE
+            - SHORTS
+            - GOOGLE_DISPLAY_NETWORK
+            - IN_STREAM_NON_SKIPPABLE_THIRTY_SECONDS
+      description: Container for surfaces for a product. Surfaces refer to the available types of ad inventories such as In-Feed, In-Stream, and Shorts.
   securitySchemes:
     oauth2:
       type: oauth2

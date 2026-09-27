@@ -233,20 +233,22 @@ paths:
         - https://www.googleapis.com/auth/adwords
 components:
   schemas:
-    GoogleAdsGoogleadsV25Services__SearchGoogleAdsFieldsRequest:
+    GoogleAdsGoogleadsV25Services__SearchGoogleAdsFieldsResponse:
+      description: Response message for GoogleAdsFieldService.SearchGoogleAdsFields.
       type: object
       properties:
-        pageToken:
-          description: Token of the page to retrieve. If not specified, the first page of results will be returned. Use the value obtained from `next_page_token` in the previous response in order to request the next page of results.
+        nextPageToken:
+          description: Pagination token used to retrieve the next page of results. Pass the content of this string as the `page_token` attribute of the next request. `next_page_token` is not returned for the last page.
           type: string
-        query:
+        results:
+          type: array
+          description: The list of fields that matched the query.
+          items:
+            $ref: '#/components/schemas/GoogleAdsGoogleadsV25Resources__GoogleAdsField'
+        totalResultsCount:
+          format: int64
+          description: Total number of results that match the query ignoring the LIMIT clause.
           type: string
-          description: Required. The query string.
-        pageSize:
-          format: int32
-          type: integer
-          description: Number of elements to retrieve in a single page. When too large a page is requested, the server may decide to further limit the number of returned resources.
-      description: Request message for GoogleAdsFieldService.SearchGoogleAdsFields.
     GoogleAdsGoogleadsV25Resources__GoogleAdsField:
       description: A field or resource (artifact) used by GoogleAdsService.
       type: object
@@ -345,22 +347,20 @@ components:
           items:
             type: string
           type: array
-    GoogleAdsGoogleadsV25Services__SearchGoogleAdsFieldsResponse:
-      description: Response message for GoogleAdsFieldService.SearchGoogleAdsFields.
+    GoogleAdsGoogleadsV25Services__SearchGoogleAdsFieldsRequest:
       type: object
       properties:
-        nextPageToken:
-          description: Pagination token used to retrieve the next page of results. Pass the content of this string as the `page_token` attribute of the next request. `next_page_token` is not returned for the last page.
+        pageToken:
+          description: Token of the page to retrieve. If not specified, the first page of results will be returned. Use the value obtained from `next_page_token` in the previous response in order to request the next page of results.
           type: string
-        results:
-          type: array
-          description: The list of fields that matched the query.
-          items:
-            $ref: '#/components/schemas/GoogleAdsGoogleadsV25Resources__GoogleAdsField'
-        totalResultsCount:
-          format: int64
-          description: Total number of results that match the query ignoring the LIMIT clause.
+        query:
           type: string
+          description: Required. The query string.
+        pageSize:
+          format: int32
+          type: integer
+          description: Number of elements to retrieve in a single page. When too large a page is requested, the server may decide to further limit the number of returned resources.
+      description: Request message for GoogleAdsFieldService.SearchGoogleAdsFields.
   securitySchemes:
     oauth2:
       type: oauth2

@@ -1,0 +1,468 @@
+openapi: 3.2.0
+info:
+  title: Google Ads V25:list Plannable Products API
+  description: Manage your Google Ads accounts, campaigns, and reports with this API.
+  version: v25
+  x-discovery-revision: '20260721'
+  contact:
+    name: Google
+    url: https://developers.google.com/google-ads/api/
+  termsOfService: https://developers.google.com/terms
+servers:
+- url: https://googleads.googleapis.com
+  description: Google Ads API production server
+security:
+- oauth2:
+  - https://www.googleapis.com/auth/adwords
+tags:
+- name: V25:listPlannableProducts
+paths:
+  /v25:listPlannableProducts:
+    parameters:
+    - name: upload_protocol
+      in: query
+      required: false
+      schema:
+        type: string
+      description: Upload protocol for media (e.g. "raw", "multipart").
+    - name: quotaUser
+      in: query
+      required: false
+      schema:
+        type: string
+      description: Available to use for quota purposes for server-side applications. Can be any arbitrary string assigned to a user, but should not exceed 40 characters.
+    - name: fields
+      in: query
+      required: false
+      schema:
+        type: string
+      description: Selector specifying which fields to include in a partial response.
+    - name: $.xgafv
+      in: query
+      required: false
+      schema:
+        type: string
+        enum:
+        - '1'
+        - '2'
+        x-enumDescriptions:
+        - v1 error format
+        - v2 error format
+      description: V1 error format.
+    - name: callback
+      in: query
+      required: false
+      schema:
+        type: string
+      description: JSONP
+    - name: prettyPrint
+      in: query
+      required: false
+      schema:
+        type: boolean
+        default: 'true'
+      description: Returns response with indentations and line breaks.
+    - name: access_token
+      in: query
+      required: false
+      schema:
+        type: string
+      description: OAuth access token.
+    - name: uploadType
+      in: query
+      required: false
+      schema:
+        type: string
+      description: Legacy upload protocol for media (e.g. "media", "multipart").
+    - name: key
+      in: query
+      required: false
+      schema:
+        type: string
+      description: API key. Your API key identifies your project and provides you with API access, quota, and reports. Required unless you provide an OAuth 2.0 token.
+    - name: oauth_token
+      in: query
+      required: false
+      schema:
+        type: string
+      description: OAuth 2.0 token for the current user.
+    - name: alt
+      in: query
+      required: false
+      schema:
+        x-enumDescriptions:
+        - Responses with Content-Type of application/json
+        - Media download with context-dependent Content-Type
+        - Responses with Content-Type of application/x-protobuf
+        type: string
+        default: json
+        enum:
+        - json
+        - media
+        - proto
+      description: Data format for response.
+    post:
+      operationId: googleads_listPlannableProducts
+      summary: Returns the list of per-location plannable YouTube ad formats with allowed…
+      tags:
+      - V25:listPlannableProducts
+      description: 'Returns the list of per-location plannable YouTube ad formats with allowed targeting. List of thrown errors: AuthenticationError AuthorizationError HeaderError InternalError QuotaError RequestError'
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/GoogleAdsGoogleadsV25Services__ListPlannableProductsRequest'
+      responses:
+        '200':
+          description: Successful response
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/GoogleAdsGoogleadsV25Services__ListPlannableProductsResponse'
+      security:
+      - oauth2:
+        - https://www.googleapis.com/auth/adwords
+components:
+  schemas:
+    GoogleAdsGoogleadsV25Services__YouTubeSelectLineUp:
+      description: A Plannable YouTube Select Lineup for product targeting.
+      type: object
+      properties:
+        lineupName:
+          type: string
+          description: The unique name of the YouTube Select Lineup.
+        lineupId:
+          format: int64
+          type: string
+          description: The ID of the YouTube Select Lineup.
+    GoogleAdsGoogleadsV25Services__SurfaceTargetingCombinations:
+      description: The surface targeting combinations available for an ad product.
+      type: object
+      properties:
+        defaultTargeting:
+          description: Default surface targeting applied to the ad product.
+          $ref: '#/components/schemas/GoogleAdsGoogleadsV25Services__SurfaceTargeting'
+        availableTargetingCombinations:
+          type: array
+          description: Available surface target combinations for the ad product.
+          items:
+            $ref: '#/components/schemas/GoogleAdsGoogleadsV25Services__SurfaceTargeting'
+    GoogleAdsGoogleadsV25Services__PlannableTargeting:
+      description: The targeting for which traffic metrics will be reported.
+      type: object
+      properties:
+        ageRanges:
+          type: array
+          description: Allowed plannable age ranges for the product for which metrics will be reported. Actual targeting is computed by mapping this age range onto standard Google common.AgeRangeInfo values.
+          items:
+            type: string
+            x-enumDescriptions:
+            - Not specified.
+            - The value is unknown in this version.
+            - Between 18 and 24 years old.
+            - Between 18 and 34 years old.
+            - Between 18 and 44 years old.
+            - Between 18 and 49 years old.
+            - Between 18 and 54 years old.
+            - Between 18 and 64 years old.
+            - Between 18 and 65+ years old.
+            - Between 21 and 34 years old.
+            - Between 21 and 44 years old.
+            - Between 21 and 49 years old.
+            - Between 21 and 54 years old.
+            - Between 21 and 64 years old.
+            - Between 21 and 65+ years old.
+            - Between 25 and 34 years old.
+            - Between 25 and 44 years old.
+            - Between 25 and 49 years old.
+            - Between 25 and 54 years old.
+            - Between 25 and 64 years old.
+            - Between 25 and 65+ years old.
+            - Between 35 and 44 years old.
+            - Between 35 and 49 years old.
+            - Between 35 and 54 years old.
+            - Between 35 and 64 years old.
+            - Between 35 and 65+ years old.
+            - Between 45 and 54 years old.
+            - Between 45 and 64 years old.
+            - Between 45 and 65+ years old.
+            - Between 50 and 65+ years old.
+            - Between 55 and 64 years old.
+            - Between 55 and 65+ years old.
+            - 65 years old and beyond.
+            enum:
+            - UNSPECIFIED
+            - UNKNOWN
+            - AGE_RANGE_18_24
+            - AGE_RANGE_18_34
+            - AGE_RANGE_18_44
+            - AGE_RANGE_18_49
+            - AGE_RANGE_18_54
+            - AGE_RANGE_18_64
+            - AGE_RANGE_18_65_UP
+            - AGE_RANGE_21_34
+            - AGE_RANGE_21_44
+            - AGE_RANGE_21_49
+            - AGE_RANGE_21_54
+            - AGE_RANGE_21_64
+            - AGE_RANGE_21_65_UP
+            - AGE_RANGE_25_34
+            - AGE_RANGE_25_44
+            - AGE_RANGE_25_49
+            - AGE_RANGE_25_54
+            - AGE_RANGE_25_64
+            - AGE_RANGE_25_65_UP
+            - AGE_RANGE_35_44
+            - AGE_RANGE_35_49
+            - AGE_RANGE_35_54
+            - AGE_RANGE_35_64
+            - AGE_RANGE_35_65_UP
+            - AGE_RANGE_45_54
+            - AGE_RANGE_45_64
+            - AGE_RANGE_45_65_UP
+            - AGE_RANGE_50_65_UP
+            - AGE_RANGE_55_64
+            - AGE_RANGE_55_65_UP
+            - AGE_RANGE_65_UP
+        youtubeSelectLineupTargeting:
+          description: Targetable YouTube Select Lineups for the ad product. This field replaces the deprecated `youtube_select_lineups` field.
+          $ref: '#/components/schemas/GoogleAdsGoogleadsV25Services__YouTubeSelectLineUpTargeting'
+        genders:
+          type: array
+          description: Targetable genders for the ad product.
+          items:
+            $ref: '#/components/schemas/GoogleAdsGoogleadsV25Common__GenderInfo'
+        surfaceTargeting:
+          description: Targetable surface combinations for the ad product.
+          $ref: '#/components/schemas/GoogleAdsGoogleadsV25Services__SurfaceTargetingCombinations'
+        devices:
+          description: Targetable devices for the ad product. TABLET device targeting is automatically applied to reported metrics when MOBILE targeting is selected for CPM_MASTHEAD, GOOGLE_PREFERRED_BUMPER, and GOOGLE_PREFERRED_SHORT products.
+          items:
+            $ref: '#/components/schemas/GoogleAdsGoogleadsV25Common__DeviceInfo'
+          type: array
+        networks:
+          description: Targetable networks for the ad product.
+          items:
+            x-enumDescriptions:
+            - Not specified.
+            - Used as a return value only. Represents value unknown in this version.
+            - YouTube network.
+            - Google Video Partners (GVP) network.
+            - A combination of the YouTube network and the Google Video Partners network.
+            enum:
+            - UNSPECIFIED
+            - UNKNOWN
+            - YOUTUBE
+            - GOOGLE_VIDEO_PARTNERS
+            - YOUTUBE_AND_GOOGLE_VIDEO_PARTNERS
+            type: string
+          type: array
+    GoogleAdsGoogleadsV25Services__ProductMetadata:
+      type: object
+      properties:
+        plannableProductDescription:
+          type: string
+          description: 'The plain-text description of the ad product. For example: "Video view campaign allows you to plan for a configurable mix of skippable in-stream, in-feed, and Shorts video ads in a single campaign designed to drive more views."'
+        plannableTargeting:
+          description: The allowed plannable targeting for this product.
+          $ref: '#/components/schemas/GoogleAdsGoogleadsV25Services__PlannableTargeting'
+        plannableProductCode:
+          description: 'The code associated with the ad product. For example: "VIDEO_VIEW_CAMPAIGN". To list the available plannable product codes use ReachPlanService.ListPlannableProducts.'
+          type: string
+        plannableProductName:
+          description: 'The name associated with the ad product. For example: "Video View Campaign".'
+          type: string
+        plannableProductCoreAttributes:
+          $ref: '#/components/schemas/GoogleAdsGoogleadsV25Services__ProductCoreAttributes'
+          description: Descriptive attributes of the ad product to further describe its capabilities.
+      description: The metadata associated with an available plannable product.
+    GoogleAdsGoogleadsV25Common__DeviceInfo:
+      description: A device criterion.
+      type: object
+      properties:
+        type:
+          x-enumDescriptions:
+          - Not specified.
+          - The value is unknown in this version.
+          - Mobile devices with full browsers.
+          - Tablets with full browsers.
+          - Computers.
+          - Smart TVs and game consoles.
+          - Other device types.
+          enum:
+          - UNSPECIFIED
+          - UNKNOWN
+          - MOBILE
+          - TABLET
+          - DESKTOP
+          - CONNECTED_TV
+          - OTHER
+          description: Type of the device.
+          type: string
+    GoogleAdsGoogleadsV25Services__ListPlannableProductsRequest:
+      description: Request to list available products in a given location.
+      type: object
+      properties:
+        plannableLocationId:
+          description: Required. The ID of the selected location for planning. To list the available plannable location IDs use ReachPlanService.ListPlannableLocations.
+          type: string
+        reachApplicationInfo:
+          $ref: '#/components/schemas/GoogleAdsGoogleadsV25Common__AdditionalApplicationInfo'
+          description: Optional. Additional information on the application issuing the request.
+    GoogleAdsGoogleadsV25Common__GenderInfo:
+      type: object
+      properties:
+        type:
+          type: string
+          description: Type of the gender.
+          x-enumDescriptions:
+          - Not specified.
+          - Used for return value only. Represents value unknown in this version.
+          - Male.
+          - Female.
+          - Undetermined gender.
+          enum:
+          - UNSPECIFIED
+          - UNKNOWN
+          - MALE
+          - FEMALE
+          - UNDETERMINED
+      description: A gender criterion.
+    GoogleAdsGoogleadsV25Common__AdditionalApplicationInfo:
+      description: Additional information about the application/tool issuing the request. This field is only used by ContentCreatorInsightsService, AudienceInsightsService, and ReachPlanService APIs.
+      type: object
+      properties:
+        applicationId:
+          description: The unique identifier of the agency proprietary application. This identifier is generated by Google. Reach out to your Google representative to request an application_id for each new application being integrated.
+          type: string
+        applicationInstance:
+          description: The instance type of the application sending the request.
+          type: string
+          x-enumDescriptions:
+          - Not specified.
+          - The value is unknown in this version.
+          - The instance is for development and testing purposes.
+          - The instance is for production purposes.
+          enum:
+          - UNSPECIFIED
+          - UNKNOWN
+          - DEVELOPMENT_AND_TESTING
+          - PRODUCTION
+    GoogleAdsGoogleadsV25Services__SurfaceTargeting:
+      type: object
+      properties:
+        surfaces:
+          type: array
+          description: List of surfaces available to target.
+          items:
+            type: string
+            x-enumDescriptions:
+            - Not specified.
+            - The value is unknown in this version.
+            - Discover feed ad surface.
+            - Gmail ad surface.
+            - In-Feed ad surface.
+            - In-Stream bumper ad surface.
+            - In-Stream non-skippable ad surface.
+            - In-Stream skippable ad surface.
+            - Shorts ad surface.
+            - Google Display Network ad surface.
+            - In-Stream non-skippable (30 seconds) ad surface.
+            enum:
+            - UNSPECIFIED
+            - UNKNOWN
+            - DISCOVER_FEED
+            - GMAIL
+            - IN_FEED
+            - IN_STREAM_BUMPER
+            - IN_STREAM_NON_SKIPPABLE
+            - IN_STREAM_SKIPPABLE
+            - SHORTS
+            - GOOGLE_DISPLAY_NETWORK
+            - IN_STREAM_NON_SKIPPABLE_THIRTY_SECONDS
+      description: Container for surfaces for a product. Surfaces refer to the available types of ad inventories such as In-Feed, In-Stream, and Shorts.
+    GoogleAdsGoogleadsV25Services__YouTubeSelectLineUpTargeting:
+      description: Targetable YouTube Select Lineups for the ad product and the default Lineup.
+      type: object
+      properties:
+        youtubeSelectLineups:
+          type: array
+          description: Targetable YouTube Select Lineups for the ad product.
+          items:
+            $ref: '#/components/schemas/GoogleAdsGoogleadsV25Services__YouTubeSelectLineUp'
+        defaultYoutubeSelectLineup:
+          description: The default YouTube Select Lineup for the ad product if available.
+          $ref: '#/components/schemas/GoogleAdsGoogleadsV25Services__YouTubeSelectLineUp'
+    GoogleAdsGoogleadsV25Services__ListPlannableProductsResponse:
+      type: object
+      properties:
+        productMetadata:
+          type: array
+          description: The list of products available for planning and related targeting metadata.
+          items:
+            $ref: '#/components/schemas/GoogleAdsGoogleadsV25Services__ProductMetadata'
+      description: A response with all available products.
+    GoogleAdsGoogleadsV25Services__ProductCoreAttributes:
+      description: A collection of attributes that offer more information about a specific product.
+      type: object
+      properties:
+        marketingObjective:
+          x-enumDescriptions:
+          - Not specified.
+          - The value is unknown in this version.
+          - The objective is to maximize brand visibility and reach as many relevant people as possible, making potential customers aware of the brand or product.
+          - The objective is to encourage potential customers to learn more about the brand or products and consider them for a future purchase.
+          - The objective is to persuade potential customers to take a specific, valuable action, such as making a purchase, signing up for a newsletter, or generating a lead.
+          enum:
+          - UNSPECIFIED
+          - UNKNOWN
+          - AWARENESS
+          - CONSIDERATION
+          - ACTION
+          type: string
+          description: A specific, measurable goal that a company wants to achieve through its marketing efforts.
+        buyingMethod:
+          x-enumDescriptions:
+          - Not specified.
+          - The value is unknown in this version.
+          - Bidding on ads with a target CPM.
+          - Buying method that encompasses deal-based and instant reserve pricing.
+          enum:
+          - UNSPECIFIED
+          - UNKNOWN
+          - AUCTION
+          - RESERVATION
+          description: The method of buying this product. For example, Auction pricing is dynamic and Reservation is booked at a fixed price.
+          type: string
+        costModel:
+          description: How an advertiser pays for their ad campaign.
+          type: string
+          x-enumDescriptions:
+          - Not specified.
+          - The value is unknown in this version.
+          - Cost per mille (thousand impressions).
+          - Cost per view.
+          - Cost per click.
+          - Cost per action (conversion).
+          enum:
+          - UNSPECIFIED
+          - UNKNOWN
+          - CPM
+          - CPV
+          - CPC
+          - CPA
+  securitySchemes:
+    oauth2:
+      type: oauth2
+      description: Google OAuth 2.0. Google Ads API additionally requires a developer token in the developer-token header.
+      flows:
+        authorizationCode:
+          authorizationUrl: https://accounts.google.com/o/oauth2/auth
+          tokenUrl: https://oauth2.googleapis.com/token
+          scopes:
+            https://www.googleapis.com/auth/adwords: See, edit, create, and delete your Google Ads accounts and data.
+externalDocs:
+  url: https://developers.google.com/google-ads/api/
+x-source: https://googleads.googleapis.com/$discovery/rest?version=v25
+x-generated-by: API Evangelist enrichment pipeline — mechanical conversion of the first-party Google API Discovery Document

@@ -133,20 +133,6 @@ paths:
         - https://www.googleapis.com/auth/adwords
 components:
   schemas:
-    GoogleAdsGoogleadsV25Services__CustomInterestOperation:
-      type: object
-      properties:
-        updateMask:
-          format: google-fieldmask
-          description: FieldMask that determines which resource fields are modified in an update.
-          type: string
-        create:
-          $ref: '#/components/schemas/GoogleAdsGoogleadsV25Resources__CustomInterest'
-          description: 'Create operation: No resource name is expected for the new custom interest.'
-        update:
-          description: 'Update operation: The custom interest is expected to have a valid resource name.'
-          $ref: '#/components/schemas/GoogleAdsGoogleadsV25Resources__CustomInterest'
-      description: A single operation (create, update) on a custom interest.
     GoogleAdsGoogleadsV25Services__MutateCustomInterestsRequest:
       type: object
       properties:
@@ -214,15 +200,20 @@ components:
           type: string
           description: Name of the custom interest. It should be unique across the same custom affinity audience. This field is required for create operations.
       description: A custom interest. This is a list of users by interest.
-    GoogleAdsGoogleadsV25Services__MutateCustomInterestsResponse:
-      description: Response message for custom interest mutate.
+    GoogleAdsGoogleadsV25Services__CustomInterestOperation:
       type: object
       properties:
-        results:
-          type: array
-          description: All results for the mutate.
-          items:
-            $ref: '#/components/schemas/GoogleAdsGoogleadsV25Services__MutateCustomInterestResult'
+        updateMask:
+          format: google-fieldmask
+          description: FieldMask that determines which resource fields are modified in an update.
+          type: string
+        create:
+          $ref: '#/components/schemas/GoogleAdsGoogleadsV25Resources__CustomInterest'
+          description: 'Create operation: No resource name is expected for the new custom interest.'
+        update:
+          description: 'Update operation: The custom interest is expected to have a valid resource name.'
+          $ref: '#/components/schemas/GoogleAdsGoogleadsV25Resources__CustomInterest'
+      description: A single operation (create, update) on a custom interest.
     GoogleAdsGoogleadsV25Resources__CustomInterestMember:
       description: A member of custom interest audience. A member can be a keyword or url. It is immutable, that is, it can only be created or removed but not changed.
       type: object
@@ -243,6 +234,15 @@ components:
           - URL
           description: The type of custom interest member, KEYWORD or URL.
           type: string
+    GoogleAdsGoogleadsV25Services__MutateCustomInterestsResponse:
+      description: Response message for custom interest mutate.
+      type: object
+      properties:
+        results:
+          type: array
+          description: All results for the mutate.
+          items:
+            $ref: '#/components/schemas/GoogleAdsGoogleadsV25Services__MutateCustomInterestResult'
   securitySchemes:
     oauth2:
       type: oauth2

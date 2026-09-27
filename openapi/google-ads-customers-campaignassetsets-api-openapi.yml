@@ -133,72 +133,6 @@ paths:
         - https://www.googleapis.com/auth/adwords
 components:
   schemas:
-    GoogleAdsGoogleadsV25Services__MutateCampaignAssetSetResult:
-      type: object
-      properties:
-        resourceName:
-          type: string
-          description: Returned for successful operations.
-        campaignAssetSet:
-          description: The mutated campaign asset set with only mutable fields after mutate. The field will only be returned when response_content_type is set to "MUTABLE_RESOURCE".
-          $ref: '#/components/schemas/GoogleAdsGoogleadsV25Resources__CampaignAssetSet'
-      description: The result for the campaign asset set mutate.
-    GoogleAdsGoogleadsV25Services__MutateCampaignAssetSetsRequest:
-      type: object
-      properties:
-        partialFailure:
-          type: boolean
-          description: If true, successful operations will be carried out and invalid operations will return errors. If false, all operations will be carried out in one transaction if and only if they are all valid. Default is false.
-        validateOnly:
-          description: If true, the request is validated but not executed. Only errors are returned, not results.
-          type: boolean
-        responseContentType:
-          x-enumDescriptions:
-          - Not specified. Will return the resource name only in the response.
-          - The mutate response will be the resource name.
-          - The mutate response will contain the resource name and the resource with mutable fields if possible. Otherwise, only the resource name will be returned.
-          enum:
-          - UNSPECIFIED
-          - RESOURCE_NAME_ONLY
-          - MUTABLE_RESOURCE
-          type: string
-          description: The response content type setting. Determines whether the mutable resource or just the resource name should be returned post mutation.
-        operations:
-          description: Required. The list of operations to perform on individual campaign asset sets.
-          items:
-            $ref: '#/components/schemas/GoogleAdsGoogleadsV25Services__CampaignAssetSetOperation'
-          type: array
-      description: Request message for CampaignAssetSetService.MutateCampaignAssetSets.
-    GoogleAdsGoogleadsV25Services__MutateCampaignAssetSetsResponse:
-      description: Response message for a campaign asset set mutate.
-      type: object
-      properties:
-        partialFailureError:
-          $ref: '#/components/schemas/GoogleRpc__Status'
-          description: Errors that pertain to operation failures in the partial failure mode. Returned only when partial_failure = true and all errors occur inside the operations. If any errors occur outside the operations (for example, auth errors), we return an RPC level error.
-        results:
-          type: array
-          description: All results for the mutate.
-          items:
-            $ref: '#/components/schemas/GoogleAdsGoogleadsV25Services__MutateCampaignAssetSetResult'
-    GoogleRpc__Status:
-      description: 'The `Status` type defines a logical error model that is suitable for different programming environments, including REST APIs and RPC APIs. It is used by [gRPC](https://github.com/grpc). Each `Status` message contains three pieces of data: error code, error message, and error details. You can find out more about this error model and how to work with it in the [API Design Guide](https://cloud.google.com/apis/design/errors).'
-      type: object
-      properties:
-        message:
-          description: A developer-facing error message, which should be in English. Any user-facing error message should be localized and sent in the google.rpc.Status.details field, or localized by the client.
-          type: string
-        code:
-          type: integer
-          description: The status code, which should be an enum value of google.rpc.Code.
-          format: int32
-        details:
-          type: array
-          description: A list of messages that carry the error details. There is a common set of message types for APIs to use.
-          items:
-            type: object
-            additionalProperties:
-              description: Properties of the object. Contains field @type with type URL.
     GoogleAdsGoogleadsV25Resources__CampaignAssetSet:
       type: object
       properties:
@@ -225,6 +159,28 @@ components:
           description: Immutable. The campaign to which this asset set is linked.
           type: string
       description: CampaignAssetSet is the linkage between a campaign and an asset set. Adding a CampaignAssetSet links an asset set with a campaign.
+    GoogleAdsGoogleadsV25Services__MutateCampaignAssetSetsResponse:
+      description: Response message for a campaign asset set mutate.
+      type: object
+      properties:
+        partialFailureError:
+          $ref: '#/components/schemas/GoogleRpc__Status'
+          description: Errors that pertain to operation failures in the partial failure mode. Returned only when partial_failure = true and all errors occur inside the operations. If any errors occur outside the operations (for example, auth errors), we return an RPC level error.
+        results:
+          type: array
+          description: All results for the mutate.
+          items:
+            $ref: '#/components/schemas/GoogleAdsGoogleadsV25Services__MutateCampaignAssetSetResult'
+    GoogleAdsGoogleadsV25Services__MutateCampaignAssetSetResult:
+      type: object
+      properties:
+        resourceName:
+          type: string
+          description: Returned for successful operations.
+        campaignAssetSet:
+          description: The mutated campaign asset set with only mutable fields after mutate. The field will only be returned when response_content_type is set to "MUTABLE_RESOURCE".
+          $ref: '#/components/schemas/GoogleAdsGoogleadsV25Resources__CampaignAssetSet'
+      description: The result for the campaign asset set mutate.
     GoogleAdsGoogleadsV25Services__CampaignAssetSetOperation:
       description: A single operation (create, remove) on a campaign asset set.
       type: object
@@ -235,6 +191,50 @@ components:
         remove:
           type: string
           description: 'Remove operation: A resource name for the removed campaign asset set is expected, in this format: `customers/{customer_id}/campaignAssetSets/{campaign_id}~{asset_set_id}`'
+    GoogleAdsGoogleadsV25Services__MutateCampaignAssetSetsRequest:
+      type: object
+      properties:
+        partialFailure:
+          type: boolean
+          description: If true, successful operations will be carried out and invalid operations will return errors. If false, all operations will be carried out in one transaction if and only if they are all valid. Default is false.
+        validateOnly:
+          description: If true, the request is validated but not executed. Only errors are returned, not results.
+          type: boolean
+        responseContentType:
+          x-enumDescriptions:
+          - Not specified. Will return the resource name only in the response.
+          - The mutate response will be the resource name.
+          - The mutate response will contain the resource name and the resource with mutable fields if possible. Otherwise, only the resource name will be returned.
+          enum:
+          - UNSPECIFIED
+          - RESOURCE_NAME_ONLY
+          - MUTABLE_RESOURCE
+          type: string
+          description: The response content type setting. Determines whether the mutable resource or just the resource name should be returned post mutation.
+        operations:
+          description: Required. The list of operations to perform on individual campaign asset sets.
+          items:
+            $ref: '#/components/schemas/GoogleAdsGoogleadsV25Services__CampaignAssetSetOperation'
+          type: array
+      description: Request message for CampaignAssetSetService.MutateCampaignAssetSets.
+    GoogleRpc__Status:
+      description: 'The `Status` type defines a logical error model that is suitable for different programming environments, including REST APIs and RPC APIs. It is used by [gRPC](https://github.com/grpc). Each `Status` message contains three pieces of data: error code, error message, and error details. You can find out more about this error model and how to work with it in the [API Design Guide](https://cloud.google.com/apis/design/errors).'
+      type: object
+      properties:
+        message:
+          description: A developer-facing error message, which should be in English. Any user-facing error message should be localized and sent in the google.rpc.Status.details field, or localized by the client.
+          type: string
+        code:
+          type: integer
+          description: The status code, which should be an enum value of google.rpc.Code.
+          format: int32
+        details:
+          type: array
+          description: A list of messages that carry the error details. There is a common set of message types for APIs to use.
+          items:
+            type: object
+            additionalProperties:
+              description: Properties of the object. Contains field @type with type URL.
   securitySchemes:
     oauth2:
       type: oauth2

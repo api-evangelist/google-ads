@@ -64,53 +64,45 @@ paths:
               schema:
                 $ref: '#/components/schemas/GoogleAdsFailure'
 components:
+  parameters:
+    AuthorizationHeader:
+      name: Authorization
+      in: header
+      required: true
+      description: OAuth 2.0 Bearer token for authentication.
+      schema:
+        type: string
+    DeveloperTokenHeader:
+      name: developer-token
+      in: header
+      required: true
+      description: 'Developer token for API access. Obtain from the Google Ads API Center
+
+        in your manager account.
+
+        '
+      schema:
+        type: string
+    LoginCustomerIdHeader:
+      name: login-customer-id
+      in: header
+      required: false
+      description: 'The customer ID of the manager account making the request on behalf
+
+        of a client account. Required when authenticating as a manager account.
+
+        '
+      schema:
+        type: string
+    CustomerIdPath:
+      name: customerId
+      in: path
+      required: true
+      description: The Google Ads customer ID (without dashes), e.g. 1234567890.
+      schema:
+        type: string
+        pattern: ^\d{10}$
   schemas:
-    BiddingStrategyOperation:
-      type: object
-      properties:
-        create:
-          $ref: '#/components/schemas/BiddingStrategy'
-        update:
-          $ref: '#/components/schemas/BiddingStrategy'
-        remove:
-          type: string
-        updateMask:
-          type: string
-    GoogleAdsFailure:
-      type: object
-      description: Error response from the Google Ads API.
-      properties:
-        errors:
-          type: array
-          items:
-            $ref: '#/components/schemas/GoogleAdsError'
-    GoogleAdsError:
-      type: object
-      properties:
-        errorCode:
-          type: object
-          description: The error code with a specific error enum and value.
-          additionalProperties:
-            type: string
-        message:
-          type: string
-          description: Human-readable error message.
-        trigger:
-          type: object
-          description: The value that triggered the error.
-        location:
-          type: object
-          description: Location of the error in the request.
-          properties:
-            fieldPathElements:
-              type: array
-              items:
-                type: object
-                properties:
-                  fieldName:
-                    type: string
-                  index:
-                    type: integer
     BiddingStrategy:
       type: object
       description: A portfolio bidding strategy shared across multiple campaigns.
@@ -148,6 +140,18 @@ components:
           type: integer
           format: int64
           description: Number of campaigns using this bidding strategy.
+    MutateBiddingStrategiesResponse:
+      type: object
+      properties:
+        results:
+          type: array
+          items:
+            type: object
+            properties:
+              resourceName:
+                type: string
+        partialFailureError:
+          $ref: '#/components/schemas/Status'
     MutateBiddingStrategiesRequest:
       type: object
       required:
@@ -161,18 +165,52 @@ components:
           type: boolean
         validateOnly:
           type: boolean
-    MutateBiddingStrategiesResponse:
+    GoogleAdsFailure:
       type: object
+      description: Error response from the Google Ads API.
       properties:
-        results:
+        errors:
           type: array
           items:
-            type: object
-            properties:
-              resourceName:
-                type: string
-        partialFailureError:
-          $ref: '#/components/schemas/Status'
+            $ref: '#/components/schemas/GoogleAdsError'
+    GoogleAdsError:
+      type: object
+      properties:
+        errorCode:
+          type: object
+          description: The error code with a specific error enum and value.
+          additionalProperties:
+            type: string
+        message:
+          type: string
+          description: Human-readable error message.
+        trigger:
+          type: object
+          description: The value that triggered the error.
+        location:
+          type: object
+          description: Location of the error in the request.
+          properties:
+            fieldPathElements:
+              type: array
+              items:
+                type: object
+                properties:
+                  fieldName:
+                    type: string
+                  index:
+                    type: integer
+    BiddingStrategyOperation:
+      type: object
+      properties:
+        create:
+          $ref: '#/components/schemas/BiddingStrategy'
+        update:
+          $ref: '#/components/schemas/BiddingStrategy'
+        remove:
+          type: string
+        updateMask:
+          type: string
     Status:
       type: object
       description: Standard gRPC status for partial failure errors.
@@ -187,44 +225,6 @@ components:
           type: array
           items:
             type: object
-  parameters:
-    DeveloperTokenHeader:
-      name: developer-token
-      in: header
-      required: true
-      description: 'Developer token for API access. Obtain from the Google Ads API Center
-
-        in your manager account.
-
-        '
-      schema:
-        type: string
-    AuthorizationHeader:
-      name: Authorization
-      in: header
-      required: true
-      description: OAuth 2.0 Bearer token for authentication.
-      schema:
-        type: string
-    CustomerIdPath:
-      name: customerId
-      in: path
-      required: true
-      description: The Google Ads customer ID (without dashes), e.g. 1234567890.
-      schema:
-        type: string
-        pattern: ^\d{10}$
-    LoginCustomerIdHeader:
-      name: login-customer-id
-      in: header
-      required: false
-      description: 'The customer ID of the manager account making the request on behalf
-
-        of a client account. Required when authenticating as a manager account.
-
-        '
-      schema:
-        type: string
   securitySchemes:
     oauth2Auth:
       type: oauth2

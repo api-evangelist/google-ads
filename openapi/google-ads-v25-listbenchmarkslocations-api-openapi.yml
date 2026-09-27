@@ -1,6 +1,6 @@
 openapi: 3.2.0
 info:
-  title: Google Ads Customers.local Services API
+  title: Google Ads V25:list Benchmarks Locations API
   description: Manage your Google Ads accounts, campaigns, and reports with this API.
   version: v25
   x-discovery-revision: '20260721'
@@ -15,9 +15,9 @@ security:
 - oauth2:
   - https://www.googleapis.com/auth/adwords
 tags:
-- name: customers.localServices
+- name: V25:listBenchmarksLocations
 paths:
-  /v25/customers/{customersId}/localServices:appendLeadConversation:
+  /v25:listBenchmarksLocations:
     parameters:
     - name: upload_protocol
       in: query
@@ -102,93 +102,85 @@ paths:
         - proto
       description: Data format for response.
     post:
-      operationId: googleads_customers_localServices_appendLeadConversation
-      summary: RPC to append Local Services Lead Conversation resources to Local Services Lead…
+      operationId: googleads_listBenchmarksLocations
+      summary: Returns the list of locations that support benchmarks (for example, countries)
       tags:
-      - customers.localServices
-      description: RPC to append Local Services Lead Conversation resources to Local Services Lead resources.
-      parameters:
-      - name: customerId
-        in: path
-        required: true
-        schema:
-          pattern: ^[^/]+$
-          type: string
-        description: Required. The Id of the customer which owns the leads onto which the conversations will be appended.
+      - V25:listBenchmarksLocations
+      description: 'Returns the list of locations that support benchmarks (for example, countries). List of thrown errors: AuthenticationError AuthorizationError FieldError HeaderError InternalError QuotaError RequestError'
       requestBody:
         required: true
         content:
           application/json:
             schema:
-              $ref: '#/components/schemas/GoogleAdsGoogleadsV25Services__AppendLeadConversationRequest'
+              $ref: '#/components/schemas/GoogleAdsGoogleadsV25Services__ListBenchmarksLocationsRequest'
       responses:
         '200':
           description: Successful response
           content:
             application/json:
               schema:
-                $ref: '#/components/schemas/GoogleAdsGoogleadsV25Services__AppendLeadConversationResponse'
+                $ref: '#/components/schemas/GoogleAdsGoogleadsV25Services__ListBenchmarksLocationsResponse'
       security:
       - oauth2:
         - https://www.googleapis.com/auth/adwords
 components:
   schemas:
-    GoogleAdsGoogleadsV25Services__AppendLeadConversationRequest:
+    GoogleAdsGoogleadsV25Services__BenchmarksLocation:
+      description: A location that supports benchmarks data.
       type: object
       properties:
-        conversations:
-          description: Required. Conversations that are being appended.
+        locationType:
+          description: The location's type. Location types correspond to target_type returned by searching location type in GoogleAdsService.Search/SearchStream.
+          type: string
+        locationInfo:
+          description: Information on the geographic location, including the location ID.
+          $ref: '#/components/schemas/GoogleAdsGoogleadsV25Common__LocationInfo'
+        locationName:
+          description: The unique location name in English.
+          type: string
+    GoogleAdsGoogleadsV25Services__ListBenchmarksLocationsResponse:
+      description: Response message for BenchmarksService.ListBenchmarksLocations.
+      type: object
+      properties:
+        benchmarksLocations:
+          description: The list of locations supported for benchmarks data.
           items:
-            $ref: '#/components/schemas/GoogleAdsGoogleadsV25Services__Conversation'
+            $ref: '#/components/schemas/GoogleAdsGoogleadsV25Services__BenchmarksLocation'
           type: array
-      description: Request message for LocalServicesLeadService.AppendLeadConversation.
-    GoogleAdsGoogleadsV25Services__AppendLeadConversationResponse:
-      description: Response message for LocalServicesLeadService.AppendLeadConversation.
+    GoogleAdsGoogleadsV25Common__LocationInfo:
       type: object
       properties:
-        responses:
-          type: array
-          description: Required. List of append conversation operation results.
-          items:
-            $ref: '#/components/schemas/GoogleAdsGoogleadsV25Services__ConversationOrError'
-    GoogleAdsGoogleadsV25Services__Conversation:
+        geoTargetConstant:
+          type: string
+          description: The geo target constant resource name.
+      description: A location criterion.
+    GoogleAdsGoogleadsV25Services__ListBenchmarksLocationsRequest:
       type: object
       properties:
-        localServicesLead:
-          type: string
-          description: Required. The resource name of the local services lead that the conversation should be applied to.
-        text:
-          description: Required. Text message that user wanted to append to lead.
-          type: string
-      description: Details of the conversation that needs to be appended.
-    GoogleAdsGoogleadsV25Services__ConversationOrError:
-      description: Result of the append conversation operation.
+        applicationInfo:
+          description: Additional information on the application issuing the request.
+          $ref: '#/components/schemas/GoogleAdsGoogleadsV25Common__AdditionalApplicationInfo'
+      description: Request message for BenchmarksService.ListBenchmarksLocations.
+    GoogleAdsGoogleadsV25Common__AdditionalApplicationInfo:
+      description: Additional information about the application/tool issuing the request. This field is only used by ContentCreatorInsightsService, AudienceInsightsService, and ReachPlanService APIs.
       type: object
       properties:
-        localServicesLeadConversation:
-          description: The resource name of the appended local services lead conversation.
+        applicationId:
+          description: The unique identifier of the agency proprietary application. This identifier is generated by Google. Reach out to your Google representative to request an application_id for each new application being integrated.
           type: string
-        partialFailureError:
-          $ref: '#/components/schemas/GoogleRpc__Status'
-          description: Failure status when the request could not be processed.
-    GoogleRpc__Status:
-      description: 'The `Status` type defines a logical error model that is suitable for different programming environments, including REST APIs and RPC APIs. It is used by [gRPC](https://github.com/grpc). Each `Status` message contains three pieces of data: error code, error message, and error details. You can find out more about this error model and how to work with it in the [API Design Guide](https://cloud.google.com/apis/design/errors).'
-      type: object
-      properties:
-        message:
-          description: A developer-facing error message, which should be in English. Any user-facing error message should be localized and sent in the google.rpc.Status.details field, or localized by the client.
+        applicationInstance:
+          description: The instance type of the application sending the request.
           type: string
-        code:
-          type: integer
-          description: The status code, which should be an enum value of google.rpc.Code.
-          format: int32
-        details:
-          type: array
-          description: A list of messages that carry the error details. There is a common set of message types for APIs to use.
-          items:
-            type: object
-            additionalProperties:
-              description: Properties of the object. Contains field @type with type URL.
+          x-enumDescriptions:
+          - Not specified.
+          - The value is unknown in this version.
+          - The instance is for development and testing purposes.
+          - The instance is for production purposes.
+          enum:
+          - UNSPECIFIED
+          - UNKNOWN
+          - DEVELOPMENT_AND_TESTING
+          - PRODUCTION
   securitySchemes:
     oauth2:
       type: oauth2

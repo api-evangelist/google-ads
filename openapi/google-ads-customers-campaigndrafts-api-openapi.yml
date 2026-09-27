@@ -368,86 +368,6 @@ paths:
         - https://www.googleapis.com/auth/adwords
 components:
   schemas:
-    GoogleAdsGoogleadsV25Services__CampaignDraftOperation:
-      type: object
-      properties:
-        remove:
-          description: 'Remove operation: The campaign draft is expected to have a valid resource name, in this format: `customers/{customer_id}/campaignDrafts/{base_campaign_id}~{draft_id}`'
-          type: string
-        updateMask:
-          format: google-fieldmask
-          type: string
-          description: FieldMask that determines which resource fields are modified in an update.
-        create:
-          $ref: '#/components/schemas/GoogleAdsGoogleadsV25Resources__CampaignDraft'
-          description: 'Create operation: No resource name is expected for the new campaign draft.'
-        update:
-          $ref: '#/components/schemas/GoogleAdsGoogleadsV25Resources__CampaignDraft'
-          description: 'Update operation: The campaign draft is expected to have a valid resource name.'
-      description: A single operation (create, update, remove) on a campaign draft.
-    GoogleRpc__Status:
-      description: 'The `Status` type defines a logical error model that is suitable for different programming environments, including REST APIs and RPC APIs. It is used by [gRPC](https://github.com/grpc). Each `Status` message contains three pieces of data: error code, error message, and error details. You can find out more about this error model and how to work with it in the [API Design Guide](https://cloud.google.com/apis/design/errors).'
-      type: object
-      properties:
-        message:
-          description: A developer-facing error message, which should be in English. Any user-facing error message should be localized and sent in the google.rpc.Status.details field, or localized by the client.
-          type: string
-        code:
-          type: integer
-          description: The status code, which should be an enum value of google.rpc.Code.
-          format: int32
-        details:
-          type: array
-          description: A list of messages that carry the error details. There is a common set of message types for APIs to use.
-          items:
-            type: object
-            additionalProperties:
-              description: Properties of the object. Contains field @type with type URL.
-    GoogleAdsGoogleadsV25Services__ListCampaignDraftAsyncErrorsResponse:
-      description: Response message for CampaignDraftService.ListCampaignDraftAsyncErrors.
-      type: object
-      properties:
-        errors:
-          type: array
-          description: Details of the errors when performing the asynchronous operation.
-          items:
-            $ref: '#/components/schemas/GoogleRpc__Status'
-        nextPageToken:
-          type: string
-          description: Pagination token used to retrieve the next page of results. Pass the content of this string as the `page_token` attribute of the next request. `next_page_token` is not returned for the last page.
-    GoogleLongrunning__Operation:
-      type: object
-      properties:
-        done:
-          description: If the value is `false`, it means the operation is still in progress. If `true`, the operation is completed, and either `error` or `response` is available.
-          type: boolean
-        name:
-          description: The server-assigned name, which is only unique within the same service that originally returns it. If you use the default HTTP mapping, the `name` should be a resource name ending with `operations/{unique_id}`.
-          type: string
-        response:
-          type: object
-          description: The normal, successful response of the operation. If the original method returns no data on success, such as `Delete`, the response is `google.protobuf.Empty`. If the original method is standard `Get`/`Create`/`Update`, the response should be the resource. For other methods, the response should have the type `XxxResponse`, where `Xxx` is the original method name. For example, if the original method name is `TakeSnapshot()`, the inferred response type is `TakeSnapshotResponse`.
-          additionalProperties:
-            description: Properties of the object. Contains field @type with type URL.
-        error:
-          $ref: '#/components/schemas/GoogleRpc__Status'
-          description: The error result of the operation in case of failure or cancellation.
-        metadata:
-          type: object
-          description: Service-specific metadata associated with the operation. It typically contains progress information and common metadata such as create time. Some services might not provide such metadata. Any method that returns a long-running operation should document the metadata type, if any.
-          additionalProperties:
-            description: Properties of the object. Contains field @type with type URL.
-      description: This resource represents a long-running operation that is the result of a network API call.
-    GoogleAdsGoogleadsV25Services__MutateCampaignDraftResult:
-      description: The result for the campaign draft mutate.
-      type: object
-      properties:
-        resourceName:
-          type: string
-          description: Returned for successful operations.
-        campaignDraft:
-          description: The mutated campaign draft with only mutable fields after mutate. The field will only be returned when response_content_type is set to "MUTABLE_RESOURCE".
-          $ref: '#/components/schemas/GoogleAdsGoogleadsV25Resources__CampaignDraft'
     GoogleAdsGoogleadsV25Services__MutateCampaignDraftsResponse:
       description: Response message for campaign draft mutate.
       type: object
@@ -505,6 +425,40 @@ components:
         longRunningOperation:
           description: Output only. The resource name of the long-running operation that can be used to poll for completion of draft promotion. This is only set if the draft promotion is in progress or finished.
           type: string
+    GoogleAdsGoogleadsV25Services__PromoteCampaignDraftRequest:
+      description: Request message for CampaignDraftService.PromoteCampaignDraft.
+      type: object
+      properties:
+        validateOnly:
+          type: boolean
+          description: If true, the request is validated but no Long Running Operation is created. Only errors are returned.
+    GoogleAdsGoogleadsV25Services__MutateCampaignDraftResult:
+      description: The result for the campaign draft mutate.
+      type: object
+      properties:
+        resourceName:
+          type: string
+          description: Returned for successful operations.
+        campaignDraft:
+          description: The mutated campaign draft with only mutable fields after mutate. The field will only be returned when response_content_type is set to "MUTABLE_RESOURCE".
+          $ref: '#/components/schemas/GoogleAdsGoogleadsV25Resources__CampaignDraft'
+    GoogleAdsGoogleadsV25Services__CampaignDraftOperation:
+      type: object
+      properties:
+        remove:
+          description: 'Remove operation: The campaign draft is expected to have a valid resource name, in this format: `customers/{customer_id}/campaignDrafts/{base_campaign_id}~{draft_id}`'
+          type: string
+        updateMask:
+          format: google-fieldmask
+          type: string
+          description: FieldMask that determines which resource fields are modified in an update.
+        create:
+          $ref: '#/components/schemas/GoogleAdsGoogleadsV25Resources__CampaignDraft'
+          description: 'Create operation: No resource name is expected for the new campaign draft.'
+        update:
+          $ref: '#/components/schemas/GoogleAdsGoogleadsV25Resources__CampaignDraft'
+          description: 'Update operation: The campaign draft is expected to have a valid resource name.'
+      description: A single operation (create, update, remove) on a campaign draft.
     GoogleAdsGoogleadsV25Services__MutateCampaignDraftsRequest:
       type: object
       properties:
@@ -531,13 +485,59 @@ components:
           description: If true, successful operations will be carried out and invalid operations will return errors. If false, all operations will be carried out in one transaction if and only if they are all valid. Default is false.
           type: boolean
       description: Request message for CampaignDraftService.MutateCampaignDrafts.
-    GoogleAdsGoogleadsV25Services__PromoteCampaignDraftRequest:
-      description: Request message for CampaignDraftService.PromoteCampaignDraft.
+    GoogleAdsGoogleadsV25Services__ListCampaignDraftAsyncErrorsResponse:
+      description: Response message for CampaignDraftService.ListCampaignDraftAsyncErrors.
       type: object
       properties:
-        validateOnly:
+        errors:
+          type: array
+          description: Details of the errors when performing the asynchronous operation.
+          items:
+            $ref: '#/components/schemas/GoogleRpc__Status'
+        nextPageToken:
+          type: string
+          description: Pagination token used to retrieve the next page of results. Pass the content of this string as the `page_token` attribute of the next request. `next_page_token` is not returned for the last page.
+    GoogleRpc__Status:
+      description: 'The `Status` type defines a logical error model that is suitable for different programming environments, including REST APIs and RPC APIs. It is used by [gRPC](https://github.com/grpc). Each `Status` message contains three pieces of data: error code, error message, and error details. You can find out more about this error model and how to work with it in the [API Design Guide](https://cloud.google.com/apis/design/errors).'
+      type: object
+      properties:
+        message:
+          description: A developer-facing error message, which should be in English. Any user-facing error message should be localized and sent in the google.rpc.Status.details field, or localized by the client.
+          type: string
+        code:
+          type: integer
+          description: The status code, which should be an enum value of google.rpc.Code.
+          format: int32
+        details:
+          type: array
+          description: A list of messages that carry the error details. There is a common set of message types for APIs to use.
+          items:
+            type: object
+            additionalProperties:
+              description: Properties of the object. Contains field @type with type URL.
+    GoogleLongrunning__Operation:
+      type: object
+      properties:
+        done:
+          description: If the value is `false`, it means the operation is still in progress. If `true`, the operation is completed, and either `error` or `response` is available.
           type: boolean
-          description: If true, the request is validated but no Long Running Operation is created. Only errors are returned.
+        name:
+          description: The server-assigned name, which is only unique within the same service that originally returns it. If you use the default HTTP mapping, the `name` should be a resource name ending with `operations/{unique_id}`.
+          type: string
+        response:
+          type: object
+          description: The normal, successful response of the operation. If the original method returns no data on success, such as `Delete`, the response is `google.protobuf.Empty`. If the original method is standard `Get`/`Create`/`Update`, the response should be the resource. For other methods, the response should have the type `XxxResponse`, where `Xxx` is the original method name. For example, if the original method name is `TakeSnapshot()`, the inferred response type is `TakeSnapshotResponse`.
+          additionalProperties:
+            description: Properties of the object. Contains field @type with type URL.
+        error:
+          $ref: '#/components/schemas/GoogleRpc__Status'
+          description: The error result of the operation in case of failure or cancellation.
+        metadata:
+          type: object
+          description: Service-specific metadata associated with the operation. It typically contains progress information and common metadata such as create time. Some services might not provide such metadata. Any method that returns a long-running operation should document the metadata type, if any.
+          additionalProperties:
+            description: Properties of the object. Contains field @type with type URL.
+      description: This resource represents a long-running operation that is the result of a network API call.
   securitySchemes:
     oauth2:
       type: oauth2

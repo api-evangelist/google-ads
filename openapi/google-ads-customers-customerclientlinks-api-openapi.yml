@@ -133,20 +133,6 @@ paths:
         - https://www.googleapis.com/auth/adwords
 components:
   schemas:
-    GoogleAdsGoogleadsV25Services__CustomerClientLinkOperation:
-      type: object
-      properties:
-        updateMask:
-          format: google-fieldmask
-          type: string
-          description: FieldMask that determines which resource fields are modified in an update.
-        create:
-          description: 'Create operation: No resource name is expected for the new link.'
-          $ref: '#/components/schemas/GoogleAdsGoogleadsV25Resources__CustomerClientLink'
-        update:
-          $ref: '#/components/schemas/GoogleAdsGoogleadsV25Resources__CustomerClientLink'
-          description: 'Update operation: The link is expected to have a valid resource name.'
-      description: A single operation (create, update) on a CustomerClientLink.
     GoogleAdsGoogleadsV25Services__MutateCustomerClientLinkResult:
       description: The result for a single customer client link mutate.
       type: object
@@ -154,6 +140,16 @@ components:
         resourceName:
           type: string
           description: Returned for successful operations.
+    GoogleAdsGoogleadsV25Services__MutateCustomerClientLinkRequest:
+      type: object
+      properties:
+        operation:
+          $ref: '#/components/schemas/GoogleAdsGoogleadsV25Services__CustomerClientLinkOperation'
+          description: Required. The operation to perform on the individual CustomerClientLink.
+        validateOnly:
+          description: If true, the request is validated but not executed. Only errors are returned, not results.
+          type: boolean
+      description: Request message for CustomerClientLinkService.MutateCustomerClientLink.
     GoogleAdsGoogleadsV25Resources__CustomerClientLink:
       type: object
       properties:
@@ -190,16 +186,6 @@ components:
           description: 'Immutable. Name of the resource. CustomerClientLink resource names have the form: `customers/{customer_id}/customerClientLinks/{client_customer_id}~{manager_link_id}`'
           type: string
       description: Represents customer client link relationship.
-    GoogleAdsGoogleadsV25Services__MutateCustomerClientLinkRequest:
-      type: object
-      properties:
-        operation:
-          $ref: '#/components/schemas/GoogleAdsGoogleadsV25Services__CustomerClientLinkOperation'
-          description: Required. The operation to perform on the individual CustomerClientLink.
-        validateOnly:
-          description: If true, the request is validated but not executed. Only errors are returned, not results.
-          type: boolean
-      description: Request message for CustomerClientLinkService.MutateCustomerClientLink.
     GoogleAdsGoogleadsV25Services__MutateCustomerClientLinkResponse:
       type: object
       properties:
@@ -207,6 +193,20 @@ components:
           description: A result that identifies the resource affected by the mutate request.
           $ref: '#/components/schemas/GoogleAdsGoogleadsV25Services__MutateCustomerClientLinkResult'
       description: Response message for a CustomerClientLink mutate.
+    GoogleAdsGoogleadsV25Services__CustomerClientLinkOperation:
+      type: object
+      properties:
+        updateMask:
+          format: google-fieldmask
+          type: string
+          description: FieldMask that determines which resource fields are modified in an update.
+        create:
+          description: 'Create operation: No resource name is expected for the new link.'
+          $ref: '#/components/schemas/GoogleAdsGoogleadsV25Resources__CustomerClientLink'
+        update:
+          $ref: '#/components/schemas/GoogleAdsGoogleadsV25Resources__CustomerClientLink'
+          description: 'Update operation: The link is expected to have a valid resource name.'
+      description: A single operation (create, update) on a CustomerClientLink.
   securitySchemes:
     oauth2:
       type: oauth2

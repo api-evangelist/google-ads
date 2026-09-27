@@ -133,6 +133,22 @@ paths:
         - https://www.googleapis.com/auth/adwords
 components:
   schemas:
+    GoogleAdsGoogleadsV25Services__MutateCampaignConversionGoalResult:
+      type: object
+      properties:
+        resourceName:
+          description: Returned for successful operations.
+          type: string
+      description: The result for the campaign conversion goal mutate.
+    GoogleAdsGoogleadsV25Services__MutateCampaignConversionGoalsResponse:
+      description: Response message for a campaign conversion goal mutate.
+      type: object
+      properties:
+        results:
+          description: All results for the mutate.
+          items:
+            $ref: '#/components/schemas/GoogleAdsGoogleadsV25Services__MutateCampaignConversionGoalResult'
+          type: array
     GoogleAdsGoogleadsV25Services__MutateCampaignConversionGoalsRequest:
       type: object
       properties:
@@ -245,22 +261,6 @@ components:
           $ref: '#/components/schemas/GoogleAdsGoogleadsV25Resources__CampaignConversionGoal'
           description: 'Update operation: The customer conversion goal is expected to have a valid resource name.'
       description: A single operation (update) on a campaign conversion goal.
-    GoogleAdsGoogleadsV25Services__MutateCampaignConversionGoalsResponse:
-      description: Response message for a campaign conversion goal mutate.
-      type: object
-      properties:
-        results:
-          description: All results for the mutate.
-          items:
-            $ref: '#/components/schemas/GoogleAdsGoogleadsV25Services__MutateCampaignConversionGoalResult'
-          type: array
-    GoogleAdsGoogleadsV25Services__MutateCampaignConversionGoalResult:
-      type: object
-      properties:
-        resourceName:
-          description: Returned for successful operations.
-          type: string
-      description: The result for the campaign conversion goal mutate.
   securitySchemes:
     oauth2:
       type: oauth2

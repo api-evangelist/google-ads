@@ -1,6 +1,6 @@
 openapi: 3.2.0
 info:
-  title: Google Ads Audience Insights API
+  title: Google Ads V25:list Plannable User Interests API
   description: Manage your Google Ads accounts, campaigns, and reports with this API.
   version: v25
   x-discovery-revision: '20260721'
@@ -15,9 +15,9 @@ security:
 - oauth2:
   - https://www.googleapis.com/auth/adwords
 tags:
-- name: Audience Insights
+- name: V25:listPlannableUserInterests
 paths:
-  /v25/audienceInsights:listInsightsEligibleDates:
+  /v25:listPlannableUserInterests:
     parameters:
     - name: upload_protocol
       in: query
@@ -102,41 +102,77 @@ paths:
         - proto
       description: Data format for response.
     post:
-      operationId: googleads_audienceInsights_listInsightsEligibleDates
-      summary: Lists date ranges for which audience insights data can be requested
+      operationId: googleads_listPlannableUserInterests
+      summary: Returns the list of plannable user interests
       tags:
-      - Audience Insights
-      description: 'Lists date ranges for which audience insights data can be requested. List of thrown errors: AuthenticationError AuthorizationError FieldError HeaderError InternalError QuotaError RangeError RequestError'
+      - V25:listPlannableUserInterests
+      description: 'Returns the list of plannable user interests. A plannable user interest is one that can be targeted in a reach forecast using ReachPlanService.GenerateReachForecast. List of thrown errors: AuthenticationError AuthorizationError FieldError HeaderError InternalError ListOperationError QuotaError RequestError StringLengthError'
       requestBody:
         required: true
         content:
           application/json:
             schema:
-              $ref: '#/components/schemas/GoogleAdsGoogleadsV25Services__ListInsightsEligibleDatesRequest'
+              $ref: '#/components/schemas/GoogleAdsGoogleadsV25Services__ListPlannableUserInterestsRequest'
       responses:
         '200':
           description: Successful response
           content:
             application/json:
               schema:
-                $ref: '#/components/schemas/GoogleAdsGoogleadsV25Services__ListInsightsEligibleDatesResponse'
+                $ref: '#/components/schemas/GoogleAdsGoogleadsV25Services__ListPlannableUserInterestsResponse'
       security:
       - oauth2:
         - https://www.googleapis.com/auth/adwords
 components:
   schemas:
-    GoogleAdsGoogleadsV25Services__ListInsightsEligibleDatesResponse:
+    GoogleAdsGoogleadsV25Services__PlannableUserInterest:
+      description: A plannable user interest that can be targeted in a reach forecast using ReachPlanService.GenerateReachForecast.
       type: object
       properties:
-        dataMonths:
-          type: array
-          description: The months for which AudienceInsights data is currently available, each represented as a string in the form "YYYY-MM".
+        userInterestType:
+          description: The user interest type.
+          type: string
+          x-enumDescriptions:
+          - Not specified.
+          - Used for return value only. Represents value unknown in this version.
+          - The affinity for this user interest.
+          - The market for this user interest.
+          - Users known to have installed applications in the specified categories.
+          - The geographical location of the interest-based vertical.
+          - User interest criteria for new smart phone users.
+          enum:
+          - UNSPECIFIED
+          - UNKNOWN
+          - AFFINITY
+          - IN_MARKET
+          - MOBILE_APP_INSTALL_USER
+          - VERTICAL_GEO
+          - NEW_SMART_PHONE_USER
+        userInterestDisplayName:
+          description: The user interest display name. For example, "Autos & Vehicles"
+          type: string
+        userInterest:
+          description: The user interest id.
+          $ref: '#/components/schemas/GoogleAdsGoogleadsV25Common__UserInterestInfo'
+        userInterestPath:
+          type: string
+          description: The user interest path. For example, "/Autos & Vehicles/Motor Vehicles/Motor Vehicles by Type/Off-Road Vehicles"
+    GoogleAdsGoogleadsV25Common__UserInterestInfo:
+      description: Represents a particular interest-based topic to be targeted.
+      type: object
+      properties:
+        userInterestCategory:
+          type: string
+          description: The UserInterest resource name.
+    GoogleAdsGoogleadsV25Services__ListPlannableUserInterestsResponse:
+      description: Response message for ReachPlanService.ListPlannableUserInterests.
+      type: object
+      properties:
+        plannableUserInterests:
+          description: The list of plannable user interests.
           items:
-            type: string
-        lastThirtyDays:
-          description: The actual dates covered by the "last 30 days" date range that will be used implicitly for AudienceInsightsService.GenerateAudienceCompositionInsights requests that have no data_month set.
-          $ref: '#/components/schemas/GoogleAdsGoogleadsV25Common__DateRange'
-      description: Response message for AudienceInsightsService.ListInsightsEligibleDates.
+            $ref: '#/components/schemas/GoogleAdsGoogleadsV25Services__PlannableUserInterest'
+          type: array
     GoogleAdsGoogleadsV25Common__AdditionalApplicationInfo:
       description: Additional information about the application/tool issuing the request. This field is only used by ContentCreatorInsightsService, AudienceInsightsService, and ReachPlanService APIs.
       type: object
@@ -157,23 +193,43 @@ components:
           - UNKNOWN
           - DEVELOPMENT_AND_TESTING
           - PRODUCTION
-    GoogleAdsGoogleadsV25Services__ListInsightsEligibleDatesRequest:
-      description: Request message for AudienceInsightsService.ListInsightsEligibleDates.
+    GoogleAdsGoogleadsV25Services__ListPlannableUserInterestsRequest:
       type: object
       properties:
-        insightsApplicationInfo:
-          $ref: '#/components/schemas/GoogleAdsGoogleadsV25Common__AdditionalApplicationInfo'
+        nameQuery:
+          type: string
+          description: A filter by user interest name. If set, only user interests with a name containing the literal string (case insensitive) in the filter will be returned. Maximum length is 200 characters.
+        pathQuery:
+          description: A filter by user interest path. If set, only user interests with a path containing the literal string (case insensitive) in the filter will be returned. Maximum length is 200 characters.
+          type: string
+        userInterestTaxonomyTypes:
+          description: Optional. A filter by user interest type. If set, only user interests with a type listed in the filter will be returned. If not set, user interests of all supported types will be returned. Supported user interest types are AFFINITY and IN_MARKET. Each type must be specified at most once.
+          items:
+            x-enumDescriptions:
+            - Not specified.
+            - Used for return value only. Represents value unknown in this version.
+            - The affinity for this user interest.
+            - The market for this user interest.
+            - Users known to have installed applications in the specified categories.
+            - The geographical location of the interest-based vertical.
+            - User interest criteria for new smart phone users.
+            enum:
+            - UNSPECIFIED
+            - UNKNOWN
+            - AFFINITY
+            - IN_MARKET
+            - MOBILE_APP_INSTALL_USER
+            - VERTICAL_GEO
+            - NEW_SMART_PHONE_USER
+            type: string
+          type: array
+        customerId:
+          description: Required. The ID of the customer.
+          type: string
+        reachApplicationInfo:
           description: Optional. Additional information on the application issuing the request.
-    GoogleAdsGoogleadsV25Common__DateRange:
-      type: object
-      properties:
-        startDate:
-          type: string
-          description: The start date, in yyyy-mm-dd format. This date is inclusive.
-        endDate:
-          description: The end date, in yyyy-mm-dd format. This date is inclusive.
-          type: string
-      description: A date range.
+          $ref: '#/components/schemas/GoogleAdsGoogleadsV25Common__AdditionalApplicationInfo'
+      description: Request message for ReachPlanService.ListPlannableUserInterests.
   securitySchemes:
     oauth2:
       type: oauth2

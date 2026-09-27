@@ -133,46 +133,23 @@ paths:
         - https://www.googleapis.com/auth/adwords
 components:
   schemas:
-    GoogleAdsGoogleadsV25Services__MutateSharedSetsResponse:
-      description: Response message for a shared set mutate.
+    GoogleAdsGoogleadsV25Services__SharedSetOperation:
       type: object
       properties:
-        results:
-          description: All results for the mutate.
-          items:
-            $ref: '#/components/schemas/GoogleAdsGoogleadsV25Services__MutateSharedSetResult'
-          type: array
-        partialFailureError:
-          description: Errors that pertain to operation failures in the partial failure mode. Returned only when partial_failure = true and all errors occur inside the operations. If any errors occur outside the operations (for example, auth errors), we return an RPC level error.
-          $ref: '#/components/schemas/GoogleRpc__Status'
-    GoogleRpc__Status:
-      description: 'The `Status` type defines a logical error model that is suitable for different programming environments, including REST APIs and RPC APIs. It is used by [gRPC](https://github.com/grpc). Each `Status` message contains three pieces of data: error code, error message, and error details. You can find out more about this error model and how to work with it in the [API Design Guide](https://cloud.google.com/apis/design/errors).'
-      type: object
-      properties:
-        message:
-          description: A developer-facing error message, which should be in English. Any user-facing error message should be localized and sent in the google.rpc.Status.details field, or localized by the client.
-          type: string
-        code:
-          type: integer
-          description: The status code, which should be an enum value of google.rpc.Code.
-          format: int32
-        details:
-          type: array
-          description: A list of messages that carry the error details. There is a common set of message types for APIs to use.
-          items:
-            type: object
-            additionalProperties:
-              description: Properties of the object. Contains field @type with type URL.
-    GoogleAdsGoogleadsV25Services__MutateSharedSetResult:
-      description: The result for the shared set mutate.
-      type: object
-      properties:
-        resourceName:
-          description: Returned for successful operations.
-          type: string
-        sharedSet:
+        update:
           $ref: '#/components/schemas/GoogleAdsGoogleadsV25Resources__SharedSet'
-          description: The mutated shared set with only mutable fields after mutate. The field will only be returned when response_content_type is set to "MUTABLE_RESOURCE".
+          description: 'Update operation: The shared set is expected to have a valid resource name.'
+        updateMask:
+          description: FieldMask that determines which resource fields are modified in an update.
+          type: string
+          format: google-fieldmask
+        create:
+          $ref: '#/components/schemas/GoogleAdsGoogleadsV25Resources__SharedSet'
+          description: 'Create operation: No resource name is expected for the new shared set.'
+        remove:
+          description: 'Remove operation: A resource name for the removed shared set is expected, in this format: `customers/{customer_id}/sharedSets/{shared_set_id}`'
+          type: string
+      description: A single operation (create, update, remove) on an shared set.
     GoogleAdsGoogleadsV25Services__MutateSharedSetsRequest:
       description: Request message for SharedSetService.MutateSharedSets.
       type: object
@@ -199,23 +176,6 @@ components:
           items:
             $ref: '#/components/schemas/GoogleAdsGoogleadsV25Services__SharedSetOperation'
           type: array
-    GoogleAdsGoogleadsV25Services__SharedSetOperation:
-      type: object
-      properties:
-        update:
-          $ref: '#/components/schemas/GoogleAdsGoogleadsV25Resources__SharedSet'
-          description: 'Update operation: The shared set is expected to have a valid resource name.'
-        updateMask:
-          description: FieldMask that determines which resource fields are modified in an update.
-          type: string
-          format: google-fieldmask
-        create:
-          $ref: '#/components/schemas/GoogleAdsGoogleadsV25Resources__SharedSet'
-          description: 'Create operation: No resource name is expected for the new shared set.'
-        remove:
-          description: 'Remove operation: A resource name for the removed shared set is expected, in this format: `customers/{customer_id}/sharedSets/{shared_set_id}`'
-          type: string
-      description: A single operation (create, update, remove) on an shared set.
     GoogleAdsGoogleadsV25Resources__SharedSet:
       type: object
       properties:
@@ -295,6 +255,46 @@ components:
           - THINGS_TO_DO
           - FLIGHTS
       description: SharedSets are used for sharing criterion exclusions across multiple campaigns.
+    GoogleAdsGoogleadsV25Services__MutateSharedSetsResponse:
+      description: Response message for a shared set mutate.
+      type: object
+      properties:
+        results:
+          description: All results for the mutate.
+          items:
+            $ref: '#/components/schemas/GoogleAdsGoogleadsV25Services__MutateSharedSetResult'
+          type: array
+        partialFailureError:
+          description: Errors that pertain to operation failures in the partial failure mode. Returned only when partial_failure = true and all errors occur inside the operations. If any errors occur outside the operations (for example, auth errors), we return an RPC level error.
+          $ref: '#/components/schemas/GoogleRpc__Status'
+    GoogleRpc__Status:
+      description: 'The `Status` type defines a logical error model that is suitable for different programming environments, including REST APIs and RPC APIs. It is used by [gRPC](https://github.com/grpc). Each `Status` message contains three pieces of data: error code, error message, and error details. You can find out more about this error model and how to work with it in the [API Design Guide](https://cloud.google.com/apis/design/errors).'
+      type: object
+      properties:
+        message:
+          description: A developer-facing error message, which should be in English. Any user-facing error message should be localized and sent in the google.rpc.Status.details field, or localized by the client.
+          type: string
+        code:
+          type: integer
+          description: The status code, which should be an enum value of google.rpc.Code.
+          format: int32
+        details:
+          type: array
+          description: A list of messages that carry the error details. There is a common set of message types for APIs to use.
+          items:
+            type: object
+            additionalProperties:
+              description: Properties of the object. Contains field @type with type URL.
+    GoogleAdsGoogleadsV25Services__MutateSharedSetResult:
+      description: The result for the shared set mutate.
+      type: object
+      properties:
+        resourceName:
+          description: Returned for successful operations.
+          type: string
+        sharedSet:
+          $ref: '#/components/schemas/GoogleAdsGoogleadsV25Resources__SharedSet'
+          description: The mutated shared set with only mutable fields after mutate. The field will only be returned when response_content_type is set to "MUTABLE_RESOURCE".
   securitySchemes:
     oauth2:
       type: oauth2

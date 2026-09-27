@@ -142,6 +142,29 @@ components:
           description: All results for the mutate.
           items:
             $ref: '#/components/schemas/GoogleAdsGoogleadsV25Services__MutateCustomerConversionGoalResult'
+    GoogleAdsGoogleadsV25Services__CustomerConversionGoalOperation:
+      type: object
+      properties:
+        update:
+          description: 'Update operation: The customer conversion goal is expected to have a valid resource name.'
+          $ref: '#/components/schemas/GoogleAdsGoogleadsV25Resources__CustomerConversionGoal'
+        updateMask:
+          format: google-fieldmask
+          description: FieldMask that determines which resource fields are modified in an update.
+          type: string
+      description: A single operation (update) on a customer conversion goal.
+    GoogleAdsGoogleadsV25Services__MutateCustomerConversionGoalsRequest:
+      type: object
+      properties:
+        validateOnly:
+          type: boolean
+          description: If true, the request is validated but not executed. Only errors are returned, not results.
+        operations:
+          description: Required. The list of operations to perform on individual customer conversion goal.
+          items:
+            $ref: '#/components/schemas/GoogleAdsGoogleadsV25Services__CustomerConversionGoalOperation'
+          type: array
+      description: Request message for CustomerConversionGoalService.MutateCustomerConversionGoals.
     GoogleAdsGoogleadsV25Resources__CustomerConversionGoal:
       type: object
       properties:
@@ -228,29 +251,6 @@ components:
           type: boolean
           description: The biddability of the customer conversion goal.
       description: Biddability control for conversion actions with a matching category and origin.
-    GoogleAdsGoogleadsV25Services__MutateCustomerConversionGoalsRequest:
-      type: object
-      properties:
-        validateOnly:
-          type: boolean
-          description: If true, the request is validated but not executed. Only errors are returned, not results.
-        operations:
-          description: Required. The list of operations to perform on individual customer conversion goal.
-          items:
-            $ref: '#/components/schemas/GoogleAdsGoogleadsV25Services__CustomerConversionGoalOperation'
-          type: array
-      description: Request message for CustomerConversionGoalService.MutateCustomerConversionGoals.
-    GoogleAdsGoogleadsV25Services__CustomerConversionGoalOperation:
-      type: object
-      properties:
-        update:
-          description: 'Update operation: The customer conversion goal is expected to have a valid resource name.'
-          $ref: '#/components/schemas/GoogleAdsGoogleadsV25Resources__CustomerConversionGoal'
-        updateMask:
-          format: google-fieldmask
-          description: FieldMask that determines which resource fields are modified in an update.
-          type: string
-      description: A single operation (update) on a customer conversion goal.
     GoogleAdsGoogleadsV25Services__MutateCustomerConversionGoalResult:
       type: object
       properties:

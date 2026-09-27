@@ -133,31 +133,6 @@ paths:
         - https://www.googleapis.com/auth/adwords
 components:
   schemas:
-    GoogleAdsGoogleadsV25Services__MutateCampaignLabelResult:
-      type: object
-      properties:
-        resourceName:
-          description: Returned for successful operations.
-          type: string
-      description: The result for a campaign label mutate.
-    GoogleRpc__Status:
-      description: 'The `Status` type defines a logical error model that is suitable for different programming environments, including REST APIs and RPC APIs. It is used by [gRPC](https://github.com/grpc). Each `Status` message contains three pieces of data: error code, error message, and error details. You can find out more about this error model and how to work with it in the [API Design Guide](https://cloud.google.com/apis/design/errors).'
-      type: object
-      properties:
-        message:
-          description: A developer-facing error message, which should be in English. Any user-facing error message should be localized and sent in the google.rpc.Status.details field, or localized by the client.
-          type: string
-        code:
-          type: integer
-          description: The status code, which should be an enum value of google.rpc.Code.
-          format: int32
-        details:
-          type: array
-          description: A list of messages that carry the error details. There is a common set of message types for APIs to use.
-          items:
-            type: object
-            additionalProperties:
-              description: Properties of the object. Contains field @type with type URL.
     GoogleAdsGoogleadsV25Services__MutateCampaignLabelsRequest:
       description: Request message for CampaignLabelService.MutateCampaignLabels.
       type: object
@@ -186,6 +161,13 @@ components:
           description: 'Immutable. Name of the resource. Campaign label resource names have the form: `customers/{customer_id}/campaignLabels/{campaign_id}~{label_id}`'
           type: string
       description: Represents a relationship between a campaign and a label.
+    GoogleAdsGoogleadsV25Services__MutateCampaignLabelResult:
+      type: object
+      properties:
+        resourceName:
+          description: Returned for successful operations.
+          type: string
+      description: The result for a campaign label mutate.
     GoogleAdsGoogleadsV25Services__MutateCampaignLabelsResponse:
       type: object
       properties:
@@ -208,6 +190,24 @@ components:
           description: 'Remove operation: A resource name for the campaign-label relationship being removed, in this format: `customers/{customer_id}/campaignLabels/{campaign_id}~{label_id}`'
           type: string
       description: A single operation (create, remove) on a campaign-label relationship.
+    GoogleRpc__Status:
+      description: 'The `Status` type defines a logical error model that is suitable for different programming environments, including REST APIs and RPC APIs. It is used by [gRPC](https://github.com/grpc). Each `Status` message contains three pieces of data: error code, error message, and error details. You can find out more about this error model and how to work with it in the [API Design Guide](https://cloud.google.com/apis/design/errors).'
+      type: object
+      properties:
+        message:
+          description: A developer-facing error message, which should be in English. Any user-facing error message should be localized and sent in the google.rpc.Status.details field, or localized by the client.
+          type: string
+        code:
+          type: integer
+          description: The status code, which should be an enum value of google.rpc.Code.
+          format: int32
+        details:
+          type: array
+          description: A list of messages that carry the error details. There is a common set of message types for APIs to use.
+          items:
+            type: object
+            additionalProperties:
+              description: Properties of the object. Contains field @type with type URL.
   securitySchemes:
     oauth2:
       type: oauth2

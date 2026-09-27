@@ -133,59 +133,95 @@ paths:
         - https://www.googleapis.com/auth/adwords
 components:
   schemas:
-    GoogleAdsGoogleadsV25Common__YouTubeChannelInfo:
+    GoogleAdsGoogleadsV25Common__WebpageSampleInfo:
       type: object
       properties:
-        channelId:
-          type: string
-          description: The YouTube uploader channel id or the channel code of a YouTube channel.
-      description: A YouTube Channel criterion.
-    GoogleAdsGoogleadsV25Services__MutateSharedCriteriaRequest:
-      description: Request message for SharedCriterionService.MutateSharedCriteria.
+        sampleUrls:
+          type: array
+          description: Webpage sample urls
+          items:
+            type: string
+      description: List of sample urls that match the website target
+    GoogleAdsGoogleadsV25Common__BrandInfo:
+      description: Represents a Brand Criterion used for targeting based on commercial knowledge graph.
       type: object
       properties:
-        partialFailure:
-          type: boolean
-          description: If true, successful operations will be carried out and invalid operations will return errors. If false, all operations will be carried out in one transaction if and only if they are all valid. Default is false.
-        validateOnly:
-          description: If true, the request is validated but not executed. Only errors are returned, not results.
-          type: boolean
-        responseContentType:
-          description: The response content type setting. Determines whether the mutable resource or just the resource name should be returned post mutation.
+        entityId:
           type: string
-          x-enumDescriptions:
-          - Not specified. Will return the resource name only in the response.
-          - The mutate response will be the resource name.
-          - The mutate response will contain the resource name and the resource with mutable fields if possible. Otherwise, only the resource name will be returned.
+          description: The Commercial KG MID for the brand.
+        status:
+          description: Output only. The status of a brand.
+          type: string
           enum:
           - UNSPECIFIED
-          - RESOURCE_NAME_ONLY
-          - MUTABLE_RESOURCE
-        operations:
-          description: Required. The list of operations to perform on individual shared criteria.
-          items:
-            $ref: '#/components/schemas/GoogleAdsGoogleadsV25Services__SharedCriterionOperation'
-          type: array
-    GoogleAdsGoogleadsV25Common__RetailFilter:
+          - UNKNOWN
+          - ENABLED
+          - DEPRECATED
+          - UNVERIFIED
+          - APPROVED
+          - CANCELLED
+          - REJECTED
+          x-enumDescriptions:
+          - No value has been specified.
+          - Used for return value only. Represents value unknown in this version.
+          - Brand is verified and globally available for selection
+          - Brand was globally available in past but is no longer a valid brand (based on business criteria)
+          - Brand is unverified and customer scoped, but can be selected by customer (only who requested for same) for targeting
+          - Was a customer-scoped (unverified) brand, which got approved by business and added to the global list. Its assigned CKG MID should be used instead of this
+          - Was a customer-scoped (unverified) brand, but the request was canceled by customer and this brand id is no longer valid
+          - Was a customer-scoped (unverified) brand, but the request was rejected by internal business team and this brand id is no longer valid
+        rejectionReason:
+          description: Output only. The rejection reason when a brand status is REJECTED.
+          type: string
+          enum:
+          - UNSPECIFIED
+          - UNKNOWN
+          - EXISTING_BRAND
+          - EXISTING_BRAND_VARIANT
+          - INCORRECT_INFORMATION
+          - NOT_A_BRAND
+          x-enumDescriptions:
+          - No value has been specified.
+          - Used for return value only. Represents value unknown in this version.
+          - Brand is already present in the commercial brand set.
+          - Brand is already present in the commercial brand set, but is a variant.
+          - 'Brand information is not correct (eg: URL and name don''t match).'
+          - Not a valid brand as per Google policy.
+        primaryUrl:
+          type: string
+          description: Output only. The primary url of a brand.
+        displayName:
+          description: Output only. A text representation of a brand.
+          type: string
+    GoogleAdsGoogleadsV25Common__MobileAppCategoryInfo:
+      description: A mobile app category criterion.
       type: object
       properties:
-        expression:
-          $ref: '#/components/schemas/GoogleAdsGoogleadsV25Common__RetailFilterExpression'
-          description: An expression node. At this time, this can only be an OR node.
-        tag:
-          $ref: '#/components/schemas/GoogleAdsGoogleadsV25Common__RetailTag'
-          description: A tag node.
-      description: Represents a Retail Filter.
-    GoogleAdsGoogleadsV25Common__MobileApplicationInfo:
+        mobileAppCategoryConstant:
+          type: string
+          description: The mobile app category constant resource name.
+    GoogleAdsGoogleadsV25Common__KeywordInfo:
       type: object
       properties:
-        appId:
-          description: A string that uniquely identifies a mobile application to Google Ads API. The format of this string is "{platform}-{platform_native_id}", where platform is "1" for iOS apps and "2" for Android apps, and where platform_native_id is the mobile application identifier native to the corresponding platform. For iOS, this native identifier is the 9 digit string that appears at the end of an App Store URL (for example, "476943146" for "Flood-It! 2" whose App Store link is "http://itunes.apple.com/us/app/flood-it!-2/id476943146"). For Android, this native identifier is the application's package name (for example, "com.labpixies.colordrips" for "Color Drips" given Google Play link "https://play.google.com/store/apps/details?id=com.labpixies.colordrips"). A well formed app id for Google Ads API would thus be "1-476943146" for iOS and "2-com.labpixies.colordrips" for Android. This field is required and must be set in CREATE operations.
+        text:
           type: string
-        name:
-          description: Name of this mobile application.
+          description: The text of the keyword (at most 80 characters and 10 words).
+        matchType:
+          x-enumDescriptions:
+          - Not specified.
+          - Used for return value only. Represents value unknown in this version.
+          - Exact match.
+          - Phrase match.
+          - Broad match.
+          enum:
+          - UNSPECIFIED
+          - UNKNOWN
+          - EXACT
+          - PHRASE
+          - BROAD
           type: string
-      description: A mobile application criterion.
+          description: The match type of the keyword.
+      description: A keyword criterion.
     GoogleAdsGoogleadsV25Resources__SharedCriterion:
       type: object
       properties:
@@ -336,24 +372,6 @@ components:
           $ref: '#/components/schemas/GoogleAdsGoogleadsV25Common__MobileApplicationInfo'
           description: Immutable. Mobile application.
       description: A criterion belonging to a shared set.
-    GoogleRpc__Status:
-      description: 'The `Status` type defines a logical error model that is suitable for different programming environments, including REST APIs and RPC APIs. It is used by [gRPC](https://github.com/grpc). Each `Status` message contains three pieces of data: error code, error message, and error details. You can find out more about this error model and how to work with it in the [API Design Guide](https://cloud.google.com/apis/design/errors).'
-      type: object
-      properties:
-        message:
-          description: A developer-facing error message, which should be in English. Any user-facing error message should be localized and sent in the google.rpc.Status.details field, or localized by the client.
-          type: string
-        code:
-          type: integer
-          description: The status code, which should be an enum value of google.rpc.Code.
-          format: int32
-        details:
-          type: array
-          description: A list of messages that carry the error details. There is a common set of message types for APIs to use.
-          items:
-            type: object
-            additionalProperties:
-              description: Properties of the object. Contains field @type with type URL.
     GoogleAdsGoogleadsV25Services__MutateSharedCriteriaResponse:
       type: object
       properties:
@@ -366,86 +384,23 @@ components:
             $ref: '#/components/schemas/GoogleAdsGoogleadsV25Services__MutateSharedCriterionResult'
           type: array
       description: Response message for a shared criterion mutate.
-    GoogleAdsGoogleadsV25Common__YouTubeVideoInfo:
-      description: A YouTube Video criterion.
+    GoogleAdsGoogleadsV25Common__PlacementInfo:
+      description: A placement criterion. This can be used to modify bids for sites when targeting the content network.
       type: object
       properties:
-        videoId:
+        url:
           type: string
-          description: YouTube video id as it appears on the YouTube watch page.
-    GoogleAdsGoogleadsV25Common__BrandInfo:
-      description: Represents a Brand Criterion used for targeting based on commercial knowledge graph.
+          description: URL of the placement. For example, "http://www.domain.com".
+    GoogleAdsGoogleadsV25Common__RetailFilter:
       type: object
       properties:
-        entityId:
-          type: string
-          description: The Commercial KG MID for the brand.
-        status:
-          description: Output only. The status of a brand.
-          type: string
-          enum:
-          - UNSPECIFIED
-          - UNKNOWN
-          - ENABLED
-          - DEPRECATED
-          - UNVERIFIED
-          - APPROVED
-          - CANCELLED
-          - REJECTED
-          x-enumDescriptions:
-          - No value has been specified.
-          - Used for return value only. Represents value unknown in this version.
-          - Brand is verified and globally available for selection
-          - Brand was globally available in past but is no longer a valid brand (based on business criteria)
-          - Brand is unverified and customer scoped, but can be selected by customer (only who requested for same) for targeting
-          - Was a customer-scoped (unverified) brand, which got approved by business and added to the global list. Its assigned CKG MID should be used instead of this
-          - Was a customer-scoped (unverified) brand, but the request was canceled by customer and this brand id is no longer valid
-          - Was a customer-scoped (unverified) brand, but the request was rejected by internal business team and this brand id is no longer valid
-        rejectionReason:
-          description: Output only. The rejection reason when a brand status is REJECTED.
-          type: string
-          enum:
-          - UNSPECIFIED
-          - UNKNOWN
-          - EXISTING_BRAND
-          - EXISTING_BRAND_VARIANT
-          - INCORRECT_INFORMATION
-          - NOT_A_BRAND
-          x-enumDescriptions:
-          - No value has been specified.
-          - Used for return value only. Represents value unknown in this version.
-          - Brand is already present in the commercial brand set.
-          - Brand is already present in the commercial brand set, but is a variant.
-          - 'Brand information is not correct (eg: URL and name don''t match).'
-          - Not a valid brand as per Google policy.
-        primaryUrl:
-          type: string
-          description: Output only. The primary url of a brand.
-        displayName:
-          description: Output only. A text representation of a brand.
-          type: string
-    GoogleAdsGoogleadsV25Common__KeywordInfo:
-      type: object
-      properties:
-        text:
-          type: string
-          description: The text of the keyword (at most 80 characters and 10 words).
-        matchType:
-          x-enumDescriptions:
-          - Not specified.
-          - Used for return value only. Represents value unknown in this version.
-          - Exact match.
-          - Phrase match.
-          - Broad match.
-          enum:
-          - UNSPECIFIED
-          - UNKNOWN
-          - EXACT
-          - PHRASE
-          - BROAD
-          type: string
-          description: The match type of the keyword.
-      description: A keyword criterion.
+        expression:
+          $ref: '#/components/schemas/GoogleAdsGoogleadsV25Common__RetailFilterExpression'
+          description: An expression node. At this time, this can only be an OR node.
+        tag:
+          $ref: '#/components/schemas/GoogleAdsGoogleadsV25Common__RetailTag'
+          description: A tag node.
+      description: Represents a Retail Filter.
     GoogleAdsGoogleadsV25Common__VerticalAdsItemGroupRuleInfo:
       description: A criterion to represent a single item group rule in Vertical Ads.
       type: object
@@ -476,68 +431,37 @@ components:
         regionCriterionId:
           type: string
           description: The resource name of the Geo Target Constant for the region.
-    GoogleAdsGoogleadsV25Common__RetailTag:
+    GoogleAdsGoogleadsV25Common__YouTubeChannelInfo:
       type: object
       properties:
-        value:
+        channelId:
           type: string
-          description: The value of the tag. It can contain at most 50 characters. All Unicode characters except comma and newline are allowed. This field is required.
-        expressionName:
-          description: The name of the expression this tag belongs to. If empty, the tag is a top-level condition.
-          type: string
-      description: Represents a Retail Filter Tag.
-    GoogleAdsGoogleadsV25Common__PlacementInfo:
-      description: A placement criterion. This can be used to modify bids for sites when targeting the content network.
+          description: The YouTube uploader channel id or the channel code of a YouTube channel.
+      description: A YouTube Channel criterion.
+    GoogleAdsGoogleadsV25Common__RetailFilterExpression:
       type: object
       properties:
-        url:
+        name:
+          description: The name of the expression. This name is used for grouping Retail Tags into one logical expression with OR operator. The name can contain at most 20 characters. Only lowercase latin letters, underscores, and numbers are allowed. This field is required and must be unique within the shared set.
           type: string
-          description: URL of the placement. For example, "http://www.domain.com".
-    GoogleAdsGoogleadsV25Services__MutateSharedCriterionResult:
+      description: Represents a Retail Filter Expression. Tags grouped within an expression are joined with OR operator. A product needs to have any of these tags to satisfy expression condition.
+    GoogleAdsGoogleadsV25Services__SharedCriterionOperation:
       type: object
       properties:
-        sharedCriterion:
-          description: The mutated shared criterion with only mutable fields after mutate. The field will only be returned when response_content_type is set to "MUTABLE_RESOURCE".
+        create:
           $ref: '#/components/schemas/GoogleAdsGoogleadsV25Resources__SharedCriterion'
-        resourceName:
+          description: 'Create operation: No resource name is expected for the new shared criterion.'
+        remove:
           type: string
-          description: Returned for successful operations.
-      description: The result for the shared criterion mutate.
-    GoogleAdsGoogleadsV25Common__WebpageInfo:
+          description: 'Remove operation: A resource name for the removed shared criterion is expected, in this format: `customers/{customer_id}/sharedCriteria/{shared_set_id}~{criterion_id}`'
+      description: A single operation (create, remove) on an shared criterion.
+    GoogleAdsGoogleadsV25Common__YouTubeVideoInfo:
+      description: A YouTube Video criterion.
       type: object
       properties:
-        criterionName:
-          description: The name of the criterion that is defined by this parameter. The name value will be used for identifying, sorting and filtering criteria with this type of parameters. This field is required for CREATE operations and is prohibited on UPDATE operations.
+        videoId:
           type: string
-        coveragePercentage:
-          description: Website criteria coverage percentage. This is the computed percentage of website coverage based on the website target, negative website target and negative keywords in the ad group and campaign. For instance, when coverage returns as 1, it indicates it has 100% coverage. This field is read-only.
-          type: number
-          format: double
-        conditions:
-          description: Conditions, or logical expressions, for webpage targeting. The list of webpage targeting conditions are and-ed together when evaluated for targeting. An empty list of conditions indicates all pages of the campaign's website are targeted. This field is required for CREATE operations and is prohibited on UPDATE operations.
-          items:
-            $ref: '#/components/schemas/GoogleAdsGoogleadsV25Common__WebpageConditionInfo'
-          type: array
-        sample:
-          description: List of sample urls that match the website target. This field is read-only.
-          $ref: '#/components/schemas/GoogleAdsGoogleadsV25Common__WebpageSampleInfo'
-      description: Represents a criterion for targeting webpages of an advertiser's website.
-    GoogleAdsGoogleadsV25Common__MobileAppCategoryInfo:
-      description: A mobile app category criterion.
-      type: object
-      properties:
-        mobileAppCategoryConstant:
-          type: string
-          description: The mobile app category constant resource name.
-    GoogleAdsGoogleadsV25Common__WebpageSampleInfo:
-      type: object
-      properties:
-        sampleUrls:
-          type: array
-          description: Webpage sample urls
-          items:
-            type: string
-      description: List of sample urls that match the website target
+          description: YouTube video id as it appears on the YouTube watch page.
     GoogleAdsGoogleadsV25Common__WebpageConditionInfo:
       type: object
       properties:
@@ -577,23 +501,99 @@ components:
           description: Argument of webpage targeting condition.
           type: string
       description: Logical expression for targeting webpages of an advertiser's website.
-    GoogleAdsGoogleadsV25Services__SharedCriterionOperation:
+    GoogleAdsGoogleadsV25Common__MobileApplicationInfo:
       type: object
       properties:
-        create:
-          $ref: '#/components/schemas/GoogleAdsGoogleadsV25Resources__SharedCriterion'
-          description: 'Create operation: No resource name is expected for the new shared criterion.'
-        remove:
+        appId:
+          description: A string that uniquely identifies a mobile application to Google Ads API. The format of this string is "{platform}-{platform_native_id}", where platform is "1" for iOS apps and "2" for Android apps, and where platform_native_id is the mobile application identifier native to the corresponding platform. For iOS, this native identifier is the 9 digit string that appears at the end of an App Store URL (for example, "476943146" for "Flood-It! 2" whose App Store link is "http://itunes.apple.com/us/app/flood-it!-2/id476943146"). For Android, this native identifier is the application's package name (for example, "com.labpixies.colordrips" for "Color Drips" given Google Play link "https://play.google.com/store/apps/details?id=com.labpixies.colordrips"). A well formed app id for Google Ads API would thus be "1-476943146" for iOS and "2-com.labpixies.colordrips" for Android. This field is required and must be set in CREATE operations.
           type: string
-          description: 'Remove operation: A resource name for the removed shared criterion is expected, in this format: `customers/{customer_id}/sharedCriteria/{shared_set_id}~{criterion_id}`'
-      description: A single operation (create, remove) on an shared criterion.
-    GoogleAdsGoogleadsV25Common__RetailFilterExpression:
-      type: object
-      properties:
         name:
-          description: The name of the expression. This name is used for grouping Retail Tags into one logical expression with OR operator. The name can contain at most 20 characters. Only lowercase latin letters, underscores, and numbers are allowed. This field is required and must be unique within the shared set.
+          description: Name of this mobile application.
           type: string
-      description: Represents a Retail Filter Expression. Tags grouped within an expression are joined with OR operator. A product needs to have any of these tags to satisfy expression condition.
+      description: A mobile application criterion.
+    GoogleAdsGoogleadsV25Services__MutateSharedCriterionResult:
+      type: object
+      properties:
+        sharedCriterion:
+          description: The mutated shared criterion with only mutable fields after mutate. The field will only be returned when response_content_type is set to "MUTABLE_RESOURCE".
+          $ref: '#/components/schemas/GoogleAdsGoogleadsV25Resources__SharedCriterion'
+        resourceName:
+          type: string
+          description: Returned for successful operations.
+      description: The result for the shared criterion mutate.
+    GoogleAdsGoogleadsV25Common__WebpageInfo:
+      type: object
+      properties:
+        criterionName:
+          description: The name of the criterion that is defined by this parameter. The name value will be used for identifying, sorting and filtering criteria with this type of parameters. This field is required for CREATE operations and is prohibited on UPDATE operations.
+          type: string
+        coveragePercentage:
+          description: Website criteria coverage percentage. This is the computed percentage of website coverage based on the website target, negative website target and negative keywords in the ad group and campaign. For instance, when coverage returns as 1, it indicates it has 100% coverage. This field is read-only.
+          type: number
+          format: double
+        conditions:
+          description: Conditions, or logical expressions, for webpage targeting. The list of webpage targeting conditions are and-ed together when evaluated for targeting. An empty list of conditions indicates all pages of the campaign's website are targeted. This field is required for CREATE operations and is prohibited on UPDATE operations.
+          items:
+            $ref: '#/components/schemas/GoogleAdsGoogleadsV25Common__WebpageConditionInfo'
+          type: array
+        sample:
+          description: List of sample urls that match the website target. This field is read-only.
+          $ref: '#/components/schemas/GoogleAdsGoogleadsV25Common__WebpageSampleInfo'
+      description: Represents a criterion for targeting webpages of an advertiser's website.
+    GoogleAdsGoogleadsV25Common__RetailTag:
+      type: object
+      properties:
+        value:
+          type: string
+          description: The value of the tag. It can contain at most 50 characters. All Unicode characters except comma and newline are allowed. This field is required.
+        expressionName:
+          description: The name of the expression this tag belongs to. If empty, the tag is a top-level condition.
+          type: string
+      description: Represents a Retail Filter Tag.
+    GoogleAdsGoogleadsV25Services__MutateSharedCriteriaRequest:
+      description: Request message for SharedCriterionService.MutateSharedCriteria.
+      type: object
+      properties:
+        partialFailure:
+          type: boolean
+          description: If true, successful operations will be carried out and invalid operations will return errors. If false, all operations will be carried out in one transaction if and only if they are all valid. Default is false.
+        validateOnly:
+          description: If true, the request is validated but not executed. Only errors are returned, not results.
+          type: boolean
+        responseContentType:
+          description: The response content type setting. Determines whether the mutable resource or just the resource name should be returned post mutation.
+          type: string
+          x-enumDescriptions:
+          - Not specified. Will return the resource name only in the response.
+          - The mutate response will be the resource name.
+          - The mutate response will contain the resource name and the resource with mutable fields if possible. Otherwise, only the resource name will be returned.
+          enum:
+          - UNSPECIFIED
+          - RESOURCE_NAME_ONLY
+          - MUTABLE_RESOURCE
+        operations:
+          description: Required. The list of operations to perform on individual shared criteria.
+          items:
+            $ref: '#/components/schemas/GoogleAdsGoogleadsV25Services__SharedCriterionOperation'
+          type: array
+    GoogleRpc__Status:
+      description: 'The `Status` type defines a logical error model that is suitable for different programming environments, including REST APIs and RPC APIs. It is used by [gRPC](https://github.com/grpc). Each `Status` message contains three pieces of data: error code, error message, and error details. You can find out more about this error model and how to work with it in the [API Design Guide](https://cloud.google.com/apis/design/errors).'
+      type: object
+      properties:
+        message:
+          description: A developer-facing error message, which should be in English. Any user-facing error message should be localized and sent in the google.rpc.Status.details field, or localized by the client.
+          type: string
+        code:
+          type: integer
+          description: The status code, which should be an enum value of google.rpc.Code.
+          format: int32
+        details:
+          type: array
+          description: A list of messages that carry the error details. There is a common set of message types for APIs to use.
+          items:
+            type: object
+            additionalProperties:
+              description: Properties of the object. Contains field @type with type URL.
   securitySchemes:
     oauth2:
       type: oauth2

@@ -133,6 +133,105 @@ paths:
         - https://www.googleapis.com/auth/adwords
 components:
   schemas:
+    GoogleAdsGoogleadsV25Services__CampaignCustomizerOperation:
+      description: A single operation (create, remove) on a customizer attribute.
+      type: object
+      properties:
+        create:
+          description: 'Create operation: No resource name is expected for the new campaign customizer'
+          $ref: '#/components/schemas/GoogleAdsGoogleadsV25Resources__CampaignCustomizer'
+        remove:
+          type: string
+          description: 'Remove operation: A resource name for the removed campaign customizer is expected, in this format: `customers/{customer_id}/campaignCustomizers/{campaign_id}~{customizer_attribute_id}`'
+    GoogleAdsGoogleadsV25Resources__CampaignCustomizer:
+      description: A customizer value for the associated CustomizerAttribute at the Campaign level.
+      type: object
+      properties:
+        campaign:
+          type: string
+          description: Immutable. The campaign to which the customizer attribute is linked.
+        resourceName:
+          description: 'Immutable. The resource name of the campaign customizer. Campaign customizer resource names have the form: `customers/{customer_id}/campaignCustomizers/{campaign_id}~{customizer_attribute_id}`'
+          type: string
+        status:
+          x-enumDescriptions:
+          - The status has not been specified.
+          - The received value is not known in this version.
+          - The customizer value is enabled.
+          - The customizer value is removed.
+          description: Output only. The status of the campaign customizer.
+          type: string
+          enum:
+          - UNSPECIFIED
+          - UNKNOWN
+          - ENABLED
+          - REMOVED
+        customizerAttribute:
+          description: Required. Immutable. The customizer attribute which is linked to the campaign.
+          type: string
+        value:
+          description: Required. The value to associate with the customizer attribute at this level. The value must be of the type specified for the CustomizerAttribute.
+          $ref: '#/components/schemas/GoogleAdsGoogleadsV25Common__CustomizerValue'
+    GoogleAdsGoogleadsV25Services__MutateCampaignCustomizersRequest:
+      type: object
+      properties:
+        partialFailure:
+          description: If true, successful operations will be carried out and invalid operations will return errors. If false, all operations will be carried out in one transaction if and only if they are all valid. Default is false.
+          type: boolean
+        operations:
+          description: Required. The list of operations to perform on individual campaign customizers.
+          items:
+            $ref: '#/components/schemas/GoogleAdsGoogleadsV25Services__CampaignCustomizerOperation'
+          type: array
+        validateOnly:
+          type: boolean
+          description: If true, the request is validated but not executed. Only errors are returned, not results.
+        responseContentType:
+          x-enumDescriptions:
+          - Not specified. Will return the resource name only in the response.
+          - The mutate response will be the resource name.
+          - The mutate response will contain the resource name and the resource with mutable fields if possible. Otherwise, only the resource name will be returned.
+          enum:
+          - UNSPECIFIED
+          - RESOURCE_NAME_ONLY
+          - MUTABLE_RESOURCE
+          type: string
+          description: The response content type setting. Determines whether the mutable resource or just the resource name should be returned post mutation.
+      description: Request message for CampaignCustomizerService.MutateCampaignCustomizers.
+    GoogleAdsGoogleadsV25Common__CustomizerValue:
+      description: A customizer value that is referenced in customizer linkage entities like CustomerCustomizer, CampaignCustomizer, etc.
+      type: object
+      properties:
+        type:
+          type: string
+          description: Required. The data type for the customizer value. It must match the attribute type. The string_value content must match the constraints associated with the type.
+          x-enumDescriptions:
+          - The status has not been specified.
+          - The received value is not known in this version.
+          - Text customizer.
+          - Number customizer.
+          - Price customizer consisting of a number and a currency.
+          - Percentage customizer consisting of a number and a '%'.
+          enum:
+          - UNSPECIFIED
+          - UNKNOWN
+          - TEXT
+          - NUMBER
+          - PRICE
+          - PERCENT
+        stringValue:
+          description: Required. Value to insert in creative text. Customizer values of all types are stored as string to make formatting unambiguous.
+          type: string
+    GoogleAdsGoogleadsV25Services__MutateCampaignCustomizerResult:
+      description: The result for the campaign customizer mutate.
+      type: object
+      properties:
+        resourceName:
+          description: Returned for successful operations.
+          type: string
+        campaignCustomizer:
+          $ref: '#/components/schemas/GoogleAdsGoogleadsV25Resources__CampaignCustomizer'
+          description: The mutated CampaignCustomizer with only mutable fields after mutate. The field will only be returned when response_content_type is set to "MUTABLE_RESOURCE".
     GoogleAdsGoogleadsV25Services__MutateCampaignCustomizersResponse:
       description: Response message for a campaign customizer mutate.
       type: object
@@ -163,105 +262,6 @@ components:
             type: object
             additionalProperties:
               description: Properties of the object. Contains field @type with type URL.
-    GoogleAdsGoogleadsV25Services__MutateCampaignCustomizerResult:
-      description: The result for the campaign customizer mutate.
-      type: object
-      properties:
-        resourceName:
-          description: Returned for successful operations.
-          type: string
-        campaignCustomizer:
-          $ref: '#/components/schemas/GoogleAdsGoogleadsV25Resources__CampaignCustomizer'
-          description: The mutated CampaignCustomizer with only mutable fields after mutate. The field will only be returned when response_content_type is set to "MUTABLE_RESOURCE".
-    GoogleAdsGoogleadsV25Common__CustomizerValue:
-      description: A customizer value that is referenced in customizer linkage entities like CustomerCustomizer, CampaignCustomizer, etc.
-      type: object
-      properties:
-        type:
-          type: string
-          description: Required. The data type for the customizer value. It must match the attribute type. The string_value content must match the constraints associated with the type.
-          x-enumDescriptions:
-          - The status has not been specified.
-          - The received value is not known in this version.
-          - Text customizer.
-          - Number customizer.
-          - Price customizer consisting of a number and a currency.
-          - Percentage customizer consisting of a number and a '%'.
-          enum:
-          - UNSPECIFIED
-          - UNKNOWN
-          - TEXT
-          - NUMBER
-          - PRICE
-          - PERCENT
-        stringValue:
-          description: Required. Value to insert in creative text. Customizer values of all types are stored as string to make formatting unambiguous.
-          type: string
-    GoogleAdsGoogleadsV25Services__CampaignCustomizerOperation:
-      description: A single operation (create, remove) on a customizer attribute.
-      type: object
-      properties:
-        create:
-          description: 'Create operation: No resource name is expected for the new campaign customizer'
-          $ref: '#/components/schemas/GoogleAdsGoogleadsV25Resources__CampaignCustomizer'
-        remove:
-          type: string
-          description: 'Remove operation: A resource name for the removed campaign customizer is expected, in this format: `customers/{customer_id}/campaignCustomizers/{campaign_id}~{customizer_attribute_id}`'
-    GoogleAdsGoogleadsV25Services__MutateCampaignCustomizersRequest:
-      type: object
-      properties:
-        partialFailure:
-          description: If true, successful operations will be carried out and invalid operations will return errors. If false, all operations will be carried out in one transaction if and only if they are all valid. Default is false.
-          type: boolean
-        operations:
-          description: Required. The list of operations to perform on individual campaign customizers.
-          items:
-            $ref: '#/components/schemas/GoogleAdsGoogleadsV25Services__CampaignCustomizerOperation'
-          type: array
-        validateOnly:
-          type: boolean
-          description: If true, the request is validated but not executed. Only errors are returned, not results.
-        responseContentType:
-          x-enumDescriptions:
-          - Not specified. Will return the resource name only in the response.
-          - The mutate response will be the resource name.
-          - The mutate response will contain the resource name and the resource with mutable fields if possible. Otherwise, only the resource name will be returned.
-          enum:
-          - UNSPECIFIED
-          - RESOURCE_NAME_ONLY
-          - MUTABLE_RESOURCE
-          type: string
-          description: The response content type setting. Determines whether the mutable resource or just the resource name should be returned post mutation.
-      description: Request message for CampaignCustomizerService.MutateCampaignCustomizers.
-    GoogleAdsGoogleadsV25Resources__CampaignCustomizer:
-      description: A customizer value for the associated CustomizerAttribute at the Campaign level.
-      type: object
-      properties:
-        campaign:
-          type: string
-          description: Immutable. The campaign to which the customizer attribute is linked.
-        resourceName:
-          description: 'Immutable. The resource name of the campaign customizer. Campaign customizer resource names have the form: `customers/{customer_id}/campaignCustomizers/{campaign_id}~{customizer_attribute_id}`'
-          type: string
-        status:
-          x-enumDescriptions:
-          - The status has not been specified.
-          - The received value is not known in this version.
-          - The customizer value is enabled.
-          - The customizer value is removed.
-          description: Output only. The status of the campaign customizer.
-          type: string
-          enum:
-          - UNSPECIFIED
-          - UNKNOWN
-          - ENABLED
-          - REMOVED
-        customizerAttribute:
-          description: Required. Immutable. The customizer attribute which is linked to the campaign.
-          type: string
-        value:
-          description: Required. The value to associate with the customizer attribute at this level. The value must be of the type specified for the CustomizerAttribute.
-          $ref: '#/components/schemas/GoogleAdsGoogleadsV25Common__CustomizerValue'
   securitySchemes:
     oauth2:
       type: oauth2

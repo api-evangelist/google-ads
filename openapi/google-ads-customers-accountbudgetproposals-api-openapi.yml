@@ -133,13 +133,6 @@ paths:
         - https://www.googleapis.com/auth/adwords
 components:
   schemas:
-    GoogleAdsGoogleadsV25Services__MutateAccountBudgetProposalResponse:
-      description: Response message for account-level budget mutate operations.
-      type: object
-      properties:
-        result:
-          $ref: '#/components/schemas/GoogleAdsGoogleadsV25Services__MutateAccountBudgetProposalResult'
-          description: The result of the mutate.
     GoogleAdsGoogleadsV25Services__MutateAccountBudgetProposalResult:
       description: The result for the account budget proposal mutate.
       type: object
@@ -147,6 +140,13 @@ components:
         resourceName:
           type: string
           description: Returned for successful operations.
+    GoogleAdsGoogleadsV25Services__MutateAccountBudgetProposalResponse:
+      description: Response message for account-level budget mutate operations.
+      type: object
+      properties:
+        result:
+          $ref: '#/components/schemas/GoogleAdsGoogleadsV25Services__MutateAccountBudgetProposalResult'
+          description: The result of the mutate.
     GoogleAdsGoogleadsV25Resources__AccountBudgetProposal:
       description: An account-level budget proposal. All fields prefixed with 'proposed' may not necessarily be applied directly. For example, proposed spending limits may be adjusted before their application. This is true if the 'proposed' field has an 'approved' counterpart, for example, spending limits. Note that the proposal type (proposal_type) changes which fields are required and which must remain empty.
       type: object

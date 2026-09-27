@@ -361,13 +361,6 @@ paths:
         - https://www.googleapis.com/auth/adwords
 components:
   schemas:
-    GoogleAdsGoogleadsV25Resources__AdvertisingPartnerLinkInvitationProperties:
-      type: object
-      properties:
-        allowedDomain:
-          description: Immutable. The allowed domain for the Advertising Partner link invitation. The advertising partner will only be able to advertise on this domain. The field is immutable after the creation of the link invitation.
-          type: string
-      description: Properties specific to an Advertising Partner link invitation.
     GoogleAdsGoogleadsV25Services__CreateProductLinkInvitationResponse:
       description: Response message for product link invitation create.
       type: object
@@ -382,27 +375,13 @@ components:
         productLinkInvitation:
           description: Required. The product link invitation to be created.
           $ref: '#/components/schemas/GoogleAdsGoogleadsV25Resources__ProductLinkInvitation'
-    GoogleAdsGoogleadsV25Resources__MerchantCenterLinkInvitationIdentifier:
+    GoogleAdsGoogleadsV25Resources__HotelCenterLinkInvitationIdentifier:
+      description: The identifier for Hotel account.
       type: object
       properties:
-        merchantCenterId:
-          type: string
-          description: Output only. The Merchant Center id of the Merchant account. This field is read only
+        hotelCenterId:
           format: int64
-      description: The identifier for Merchant Center Account.
-    GoogleAdsGoogleadsV25Services__UpdateProductLinkInvitationResponse:
-      type: object
-      properties:
-        resourceName:
-          type: string
-          description: Result of the update.
-      description: Response message for product link invitation update.
-    GoogleAdsGoogleadsV25Resources__AdvertisingPartnerLinkInvitationIdentifier:
-      description: The identifier for the Advertising Partner Google Ads account.
-      type: object
-      properties:
-        customer:
-          description: Immutable. The resource name of the advertising partner Google Ads account. This field is read only.
+          description: Output only. The hotel center id of the hotel account. This field is read only
           type: string
     GoogleAdsGoogleadsV25Services__UpdateProductLinkInvitationRequest:
       type: object
@@ -432,14 +411,41 @@ components:
           description: Required. Resource name of the product link invitation.
           type: string
       description: Request message for ProductLinkInvitationService.UpdateProductLinkInvitation.
-    GoogleAdsGoogleadsV25Resources__HotelCenterLinkInvitationIdentifier:
-      description: The identifier for Hotel account.
+    GoogleAdsGoogleadsV25Resources__AdvertisingPartnerLinkInvitationProperties:
       type: object
       properties:
-        hotelCenterId:
-          format: int64
-          description: Output only. The hotel center id of the hotel account. This field is read only
+        allowedDomain:
+          description: Immutable. The allowed domain for the Advertising Partner link invitation. The advertising partner will only be able to advertise on this domain. The field is immutable after the creation of the link invitation.
           type: string
+      description: Properties specific to an Advertising Partner link invitation.
+    GoogleAdsGoogleadsV25Resources__AdvertisingPartnerLinkInvitationIdentifier:
+      description: The identifier for the Advertising Partner Google Ads account.
+      type: object
+      properties:
+        customer:
+          description: Immutable. The resource name of the advertising partner Google Ads account. This field is read only.
+          type: string
+    GoogleAdsGoogleadsV25Services__UpdateProductLinkInvitationResponse:
+      type: object
+      properties:
+        resourceName:
+          type: string
+          description: Result of the update.
+      description: Response message for product link invitation update.
+    GoogleAdsGoogleadsV25Services__RemoveProductLinkInvitationRequest:
+      type: object
+      properties:
+        resourceName:
+          type: string
+          description: 'Required. The resource name of the product link invitation being removed is expected, in this format: `customers/{customer_id}/productLinkInvitations/{product_link_invitation_id} `'
+      description: Request message for ProductLinkInvitationService.RemoveProductLinkInvitation.
+    GoogleAdsGoogleadsV25Services__RemoveProductLinkInvitationResponse:
+      type: object
+      properties:
+        resourceName:
+          type: string
+          description: Result for the remove request.
+      description: Response message for product link invitation removal.
     GoogleAdsGoogleadsV25Resources__ProductLinkInvitation:
       description: Represents an invitation for data sharing connection between a Google Ads account and another account.
       type: object
@@ -503,20 +509,14 @@ components:
           - ADVERTISING_PARTNER
           description: Output only. The type of the invited account. This field is read only and can be used for filtering invitations with {@code GoogleAdsService.SearchGoogleAdsRequest}.
           type: string
-    GoogleAdsGoogleadsV25Services__RemoveProductLinkInvitationRequest:
+    GoogleAdsGoogleadsV25Resources__MerchantCenterLinkInvitationIdentifier:
       type: object
       properties:
-        resourceName:
+        merchantCenterId:
           type: string
-          description: 'Required. The resource name of the product link invitation being removed is expected, in this format: `customers/{customer_id}/productLinkInvitations/{product_link_invitation_id} `'
-      description: Request message for ProductLinkInvitationService.RemoveProductLinkInvitation.
-    GoogleAdsGoogleadsV25Services__RemoveProductLinkInvitationResponse:
-      type: object
-      properties:
-        resourceName:
-          type: string
-          description: Result for the remove request.
-      description: Response message for product link invitation removal.
+          description: Output only. The Merchant Center id of the Merchant account. This field is read only
+          format: int64
+      description: The identifier for Merchant Center Account.
   securitySchemes:
     oauth2:
       type: oauth2

@@ -247,6 +247,57 @@ paths:
         - https://www.googleapis.com/auth/adwords
 components:
   schemas:
+    GoogleAdsGoogleadsV25Services__MutateAccountLinkResult:
+      type: object
+      properties:
+        resourceName:
+          type: string
+          description: Returned for successful operations.
+      description: The result for the account link mutate.
+    GoogleAdsGoogleadsV25Services__MutateAccountLinkRequest:
+      description: Request message for AccountLinkService.MutateAccountLink.
+      type: object
+      properties:
+        partialFailure:
+          type: boolean
+          description: If true, successful operations will be carried out and invalid operations will return errors. If false, all operations will be carried out in one transaction if and only if they are all valid. Default is false.
+        operation:
+          $ref: '#/components/schemas/GoogleAdsGoogleadsV25Services__AccountLinkOperation'
+          description: Required. The operation to perform on the link.
+        validateOnly:
+          type: boolean
+          description: If true, the request is validated but not executed. Only errors are returned, not results.
+    GoogleAdsGoogleadsV25Services__MutateAccountLinkResponse:
+      type: object
+      properties:
+        result:
+          $ref: '#/components/schemas/GoogleAdsGoogleadsV25Services__MutateAccountLinkResult'
+          description: Result for the mutate.
+        partialFailureError:
+          description: Errors that pertain to operation failures in the partial failure mode. Returned only when partial_failure = true and all errors occur inside the operations. If any errors occur outside the operations (for example, auth errors), we return an RPC level error.
+          $ref: '#/components/schemas/GoogleRpc__Status'
+      description: Response message for account link mutate.
+    GoogleAdsGoogleadsV25Services__CreateAccountLinkRequest:
+      description: Request message for AccountLinkService.CreateAccountLink.
+      type: object
+      properties:
+        accountLink:
+          $ref: '#/components/schemas/GoogleAdsGoogleadsV25Resources__AccountLink'
+          description: Required. The account link to be created.
+    GoogleAdsGoogleadsV25Services__AccountLinkOperation:
+      type: object
+      properties:
+        update:
+          description: 'Update operation: The account link is expected to have a valid resource name.'
+          $ref: '#/components/schemas/GoogleAdsGoogleadsV25Resources__AccountLink'
+        updateMask:
+          description: FieldMask that determines which resource fields are modified in an update.
+          type: string
+          format: google-fieldmask
+        remove:
+          description: 'Remove operation: A resource name for the account link to remove is expected, in this format: `customers/{customer_id}/accountLinks/{account_link_id}`'
+          type: string
+      description: A single update on an account link.
     GoogleAdsGoogleadsV25Resources__ThirdPartyAppAnalyticsLinkIdentifier:
       type: object
       properties:
@@ -296,43 +347,6 @@ components:
             type: object
             additionalProperties:
               description: Properties of the object. Contains field @type with type URL.
-    GoogleAdsGoogleadsV25Services__MutateAccountLinkRequest:
-      description: Request message for AccountLinkService.MutateAccountLink.
-      type: object
-      properties:
-        partialFailure:
-          type: boolean
-          description: If true, successful operations will be carried out and invalid operations will return errors. If false, all operations will be carried out in one transaction if and only if they are all valid. Default is false.
-        operation:
-          $ref: '#/components/schemas/GoogleAdsGoogleadsV25Services__AccountLinkOperation'
-          description: Required. The operation to perform on the link.
-        validateOnly:
-          type: boolean
-          description: If true, the request is validated but not executed. Only errors are returned, not results.
-    GoogleAdsGoogleadsV25Services__MutateAccountLinkResponse:
-      type: object
-      properties:
-        result:
-          $ref: '#/components/schemas/GoogleAdsGoogleadsV25Services__MutateAccountLinkResult'
-          description: Result for the mutate.
-        partialFailureError:
-          description: Errors that pertain to operation failures in the partial failure mode. Returned only when partial_failure = true and all errors occur inside the operations. If any errors occur outside the operations (for example, auth errors), we return an RPC level error.
-          $ref: '#/components/schemas/GoogleRpc__Status'
-      description: Response message for account link mutate.
-    GoogleAdsGoogleadsV25Services__CreateAccountLinkRequest:
-      description: Request message for AccountLinkService.CreateAccountLink.
-      type: object
-      properties:
-        accountLink:
-          $ref: '#/components/schemas/GoogleAdsGoogleadsV25Resources__AccountLink'
-          description: Required. The account link to be created.
-    GoogleAdsGoogleadsV25Services__MutateAccountLinkResult:
-      type: object
-      properties:
-        resourceName:
-          type: string
-          description: Returned for successful operations.
-      description: The result for the account link mutate.
     GoogleAdsGoogleadsV25Resources__AccountLink:
       description: Represents the data sharing connection between a Google Ads account and another account
       type: object
@@ -379,20 +393,6 @@ components:
         resourceName:
           description: 'Immutable. Resource name of the account link. AccountLink resource names have the form: `customers/{customer_id}/accountLinks/{account_link_id}`'
           type: string
-    GoogleAdsGoogleadsV25Services__AccountLinkOperation:
-      type: object
-      properties:
-        update:
-          description: 'Update operation: The account link is expected to have a valid resource name.'
-          $ref: '#/components/schemas/GoogleAdsGoogleadsV25Resources__AccountLink'
-        updateMask:
-          description: FieldMask that determines which resource fields are modified in an update.
-          type: string
-          format: google-fieldmask
-        remove:
-          description: 'Remove operation: A resource name for the account link to remove is expected, in this format: `customers/{customer_id}/accountLinks/{account_link_id}`'
-          type: string
-      description: A single update on an account link.
   securitySchemes:
     oauth2:
       type: oauth2

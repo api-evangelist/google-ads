@@ -254,6 +254,21 @@ components:
         allowedDomain:
           type: string
           description: Output only. The allowed domain for the Advertising Partner link. The advertising partner will only be able to advertise on this domain. The field is immutable.
+    GoogleAdsGoogleadsV25Resources__GoogleAdsIdentifier:
+      description: The identifier for Google Ads account.
+      type: object
+      properties:
+        customer:
+          description: Immutable. The resource name of the Google Ads account. This field is required and should not be empty when creating a new Google Ads link. It is unable to be modified after the creation of the link.
+          type: string
+    GoogleAdsGoogleadsV25Resources__DataPartnerIdentifier:
+      type: object
+      properties:
+        dataPartnerId:
+          format: int64
+          description: Immutable. The customer ID of the Data partner account. This field is required and should not be empty when creating a new data partner link. It is unable to be modified after the creation of the link.
+          type: string
+      description: The identifier for Data Partner account.
     GoogleAdsGoogleadsV25Services__CreateProductLinkResponse:
       type: object
       properties:
@@ -261,6 +276,45 @@ components:
           type: string
           description: Returned for successful operations. Resource name of the product link.
       description: Response message for ProductLinkService.CreateProductLink.
+    GoogleAdsGoogleadsV25Resources__AdvertisingPartnerIdentifier:
+      type: object
+      properties:
+        customer:
+          type: string
+          description: Output only. The resource name of the advertising partner Google Ads account. This field is required and should not be empty when creating a new Advertising Partner link. It is unable to be modified after the creation of the link.
+      description: The identifier for the Advertising Partner Google Ads account.
+    GoogleAdsGoogleadsV25Services__RemoveProductLinkResponse:
+      type: object
+      properties:
+        resourceName:
+          description: Result for the remove request.
+          type: string
+      description: Response message for product link removal.
+    GoogleAdsGoogleadsV25Services__RemoveProductLinkRequest:
+      description: Request message for ProductLinkService.RemoveProductLink.
+      type: object
+      properties:
+        resourceName:
+          type: string
+          description: 'Required. Remove operation: A resource name for the product link to remove is expected, in this format: `customers/{customer_id}/productLinks/{product_link_id} `'
+        validateOnly:
+          type: boolean
+          description: If true, the request is validated but not executed. Only errors are returned, not results.
+    GoogleAdsGoogleadsV25Resources__MerchantCenterIdentifier:
+      description: The identifier for Google Merchant Center account
+      type: object
+      properties:
+        merchantCenterId:
+          type: string
+          description: Immutable. The customer ID of the Google Merchant Center account. This field is required and should not be empty when creating a new Merchant Center link. It is unable to be modified after the creation of the link.
+          format: int64
+    GoogleAdsGoogleadsV25Services__CreateProductLinkRequest:
+      description: Request message for ProductLinkService.CreateProductLink.
+      type: object
+      properties:
+        productLink:
+          $ref: '#/components/schemas/GoogleAdsGoogleadsV25Resources__ProductLink'
+          description: Required. The product link to be created.
     GoogleAdsGoogleadsV25Resources__ProductLink:
       type: object
       properties:
@@ -306,60 +360,6 @@ components:
           $ref: '#/components/schemas/GoogleAdsGoogleadsV25Resources__AdvertisingPartnerProperties'
           description: Output only. Advertising Partner link properties. These properties are only applicable when the link is for an Advertising Partner.
       description: Represents the data sharing connection between a Google Ads customer and another product.
-    GoogleAdsGoogleadsV25Resources__GoogleAdsIdentifier:
-      description: The identifier for Google Ads account.
-      type: object
-      properties:
-        customer:
-          description: Immutable. The resource name of the Google Ads account. This field is required and should not be empty when creating a new Google Ads link. It is unable to be modified after the creation of the link.
-          type: string
-    GoogleAdsGoogleadsV25Resources__AdvertisingPartnerIdentifier:
-      type: object
-      properties:
-        customer:
-          type: string
-          description: Output only. The resource name of the advertising partner Google Ads account. This field is required and should not be empty when creating a new Advertising Partner link. It is unable to be modified after the creation of the link.
-      description: The identifier for the Advertising Partner Google Ads account.
-    GoogleAdsGoogleadsV25Services__CreateProductLinkRequest:
-      description: Request message for ProductLinkService.CreateProductLink.
-      type: object
-      properties:
-        productLink:
-          $ref: '#/components/schemas/GoogleAdsGoogleadsV25Resources__ProductLink'
-          description: Required. The product link to be created.
-    GoogleAdsGoogleadsV25Resources__DataPartnerIdentifier:
-      type: object
-      properties:
-        dataPartnerId:
-          format: int64
-          description: Immutable. The customer ID of the Data partner account. This field is required and should not be empty when creating a new data partner link. It is unable to be modified after the creation of the link.
-          type: string
-      description: The identifier for Data Partner account.
-    GoogleAdsGoogleadsV25Services__RemoveProductLinkRequest:
-      description: Request message for ProductLinkService.RemoveProductLink.
-      type: object
-      properties:
-        resourceName:
-          type: string
-          description: 'Required. Remove operation: A resource name for the product link to remove is expected, in this format: `customers/{customer_id}/productLinks/{product_link_id} `'
-        validateOnly:
-          type: boolean
-          description: If true, the request is validated but not executed. Only errors are returned, not results.
-    GoogleAdsGoogleadsV25Resources__MerchantCenterIdentifier:
-      description: The identifier for Google Merchant Center account
-      type: object
-      properties:
-        merchantCenterId:
-          type: string
-          description: Immutable. The customer ID of the Google Merchant Center account. This field is required and should not be empty when creating a new Merchant Center link. It is unable to be modified after the creation of the link.
-          format: int64
-    GoogleAdsGoogleadsV25Services__RemoveProductLinkResponse:
-      type: object
-      properties:
-        resourceName:
-          description: Result for the remove request.
-          type: string
-      description: Response message for product link removal.
   securitySchemes:
     oauth2:
       type: oauth2

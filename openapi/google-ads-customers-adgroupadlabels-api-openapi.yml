@@ -133,24 +133,38 @@ paths:
         - https://www.googleapis.com/auth/adwords
 components:
   schemas:
-    GoogleRpc__Status:
-      description: 'The `Status` type defines a logical error model that is suitable for different programming environments, including REST APIs and RPC APIs. It is used by [gRPC](https://github.com/grpc). Each `Status` message contains three pieces of data: error code, error message, and error details. You can find out more about this error model and how to work with it in the [API Design Guide](https://cloud.google.com/apis/design/errors).'
+    GoogleAdsGoogleadsV25Services__MutateAdGroupAdLabelsResponse:
       type: object
       properties:
-        message:
-          description: A developer-facing error message, which should be in English. Any user-facing error message should be localized and sent in the google.rpc.Status.details field, or localized by the client.
-          type: string
-        code:
-          type: integer
-          description: The status code, which should be an enum value of google.rpc.Code.
-          format: int32
-        details:
+        partialFailureError:
+          $ref: '#/components/schemas/GoogleRpc__Status'
+          description: Errors that pertain to operation failures in the partial failure mode. Returned only when partial_failure = true and all errors occur inside the operations. If any errors occur outside the operations (for example, auth errors), we return an RPC level error.
+        results:
           type: array
-          description: A list of messages that carry the error details. There is a common set of message types for APIs to use.
+          description: All results for the mutate.
           items:
-            type: object
-            additionalProperties:
-              description: Properties of the object. Contains field @type with type URL.
+            $ref: '#/components/schemas/GoogleAdsGoogleadsV25Services__MutateAdGroupAdLabelResult'
+      description: Response message for an ad group ad labels mutate.
+    GoogleAdsGoogleadsV25Resources__AdGroupAdLabel:
+      description: A relationship between an ad group ad and a label.
+      type: object
+      properties:
+        adGroupAd:
+          description: Immutable. The ad group ad to which the label is attached.
+          type: string
+        label:
+          description: Immutable. The label assigned to the ad group ad.
+          type: string
+        resourceName:
+          type: string
+          description: 'Immutable. The resource name of the ad group ad label. Ad group ad label resource names have the form: `customers/{customer_id}/adGroupAdLabels/{ad_group_id}~{ad_id}~{label_id}`'
+    GoogleAdsGoogleadsV25Services__MutateAdGroupAdLabelResult:
+      description: The result for an ad group ad label mutate.
+      type: object
+      properties:
+        resourceName:
+          description: Returned for successful operations.
+          type: string
     GoogleAdsGoogleadsV25Services__MutateAdGroupAdLabelsRequest:
       type: object
       properties:
@@ -176,38 +190,24 @@ components:
           description: 'Remove operation: A resource name for the ad group ad label being removed, in this format: `customers/{customer_id}/adGroupAdLabels/{ad_group_id}~{ad_id}~{label_id}`'
           type: string
       description: A single operation (create, remove) on an ad group ad label.
-    GoogleAdsGoogleadsV25Resources__AdGroupAdLabel:
-      description: A relationship between an ad group ad and a label.
+    GoogleRpc__Status:
+      description: 'The `Status` type defines a logical error model that is suitable for different programming environments, including REST APIs and RPC APIs. It is used by [gRPC](https://github.com/grpc). Each `Status` message contains three pieces of data: error code, error message, and error details. You can find out more about this error model and how to work with it in the [API Design Guide](https://cloud.google.com/apis/design/errors).'
       type: object
       properties:
-        adGroupAd:
-          description: Immutable. The ad group ad to which the label is attached.
+        message:
+          description: A developer-facing error message, which should be in English. Any user-facing error message should be localized and sent in the google.rpc.Status.details field, or localized by the client.
           type: string
-        label:
-          description: Immutable. The label assigned to the ad group ad.
-          type: string
-        resourceName:
-          type: string
-          description: 'Immutable. The resource name of the ad group ad label. Ad group ad label resource names have the form: `customers/{customer_id}/adGroupAdLabels/{ad_group_id}~{ad_id}~{label_id}`'
-    GoogleAdsGoogleadsV25Services__MutateAdGroupAdLabelResult:
-      description: The result for an ad group ad label mutate.
-      type: object
-      properties:
-        resourceName:
-          description: Returned for successful operations.
-          type: string
-    GoogleAdsGoogleadsV25Services__MutateAdGroupAdLabelsResponse:
-      type: object
-      properties:
-        partialFailureError:
-          $ref: '#/components/schemas/GoogleRpc__Status'
-          description: Errors that pertain to operation failures in the partial failure mode. Returned only when partial_failure = true and all errors occur inside the operations. If any errors occur outside the operations (for example, auth errors), we return an RPC level error.
-        results:
+        code:
+          type: integer
+          description: The status code, which should be an enum value of google.rpc.Code.
+          format: int32
+        details:
           type: array
-          description: All results for the mutate.
+          description: A list of messages that carry the error details. There is a common set of message types for APIs to use.
           items:
-            $ref: '#/components/schemas/GoogleAdsGoogleadsV25Services__MutateAdGroupAdLabelResult'
-      description: Response message for an ad group ad labels mutate.
+            type: object
+            additionalProperties:
+              description: Properties of the object. Contains field @type with type URL.
   securitySchemes:
     oauth2:
       type: oauth2

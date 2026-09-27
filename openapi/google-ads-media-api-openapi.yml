@@ -133,6 +133,20 @@ paths:
         - https://www.googleapis.com/auth/adwords
 components:
   schemas:
+    GoogleAdsGoogleadsV25Services__CreateYouTubeVideoUploadResponse:
+      description: Response message for YouTubeVideoUploadService.CreateYouTubeVideoUpload.
+      type: object
+      properties:
+        resourceName:
+          type: string
+          description: The resource name of the successfully created YouTube video upload.
+    GoogleAdsGoogleadsV25Services__CreateYouTubeVideoUploadRequest:
+      description: Request message for YouTubeVideoUploadService.CreateYouTubeVideoUpload.
+      type: object
+      properties:
+        youTubeVideoUpload:
+          $ref: '#/components/schemas/GoogleAdsGoogleadsV25Resources__YouTubeVideoUpload'
+          description: Required. The initial details of the video to upload. Required.
     GoogleAdsGoogleadsV25Resources__YouTubeVideoUpload:
       description: Represents a video upload to YouTube using the Google Ads API.
       type: object
@@ -190,20 +204,6 @@ components:
         videoDescription:
           type: string
           description: Input only. Immutable. The description of the video. Only mutable on YouTube video upload creation. Immutable after creation.
-    GoogleAdsGoogleadsV25Services__CreateYouTubeVideoUploadRequest:
-      description: Request message for YouTubeVideoUploadService.CreateYouTubeVideoUpload.
-      type: object
-      properties:
-        youTubeVideoUpload:
-          $ref: '#/components/schemas/GoogleAdsGoogleadsV25Resources__YouTubeVideoUpload'
-          description: Required. The initial details of the video to upload. Required.
-    GoogleAdsGoogleadsV25Services__CreateYouTubeVideoUploadResponse:
-      description: Response message for YouTubeVideoUploadService.CreateYouTubeVideoUpload.
-      type: object
-      properties:
-        resourceName:
-          type: string
-          description: The resource name of the successfully created YouTube video upload.
   securitySchemes:
     oauth2:
       type: oauth2

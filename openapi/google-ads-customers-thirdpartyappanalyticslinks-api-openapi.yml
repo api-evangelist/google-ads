@@ -133,14 +133,14 @@ paths:
         - https://www.googleapis.com/auth/adwords
 components:
   schemas:
-    GoogleAdsGoogleadsV25Services__RegenerateShareableLinkIdRequest:
-      type: object
-      properties: {}
-      description: Request message for ThirdPartyAppAnalyticsLinkService.RegenerateShareableLinkId.
     GoogleAdsGoogleadsV25Services__RegenerateShareableLinkIdResponse:
       description: Response message for ThirdPartyAppAnalyticsLinkService.RegenerateShareableLinkId.
       type: object
       properties: {}
+    GoogleAdsGoogleadsV25Services__RegenerateShareableLinkIdRequest:
+      type: object
+      properties: {}
+      description: Request message for ThirdPartyAppAnalyticsLinkService.RegenerateShareableLinkId.
   securitySchemes:
     oauth2:
       type: oauth2

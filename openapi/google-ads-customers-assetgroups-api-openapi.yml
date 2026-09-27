@@ -133,25 +133,53 @@ paths:
         - https://www.googleapis.com/auth/adwords
 components:
   schemas:
-    GoogleAdsGoogleadsV25Resources__GoogleLocalServicesInfo:
+    GoogleAdsGoogleadsV25Services__AssetGroupOperation:
       type: object
       properties:
-        categoryId:
+        remove:
           type: string
-          description: Immutable. The local services category associated with this asset group. That is, XCAT format - xcat:service_area_business_plumber. See https://developers.google.com/google-ads/api/data/codes-formats#local-services-category-ids This field cannot be modified after the AssetGroup has been created.
-        callouts:
-          description: Callouts selected by the advertiser to show.
-          items:
-            $ref: '#/components/schemas/GoogleAdsGoogleadsV25Resources__LocalServicesCallout'
+          description: 'Remove operation: A resource name for the removed asset group is expected, in this format: `customers/{customer_id}/assetGroups/{asset_group_id}`'
+        updateMask:
+          description: FieldMask that determines which resource fields are modified in an update.
+          type: string
+          format: google-fieldmask
+        create:
+          $ref: '#/components/schemas/GoogleAdsGoogleadsV25Resources__AssetGroup'
+          description: 'Create operation: No resource name is expected for the new asset group'
+        update:
+          description: 'Update operation: The asset group is expected to have a valid resource name.'
+          $ref: '#/components/schemas/GoogleAdsGoogleadsV25Resources__AssetGroup'
+      description: A single operation (create, remove) on an asset group.
+    GoogleAdsGoogleadsV25Services__MutateAssetGroupsResponse:
+      description: Response message for an asset group mutate.
+      type: object
+      properties:
+        partialFailureError:
+          description: Errors that pertain to operation failures in the partial failure mode. Returned only when partial_failure = true and all errors occur inside the operations. If any errors occur outside the operations (for example, auth errors), we return an RPC level error.
+          $ref: '#/components/schemas/GoogleRpc__Status'
+        results:
           type: array
-      description: Local services info for the asset group.
-    GoogleAdsGoogleadsV25Services__MutateAssetGroupResult:
+          description: All results for the mutate.
+          items:
+            $ref: '#/components/schemas/GoogleAdsGoogleadsV25Services__MutateAssetGroupResult'
+    GoogleAdsGoogleadsV25Resources__AdStrengthActionItem:
       type: object
       properties:
-        resourceName:
-          description: Returned for successful operations.
+        actionItemType:
+          enum:
+          - UNSPECIFIED
+          - UNKNOWN
+          - ADD_ASSET
+          description: Output only. The action item type.
           type: string
-      description: The result for the asset group mutate.
+          x-enumDescriptions:
+          - Not specified.
+          - Used for return value only. Represents value unknown in this version.
+          - This action item suggests adding an asset to the asset group.
+        addAssetDetails:
+          $ref: '#/components/schemas/GoogleAdsGoogleadsV25Resources_AdStrengthActionItem_AddAssetDetails'
+          description: Output only. The action item details for action item type ADD_ASSET.
+      description: An action item to improve the ad strength of an asset group.
     GoogleRpc__Status:
       description: 'The `Status` type defines a logical error model that is suitable for different programming environments, including REST APIs and RPC APIs. It is used by [gRPC](https://github.com/grpc). Each `Status` message contains three pieces of data: error code, error message, and error details. You can find out more about this error model and how to work with it in the [API Design Guide](https://cloud.google.com/apis/design/errors).'
       type: object
@@ -170,18 +198,6 @@ components:
             type: object
             additionalProperties:
               description: Properties of the object. Contains field @type with type URL.
-    GoogleAdsGoogleadsV25Services__MutateAssetGroupsResponse:
-      description: Response message for an asset group mutate.
-      type: object
-      properties:
-        partialFailureError:
-          description: Errors that pertain to operation failures in the partial failure mode. Returned only when partial_failure = true and all errors occur inside the operations. If any errors occur outside the operations (for example, auth errors), we return an RPC level error.
-          $ref: '#/components/schemas/GoogleRpc__Status'
-        results:
-          type: array
-          description: All results for the mutate.
-          items:
-            $ref: '#/components/schemas/GoogleAdsGoogleadsV25Services__MutateAssetGroupResult'
     GoogleAdsGoogleadsV25Resources_AdStrengthActionItem_AddAssetDetails:
       description: The details of the asset to add.
       type: object
@@ -284,51 +300,13 @@ components:
           - The asset is linked for use as a long description.
           - The asset is linked for use as a call-to-action.
           - The asset is linked for use as a classic display image.
-    GoogleAdsGoogleadsV25Services__MutateAssetGroupsRequest:
-      description: Request message for AssetGroupService.MutateAssetGroups.
+    GoogleAdsGoogleadsV25Services__MutateAssetGroupResult:
       type: object
       properties:
-        validateOnly:
-          type: boolean
-          description: If true, the request is validated but not executed. Only errors are returned, not results.
-        operations:
-          description: Required. The list of operations to perform on individual asset groups.
-          items:
-            $ref: '#/components/schemas/GoogleAdsGoogleadsV25Services__AssetGroupOperation'
-          type: array
-    GoogleAdsGoogleadsV25Services__AssetGroupOperation:
-      type: object
-      properties:
-        remove:
+        resourceName:
+          description: Returned for successful operations.
           type: string
-          description: 'Remove operation: A resource name for the removed asset group is expected, in this format: `customers/{customer_id}/assetGroups/{asset_group_id}`'
-        updateMask:
-          description: FieldMask that determines which resource fields are modified in an update.
-          type: string
-          format: google-fieldmask
-        create:
-          $ref: '#/components/schemas/GoogleAdsGoogleadsV25Resources__AssetGroup'
-          description: 'Create operation: No resource name is expected for the new asset group'
-        update:
-          description: 'Update operation: The asset group is expected to have a valid resource name.'
-          $ref: '#/components/schemas/GoogleAdsGoogleadsV25Resources__AssetGroup'
-      description: A single operation (create, remove) on an asset group.
-    GoogleAdsGoogleadsV25Resources__AssetCoverage:
-      type: object
-      properties:
-        adStrengthActionItems:
-          description: Output only. A list of action items to improve the ad strength of an asset group.
-          items:
-            $ref: '#/components/schemas/GoogleAdsGoogleadsV25Resources__AdStrengthActionItem'
-          type: array
-      description: Information about the asset coverage of an asset group.
-    GoogleAdsGoogleadsV25Resources__LocalServicesCallout:
-      description: Local services callout of the asset group.
-      type: object
-      properties:
-        calloutId:
-          type: string
-          description: Required. The unique ID of the callout.
+      description: The result for the asset group mutate.
     GoogleAdsGoogleadsV25Resources__AssetGroup:
       description: An asset group. AssetGroupAsset is used to link an asset to the asset group. AssetGroupSignal is used to associate a signal to an asset group.
       type: object
@@ -454,24 +432,46 @@ components:
         path1:
           type: string
           description: First part of text that may appear appended to the url displayed in the ad.
-    GoogleAdsGoogleadsV25Resources__AdStrengthActionItem:
+    GoogleAdsGoogleadsV25Resources__AssetCoverage:
       type: object
       properties:
-        actionItemType:
-          enum:
-          - UNSPECIFIED
-          - UNKNOWN
-          - ADD_ASSET
-          description: Output only. The action item type.
+        adStrengthActionItems:
+          description: Output only. A list of action items to improve the ad strength of an asset group.
+          items:
+            $ref: '#/components/schemas/GoogleAdsGoogleadsV25Resources__AdStrengthActionItem'
+          type: array
+      description: Information about the asset coverage of an asset group.
+    GoogleAdsGoogleadsV25Resources__GoogleLocalServicesInfo:
+      type: object
+      properties:
+        categoryId:
           type: string
-          x-enumDescriptions:
-          - Not specified.
-          - Used for return value only. Represents value unknown in this version.
-          - This action item suggests adding an asset to the asset group.
-        addAssetDetails:
-          $ref: '#/components/schemas/GoogleAdsGoogleadsV25Resources_AdStrengthActionItem_AddAssetDetails'
-          description: Output only. The action item details for action item type ADD_ASSET.
-      description: An action item to improve the ad strength of an asset group.
+          description: Immutable. The local services category associated with this asset group. That is, XCAT format - xcat:service_area_business_plumber. See https://developers.google.com/google-ads/api/data/codes-formats#local-services-category-ids This field cannot be modified after the AssetGroup has been created.
+        callouts:
+          description: Callouts selected by the advertiser to show.
+          items:
+            $ref: '#/components/schemas/GoogleAdsGoogleadsV25Resources__LocalServicesCallout'
+          type: array
+      description: Local services info for the asset group.
+    GoogleAdsGoogleadsV25Resources__LocalServicesCallout:
+      description: Local services callout of the asset group.
+      type: object
+      properties:
+        calloutId:
+          type: string
+          description: Required. The unique ID of the callout.
+    GoogleAdsGoogleadsV25Services__MutateAssetGroupsRequest:
+      description: Request message for AssetGroupService.MutateAssetGroups.
+      type: object
+      properties:
+        validateOnly:
+          type: boolean
+          description: If true, the request is validated but not executed. Only errors are returned, not results.
+        operations:
+          description: Required. The list of operations to perform on individual asset groups.
+          items:
+            $ref: '#/components/schemas/GoogleAdsGoogleadsV25Services__AssetGroupOperation'
+          type: array
   securitySchemes:
     oauth2:
       type: oauth2

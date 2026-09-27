@@ -3848,16 +3848,297 @@ apis:
     url: https://developers.google.com/google-ads/api/docs/client-libs
   - type: Support
     url: https://developers.google.com/google-ads/api/support
-- aid: google-ads:google-ads-v25-api
-  name: Google Ads V25 API
-  description: The v25 API from Google Ads — 9 operation(s) for v25.
+- aid: google-ads:google-ads-v25-generateconversionrates-api
+  name: Google Ads V25:generate Conversion Rates API
+  description: >-
+    The V25:generateConversionRates API from Google Ads — 1 operation(s) for v25:generateconversionrates.
   humanURL: https://developers.google.com/google-ads/scripts/docs/start
   baseURL: https://googleads.googleapis.com
   tags:
-  - v25
+  - V25:generateConversionRates
   properties:
   - type: OpenAPI
-    url: openapi/google-ads-v25-api-openapi.yml
+    url: openapi/google-ads-v25-generateconversionrates-api-openapi.yml
+  - type: Discovery
+    url: discovery/google-ads-api-v25-discovery.json
+  - type: Protobuf
+    url: grpc/google-ads-google-ads-service.proto
+  - type: DataModel
+    url: data-model/google-ads-data-model.yml
+  - type: Documentation
+    url: https://developers.google.com/google-ads/api/docs/start
+  - type: APIReference
+    url: https://developers.google.com/google-ads/api/reference/rpc/latest/overview
+  - type: Authentication
+    url: https://developers.google.com/google-ads/api/docs/oauth/overview
+  - type: GettingStarted
+    url: https://developers.google.com/google-ads/api/docs/first-call/overview
+  - type: RateLimits
+    url: https://developers.google.com/google-ads/api/docs/best-practices/quotas
+  - type: ChangeLog
+    url: https://developers.google.com/google-ads/api/docs/release-notes
+  - type: Deprecation
+    url: https://developers.google.com/google-ads/api/docs/sunset-dates
+  - type: SDKs
+    url: https://developers.google.com/google-ads/api/docs/client-libs
+  - type: Support
+    url: https://developers.google.com/google-ads/api/support
+- aid: google-ads:google-ads-v25-listbenchmarksavailabledates-api
+  name: Google Ads V25:list Benchmarks Available Dates API
+  description: >-
+    The V25:listBenchmarksAvailableDates API from Google Ads — 1 operation(s) for v25:listbenchmarksavailabledates.
+  humanURL: https://developers.google.com/google-ads/scripts/docs/start
+  baseURL: https://googleads.googleapis.com
+  tags:
+  - V25:listBenchmarksAvailableDates
+  properties:
+  - type: OpenAPI
+    url: openapi/google-ads-v25-listbenchmarksavailabledates-api-openapi.yml
+  - type: Discovery
+    url: discovery/google-ads-api-v25-discovery.json
+  - type: Protobuf
+    url: grpc/google-ads-google-ads-service.proto
+  - type: DataModel
+    url: data-model/google-ads-data-model.yml
+  - type: Documentation
+    url: https://developers.google.com/google-ads/api/docs/start
+  - type: APIReference
+    url: https://developers.google.com/google-ads/api/reference/rpc/latest/overview
+  - type: Authentication
+    url: https://developers.google.com/google-ads/api/docs/oauth/overview
+  - type: GettingStarted
+    url: https://developers.google.com/google-ads/api/docs/first-call/overview
+  - type: RateLimits
+    url: https://developers.google.com/google-ads/api/docs/best-practices/quotas
+  - type: ChangeLog
+    url: https://developers.google.com/google-ads/api/docs/release-notes
+  - type: Deprecation
+    url: https://developers.google.com/google-ads/api/docs/sunset-dates
+  - type: SDKs
+    url: https://developers.google.com/google-ads/api/docs/client-libs
+  - type: Support
+    url: https://developers.google.com/google-ads/api/support
+- aid: google-ads:google-ads-v25-listbenchmarkslocations-api
+  name: Google Ads V25:list Benchmarks Locations API
+  description: >-
+    The V25:listBenchmarksLocations API from Google Ads — 1 operation(s) for v25:listbenchmarkslocations.
+  humanURL: https://developers.google.com/google-ads/scripts/docs/start
+  baseURL: https://googleads.googleapis.com
+  tags:
+  - V25:listBenchmarksLocations
+  properties:
+  - type: OpenAPI
+    url: openapi/google-ads-v25-listbenchmarkslocations-api-openapi.yml
+  - type: Discovery
+    url: discovery/google-ads-api-v25-discovery.json
+  - type: Protobuf
+    url: grpc/google-ads-google-ads-service.proto
+  - type: DataModel
+    url: data-model/google-ads-data-model.yml
+  - type: Documentation
+    url: https://developers.google.com/google-ads/api/docs/start
+  - type: APIReference
+    url: https://developers.google.com/google-ads/api/reference/rpc/latest/overview
+  - type: Authentication
+    url: https://developers.google.com/google-ads/api/docs/oauth/overview
+  - type: GettingStarted
+    url: https://developers.google.com/google-ads/api/docs/first-call/overview
+  - type: RateLimits
+    url: https://developers.google.com/google-ads/api/docs/best-practices/quotas
+  - type: ChangeLog
+    url: https://developers.google.com/google-ads/api/docs/release-notes
+  - type: Deprecation
+    url: https://developers.google.com/google-ads/api/docs/sunset-dates
+  - type: SDKs
+    url: https://developers.google.com/google-ads/api/docs/client-libs
+  - type: Support
+    url: https://developers.google.com/google-ads/api/support
+- aid: google-ads:google-ads-v25-listbenchmarksproducts-api
+  name: Google Ads V25:list Benchmarks Products API
+  description: >-
+    The V25:listBenchmarksProducts API from Google Ads — 1 operation(s) for v25:listbenchmarksproducts.
+  humanURL: https://developers.google.com/google-ads/scripts/docs/start
+  baseURL: https://googleads.googleapis.com
+  tags:
+  - V25:listBenchmarksProducts
+  properties:
+  - type: OpenAPI
+    url: openapi/google-ads-v25-listbenchmarksproducts-api-openapi.yml
+  - type: Discovery
+    url: discovery/google-ads-api-v25-discovery.json
+  - type: Protobuf
+    url: grpc/google-ads-google-ads-service.proto
+  - type: DataModel
+    url: data-model/google-ads-data-model.yml
+  - type: Documentation
+    url: https://developers.google.com/google-ads/api/docs/start
+  - type: APIReference
+    url: https://developers.google.com/google-ads/api/reference/rpc/latest/overview
+  - type: Authentication
+    url: https://developers.google.com/google-ads/api/docs/oauth/overview
+  - type: GettingStarted
+    url: https://developers.google.com/google-ads/api/docs/first-call/overview
+  - type: RateLimits
+    url: https://developers.google.com/google-ads/api/docs/best-practices/quotas
+  - type: ChangeLog
+    url: https://developers.google.com/google-ads/api/docs/release-notes
+  - type: Deprecation
+    url: https://developers.google.com/google-ads/api/docs/sunset-dates
+  - type: SDKs
+    url: https://developers.google.com/google-ads/api/docs/client-libs
+  - type: Support
+    url: https://developers.google.com/google-ads/api/support
+- aid: google-ads:google-ads-v25-listbenchmarkssources-api
+  name: Google Ads V25:list Benchmarks Sources API
+  description: >-
+    The V25:listBenchmarksSources API from Google Ads — 1 operation(s) for v25:listbenchmarkssources.
+  humanURL: https://developers.google.com/google-ads/scripts/docs/start
+  baseURL: https://googleads.googleapis.com
+  tags:
+  - V25:listBenchmarksSources
+  properties:
+  - type: OpenAPI
+    url: openapi/google-ads-v25-listbenchmarkssources-api-openapi.yml
+  - type: Discovery
+    url: discovery/google-ads-api-v25-discovery.json
+  - type: Protobuf
+    url: grpc/google-ads-google-ads-service.proto
+  - type: DataModel
+    url: data-model/google-ads-data-model.yml
+  - type: Documentation
+    url: https://developers.google.com/google-ads/api/docs/start
+  - type: APIReference
+    url: https://developers.google.com/google-ads/api/reference/rpc/latest/overview
+  - type: Authentication
+    url: https://developers.google.com/google-ads/api/docs/oauth/overview
+  - type: GettingStarted
+    url: https://developers.google.com/google-ads/api/docs/first-call/overview
+  - type: RateLimits
+    url: https://developers.google.com/google-ads/api/docs/best-practices/quotas
+  - type: ChangeLog
+    url: https://developers.google.com/google-ads/api/docs/release-notes
+  - type: Deprecation
+    url: https://developers.google.com/google-ads/api/docs/sunset-dates
+  - type: SDKs
+    url: https://developers.google.com/google-ads/api/docs/client-libs
+  - type: Support
+    url: https://developers.google.com/google-ads/api/support
+- aid: google-ads:google-ads-v25-listplannablelocations-api
+  name: Google Ads V25:list Plannable Locations API
+  description: >-
+    The V25:listPlannableLocations API from Google Ads — 1 operation(s) for v25:listplannablelocations.
+  humanURL: https://developers.google.com/google-ads/scripts/docs/start
+  baseURL: https://googleads.googleapis.com
+  tags:
+  - V25:listPlannableLocations
+  properties:
+  - type: OpenAPI
+    url: openapi/google-ads-v25-listplannablelocations-api-openapi.yml
+  - type: Discovery
+    url: discovery/google-ads-api-v25-discovery.json
+  - type: Protobuf
+    url: grpc/google-ads-google-ads-service.proto
+  - type: DataModel
+    url: data-model/google-ads-data-model.yml
+  - type: Documentation
+    url: https://developers.google.com/google-ads/api/docs/start
+  - type: APIReference
+    url: https://developers.google.com/google-ads/api/reference/rpc/latest/overview
+  - type: Authentication
+    url: https://developers.google.com/google-ads/api/docs/oauth/overview
+  - type: GettingStarted
+    url: https://developers.google.com/google-ads/api/docs/first-call/overview
+  - type: RateLimits
+    url: https://developers.google.com/google-ads/api/docs/best-practices/quotas
+  - type: ChangeLog
+    url: https://developers.google.com/google-ads/api/docs/release-notes
+  - type: Deprecation
+    url: https://developers.google.com/google-ads/api/docs/sunset-dates
+  - type: SDKs
+    url: https://developers.google.com/google-ads/api/docs/client-libs
+  - type: Support
+    url: https://developers.google.com/google-ads/api/support
+- aid: google-ads:google-ads-v25-listplannableproducts-api
+  name: Google Ads V25:list Plannable Products API
+  description: >-
+    The V25:listPlannableProducts API from Google Ads — 1 operation(s) for v25:listplannableproducts.
+  humanURL: https://developers.google.com/google-ads/scripts/docs/start
+  baseURL: https://googleads.googleapis.com
+  tags:
+  - V25:listPlannableProducts
+  properties:
+  - type: OpenAPI
+    url: openapi/google-ads-v25-listplannableproducts-api-openapi.yml
+  - type: Discovery
+    url: discovery/google-ads-api-v25-discovery.json
+  - type: Protobuf
+    url: grpc/google-ads-google-ads-service.proto
+  - type: DataModel
+    url: data-model/google-ads-data-model.yml
+  - type: Documentation
+    url: https://developers.google.com/google-ads/api/docs/start
+  - type: APIReference
+    url: https://developers.google.com/google-ads/api/reference/rpc/latest/overview
+  - type: Authentication
+    url: https://developers.google.com/google-ads/api/docs/oauth/overview
+  - type: GettingStarted
+    url: https://developers.google.com/google-ads/api/docs/first-call/overview
+  - type: RateLimits
+    url: https://developers.google.com/google-ads/api/docs/best-practices/quotas
+  - type: ChangeLog
+    url: https://developers.google.com/google-ads/api/docs/release-notes
+  - type: Deprecation
+    url: https://developers.google.com/google-ads/api/docs/sunset-dates
+  - type: SDKs
+    url: https://developers.google.com/google-ads/api/docs/client-libs
+  - type: Support
+    url: https://developers.google.com/google-ads/api/support
+- aid: google-ads:google-ads-v25-listplannableuserinterests-api
+  name: Google Ads V25:list Plannable User Interests API
+  description: >-
+    The V25:listPlannableUserInterests API from Google Ads — 1 operation(s) for v25:listplannableuserinterests.
+  humanURL: https://developers.google.com/google-ads/scripts/docs/start
+  baseURL: https://googleads.googleapis.com
+  tags:
+  - V25:listPlannableUserInterests
+  properties:
+  - type: OpenAPI
+    url: openapi/google-ads-v25-listplannableuserinterests-api-openapi.yml
+  - type: Discovery
+    url: discovery/google-ads-api-v25-discovery.json
+  - type: Protobuf
+    url: grpc/google-ads-google-ads-service.proto
+  - type: DataModel
+    url: data-model/google-ads-data-model.yml
+  - type: Documentation
+    url: https://developers.google.com/google-ads/api/docs/start
+  - type: APIReference
+    url: https://developers.google.com/google-ads/api/reference/rpc/latest/overview
+  - type: Authentication
+    url: https://developers.google.com/google-ads/api/docs/oauth/overview
+  - type: GettingStarted
+    url: https://developers.google.com/google-ads/api/docs/first-call/overview
+  - type: RateLimits
+    url: https://developers.google.com/google-ads/api/docs/best-practices/quotas
+  - type: ChangeLog
+    url: https://developers.google.com/google-ads/api/docs/release-notes
+  - type: Deprecation
+    url: https://developers.google.com/google-ads/api/docs/sunset-dates
+  - type: SDKs
+    url: https://developers.google.com/google-ads/api/docs/client-libs
+  - type: Support
+    url: https://developers.google.com/google-ads/api/support
+- aid: google-ads:google-ads-v25-listplannableuserlists-api
+  name: Google Ads V25:list Plannable User Lists API
+  description: >-
+    The V25:listPlannableUserLists API from Google Ads — 1 operation(s) for v25:listplannableuserlists.
+  humanURL: https://developers.google.com/google-ads/scripts/docs/start
+  baseURL: https://googleads.googleapis.com
+  tags:
+  - V25:listPlannableUserLists
+  properties:
+  - type: OpenAPI
+    url: openapi/google-ads-v25-listplannableuserlists-api-openapi.yml
   - type: Discovery
     url: discovery/google-ads-api-v25-discovery.json
   - type: Protobuf

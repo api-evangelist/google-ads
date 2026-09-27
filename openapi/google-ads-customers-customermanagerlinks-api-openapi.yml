@@ -247,18 +247,6 @@ paths:
         - https://www.googleapis.com/auth/adwords
 components:
   schemas:
-    GoogleAdsGoogleadsV25Services__MutateCustomerManagerLinkRequest:
-      type: object
-      properties:
-        validateOnly:
-          description: If true, the request is validated but not executed. Only errors are returned, not results.
-          type: boolean
-        operations:
-          description: Required. The list of operations to perform on individual customer manager links.
-          items:
-            $ref: '#/components/schemas/GoogleAdsGoogleadsV25Services__CustomerManagerLinkOperation'
-          type: array
-      description: Request message for CustomerManagerLinkService.MutateCustomerManagerLink.
     GoogleAdsGoogleadsV25Resources__CustomerManagerLink:
       type: object
       properties:
@@ -301,6 +289,36 @@ components:
             $ref: '#/components/schemas/GoogleAdsGoogleadsV25Services__MutateCustomerManagerLinkResult'
           type: array
       description: Response message for a CustomerManagerLink mutate.
+    GoogleAdsGoogleadsV25Services__CustomerManagerLinkOperation:
+      description: 'Updates the status of a CustomerManagerLink. The following actions are possible: 1. Update operation with status ACTIVE accepts a pending invitation. 2. Update operation with status REFUSED declines a pending invitation. 3. Update operation with status INACTIVE terminates link to manager.'
+      type: object
+      properties:
+        update:
+          description: 'Update operation: The link is expected to have a valid resource name.'
+          $ref: '#/components/schemas/GoogleAdsGoogleadsV25Resources__CustomerManagerLink'
+        updateMask:
+          description: FieldMask that determines which resource fields are modified in an update.
+          type: string
+          format: google-fieldmask
+    GoogleAdsGoogleadsV25Services__MutateCustomerManagerLinkRequest:
+      type: object
+      properties:
+        validateOnly:
+          description: If true, the request is validated but not executed. Only errors are returned, not results.
+          type: boolean
+        operations:
+          description: Required. The list of operations to perform on individual customer manager links.
+          items:
+            $ref: '#/components/schemas/GoogleAdsGoogleadsV25Services__CustomerManagerLinkOperation'
+          type: array
+      description: Request message for CustomerManagerLinkService.MutateCustomerManagerLink.
+    GoogleAdsGoogleadsV25Services__MoveManagerLinkResponse:
+      description: Response message for a CustomerManagerLink moveManagerLink.
+      type: object
+      properties:
+        resourceName:
+          type: string
+          description: Returned for successful operations. Represents a CustomerManagerLink resource of the newly created link between client customer and new manager customer.
     GoogleAdsGoogleadsV25Services__MoveManagerLinkRequest:
       description: Request message for CustomerManagerLinkService.MoveManagerLink.
       type: object
@@ -314,24 +332,6 @@ components:
         validateOnly:
           type: boolean
           description: If true, the request is validated but not executed. Only errors are returned, not results.
-    GoogleAdsGoogleadsV25Services__CustomerManagerLinkOperation:
-      description: 'Updates the status of a CustomerManagerLink. The following actions are possible: 1. Update operation with status ACTIVE accepts a pending invitation. 2. Update operation with status REFUSED declines a pending invitation. 3. Update operation with status INACTIVE terminates link to manager.'
-      type: object
-      properties:
-        update:
-          description: 'Update operation: The link is expected to have a valid resource name.'
-          $ref: '#/components/schemas/GoogleAdsGoogleadsV25Resources__CustomerManagerLink'
-        updateMask:
-          description: FieldMask that determines which resource fields are modified in an update.
-          type: string
-          format: google-fieldmask
-    GoogleAdsGoogleadsV25Services__MoveManagerLinkResponse:
-      description: Response message for a CustomerManagerLink moveManagerLink.
-      type: object
-      properties:
-        resourceName:
-          type: string
-          description: Returned for successful operations. Represents a CustomerManagerLink resource of the newly created link between client customer and new manager customer.
     GoogleAdsGoogleadsV25Services__MutateCustomerManagerLinkResult:
       type: object
       properties:

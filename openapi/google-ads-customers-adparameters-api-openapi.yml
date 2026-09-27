@@ -133,18 +133,33 @@ paths:
         - https://www.googleapis.com/auth/adwords
 components:
   schemas:
-    GoogleAdsGoogleadsV25Services__MutateAdParametersResponse:
-      description: Response message for an ad parameter mutate.
+    GoogleAdsGoogleadsV25Services__MutateAdParameterResult:
+      description: The result for the ad parameter mutate.
       type: object
       properties:
-        partialFailureError:
-          $ref: '#/components/schemas/GoogleRpc__Status'
-          description: Errors that pertain to operation failures in the partial failure mode. Returned only when partial_failure = true and all errors occur inside the operations. If any errors occur outside the operations (for example, auth errors), we return an RPC level error.
-        results:
-          type: array
-          description: All results for the mutate.
-          items:
-            $ref: '#/components/schemas/GoogleAdsGoogleadsV25Services__MutateAdParameterResult'
+        adParameter:
+          description: The mutated AdParameter with only mutable fields after mutate. The field will only be returned when response_content_type is set to "MUTABLE_RESOURCE".
+          $ref: '#/components/schemas/GoogleAdsGoogleadsV25Resources__AdParameter'
+        resourceName:
+          description: The resource name returned for successful operations.
+          type: string
+    GoogleAdsGoogleadsV25Services__AdParameterOperation:
+      type: object
+      properties:
+        updateMask:
+          format: google-fieldmask
+          type: string
+          description: FieldMask that determines which resource fields are modified in an update.
+        create:
+          $ref: '#/components/schemas/GoogleAdsGoogleadsV25Resources__AdParameter'
+          description: 'Create operation: No resource name is expected for the new ad parameter.'
+        update:
+          $ref: '#/components/schemas/GoogleAdsGoogleadsV25Resources__AdParameter'
+          description: 'Update operation: The ad parameter is expected to have a valid resource name.'
+        remove:
+          description: 'Remove operation: A resource name for the ad parameter to remove is expected in this format: `customers/{customer_id}/adParameters/{ad_group_id}~{criterion_id}~{parameter_index}`'
+          type: string
+      description: A single operation (create, update, remove) on ad parameter.
     GoogleAdsGoogleadsV25Services__MutateAdParametersRequest:
       type: object
       properties:
@@ -171,6 +186,35 @@ components:
           description: The response content type setting. Determines whether the mutable resource or just the resource name should be returned post mutation.
           type: string
       description: Request message for AdParameterService.MutateAdParameters
+    GoogleAdsGoogleadsV25Services__MutateAdParametersResponse:
+      description: Response message for an ad parameter mutate.
+      type: object
+      properties:
+        partialFailureError:
+          $ref: '#/components/schemas/GoogleRpc__Status'
+          description: Errors that pertain to operation failures in the partial failure mode. Returned only when partial_failure = true and all errors occur inside the operations. If any errors occur outside the operations (for example, auth errors), we return an RPC level error.
+        results:
+          type: array
+          description: All results for the mutate.
+          items:
+            $ref: '#/components/schemas/GoogleAdsGoogleadsV25Services__MutateAdParameterResult'
+    GoogleAdsGoogleadsV25Resources__AdParameter:
+      type: object
+      properties:
+        adGroupCriterion:
+          type: string
+          description: Immutable. The ad group criterion that this ad parameter belongs to.
+        resourceName:
+          type: string
+          description: 'Immutable. The resource name of the ad parameter. Ad parameter resource names have the form: `customers/{customer_id}/adParameters/{ad_group_id}~{criterion_id}~{parameter_index}`'
+        parameterIndex:
+          description: Immutable. The unique index of this ad parameter. Must be either 1 or 2.
+          type: string
+          format: int64
+        insertionText:
+          type: string
+          description: 'Numeric value to insert into the ad text. The following restrictions apply: - Can use comma or period as a separator, with an optional period or comma (respectively) for fractional values. For example, 1,000,000.00 and 2.000.000,10 are valid. - Can be prepended or appended with a currency symbol. For example, $99.99 is valid. - Can be prepended or appended with a currency code. For example, 99.99USD and EUR200 are valid. - Can use ''%''. For example, 1.0% and 1,0% are valid. - Can use plus or minus. For example, -10.99 and 25+ are valid. - Can use ''/'' between two numbers. For example 4/1 and 0.95/0.45 are valid.'
+      description: An ad parameter that is used to update numeric values (such as prices or inventory levels) in any text line of an ad (including URLs). There can be a maximum of two AdParameters per ad group criterion. (One with parameter_index = 1 and one with parameter_index = 2.) In the ad the parameters are referenced by a placeholder of the form "{param#:value}". For example, "{param1:$17}"
     GoogleRpc__Status:
       description: 'The `Status` type defines a logical error model that is suitable for different programming environments, including REST APIs and RPC APIs. It is used by [gRPC](https://github.com/grpc). Each `Status` message contains three pieces of data: error code, error message, and error details. You can find out more about this error model and how to work with it in the [API Design Guide](https://cloud.google.com/apis/design/errors).'
       type: object
@@ -189,50 +233,6 @@ components:
             type: object
             additionalProperties:
               description: Properties of the object. Contains field @type with type URL.
-    GoogleAdsGoogleadsV25Resources__AdParameter:
-      type: object
-      properties:
-        adGroupCriterion:
-          type: string
-          description: Immutable. The ad group criterion that this ad parameter belongs to.
-        resourceName:
-          type: string
-          description: 'Immutable. The resource name of the ad parameter. Ad parameter resource names have the form: `customers/{customer_id}/adParameters/{ad_group_id}~{criterion_id}~{parameter_index}`'
-        parameterIndex:
-          description: Immutable. The unique index of this ad parameter. Must be either 1 or 2.
-          type: string
-          format: int64
-        insertionText:
-          type: string
-          description: 'Numeric value to insert into the ad text. The following restrictions apply: - Can use comma or period as a separator, with an optional period or comma (respectively) for fractional values. For example, 1,000,000.00 and 2.000.000,10 are valid. - Can be prepended or appended with a currency symbol. For example, $99.99 is valid. - Can be prepended or appended with a currency code. For example, 99.99USD and EUR200 are valid. - Can use ''%''. For example, 1.0% and 1,0% are valid. - Can use plus or minus. For example, -10.99 and 25+ are valid. - Can use ''/'' between two numbers. For example 4/1 and 0.95/0.45 are valid.'
-      description: An ad parameter that is used to update numeric values (such as prices or inventory levels) in any text line of an ad (including URLs). There can be a maximum of two AdParameters per ad group criterion. (One with parameter_index = 1 and one with parameter_index = 2.) In the ad the parameters are referenced by a placeholder of the form "{param#:value}". For example, "{param1:$17}"
-    GoogleAdsGoogleadsV25Services__AdParameterOperation:
-      type: object
-      properties:
-        updateMask:
-          format: google-fieldmask
-          type: string
-          description: FieldMask that determines which resource fields are modified in an update.
-        create:
-          $ref: '#/components/schemas/GoogleAdsGoogleadsV25Resources__AdParameter'
-          description: 'Create operation: No resource name is expected for the new ad parameter.'
-        update:
-          $ref: '#/components/schemas/GoogleAdsGoogleadsV25Resources__AdParameter'
-          description: 'Update operation: The ad parameter is expected to have a valid resource name.'
-        remove:
-          description: 'Remove operation: A resource name for the ad parameter to remove is expected in this format: `customers/{customer_id}/adParameters/{ad_group_id}~{criterion_id}~{parameter_index}`'
-          type: string
-      description: A single operation (create, update, remove) on ad parameter.
-    GoogleAdsGoogleadsV25Services__MutateAdParameterResult:
-      description: The result for the ad parameter mutate.
-      type: object
-      properties:
-        adParameter:
-          description: The mutated AdParameter with only mutable fields after mutate. The field will only be returned when response_content_type is set to "MUTABLE_RESOURCE".
-          $ref: '#/components/schemas/GoogleAdsGoogleadsV25Resources__AdParameter'
-        resourceName:
-          description: The resource name returned for successful operations.
-          type: string
   securitySchemes:
     oauth2:
       type: oauth2
