@@ -133,27 +133,6 @@ paths:
         - https://www.googleapis.com/auth/adwords
 components:
   schemas:
-    GoogleAdsGoogleadsV25Resources__KeywordPlanAdGroup:
-      description: 'A Keyword Planner ad group. Max number of keyword plan ad groups per plan: 200.'
-      type: object
-      properties:
-        name:
-          description: The name of the keyword plan ad group. This field is required and should not be empty when creating keyword plan ad group.
-          type: string
-        cpcBidMicros:
-          description: A default ad group max cpc bid in micros in account currency for all biddable keywords under the keyword plan ad group. If not set, will inherit from parent campaign.
-          type: string
-          format: int64
-        resourceName:
-          type: string
-          description: 'Immutable. The resource name of the Keyword Planner ad group. KeywordPlanAdGroup resource names have the form: `customers/{customer_id}/keywordPlanAdGroups/{kp_ad_group_id}`'
-        id:
-          format: int64
-          type: string
-          description: Output only. The ID of the keyword plan ad group.
-        keywordPlanCampaign:
-          description: The keyword plan campaign to which this ad group belongs.
-          type: string
     GoogleAdsGoogleadsV25Services__MutateKeywordPlanAdGroupResult:
       type: object
       properties:
@@ -176,6 +155,27 @@ components:
           description: If true, successful operations will be carried out and invalid operations will return errors. If false, all operations will be carried out in one transaction if and only if they are all valid. Default is false.
           type: boolean
       description: Request message for KeywordPlanAdGroupService.MutateKeywordPlanAdGroups.
+    GoogleAdsGoogleadsV25Resources__KeywordPlanAdGroup:
+      description: 'A Keyword Planner ad group. Max number of keyword plan ad groups per plan: 200.'
+      type: object
+      properties:
+        name:
+          description: The name of the keyword plan ad group. This field is required and should not be empty when creating keyword plan ad group.
+          type: string
+        cpcBidMicros:
+          description: A default ad group max cpc bid in micros in account currency for all biddable keywords under the keyword plan ad group. If not set, will inherit from parent campaign.
+          type: string
+          format: int64
+        resourceName:
+          type: string
+          description: 'Immutable. The resource name of the Keyword Planner ad group. KeywordPlanAdGroup resource names have the form: `customers/{customer_id}/keywordPlanAdGroups/{kp_ad_group_id}`'
+        id:
+          format: int64
+          type: string
+          description: Output only. The ID of the keyword plan ad group.
+        keywordPlanCampaign:
+          description: The keyword plan campaign to which this ad group belongs.
+          type: string
     GoogleAdsGoogleadsV25Services__MutateKeywordPlanAdGroupsResponse:
       description: Response message for a Keyword Plan ad group mutate.
       type: object
@@ -188,23 +188,6 @@ components:
         partialFailureError:
           $ref: '#/components/schemas/GoogleRpc__Status'
           description: Errors that pertain to operation failures in the partial failure mode. Returned only when partial_failure = true and all errors occur inside the operations. If any errors occur outside the operations (for example, auth errors), we return an RPC level error.
-    GoogleAdsGoogleadsV25Services__KeywordPlanAdGroupOperation:
-      type: object
-      properties:
-        remove:
-          type: string
-          description: 'Remove operation: A resource name for the removed Keyword Plan ad group is expected, in this format: `customers/{customer_id}/keywordPlanAdGroups/{kp_ad_group_id}`'
-        updateMask:
-          description: The FieldMask that determines which resource fields are modified in an update.
-          type: string
-          format: google-fieldmask
-        create:
-          $ref: '#/components/schemas/GoogleAdsGoogleadsV25Resources__KeywordPlanAdGroup'
-          description: 'Create operation: No resource name is expected for the new Keyword Plan ad group.'
-        update:
-          description: 'Update operation: The Keyword Plan ad group is expected to have a valid resource name.'
-          $ref: '#/components/schemas/GoogleAdsGoogleadsV25Resources__KeywordPlanAdGroup'
-      description: A single operation (create, update, remove) on a Keyword Plan ad group.
     GoogleRpc__Status:
       description: 'The `Status` type defines a logical error model that is suitable for different programming environments, including REST APIs and RPC APIs. It is used by [gRPC](https://github.com/grpc). Each `Status` message contains three pieces of data: error code, error message, and error details. You can find out more about this error model and how to work with it in the [API Design Guide](https://cloud.google.com/apis/design/errors).'
       type: object
@@ -223,6 +206,23 @@ components:
             type: object
             additionalProperties:
               description: Properties of the object. Contains field @type with type URL.
+    GoogleAdsGoogleadsV25Services__KeywordPlanAdGroupOperation:
+      type: object
+      properties:
+        remove:
+          type: string
+          description: 'Remove operation: A resource name for the removed Keyword Plan ad group is expected, in this format: `customers/{customer_id}/keywordPlanAdGroups/{kp_ad_group_id}`'
+        updateMask:
+          description: The FieldMask that determines which resource fields are modified in an update.
+          type: string
+          format: google-fieldmask
+        create:
+          $ref: '#/components/schemas/GoogleAdsGoogleadsV25Resources__KeywordPlanAdGroup'
+          description: 'Create operation: No resource name is expected for the new Keyword Plan ad group.'
+        update:
+          description: 'Update operation: The Keyword Plan ad group is expected to have a valid resource name.'
+          $ref: '#/components/schemas/GoogleAdsGoogleadsV25Resources__KeywordPlanAdGroup'
+      description: A single operation (create, update, remove) on a Keyword Plan ad group.
   securitySchemes:
     oauth2:
       type: oauth2

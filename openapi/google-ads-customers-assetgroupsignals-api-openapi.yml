@@ -133,6 +133,20 @@ paths:
         - https://www.googleapis.com/auth/adwords
 components:
   schemas:
+    GoogleAdsGoogleadsV25Common__SearchThemeInfo:
+      description: A Search Theme criterion only on Performance Max campaign. Represents a keyword-like advertiser input.
+      type: object
+      properties:
+        text:
+          type: string
+          description: Each Search Theme has a value of a simple string, like keywords. There are limits on overall length, allowed characters, and number of words.
+    GoogleAdsGoogleadsV25Common__VerticalAdsItemGroupRuleListInfo:
+      type: object
+      properties:
+        sharedSet:
+          description: The shared set resource name of the vertical ads item group rule list.
+          type: string
+      description: A criterion for targeting a shared set of rules for item groups in Vertical Ads (e.g., for hotel ads).
     GoogleAdsGoogleadsV25Services__MutateAssetGroupSignalsResponse:
       description: Response message for an asset group signal mutate.
       type: object
@@ -145,28 +159,6 @@ components:
           description: All results for the mutate.
           items:
             $ref: '#/components/schemas/GoogleAdsGoogleadsV25Services__MutateAssetGroupSignalResult'
-    GoogleAdsGoogleadsV25Common__AudienceInfo:
-      description: An audience criterion.
-      type: object
-      properties:
-        audience:
-          type: string
-          description: The Audience resource name.
-    GoogleAdsGoogleadsV25Services__AssetGroupSignalOperation:
-      type: object
-      properties:
-        create:
-          description: 'Create operation: No resource name is expected for the new asset group signal.'
-          $ref: '#/components/schemas/GoogleAdsGoogleadsV25Resources__AssetGroupSignal'
-        remove:
-          type: string
-          description: 'Remove operation: A resource name for the removed asset group signal is expected, in this format: `customers/{customer_id}/assetGroupSignals/{asset_group_id}~{criterion_id}`'
-        exemptPolicyViolationKeys:
-          description: Optional. The list of policy violation keys that should not cause a PolicyViolationError to be reported. Not all policy violations are exemptable, refer to the is_exemptible field in the returned PolicyViolationError. Resources violating these polices will be saved, but will not be eligible to serve. They may begin serving at a later time due to a change in policies, re-review of the resource, or a change in advertiser certificates.
-          items:
-            $ref: '#/components/schemas/GoogleAdsGoogleadsV25Common__PolicyViolationKey'
-          type: array
-      description: A single operation (create, remove) on an asset group signal.
     GoogleAdsGoogleadsV25Resources__AssetGroupSignal:
       description: AssetGroupSignal represents a signal in an asset group. The existence of a signal tells the performance max campaign who's most likely to convert. Performance Max uses the signal to look for new people with similar or stronger intent to find conversions across Search, Display, Video, and more.
       type: object
@@ -211,33 +203,6 @@ components:
         localServicesId:
           description: Immutable. The local services signal to be used by the performance max campaign.
           $ref: '#/components/schemas/GoogleAdsGoogleadsV25Common__LocalServiceIdInfo'
-    GoogleAdsGoogleadsV25Common__PolicyViolationKey:
-      type: object
-      properties:
-        violatingText:
-          description: The text that violates the policy if specified. Otherwise, refers to the policy in general (for example, when requesting to be exempt from the whole policy). If not specified for criterion exemptions, the whole policy is implied. Must be specified for ad exemptions.
-          type: string
-        policyName:
-          description: Unique ID of the violated policy.
-          type: string
-      description: Key of the violation. The key is used for referring to a violation when filing an exemption request.
-    GoogleAdsGoogleadsV25Common__VerticalAdsItemGroupRuleListInfo:
-      type: object
-      properties:
-        sharedSet:
-          description: The shared set resource name of the vertical ads item group rule list.
-          type: string
-      description: A criterion for targeting a shared set of rules for item groups in Vertical Ads (e.g., for hotel ads).
-    GoogleAdsGoogleadsV25Services__MutateAssetGroupSignalResult:
-      description: The result for the asset group signal mutate.
-      type: object
-      properties:
-        resourceName:
-          type: string
-          description: Returned for successful operations.
-        assetGroupSignal:
-          $ref: '#/components/schemas/GoogleAdsGoogleadsV25Resources__AssetGroupSignal'
-          description: The mutated AssetGroupSignal with only mutable fields after mutate. The field will only be returned when response_content_type is set to "MUTABLE_RESOURCE".
     GoogleAdsGoogleadsV25Common__LocalServiceIdInfo:
       description: A Local Services Ads service ID. Represents a service type (such as install_faucet) that a Local Services Campaign can target.
       type: object
@@ -245,31 +210,13 @@ components:
         serviceId:
           type: string
           description: The criterion resource name.
-    GoogleAdsGoogleadsV25Common__SearchThemeInfo:
-      description: A Search Theme criterion only on Performance Max campaign. Represents a keyword-like advertiser input.
+    GoogleAdsGoogleadsV25Common__AudienceInfo:
+      description: An audience criterion.
       type: object
       properties:
-        text:
+        audience:
           type: string
-          description: Each Search Theme has a value of a simple string, like keywords. There are limits on overall length, allowed characters, and number of words.
-    GoogleRpc__Status:
-      description: 'The `Status` type defines a logical error model that is suitable for different programming environments, including REST APIs and RPC APIs. It is used by [gRPC](https://github.com/grpc). Each `Status` message contains three pieces of data: error code, error message, and error details. You can find out more about this error model and how to work with it in the [API Design Guide](https://cloud.google.com/apis/design/errors).'
-      type: object
-      properties:
-        message:
-          description: A developer-facing error message, which should be in English. Any user-facing error message should be localized and sent in the google.rpc.Status.details field, or localized by the client.
-          type: string
-        code:
-          type: integer
-          description: The status code, which should be an enum value of google.rpc.Code.
-          format: int32
-        details:
-          type: array
-          description: A list of messages that carry the error details. There is a common set of message types for APIs to use.
-          items:
-            type: object
-            additionalProperties:
-              description: Properties of the object. Contains field @type with type URL.
+          description: The Audience resource name.
     GoogleAdsGoogleadsV25Services__MutateAssetGroupSignalsRequest:
       description: Request message for AssetGroupSignalService.MutateAssetGroupSignals.
       type: object
@@ -296,6 +243,59 @@ components:
           items:
             $ref: '#/components/schemas/GoogleAdsGoogleadsV25Services__AssetGroupSignalOperation'
           type: array
+    GoogleAdsGoogleadsV25Common__PolicyViolationKey:
+      type: object
+      properties:
+        violatingText:
+          description: The text that violates the policy if specified. Otherwise, refers to the policy in general (for example, when requesting to be exempt from the whole policy). If not specified for criterion exemptions, the whole policy is implied. Must be specified for ad exemptions.
+          type: string
+        policyName:
+          description: Unique ID of the violated policy.
+          type: string
+      description: Key of the violation. The key is used for referring to a violation when filing an exemption request.
+    GoogleAdsGoogleadsV25Services__MutateAssetGroupSignalResult:
+      description: The result for the asset group signal mutate.
+      type: object
+      properties:
+        resourceName:
+          type: string
+          description: Returned for successful operations.
+        assetGroupSignal:
+          $ref: '#/components/schemas/GoogleAdsGoogleadsV25Resources__AssetGroupSignal'
+          description: The mutated AssetGroupSignal with only mutable fields after mutate. The field will only be returned when response_content_type is set to "MUTABLE_RESOURCE".
+    GoogleRpc__Status:
+      description: 'The `Status` type defines a logical error model that is suitable for different programming environments, including REST APIs and RPC APIs. It is used by [gRPC](https://github.com/grpc). Each `Status` message contains three pieces of data: error code, error message, and error details. You can find out more about this error model and how to work with it in the [API Design Guide](https://cloud.google.com/apis/design/errors).'
+      type: object
+      properties:
+        message:
+          description: A developer-facing error message, which should be in English. Any user-facing error message should be localized and sent in the google.rpc.Status.details field, or localized by the client.
+          type: string
+        code:
+          type: integer
+          description: The status code, which should be an enum value of google.rpc.Code.
+          format: int32
+        details:
+          type: array
+          description: A list of messages that carry the error details. There is a common set of message types for APIs to use.
+          items:
+            type: object
+            additionalProperties:
+              description: Properties of the object. Contains field @type with type URL.
+    GoogleAdsGoogleadsV25Services__AssetGroupSignalOperation:
+      type: object
+      properties:
+        create:
+          description: 'Create operation: No resource name is expected for the new asset group signal.'
+          $ref: '#/components/schemas/GoogleAdsGoogleadsV25Resources__AssetGroupSignal'
+        remove:
+          type: string
+          description: 'Remove operation: A resource name for the removed asset group signal is expected, in this format: `customers/{customer_id}/assetGroupSignals/{asset_group_id}~{criterion_id}`'
+        exemptPolicyViolationKeys:
+          description: Optional. The list of policy violation keys that should not cause a PolicyViolationError to be reported. Not all policy violations are exemptable, refer to the is_exemptible field in the returned PolicyViolationError. Resources violating these polices will be saved, but will not be eligible to serve. They may begin serving at a later time due to a change in policies, re-review of the resource, or a change in advertiser certificates.
+          items:
+            $ref: '#/components/schemas/GoogleAdsGoogleadsV25Common__PolicyViolationKey'
+          type: array
+      description: A single operation (create, remove) on an asset group signal.
   securitySchemes:
     oauth2:
       type: oauth2

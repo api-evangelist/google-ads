@@ -133,6 +133,16 @@ paths:
         - https://www.googleapis.com/auth/adwords
 components:
   schemas:
+    GoogleAdsGoogleadsV25Services__MutateConversionGoalCampaignConfigResult:
+      description: The result for the conversion goal campaign config mutate.
+      type: object
+      properties:
+        resourceName:
+          description: Returned for successful operations.
+          type: string
+        conversionGoalCampaignConfig:
+          $ref: '#/components/schemas/GoogleAdsGoogleadsV25Resources__ConversionGoalCampaignConfig'
+          description: The mutated ConversionGoalCampaignConfig with only mutable fields after mutate. The field will only be returned when response_content_type is set to "MUTABLE_RESOURCE".
     GoogleAdsGoogleadsV25Services__ConversionGoalCampaignConfigOperation:
       description: A single operation (update) on a conversion goal campaign config.
       type: object
@@ -144,16 +154,38 @@ components:
         update:
           $ref: '#/components/schemas/GoogleAdsGoogleadsV25Resources__ConversionGoalCampaignConfig'
           description: 'Update operation: The conversion goal campaign config is expected to have a valid resource name.'
-    GoogleAdsGoogleadsV25Services__MutateConversionGoalCampaignConfigResult:
-      description: The result for the conversion goal campaign config mutate.
+    GoogleAdsGoogleadsV25Services__MutateConversionGoalCampaignConfigsResponse:
       type: object
       properties:
-        resourceName:
-          description: Returned for successful operations.
+        results:
+          type: array
+          description: All results for the mutate.
+          items:
+            $ref: '#/components/schemas/GoogleAdsGoogleadsV25Services__MutateConversionGoalCampaignConfigResult'
+      description: Response message for a conversion goal campaign config mutate.
+    GoogleAdsGoogleadsV25Services__MutateConversionGoalCampaignConfigsRequest:
+      type: object
+      properties:
+        operations:
+          description: Required. The list of operations to perform on individual conversion goal campaign config.
+          items:
+            $ref: '#/components/schemas/GoogleAdsGoogleadsV25Services__ConversionGoalCampaignConfigOperation'
+          type: array
+        validateOnly:
+          type: boolean
+          description: If true, the request is validated but not executed. Only errors are returned, not results.
+        responseContentType:
+          x-enumDescriptions:
+          - Not specified. Will return the resource name only in the response.
+          - The mutate response will be the resource name.
+          - The mutate response will contain the resource name and the resource with mutable fields if possible. Otherwise, only the resource name will be returned.
+          enum:
+          - UNSPECIFIED
+          - RESOURCE_NAME_ONLY
+          - MUTABLE_RESOURCE
           type: string
-        conversionGoalCampaignConfig:
-          $ref: '#/components/schemas/GoogleAdsGoogleadsV25Resources__ConversionGoalCampaignConfig'
-          description: The mutated ConversionGoalCampaignConfig with only mutable fields after mutate. The field will only be returned when response_content_type is set to "MUTABLE_RESOURCE".
+          description: The response content type setting. Determines whether the mutable resource or just the resource name should be returned post mutation.
+      description: Request message for ConversionGoalCampaignConfigService.MutateConversionGoalCampaignConfigs.
     GoogleAdsGoogleadsV25Resources__ConversionGoalCampaignConfig:
       description: Conversion goal settings for a Campaign.
       type: object
@@ -180,38 +212,6 @@ components:
         customConversionGoal:
           type: string
           description: The custom conversion goal the campaign is using for optimization.
-    GoogleAdsGoogleadsV25Services__MutateConversionGoalCampaignConfigsRequest:
-      type: object
-      properties:
-        operations:
-          description: Required. The list of operations to perform on individual conversion goal campaign config.
-          items:
-            $ref: '#/components/schemas/GoogleAdsGoogleadsV25Services__ConversionGoalCampaignConfigOperation'
-          type: array
-        validateOnly:
-          type: boolean
-          description: If true, the request is validated but not executed. Only errors are returned, not results.
-        responseContentType:
-          x-enumDescriptions:
-          - Not specified. Will return the resource name only in the response.
-          - The mutate response will be the resource name.
-          - The mutate response will contain the resource name and the resource with mutable fields if possible. Otherwise, only the resource name will be returned.
-          enum:
-          - UNSPECIFIED
-          - RESOURCE_NAME_ONLY
-          - MUTABLE_RESOURCE
-          type: string
-          description: The response content type setting. Determines whether the mutable resource or just the resource name should be returned post mutation.
-      description: Request message for ConversionGoalCampaignConfigService.MutateConversionGoalCampaignConfigs.
-    GoogleAdsGoogleadsV25Services__MutateConversionGoalCampaignConfigsResponse:
-      type: object
-      properties:
-        results:
-          type: array
-          description: All results for the mutate.
-          items:
-            $ref: '#/components/schemas/GoogleAdsGoogleadsV25Services__MutateConversionGoalCampaignConfigResult'
-      description: Response message for a conversion goal campaign config mutate.
   securitySchemes:
     oauth2:
       type: oauth2

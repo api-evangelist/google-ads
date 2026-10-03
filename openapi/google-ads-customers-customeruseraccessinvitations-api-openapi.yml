@@ -133,23 +133,16 @@ paths:
         - https://www.googleapis.com/auth/adwords
 components:
   schemas:
-    GoogleAdsGoogleadsV25Services__CustomerUserAccessInvitationOperation:
-      description: A single operation (create or remove) on customer user access invitation.
+    GoogleAdsGoogleadsV25Services__MutateCustomerUserAccessInvitationResult:
+      description: The result for the access invitation mutate.
       type: object
       properties:
-        create:
-          description: 'Create operation: No resource name is expected for the new access invitation.'
-          $ref: '#/components/schemas/GoogleAdsGoogleadsV25Resources__CustomerUserAccessInvitation'
-        remove:
-          description: 'Remove operation: A resource name for the revoke invitation is expected, in this format: `customers/{customer_id}/customerUserAccessInvitations/{invitation_id}`'
+        resourceName:
+          description: Returned for successful operations.
           type: string
-    GoogleAdsGoogleadsV25Services__MutateCustomerUserAccessInvitationRequest:
-      description: Request message for CustomerUserAccessInvitationService.MutateCustomerUserAccessInvitation
-      type: object
-      properties:
-        operation:
-          $ref: '#/components/schemas/GoogleAdsGoogleadsV25Services__CustomerUserAccessInvitationOperation'
-          description: Required. The operation to perform on the access invitation
+        multiPartyAuthReview:
+          type: string
+          description: The resource name of the multi-party authorization review associated with this mutate.
     GoogleAdsGoogleadsV25Resources__CustomerUserAccessInvitation:
       description: Represent an invitation to a new user on this customer account.
       type: object
@@ -199,6 +192,13 @@ components:
           - EMAIL_ONLY
           description: Immutable. Access role of the user.
           type: string
+    GoogleAdsGoogleadsV25Services__MutateCustomerUserAccessInvitationRequest:
+      description: Request message for CustomerUserAccessInvitationService.MutateCustomerUserAccessInvitation
+      type: object
+      properties:
+        operation:
+          $ref: '#/components/schemas/GoogleAdsGoogleadsV25Services__CustomerUserAccessInvitationOperation'
+          description: Required. The operation to perform on the access invitation
     GoogleAdsGoogleadsV25Services__MutateCustomerUserAccessInvitationResponse:
       description: Response message for access invitation mutate.
       type: object
@@ -206,16 +206,16 @@ components:
         result:
           description: Result for the mutate.
           $ref: '#/components/schemas/GoogleAdsGoogleadsV25Services__MutateCustomerUserAccessInvitationResult'
-    GoogleAdsGoogleadsV25Services__MutateCustomerUserAccessInvitationResult:
-      description: The result for the access invitation mutate.
+    GoogleAdsGoogleadsV25Services__CustomerUserAccessInvitationOperation:
+      description: A single operation (create or remove) on customer user access invitation.
       type: object
       properties:
-        resourceName:
-          description: Returned for successful operations.
+        create:
+          description: 'Create operation: No resource name is expected for the new access invitation.'
+          $ref: '#/components/schemas/GoogleAdsGoogleadsV25Resources__CustomerUserAccessInvitation'
+        remove:
+          description: 'Remove operation: A resource name for the revoke invitation is expected, in this format: `customers/{customer_id}/customerUserAccessInvitations/{invitation_id}`'
           type: string
-        multiPartyAuthReview:
-          type: string
-          description: The resource name of the multi-party authorization review associated with this mutate.
   securitySchemes:
     oauth2:
       type: oauth2

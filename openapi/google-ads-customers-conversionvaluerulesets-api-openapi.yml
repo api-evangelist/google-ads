@@ -133,23 +133,44 @@ paths:
         - https://www.googleapis.com/auth/adwords
 components:
   schemas:
-    GoogleAdsGoogleadsV25Services__ConversionValueRuleSetOperation:
-      description: A single operation (create, update, remove) on a conversion value rule set.
+    GoogleAdsGoogleadsV25Services__MutateConversionValueRuleSetsRequest:
+      description: Request message for ConversionValueRuleSetService.MutateConversionValueRuleSets.
       type: object
       properties:
-        remove:
+        validateOnly:
+          description: If true, the request is validated but not executed. Only errors are returned, not results.
+          type: boolean
+        responseContentType:
+          description: The response content type setting. Determines whether the mutable resource or just the resource name should be returned post mutation.
           type: string
-          description: 'Remove operation: A resource name for the removed conversion value rule set is expected, in this format: `customers/{customer_id}/conversionValueRuleSets/{conversion_value_rule_set_id}`'
-        update:
-          description: 'Update operation: The conversion value rule set is expected to have a valid resource name.'
-          $ref: '#/components/schemas/GoogleAdsGoogleadsV25Resources__ConversionValueRuleSet'
-        updateMask:
-          description: FieldMask that determines which resource fields are modified in an update.
-          type: string
-          format: google-fieldmask
-        create:
-          description: 'Create operation: No resource name is expected for the new conversion value rule set.'
-          $ref: '#/components/schemas/GoogleAdsGoogleadsV25Resources__ConversionValueRuleSet'
+          x-enumDescriptions:
+          - Not specified. Will return the resource name only in the response.
+          - The mutate response will be the resource name.
+          - The mutate response will contain the resource name and the resource with mutable fields if possible. Otherwise, only the resource name will be returned.
+          enum:
+          - UNSPECIFIED
+          - RESOURCE_NAME_ONLY
+          - MUTABLE_RESOURCE
+        operations:
+          type: array
+          description: Required. The list of operations to perform on individual conversion value rule sets.
+          items:
+            $ref: '#/components/schemas/GoogleAdsGoogleadsV25Services__ConversionValueRuleSetOperation'
+        partialFailure:
+          type: boolean
+          description: If true, successful operations will be carried out and invalid operations will return errors. If false, all operations will be carried out in one transaction if and only if they are all valid. Default is false.
+    GoogleAdsGoogleadsV25Services__MutateConversionValueRuleSetsResponse:
+      description: Response message for ConversionValueRuleSetService.MutateConversionValueRuleSets.
+      type: object
+      properties:
+        partialFailureError:
+          description: Errors that pertain to operation failures in the partial failure mode. Returned only when partial_failure = true and all errors occur inside the operations. If any errors occur outside the operations (for example, auth errors), we return an RPC level error.
+          $ref: '#/components/schemas/GoogleRpc__Status'
+        results:
+          type: array
+          description: All results for the mutate.
+          items:
+            $ref: '#/components/schemas/GoogleAdsGoogleadsV25Services__MutateConversionValueRuleSetResult'
     GoogleAdsGoogleadsV25Resources__ConversionValueRuleSet:
       description: A conversion value rule set is a collection of conversion value rules that lets you adjust conversion values based on the dimensions specified in the `dimensions` field.
       type: object
@@ -276,32 +297,23 @@ components:
             - NO_CONDITION
             - ITINERARY
           type: array
-    GoogleAdsGoogleadsV25Services__MutateConversionValueRuleSetsRequest:
-      description: Request message for ConversionValueRuleSetService.MutateConversionValueRuleSets.
+    GoogleAdsGoogleadsV25Services__ConversionValueRuleSetOperation:
+      description: A single operation (create, update, remove) on a conversion value rule set.
       type: object
       properties:
-        validateOnly:
-          description: If true, the request is validated but not executed. Only errors are returned, not results.
-          type: boolean
-        responseContentType:
-          description: The response content type setting. Determines whether the mutable resource or just the resource name should be returned post mutation.
+        remove:
           type: string
-          x-enumDescriptions:
-          - Not specified. Will return the resource name only in the response.
-          - The mutate response will be the resource name.
-          - The mutate response will contain the resource name and the resource with mutable fields if possible. Otherwise, only the resource name will be returned.
-          enum:
-          - UNSPECIFIED
-          - RESOURCE_NAME_ONLY
-          - MUTABLE_RESOURCE
-        operations:
-          type: array
-          description: Required. The list of operations to perform on individual conversion value rule sets.
-          items:
-            $ref: '#/components/schemas/GoogleAdsGoogleadsV25Services__ConversionValueRuleSetOperation'
-        partialFailure:
-          type: boolean
-          description: If true, successful operations will be carried out and invalid operations will return errors. If false, all operations will be carried out in one transaction if and only if they are all valid. Default is false.
+          description: 'Remove operation: A resource name for the removed conversion value rule set is expected, in this format: `customers/{customer_id}/conversionValueRuleSets/{conversion_value_rule_set_id}`'
+        update:
+          description: 'Update operation: The conversion value rule set is expected to have a valid resource name.'
+          $ref: '#/components/schemas/GoogleAdsGoogleadsV25Resources__ConversionValueRuleSet'
+        updateMask:
+          description: FieldMask that determines which resource fields are modified in an update.
+          type: string
+          format: google-fieldmask
+        create:
+          description: 'Create operation: No resource name is expected for the new conversion value rule set.'
+          $ref: '#/components/schemas/GoogleAdsGoogleadsV25Resources__ConversionValueRuleSet'
     GoogleAdsGoogleadsV25Services__MutateConversionValueRuleSetResult:
       description: The result for the conversion value rule set mutate.
       type: object
@@ -312,18 +324,6 @@ components:
         conversionValueRuleSet:
           $ref: '#/components/schemas/GoogleAdsGoogleadsV25Resources__ConversionValueRuleSet'
           description: The mutated conversion value rule set with only mutable fields after mutate. The field will only be returned when response_content_type is set to "MUTABLE_RESOURCE".
-    GoogleAdsGoogleadsV25Services__MutateConversionValueRuleSetsResponse:
-      description: Response message for ConversionValueRuleSetService.MutateConversionValueRuleSets.
-      type: object
-      properties:
-        partialFailureError:
-          description: Errors that pertain to operation failures in the partial failure mode. Returned only when partial_failure = true and all errors occur inside the operations. If any errors occur outside the operations (for example, auth errors), we return an RPC level error.
-          $ref: '#/components/schemas/GoogleRpc__Status'
-        results:
-          type: array
-          description: All results for the mutate.
-          items:
-            $ref: '#/components/schemas/GoogleAdsGoogleadsV25Services__MutateConversionValueRuleSetResult'
     GoogleRpc__Status:
       description: 'The `Status` type defines a logical error model that is suitable for different programming environments, including REST APIs and RPC APIs. It is used by [gRPC](https://github.com/grpc). Each `Status` message contains three pieces of data: error code, error message, and error details. You can find out more about this error model and how to work with it in the [API Design Guide](https://cloud.google.com/apis/design/errors).'
       type: object

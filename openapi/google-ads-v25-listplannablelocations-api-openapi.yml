@@ -125,22 +125,6 @@ paths:
         - https://www.googleapis.com/auth/adwords
 components:
   schemas:
-    GoogleAdsGoogleadsV25Services__ListPlannableLocationsResponse:
-      description: The list of plannable locations.
-      type: object
-      properties:
-        plannableLocations:
-          description: The list of locations available for planning. See https://developers.google.com/google-ads/api/reference/data/geotargets for sample locations.
-          items:
-            $ref: '#/components/schemas/GoogleAdsGoogleadsV25Services__PlannableLocation'
-          type: array
-    GoogleAdsGoogleadsV25Services__ListPlannableLocationsRequest:
-      type: object
-      properties:
-        reachApplicationInfo:
-          description: Optional. Additional information on the application issuing the request.
-          $ref: '#/components/schemas/GoogleAdsGoogleadsV25Common__AdditionalApplicationInfo'
-      description: Request message for ReachPlanService.ListPlannableLocations.
     GoogleAdsGoogleadsV25Services__PlannableLocation:
       description: 'A plannable location: country, metro region, province, etc.'
       type: object
@@ -161,6 +145,22 @@ components:
         name:
           description: The unique location name in English.
           type: string
+    GoogleAdsGoogleadsV25Services__ListPlannableLocationsRequest:
+      type: object
+      properties:
+        reachApplicationInfo:
+          description: Optional. Additional information on the application issuing the request.
+          $ref: '#/components/schemas/GoogleAdsGoogleadsV25Common__AdditionalApplicationInfo'
+      description: Request message for ReachPlanService.ListPlannableLocations.
+    GoogleAdsGoogleadsV25Services__ListPlannableLocationsResponse:
+      description: The list of plannable locations.
+      type: object
+      properties:
+        plannableLocations:
+          description: The list of locations available for planning. See https://developers.google.com/google-ads/api/reference/data/geotargets for sample locations.
+          items:
+            $ref: '#/components/schemas/GoogleAdsGoogleadsV25Services__PlannableLocation'
+          type: array
     GoogleAdsGoogleadsV25Common__AdditionalApplicationInfo:
       description: Additional information about the application/tool issuing the request. This field is only used by ContentCreatorInsightsService, AudienceInsightsService, and ReachPlanService APIs.
       type: object

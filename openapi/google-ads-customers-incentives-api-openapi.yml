@@ -141,13 +141,6 @@ paths:
         - https://www.googleapis.com/auth/adwords
 components:
   schemas:
-    GoogleAdsGoogleadsV25Services__ApplyIncentiveRequest:
-      description: Request message for applying an incentive.
-      type: object
-      properties:
-        countryCode:
-          description: 'Required. User''s country code. Required. This field must be equal to the Google Ads account''s billing country. Incentive eligibility, terms of service, and reward values are often country-specific. This country code is used to ensure the selected incentive is applicable to the user. Possible country codes: https://developers.google.com/google-ads/api/data/codes-formats#country_codes'
-          type: string
     GoogleAdsGoogleadsV25Services__ApplyIncentiveResponse:
       description: Response for applying an incentive.
       type: object
@@ -158,6 +151,13 @@ components:
         creationTime:
           type: string
           description: The timestamp when this incentive was applied. The timestamp is in UTC timezone and in "yyyy-MM-dd HH:mm:ss" format.
+    GoogleAdsGoogleadsV25Services__ApplyIncentiveRequest:
+      description: Request message for applying an incentive.
+      type: object
+      properties:
+        countryCode:
+          description: 'Required. User''s country code. Required. This field must be equal to the Google Ads account''s billing country. Incentive eligibility, terms of service, and reward values are often country-specific. This country code is used to ensure the selected incentive is applicable to the user. Possible country codes: https://developers.google.com/google-ads/api/data/codes-formats#country_codes'
+          type: string
   securitySchemes:
     oauth2:
       type: oauth2

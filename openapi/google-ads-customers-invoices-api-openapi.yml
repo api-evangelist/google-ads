@@ -181,6 +181,66 @@ paths:
         - https://www.googleapis.com/auth/adwords
 components:
   schemas:
+    GoogleAdsGoogleadsV25Resources_Invoice_AccountBudgetSummary:
+      type: object
+      properties:
+        invalidActivitySummaries:
+          type: array
+          description: Output only. The list of summarized invalid activity credits with original linkages.
+          items:
+            $ref: '#/components/schemas/GoogleAdsGoogleadsV25Resources_Invoice_InvalidActivitySummary'
+        servedAmountMicros:
+          type: string
+          description: Output only. The pretax served amount attributable to this budget during the service period, in micros. This is only useful to reconcile invoice and delivery data.
+          format: int64
+        campaignSummaries:
+          type: array
+          description: Output only. The list of summarized campaign level information associated with this account budget.
+          items:
+            $ref: '#/components/schemas/GoogleAdsGoogleadsV25Resources_Invoice_CampaignSummary'
+        billedAmountMicros:
+          format: int64
+          description: Output only. The pretax billed amount attributable to this budget during the service period, in micros. This does not account for any adjustments.
+          type: string
+        customerDescriptiveName:
+          description: Output only. The descriptive name of the account budget's customer. It appears on the invoice PDF as "Account".
+          type: string
+        invalidActivityAmountMicros:
+          format: int64
+          type: string
+          description: Output only. The pretax invalid activity amount attributable to this budget in previous months, in micros (negative value).
+        customer:
+          description: 'Output only. The resource name of the customer associated with this account budget. This contains the customer ID, which appears on the invoice PDF as "Account ID". Customer resource names have the form: `customers/{customer_id}`'
+          type: string
+        totalAmountMicros:
+          format: int64
+          description: Output only. The total amount attributable to this budget during the service period, in micros. This equals the sum of the account budget subtotal amount and the account budget tax amount.
+          type: string
+        accountBudget:
+          description: 'Output only. The resource name of the account budget associated with this summarized billable cost. AccountBudget resource names have the form: `customers/{customer_id}/accountBudgets/{account_budget_id}`'
+          type: string
+        overdeliveryAmountMicros:
+          description: Output only. The pretax overdelivery amount attributable to this budget during the service period, in micros (negative value).
+          type: string
+          format: int64
+        subtotalAmountMicros:
+          format: int64
+          description: Output only. The pretax subtotal amount attributable to this budget during the service period, in micros.
+          type: string
+        billableActivityDateRange:
+          description: Output only. The billable activity date range of the account budget, within the service date range of this invoice. The end date is inclusive. This can be different from the account budget's start and end time.
+          $ref: '#/components/schemas/GoogleAdsGoogleadsV25Common__DateRange'
+        taxAmountMicros:
+          description: Output only. The tax amount attributable to this budget during the service period, in micros.
+          type: string
+          format: int64
+        accountBudgetName:
+          type: string
+          description: Output only. The name of the account budget. It appears on the invoice PDF as "Account budget".
+        purchaseOrderNumber:
+          type: string
+          description: Output only. The purchase order number of the account budget. It appears on the invoice PDF as "Purchase order".
+      description: Represents a summarized account budget billable cost.
     GoogleAdsGoogleadsV25Resources_Invoice_CampaignSummary:
       type: object
       properties:
@@ -229,6 +289,105 @@ components:
           description: Output only. The quantity served for the given unit of measure.
           type: string
       description: Represents campaign level billable cost information associated with an account budget.
+    GoogleAdsGoogleadsV25Resources_Invoice_AccountSummary:
+      description: Represents a summarized view at account level.
+      type: object
+      properties:
+        excessCreditAdjustmentTaxAmountMicros:
+          format: int64
+          type: string
+          description: Output only. Tax on excess credit adjustment, in micros.
+        couponAdjustmentTotalAmountMicros:
+          format: int64
+          description: Output only. Total coupon adjustment amount, in micros.
+          type: string
+        exportChargeTotalAmountMicros:
+          format: int64
+          type: string
+          description: Output only. Total export charge amount, in micros.
+        billingCorrectionSubtotalAmountMicros:
+          format: int64
+          description: Output only. Pretax billing correction subtotal amount, in micros.
+          type: string
+        regulatoryCostsTaxAmountMicros:
+          format: int64
+          type: string
+          description: Output only. Tax on regulatory costs, in micros.
+        excessCreditAdjustmentTotalAmountMicros:
+          format: int64
+          description: Output only. Total excess credit adjustment amount, in micros.
+          type: string
+        regulatoryCostsSubtotalAmountMicros:
+          format: int64
+          type: string
+          description: Output only. Pretax regulatory costs subtotal amount, in micros.
+        regulatoryCostsTotalAmountMicros:
+          format: int64
+          description: Output only. Total regulatory costs amount, in micros.
+          type: string
+        adjustmentSummaries:
+          type: array
+          description: Output only. The list of adjustment information associated with this account.
+          items:
+            $ref: '#/components/schemas/GoogleAdsGoogleadsV25Resources_Invoice_AdjustmentSummary'
+        billingCorrectionTotalAmountMicros:
+          format: int64
+          description: Output only. Total billing correction amount, in micros.
+          type: string
+        exportChargeSubtotalAmountMicros:
+          format: int64
+          type: string
+          description: Output only. Pretax export charge subtotal amount, in micros.
+        exportChargeTaxAmountMicros:
+          type: string
+          description: Output only. Tax on export charge, in micros.
+          format: int64
+        regulatoryCostSummaries:
+          description: Output only. The list of regulatory cost information associated with this account.
+          items:
+            $ref: '#/components/schemas/GoogleAdsGoogleadsV25Resources_Invoice_RegulatoryCostSummary'
+          type: array
+        customer:
+          description: Output only. The account associated with the account summary.
+          type: string
+        totalAmountMicros:
+          format: int64
+          type: string
+          description: Output only. Total amount attributable to the account during the service period, in micros. This equals the sum of the subtotal_amount_micros and tax_amount_micros.
+        billingCorrectionTaxAmountMicros:
+          type: string
+          description: Output only. Tax on billing correction, in micros.
+          format: int64
+        excessCreditAdjustmentSubtotalAmountMicros:
+          format: int64
+          type: string
+          description: Output only. Pretax excess credit adjustment subtotal amount, in micros.
+        subtotalAmountMicros:
+          format: int64
+          type: string
+          description: Output only. Total pretax subtotal amount attributable to the account during the service period, in micros.
+        taxAmountMicros:
+          format: int64
+          description: Output only. Total tax amount attributable to the account during the service period, in micros.
+          type: string
+        couponAdjustmentSubtotalAmountMicros:
+          description: Output only. Pretax coupon adjustment subtotal amount, in micros.
+          type: string
+          format: int64
+        couponAdjustmentTaxAmountMicros:
+          description: Output only. Tax on coupon adjustment, in micros.
+          type: string
+          format: int64
+    GoogleAdsGoogleadsV25Common__DateRange:
+      type: object
+      properties:
+        startDate:
+          type: string
+          description: The start date, in yyyy-mm-dd format. This date is inclusive.
+        endDate:
+          description: The end date, in yyyy-mm-dd format. This date is inclusive.
+          type: string
+      description: A date range.
     GoogleAdsGoogleadsV25Resources__Invoice:
       type: object
       properties:
@@ -353,16 +512,6 @@ components:
           type: string
           format: int64
       description: Represents adjustment information associated with an account.
-    GoogleAdsGoogleadsV25Common__DateRange:
-      type: object
-      properties:
-        startDate:
-          type: string
-          description: The start date, in yyyy-mm-dd format. This date is inclusive.
-        endDate:
-          description: The end date, in yyyy-mm-dd format. This date is inclusive.
-          type: string
-      description: A date range.
     GoogleAdsGoogleadsV25Resources_Invoice_InvalidActivitySummary:
       type: object
       properties:
@@ -416,66 +565,6 @@ components:
           description: Output only. Original purchase order number related to this invalid activity credit.
           type: string
       description: Details about the invalid activity for the invoice that contain additional details about invoice against which corrections are made.
-    GoogleAdsGoogleadsV25Resources_Invoice_AccountBudgetSummary:
-      type: object
-      properties:
-        invalidActivitySummaries:
-          type: array
-          description: Output only. The list of summarized invalid activity credits with original linkages.
-          items:
-            $ref: '#/components/schemas/GoogleAdsGoogleadsV25Resources_Invoice_InvalidActivitySummary'
-        servedAmountMicros:
-          type: string
-          description: Output only. The pretax served amount attributable to this budget during the service period, in micros. This is only useful to reconcile invoice and delivery data.
-          format: int64
-        campaignSummaries:
-          type: array
-          description: Output only. The list of summarized campaign level information associated with this account budget.
-          items:
-            $ref: '#/components/schemas/GoogleAdsGoogleadsV25Resources_Invoice_CampaignSummary'
-        billedAmountMicros:
-          format: int64
-          description: Output only. The pretax billed amount attributable to this budget during the service period, in micros. This does not account for any adjustments.
-          type: string
-        customerDescriptiveName:
-          description: Output only. The descriptive name of the account budget's customer. It appears on the invoice PDF as "Account".
-          type: string
-        invalidActivityAmountMicros:
-          format: int64
-          type: string
-          description: Output only. The pretax invalid activity amount attributable to this budget in previous months, in micros (negative value).
-        customer:
-          description: 'Output only. The resource name of the customer associated with this account budget. This contains the customer ID, which appears on the invoice PDF as "Account ID". Customer resource names have the form: `customers/{customer_id}`'
-          type: string
-        totalAmountMicros:
-          format: int64
-          description: Output only. The total amount attributable to this budget during the service period, in micros. This equals the sum of the account budget subtotal amount and the account budget tax amount.
-          type: string
-        accountBudget:
-          description: 'Output only. The resource name of the account budget associated with this summarized billable cost. AccountBudget resource names have the form: `customers/{customer_id}/accountBudgets/{account_budget_id}`'
-          type: string
-        overdeliveryAmountMicros:
-          description: Output only. The pretax overdelivery amount attributable to this budget during the service period, in micros (negative value).
-          type: string
-          format: int64
-        subtotalAmountMicros:
-          format: int64
-          description: Output only. The pretax subtotal amount attributable to this budget during the service period, in micros.
-          type: string
-        billableActivityDateRange:
-          description: Output only. The billable activity date range of the account budget, within the service date range of this invoice. The end date is inclusive. This can be different from the account budget's start and end time.
-          $ref: '#/components/schemas/GoogleAdsGoogleadsV25Common__DateRange'
-        taxAmountMicros:
-          description: Output only. The tax amount attributable to this budget during the service period, in micros.
-          type: string
-          format: int64
-        accountBudgetName:
-          type: string
-          description: Output only. The name of the account budget. It appears on the invoice PDF as "Account budget".
-        purchaseOrderNumber:
-          type: string
-          description: Output only. The purchase order number of the account budget. It appears on the invoice PDF as "Purchase order".
-      description: Represents a summarized account budget billable cost.
     GoogleAdsGoogleadsV25Services__ListInvoicesResponse:
       type: object
       properties:
@@ -485,95 +574,6 @@ components:
             $ref: '#/components/schemas/GoogleAdsGoogleadsV25Resources__Invoice'
           type: array
       description: Response message for InvoiceService.ListInvoices.
-    GoogleAdsGoogleadsV25Resources_Invoice_AccountSummary:
-      description: Represents a summarized view at account level.
-      type: object
-      properties:
-        excessCreditAdjustmentTaxAmountMicros:
-          format: int64
-          type: string
-          description: Output only. Tax on excess credit adjustment, in micros.
-        couponAdjustmentTotalAmountMicros:
-          format: int64
-          description: Output only. Total coupon adjustment amount, in micros.
-          type: string
-        exportChargeTotalAmountMicros:
-          format: int64
-          type: string
-          description: Output only. Total export charge amount, in micros.
-        billingCorrectionSubtotalAmountMicros:
-          format: int64
-          description: Output only. Pretax billing correction subtotal amount, in micros.
-          type: string
-        regulatoryCostsTaxAmountMicros:
-          format: int64
-          type: string
-          description: Output only. Tax on regulatory costs, in micros.
-        excessCreditAdjustmentTotalAmountMicros:
-          format: int64
-          description: Output only. Total excess credit adjustment amount, in micros.
-          type: string
-        regulatoryCostsSubtotalAmountMicros:
-          format: int64
-          type: string
-          description: Output only. Pretax regulatory costs subtotal amount, in micros.
-        regulatoryCostsTotalAmountMicros:
-          format: int64
-          description: Output only. Total regulatory costs amount, in micros.
-          type: string
-        adjustmentSummaries:
-          type: array
-          description: Output only. The list of adjustment information associated with this account.
-          items:
-            $ref: '#/components/schemas/GoogleAdsGoogleadsV25Resources_Invoice_AdjustmentSummary'
-        billingCorrectionTotalAmountMicros:
-          format: int64
-          description: Output only. Total billing correction amount, in micros.
-          type: string
-        exportChargeSubtotalAmountMicros:
-          format: int64
-          type: string
-          description: Output only. Pretax export charge subtotal amount, in micros.
-        exportChargeTaxAmountMicros:
-          type: string
-          description: Output only. Tax on export charge, in micros.
-          format: int64
-        regulatoryCostSummaries:
-          description: Output only. The list of regulatory cost information associated with this account.
-          items:
-            $ref: '#/components/schemas/GoogleAdsGoogleadsV25Resources_Invoice_RegulatoryCostSummary'
-          type: array
-        customer:
-          description: Output only. The account associated with the account summary.
-          type: string
-        totalAmountMicros:
-          format: int64
-          type: string
-          description: Output only. Total amount attributable to the account during the service period, in micros. This equals the sum of the subtotal_amount_micros and tax_amount_micros.
-        billingCorrectionTaxAmountMicros:
-          type: string
-          description: Output only. Tax on billing correction, in micros.
-          format: int64
-        excessCreditAdjustmentSubtotalAmountMicros:
-          format: int64
-          type: string
-          description: Output only. Pretax excess credit adjustment subtotal amount, in micros.
-        subtotalAmountMicros:
-          format: int64
-          type: string
-          description: Output only. Total pretax subtotal amount attributable to the account during the service period, in micros.
-        taxAmountMicros:
-          format: int64
-          description: Output only. Total tax amount attributable to the account during the service period, in micros.
-          type: string
-        couponAdjustmentSubtotalAmountMicros:
-          description: Output only. Pretax coupon adjustment subtotal amount, in micros.
-          type: string
-          format: int64
-        couponAdjustmentTaxAmountMicros:
-          description: Output only. Tax on coupon adjustment, in micros.
-          type: string
-          format: int64
     GoogleAdsGoogleadsV25Resources_Invoice_RegulatoryCostSummary:
       description: Represents regulatory cost information associated with an account.
       type: object

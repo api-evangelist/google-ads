@@ -133,6 +133,13 @@ paths:
         - https://www.googleapis.com/auth/adwords
 components:
   schemas:
+    GoogleAdsGoogleadsV25Common_GoalSetting_LoyaltyRetentionGoal:
+      type: object
+      properties:
+        valueSettings:
+          $ref: '#/components/schemas/GoogleAdsGoogleadsV25Common__CustomerLifecycleOptimizationValueSettings'
+          description: Loyalty retention goal value settings.
+      description: Loyalty retention goal settings.
     GoogleAdsGoogleadsV25Common_GoalSetting_RetentionGoal:
       type: object
       properties:
@@ -140,6 +147,32 @@ components:
           description: Retention goal value settings.
           $ref: '#/components/schemas/GoogleAdsGoogleadsV25Common__CustomerLifecycleOptimizationValueSettings'
       description: Retention goal settings.
+    GoogleAdsGoogleadsV25Services__MutateGoalsResponse:
+      type: object
+      properties:
+        results:
+          description: All results for the mutate.
+          items:
+            $ref: '#/components/schemas/GoogleAdsGoogleadsV25Services__MutateGoalResult'
+          type: array
+        partialFailureError:
+          $ref: '#/components/schemas/GoogleRpc__Status'
+          description: Errors that pertain to operation failures in the partial failure mode.
+      description: Response message for a goal mutate.
+    GoogleAdsGoogleadsV25Services__GoalOperation:
+      description: A single mutate operation on the goal.
+      type: object
+      properties:
+        updateMask:
+          type: string
+          description: FieldMask that determines which resource fields are modified in an update.
+          format: google-fieldmask
+        create:
+          $ref: '#/components/schemas/GoogleAdsGoogleadsV25Resources__Goal'
+          description: Create a new goal.
+        update:
+          description: Update an existing goal.
+          $ref: '#/components/schemas/GoogleAdsGoogleadsV25Resources__Goal'
     GoogleAdsGoogleadsV25Services__MutateGoalsRequest:
       description: Request message for GoalService.MutateGoals.
       type: object
@@ -155,6 +188,38 @@ components:
         validateOnly:
           type: boolean
           description: Optional. If true, the request is validated but not executed. Only errors are returned, not results.
+    GoogleRpc__Status:
+      description: 'The `Status` type defines a logical error model that is suitable for different programming environments, including REST APIs and RPC APIs. It is used by [gRPC](https://github.com/grpc). Each `Status` message contains three pieces of data: error code, error message, and error details. You can find out more about this error model and how to work with it in the [API Design Guide](https://cloud.google.com/apis/design/errors).'
+      type: object
+      properties:
+        message:
+          description: A developer-facing error message, which should be in English. Any user-facing error message should be localized and sent in the google.rpc.Status.details field, or localized by the client.
+          type: string
+        code:
+          type: integer
+          description: The status code, which should be an enum value of google.rpc.Code.
+          format: int32
+        details:
+          type: array
+          description: A list of messages that carry the error details. There is a common set of message types for APIs to use.
+          items:
+            type: object
+            additionalProperties:
+              description: Properties of the object. Contains field @type with type URL.
+    GoogleAdsGoogleadsV25Services__MutateGoalResult:
+      description: The result for the goal mutate.
+      type: object
+      properties:
+        resourceName:
+          type: string
+          description: Returned for successful operations.
+    GoogleAdsGoogleadsV25Common_GoalSetting_NewCustomerAcquisitionGoal:
+      description: New Customer Acquisition goal settings.
+      type: object
+      properties:
+        valueSettings:
+          $ref: '#/components/schemas/GoogleAdsGoogleadsV25Common__CustomerLifecycleOptimizationValueSettings'
+          description: New Customer Acquisition goal value settings.
     GoogleAdsGoogleadsV25Resources__Goal:
       type: object
       properties:
@@ -206,39 +271,6 @@ components:
           description: Output only. The ID of this goal.
           format: int64
       description: Representation of goals.
-    GoogleAdsGoogleadsV25Common_GoalSetting_NewCustomerAcquisitionGoal:
-      description: New Customer Acquisition goal settings.
-      type: object
-      properties:
-        valueSettings:
-          $ref: '#/components/schemas/GoogleAdsGoogleadsV25Common__CustomerLifecycleOptimizationValueSettings'
-          description: New Customer Acquisition goal value settings.
-    GoogleAdsGoogleadsV25Common_GoalSetting_LoyaltyRetentionGoal:
-      type: object
-      properties:
-        valueSettings:
-          $ref: '#/components/schemas/GoogleAdsGoogleadsV25Common__CustomerLifecycleOptimizationValueSettings'
-          description: Loyalty retention goal value settings.
-      description: Loyalty retention goal settings.
-    GoogleAdsGoogleadsV25Services__MutateGoalsResponse:
-      type: object
-      properties:
-        results:
-          description: All results for the mutate.
-          items:
-            $ref: '#/components/schemas/GoogleAdsGoogleadsV25Services__MutateGoalResult'
-          type: array
-        partialFailureError:
-          $ref: '#/components/schemas/GoogleRpc__Status'
-          description: Errors that pertain to operation failures in the partial failure mode.
-      description: Response message for a goal mutate.
-    GoogleAdsGoogleadsV25Services__MutateGoalResult:
-      description: The result for the goal mutate.
-      type: object
-      properties:
-        resourceName:
-          type: string
-          description: Returned for successful operations.
     GoogleAdsGoogleadsV25Common__CustomerLifecycleOptimizationValueSettings:
       type: object
       properties:
@@ -259,38 +291,6 @@ components:
           type: number
           description: High lifetime conversion value multiplier.
       description: Lifecycle goal optimization value settings.
-    GoogleAdsGoogleadsV25Services__GoalOperation:
-      description: A single mutate operation on the goal.
-      type: object
-      properties:
-        updateMask:
-          type: string
-          description: FieldMask that determines which resource fields are modified in an update.
-          format: google-fieldmask
-        create:
-          $ref: '#/components/schemas/GoogleAdsGoogleadsV25Resources__Goal'
-          description: Create a new goal.
-        update:
-          description: Update an existing goal.
-          $ref: '#/components/schemas/GoogleAdsGoogleadsV25Resources__Goal'
-    GoogleRpc__Status:
-      description: 'The `Status` type defines a logical error model that is suitable for different programming environments, including REST APIs and RPC APIs. It is used by [gRPC](https://github.com/grpc). Each `Status` message contains three pieces of data: error code, error message, and error details. You can find out more about this error model and how to work with it in the [API Design Guide](https://cloud.google.com/apis/design/errors).'
-      type: object
-      properties:
-        message:
-          description: A developer-facing error message, which should be in English. Any user-facing error message should be localized and sent in the google.rpc.Status.details field, or localized by the client.
-          type: string
-        code:
-          type: integer
-          description: The status code, which should be an enum value of google.rpc.Code.
-          format: int32
-        details:
-          type: array
-          description: A list of messages that carry the error details. There is a common set of message types for APIs to use.
-          items:
-            type: object
-            additionalProperties:
-              description: Properties of the object. Contains field @type with type URL.
   securitySchemes:
     oauth2:
       type: oauth2

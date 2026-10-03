@@ -333,6 +333,25 @@ components:
           - LONG_DESCRIPTION
           - CALL_TO_ACTION
           - CLASSIC_DISPLAY_IMAGE
+    GoogleAdsGoogleadsV25Services__FreeformImageGenerationInput:
+      type: object
+      properties:
+        freeformPrompt:
+          type: string
+          description: Required. A freeform text description to guide the image generation process. The maximum length is 1500 characters. Required.
+      description: Input for guiding image asset generation with a freeform prompt.
+    GoogleAdsGoogleadsV25Services__ProductRecontextGenerationImageInput:
+      type: object
+      properties:
+        sourceImages:
+          type: array
+          description: Required. Product images to use for generating new images. 1-3 images must be provided.
+          items:
+            $ref: '#/components/schemas/GoogleAdsGoogleadsV25Services__SourceImage'
+        prompt:
+          type: string
+          description: Optional. A freeform description of the assets to be generated. Maximum character limit is 1500.
+      description: Input for generating new images by recontextualizing existing product images.
     GoogleAdsGoogleadsV25Services__GenerateImagesResponse:
       description: Response message for AssetGenerationService.GenerateImages
       type: object
@@ -342,22 +361,133 @@ components:
           description: Successfully generated images.
           items:
             $ref: '#/components/schemas/GoogleAdsGoogleadsV25Services__GeneratedImage'
-    GoogleAdsGoogleadsV25Services__GenerateTextResponse:
-      description: Response message for AssetGenerationService.GenerateText
+    GoogleAdsGoogleadsV25Services__GenerateImagesRequest:
       type: object
       properties:
-        generatedText:
-          description: List of text that was generated and the field type to use it as.
+        finalUrlGeneration:
+          description: Optional. Generate images from a final url.
+          $ref: '#/components/schemas/GoogleAdsGoogleadsV25Services__FinalUrlImageGenerationInput'
+        assetFieldTypes:
+          description: Optional. Output field types for generated images. Supported values are MARKETING_IMAGE, SQUARE_MARKETING_IMAGE, PORTRAIT_MARKETING_IMAGE, and TALL_PORTRAIT_MARKETING_IMAGE. All specified field types must be compatible with the `advertising_channel_type` or `existing_generation_context` (whichever is set). If no field types are provided, images will be generated for all compatible field types.
           items:
-            $ref: '#/components/schemas/GoogleAdsGoogleadsV25Services__GeneratedText'
+            type: string
+            x-enumDescriptions:
+            - Not specified.
+            - Used for return value only. Represents value unknown in this version.
+            - The asset is linked for use as a headline.
+            - The asset is linked for use as a description.
+            - The asset is linked for use as mandatory ad text.
+            - The asset is linked for use as a marketing image.
+            - The asset is linked for use as a media bundle.
+            - The asset is linked for use as a YouTube video.
+            - The asset is linked to indicate that a hotels campaign is "Book on Google" enabled.
+            - The asset is linked for use as a Lead Form extension.
+            - The asset is linked for use as a Promotion extension.
+            - The asset is linked for use as a Callout extension.
+            - The asset is linked for use as a Structured Snippet extension.
+            - The asset is linked for use as a Sitelink.
+            - The asset is linked for use as a Mobile App extension.
+            - The asset is linked for use as a Hotel Callout extension.
+            - The asset is linked for use as a Call extension.
+            - The asset is linked for use as a Price extension.
+            - The asset is linked for use as a long headline.
+            - The asset is linked for use as a business name.
+            - The asset is linked for use as a square marketing image.
+            - The asset is linked for use as a portrait marketing image.
+            - The asset is linked for use as a logo.
+            - The asset is linked for use as a landscape logo.
+            - The asset is linked for use as a non YouTube logo.
+            - The asset is linked for use to select a call-to-action.
+            - The asset is linked for use to select an ad image.
+            - The asset is linked for use as a business logo.
+            - The asset is linked for use as a hotel property in a Performance Max for travel goals campaign.
+            - The asset is linked for use as a Demand Gen carousel card.
+            - The asset is linked for use as a Business Message.
+            - The asset is linked for use as a tall portrait marketing image.
+            - The asset is linked for use as related YouTube videos.
+            - The asset is linked for use as a landing page preview image.
+            - The asset is linked for use as a long description.
+            - The asset is linked for use as a call-to-action.
+            - The asset is linked for use as a classic display image.
+            enum:
+            - UNSPECIFIED
+            - UNKNOWN
+            - HEADLINE
+            - DESCRIPTION
+            - MANDATORY_AD_TEXT
+            - MARKETING_IMAGE
+            - MEDIA_BUNDLE
+            - YOUTUBE_VIDEO
+            - BOOK_ON_GOOGLE
+            - LEAD_FORM
+            - PROMOTION
+            - CALLOUT
+            - STRUCTURED_SNIPPET
+            - SITELINK
+            - MOBILE_APP
+            - HOTEL_CALLOUT
+            - CALL
+            - PRICE
+            - LONG_HEADLINE
+            - BUSINESS_NAME
+            - SQUARE_MARKETING_IMAGE
+            - PORTRAIT_MARKETING_IMAGE
+            - LOGO
+            - LANDSCAPE_LOGO
+            - VIDEO
+            - CALL_TO_ACTION_SELECTION
+            - AD_IMAGE
+            - BUSINESS_LOGO
+            - HOTEL_PROPERTY
+            - DEMAND_GEN_CAROUSEL_CARD
+            - BUSINESS_MESSAGE
+            - TALL_PORTRAIT_MARKETING_IMAGE
+            - RELATED_YOUTUBE_VIDEOS
+            - LANDING_PAGE_PREVIEW
+            - LONG_DESCRIPTION
+            - CALL_TO_ACTION
+            - CLASSIC_DISPLAY_IMAGE
           type: array
-    GoogleAdsGoogleadsV25Services__FreeformImageGenerationInput:
-      type: object
-      properties:
-        freeformPrompt:
+        productRecontextGeneration:
+          $ref: '#/components/schemas/GoogleAdsGoogleadsV25Services__ProductRecontextGenerationImageInput'
+          description: Optional. Generate new images by recontextualizing existing product images.
+        advertisingChannelType:
+          x-enumDescriptions:
+          - Not specified.
+          - Used for return value only. Represents value unknown in this version.
+          - Search Network. Includes display bundled, and Search+ campaigns.
+          - Google Display Network only.
+          - Shopping campaigns serve on the shopping property and on google.com search results.
+          - Hotel Ads campaigns.
+          - Video campaigns.
+          - App Campaigns, and App Campaigns for Engagement, that run across multiple channels.
+          - Local ads campaigns.
+          - Smart campaigns.
+          - Performance Max campaigns.
+          - Local services campaigns.
+          - Travel campaigns.
+          - Demand Gen campaigns.
+          enum:
+          - UNSPECIFIED
+          - UNKNOWN
+          - SEARCH
+          - DISPLAY
+          - SHOPPING
+          - HOTEL
+          - VIDEO
+          - MULTI_CHANNEL
+          - LOCAL
+          - SMART
+          - PERFORMANCE_MAX
+          - LOCAL_SERVICES
+          - TRAVEL
+          - DEMAND_GEN
           type: string
-          description: Required. A freeform text description to guide the image generation process. The maximum length is 1500 characters. Required.
-      description: Input for guiding image asset generation with a freeform prompt.
+          description: Optional. The advertising channel type for which the images are being generated. This field is required if `existing_generation_context` is not provided. Supported channel types include SEARCH, PERFORMANCE_MAX, DISPLAY, and DEMAND_GEN.
+        freeformGeneration:
+          $ref: '#/components/schemas/GoogleAdsGoogleadsV25Services__FreeformImageGenerationInput'
+          description: Optional. Generate images from a freeform prompt.
+      description: Request message for AssetGenerationService.GenerateImages
     GoogleAdsGoogleadsV25Services__SourceImage:
       description: A source image to be used in the generation process.
       type: object
@@ -373,6 +503,16 @@ components:
         finalUrl:
           type: string
           description: Required. A final url to guide the image generation process. Required.
+    GoogleAdsGoogleadsV25Services__AssetGenerationExistingContext:
+      type: object
+      properties:
+        existingAssetGroup:
+          description: Resource name of an existing AssetGroup for which these assets are being generated.
+          type: string
+        existingAdGroupAd:
+          description: Resource name of an existing AdGroupAd for which these assets are being generated.
+          type: string
+      description: The context for which assets are being generated, such as an existing AssetGroup or AdGroupAd.
     GoogleAdsGoogleadsV25Services__GenerateTextRequest:
       type: object
       properties:
@@ -505,143 +645,15 @@ components:
             type: string
           type: array
       description: Request message for AssetGenerationService.GenerateText
-    GoogleAdsGoogleadsV25Services__AssetGenerationExistingContext:
+    GoogleAdsGoogleadsV25Services__GenerateTextResponse:
+      description: Response message for AssetGenerationService.GenerateText
       type: object
       properties:
-        existingAssetGroup:
-          description: Resource name of an existing AssetGroup for which these assets are being generated.
-          type: string
-        existingAdGroupAd:
-          description: Resource name of an existing AdGroupAd for which these assets are being generated.
-          type: string
-      description: The context for which assets are being generated, such as an existing AssetGroup or AdGroupAd.
-    GoogleAdsGoogleadsV25Services__GenerateImagesRequest:
-      type: object
-      properties:
-        finalUrlGeneration:
-          description: Optional. Generate images from a final url.
-          $ref: '#/components/schemas/GoogleAdsGoogleadsV25Services__FinalUrlImageGenerationInput'
-        assetFieldTypes:
-          description: Optional. Output field types for generated images. Supported values are MARKETING_IMAGE, SQUARE_MARKETING_IMAGE, PORTRAIT_MARKETING_IMAGE, and TALL_PORTRAIT_MARKETING_IMAGE. All specified field types must be compatible with the `advertising_channel_type` or `existing_generation_context` (whichever is set). If no field types are provided, images will be generated for all compatible field types.
+        generatedText:
+          description: List of text that was generated and the field type to use it as.
           items:
-            type: string
-            x-enumDescriptions:
-            - Not specified.
-            - Used for return value only. Represents value unknown in this version.
-            - The asset is linked for use as a headline.
-            - The asset is linked for use as a description.
-            - The asset is linked for use as mandatory ad text.
-            - The asset is linked for use as a marketing image.
-            - The asset is linked for use as a media bundle.
-            - The asset is linked for use as a YouTube video.
-            - The asset is linked to indicate that a hotels campaign is "Book on Google" enabled.
-            - The asset is linked for use as a Lead Form extension.
-            - The asset is linked for use as a Promotion extension.
-            - The asset is linked for use as a Callout extension.
-            - The asset is linked for use as a Structured Snippet extension.
-            - The asset is linked for use as a Sitelink.
-            - The asset is linked for use as a Mobile App extension.
-            - The asset is linked for use as a Hotel Callout extension.
-            - The asset is linked for use as a Call extension.
-            - The asset is linked for use as a Price extension.
-            - The asset is linked for use as a long headline.
-            - The asset is linked for use as a business name.
-            - The asset is linked for use as a square marketing image.
-            - The asset is linked for use as a portrait marketing image.
-            - The asset is linked for use as a logo.
-            - The asset is linked for use as a landscape logo.
-            - The asset is linked for use as a non YouTube logo.
-            - The asset is linked for use to select a call-to-action.
-            - The asset is linked for use to select an ad image.
-            - The asset is linked for use as a business logo.
-            - The asset is linked for use as a hotel property in a Performance Max for travel goals campaign.
-            - The asset is linked for use as a Demand Gen carousel card.
-            - The asset is linked for use as a Business Message.
-            - The asset is linked for use as a tall portrait marketing image.
-            - The asset is linked for use as related YouTube videos.
-            - The asset is linked for use as a landing page preview image.
-            - The asset is linked for use as a long description.
-            - The asset is linked for use as a call-to-action.
-            - The asset is linked for use as a classic display image.
-            enum:
-            - UNSPECIFIED
-            - UNKNOWN
-            - HEADLINE
-            - DESCRIPTION
-            - MANDATORY_AD_TEXT
-            - MARKETING_IMAGE
-            - MEDIA_BUNDLE
-            - YOUTUBE_VIDEO
-            - BOOK_ON_GOOGLE
-            - LEAD_FORM
-            - PROMOTION
-            - CALLOUT
-            - STRUCTURED_SNIPPET
-            - SITELINK
-            - MOBILE_APP
-            - HOTEL_CALLOUT
-            - CALL
-            - PRICE
-            - LONG_HEADLINE
-            - BUSINESS_NAME
-            - SQUARE_MARKETING_IMAGE
-            - PORTRAIT_MARKETING_IMAGE
-            - LOGO
-            - LANDSCAPE_LOGO
-            - VIDEO
-            - CALL_TO_ACTION_SELECTION
-            - AD_IMAGE
-            - BUSINESS_LOGO
-            - HOTEL_PROPERTY
-            - DEMAND_GEN_CAROUSEL_CARD
-            - BUSINESS_MESSAGE
-            - TALL_PORTRAIT_MARKETING_IMAGE
-            - RELATED_YOUTUBE_VIDEOS
-            - LANDING_PAGE_PREVIEW
-            - LONG_DESCRIPTION
-            - CALL_TO_ACTION
-            - CLASSIC_DISPLAY_IMAGE
+            $ref: '#/components/schemas/GoogleAdsGoogleadsV25Services__GeneratedText'
           type: array
-        productRecontextGeneration:
-          $ref: '#/components/schemas/GoogleAdsGoogleadsV25Services__ProductRecontextGenerationImageInput'
-          description: Optional. Generate new images by recontextualizing existing product images.
-        advertisingChannelType:
-          x-enumDescriptions:
-          - Not specified.
-          - Used for return value only. Represents value unknown in this version.
-          - Search Network. Includes display bundled, and Search+ campaigns.
-          - Google Display Network only.
-          - Shopping campaigns serve on the shopping property and on google.com search results.
-          - Hotel Ads campaigns.
-          - Video campaigns.
-          - App Campaigns, and App Campaigns for Engagement, that run across multiple channels.
-          - Local ads campaigns.
-          - Smart campaigns.
-          - Performance Max campaigns.
-          - Local services campaigns.
-          - Travel campaigns.
-          - Demand Gen campaigns.
-          enum:
-          - UNSPECIFIED
-          - UNKNOWN
-          - SEARCH
-          - DISPLAY
-          - SHOPPING
-          - HOTEL
-          - VIDEO
-          - MULTI_CHANNEL
-          - LOCAL
-          - SMART
-          - PERFORMANCE_MAX
-          - LOCAL_SERVICES
-          - TRAVEL
-          - DEMAND_GEN
-          type: string
-          description: Optional. The advertising channel type for which the images are being generated. This field is required if `existing_generation_context` is not provided. Supported channel types include SEARCH, PERFORMANCE_MAX, DISPLAY, and DEMAND_GEN.
-        freeformGeneration:
-          $ref: '#/components/schemas/GoogleAdsGoogleadsV25Services__FreeformImageGenerationInput'
-          description: Optional. Generate images from a freeform prompt.
-      description: Request message for AssetGenerationService.GenerateImages
     GoogleAdsGoogleadsV25Services__GeneratedImage:
       type: object
       properties:
@@ -728,18 +740,6 @@ components:
           - CALL_TO_ACTION
           - CLASSIC_DISPLAY_IMAGE
       description: Generated image data and metadata.
-    GoogleAdsGoogleadsV25Services__ProductRecontextGenerationImageInput:
-      type: object
-      properties:
-        sourceImages:
-          type: array
-          description: Required. Product images to use for generating new images. 1-3 images must be provided.
-          items:
-            $ref: '#/components/schemas/GoogleAdsGoogleadsV25Services__SourceImage'
-        prompt:
-          type: string
-          description: Optional. A freeform description of the assets to be generated. Maximum character limit is 1500.
-      description: Input for generating new images by recontextualizing existing product images.
   securitySchemes:
     oauth2:
       type: oauth2

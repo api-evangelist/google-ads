@@ -133,6 +133,38 @@ paths:
         - https://www.googleapis.com/auth/adwords
 components:
   schemas:
+    GoogleAdsGoogleadsV25Services__RecommendationSubscriptionOperation:
+      type: object
+      properties:
+        update:
+          $ref: '#/components/schemas/GoogleAdsGoogleadsV25Resources__RecommendationSubscription'
+          description: 'Update operation: The subscription is expected to have a valid resource name.'
+        updateMask:
+          format: google-fieldmask
+          description: Optional. FieldMask that determines which resource fields are modified in an update.
+          type: string
+        create:
+          $ref: '#/components/schemas/GoogleAdsGoogleadsV25Resources__RecommendationSubscription'
+          description: 'Create operation: No resource name is expected for the new subscription.'
+      description: A single operation (create, update) on a recommendation subscription. RecommendationSubscriptionService.MutateRecommendationSubscription
+    GoogleRpc__Status:
+      description: 'The `Status` type defines a logical error model that is suitable for different programming environments, including REST APIs and RPC APIs. It is used by [gRPC](https://github.com/grpc). Each `Status` message contains three pieces of data: error code, error message, and error details. You can find out more about this error model and how to work with it in the [API Design Guide](https://cloud.google.com/apis/design/errors).'
+      type: object
+      properties:
+        message:
+          description: A developer-facing error message, which should be in English. Any user-facing error message should be localized and sent in the google.rpc.Status.details field, or localized by the client.
+          type: string
+        code:
+          type: integer
+          description: The status code, which should be an enum value of google.rpc.Code.
+          format: int32
+        details:
+          type: array
+          description: A list of messages that carry the error details. There is a common set of message types for APIs to use.
+          items:
+            type: object
+            additionalProperties:
+              description: Properties of the object. Contains field @type with type URL.
     GoogleAdsGoogleadsV25Resources__RecommendationSubscription:
       description: Recommendation Subscription resource
       type: object
@@ -276,6 +308,28 @@ components:
         resourceName:
           description: Immutable. The resource name of the recommendation subscription. `customers/{customer_id}/recommendationSubscriptions/{recommendation_type}`
           type: string
+    GoogleAdsGoogleadsV25Services__MutateRecommendationSubscriptionResponse:
+      type: object
+      properties:
+        partialFailureError:
+          description: Errors that pertain to operation failures in the partial failure mode. Returned only when partial_failure = true and all errors occur inside the operations. If any errors occur outside the operations (for example, auth errors) we return the RPC level error.
+          $ref: '#/components/schemas/GoogleRpc__Status'
+        results:
+          description: Results, one per operation.
+          items:
+            $ref: '#/components/schemas/GoogleAdsGoogleadsV25Services__MutateRecommendationSubscriptionResult'
+          type: array
+      description: Response message for RecommendationSubscriptionService.MutateRecommendationSubscription
+    GoogleAdsGoogleadsV25Services__MutateRecommendationSubscriptionResult:
+      type: object
+      properties:
+        resourceName:
+          type: string
+          description: Resource name of the subscription that was modified.
+        recommendationSubscription:
+          description: The mutated recommendation subscription with only mutable fields after mutate. The field will only be returned when response_content_type is set to "MUTABLE_RESOURCE".
+          $ref: '#/components/schemas/GoogleAdsGoogleadsV25Resources__RecommendationSubscription'
+      description: Result message for RecommendationSubscriptionService.MutateRecommendationSubscription
     GoogleAdsGoogleadsV25Services__MutateRecommendationSubscriptionRequest:
       type: object
       properties:
@@ -302,60 +356,6 @@ components:
           description: The response content type setting. Determines whether the mutable resource or just the resource name should be returned post mutation. The mutable resource will only be returned if the resource has the appropriate response field. For example, MutateCampaignResult.campaign.
           type: string
       description: Request message for RecommendationSubscriptionService.MutateRecommendationSubscription
-    GoogleAdsGoogleadsV25Services__MutateRecommendationSubscriptionResult:
-      type: object
-      properties:
-        resourceName:
-          type: string
-          description: Resource name of the subscription that was modified.
-        recommendationSubscription:
-          description: The mutated recommendation subscription with only mutable fields after mutate. The field will only be returned when response_content_type is set to "MUTABLE_RESOURCE".
-          $ref: '#/components/schemas/GoogleAdsGoogleadsV25Resources__RecommendationSubscription'
-      description: Result message for RecommendationSubscriptionService.MutateRecommendationSubscription
-    GoogleAdsGoogleadsV25Services__MutateRecommendationSubscriptionResponse:
-      type: object
-      properties:
-        partialFailureError:
-          description: Errors that pertain to operation failures in the partial failure mode. Returned only when partial_failure = true and all errors occur inside the operations. If any errors occur outside the operations (for example, auth errors) we return the RPC level error.
-          $ref: '#/components/schemas/GoogleRpc__Status'
-        results:
-          description: Results, one per operation.
-          items:
-            $ref: '#/components/schemas/GoogleAdsGoogleadsV25Services__MutateRecommendationSubscriptionResult'
-          type: array
-      description: Response message for RecommendationSubscriptionService.MutateRecommendationSubscription
-    GoogleAdsGoogleadsV25Services__RecommendationSubscriptionOperation:
-      type: object
-      properties:
-        update:
-          $ref: '#/components/schemas/GoogleAdsGoogleadsV25Resources__RecommendationSubscription'
-          description: 'Update operation: The subscription is expected to have a valid resource name.'
-        updateMask:
-          format: google-fieldmask
-          description: Optional. FieldMask that determines which resource fields are modified in an update.
-          type: string
-        create:
-          $ref: '#/components/schemas/GoogleAdsGoogleadsV25Resources__RecommendationSubscription'
-          description: 'Create operation: No resource name is expected for the new subscription.'
-      description: A single operation (create, update) on a recommendation subscription. RecommendationSubscriptionService.MutateRecommendationSubscription
-    GoogleRpc__Status:
-      description: 'The `Status` type defines a logical error model that is suitable for different programming environments, including REST APIs and RPC APIs. It is used by [gRPC](https://github.com/grpc). Each `Status` message contains three pieces of data: error code, error message, and error details. You can find out more about this error model and how to work with it in the [API Design Guide](https://cloud.google.com/apis/design/errors).'
-      type: object
-      properties:
-        message:
-          description: A developer-facing error message, which should be in English. Any user-facing error message should be localized and sent in the google.rpc.Status.details field, or localized by the client.
-          type: string
-        code:
-          type: integer
-          description: The status code, which should be an enum value of google.rpc.Code.
-          format: int32
-        details:
-          type: array
-          description: A list of messages that carry the error details. There is a common set of message types for APIs to use.
-          items:
-            type: object
-            additionalProperties:
-              description: Properties of the object. Contains field @type with type URL.
   securitySchemes:
     oauth2:
       type: oauth2

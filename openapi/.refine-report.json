@@ -123,7 +123,7 @@
     "google-ads-media-api-openapi.yml"
   ],
   "archived": [
-    "deleted 2 superseded output(s) from the previous generation"
+    "deleted 1 superseded output(s) from the previous generation"
   ],
   "errors": [],
   "warnings": [],
@@ -150,8 +150,8 @@
     "google-ads-api-v25-openapi.yml: declared missing tag: V25:listPlannableUserInterests",
     "google-ads-api-v25-openapi.yml: declared missing tag: V25:listPlannableUserLists",
     "tag 'Customers' spans 2 source specs (google-ads-api-openapi.yml, google-ads-api-v25-openapi.yml): per-path servers applied",
-    "superseded outputs removed: google-ads-audience-insights-api-openapi.yml, google-ads-v25-api-openapi.yml",
-    "apis.yml register: written (+10 apis, 117 total)"
+    "superseded outputs removed: google-ads-audience-insights-api-openapi.yml",
+    "apis.yml register: written (+1 apis, 117 total)"
   ],
   "skipped": [
     "google-ads-ad-groups-api-openapi.yml: previously refined output, superseded by openapi/_original/",
@@ -261,6 +261,14 @@
     "google-ads-keywordthemeconstants-api-openapi.yml: previously refined output, superseded by openapi/_original/",
     "google-ads-media-api-openapi.yml: previously refined output, superseded by openapi/_original/",
     "google-ads-reporting-api-openapi.yml: previously refined output, superseded by openapi/_original/",
-    "google-ads-v25-api-openapi.yml: previously refined output, superseded by openapi/_original/"
+    "google-ads-v25-generateconversionrates-api-openapi.yml: previously refined output, superseded by openapi/_original/",
+    "google-ads-v25-listbenchmarksavailabledates-api-openapi.yml: previously refined output, superseded by openapi/_original/",
+    "google-ads-v25-listbenchmarkslocations-api-openapi.yml: previously refined output, superseded by openapi/_original/",
+    "google-ads-v25-listbenchmarksproducts-api-openapi.yml: previously refined output, superseded by openapi/_original/",
+    "google-ads-v25-listbenchmarkssources-api-openapi.yml: previously refined output, superseded by openapi/_original/",
+    "google-ads-v25-listplannablelocations-api-openapi.yml: previously refined output, superseded by openapi/_original/",
+    "google-ads-v25-listplannableproducts-api-openapi.yml: previously refined output, superseded by openapi/_original/",
+    "google-ads-v25-listplannableuserinterests-api-openapi.yml: previously refined output, superseded by openapi/_original/",
+    "google-ads-v25-listplannableuserlists-api-openapi.yml: previously refined output, superseded by openapi/_original/"
   ]
 }

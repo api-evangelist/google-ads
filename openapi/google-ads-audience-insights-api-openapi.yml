@@ -125,6 +125,16 @@ paths:
         - https://www.googleapis.com/auth/adwords
 components:
   schemas:
+    GoogleAdsGoogleadsV25Common__DateRange:
+      type: object
+      properties:
+        startDate:
+          type: string
+          description: The start date, in yyyy-mm-dd format. This date is inclusive.
+        endDate:
+          description: The end date, in yyyy-mm-dd format. This date is inclusive.
+          type: string
+      description: A date range.
     GoogleAdsGoogleadsV25Services__ListInsightsEligibleDatesResponse:
       type: object
       properties:
@@ -137,6 +147,13 @@ components:
           description: The actual dates covered by the "last 30 days" date range that will be used implicitly for AudienceInsightsService.GenerateAudienceCompositionInsights requests that have no data_month set.
           $ref: '#/components/schemas/GoogleAdsGoogleadsV25Common__DateRange'
       description: Response message for AudienceInsightsService.ListInsightsEligibleDates.
+    GoogleAdsGoogleadsV25Services__ListInsightsEligibleDatesRequest:
+      description: Request message for AudienceInsightsService.ListInsightsEligibleDates.
+      type: object
+      properties:
+        insightsApplicationInfo:
+          $ref: '#/components/schemas/GoogleAdsGoogleadsV25Common__AdditionalApplicationInfo'
+          description: Optional. Additional information on the application issuing the request.
     GoogleAdsGoogleadsV25Common__AdditionalApplicationInfo:
       description: Additional information about the application/tool issuing the request. This field is only used by ContentCreatorInsightsService, AudienceInsightsService, and ReachPlanService APIs.
       type: object
@@ -157,23 +174,6 @@ components:
           - UNKNOWN
           - DEVELOPMENT_AND_TESTING
           - PRODUCTION
-    GoogleAdsGoogleadsV25Services__ListInsightsEligibleDatesRequest:
-      description: Request message for AudienceInsightsService.ListInsightsEligibleDates.
-      type: object
-      properties:
-        insightsApplicationInfo:
-          $ref: '#/components/schemas/GoogleAdsGoogleadsV25Common__AdditionalApplicationInfo'
-          description: Optional. Additional information on the application issuing the request.
-    GoogleAdsGoogleadsV25Common__DateRange:
-      type: object
-      properties:
-        startDate:
-          type: string
-          description: The start date, in yyyy-mm-dd format. This date is inclusive.
-        endDate:
-          description: The end date, in yyyy-mm-dd format. This date is inclusive.
-          type: string
-      description: A date range.
   securitySchemes:
     oauth2:
       type: oauth2

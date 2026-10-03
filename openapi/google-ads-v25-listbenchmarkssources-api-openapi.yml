@@ -125,6 +125,24 @@ paths:
         - https://www.googleapis.com/auth/adwords
 components:
   schemas:
+    GoogleAdsGoogleadsV25Services__BenchmarksSourceMetadata:
+      description: The metadata associated with a benchmarks source.
+      type: object
+      properties:
+        industryVerticalInfo:
+          $ref: '#/components/schemas/GoogleAdsGoogleadsV25Services__IndustryVerticalInfo'
+          description: Information on the Industry Vertical.
+        benchmarksSourceType:
+          x-enumDescriptions:
+          - Not specified.
+          - The value is unknown in this version.
+          - The classification of ad categories for benchmarking. (for example, "Technology" or "Finance").
+          enum:
+          - UNSPECIFIED
+          - UNKNOWN
+          - INDUSTRY_VERTICAL
+          description: The type of benchmarks source.
+          type: string
     GoogleAdsGoogleadsV25Services__ListBenchmarksSourcesResponse:
       type: object
       properties:
@@ -169,24 +187,6 @@ components:
             - INDUSTRY_VERTICAL
           type: array
       description: Request message for BenchmarksService.ListBenchmarksSources.
-    GoogleAdsGoogleadsV25Services__BenchmarksSourceMetadata:
-      description: The metadata associated with a benchmarks source.
-      type: object
-      properties:
-        industryVerticalInfo:
-          $ref: '#/components/schemas/GoogleAdsGoogleadsV25Services__IndustryVerticalInfo'
-          description: Information on the Industry Vertical.
-        benchmarksSourceType:
-          x-enumDescriptions:
-          - Not specified.
-          - The value is unknown in this version.
-          - The classification of ad categories for benchmarking. (for example, "Technology" or "Finance").
-          enum:
-          - UNSPECIFIED
-          - UNKNOWN
-          - INDUSTRY_VERTICAL
-          description: The type of benchmarks source.
-          type: string
     GoogleAdsGoogleadsV25Common__AdditionalApplicationInfo:
       description: Additional information about the application/tool issuing the request. This field is only used by ContentCreatorInsightsService, AudienceInsightsService, and ReachPlanService APIs.
       type: object

@@ -176,23 +176,6 @@ components:
           description: Output only. The resource name of the pending Multi-Party Authorization review. Read only field
           type: string
       description: Represents the permission of a single user onto a single customer.
-    GoogleAdsGoogleadsV25Services__MutateCustomerUserAccessRequest:
-      description: Mutate Request for CustomerUserAccessService.MutateCustomerUserAccess.
-      type: object
-      properties:
-        operation:
-          $ref: '#/components/schemas/GoogleAdsGoogleadsV25Services__CustomerUserAccessOperation'
-          description: Required. The operation to perform on the customer
-    GoogleAdsGoogleadsV25Services__MutateCustomerUserAccessResult:
-      description: The result for the customer user access mutate.
-      type: object
-      properties:
-        multiPartyAuthReview:
-          type: string
-          description: The resource name of the multi-party authorization review associated with this mutate.
-        resourceName:
-          description: Returned for successful operations.
-          type: string
     GoogleAdsGoogleadsV25Services__CustomerUserAccessOperation:
       description: A single operation (update, remove) on customer user access.
       type: object
@@ -214,6 +197,23 @@ components:
         result:
           description: Result for the mutate.
           $ref: '#/components/schemas/GoogleAdsGoogleadsV25Services__MutateCustomerUserAccessResult'
+    GoogleAdsGoogleadsV25Services__MutateCustomerUserAccessResult:
+      description: The result for the customer user access mutate.
+      type: object
+      properties:
+        multiPartyAuthReview:
+          type: string
+          description: The resource name of the multi-party authorization review associated with this mutate.
+        resourceName:
+          description: Returned for successful operations.
+          type: string
+    GoogleAdsGoogleadsV25Services__MutateCustomerUserAccessRequest:
+      description: Mutate Request for CustomerUserAccessService.MutateCustomerUserAccess.
+      type: object
+      properties:
+        operation:
+          $ref: '#/components/schemas/GoogleAdsGoogleadsV25Services__CustomerUserAccessOperation'
+          description: Required. The operation to perform on the customer
   securitySchemes:
     oauth2:
       type: oauth2

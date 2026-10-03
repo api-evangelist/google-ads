@@ -159,36 +159,6 @@ components:
           description: Optional. Provider's free form comments. This field is required when OTHER_SATISFIED_REASON is selected as the reason.
           type: string
       description: Details about various factors for being satisfied with the lead.
-    GoogleAdsGoogleadsV25Services__SurveyDissatisfied:
-      type: object
-      properties:
-        surveyDissatisfiedReason:
-          x-enumDescriptions:
-          - Not specified.
-          - Used for return value only. Represents value unknown in this version.
-          - Other reasons.
-          - Lead was for a service that does not match the business' service area.
-          - Lead was for a service that is not offered by the business.
-          - Lead was by a customer that was not ready to book.
-          - 'Lead was a spam. Example: lead was from a bot, silent called, scam, etc.'
-          - Lead was a duplicate of another lead that is, customer contacted the business more than once.
-          - 'Lead due to solicitation. Example: a person trying to get a job or selling a product, etc.'
-          enum:
-          - UNSPECIFIED
-          - UNKNOWN
-          - OTHER_DISSATISFIED_REASON
-          - GEO_MISMATCH
-          - JOB_TYPE_MISMATCH
-          - NOT_READY_TO_BOOK
-          - SPAM
-          - DUPLICATE
-          - SOLICITATION
-          type: string
-          description: Required. Provider's reason for not being satisfied with the lead.
-        otherReasonComment:
-          description: Optional. Provider's free form comments. This field is required when OTHER_DISSATISFIED_REASON is selected as the reason.
-          type: string
-      description: Details about various factors for not being satisfied with the lead.
     GoogleAdsGoogleadsV25Services__ProvideLeadFeedbackRequest:
       description: Request message for LocalServicesLeadService.ProvideLeadFeedback.
       type: object
@@ -239,6 +209,36 @@ components:
           type: string
           description: Required. Decision of bonus credit issued or rejected. If a bonus credit is issued, it will be available for use in about two months.
       description: Response message for LocalServicesLeadService.ProvideLeadFeedback.
+    GoogleAdsGoogleadsV25Services__SurveyDissatisfied:
+      type: object
+      properties:
+        surveyDissatisfiedReason:
+          x-enumDescriptions:
+          - Not specified.
+          - Used for return value only. Represents value unknown in this version.
+          - Other reasons.
+          - Lead was for a service that does not match the business' service area.
+          - Lead was for a service that is not offered by the business.
+          - Lead was by a customer that was not ready to book.
+          - 'Lead was a spam. Example: lead was from a bot, silent called, scam, etc.'
+          - Lead was a duplicate of another lead that is, customer contacted the business more than once.
+          - 'Lead due to solicitation. Example: a person trying to get a job or selling a product, etc.'
+          enum:
+          - UNSPECIFIED
+          - UNKNOWN
+          - OTHER_DISSATISFIED_REASON
+          - GEO_MISMATCH
+          - JOB_TYPE_MISMATCH
+          - NOT_READY_TO_BOOK
+          - SPAM
+          - DUPLICATE
+          - SOLICITATION
+          type: string
+          description: Required. Provider's reason for not being satisfied with the lead.
+        otherReasonComment:
+          description: Optional. Provider's free form comments. This field is required when OTHER_DISSATISFIED_REASON is selected as the reason.
+          type: string
+      description: Details about various factors for not being satisfied with the lead.
   securitySchemes:
     oauth2:
       type: oauth2

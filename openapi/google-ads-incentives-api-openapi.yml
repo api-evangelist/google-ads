@@ -152,31 +152,6 @@ paths:
         - https://www.googleapis.com/auth/adwords
 components:
   schemas:
-    GoogleAdsGoogleadsV25Services__Incentive:
-      description: An incentive that a user can claim for their account.
-      type: object
-      properties:
-        requirement:
-          $ref: '#/components/schemas/GoogleAdsGoogleadsV25Services_Incentive_Requirement'
-          description: The requirement for this incentive.
-        incentiveId:
-          format: int64
-          type: string
-          description: The incentive ID of this incentive. This is used to identify which incentive is selected by the user in the CYO flow.
-        incentiveTermsAndConditionsUrl:
-          type: string
-          description: The URL of the terms and conditions for THIS incentive offer ONLY. This is different from the terms_and_conditions_url field in AcquisitionIncentiveOffer which is a combination of all the Incentive offers in a CYO offer.
-        incentiveType:
-          description: The type of the incentive.
-          type: string
-          x-enumDescriptions:
-          - Not specified.
-          - Unknown incentive type. Should not be used as a value explicitly.
-          - An acquisition incentive.
-          enum:
-          - UNSPECIFIED
-          - UNKNOWN
-          - ACQUISITION
     GoogleAdsGoogleadsV25Services__CyoIncentives:
       type: object
       properties:
@@ -190,20 +165,6 @@ components:
           description: Required. The CYO incentive with high target and award amounts.
           $ref: '#/components/schemas/GoogleAdsGoogleadsV25Services__Incentive'
       description: An incentive offer in the Choose-Your-Own Incentive feature where a user can select from a set of incentives with different money amounts.
-    GoogleAdsGoogleadsV25Services_Incentive_Requirement:
-      description: Requirement for an incentive.
-      type: object
-      properties:
-        spend:
-          $ref: '#/components/schemas/GoogleAdsGoogleadsV25Services_IncentiveRequirement_Spend'
-          description: Optional. Spend requirement for an incentive.
-    GoogleAdsGoogleadsV25Services__FetchIncentiveResponse:
-      description: Response from getting the acquisition incentive for a user when they visit a specific marketing page.
-      type: object
-      properties:
-        incentiveOffer:
-          $ref: '#/components/schemas/GoogleAdsGoogleadsV25Services__IncentiveOffer'
-          description: Required. The acquisition incentive offer for the user.
     GoogleAdsGoogleadsV25Services_IncentiveRequirement_Spend:
       type: object
       properties:
@@ -229,6 +190,13 @@ components:
           description: The whole units of the amount. For example if `currencyCode` is `"USD"`, then 1 unit is one US dollar.
           type: string
           format: int64
+    GoogleAdsGoogleadsV25Services_Incentive_Requirement:
+      description: Requirement for an incentive.
+      type: object
+      properties:
+        spend:
+          $ref: '#/components/schemas/GoogleAdsGoogleadsV25Services_IncentiveRequirement_Spend'
+          description: Optional. Spend requirement for an incentive.
     GoogleAdsGoogleadsV25Services__IncentiveOffer:
       type: object
       properties:
@@ -252,6 +220,38 @@ components:
           - NO_INCENTIVE
           - CYO_INCENTIVE
       description: An acquisition incentive offer for a user. An offer means how the user is treated. An offer can have no incentive or multiple incentives.
+    GoogleAdsGoogleadsV25Services__Incentive:
+      description: An incentive that a user can claim for their account.
+      type: object
+      properties:
+        requirement:
+          $ref: '#/components/schemas/GoogleAdsGoogleadsV25Services_Incentive_Requirement'
+          description: The requirement for this incentive.
+        incentiveId:
+          format: int64
+          type: string
+          description: The incentive ID of this incentive. This is used to identify which incentive is selected by the user in the CYO flow.
+        incentiveTermsAndConditionsUrl:
+          type: string
+          description: The URL of the terms and conditions for THIS incentive offer ONLY. This is different from the terms_and_conditions_url field in AcquisitionIncentiveOffer which is a combination of all the Incentive offers in a CYO offer.
+        incentiveType:
+          description: The type of the incentive.
+          type: string
+          x-enumDescriptions:
+          - Not specified.
+          - Unknown incentive type. Should not be used as a value explicitly.
+          - An acquisition incentive.
+          enum:
+          - UNSPECIFIED
+          - UNKNOWN
+          - ACQUISITION
+    GoogleAdsGoogleadsV25Services__FetchIncentiveResponse:
+      description: Response from getting the acquisition incentive for a user when they visit a specific marketing page.
+      type: object
+      properties:
+        incentiveOffer:
+          $ref: '#/components/schemas/GoogleAdsGoogleadsV25Services__IncentiveOffer'
+          description: Required. The acquisition incentive offer for the user.
   securitySchemes:
     oauth2:
       type: oauth2

@@ -368,6 +368,23 @@ paths:
         - https://www.googleapis.com/auth/adwords
 components:
   schemas:
+    GoogleAdsGoogleadsV25Services__PromoteCampaignDraftRequest:
+      description: Request message for CampaignDraftService.PromoteCampaignDraft.
+      type: object
+      properties:
+        validateOnly:
+          type: boolean
+          description: If true, the request is validated but no Long Running Operation is created. Only errors are returned.
+    GoogleAdsGoogleadsV25Services__MutateCampaignDraftResult:
+      description: The result for the campaign draft mutate.
+      type: object
+      properties:
+        resourceName:
+          type: string
+          description: Returned for successful operations.
+        campaignDraft:
+          description: The mutated campaign draft with only mutable fields after mutate. The field will only be returned when response_content_type is set to "MUTABLE_RESOURCE".
+          $ref: '#/components/schemas/GoogleAdsGoogleadsV25Resources__CampaignDraft'
     GoogleAdsGoogleadsV25Services__MutateCampaignDraftsResponse:
       description: Response message for campaign draft mutate.
       type: object
@@ -380,6 +397,32 @@ components:
           items:
             $ref: '#/components/schemas/GoogleAdsGoogleadsV25Services__MutateCampaignDraftResult'
           type: array
+    GoogleAdsGoogleadsV25Services__MutateCampaignDraftsRequest:
+      type: object
+      properties:
+        operations:
+          description: Required. The list of operations to perform on individual campaign drafts.
+          items:
+            $ref: '#/components/schemas/GoogleAdsGoogleadsV25Services__CampaignDraftOperation'
+          type: array
+        validateOnly:
+          type: boolean
+          description: If true, the request is validated but not executed. Only errors are returned, not results.
+        responseContentType:
+          type: string
+          description: The response content type setting. Determines whether the mutable resource or just the resource name should be returned post mutation.
+          x-enumDescriptions:
+          - Not specified. Will return the resource name only in the response.
+          - The mutate response will be the resource name.
+          - The mutate response will contain the resource name and the resource with mutable fields if possible. Otherwise, only the resource name will be returned.
+          enum:
+          - UNSPECIFIED
+          - RESOURCE_NAME_ONLY
+          - MUTABLE_RESOURCE
+        partialFailure:
+          description: If true, successful operations will be carried out and invalid operations will return errors. If false, all operations will be carried out in one transaction if and only if they are all valid. Default is false.
+          type: boolean
+      description: Request message for CampaignDraftService.MutateCampaignDrafts.
     GoogleAdsGoogleadsV25Resources__CampaignDraft:
       description: A campaign draft.
       type: object
@@ -425,78 +468,6 @@ components:
         longRunningOperation:
           description: Output only. The resource name of the long-running operation that can be used to poll for completion of draft promotion. This is only set if the draft promotion is in progress or finished.
           type: string
-    GoogleAdsGoogleadsV25Services__PromoteCampaignDraftRequest:
-      description: Request message for CampaignDraftService.PromoteCampaignDraft.
-      type: object
-      properties:
-        validateOnly:
-          type: boolean
-          description: If true, the request is validated but no Long Running Operation is created. Only errors are returned.
-    GoogleAdsGoogleadsV25Services__MutateCampaignDraftResult:
-      description: The result for the campaign draft mutate.
-      type: object
-      properties:
-        resourceName:
-          type: string
-          description: Returned for successful operations.
-        campaignDraft:
-          description: The mutated campaign draft with only mutable fields after mutate. The field will only be returned when response_content_type is set to "MUTABLE_RESOURCE".
-          $ref: '#/components/schemas/GoogleAdsGoogleadsV25Resources__CampaignDraft'
-    GoogleAdsGoogleadsV25Services__CampaignDraftOperation:
-      type: object
-      properties:
-        remove:
-          description: 'Remove operation: The campaign draft is expected to have a valid resource name, in this format: `customers/{customer_id}/campaignDrafts/{base_campaign_id}~{draft_id}`'
-          type: string
-        updateMask:
-          format: google-fieldmask
-          type: string
-          description: FieldMask that determines which resource fields are modified in an update.
-        create:
-          $ref: '#/components/schemas/GoogleAdsGoogleadsV25Resources__CampaignDraft'
-          description: 'Create operation: No resource name is expected for the new campaign draft.'
-        update:
-          $ref: '#/components/schemas/GoogleAdsGoogleadsV25Resources__CampaignDraft'
-          description: 'Update operation: The campaign draft is expected to have a valid resource name.'
-      description: A single operation (create, update, remove) on a campaign draft.
-    GoogleAdsGoogleadsV25Services__MutateCampaignDraftsRequest:
-      type: object
-      properties:
-        operations:
-          description: Required. The list of operations to perform on individual campaign drafts.
-          items:
-            $ref: '#/components/schemas/GoogleAdsGoogleadsV25Services__CampaignDraftOperation'
-          type: array
-        validateOnly:
-          type: boolean
-          description: If true, the request is validated but not executed. Only errors are returned, not results.
-        responseContentType:
-          type: string
-          description: The response content type setting. Determines whether the mutable resource or just the resource name should be returned post mutation.
-          x-enumDescriptions:
-          - Not specified. Will return the resource name only in the response.
-          - The mutate response will be the resource name.
-          - The mutate response will contain the resource name and the resource with mutable fields if possible. Otherwise, only the resource name will be returned.
-          enum:
-          - UNSPECIFIED
-          - RESOURCE_NAME_ONLY
-          - MUTABLE_RESOURCE
-        partialFailure:
-          description: If true, successful operations will be carried out and invalid operations will return errors. If false, all operations will be carried out in one transaction if and only if they are all valid. Default is false.
-          type: boolean
-      description: Request message for CampaignDraftService.MutateCampaignDrafts.
-    GoogleAdsGoogleadsV25Services__ListCampaignDraftAsyncErrorsResponse:
-      description: Response message for CampaignDraftService.ListCampaignDraftAsyncErrors.
-      type: object
-      properties:
-        errors:
-          type: array
-          description: Details of the errors when performing the asynchronous operation.
-          items:
-            $ref: '#/components/schemas/GoogleRpc__Status'
-        nextPageToken:
-          type: string
-          description: Pagination token used to retrieve the next page of results. Pass the content of this string as the `page_token` attribute of the next request. `next_page_token` is not returned for the last page.
     GoogleRpc__Status:
       description: 'The `Status` type defines a logical error model that is suitable for different programming environments, including REST APIs and RPC APIs. It is used by [gRPC](https://github.com/grpc). Each `Status` message contains three pieces of data: error code, error message, and error details. You can find out more about this error model and how to work with it in the [API Design Guide](https://cloud.google.com/apis/design/errors).'
       type: object
@@ -515,6 +486,35 @@ components:
             type: object
             additionalProperties:
               description: Properties of the object. Contains field @type with type URL.
+    GoogleAdsGoogleadsV25Services__ListCampaignDraftAsyncErrorsResponse:
+      description: Response message for CampaignDraftService.ListCampaignDraftAsyncErrors.
+      type: object
+      properties:
+        errors:
+          type: array
+          description: Details of the errors when performing the asynchronous operation.
+          items:
+            $ref: '#/components/schemas/GoogleRpc__Status'
+        nextPageToken:
+          type: string
+          description: Pagination token used to retrieve the next page of results. Pass the content of this string as the `page_token` attribute of the next request. `next_page_token` is not returned for the last page.
+    GoogleAdsGoogleadsV25Services__CampaignDraftOperation:
+      type: object
+      properties:
+        remove:
+          description: 'Remove operation: The campaign draft is expected to have a valid resource name, in this format: `customers/{customer_id}/campaignDrafts/{base_campaign_id}~{draft_id}`'
+          type: string
+        updateMask:
+          format: google-fieldmask
+          type: string
+          description: FieldMask that determines which resource fields are modified in an update.
+        create:
+          $ref: '#/components/schemas/GoogleAdsGoogleadsV25Resources__CampaignDraft'
+          description: 'Create operation: No resource name is expected for the new campaign draft.'
+        update:
+          $ref: '#/components/schemas/GoogleAdsGoogleadsV25Resources__CampaignDraft'
+          description: 'Update operation: The campaign draft is expected to have a valid resource name.'
+      description: A single operation (create, update, remove) on a campaign draft.
     GoogleLongrunning__Operation:
       type: object
       properties:

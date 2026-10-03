@@ -133,26 +133,6 @@ paths:
         - https://www.googleapis.com/auth/adwords
 components:
   schemas:
-    GoogleAdsGoogleadsV25Services__CampaignSharedSetOperation:
-      description: A single operation (create, remove) on a campaign shared set.
-      type: object
-      properties:
-        create:
-          description: 'Create operation: No resource name is expected for the new campaign shared set.'
-          $ref: '#/components/schemas/GoogleAdsGoogleadsV25Resources__CampaignSharedSet'
-        remove:
-          description: 'Remove operation: A resource name for the removed campaign shared set is expected, in this format: `customers/{customer_id}/campaignSharedSets/{campaign_id}~{shared_set_id}`'
-          type: string
-    GoogleAdsGoogleadsV25Services__MutateCampaignSharedSetResult:
-      type: object
-      properties:
-        resourceName:
-          type: string
-          description: Returned for successful operations.
-        campaignSharedSet:
-          description: The mutated campaign shared set with only mutable fields after mutate. The field will only be returned when response_content_type is set to "MUTABLE_RESOURCE".
-          $ref: '#/components/schemas/GoogleAdsGoogleadsV25Resources__CampaignSharedSet'
-      description: The result for the campaign shared set mutate.
     GoogleAdsGoogleadsV25Resources__CampaignSharedSet:
       description: CampaignSharedSets are used for managing the shared sets associated with a campaign.
       type: object
@@ -179,18 +159,6 @@ components:
           - Used for return value only. Represents value unknown in this version.
           - The campaign shared set is enabled.
           - The campaign shared set is removed and can no longer be used.
-    GoogleAdsGoogleadsV25Services__MutateCampaignSharedSetsResponse:
-      description: Response message for a campaign shared set mutate.
-      type: object
-      properties:
-        partialFailureError:
-          description: Errors that pertain to operation failures in the partial failure mode. Returned only when partial_failure = true and all errors occur inside the operations. If any errors occur outside the operations (for example, auth errors), we return an RPC level error.
-          $ref: '#/components/schemas/GoogleRpc__Status'
-        results:
-          description: All results for the mutate.
-          items:
-            $ref: '#/components/schemas/GoogleAdsGoogleadsV25Services__MutateCampaignSharedSetResult'
-          type: array
     GoogleAdsGoogleadsV25Services__MutateCampaignSharedSetsRequest:
       description: Request message for CampaignSharedSetService.MutateCampaignSharedSets.
       type: object
@@ -217,6 +185,38 @@ components:
           items:
             $ref: '#/components/schemas/GoogleAdsGoogleadsV25Services__CampaignSharedSetOperation'
           type: array
+    GoogleAdsGoogleadsV25Services__MutateCampaignSharedSetResult:
+      type: object
+      properties:
+        resourceName:
+          type: string
+          description: Returned for successful operations.
+        campaignSharedSet:
+          description: The mutated campaign shared set with only mutable fields after mutate. The field will only be returned when response_content_type is set to "MUTABLE_RESOURCE".
+          $ref: '#/components/schemas/GoogleAdsGoogleadsV25Resources__CampaignSharedSet'
+      description: The result for the campaign shared set mutate.
+    GoogleAdsGoogleadsV25Services__MutateCampaignSharedSetsResponse:
+      description: Response message for a campaign shared set mutate.
+      type: object
+      properties:
+        partialFailureError:
+          description: Errors that pertain to operation failures in the partial failure mode. Returned only when partial_failure = true and all errors occur inside the operations. If any errors occur outside the operations (for example, auth errors), we return an RPC level error.
+          $ref: '#/components/schemas/GoogleRpc__Status'
+        results:
+          description: All results for the mutate.
+          items:
+            $ref: '#/components/schemas/GoogleAdsGoogleadsV25Services__MutateCampaignSharedSetResult'
+          type: array
+    GoogleAdsGoogleadsV25Services__CampaignSharedSetOperation:
+      description: A single operation (create, remove) on a campaign shared set.
+      type: object
+      properties:
+        create:
+          description: 'Create operation: No resource name is expected for the new campaign shared set.'
+          $ref: '#/components/schemas/GoogleAdsGoogleadsV25Resources__CampaignSharedSet'
+        remove:
+          description: 'Remove operation: A resource name for the removed campaign shared set is expected, in this format: `customers/{customer_id}/campaignSharedSets/{campaign_id}~{shared_set_id}`'
+          type: string
     GoogleRpc__Status:
       description: 'The `Status` type defines a logical error model that is suitable for different programming environments, including REST APIs and RPC APIs. It is used by [gRPC](https://github.com/grpc). Each `Status` message contains three pieces of data: error code, error message, and error details. You can find out more about this error model and how to work with it in the [API Design Guide](https://cloud.google.com/apis/design/errors).'
       type: object
