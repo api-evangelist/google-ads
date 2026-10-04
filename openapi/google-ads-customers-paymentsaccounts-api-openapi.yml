@@ -127,15 +127,6 @@ paths:
         - https://www.googleapis.com/auth/adwords
 components:
   schemas:
-    GoogleAdsGoogleadsV25Services__ListPaymentsAccountsResponse:
-      description: Response message for PaymentsAccountService.ListPaymentsAccounts.
-      type: object
-      properties:
-        paymentsAccounts:
-          description: The list of accessible payments accounts.
-          items:
-            $ref: '#/components/schemas/GoogleAdsGoogleadsV25Resources__PaymentsAccount'
-          type: array
     GoogleAdsGoogleadsV25Resources__PaymentsAccount:
       type: object
       properties:
@@ -161,6 +152,15 @@ components:
           description: Output only. Paying manager of this payment account.
           type: string
       description: A payments account, which can be used to set up billing for an Ads customer.
+    GoogleAdsGoogleadsV25Services__ListPaymentsAccountsResponse:
+      description: Response message for PaymentsAccountService.ListPaymentsAccounts.
+      type: object
+      properties:
+        paymentsAccounts:
+          description: The list of accessible payments accounts.
+          items:
+            $ref: '#/components/schemas/GoogleAdsGoogleadsV25Resources__PaymentsAccount'
+          type: array
   securitySchemes:
     oauth2:
       type: oauth2

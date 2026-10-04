@@ -133,13 +133,6 @@ paths:
         - https://www.googleapis.com/auth/adwords
 components:
   schemas:
-    GoogleAdsGoogleadsV25Services__MutateCustomerClientLinkResponse:
-      type: object
-      properties:
-        result:
-          description: A result that identifies the resource affected by the mutate request.
-          $ref: '#/components/schemas/GoogleAdsGoogleadsV25Services__MutateCustomerClientLinkResult'
-      description: Response message for a CustomerClientLink mutate.
     GoogleAdsGoogleadsV25Resources__CustomerClientLink:
       type: object
       properties:
@@ -207,6 +200,13 @@ components:
           description: If true, the request is validated but not executed. Only errors are returned, not results.
           type: boolean
       description: Request message for CustomerClientLinkService.MutateCustomerClientLink.
+    GoogleAdsGoogleadsV25Services__MutateCustomerClientLinkResponse:
+      type: object
+      properties:
+        result:
+          description: A result that identifies the resource affected by the mutate request.
+          $ref: '#/components/schemas/GoogleAdsGoogleadsV25Services__MutateCustomerClientLinkResult'
+      description: Response message for a CustomerClientLink mutate.
   securitySchemes:
     oauth2:
       type: oauth2

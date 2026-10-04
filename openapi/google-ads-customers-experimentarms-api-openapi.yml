@@ -133,32 +133,33 @@ paths:
         - https://www.googleapis.com/auth/adwords
 components:
   schemas:
-    GoogleAdsGoogleadsV25Services__MutateExperimentArmsRequest:
-      description: Request message for ExperimentArmService.MutateExperimentArms.
+    GoogleAdsGoogleadsV25Resources_ExperimentArm_AssetVariationInfo:
       type: object
       properties:
-        validateOnly:
-          type: boolean
-          description: If true, the request is validated but not executed. Only errors are returned, not results.
-        responseContentType:
-          description: The response content type setting. Determines whether the mutable resource or just the resource name should be returned post mutation.
+        baseAd:
+          description: Associated base ad resource name.
           type: string
-          x-enumDescriptions:
-          - Not specified. Will return the resource name only in the response.
-          - The mutate response will be the resource name.
-          - The mutate response will contain the resource name and the resource with mutable fields if possible. Otherwise, only the resource name will be returned.
-          enum:
-          - UNSPECIFIED
-          - RESOURCE_NAME_ONLY
-          - MUTABLE_RESOURCE
-        operations:
-          description: Required. The list of operations to perform on individual experiment arm.
+        assetDetails:
+          description: Details for each asset that is being modified from the base ad.
           items:
-            $ref: '#/components/schemas/GoogleAdsGoogleadsV25Services__ExperimentArmOperation'
+            $ref: '#/components/schemas/GoogleAdsGoogleadsV25Resources_ExperimentArm_AssetDetail'
           type: array
-        partialFailure:
-          description: If true, successful operations will be carried out and invalid operations will return errors. If false, all operations will be carried out in one transaction if and only if they are all valid. Default is false.
-          type: boolean
+        baseAdGroup:
+          type: string
+          description: Associated base AdGroup resource name.
+      description: Details of asset variations to be performed on an ad in the control ad group.
+    GoogleAdsGoogleadsV25Resources_ExperimentArm_AssetGroupInfo:
+      type: object
+      properties:
+        assetGroup:
+          description: Asset group resource name.
+          type: string
+        assetGroupAssets:
+          type: array
+          description: List of asset group assets under the asset group.
+          items:
+            $ref: '#/components/schemas/GoogleAdsGoogleadsV25Resources_ExperimentArm_AssetGroupAssetInfo'
+      description: Holds the asset groups included in an arm of an Optimize Assets experiment.
     GoogleAdsGoogleadsV25Resources_ExperimentArm_AssetGroupAssetInfo:
       description: Holds the details of an asset within an asset group for an Optimize Assets experiment arm.
       type: object
@@ -245,6 +246,24 @@ components:
         asset:
           description: Asset resource name of the asset group asset.
           type: string
+    GoogleRpc__Status:
+      description: 'The `Status` type defines a logical error model that is suitable for different programming environments, including REST APIs and RPC APIs. It is used by [gRPC](https://github.com/grpc). Each `Status` message contains three pieces of data: error code, error message, and error details. You can find out more about this error model and how to work with it in the [API Design Guide](https://cloud.google.com/apis/design/errors).'
+      type: object
+      properties:
+        message:
+          description: A developer-facing error message, which should be in English. Any user-facing error message should be localized and sent in the google.rpc.Status.details field, or localized by the client.
+          type: string
+        code:
+          type: integer
+          description: The status code, which should be an enum value of google.rpc.Code.
+          format: int32
+        details:
+          type: array
+          description: A list of messages that carry the error details. There is a common set of message types for APIs to use.
+          items:
+            type: object
+            additionalProperties:
+              description: Properties of the object. Contains field @type with type URL.
     GoogleAdsGoogleadsV25Services__MutateExperimentArmsResponse:
       description: Response message for experiment arm mutate.
       type: object
@@ -257,13 +276,16 @@ components:
         partialFailureError:
           $ref: '#/components/schemas/GoogleRpc__Status'
           description: Errors that pertain to operation failures in the partial failure mode. Returned only when partial_failure = true and all errors occur inside the operations. If any errors occur outside the operations (for example, auth errors), we return an RPC level error.
-    GoogleAdsGoogleadsV25Resources_ExperimentArm_PerformanceMaxExperimentArmInfo:
-      description: Information specific to the control or treatment campaign of a Performance Max experiment.
+    GoogleAdsGoogleadsV25Services__MutateExperimentArmResult:
       type: object
       properties:
-        experimentalPerformanceMaxCampaignSettings:
-          $ref: '#/components/schemas/GoogleAdsGoogleadsV25Resources_ExperimentArm_ExperimentalPerformanceMaxCampaignSettings'
-          description: Immutable. Performance Max campaign settings to be applied on the Google-created experimental campaign in a Performance Max experiment. The experimental campaign is automatically created by Google upon experiment creation.
+        resourceName:
+          description: Returned for successful operations.
+          type: string
+        experimentArm:
+          description: The mutated experiment arm with only mutable fields after mutate. The field will only be returned when response_content_type is set to "MUTABLE_RESOURCE".
+          $ref: '#/components/schemas/GoogleAdsGoogleadsV25Resources__ExperimentArm'
+      description: The result for the experiment arm mutate.
     GoogleAdsGoogleadsV25Resources__ExperimentArm:
       description: A Google ads experiment for users to experiment changes on multiple campaigns, compare the performance, and apply the effective changes.
       type: object
@@ -305,48 +327,48 @@ components:
         control:
           description: Whether this arm is a control arm. A control arm is the arm against which the other arms are compared.
           type: boolean
-    GoogleAdsGoogleadsV25Services__MutateExperimentArmResult:
+    GoogleAdsGoogleadsV25Services__MutateExperimentArmsRequest:
+      description: Request message for ExperimentArmService.MutateExperimentArms.
       type: object
       properties:
-        resourceName:
-          description: Returned for successful operations.
+        validateOnly:
+          type: boolean
+          description: If true, the request is validated but not executed. Only errors are returned, not results.
+        responseContentType:
+          description: The response content type setting. Determines whether the mutable resource or just the resource name should be returned post mutation.
           type: string
-        experimentArm:
-          description: The mutated experiment arm with only mutable fields after mutate. The field will only be returned when response_content_type is set to "MUTABLE_RESOURCE".
-          $ref: '#/components/schemas/GoogleAdsGoogleadsV25Resources__ExperimentArm'
-      description: The result for the experiment arm mutate.
-    GoogleAdsGoogleadsV25Services__ExperimentArmOperation:
-      description: A single operation on an experiment arm.
-      type: object
-      properties:
-        update:
-          $ref: '#/components/schemas/GoogleAdsGoogleadsV25Resources__ExperimentArm'
-          description: 'Update operation: The experiment arm is expected to have a valid resource name.'
-        updateMask:
-          description: FieldMask that determines which resource fields are modified in an update.
-          type: string
-          format: google-fieldmask
-        create:
-          description: Create operation
-          $ref: '#/components/schemas/GoogleAdsGoogleadsV25Resources__ExperimentArm'
-        remove:
-          type: string
-          description: 'Remove operation: The experiment arm is expected to have a valid resource name, in this format: `customers/{customer_id}/experiments/{campaign_experiment_id}`'
-    GoogleAdsGoogleadsV25Resources_ExperimentArm_AssetVariationInfo:
-      type: object
-      properties:
-        baseAd:
-          description: Associated base ad resource name.
-          type: string
-        assetDetails:
-          description: Details for each asset that is being modified from the base ad.
+          x-enumDescriptions:
+          - Not specified. Will return the resource name only in the response.
+          - The mutate response will be the resource name.
+          - The mutate response will contain the resource name and the resource with mutable fields if possible. Otherwise, only the resource name will be returned.
+          enum:
+          - UNSPECIFIED
+          - RESOURCE_NAME_ONLY
+          - MUTABLE_RESOURCE
+        operations:
+          description: Required. The list of operations to perform on individual experiment arm.
           items:
-            $ref: '#/components/schemas/GoogleAdsGoogleadsV25Resources_ExperimentArm_AssetDetail'
+            $ref: '#/components/schemas/GoogleAdsGoogleadsV25Services__ExperimentArmOperation'
           type: array
-        baseAdGroup:
-          type: string
-          description: Associated base AdGroup resource name.
-      description: Details of asset variations to be performed on an ad in the control ad group.
+        partialFailure:
+          description: If true, successful operations will be carried out and invalid operations will return errors. If false, all operations will be carried out in one transaction if and only if they are all valid. Default is false.
+          type: boolean
+    GoogleAdsGoogleadsV25Resources_ExperimentArm_PerformanceMaxExperimentArmInfo:
+      description: Information specific to the control or treatment campaign of a Performance Max experiment.
+      type: object
+      properties:
+        experimentalPerformanceMaxCampaignSettings:
+          $ref: '#/components/schemas/GoogleAdsGoogleadsV25Resources_ExperimentArm_ExperimentalPerformanceMaxCampaignSettings'
+          description: Immutable. Performance Max campaign settings to be applied on the Google-created experimental campaign in a Performance Max experiment. The experimental campaign is automatically created by Google upon experiment creation.
+    GoogleAdsGoogleadsV25Resources_ExperimentArm_AssetTestingInfo:
+      type: object
+      properties:
+        assetVariationInfos:
+          type: array
+          description: Details of assets associated for each experimental copy of the ad.
+          items:
+            $ref: '#/components/schemas/GoogleAdsGoogleadsV25Resources_ExperimentArm_AssetVariationInfo'
+      description: Details of assets associated with the experimental copies of ads.
     GoogleAdsGoogleadsV25Resources_ExperimentArm_AssetDetail:
       type: object
       properties:
@@ -513,45 +535,23 @@ components:
           description: Immutable. Target ROAS of the Performance Max experiment campaign.
           type: number
           format: double
-    GoogleAdsGoogleadsV25Resources_ExperimentArm_AssetGroupInfo:
+    GoogleAdsGoogleadsV25Services__ExperimentArmOperation:
+      description: A single operation on an experiment arm.
       type: object
       properties:
-        assetGroup:
-          description: Asset group resource name.
+        update:
+          $ref: '#/components/schemas/GoogleAdsGoogleadsV25Resources__ExperimentArm'
+          description: 'Update operation: The experiment arm is expected to have a valid resource name.'
+        updateMask:
+          description: FieldMask that determines which resource fields are modified in an update.
           type: string
-        assetGroupAssets:
-          type: array
-          description: List of asset group assets under the asset group.
-          items:
-            $ref: '#/components/schemas/GoogleAdsGoogleadsV25Resources_ExperimentArm_AssetGroupAssetInfo'
-      description: Holds the asset groups included in an arm of an Optimize Assets experiment.
-    GoogleRpc__Status:
-      description: 'The `Status` type defines a logical error model that is suitable for different programming environments, including REST APIs and RPC APIs. It is used by [gRPC](https://github.com/grpc). Each `Status` message contains three pieces of data: error code, error message, and error details. You can find out more about this error model and how to work with it in the [API Design Guide](https://cloud.google.com/apis/design/errors).'
-      type: object
-      properties:
-        message:
-          description: A developer-facing error message, which should be in English. Any user-facing error message should be localized and sent in the google.rpc.Status.details field, or localized by the client.
+          format: google-fieldmask
+        create:
+          description: Create operation
+          $ref: '#/components/schemas/GoogleAdsGoogleadsV25Resources__ExperimentArm'
+        remove:
           type: string
-        code:
-          type: integer
-          description: The status code, which should be an enum value of google.rpc.Code.
-          format: int32
-        details:
-          type: array
-          description: A list of messages that carry the error details. There is a common set of message types for APIs to use.
-          items:
-            type: object
-            additionalProperties:
-              description: Properties of the object. Contains field @type with type URL.
-    GoogleAdsGoogleadsV25Resources_ExperimentArm_AssetTestingInfo:
-      type: object
-      properties:
-        assetVariationInfos:
-          type: array
-          description: Details of assets associated for each experimental copy of the ad.
-          items:
-            $ref: '#/components/schemas/GoogleAdsGoogleadsV25Resources_ExperimentArm_AssetVariationInfo'
-      description: Details of assets associated with the experimental copies of ads.
+          description: 'Remove operation: The experiment arm is expected to have a valid resource name, in this format: `customers/{customer_id}/experiments/{campaign_experiment_id}`'
   securitySchemes:
     oauth2:
       type: oauth2

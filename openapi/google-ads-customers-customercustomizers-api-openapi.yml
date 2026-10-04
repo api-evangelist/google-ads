@@ -133,26 +133,18 @@ paths:
         - https://www.googleapis.com/auth/adwords
 components:
   schemas:
-    GoogleAdsGoogleadsV25Services__MutateCustomerCustomizerResult:
+    GoogleAdsGoogleadsV25Services__MutateCustomerCustomizersResponse:
       type: object
       properties:
-        resourceName:
-          type: string
-          description: Returned for successful operations.
-        customerCustomizer:
-          description: The mutated CustomerCustomizer with only mutable fields after mutate. The field will only be returned when response_content_type is set to "MUTABLE_RESOURCE".
-          $ref: '#/components/schemas/GoogleAdsGoogleadsV25Resources__CustomerCustomizer'
-      description: The result for the customizer attribute mutate.
-    GoogleAdsGoogleadsV25Services__CustomerCustomizerOperation:
-      description: A single operation (create, remove) on a customizer attribute.
-      type: object
-      properties:
-        create:
-          description: 'Create operation: No resource name is expected for the new customer customizer'
-          $ref: '#/components/schemas/GoogleAdsGoogleadsV25Resources__CustomerCustomizer'
-        remove:
-          description: 'Remove operation: A resource name for the removed customer customizer is expected, in this format: `customers/{customer_id}/customerCustomizers/{customizer_attribute_id}`'
-          type: string
+        partialFailureError:
+          description: Errors that pertain to operation failures in the partial failure mode. Returned only when partial_failure = true and all errors occur inside the operations. If any errors occur outside the operations (for example, auth errors), we return an RPC level error.
+          $ref: '#/components/schemas/GoogleRpc__Status'
+        results:
+          description: All results for the mutate.
+          items:
+            $ref: '#/components/schemas/GoogleAdsGoogleadsV25Services__MutateCustomerCustomizerResult'
+          type: array
+      description: Response message for a customizer attribute mutate.
     GoogleAdsGoogleadsV25Services__MutateCustomerCustomizersRequest:
       description: Request message for CustomerCustomizerService.MutateCustomerCustomizers.
       type: object
@@ -179,41 +171,15 @@ components:
           items:
             $ref: '#/components/schemas/GoogleAdsGoogleadsV25Services__CustomerCustomizerOperation'
           type: array
-    GoogleAdsGoogleadsV25Services__MutateCustomerCustomizersResponse:
+    GoogleAdsGoogleadsV25Services__CustomerCustomizerOperation:
+      description: A single operation (create, remove) on a customizer attribute.
       type: object
       properties:
-        partialFailureError:
-          description: Errors that pertain to operation failures in the partial failure mode. Returned only when partial_failure = true and all errors occur inside the operations. If any errors occur outside the operations (for example, auth errors), we return an RPC level error.
-          $ref: '#/components/schemas/GoogleRpc__Status'
-        results:
-          description: All results for the mutate.
-          items:
-            $ref: '#/components/schemas/GoogleAdsGoogleadsV25Services__MutateCustomerCustomizerResult'
-          type: array
-      description: Response message for a customizer attribute mutate.
-    GoogleAdsGoogleadsV25Common__CustomizerValue:
-      description: A customizer value that is referenced in customizer linkage entities like CustomerCustomizer, CampaignCustomizer, etc.
-      type: object
-      properties:
-        type:
-          type: string
-          description: Required. The data type for the customizer value. It must match the attribute type. The string_value content must match the constraints associated with the type.
-          x-enumDescriptions:
-          - The status has not been specified.
-          - The received value is not known in this version.
-          - Text customizer.
-          - Number customizer.
-          - Price customizer consisting of a number and a currency.
-          - Percentage customizer consisting of a number and a '%'.
-          enum:
-          - UNSPECIFIED
-          - UNKNOWN
-          - TEXT
-          - NUMBER
-          - PRICE
-          - PERCENT
-        stringValue:
-          description: Required. Value to insert in creative text. Customizer values of all types are stored as string to make formatting unambiguous.
+        create:
+          description: 'Create operation: No resource name is expected for the new customer customizer'
+          $ref: '#/components/schemas/GoogleAdsGoogleadsV25Resources__CustomerCustomizer'
+        remove:
+          description: 'Remove operation: A resource name for the removed customer customizer is expected, in this format: `customers/{customer_id}/customerCustomizers/{customizer_attribute_id}`'
           type: string
     GoogleRpc__Status:
       description: 'The `Status` type defines a logical error model that is suitable for different programming environments, including REST APIs and RPC APIs. It is used by [gRPC](https://github.com/grpc). Each `Status` message contains three pieces of data: error code, error message, and error details. You can find out more about this error model and how to work with it in the [API Design Guide](https://cloud.google.com/apis/design/errors).'
@@ -259,6 +225,40 @@ components:
         value:
           description: Required. The value to associate with the customizer attribute at this level. The value must be of the type specified for the CustomizerAttribute.
           $ref: '#/components/schemas/GoogleAdsGoogleadsV25Common__CustomizerValue'
+    GoogleAdsGoogleadsV25Services__MutateCustomerCustomizerResult:
+      type: object
+      properties:
+        resourceName:
+          type: string
+          description: Returned for successful operations.
+        customerCustomizer:
+          description: The mutated CustomerCustomizer with only mutable fields after mutate. The field will only be returned when response_content_type is set to "MUTABLE_RESOURCE".
+          $ref: '#/components/schemas/GoogleAdsGoogleadsV25Resources__CustomerCustomizer'
+      description: The result for the customizer attribute mutate.
+    GoogleAdsGoogleadsV25Common__CustomizerValue:
+      description: A customizer value that is referenced in customizer linkage entities like CustomerCustomizer, CampaignCustomizer, etc.
+      type: object
+      properties:
+        type:
+          type: string
+          description: Required. The data type for the customizer value. It must match the attribute type. The string_value content must match the constraints associated with the type.
+          x-enumDescriptions:
+          - The status has not been specified.
+          - The received value is not known in this version.
+          - Text customizer.
+          - Number customizer.
+          - Price customizer consisting of a number and a currency.
+          - Percentage customizer consisting of a number and a '%'.
+          enum:
+          - UNSPECIFIED
+          - UNKNOWN
+          - TEXT
+          - NUMBER
+          - PRICE
+          - PERCENT
+        stringValue:
+          description: Required. Value to insert in creative text. Customizer values of all types are stored as string to make formatting unambiguous.
+          type: string
   securitySchemes:
     oauth2:
       type: oauth2

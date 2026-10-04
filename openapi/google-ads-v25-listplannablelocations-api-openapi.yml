@@ -125,42 +125,6 @@ paths:
         - https://www.googleapis.com/auth/adwords
 components:
   schemas:
-    GoogleAdsGoogleadsV25Services__PlannableLocation:
-      description: 'A plannable location: country, metro region, province, etc.'
-      type: object
-      properties:
-        locationType:
-          description: The location's type. Location types correspond to target_type returned by searching location type in GoogleAdsService.Search/SearchStream.
-          type: string
-        id:
-          type: string
-          description: The location identifier.
-        parentCountryId:
-          format: int64
-          description: The parent country (not present if location is a country). If present, will always be a GeoTargetConstant ID. Additional information such as country name is provided by ReachPlanService.ListPlannableLocations or GoogleAdsService.Search/SearchStream.
-          type: string
-        countryCode:
-          description: The ISO-3166-1 alpha-2 country code that is associated with the location.
-          type: string
-        name:
-          description: The unique location name in English.
-          type: string
-    GoogleAdsGoogleadsV25Services__ListPlannableLocationsRequest:
-      type: object
-      properties:
-        reachApplicationInfo:
-          description: Optional. Additional information on the application issuing the request.
-          $ref: '#/components/schemas/GoogleAdsGoogleadsV25Common__AdditionalApplicationInfo'
-      description: Request message for ReachPlanService.ListPlannableLocations.
-    GoogleAdsGoogleadsV25Services__ListPlannableLocationsResponse:
-      description: The list of plannable locations.
-      type: object
-      properties:
-        plannableLocations:
-          description: The list of locations available for planning. See https://developers.google.com/google-ads/api/reference/data/geotargets for sample locations.
-          items:
-            $ref: '#/components/schemas/GoogleAdsGoogleadsV25Services__PlannableLocation'
-          type: array
     GoogleAdsGoogleadsV25Common__AdditionalApplicationInfo:
       description: Additional information about the application/tool issuing the request. This field is only used by ContentCreatorInsightsService, AudienceInsightsService, and ReachPlanService APIs.
       type: object
@@ -181,6 +145,42 @@ components:
           - UNKNOWN
           - DEVELOPMENT_AND_TESTING
           - PRODUCTION
+    GoogleAdsGoogleadsV25Services__ListPlannableLocationsRequest:
+      type: object
+      properties:
+        reachApplicationInfo:
+          description: Optional. Additional information on the application issuing the request.
+          $ref: '#/components/schemas/GoogleAdsGoogleadsV25Common__AdditionalApplicationInfo'
+      description: Request message for ReachPlanService.ListPlannableLocations.
+    GoogleAdsGoogleadsV25Services__PlannableLocation:
+      description: 'A plannable location: country, metro region, province, etc.'
+      type: object
+      properties:
+        locationType:
+          description: The location's type. Location types correspond to target_type returned by searching location type in GoogleAdsService.Search/SearchStream.
+          type: string
+        id:
+          type: string
+          description: The location identifier.
+        parentCountryId:
+          format: int64
+          description: The parent country (not present if location is a country). If present, will always be a GeoTargetConstant ID. Additional information such as country name is provided by ReachPlanService.ListPlannableLocations or GoogleAdsService.Search/SearchStream.
+          type: string
+        countryCode:
+          description: The ISO-3166-1 alpha-2 country code that is associated with the location.
+          type: string
+        name:
+          description: The unique location name in English.
+          type: string
+    GoogleAdsGoogleadsV25Services__ListPlannableLocationsResponse:
+      description: The list of plannable locations.
+      type: object
+      properties:
+        plannableLocations:
+          description: The list of locations available for planning. See https://developers.google.com/google-ads/api/reference/data/geotargets for sample locations.
+          items:
+            $ref: '#/components/schemas/GoogleAdsGoogleadsV25Services__PlannableLocation'
+          type: array
   securitySchemes:
     oauth2:
       type: oauth2

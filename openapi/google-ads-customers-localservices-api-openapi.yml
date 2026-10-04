@@ -143,15 +143,6 @@ components:
           description: Required. Text message that user wanted to append to lead.
           type: string
       description: Details of the conversation that needs to be appended.
-    GoogleAdsGoogleadsV25Services__AppendLeadConversationResponse:
-      description: Response message for LocalServicesLeadService.AppendLeadConversation.
-      type: object
-      properties:
-        responses:
-          type: array
-          description: Required. List of append conversation operation results.
-          items:
-            $ref: '#/components/schemas/GoogleAdsGoogleadsV25Services__ConversationOrError'
     GoogleRpc__Status:
       description: 'The `Status` type defines a logical error model that is suitable for different programming environments, including REST APIs and RPC APIs. It is used by [gRPC](https://github.com/grpc). Each `Status` message contains three pieces of data: error code, error message, and error details. You can find out more about this error model and how to work with it in the [API Design Guide](https://cloud.google.com/apis/design/errors).'
       type: object
@@ -170,6 +161,15 @@ components:
             type: object
             additionalProperties:
               description: Properties of the object. Contains field @type with type URL.
+    GoogleAdsGoogleadsV25Services__AppendLeadConversationRequest:
+      type: object
+      properties:
+        conversations:
+          description: Required. Conversations that are being appended.
+          items:
+            $ref: '#/components/schemas/GoogleAdsGoogleadsV25Services__Conversation'
+          type: array
+      description: Request message for LocalServicesLeadService.AppendLeadConversation.
     GoogleAdsGoogleadsV25Services__ConversationOrError:
       description: Result of the append conversation operation.
       type: object
@@ -180,15 +180,15 @@ components:
         partialFailureError:
           $ref: '#/components/schemas/GoogleRpc__Status'
           description: Failure status when the request could not be processed.
-    GoogleAdsGoogleadsV25Services__AppendLeadConversationRequest:
+    GoogleAdsGoogleadsV25Services__AppendLeadConversationResponse:
+      description: Response message for LocalServicesLeadService.AppendLeadConversation.
       type: object
       properties:
-        conversations:
-          description: Required. Conversations that are being appended.
-          items:
-            $ref: '#/components/schemas/GoogleAdsGoogleadsV25Services__Conversation'
+        responses:
           type: array
-      description: Request message for LocalServicesLeadService.AppendLeadConversation.
+          description: Required. List of append conversation operation results.
+          items:
+            $ref: '#/components/schemas/GoogleAdsGoogleadsV25Services__ConversationOrError'
   securitySchemes:
     oauth2:
       type: oauth2

@@ -133,6 +133,63 @@ paths:
         - https://www.googleapis.com/auth/adwords
 components:
   schemas:
+    GoogleAdsGoogleadsV25Services__MutateLabelsResponse:
+      description: Response message for a labels mutate.
+      type: object
+      properties:
+        results:
+          type: array
+          description: All results for the mutate.
+          items:
+            $ref: '#/components/schemas/GoogleAdsGoogleadsV25Services__MutateLabelResult'
+        partialFailureError:
+          $ref: '#/components/schemas/GoogleRpc__Status'
+          description: Errors that pertain to operation failures in the partial failure mode. Returned only when partial_failure = true and all errors occur inside the operations. If any errors occur outside the operations (for example, auth errors), we return an RPC level error.
+    GoogleRpc__Status:
+      description: 'The `Status` type defines a logical error model that is suitable for different programming environments, including REST APIs and RPC APIs. It is used by [gRPC](https://github.com/grpc). Each `Status` message contains three pieces of data: error code, error message, and error details. You can find out more about this error model and how to work with it in the [API Design Guide](https://cloud.google.com/apis/design/errors).'
+      type: object
+      properties:
+        message:
+          description: A developer-facing error message, which should be in English. Any user-facing error message should be localized and sent in the google.rpc.Status.details field, or localized by the client.
+          type: string
+        code:
+          type: integer
+          description: The status code, which should be an enum value of google.rpc.Code.
+          format: int32
+        details:
+          type: array
+          description: A list of messages that carry the error details. There is a common set of message types for APIs to use.
+          items:
+            type: object
+            additionalProperties:
+              description: Properties of the object. Contains field @type with type URL.
+    GoogleAdsGoogleadsV25Services__MutateLabelResult:
+      type: object
+      properties:
+        resourceName:
+          description: Returned for successful operations.
+          type: string
+        label:
+          description: The mutated label with only mutable fields after mutate. The field will only be returned when response_content_type is set to "MUTABLE_RESOURCE".
+          $ref: '#/components/schemas/GoogleAdsGoogleadsV25Resources__Label'
+      description: The result for a label mutate.
+    GoogleAdsGoogleadsV25Services__LabelOperation:
+      description: A single operation (create, remove, update) on a label.
+      type: object
+      properties:
+        remove:
+          description: 'Remove operation: A resource name for the label being removed, in this format: `customers/{customer_id}/labels/{label_id}`'
+          type: string
+        update:
+          $ref: '#/components/schemas/GoogleAdsGoogleadsV25Resources__Label'
+          description: 'Update operation: The label is expected to have a valid resource name.'
+        updateMask:
+          format: google-fieldmask
+          type: string
+          description: FieldMask that determines which resource fields are modified in an update.
+        create:
+          description: 'Create operation: No resource name is expected for the new label.'
+          $ref: '#/components/schemas/GoogleAdsGoogleadsV25Resources__Label'
     GoogleAdsGoogleadsV25Services__MutateLabelsRequest:
       description: Request message for LabelService.MutateLabels.
       type: object
@@ -169,28 +226,6 @@ components:
         description:
           description: A short description of the label. The length must be no more than 200 characters.
           type: string
-    GoogleAdsGoogleadsV25Services__MutateLabelsResponse:
-      description: Response message for a labels mutate.
-      type: object
-      properties:
-        results:
-          type: array
-          description: All results for the mutate.
-          items:
-            $ref: '#/components/schemas/GoogleAdsGoogleadsV25Services__MutateLabelResult'
-        partialFailureError:
-          $ref: '#/components/schemas/GoogleRpc__Status'
-          description: Errors that pertain to operation failures in the partial failure mode. Returned only when partial_failure = true and all errors occur inside the operations. If any errors occur outside the operations (for example, auth errors), we return an RPC level error.
-    GoogleAdsGoogleadsV25Services__MutateLabelResult:
-      type: object
-      properties:
-        resourceName:
-          description: Returned for successful operations.
-          type: string
-        label:
-          description: The mutated label with only mutable fields after mutate. The field will only be returned when response_content_type is set to "MUTABLE_RESOURCE".
-          $ref: '#/components/schemas/GoogleAdsGoogleadsV25Resources__Label'
-      description: The result for a label mutate.
     GoogleAdsGoogleadsV25Resources__Label:
       description: A label.
       type: object
@@ -221,41 +256,6 @@ components:
         textLabel:
           description: A type of label displaying text on a colored background.
           $ref: '#/components/schemas/GoogleAdsGoogleadsV25Common__TextLabel'
-    GoogleAdsGoogleadsV25Services__LabelOperation:
-      description: A single operation (create, remove, update) on a label.
-      type: object
-      properties:
-        remove:
-          description: 'Remove operation: A resource name for the label being removed, in this format: `customers/{customer_id}/labels/{label_id}`'
-          type: string
-        update:
-          $ref: '#/components/schemas/GoogleAdsGoogleadsV25Resources__Label'
-          description: 'Update operation: The label is expected to have a valid resource name.'
-        updateMask:
-          format: google-fieldmask
-          type: string
-          description: FieldMask that determines which resource fields are modified in an update.
-        create:
-          description: 'Create operation: No resource name is expected for the new label.'
-          $ref: '#/components/schemas/GoogleAdsGoogleadsV25Resources__Label'
-    GoogleRpc__Status:
-      description: 'The `Status` type defines a logical error model that is suitable for different programming environments, including REST APIs and RPC APIs. It is used by [gRPC](https://github.com/grpc). Each `Status` message contains three pieces of data: error code, error message, and error details. You can find out more about this error model and how to work with it in the [API Design Guide](https://cloud.google.com/apis/design/errors).'
-      type: object
-      properties:
-        message:
-          description: A developer-facing error message, which should be in English. Any user-facing error message should be localized and sent in the google.rpc.Status.details field, or localized by the client.
-          type: string
-        code:
-          type: integer
-          description: The status code, which should be an enum value of google.rpc.Code.
-          format: int32
-        details:
-          type: array
-          description: A list of messages that carry the error details. There is a common set of message types for APIs to use.
-          items:
-            type: object
-            additionalProperties:
-              description: Properties of the object. Contains field @type with type URL.
   securitySchemes:
     oauth2:
       type: oauth2

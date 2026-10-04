@@ -133,6 +133,24 @@ paths:
         - https://www.googleapis.com/auth/adwords
 components:
   schemas:
+    GoogleRpc__Status:
+      description: 'The `Status` type defines a logical error model that is suitable for different programming environments, including REST APIs and RPC APIs. It is used by [gRPC](https://github.com/grpc). Each `Status` message contains three pieces of data: error code, error message, and error details. You can find out more about this error model and how to work with it in the [API Design Guide](https://cloud.google.com/apis/design/errors).'
+      type: object
+      properties:
+        message:
+          description: A developer-facing error message, which should be in English. Any user-facing error message should be localized and sent in the google.rpc.Status.details field, or localized by the client.
+          type: string
+        code:
+          type: integer
+          description: The status code, which should be an enum value of google.rpc.Code.
+          format: int32
+        details:
+          type: array
+          description: A list of messages that carry the error details. There is a common set of message types for APIs to use.
+          items:
+            type: object
+            additionalProperties:
+              description: Properties of the object. Contains field @type with type URL.
     GoogleAdsGoogleadsV25Services__MutateAdGroupCriterionCustomizersRequest:
       type: object
       properties:
@@ -159,6 +177,45 @@ components:
           description: If true, successful operations will be carried out and invalid operations will return errors. If false, all operations will be carried out in one transaction if and only if they are all valid. Default is false.
           type: boolean
       description: Request message for AdGroupCriterionCustomizerService.MutateAdGroupCriterionCustomizers.
+    GoogleAdsGoogleadsV25Resources__AdGroupCriterionCustomizer:
+      type: object
+      properties:
+        customizerAttribute:
+          description: Required. Immutable. The customizer attribute which is linked to the ad group criterion.
+          type: string
+        status:
+          x-enumDescriptions:
+          - The status has not been specified.
+          - The received value is not known in this version.
+          - The customizer value is enabled.
+          - The customizer value is removed.
+          description: Output only. The status of the ad group criterion customizer.
+          type: string
+          enum:
+          - UNSPECIFIED
+          - UNKNOWN
+          - ENABLED
+          - REMOVED
+        adGroupCriterion:
+          type: string
+          description: Immutable. The ad group criterion to which the customizer attribute is linked. It must be a keyword criterion.
+        value:
+          description: Required. The value to associate with the customizer attribute at this level. The value must be of the type specified for the CustomizerAttribute.
+          $ref: '#/components/schemas/GoogleAdsGoogleadsV25Common__CustomizerValue'
+        resourceName:
+          type: string
+          description: 'Immutable. The resource name of the ad group criterion customizer. Ad group criterion customizer resource names have the form: `customers/{customer_id}/adGroupCriterionCustomizers/{ad_group_id}~{criterion_id}~{customizer_attribute_id}`'
+      description: A customizer value for the associated CustomizerAttribute at the AdGroupCriterion level.
+    GoogleAdsGoogleadsV25Services__AdGroupCriterionCustomizerOperation:
+      type: object
+      properties:
+        create:
+          description: 'Create operation: No resource name is expected for the new ad group criterion customizer.'
+          $ref: '#/components/schemas/GoogleAdsGoogleadsV25Resources__AdGroupCriterionCustomizer'
+        remove:
+          description: 'Remove operation: A resource name for the removed ad group criterion customizer is expected, in this format: `customers/{customer_id}/adGroupCriterionCustomizers/{ad_group_id}~{criterion_id}~{customizer_attribute_id}`'
+          type: string
+      description: A single operation (create, remove) on a customizer attribute.
     GoogleAdsGoogleadsV25Services__MutateAdGroupCriterionCustomizerResult:
       description: The result for the ad group criterion customizer mutate.
       type: object
@@ -193,35 +250,6 @@ components:
         stringValue:
           description: Required. Value to insert in creative text. Customizer values of all types are stored as string to make formatting unambiguous.
           type: string
-    GoogleAdsGoogleadsV25Resources__AdGroupCriterionCustomizer:
-      type: object
-      properties:
-        customizerAttribute:
-          description: Required. Immutable. The customizer attribute which is linked to the ad group criterion.
-          type: string
-        status:
-          x-enumDescriptions:
-          - The status has not been specified.
-          - The received value is not known in this version.
-          - The customizer value is enabled.
-          - The customizer value is removed.
-          description: Output only. The status of the ad group criterion customizer.
-          type: string
-          enum:
-          - UNSPECIFIED
-          - UNKNOWN
-          - ENABLED
-          - REMOVED
-        adGroupCriterion:
-          type: string
-          description: Immutable. The ad group criterion to which the customizer attribute is linked. It must be a keyword criterion.
-        value:
-          description: Required. The value to associate with the customizer attribute at this level. The value must be of the type specified for the CustomizerAttribute.
-          $ref: '#/components/schemas/GoogleAdsGoogleadsV25Common__CustomizerValue'
-        resourceName:
-          type: string
-          description: 'Immutable. The resource name of the ad group criterion customizer. Ad group criterion customizer resource names have the form: `customers/{customer_id}/adGroupCriterionCustomizers/{ad_group_id}~{criterion_id}~{customizer_attribute_id}`'
-      description: A customizer value for the associated CustomizerAttribute at the AdGroupCriterion level.
     GoogleAdsGoogleadsV25Services__MutateAdGroupCriterionCustomizersResponse:
       type: object
       properties:
@@ -234,34 +262,6 @@ components:
           items:
             $ref: '#/components/schemas/GoogleAdsGoogleadsV25Services__MutateAdGroupCriterionCustomizerResult'
       description: Response message for an ad group criterion customizer mutate.
-    GoogleRpc__Status:
-      description: 'The `Status` type defines a logical error model that is suitable for different programming environments, including REST APIs and RPC APIs. It is used by [gRPC](https://github.com/grpc). Each `Status` message contains three pieces of data: error code, error message, and error details. You can find out more about this error model and how to work with it in the [API Design Guide](https://cloud.google.com/apis/design/errors).'
-      type: object
-      properties:
-        message:
-          description: A developer-facing error message, which should be in English. Any user-facing error message should be localized and sent in the google.rpc.Status.details field, or localized by the client.
-          type: string
-        code:
-          type: integer
-          description: The status code, which should be an enum value of google.rpc.Code.
-          format: int32
-        details:
-          type: array
-          description: A list of messages that carry the error details. There is a common set of message types for APIs to use.
-          items:
-            type: object
-            additionalProperties:
-              description: Properties of the object. Contains field @type with type URL.
-    GoogleAdsGoogleadsV25Services__AdGroupCriterionCustomizerOperation:
-      type: object
-      properties:
-        create:
-          description: 'Create operation: No resource name is expected for the new ad group criterion customizer.'
-          $ref: '#/components/schemas/GoogleAdsGoogleadsV25Resources__AdGroupCriterionCustomizer'
-        remove:
-          description: 'Remove operation: A resource name for the removed ad group criterion customizer is expected, in this format: `customers/{customer_id}/adGroupCriterionCustomizers/{ad_group_id}~{criterion_id}~{customizer_attribute_id}`'
-          type: string
-      description: A single operation (create, remove) on a customizer attribute.
   securitySchemes:
     oauth2:
       type: oauth2

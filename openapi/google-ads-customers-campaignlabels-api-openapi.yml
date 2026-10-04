@@ -133,41 +133,6 @@ paths:
         - https://www.googleapis.com/auth/adwords
 components:
   schemas:
-    GoogleAdsGoogleadsV25Services__MutateCampaignLabelsRequest:
-      description: Request message for CampaignLabelService.MutateCampaignLabels.
-      type: object
-      properties:
-        operations:
-          description: Required. The list of operations to perform on campaign-label relationships.
-          items:
-            $ref: '#/components/schemas/GoogleAdsGoogleadsV25Services__CampaignLabelOperation'
-          type: array
-        validateOnly:
-          description: If true, the request is validated but not executed. Only errors are returned, not results.
-          type: boolean
-        partialFailure:
-          type: boolean
-          description: If true, successful operations will be carried out and invalid operations will return errors. If false, all operations will be carried out in one transaction if and only if they are all valid. Default is false.
-    GoogleAdsGoogleadsV25Services__MutateCampaignLabelResult:
-      type: object
-      properties:
-        resourceName:
-          description: Returned for successful operations.
-          type: string
-      description: The result for a campaign label mutate.
-    GoogleAdsGoogleadsV25Resources__CampaignLabel:
-      type: object
-      properties:
-        campaign:
-          type: string
-          description: Immutable. The campaign to which the label is attached.
-        label:
-          description: Immutable. The label assigned to the campaign.
-          type: string
-        resourceName:
-          description: 'Immutable. Name of the resource. Campaign label resource names have the form: `customers/{customer_id}/campaignLabels/{campaign_id}~{label_id}`'
-          type: string
-      description: Represents a relationship between a campaign and a label.
     GoogleRpc__Status:
       description: 'The `Status` type defines a logical error model that is suitable for different programming environments, including REST APIs and RPC APIs. It is used by [gRPC](https://github.com/grpc). Each `Status` message contains three pieces of data: error code, error message, and error details. You can find out more about this error model and how to work with it in the [API Design Guide](https://cloud.google.com/apis/design/errors).'
       type: object
@@ -208,6 +173,41 @@ components:
           items:
             $ref: '#/components/schemas/GoogleAdsGoogleadsV25Services__MutateCampaignLabelResult'
       description: Response message for a campaign labels mutate.
+    GoogleAdsGoogleadsV25Services__MutateCampaignLabelResult:
+      type: object
+      properties:
+        resourceName:
+          description: Returned for successful operations.
+          type: string
+      description: The result for a campaign label mutate.
+    GoogleAdsGoogleadsV25Resources__CampaignLabel:
+      type: object
+      properties:
+        campaign:
+          type: string
+          description: Immutable. The campaign to which the label is attached.
+        label:
+          description: Immutable. The label assigned to the campaign.
+          type: string
+        resourceName:
+          description: 'Immutable. Name of the resource. Campaign label resource names have the form: `customers/{customer_id}/campaignLabels/{campaign_id}~{label_id}`'
+          type: string
+      description: Represents a relationship between a campaign and a label.
+    GoogleAdsGoogleadsV25Services__MutateCampaignLabelsRequest:
+      description: Request message for CampaignLabelService.MutateCampaignLabels.
+      type: object
+      properties:
+        operations:
+          description: Required. The list of operations to perform on campaign-label relationships.
+          items:
+            $ref: '#/components/schemas/GoogleAdsGoogleadsV25Services__CampaignLabelOperation'
+          type: array
+        validateOnly:
+          description: If true, the request is validated but not executed. Only errors are returned, not results.
+          type: boolean
+        partialFailure:
+          type: boolean
+          description: If true, successful operations will be carried out and invalid operations will return errors. If false, all operations will be carried out in one transaction if and only if they are all valid. Default is false.
   securitySchemes:
     oauth2:
       type: oauth2

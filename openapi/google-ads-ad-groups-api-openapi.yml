@@ -74,25 +74,6 @@ paths:
                 $ref: '#/components/schemas/GoogleAdsFailure'
 components:
   parameters:
-    CustomerIdPath:
-      name: customerId
-      in: path
-      required: true
-      description: The Google Ads customer ID (without dashes), e.g. 1234567890.
-      schema:
-        type: string
-        pattern: ^\d{10}$
-    LoginCustomerIdHeader:
-      name: login-customer-id
-      in: header
-      required: false
-      description: 'The customer ID of the manager account making the request on behalf
-
-        of a client account. Required when authenticating as a manager account.
-
-        '
-      schema:
-        type: string
     DeveloperTokenHeader:
       name: developer-token
       in: header
@@ -104,6 +85,14 @@ components:
         '
       schema:
         type: string
+    CustomerIdPath:
+      name: customerId
+      in: path
+      required: true
+      description: The Google Ads customer ID (without dashes), e.g. 1234567890.
+      schema:
+        type: string
+        pattern: ^\d{10}$
     AuthorizationHeader:
       name: Authorization
       in: header
@@ -111,7 +100,62 @@ components:
       description: OAuth 2.0 Bearer token for authentication.
       schema:
         type: string
+    LoginCustomerIdHeader:
+      name: login-customer-id
+      in: header
+      required: false
+      description: 'The customer ID of the manager account making the request on behalf
+
+        of a client account. Required when authenticating as a manager account.
+
+        '
+      schema:
+        type: string
   schemas:
+    GoogleAdsFailure:
+      type: object
+      description: Error response from the Google Ads API.
+      properties:
+        errors:
+          type: array
+          items:
+            $ref: '#/components/schemas/GoogleAdsError'
+    MutateAdGroupsResponse:
+      type: object
+      properties:
+        results:
+          type: array
+          items:
+            type: object
+            properties:
+              resourceName:
+                type: string
+        partialFailureError:
+          $ref: '#/components/schemas/Status'
+    MutateAdGroupsRequest:
+      type: object
+      required:
+      - operations
+      properties:
+        operations:
+          type: array
+          items:
+            $ref: '#/components/schemas/AdGroupOperation'
+        partialFailure:
+          type: boolean
+        validateOnly:
+          type: boolean
+    AdGroupOperation:
+      type: object
+      properties:
+        create:
+          $ref: '#/components/schemas/AdGroup'
+        update:
+          $ref: '#/components/schemas/AdGroup'
+        remove:
+          type: string
+        updateMask:
+          type: string
     AdGroup:
       type: object
       description: An ad group containing a set of ads and targeting criteria within a campaign.
@@ -179,41 +223,6 @@ components:
           - UNKNOWN
           - UNSPECIFIED
           description: Ad rotation mode for ads within this ad group.
-    Status:
-      type: object
-      description: Standard gRPC status for partial failure errors.
-      properties:
-        code:
-          type: integer
-          description: gRPC status code.
-        message:
-          type: string
-          description: Error message.
-        details:
-          type: array
-          items:
-            type: object
-    MutateAdGroupsRequest:
-      type: object
-      required:
-      - operations
-      properties:
-        operations:
-          type: array
-          items:
-            $ref: '#/components/schemas/AdGroupOperation'
-        partialFailure:
-          type: boolean
-        validateOnly:
-          type: boolean
-    GoogleAdsFailure:
-      type: object
-      description: Error response from the Google Ads API.
-      properties:
-        errors:
-          type: array
-          items:
-            $ref: '#/components/schemas/GoogleAdsError'
     GoogleAdsError:
       type: object
       properties:
@@ -241,29 +250,20 @@ components:
                     type: string
                   index:
                     type: integer
-    MutateAdGroupsResponse:
+    Status:
       type: object
+      description: Standard gRPC status for partial failure errors.
       properties:
-        results:
+        code:
+          type: integer
+          description: gRPC status code.
+        message:
+          type: string
+          description: Error message.
+        details:
           type: array
           items:
             type: object
-            properties:
-              resourceName:
-                type: string
-        partialFailureError:
-          $ref: '#/components/schemas/Status'
-    AdGroupOperation:
-      type: object
-      properties:
-        create:
-          $ref: '#/components/schemas/AdGroup'
-        update:
-          $ref: '#/components/schemas/AdGroup'
-        remove:
-          type: string
-        updateMask:
-          type: string
   examples:
     CreateAdGroupExample:
       summary: Create a new ad group

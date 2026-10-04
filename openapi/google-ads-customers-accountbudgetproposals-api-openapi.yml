@@ -133,16 +133,13 @@ paths:
         - https://www.googleapis.com/auth/adwords
 components:
   schemas:
-    GoogleAdsGoogleadsV25Services__MutateAccountBudgetProposalRequest:
+    GoogleAdsGoogleadsV25Services__MutateAccountBudgetProposalResult:
+      description: The result for the account budget proposal mutate.
       type: object
       properties:
-        operation:
-          $ref: '#/components/schemas/GoogleAdsGoogleadsV25Services__AccountBudgetProposalOperation'
-          description: Required. The operation to perform on an individual account-level budget proposal.
-        validateOnly:
-          description: If true, the request is validated but not executed. Only errors are returned, not results.
-          type: boolean
-      description: Request message for AccountBudgetProposalService.MutateAccountBudgetProposal.
+        resourceName:
+          type: string
+          description: Returned for successful operations.
     GoogleAdsGoogleadsV25Services__MutateAccountBudgetProposalResponse:
       description: Response message for account-level budget mutate operations.
       type: object
@@ -150,6 +147,20 @@ components:
         result:
           $ref: '#/components/schemas/GoogleAdsGoogleadsV25Services__MutateAccountBudgetProposalResult'
           description: The result of the mutate.
+    GoogleAdsGoogleadsV25Services__AccountBudgetProposalOperation:
+      description: A single operation to propose the creation of a new account-level budget or edit/end/remove an existing one.
+      type: object
+      properties:
+        updateMask:
+          description: FieldMask that determines which budget fields are modified. While budgets may be modified, proposals that propose such modifications are final. Therefore, update operations are not supported for proposals. Proposals that modify budgets have the 'update' proposal type. Specifying a mask for any other proposal type is considered an error.
+          type: string
+          format: google-fieldmask
+        create:
+          $ref: '#/components/schemas/GoogleAdsGoogleadsV25Resources__AccountBudgetProposal'
+          description: 'Create operation: A new proposal to create a new budget, edit an existing budget, end an actively running budget, or remove an approved budget scheduled to start in the future. No resource name is expected for the new proposal.'
+        remove:
+          type: string
+          description: 'Remove operation: A resource name for the removed proposal is expected, in this format: `customers/{customer_id}/accountBudgetProposals/{account_budget_proposal_id}` A request may be cancelled iff it is pending.'
     GoogleAdsGoogleadsV25Resources__AccountBudgetProposal:
       description: An account-level budget proposal. All fields prefixed with 'proposed' may not necessarily be applied directly. For example, proposed spending limits may be adjusted before their application. This is true if the 'proposed' field has an 'approved' counterpart, for example, spending limits. Note that the proposal type (proposal_type) changes which fields are required and which must remain empty.
       type: object
@@ -299,27 +310,16 @@ components:
           - Used for return value only. Represents value unknown in this version.
           - As soon as possible.
           - An infinite point in the future.
-    GoogleAdsGoogleadsV25Services__AccountBudgetProposalOperation:
-      description: A single operation to propose the creation of a new account-level budget or edit/end/remove an existing one.
+    GoogleAdsGoogleadsV25Services__MutateAccountBudgetProposalRequest:
       type: object
       properties:
-        updateMask:
-          description: FieldMask that determines which budget fields are modified. While budgets may be modified, proposals that propose such modifications are final. Therefore, update operations are not supported for proposals. Proposals that modify budgets have the 'update' proposal type. Specifying a mask for any other proposal type is considered an error.
-          type: string
-          format: google-fieldmask
-        create:
-          $ref: '#/components/schemas/GoogleAdsGoogleadsV25Resources__AccountBudgetProposal'
-          description: 'Create operation: A new proposal to create a new budget, edit an existing budget, end an actively running budget, or remove an approved budget scheduled to start in the future. No resource name is expected for the new proposal.'
-        remove:
-          type: string
-          description: 'Remove operation: A resource name for the removed proposal is expected, in this format: `customers/{customer_id}/accountBudgetProposals/{account_budget_proposal_id}` A request may be cancelled iff it is pending.'
-    GoogleAdsGoogleadsV25Services__MutateAccountBudgetProposalResult:
-      description: The result for the account budget proposal mutate.
-      type: object
-      properties:
-        resourceName:
-          type: string
-          description: Returned for successful operations.
+        operation:
+          $ref: '#/components/schemas/GoogleAdsGoogleadsV25Services__AccountBudgetProposalOperation'
+          description: Required. The operation to perform on an individual account-level budget proposal.
+        validateOnly:
+          description: If true, the request is validated but not executed. Only errors are returned, not results.
+          type: boolean
+      description: Request message for AccountBudgetProposalService.MutateAccountBudgetProposal.
   securitySchemes:
     oauth2:
       type: oauth2

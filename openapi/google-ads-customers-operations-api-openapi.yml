@@ -512,39 +512,6 @@ paths:
         - https://www.googleapis.com/auth/adwords
 components:
   schemas:
-    GoogleLongrunning__ListOperationsResponse:
-      type: object
-      properties:
-        nextPageToken:
-          description: The standard List next-page token.
-          type: string
-        operations:
-          type: array
-          description: A list of operations that matches the specified filter in the request.
-          items:
-            $ref: '#/components/schemas/GoogleLongrunning__Operation'
-        unreachable:
-          description: Unordered list. Unreachable resources. Populated when the request sets `ListOperationsRequest.return_partial_success` and reads across collections. For example, when attempting to list all resources across all supported locations.
-          items:
-            type: string
-          type: array
-      description: The response message for Operations.ListOperations.
-    GoogleLongrunning__CancelOperationRequest:
-      type: object
-      properties: {}
-      description: The request message for Operations.CancelOperation.
-    GoogleLongrunning__WaitOperationRequest:
-      description: The request message for Operations.WaitOperation.
-      type: object
-      properties:
-        timeout:
-          format: google-duration
-          description: The maximum duration to wait before timing out. If left blank, the wait will be at most the time permitted by the underlying HTTP/RPC protocol. If RPC context deadline is also specified, the shorter one will be used.
-          type: string
-    GoogleProtobuf__Empty:
-      description: 'A generic empty message that you can re-use to avoid defining duplicated empty messages in your APIs. A typical example is to use it as the request or the response type of an API method. For instance: service Foo { rpc Bar(google.protobuf.Empty) returns (google.protobuf.Empty); }'
-      type: object
-      properties: {}
     GoogleRpc__Status:
       description: 'The `Status` type defines a logical error model that is suitable for different programming environments, including REST APIs and RPC APIs. It is used by [gRPC](https://github.com/grpc). Each `Status` message contains three pieces of data: error code, error message, and error details. You can find out more about this error model and how to work with it in the [API Design Guide](https://cloud.google.com/apis/design/errors).'
       type: object
@@ -563,6 +530,35 @@ components:
             type: object
             additionalProperties:
               description: Properties of the object. Contains field @type with type URL.
+    GoogleLongrunning__ListOperationsResponse:
+      type: object
+      properties:
+        nextPageToken:
+          description: The standard List next-page token.
+          type: string
+        operations:
+          type: array
+          description: A list of operations that matches the specified filter in the request.
+          items:
+            $ref: '#/components/schemas/GoogleLongrunning__Operation'
+        unreachable:
+          description: Unordered list. Unreachable resources. Populated when the request sets `ListOperationsRequest.return_partial_success` and reads across collections. For example, when attempting to list all resources across all supported locations.
+          items:
+            type: string
+          type: array
+      description: The response message for Operations.ListOperations.
+    GoogleProtobuf__Empty:
+      description: 'A generic empty message that you can re-use to avoid defining duplicated empty messages in your APIs. A typical example is to use it as the request or the response type of an API method. For instance: service Foo { rpc Bar(google.protobuf.Empty) returns (google.protobuf.Empty); }'
+      type: object
+      properties: {}
+    GoogleLongrunning__WaitOperationRequest:
+      description: The request message for Operations.WaitOperation.
+      type: object
+      properties:
+        timeout:
+          format: google-duration
+          description: The maximum duration to wait before timing out. If left blank, the wait will be at most the time permitted by the underlying HTTP/RPC protocol. If RPC context deadline is also specified, the shorter one will be used.
+          type: string
     GoogleLongrunning__Operation:
       type: object
       properties:
@@ -586,6 +582,10 @@ components:
           additionalProperties:
             description: Properties of the object. Contains field @type with type URL.
       description: This resource represents a long-running operation that is the result of a network API call.
+    GoogleLongrunning__CancelOperationRequest:
+      type: object
+      properties: {}
+      description: The request message for Operations.CancelOperation.
   securitySchemes:
     oauth2:
       type: oauth2

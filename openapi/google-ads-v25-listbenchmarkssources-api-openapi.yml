@@ -125,48 +125,6 @@ paths:
         - https://www.googleapis.com/auth/adwords
 components:
   schemas:
-    GoogleAdsGoogleadsV25Services__BenchmarksSourceMetadata:
-      description: The metadata associated with a benchmarks source.
-      type: object
-      properties:
-        industryVerticalInfo:
-          $ref: '#/components/schemas/GoogleAdsGoogleadsV25Services__IndustryVerticalInfo'
-          description: Information on the Industry Vertical.
-        benchmarksSourceType:
-          x-enumDescriptions:
-          - Not specified.
-          - The value is unknown in this version.
-          - The classification of ad categories for benchmarking. (for example, "Technology" or "Finance").
-          enum:
-          - UNSPECIFIED
-          - UNKNOWN
-          - INDUSTRY_VERTICAL
-          description: The type of benchmarks source.
-          type: string
-    GoogleAdsGoogleadsV25Services__ListBenchmarksSourcesResponse:
-      type: object
-      properties:
-        benchmarksSources:
-          type: array
-          description: The list of available source used to generate benchmarks data for.
-          items:
-            $ref: '#/components/schemas/GoogleAdsGoogleadsV25Services__BenchmarksSourceMetadata'
-      description: Response message for BenchmarksService.ListBenchmarksSources.
-    GoogleAdsGoogleadsV25Services__IndustryVerticalInfo:
-      description: The information associated with an Industry Vertical.
-      type: object
-      properties:
-        industryVerticalName:
-          description: The name of the Industry Vertical.
-          type: string
-        industryVerticalId:
-          format: int64
-          description: The unique identifier of the Industry Vertical.
-          type: string
-        parentIndustryVerticalId:
-          description: The unique identifier of the parent Industry Vertical, if exists.
-          type: string
-          format: int64
     GoogleAdsGoogleadsV25Services__ListBenchmarksSourcesRequest:
       type: object
       properties:
@@ -187,6 +145,24 @@ components:
             - INDUSTRY_VERTICAL
           type: array
       description: Request message for BenchmarksService.ListBenchmarksSources.
+    GoogleAdsGoogleadsV25Services__BenchmarksSourceMetadata:
+      description: The metadata associated with a benchmarks source.
+      type: object
+      properties:
+        industryVerticalInfo:
+          $ref: '#/components/schemas/GoogleAdsGoogleadsV25Services__IndustryVerticalInfo'
+          description: Information on the Industry Vertical.
+        benchmarksSourceType:
+          x-enumDescriptions:
+          - Not specified.
+          - The value is unknown in this version.
+          - The classification of ad categories for benchmarking. (for example, "Technology" or "Finance").
+          enum:
+          - UNSPECIFIED
+          - UNKNOWN
+          - INDUSTRY_VERTICAL
+          description: The type of benchmarks source.
+          type: string
     GoogleAdsGoogleadsV25Common__AdditionalApplicationInfo:
       description: Additional information about the application/tool issuing the request. This field is only used by ContentCreatorInsightsService, AudienceInsightsService, and ReachPlanService APIs.
       type: object
@@ -207,6 +183,30 @@ components:
           - UNKNOWN
           - DEVELOPMENT_AND_TESTING
           - PRODUCTION
+    GoogleAdsGoogleadsV25Services__IndustryVerticalInfo:
+      description: The information associated with an Industry Vertical.
+      type: object
+      properties:
+        industryVerticalName:
+          description: The name of the Industry Vertical.
+          type: string
+        industryVerticalId:
+          format: int64
+          description: The unique identifier of the Industry Vertical.
+          type: string
+        parentIndustryVerticalId:
+          description: The unique identifier of the parent Industry Vertical, if exists.
+          type: string
+          format: int64
+    GoogleAdsGoogleadsV25Services__ListBenchmarksSourcesResponse:
+      type: object
+      properties:
+        benchmarksSources:
+          type: array
+          description: The list of available source used to generate benchmarks data for.
+          items:
+            $ref: '#/components/schemas/GoogleAdsGoogleadsV25Services__BenchmarksSourceMetadata'
+      description: Response message for BenchmarksService.ListBenchmarksSources.
   securitySchemes:
     oauth2:
       type: oauth2

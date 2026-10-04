@@ -133,6 +133,13 @@ paths:
         - https://www.googleapis.com/auth/adwords
 components:
   schemas:
+    GoogleAdsGoogleadsV25Services__MutateAdGroupCriterionLabelResult:
+      type: object
+      properties:
+        resourceName:
+          description: Returned for successful operations.
+          type: string
+      description: The result for an ad group criterion label mutate.
     GoogleAdsGoogleadsV25Services__MutateAdGroupCriterionLabelsResponse:
       description: Response message for an ad group criterion labels mutate.
       type: object
@@ -201,13 +208,6 @@ components:
           type: string
           description: 'Remove operation: A resource name for the ad group criterion label being removed, in this format: `customers/{customer_id}/adGroupCriterionLabels/{ad_group_id}~{criterion_id}~{label_id}`'
       description: A single operation (create, remove) on an ad group criterion label.
-    GoogleAdsGoogleadsV25Services__MutateAdGroupCriterionLabelResult:
-      type: object
-      properties:
-        resourceName:
-          description: Returned for successful operations.
-          type: string
-      description: The result for an ad group criterion label mutate.
   securitySchemes:
     oauth2:
       type: oauth2

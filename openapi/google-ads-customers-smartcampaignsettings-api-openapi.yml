@@ -241,6 +241,143 @@ paths:
         - https://www.googleapis.com/auth/adwords
 components:
   schemas:
+    GoogleAdsGoogleadsV25Services__MutateSmartCampaignSettingsRequest:
+      description: Request message for SmartCampaignSettingService.MutateSmartCampaignSettings.
+      type: object
+      properties:
+        operations:
+          description: Required. The list of operations to perform on individual Smart campaign settings.
+          items:
+            $ref: '#/components/schemas/GoogleAdsGoogleadsV25Services__SmartCampaignSettingOperation'
+          type: array
+        validateOnly:
+          type: boolean
+          description: If true, the request is validated but not executed. Only errors are returned, not results.
+        responseContentType:
+          type: string
+          description: The response content type setting. Determines whether the mutable resource or just the resource name should be returned post mutation.
+          x-enumDescriptions:
+          - Not specified. Will return the resource name only in the response.
+          - The mutate response will be the resource name.
+          - The mutate response will contain the resource name and the resource with mutable fields if possible. Otherwise, only the resource name will be returned.
+          enum:
+          - UNSPECIFIED
+          - RESOURCE_NAME_ONLY
+          - MUTABLE_RESOURCE
+        partialFailure:
+          description: If true, successful operations will be carried out and invalid operations will return errors. If false, all operations will be carried out in one transaction if and only if they are all valid. Default is false.
+          type: boolean
+    GoogleAdsGoogleadsV25Services__SmartCampaignEligibleDetails:
+      description: Details related to Smart campaigns that are eligible to serve.
+      type: object
+      properties:
+        lastImpressionDateTime:
+          description: The timestamp of the last impression observed in the last 48 hours for this campaign. The timestamp is in the customer’s timezone and in “yyyy-MM-dd HH:mm:ss” format.
+          type: string
+        endDateTime:
+          description: The timestamp of when the campaign will end, if applicable. The timestamp is in the customer’s timezone and in “yyyy-MM-dd HH:mm:ss” format.
+          type: string
+    GoogleAdsGoogleadsV25Services__SmartCampaignNotEligibleDetails:
+      type: object
+      properties:
+        notEligibleReason:
+          type: string
+          description: The reason why the Smart campaign is not eligible to serve.
+          x-enumDescriptions:
+          - The status has not been specified.
+          - The received value is not known in this version. This is a response-only value.
+          - The campaign is not eligible to serve because of an issue with the account.
+          - The campaign is not eligible to serve because of a payment issue.
+          - The business profile location associated with the campaign has been removed.
+          - All system-generated ads have been disapproved. Consult the policy_summary field in the AdGroupAd resource for more details.
+          enum:
+          - UNSPECIFIED
+          - UNKNOWN
+          - ACCOUNT_ISSUE
+          - BILLING_ISSUE
+          - BUSINESS_PROFILE_LOCATION_REMOVED
+          - ALL_ADS_DISAPPROVED
+      description: Details related to Smart campaigns that are not eligible to serve.
+    GoogleAdsGoogleadsV25Services__MutateSmartCampaignSettingResult:
+      type: object
+      properties:
+        resourceName:
+          description: Returned for successful operations.
+          type: string
+        smartCampaignSetting:
+          $ref: '#/components/schemas/GoogleAdsGoogleadsV25Resources__SmartCampaignSetting'
+          description: The mutated Smart campaign setting with only mutable fields after mutate. The field will only be returned when response_content_type is set to "MUTABLE_RESOURCE".
+      description: The result for the Smart campaign setting mutate.
+    GoogleAdsGoogleadsV25Resources__SmartCampaignSetting:
+      description: Settings for configuring Smart campaigns.
+      type: object
+      properties:
+        advertisingLanguageCode:
+          description: The language code to advertise in from the set of [supported language codes] (https://developers.google.com/google-ads/api/reference/data/codes-formats#languages).
+          type: string
+        businessName:
+          type: string
+          description: The name of the business.
+        phoneNumber:
+          description: Phone number and country code.
+          $ref: '#/components/schemas/GoogleAdsGoogleadsV25Resources_SmartCampaignSetting_PhoneNumber'
+        finalUrl:
+          type: string
+          description: The user-provided landing page URL for this Campaign.
+        campaign:
+          type: string
+          description: Output only. The campaign to which these settings apply.
+        businessProfileLocation:
+          type: string
+          description: 'The resource name of a Business Profile location. Business Profile location resource names can be fetched through the Business Profile API and adhere to the following format: `locations/{locationId}`. See the [Business Profile API] (https://developers.google.com/my-business/reference/businessinformation/rest/v1/accounts.locations) for additional details.'
+        resourceName:
+          description: 'Immutable. The resource name of the Smart campaign setting. Smart campaign setting resource names have the form: `customers/{customer_id}/smartCampaignSettings/{campaign_id}`'
+          type: string
+        adOptimizedBusinessProfileSetting:
+          description: Settings for configuring a business profile optimized for ads as this campaign's landing page. This campaign must be linked to a business profile to use this option. For more information on this feature, consult https://support.google.com/google-ads/answer/9827068.
+          $ref: '#/components/schemas/GoogleAdsGoogleadsV25Resources_SmartCampaignSetting_AdOptimizedBusinessProfileSetting'
+    GoogleAdsGoogleadsV25Services__SmartCampaignPausedDetails:
+      type: object
+      properties:
+        pausedDateTime:
+          description: The timestamp of when the campaign was last paused. The timestamp is in the customer’s timezone and in “yyyy-MM-dd HH:mm:ss” format.
+          type: string
+      description: Details related to paused Smart campaigns.
+    GoogleAdsGoogleadsV25Resources_SmartCampaignSetting_PhoneNumber:
+      description: Phone number and country code in smart campaign settings.
+      type: object
+      properties:
+        phoneNumber:
+          type: string
+          description: Phone number of the smart campaign.
+        countryCode:
+          description: Upper-case, two-letter country code as defined by ISO-3166.
+          type: string
+    GoogleRpc__Status:
+      description: 'The `Status` type defines a logical error model that is suitable for different programming environments, including REST APIs and RPC APIs. It is used by [gRPC](https://github.com/grpc). Each `Status` message contains three pieces of data: error code, error message, and error details. You can find out more about this error model and how to work with it in the [API Design Guide](https://cloud.google.com/apis/design/errors).'
+      type: object
+      properties:
+        message:
+          description: A developer-facing error message, which should be in English. Any user-facing error message should be localized and sent in the google.rpc.Status.details field, or localized by the client.
+          type: string
+        code:
+          type: integer
+          description: The status code, which should be an enum value of google.rpc.Code.
+          format: int32
+        details:
+          type: array
+          description: A list of messages that carry the error details. There is a common set of message types for APIs to use.
+          items:
+            type: object
+            additionalProperties:
+              description: Properties of the object. Contains field @type with type URL.
+    GoogleAdsGoogleadsV25Services__SmartCampaignRemovedDetails:
+      type: object
+      properties:
+        removedDateTime:
+          description: The timestamp of when the campaign was removed. The timestamp is in the customer’s timezone and in “yyyy-MM-dd HH:mm:ss” format.
+          type: string
+      description: Details related to removed Smart campaigns.
     GoogleAdsGoogleadsV25Services__GetSmartCampaignStatusResponse:
       description: Response message for SmartCampaignSettingService.GetSmartCampaignStatus.
       type: object
@@ -281,34 +418,6 @@ components:
         eligibleDetails:
           $ref: '#/components/schemas/GoogleAdsGoogleadsV25Services__SmartCampaignEligibleDetails'
           description: Details related to Smart campaigns that are eligible to serve.
-    GoogleAdsGoogleadsV25Services__SmartCampaignNotEligibleDetails:
-      type: object
-      properties:
-        notEligibleReason:
-          type: string
-          description: The reason why the Smart campaign is not eligible to serve.
-          x-enumDescriptions:
-          - The status has not been specified.
-          - The received value is not known in this version. This is a response-only value.
-          - The campaign is not eligible to serve because of an issue with the account.
-          - The campaign is not eligible to serve because of a payment issue.
-          - The business profile location associated with the campaign has been removed.
-          - All system-generated ads have been disapproved. Consult the policy_summary field in the AdGroupAd resource for more details.
-          enum:
-          - UNSPECIFIED
-          - UNKNOWN
-          - ACCOUNT_ISSUE
-          - BILLING_ISSUE
-          - BUSINESS_PROFILE_LOCATION_REMOVED
-          - ALL_ADS_DISAPPROVED
-      description: Details related to Smart campaigns that are not eligible to serve.
-    GoogleAdsGoogleadsV25Services__SmartCampaignPausedDetails:
-      type: object
-      properties:
-        pausedDateTime:
-          description: The timestamp of when the campaign was last paused. The timestamp is in the customer’s timezone and in “yyyy-MM-dd HH:mm:ss” format.
-          type: string
-      description: Details related to paused Smart campaigns.
     GoogleAdsGoogleadsV25Resources_SmartCampaignSetting_AdOptimizedBusinessProfileSetting:
       description: Settings for configuring a business profile optimized for ads as this campaign's landing page.
       type: object
@@ -316,41 +425,6 @@ components:
         includeLeadForm:
           type: boolean
           description: Enabling a lead form on your business profile enables prospective customers to contact your business by filling out a simple form, and you'll receive their information through email.
-    GoogleAdsGoogleadsV25Resources__SmartCampaignSetting:
-      description: Settings for configuring Smart campaigns.
-      type: object
-      properties:
-        advertisingLanguageCode:
-          description: The language code to advertise in from the set of [supported language codes] (https://developers.google.com/google-ads/api/reference/data/codes-formats#languages).
-          type: string
-        businessName:
-          type: string
-          description: The name of the business.
-        phoneNumber:
-          description: Phone number and country code.
-          $ref: '#/components/schemas/GoogleAdsGoogleadsV25Resources_SmartCampaignSetting_PhoneNumber'
-        finalUrl:
-          type: string
-          description: The user-provided landing page URL for this Campaign.
-        campaign:
-          type: string
-          description: Output only. The campaign to which these settings apply.
-        businessProfileLocation:
-          type: string
-          description: 'The resource name of a Business Profile location. Business Profile location resource names can be fetched through the Business Profile API and adhere to the following format: `locations/{locationId}`. See the [Business Profile API] (https://developers.google.com/my-business/reference/businessinformation/rest/v1/accounts.locations) for additional details.'
-        resourceName:
-          description: 'Immutable. The resource name of the Smart campaign setting. Smart campaign setting resource names have the form: `customers/{customer_id}/smartCampaignSettings/{campaign_id}`'
-          type: string
-        adOptimizedBusinessProfileSetting:
-          description: Settings for configuring a business profile optimized for ads as this campaign's landing page. This campaign must be linked to a business profile to use this option. For more information on this feature, consult https://support.google.com/google-ads/answer/9827068.
-          $ref: '#/components/schemas/GoogleAdsGoogleadsV25Resources_SmartCampaignSetting_AdOptimizedBusinessProfileSetting'
-    GoogleAdsGoogleadsV25Services__SmartCampaignRemovedDetails:
-      type: object
-      properties:
-        removedDateTime:
-          description: The timestamp of when the campaign was removed. The timestamp is in the customer’s timezone and in “yyyy-MM-dd HH:mm:ss” format.
-          type: string
-      description: Details related to removed Smart campaigns.
     GoogleAdsGoogleadsV25Services__MutateSmartCampaignSettingsResponse:
       type: object
       properties:
@@ -363,16 +437,13 @@ components:
             $ref: '#/components/schemas/GoogleAdsGoogleadsV25Services__MutateSmartCampaignSettingResult'
           type: array
       description: Response message for campaign mutate.
-    GoogleAdsGoogleadsV25Services__SmartCampaignEligibleDetails:
-      description: Details related to Smart campaigns that are eligible to serve.
+    GoogleAdsGoogleadsV25Services__SmartCampaignEndedDetails:
       type: object
       properties:
-        lastImpressionDateTime:
-          description: The timestamp of the last impression observed in the last 48 hours for this campaign. The timestamp is in the customer’s timezone and in “yyyy-MM-dd HH:mm:ss” format.
-          type: string
         endDateTime:
-          description: The timestamp of when the campaign will end, if applicable. The timestamp is in the customer’s timezone and in “yyyy-MM-dd HH:mm:ss” format.
           type: string
+          description: The timestamp of when the campaign ended. The timestamp is in the customer’s timezone and in “yyyy-MM-dd HH:mm:ss” format.
+      description: Details related to Smart campaigns that have ended.
     GoogleAdsGoogleadsV25Services__SmartCampaignSettingOperation:
       description: A single operation to update Smart campaign settings for a campaign.
       type: object
@@ -384,77 +455,6 @@ components:
         update:
           $ref: '#/components/schemas/GoogleAdsGoogleadsV25Resources__SmartCampaignSetting'
           description: 'Update operation: The Smart campaign setting must specify a valid resource name.'
-    GoogleAdsGoogleadsV25Resources_SmartCampaignSetting_PhoneNumber:
-      description: Phone number and country code in smart campaign settings.
-      type: object
-      properties:
-        phoneNumber:
-          type: string
-          description: Phone number of the smart campaign.
-        countryCode:
-          description: Upper-case, two-letter country code as defined by ISO-3166.
-          type: string
-    GoogleRpc__Status:
-      description: 'The `Status` type defines a logical error model that is suitable for different programming environments, including REST APIs and RPC APIs. It is used by [gRPC](https://github.com/grpc). Each `Status` message contains three pieces of data: error code, error message, and error details. You can find out more about this error model and how to work with it in the [API Design Guide](https://cloud.google.com/apis/design/errors).'
-      type: object
-      properties:
-        message:
-          description: A developer-facing error message, which should be in English. Any user-facing error message should be localized and sent in the google.rpc.Status.details field, or localized by the client.
-          type: string
-        code:
-          type: integer
-          description: The status code, which should be an enum value of google.rpc.Code.
-          format: int32
-        details:
-          type: array
-          description: A list of messages that carry the error details. There is a common set of message types for APIs to use.
-          items:
-            type: object
-            additionalProperties:
-              description: Properties of the object. Contains field @type with type URL.
-    GoogleAdsGoogleadsV25Services__MutateSmartCampaignSettingResult:
-      type: object
-      properties:
-        resourceName:
-          description: Returned for successful operations.
-          type: string
-        smartCampaignSetting:
-          $ref: '#/components/schemas/GoogleAdsGoogleadsV25Resources__SmartCampaignSetting'
-          description: The mutated Smart campaign setting with only mutable fields after mutate. The field will only be returned when response_content_type is set to "MUTABLE_RESOURCE".
-      description: The result for the Smart campaign setting mutate.
-    GoogleAdsGoogleadsV25Services__MutateSmartCampaignSettingsRequest:
-      description: Request message for SmartCampaignSettingService.MutateSmartCampaignSettings.
-      type: object
-      properties:
-        operations:
-          description: Required. The list of operations to perform on individual Smart campaign settings.
-          items:
-            $ref: '#/components/schemas/GoogleAdsGoogleadsV25Services__SmartCampaignSettingOperation'
-          type: array
-        validateOnly:
-          type: boolean
-          description: If true, the request is validated but not executed. Only errors are returned, not results.
-        responseContentType:
-          type: string
-          description: The response content type setting. Determines whether the mutable resource or just the resource name should be returned post mutation.
-          x-enumDescriptions:
-          - Not specified. Will return the resource name only in the response.
-          - The mutate response will be the resource name.
-          - The mutate response will contain the resource name and the resource with mutable fields if possible. Otherwise, only the resource name will be returned.
-          enum:
-          - UNSPECIFIED
-          - RESOURCE_NAME_ONLY
-          - MUTABLE_RESOURCE
-        partialFailure:
-          description: If true, successful operations will be carried out and invalid operations will return errors. If false, all operations will be carried out in one transaction if and only if they are all valid. Default is false.
-          type: boolean
-    GoogleAdsGoogleadsV25Services__SmartCampaignEndedDetails:
-      type: object
-      properties:
-        endDateTime:
-          type: string
-          description: The timestamp of when the campaign ended. The timestamp is in the customer’s timezone and in “yyyy-MM-dd HH:mm:ss” format.
-      description: Details related to Smart campaigns that have ended.
   securitySchemes:
     oauth2:
       type: oauth2

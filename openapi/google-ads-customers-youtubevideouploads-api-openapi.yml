@@ -256,6 +256,22 @@ components:
             type: string
           type: array
       description: Response message for YouTubeVideoUploadService.RemoveYouTubeVideoUpload.
+    GoogleAdsGoogleadsV25Services__RemoveYouTubeVideoUploadRequest:
+      description: Request message for YouTubeVideoUploadService.RemoveYouTubeVideoUpload.
+      type: object
+      properties:
+        resourceNames:
+          description: The resource names of the YouTube video uploads to be removed. Required.
+          items:
+            type: string
+          type: array
+    GoogleAdsGoogleadsV25Services__UpdateYouTubeVideoUploadResponse:
+      description: Response message for YouTubeVideoUploadService.UpdateYouTubeVideoUpload.
+      type: object
+      properties:
+        resourceName:
+          description: The resource name of the successfully updated YouTube video upload.
+          type: string
     GoogleAdsGoogleadsV25Resources__YouTubeVideoUpload:
       description: Represents a video upload to YouTube using the Google Ads API.
       type: object
@@ -313,22 +329,6 @@ components:
         videoDescription:
           type: string
           description: Input only. Immutable. The description of the video. Only mutable on YouTube video upload creation. Immutable after creation.
-    GoogleAdsGoogleadsV25Services__UpdateYouTubeVideoUploadResponse:
-      description: Response message for YouTubeVideoUploadService.UpdateYouTubeVideoUpload.
-      type: object
-      properties:
-        resourceName:
-          description: The resource name of the successfully updated YouTube video upload.
-          type: string
-    GoogleAdsGoogleadsV25Services__RemoveYouTubeVideoUploadRequest:
-      description: Request message for YouTubeVideoUploadService.RemoveYouTubeVideoUpload.
-      type: object
-      properties:
-        resourceNames:
-          description: The resource names of the YouTube video uploads to be removed. Required.
-          items:
-            type: string
-          type: array
     GoogleAdsGoogleadsV25Services__UpdateYouTubeVideoUploadRequest:
       description: Request message for YouTubeVideoUploadService.UpdateYouTubeVideoUpload.
       type: object

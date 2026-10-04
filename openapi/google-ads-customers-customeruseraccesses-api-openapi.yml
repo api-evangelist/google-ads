@@ -190,13 +190,6 @@ components:
           format: google-fieldmask
           type: string
           description: FieldMask that determines which resource fields are modified in an update.
-    GoogleAdsGoogleadsV25Services__MutateCustomerUserAccessResponse:
-      description: Response message for customer user access mutate.
-      type: object
-      properties:
-        result:
-          description: Result for the mutate.
-          $ref: '#/components/schemas/GoogleAdsGoogleadsV25Services__MutateCustomerUserAccessResult'
     GoogleAdsGoogleadsV25Services__MutateCustomerUserAccessResult:
       description: The result for the customer user access mutate.
       type: object
@@ -207,6 +200,13 @@ components:
         resourceName:
           description: Returned for successful operations.
           type: string
+    GoogleAdsGoogleadsV25Services__MutateCustomerUserAccessResponse:
+      description: Response message for customer user access mutate.
+      type: object
+      properties:
+        result:
+          description: Result for the mutate.
+          $ref: '#/components/schemas/GoogleAdsGoogleadsV25Services__MutateCustomerUserAccessResult'
     GoogleAdsGoogleadsV25Services__MutateCustomerUserAccessRequest:
       description: Mutate Request for CustomerUserAccessService.MutateCustomerUserAccess.
       type: object

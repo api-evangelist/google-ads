@@ -75,44 +75,6 @@ paths:
               schema:
                 $ref: '#/components/schemas/GoogleAdsFailure'
 components:
-  parameters:
-    CustomerIdPath:
-      name: customerId
-      in: path
-      required: true
-      description: The Google Ads customer ID (without dashes), e.g. 1234567890.
-      schema:
-        type: string
-        pattern: ^\d{10}$
-    LoginCustomerIdHeader:
-      name: login-customer-id
-      in: header
-      required: false
-      description: 'The customer ID of the manager account making the request on behalf
-
-        of a client account. Required when authenticating as a manager account.
-
-        '
-      schema:
-        type: string
-    DeveloperTokenHeader:
-      name: developer-token
-      in: header
-      required: true
-      description: 'Developer token for API access. Obtain from the Google Ads API Center
-
-        in your manager account.
-
-        '
-      schema:
-        type: string
-    AuthorizationHeader:
-      name: Authorization
-      in: header
-      required: true
-      description: OAuth 2.0 Bearer token for authentication.
-      schema:
-        type: string
   schemas:
     QualityInfo:
       type: object
@@ -150,39 +112,6 @@ components:
           - UNKNOWN
           - UNSPECIFIED
           description: Expected click-through rate quality component.
-    Status:
-      type: object
-      description: Standard gRPC status for partial failure errors.
-      properties:
-        code:
-          type: integer
-          description: gRPC status code.
-        message:
-          type: string
-          description: Error message.
-        details:
-          type: array
-          items:
-            type: object
-    GoogleAdsFailure:
-      type: object
-      description: Error response from the Google Ads API.
-      properties:
-        errors:
-          type: array
-          items:
-            $ref: '#/components/schemas/GoogleAdsError'
-    AdGroupCriterionOperation:
-      type: object
-      properties:
-        create:
-          $ref: '#/components/schemas/AdGroupCriterion'
-        update:
-          $ref: '#/components/schemas/AdGroupCriterion'
-        remove:
-          type: string
-        updateMask:
-          type: string
     MutateAdGroupCriteriaRequest:
       type: object
       required:
@@ -196,61 +125,14 @@ components:
           type: boolean
         validateOnly:
           type: boolean
-    MutateAdGroupCriteriaResponse:
+    GoogleAdsFailure:
       type: object
+      description: Error response from the Google Ads API.
       properties:
-        results:
+        errors:
           type: array
           items:
-            type: object
-            properties:
-              resourceName:
-                type: string
-        partialFailureError:
-          $ref: '#/components/schemas/Status'
-    GoogleAdsError:
-      type: object
-      properties:
-        errorCode:
-          type: object
-          description: The error code with a specific error enum and value.
-          additionalProperties:
-            type: string
-        message:
-          type: string
-          description: Human-readable error message.
-        trigger:
-          type: object
-          description: The value that triggered the error.
-        location:
-          type: object
-          description: Location of the error in the request.
-          properties:
-            fieldPathElements:
-              type: array
-              items:
-                type: object
-                properties:
-                  fieldName:
-                    type: string
-                  index:
-                    type: integer
-    KeywordInfo:
-      type: object
-      description: Keyword targeting information.
-      properties:
-        text:
-          type: string
-          description: The keyword text.
-        matchType:
-          type: string
-          enum:
-          - EXACT
-          - PHRASE
-          - BROAD
-          - UNKNOWN
-          - UNSPECIFIED
-          description: The match type of the keyword.
+            $ref: '#/components/schemas/GoogleAdsError'
     AdGroupCriterion:
       type: object
       description: A targeting criterion within an ad group, such as a keyword.
@@ -312,6 +194,86 @@ components:
         negative:
           type: boolean
           description: Whether this is a negative criterion (excluded from targeting).
+    AdGroupCriterionOperation:
+      type: object
+      properties:
+        create:
+          $ref: '#/components/schemas/AdGroupCriterion'
+        update:
+          $ref: '#/components/schemas/AdGroupCriterion'
+        remove:
+          type: string
+        updateMask:
+          type: string
+    GoogleAdsError:
+      type: object
+      properties:
+        errorCode:
+          type: object
+          description: The error code with a specific error enum and value.
+          additionalProperties:
+            type: string
+        message:
+          type: string
+          description: Human-readable error message.
+        trigger:
+          type: object
+          description: The value that triggered the error.
+        location:
+          type: object
+          description: Location of the error in the request.
+          properties:
+            fieldPathElements:
+              type: array
+              items:
+                type: object
+                properties:
+                  fieldName:
+                    type: string
+                  index:
+                    type: integer
+    MutateAdGroupCriteriaResponse:
+      type: object
+      properties:
+        results:
+          type: array
+          items:
+            type: object
+            properties:
+              resourceName:
+                type: string
+        partialFailureError:
+          $ref: '#/components/schemas/Status'
+    KeywordInfo:
+      type: object
+      description: Keyword targeting information.
+      properties:
+        text:
+          type: string
+          description: The keyword text.
+        matchType:
+          type: string
+          enum:
+          - EXACT
+          - PHRASE
+          - BROAD
+          - UNKNOWN
+          - UNSPECIFIED
+          description: The match type of the keyword.
+    Status:
+      type: object
+      description: Standard gRPC status for partial failure errors.
+      properties:
+        code:
+          type: integer
+          description: gRPC status code.
+        message:
+          type: string
+          description: Error message.
+        details:
+          type: array
+          items:
+            type: object
   examples:
     AddKeywordsExample:
       summary: Add keywords to an ad group
@@ -340,6 +302,44 @@ components:
             cpcBidMicros: 1500000
             negative: false
         partialFailure: false
+  parameters:
+    DeveloperTokenHeader:
+      name: developer-token
+      in: header
+      required: true
+      description: 'Developer token for API access. Obtain from the Google Ads API Center
+
+        in your manager account.
+
+        '
+      schema:
+        type: string
+    CustomerIdPath:
+      name: customerId
+      in: path
+      required: true
+      description: The Google Ads customer ID (without dashes), e.g. 1234567890.
+      schema:
+        type: string
+        pattern: ^\d{10}$
+    AuthorizationHeader:
+      name: Authorization
+      in: header
+      required: true
+      description: OAuth 2.0 Bearer token for authentication.
+      schema:
+        type: string
+    LoginCustomerIdHeader:
+      name: login-customer-id
+      in: header
+      required: false
+      description: 'The customer ID of the manager account making the request on behalf
+
+        of a client account. Required when authenticating as a manager account.
+
+        '
+      schema:
+        type: string
   securitySchemes:
     oauth2Auth:
       type: oauth2

@@ -133,13 +133,16 @@ paths:
         - https://www.googleapis.com/auth/adwords
 components:
   schemas:
-    GoogleAdsGoogleadsV25Common__LifeEventSegment:
+    GoogleAdsGoogleadsV25Services__MutateAudienceResult:
+      description: The result for the audience mutate.
       type: object
       properties:
-        lifeEvent:
-          description: The life event resource.
+        resourceName:
+          description: Returned for successful operations.
           type: string
-      description: Live event segment.
+        audience:
+          $ref: '#/components/schemas/GoogleAdsGoogleadsV25Resources__Audience'
+          description: The mutated Audience with only mutable fields after mutate. The field will only be returned when response_content_type is set to "MUTABLE_RESOURCE".
     GoogleAdsGoogleadsV25Services__MutateAudiencesResponse:
       description: Response message for an audience mutate.
       type: object
@@ -152,29 +155,18 @@ components:
           description: All results for the mutate.
           items:
             $ref: '#/components/schemas/GoogleAdsGoogleadsV25Services__MutateAudienceResult'
-    GoogleAdsGoogleadsV25Common__UserListSegment:
-      description: User list segment.
+    GoogleAdsGoogleadsV25Common__AgeSegment:
+      description: Contiguous age range.
       type: object
       properties:
-        userList:
-          type: string
-          description: The user list resource.
-    GoogleAdsGoogleadsV25Common__DetailedDemographicSegment:
-      description: Detailed demographic segment.
-      type: object
-      properties:
-        detailedDemographic:
-          description: The detailed demographic resource.
-          type: string
-    GoogleAdsGoogleadsV25Common__AudienceExclusionDimension:
-      description: Negative dimension specifying users to exclude from the audience.
-      type: object
-      properties:
-        exclusions:
-          description: Audience segment to be excluded.
-          items:
-            $ref: '#/components/schemas/GoogleAdsGoogleadsV25Common__ExclusionSegment'
-          type: array
+        maxAge:
+          format: int32
+          type: integer
+          description: Maximum age to include. A maximum age need not be specified. If specified, max_age must be greater than min_age, and allowed values are 24, 34, 44, 54, and 64.
+        minAge:
+          format: int32
+          description: Minimum age to include. A minimum age must be specified and must be at least 18. Allowed values are 18, 25, 35, 45, 55, and 65.
+          type: integer
     GoogleAdsGoogleadsV25Common__HouseholdIncomeDimension:
       type: object
       properties:
@@ -226,6 +218,20 @@ components:
         audienceSegments:
           description: Dimension specifying users by their membership in other audience segments.
           $ref: '#/components/schemas/GoogleAdsGoogleadsV25Common__AudienceSegmentDimension'
+    GoogleAdsGoogleadsV25Services__AudienceOperation:
+      type: object
+      properties:
+        update:
+          description: 'Update operation: The audience is expected to have a valid resource name.'
+          $ref: '#/components/schemas/GoogleAdsGoogleadsV25Resources__Audience'
+        updateMask:
+          description: FieldMask that determines which resource fields are modified in an update.
+          type: string
+          format: google-fieldmask
+        create:
+          $ref: '#/components/schemas/GoogleAdsGoogleadsV25Resources__Audience'
+          description: 'Create operation: No resource name is expected for the new audience'
+      description: A single operation (create, update) on an audience.
     GoogleRpc__Status:
       description: 'The `Status` type defines a logical error model that is suitable for different programming environments, including REST APIs and RPC APIs. It is used by [gRPC](https://github.com/grpc). Each `Status` message contains three pieces of data: error code, error message, and error details. You can find out more about this error model and how to work with it in the [API Design Guide](https://cloud.google.com/apis/design/errors).'
       type: object
@@ -244,16 +250,13 @@ components:
             type: object
             additionalProperties:
               description: Properties of the object. Contains field @type with type URL.
-    GoogleAdsGoogleadsV25Services__MutateAudienceResult:
-      description: The result for the audience mutate.
+    GoogleAdsGoogleadsV25Common__LifeEventSegment:
       type: object
       properties:
-        resourceName:
-          description: Returned for successful operations.
+        lifeEvent:
+          description: The life event resource.
           type: string
-        audience:
-          $ref: '#/components/schemas/GoogleAdsGoogleadsV25Resources__Audience'
-          description: The mutated Audience with only mutable fields after mutate. The field will only be returned when response_content_type is set to "MUTABLE_RESOURCE".
+      description: Live event segment.
     GoogleAdsGoogleadsV25Common__GenderDimension:
       description: Dimension specifying users by their gender.
       type: object
@@ -278,51 +281,25 @@ components:
             - FEMALE
             - UNDETERMINED
           type: array
-    GoogleAdsGoogleadsV25Services__MutateAudiencesRequest:
+    GoogleAdsGoogleadsV25Common__ExclusionSegment:
+      description: An audience segment to be excluded from an audience.
       type: object
       properties:
-        operations:
-          description: Required. The list of operations to perform on individual audiences.
-          items:
-            $ref: '#/components/schemas/GoogleAdsGoogleadsV25Services__AudienceOperation'
-          type: array
-        validateOnly:
-          type: boolean
-          description: If true, the request is validated but not executed. Only errors are returned, not results.
-        responseContentType:
-          type: string
-          description: The response content type setting. Determines whether the mutable resource or just the resource name should be returned post mutation.
-          x-enumDescriptions:
-          - Not specified. Will return the resource name only in the response.
-          - The mutate response will be the resource name.
-          - The mutate response will contain the resource name and the resource with mutable fields if possible. Otherwise, only the resource name will be returned.
-          enum:
-          - UNSPECIFIED
-          - RESOURCE_NAME_ONLY
-          - MUTABLE_RESOURCE
-        partialFailure:
-          description: If true, successful operations will be carried out and invalid operations will return errors. If false, all operations will be carried out in one transaction if and only if they are all valid. Default is false.
-          type: boolean
-      description: Request message for AudienceService.MutateAudiences.
-    GoogleAdsGoogleadsV25Common__AudienceSegment:
-      description: Positive audience segment.
-      type: object
-      properties:
-        userInterest:
-          description: Affinity or In-market segment.
-          $ref: '#/components/schemas/GoogleAdsGoogleadsV25Common__UserInterestSegment'
         userList:
+          description: User list segment to be excluded.
           $ref: '#/components/schemas/GoogleAdsGoogleadsV25Common__UserListSegment'
-          description: User list segment.
-        customAudience:
-          $ref: '#/components/schemas/GoogleAdsGoogleadsV25Common__CustomAudienceSegment'
-          description: Custom audience segment.
-        lifeEvent:
-          description: Live-event audience segment.
-          $ref: '#/components/schemas/GoogleAdsGoogleadsV25Common__LifeEventSegment'
-        detailedDemographic:
-          $ref: '#/components/schemas/GoogleAdsGoogleadsV25Common__DetailedDemographicSegment'
-          description: Detailed demographic segment.
+    GoogleAdsGoogleadsV25Common__AgeDimension:
+      type: object
+      properties:
+        ageRanges:
+          type: array
+          description: Contiguous age range to be included in the dimension.
+          items:
+            $ref: '#/components/schemas/GoogleAdsGoogleadsV25Common__AgeSegment'
+        includeUndetermined:
+          type: boolean
+          description: Include users whose age is not determined.
+      description: Dimension specifying users by their age.
     GoogleAdsGoogleadsV25Common__ParentalStatusDimension:
       type: object
       properties:
@@ -347,37 +324,22 @@ components:
           description: Include users whose parental status is undetermined.
           type: boolean
       description: Dimension specifying users by their parental status.
-    GoogleAdsGoogleadsV25Common__AgeSegment:
-      description: Contiguous age range.
+    GoogleAdsGoogleadsV25Common__DetailedDemographicSegment:
+      description: Detailed demographic segment.
       type: object
       properties:
-        maxAge:
-          format: int32
-          type: integer
-          description: Maximum age to include. A maximum age need not be specified. If specified, max_age must be greater than min_age, and allowed values are 24, 34, 44, 54, and 64.
-        minAge:
-          format: int32
-          description: Minimum age to include. A minimum age must be specified and must be at least 18. Allowed values are 18, 25, 35, 45, 55, and 65.
-          type: integer
-    GoogleAdsGoogleadsV25Common__AgeDimension:
+        detailedDemographic:
+          description: The detailed demographic resource.
+          type: string
+    GoogleAdsGoogleadsV25Common__AudienceExclusionDimension:
+      description: Negative dimension specifying users to exclude from the audience.
       type: object
       properties:
-        ageRanges:
-          type: array
-          description: Contiguous age range to be included in the dimension.
+        exclusions:
+          description: Audience segment to be excluded.
           items:
-            $ref: '#/components/schemas/GoogleAdsGoogleadsV25Common__AgeSegment'
-        includeUndetermined:
-          type: boolean
-          description: Include users whose age is not determined.
-      description: Dimension specifying users by their age.
-    GoogleAdsGoogleadsV25Common__ExclusionSegment:
-      description: An audience segment to be excluded from an audience.
-      type: object
-      properties:
-        userList:
-          description: User list segment to be excluded.
-          $ref: '#/components/schemas/GoogleAdsGoogleadsV25Common__UserListSegment'
+            $ref: '#/components/schemas/GoogleAdsGoogleadsV25Common__ExclusionSegment'
+          type: array
     GoogleAdsGoogleadsV25Common__AudienceSegmentDimension:
       description: Dimension specifying users by their membership in other audience segments.
       type: object
@@ -387,13 +349,6 @@ components:
           items:
             $ref: '#/components/schemas/GoogleAdsGoogleadsV25Common__AudienceSegment'
           type: array
-    GoogleAdsGoogleadsV25Common__UserInterestSegment:
-      type: object
-      properties:
-        userInterestCategory:
-          description: The user interest resource.
-          type: string
-      description: User interest segment.
     GoogleAdsGoogleadsV25Common__CustomAudienceSegment:
       type: object
       properties:
@@ -401,20 +356,20 @@ components:
           description: The custom audience resource.
           type: string
       description: Custom audience segment.
-    GoogleAdsGoogleadsV25Services__AudienceOperation:
+    GoogleAdsGoogleadsV25Common__UserInterestSegment:
       type: object
       properties:
-        update:
-          description: 'Update operation: The audience is expected to have a valid resource name.'
-          $ref: '#/components/schemas/GoogleAdsGoogleadsV25Resources__Audience'
-        updateMask:
-          description: FieldMask that determines which resource fields are modified in an update.
+        userInterestCategory:
+          description: The user interest resource.
           type: string
-          format: google-fieldmask
-        create:
-          $ref: '#/components/schemas/GoogleAdsGoogleadsV25Resources__Audience'
-          description: 'Create operation: No resource name is expected for the new audience'
-      description: A single operation (create, update) on an audience.
+      description: User interest segment.
+    GoogleAdsGoogleadsV25Common__UserListSegment:
+      description: User list segment.
+      type: object
+      properties:
+        userList:
+          type: string
+          description: The user list resource.
     GoogleAdsGoogleadsV25Resources__Audience:
       type: object
       properties:
@@ -469,6 +424,51 @@ components:
           description: 'Immutable. The resource name of the audience. Audience names have the form: `customers/{customer_id}/audiences/{audience_id}`'
           type: string
       description: Audience is an effective targeting option that lets you intersect different segment attributes, such as detailed demographics and affinities, to create audiences that represent sections of your target segments.
+    GoogleAdsGoogleadsV25Common__AudienceSegment:
+      description: Positive audience segment.
+      type: object
+      properties:
+        userInterest:
+          description: Affinity or In-market segment.
+          $ref: '#/components/schemas/GoogleAdsGoogleadsV25Common__UserInterestSegment'
+        userList:
+          $ref: '#/components/schemas/GoogleAdsGoogleadsV25Common__UserListSegment'
+          description: User list segment.
+        customAudience:
+          $ref: '#/components/schemas/GoogleAdsGoogleadsV25Common__CustomAudienceSegment'
+          description: Custom audience segment.
+        lifeEvent:
+          description: Live-event audience segment.
+          $ref: '#/components/schemas/GoogleAdsGoogleadsV25Common__LifeEventSegment'
+        detailedDemographic:
+          $ref: '#/components/schemas/GoogleAdsGoogleadsV25Common__DetailedDemographicSegment'
+          description: Detailed demographic segment.
+    GoogleAdsGoogleadsV25Services__MutateAudiencesRequest:
+      type: object
+      properties:
+        operations:
+          description: Required. The list of operations to perform on individual audiences.
+          items:
+            $ref: '#/components/schemas/GoogleAdsGoogleadsV25Services__AudienceOperation'
+          type: array
+        validateOnly:
+          type: boolean
+          description: If true, the request is validated but not executed. Only errors are returned, not results.
+        responseContentType:
+          type: string
+          description: The response content type setting. Determines whether the mutable resource or just the resource name should be returned post mutation.
+          x-enumDescriptions:
+          - Not specified. Will return the resource name only in the response.
+          - The mutate response will be the resource name.
+          - The mutate response will contain the resource name and the resource with mutable fields if possible. Otherwise, only the resource name will be returned.
+          enum:
+          - UNSPECIFIED
+          - RESOURCE_NAME_ONLY
+          - MUTABLE_RESOURCE
+        partialFailure:
+          description: If true, successful operations will be carried out and invalid operations will return errors. If false, all operations will be carried out in one transaction if and only if they are all valid. Default is false.
+          type: boolean
+      description: Request message for AudienceService.MutateAudiences.
   securitySchemes:
     oauth2:
       type: oauth2

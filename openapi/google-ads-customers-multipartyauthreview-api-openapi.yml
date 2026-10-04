@@ -133,18 +133,24 @@ paths:
         - https://www.googleapis.com/auth/adwords
 components:
   schemas:
-    GoogleAdsGoogleadsV25Services__ResolveMultiPartyAuthReviewResult:
+    GoogleAdsGoogleadsV25Services__ResolveMultiPartyAuthReviewResponse:
+      description: Response message for MultiPartyAuthReviewService.ResolveMultiPartyAuthReview.
       type: object
       properties:
-        customerUserAccess:
-          description: Output only. The resource name of the CustomerUserAccess resource.
-          type: string
-        customerUserAccessInvitation:
-          type: string
-          description: Output only. The resource name of the CustomerUserAccessInvitation resource.
-        multiPartyAuthReview:
-          description: Output only. The resource name of the Multi-Party Auth review itself.
-          type: string
+        resultOrError:
+          type: array
+          description: The results of the operations.
+          items:
+            $ref: '#/components/schemas/GoogleAdsGoogleadsV25Services__ResolveMultiPartyAuthReviewResultOrError'
+    GoogleAdsGoogleadsV25Services__ResolveMultiPartyAuthReviewResultOrError:
+      type: object
+      properties:
+        result:
+          $ref: '#/components/schemas/GoogleAdsGoogleadsV25Services__ResolveMultiPartyAuthReviewResult'
+          description: The result of the operation in case of success.
+        partialFailureError:
+          description: Failure status when the request could not be processed.
+          $ref: '#/components/schemas/GoogleRpc__Status'
       description: Result of the ResolveMultiPartyAuthReview action.
     GoogleAdsGoogleadsV25Services__ResolveMultiPartyAuthReviewOperation:
       description: Operation to resolve a Multi-Party Authorization review.
@@ -172,34 +178,6 @@ components:
           - REVOKED
           - REJECTED
           - EXPIRED
-    GoogleAdsGoogleadsV25Services__ResolveMultiPartyAuthReviewResponse:
-      description: Response message for MultiPartyAuthReviewService.ResolveMultiPartyAuthReview.
-      type: object
-      properties:
-        resultOrError:
-          type: array
-          description: The results of the operations.
-          items:
-            $ref: '#/components/schemas/GoogleAdsGoogleadsV25Services__ResolveMultiPartyAuthReviewResultOrError'
-    GoogleAdsGoogleadsV25Services__ResolveMultiPartyAuthReviewResultOrError:
-      type: object
-      properties:
-        result:
-          $ref: '#/components/schemas/GoogleAdsGoogleadsV25Services__ResolveMultiPartyAuthReviewResult'
-          description: The result of the operation in case of success.
-        partialFailureError:
-          description: Failure status when the request could not be processed.
-          $ref: '#/components/schemas/GoogleRpc__Status'
-      description: Result of the ResolveMultiPartyAuthReview action.
-    GoogleAdsGoogleadsV25Services__ResolveMultiPartyAuthReviewRequest:
-      description: Request message for MultiPartyAuthReviewService.ResolveMultiPartyAuthReview.
-      type: object
-      properties:
-        operations:
-          type: array
-          description: Required. The operations to perform. Currently only one operation is supported.
-          items:
-            $ref: '#/components/schemas/GoogleAdsGoogleadsV25Services__ResolveMultiPartyAuthReviewOperation'
     GoogleRpc__Status:
       description: 'The `Status` type defines a logical error model that is suitable for different programming environments, including REST APIs and RPC APIs. It is used by [gRPC](https://github.com/grpc). Each `Status` message contains three pieces of data: error code, error message, and error details. You can find out more about this error model and how to work with it in the [API Design Guide](https://cloud.google.com/apis/design/errors).'
       type: object
@@ -218,6 +196,28 @@ components:
             type: object
             additionalProperties:
               description: Properties of the object. Contains field @type with type URL.
+    GoogleAdsGoogleadsV25Services__ResolveMultiPartyAuthReviewRequest:
+      description: Request message for MultiPartyAuthReviewService.ResolveMultiPartyAuthReview.
+      type: object
+      properties:
+        operations:
+          type: array
+          description: Required. The operations to perform. Currently only one operation is supported.
+          items:
+            $ref: '#/components/schemas/GoogleAdsGoogleadsV25Services__ResolveMultiPartyAuthReviewOperation'
+    GoogleAdsGoogleadsV25Services__ResolveMultiPartyAuthReviewResult:
+      type: object
+      properties:
+        customerUserAccess:
+          description: Output only. The resource name of the CustomerUserAccess resource.
+          type: string
+        customerUserAccessInvitation:
+          type: string
+          description: Output only. The resource name of the CustomerUserAccessInvitation resource.
+        multiPartyAuthReview:
+          description: Output only. The resource name of the Multi-Party Auth review itself.
+          type: string
+      description: Result of the ResolveMultiPartyAuthReview action.
   securitySchemes:
     oauth2:
       type: oauth2

@@ -125,31 +125,6 @@ paths:
         - https://www.googleapis.com/auth/adwords
 components:
   schemas:
-    GoogleAdsGoogleadsV25Services__BenchmarksProductMetadata:
-      description: The metadata associated with a product supported for benchmarks data.
-      type: object
-      properties:
-        productCode:
-          description: The identifier of the product. The identifier can be used as inputs for BenchmarksService.GenerateBenchmarksMetrics.
-          type: string
-        marketingObjective:
-          x-enumDescriptions:
-          - Not specified.
-          - The value is unknown in this version.
-          - The objective is to increase awareness.
-          - The objective is to encourage potential customers to consider the brand or products.
-          - The objective is to drive a specific conversion, such as a purchase.
-          enum:
-          - UNSPECIFIED
-          - UNKNOWN
-          - AWARENESS
-          - CONSIDERATION
-          - ACTION
-          description: The marketing objective associated with the product. A marketing objective is a broader classification of products.
-          type: string
-        productName:
-          type: string
-          description: The name of the product.
     GoogleAdsGoogleadsV25Common__AdditionalApplicationInfo:
       description: Additional information about the application/tool issuing the request. This field is only used by ContentCreatorInsightsService, AudienceInsightsService, and ReachPlanService APIs.
       type: object
@@ -177,6 +152,31 @@ components:
         applicationInfo:
           description: Additional information on the application issuing the request.
           $ref: '#/components/schemas/GoogleAdsGoogleadsV25Common__AdditionalApplicationInfo'
+    GoogleAdsGoogleadsV25Services__BenchmarksProductMetadata:
+      description: The metadata associated with a product supported for benchmarks data.
+      type: object
+      properties:
+        productCode:
+          description: The identifier of the product. The identifier can be used as inputs for BenchmarksService.GenerateBenchmarksMetrics.
+          type: string
+        marketingObjective:
+          x-enumDescriptions:
+          - Not specified.
+          - The value is unknown in this version.
+          - The objective is to increase awareness.
+          - The objective is to encourage potential customers to consider the brand or products.
+          - The objective is to drive a specific conversion, such as a purchase.
+          enum:
+          - UNSPECIFIED
+          - UNKNOWN
+          - AWARENESS
+          - CONSIDERATION
+          - ACTION
+          description: The marketing objective associated with the product. A marketing objective is a broader classification of products.
+          type: string
+        productName:
+          type: string
+          description: The name of the product.
     GoogleAdsGoogleadsV25Services__ListBenchmarksProductsResponse:
       description: Response message for BenchmarksService.ListBenchmarksProducts.
       type: object

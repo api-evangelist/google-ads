@@ -125,30 +125,6 @@ paths:
         - https://www.googleapis.com/auth/adwords
 components:
   schemas:
-    GoogleAdsGoogleadsV25Services__ListBenchmarksAvailableDatesResponse:
-      type: object
-      properties:
-        supportedDates:
-          description: The dates that support benchmarks metrics. Data is supported for any dates within this date range inclusive.
-          $ref: '#/components/schemas/GoogleAdsGoogleadsV25Common__DateRange'
-      description: Response message for BenchmarksService.ListBenchmarksAvailableDates.
-    GoogleAdsGoogleadsV25Common__DateRange:
-      type: object
-      properties:
-        startDate:
-          type: string
-          description: The start date, in yyyy-mm-dd format. This date is inclusive.
-        endDate:
-          description: The end date, in yyyy-mm-dd format. This date is inclusive.
-          type: string
-      description: A date range.
-    GoogleAdsGoogleadsV25Services__ListBenchmarksAvailableDatesRequest:
-      type: object
-      properties:
-        applicationInfo:
-          description: Additional information on the application issuing the request.
-          $ref: '#/components/schemas/GoogleAdsGoogleadsV25Common__AdditionalApplicationInfo'
-      description: Request message for BenchmarksService.ListBenchmarksAvailableDates.
     GoogleAdsGoogleadsV25Common__AdditionalApplicationInfo:
       description: Additional information about the application/tool issuing the request. This field is only used by ContentCreatorInsightsService, AudienceInsightsService, and ReachPlanService APIs.
       type: object
@@ -169,6 +145,30 @@ components:
           - UNKNOWN
           - DEVELOPMENT_AND_TESTING
           - PRODUCTION
+    GoogleAdsGoogleadsV25Services__ListBenchmarksAvailableDatesRequest:
+      type: object
+      properties:
+        applicationInfo:
+          description: Additional information on the application issuing the request.
+          $ref: '#/components/schemas/GoogleAdsGoogleadsV25Common__AdditionalApplicationInfo'
+      description: Request message for BenchmarksService.ListBenchmarksAvailableDates.
+    GoogleAdsGoogleadsV25Common__DateRange:
+      type: object
+      properties:
+        startDate:
+          type: string
+          description: The start date, in yyyy-mm-dd format. This date is inclusive.
+        endDate:
+          description: The end date, in yyyy-mm-dd format. This date is inclusive.
+          type: string
+      description: A date range.
+    GoogleAdsGoogleadsV25Services__ListBenchmarksAvailableDatesResponse:
+      type: object
+      properties:
+        supportedDates:
+          description: The dates that support benchmarks metrics. Data is supported for any dates within this date range inclusive.
+          $ref: '#/components/schemas/GoogleAdsGoogleadsV25Common__DateRange'
+      description: Response message for BenchmarksService.ListBenchmarksAvailableDates.
   securitySchemes:
     oauth2:
       type: oauth2

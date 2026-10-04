@@ -133,23 +133,6 @@ paths:
         - https://www.googleapis.com/auth/adwords
 components:
   schemas:
-    GoogleAdsGoogleadsV25Services__AdGroupAdLabelOperation:
-      type: object
-      properties:
-        create:
-          description: 'Create operation: No resource name is expected for the new ad group ad label.'
-          $ref: '#/components/schemas/GoogleAdsGoogleadsV25Resources__AdGroupAdLabel'
-        remove:
-          description: 'Remove operation: A resource name for the ad group ad label being removed, in this format: `customers/{customer_id}/adGroupAdLabels/{ad_group_id}~{ad_id}~{label_id}`'
-          type: string
-      description: A single operation (create, remove) on an ad group ad label.
-    GoogleAdsGoogleadsV25Services__MutateAdGroupAdLabelResult:
-      description: The result for an ad group ad label mutate.
-      type: object
-      properties:
-        resourceName:
-          description: Returned for successful operations.
-          type: string
     GoogleAdsGoogleadsV25Services__MutateAdGroupAdLabelsRequest:
       type: object
       properties:
@@ -178,6 +161,16 @@ components:
         resourceName:
           type: string
           description: 'Immutable. The resource name of the ad group ad label. Ad group ad label resource names have the form: `customers/{customer_id}/adGroupAdLabels/{ad_group_id}~{ad_id}~{label_id}`'
+    GoogleAdsGoogleadsV25Services__AdGroupAdLabelOperation:
+      type: object
+      properties:
+        create:
+          description: 'Create operation: No resource name is expected for the new ad group ad label.'
+          $ref: '#/components/schemas/GoogleAdsGoogleadsV25Resources__AdGroupAdLabel'
+        remove:
+          description: 'Remove operation: A resource name for the ad group ad label being removed, in this format: `customers/{customer_id}/adGroupAdLabels/{ad_group_id}~{ad_id}~{label_id}`'
+          type: string
+      description: A single operation (create, remove) on an ad group ad label.
     GoogleRpc__Status:
       description: 'The `Status` type defines a logical error model that is suitable for different programming environments, including REST APIs and RPC APIs. It is used by [gRPC](https://github.com/grpc). Each `Status` message contains three pieces of data: error code, error message, and error details. You can find out more about this error model and how to work with it in the [API Design Guide](https://cloud.google.com/apis/design/errors).'
       type: object
@@ -208,6 +201,13 @@ components:
           items:
             $ref: '#/components/schemas/GoogleAdsGoogleadsV25Services__MutateAdGroupAdLabelResult'
       description: Response message for an ad group ad labels mutate.
+    GoogleAdsGoogleadsV25Services__MutateAdGroupAdLabelResult:
+      description: The result for an ad group ad label mutate.
+      type: object
+      properties:
+        resourceName:
+          description: Returned for successful operations.
+          type: string
   securitySchemes:
     oauth2:
       type: oauth2

@@ -375,16 +375,6 @@ components:
         validateOnly:
           type: boolean
           description: If true, the request is validated but no Long Running Operation is created. Only errors are returned.
-    GoogleAdsGoogleadsV25Services__MutateCampaignDraftResult:
-      description: The result for the campaign draft mutate.
-      type: object
-      properties:
-        resourceName:
-          type: string
-          description: Returned for successful operations.
-        campaignDraft:
-          description: The mutated campaign draft with only mutable fields after mutate. The field will only be returned when response_content_type is set to "MUTABLE_RESOURCE".
-          $ref: '#/components/schemas/GoogleAdsGoogleadsV25Resources__CampaignDraft'
     GoogleAdsGoogleadsV25Services__MutateCampaignDraftsResponse:
       description: Response message for campaign draft mutate.
       type: object
@@ -397,6 +387,53 @@ components:
           items:
             $ref: '#/components/schemas/GoogleAdsGoogleadsV25Services__MutateCampaignDraftResult'
           type: array
+    GoogleAdsGoogleadsV25Services__CampaignDraftOperation:
+      type: object
+      properties:
+        remove:
+          description: 'Remove operation: The campaign draft is expected to have a valid resource name, in this format: `customers/{customer_id}/campaignDrafts/{base_campaign_id}~{draft_id}`'
+          type: string
+        updateMask:
+          format: google-fieldmask
+          type: string
+          description: FieldMask that determines which resource fields are modified in an update.
+        create:
+          $ref: '#/components/schemas/GoogleAdsGoogleadsV25Resources__CampaignDraft'
+          description: 'Create operation: No resource name is expected for the new campaign draft.'
+        update:
+          $ref: '#/components/schemas/GoogleAdsGoogleadsV25Resources__CampaignDraft'
+          description: 'Update operation: The campaign draft is expected to have a valid resource name.'
+      description: A single operation (create, update, remove) on a campaign draft.
+    GoogleRpc__Status:
+      description: 'The `Status` type defines a logical error model that is suitable for different programming environments, including REST APIs and RPC APIs. It is used by [gRPC](https://github.com/grpc). Each `Status` message contains three pieces of data: error code, error message, and error details. You can find out more about this error model and how to work with it in the [API Design Guide](https://cloud.google.com/apis/design/errors).'
+      type: object
+      properties:
+        message:
+          description: A developer-facing error message, which should be in English. Any user-facing error message should be localized and sent in the google.rpc.Status.details field, or localized by the client.
+          type: string
+        code:
+          type: integer
+          description: The status code, which should be an enum value of google.rpc.Code.
+          format: int32
+        details:
+          type: array
+          description: A list of messages that carry the error details. There is a common set of message types for APIs to use.
+          items:
+            type: object
+            additionalProperties:
+              description: Properties of the object. Contains field @type with type URL.
+    GoogleAdsGoogleadsV25Services__ListCampaignDraftAsyncErrorsResponse:
+      description: Response message for CampaignDraftService.ListCampaignDraftAsyncErrors.
+      type: object
+      properties:
+        errors:
+          type: array
+          description: Details of the errors when performing the asynchronous operation.
+          items:
+            $ref: '#/components/schemas/GoogleRpc__Status'
+        nextPageToken:
+          type: string
+          description: Pagination token used to retrieve the next page of results. Pass the content of this string as the `page_token` attribute of the next request. `next_page_token` is not returned for the last page.
     GoogleAdsGoogleadsV25Services__MutateCampaignDraftsRequest:
       type: object
       properties:
@@ -468,53 +505,16 @@ components:
         longRunningOperation:
           description: Output only. The resource name of the long-running operation that can be used to poll for completion of draft promotion. This is only set if the draft promotion is in progress or finished.
           type: string
-    GoogleRpc__Status:
-      description: 'The `Status` type defines a logical error model that is suitable for different programming environments, including REST APIs and RPC APIs. It is used by [gRPC](https://github.com/grpc). Each `Status` message contains three pieces of data: error code, error message, and error details. You can find out more about this error model and how to work with it in the [API Design Guide](https://cloud.google.com/apis/design/errors).'
+    GoogleAdsGoogleadsV25Services__MutateCampaignDraftResult:
+      description: The result for the campaign draft mutate.
       type: object
       properties:
-        message:
-          description: A developer-facing error message, which should be in English. Any user-facing error message should be localized and sent in the google.rpc.Status.details field, or localized by the client.
+        resourceName:
           type: string
-        code:
-          type: integer
-          description: The status code, which should be an enum value of google.rpc.Code.
-          format: int32
-        details:
-          type: array
-          description: A list of messages that carry the error details. There is a common set of message types for APIs to use.
-          items:
-            type: object
-            additionalProperties:
-              description: Properties of the object. Contains field @type with type URL.
-    GoogleAdsGoogleadsV25Services__ListCampaignDraftAsyncErrorsResponse:
-      description: Response message for CampaignDraftService.ListCampaignDraftAsyncErrors.
-      type: object
-      properties:
-        errors:
-          type: array
-          description: Details of the errors when performing the asynchronous operation.
-          items:
-            $ref: '#/components/schemas/GoogleRpc__Status'
-        nextPageToken:
-          type: string
-          description: Pagination token used to retrieve the next page of results. Pass the content of this string as the `page_token` attribute of the next request. `next_page_token` is not returned for the last page.
-    GoogleAdsGoogleadsV25Services__CampaignDraftOperation:
-      type: object
-      properties:
-        remove:
-          description: 'Remove operation: The campaign draft is expected to have a valid resource name, in this format: `customers/{customer_id}/campaignDrafts/{base_campaign_id}~{draft_id}`'
-          type: string
-        updateMask:
-          format: google-fieldmask
-          type: string
-          description: FieldMask that determines which resource fields are modified in an update.
-        create:
+          description: Returned for successful operations.
+        campaignDraft:
+          description: The mutated campaign draft with only mutable fields after mutate. The field will only be returned when response_content_type is set to "MUTABLE_RESOURCE".
           $ref: '#/components/schemas/GoogleAdsGoogleadsV25Resources__CampaignDraft'
-          description: 'Create operation: No resource name is expected for the new campaign draft.'
-        update:
-          $ref: '#/components/schemas/GoogleAdsGoogleadsV25Resources__CampaignDraft'
-          description: 'Update operation: The campaign draft is expected to have a valid resource name.'
-      description: A single operation (create, update, remove) on a campaign draft.
     GoogleLongrunning__Operation:
       type: object
       properties:

@@ -133,6 +133,70 @@ paths:
         - https://www.googleapis.com/auth/adwords
 components:
   schemas:
+    GoogleAdsGoogleadsV25Services__MutateCustomerAssetSetsRequest:
+      description: Request message for CustomerAssetSetService.MutateCustomerAssetSets.
+      type: object
+      properties:
+        partialFailure:
+          type: boolean
+          description: If true, successful operations will be carried out and invalid operations will return errors. If false, all operations will be carried out in one transaction if and only if they are all valid. Default is false.
+        operations:
+          type: array
+          description: Required. The list of operations to perform on individual customer asset sets.
+          items:
+            $ref: '#/components/schemas/GoogleAdsGoogleadsV25Services__CustomerAssetSetOperation'
+        validateOnly:
+          description: If true, the request is validated but not executed. Only errors are returned, not results.
+          type: boolean
+        responseContentType:
+          description: The response content type setting. Determines whether the mutable resource or just the resource name should be returned post mutation.
+          type: string
+          x-enumDescriptions:
+          - Not specified. Will return the resource name only in the response.
+          - The mutate response will be the resource name.
+          - The mutate response will contain the resource name and the resource with mutable fields if possible. Otherwise, only the resource name will be returned.
+          enum:
+          - UNSPECIFIED
+          - RESOURCE_NAME_ONLY
+          - MUTABLE_RESOURCE
+    GoogleAdsGoogleadsV25Services__MutateCustomerAssetSetResult:
+      type: object
+      properties:
+        customerAssetSet:
+          description: The mutated customer asset set with only mutable fields after mutate. The field will only be returned when response_content_type is set to "MUTABLE_RESOURCE".
+          $ref: '#/components/schemas/GoogleAdsGoogleadsV25Resources__CustomerAssetSet'
+        resourceName:
+          type: string
+          description: Returned for successful operations.
+      description: The result for the customer asset set mutate.
+    GoogleAdsGoogleadsV25Services__CustomerAssetSetOperation:
+      description: A single operation (create, remove) on a customer asset set.
+      type: object
+      properties:
+        create:
+          $ref: '#/components/schemas/GoogleAdsGoogleadsV25Resources__CustomerAssetSet'
+          description: 'Create operation: No resource name is expected for the new customer asset set.'
+        remove:
+          type: string
+          description: 'Remove operation: A resource name for the removed customer asset set is expected, in this format: `customers/{customer_id}/customerAssetSets/{asset_set_id}`'
+    GoogleRpc__Status:
+      description: 'The `Status` type defines a logical error model that is suitable for different programming environments, including REST APIs and RPC APIs. It is used by [gRPC](https://github.com/grpc). Each `Status` message contains three pieces of data: error code, error message, and error details. You can find out more about this error model and how to work with it in the [API Design Guide](https://cloud.google.com/apis/design/errors).'
+      type: object
+      properties:
+        message:
+          description: A developer-facing error message, which should be in English. Any user-facing error message should be localized and sent in the google.rpc.Status.details field, or localized by the client.
+          type: string
+        code:
+          type: integer
+          description: The status code, which should be an enum value of google.rpc.Code.
+          format: int32
+        details:
+          type: array
+          description: A list of messages that carry the error details. There is a common set of message types for APIs to use.
+          items:
+            type: object
+            additionalProperties:
+              description: Properties of the object. Contains field @type with type URL.
     GoogleAdsGoogleadsV25Services__MutateCustomerAssetSetsResponse:
       description: Response message for a customer asset set mutate.
       type: object
@@ -171,70 +235,6 @@ components:
           - The received value is not known in this version. This is a response-only value.
           - The linkage between asset set and its container is enabled.
           - The linkage between asset set and its container is removed.
-    GoogleAdsGoogleadsV25Services__MutateCustomerAssetSetResult:
-      type: object
-      properties:
-        customerAssetSet:
-          description: The mutated customer asset set with only mutable fields after mutate. The field will only be returned when response_content_type is set to "MUTABLE_RESOURCE".
-          $ref: '#/components/schemas/GoogleAdsGoogleadsV25Resources__CustomerAssetSet'
-        resourceName:
-          type: string
-          description: Returned for successful operations.
-      description: The result for the customer asset set mutate.
-    GoogleAdsGoogleadsV25Services__MutateCustomerAssetSetsRequest:
-      description: Request message for CustomerAssetSetService.MutateCustomerAssetSets.
-      type: object
-      properties:
-        partialFailure:
-          type: boolean
-          description: If true, successful operations will be carried out and invalid operations will return errors. If false, all operations will be carried out in one transaction if and only if they are all valid. Default is false.
-        operations:
-          type: array
-          description: Required. The list of operations to perform on individual customer asset sets.
-          items:
-            $ref: '#/components/schemas/GoogleAdsGoogleadsV25Services__CustomerAssetSetOperation'
-        validateOnly:
-          description: If true, the request is validated but not executed. Only errors are returned, not results.
-          type: boolean
-        responseContentType:
-          description: The response content type setting. Determines whether the mutable resource or just the resource name should be returned post mutation.
-          type: string
-          x-enumDescriptions:
-          - Not specified. Will return the resource name only in the response.
-          - The mutate response will be the resource name.
-          - The mutate response will contain the resource name and the resource with mutable fields if possible. Otherwise, only the resource name will be returned.
-          enum:
-          - UNSPECIFIED
-          - RESOURCE_NAME_ONLY
-          - MUTABLE_RESOURCE
-    GoogleRpc__Status:
-      description: 'The `Status` type defines a logical error model that is suitable for different programming environments, including REST APIs and RPC APIs. It is used by [gRPC](https://github.com/grpc). Each `Status` message contains three pieces of data: error code, error message, and error details. You can find out more about this error model and how to work with it in the [API Design Guide](https://cloud.google.com/apis/design/errors).'
-      type: object
-      properties:
-        message:
-          description: A developer-facing error message, which should be in English. Any user-facing error message should be localized and sent in the google.rpc.Status.details field, or localized by the client.
-          type: string
-        code:
-          type: integer
-          description: The status code, which should be an enum value of google.rpc.Code.
-          format: int32
-        details:
-          type: array
-          description: A list of messages that carry the error details. There is a common set of message types for APIs to use.
-          items:
-            type: object
-            additionalProperties:
-              description: Properties of the object. Contains field @type with type URL.
-    GoogleAdsGoogleadsV25Services__CustomerAssetSetOperation:
-      description: A single operation (create, remove) on a customer asset set.
-      type: object
-      properties:
-        create:
-          $ref: '#/components/schemas/GoogleAdsGoogleadsV25Resources__CustomerAssetSet'
-          description: 'Create operation: No resource name is expected for the new customer asset set.'
-        remove:
-          type: string
-          description: 'Remove operation: A resource name for the removed customer asset set is expected, in this format: `customers/{customer_id}/customerAssetSets/{asset_set_id}`'
   securitySchemes:
     oauth2:
       type: oauth2

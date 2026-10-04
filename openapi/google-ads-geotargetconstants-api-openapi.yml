@@ -125,15 +125,62 @@ paths:
         - https://www.googleapis.com/auth/adwords
 components:
   schemas:
-    GoogleAdsGoogleadsV25Services_SuggestGeoTargetConstantsRequest_GeoTargets:
-      description: A list of geo target constant resource names.
+    GoogleAdsGoogleadsV25Services_SuggestGeoTargetConstantsRequest_LocationNames:
+      description: A list of location names.
       type: object
       properties:
-        geoTargetConstants:
+        names:
           type: array
-          description: A list of geo target constant resource names.
+          description: A list of location names.
           items:
             type: string
+    GoogleAdsGoogleadsV25Services__SuggestGeoTargetConstantsRequest:
+      description: Request message for GeoTargetConstantService.SuggestGeoTargetConstants.
+      type: object
+      properties:
+        locale:
+          description: If possible, returned geo targets are translated using this locale. If not, en is used by default. This is also used as a hint for returned geo targets.
+          type: string
+        countryCode:
+          type: string
+          description: Returned geo targets are restricted to this country code.
+        locationNames:
+          description: The location names to search by. At most 25 names can be set.
+          $ref: '#/components/schemas/GoogleAdsGoogleadsV25Services_SuggestGeoTargetConstantsRequest_LocationNames'
+        geoTargets:
+          $ref: '#/components/schemas/GoogleAdsGoogleadsV25Services_SuggestGeoTargetConstantsRequest_GeoTargets'
+          description: The geo target constant resource names to filter by.
+    GoogleAdsGoogleadsV25Services__GeoTargetConstantSuggestion:
+      type: object
+      properties:
+        reach:
+          format: int64
+          description: Approximate user population that will be targeted, rounded to the nearest 100.
+          type: string
+        locale:
+          type: string
+          description: The language this GeoTargetConstantSuggestion is currently translated to. It affects the name of geo target fields. For example, if locale=en, then name=Spain. If locale=es, then name=España. The default locale will be returned if no translation exists for the locale in the request.
+        geoTargetConstant:
+          $ref: '#/components/schemas/GoogleAdsGoogleadsV25Resources__GeoTargetConstant'
+          description: The GeoTargetConstant result.
+        searchTerm:
+          type: string
+          description: If the request searched by location name, this is the location name that matched the geo target.
+        geoTargetConstantParents:
+          type: array
+          description: The list of parents of the geo target constant.
+          items:
+            $ref: '#/components/schemas/GoogleAdsGoogleadsV25Resources__GeoTargetConstant'
+      description: A geo target constant suggestion.
+    GoogleAdsGoogleadsV25Services__SuggestGeoTargetConstantsResponse:
+      description: Response message for GeoTargetConstantService.SuggestGeoTargetConstants.
+      type: object
+      properties:
+        geoTargetConstantSuggestions:
+          type: array
+          description: Geo target constant suggestions.
+          items:
+            $ref: '#/components/schemas/GoogleAdsGoogleadsV25Services__GeoTargetConstantSuggestion'
     GoogleAdsGoogleadsV25Resources__GeoTargetConstant:
       description: A geo target constant.
       type: object
@@ -173,62 +220,15 @@ components:
         parentGeoTarget:
           type: string
           description: 'Output only. The resource name of the parent geo target constant. Geo target constant resource names have the form: `geoTargetConstants/{parent_geo_target_constant_id}`'
-    GoogleAdsGoogleadsV25Services__GeoTargetConstantSuggestion:
+    GoogleAdsGoogleadsV25Services_SuggestGeoTargetConstantsRequest_GeoTargets:
+      description: A list of geo target constant resource names.
       type: object
       properties:
-        reach:
-          format: int64
-          description: Approximate user population that will be targeted, rounded to the nearest 100.
-          type: string
-        locale:
-          type: string
-          description: The language this GeoTargetConstantSuggestion is currently translated to. It affects the name of geo target fields. For example, if locale=en, then name=Spain. If locale=es, then name=España. The default locale will be returned if no translation exists for the locale in the request.
-        geoTargetConstant:
-          $ref: '#/components/schemas/GoogleAdsGoogleadsV25Resources__GeoTargetConstant'
-          description: The GeoTargetConstant result.
-        searchTerm:
-          type: string
-          description: If the request searched by location name, this is the location name that matched the geo target.
-        geoTargetConstantParents:
+        geoTargetConstants:
           type: array
-          description: The list of parents of the geo target constant.
-          items:
-            $ref: '#/components/schemas/GoogleAdsGoogleadsV25Resources__GeoTargetConstant'
-      description: A geo target constant suggestion.
-    GoogleAdsGoogleadsV25Services_SuggestGeoTargetConstantsRequest_LocationNames:
-      description: A list of location names.
-      type: object
-      properties:
-        names:
-          type: array
-          description: A list of location names.
+          description: A list of geo target constant resource names.
           items:
             type: string
-    GoogleAdsGoogleadsV25Services__SuggestGeoTargetConstantsRequest:
-      description: Request message for GeoTargetConstantService.SuggestGeoTargetConstants.
-      type: object
-      properties:
-        locale:
-          description: If possible, returned geo targets are translated using this locale. If not, en is used by default. This is also used as a hint for returned geo targets.
-          type: string
-        countryCode:
-          type: string
-          description: Returned geo targets are restricted to this country code.
-        locationNames:
-          description: The location names to search by. At most 25 names can be set.
-          $ref: '#/components/schemas/GoogleAdsGoogleadsV25Services_SuggestGeoTargetConstantsRequest_LocationNames'
-        geoTargets:
-          $ref: '#/components/schemas/GoogleAdsGoogleadsV25Services_SuggestGeoTargetConstantsRequest_GeoTargets'
-          description: The geo target constant resource names to filter by.
-    GoogleAdsGoogleadsV25Services__SuggestGeoTargetConstantsResponse:
-      description: Response message for GeoTargetConstantService.SuggestGeoTargetConstants.
-      type: object
-      properties:
-        geoTargetConstantSuggestions:
-          type: array
-          description: Geo target constant suggestions.
-          items:
-            $ref: '#/components/schemas/GoogleAdsGoogleadsV25Services__GeoTargetConstantSuggestion'
   securitySchemes:
     oauth2:
       type: oauth2

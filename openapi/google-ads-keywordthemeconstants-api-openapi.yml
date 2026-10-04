@@ -125,15 +125,6 @@ paths:
         - https://www.googleapis.com/auth/adwords
 components:
   schemas:
-    GoogleAdsGoogleadsV25Services__SuggestKeywordThemeConstantsResponse:
-      type: object
-      properties:
-        keywordThemeConstants:
-          type: array
-          description: Smart Campaign keyword theme suggestions.
-          items:
-            $ref: '#/components/schemas/GoogleAdsGoogleadsV25Resources__KeywordThemeConstant'
-      description: Response message for KeywordThemeConstantService.SuggestKeywordThemeConstants.
     GoogleAdsGoogleadsV25Services__SuggestKeywordThemeConstantsRequest:
       description: Request message for KeywordThemeConstantService.SuggestKeywordThemeConstants.
       type: object
@@ -147,6 +138,15 @@ components:
         languageCode:
           type: string
           description: The two letter language code for get corresponding keyword theme for refining the scope of the query, default to 'en' if not set.
+    GoogleAdsGoogleadsV25Services__SuggestKeywordThemeConstantsResponse:
+      type: object
+      properties:
+        keywordThemeConstants:
+          type: array
+          description: Smart Campaign keyword theme suggestions.
+          items:
+            $ref: '#/components/schemas/GoogleAdsGoogleadsV25Resources__KeywordThemeConstant'
+      description: Response message for KeywordThemeConstantService.SuggestKeywordThemeConstants.
     GoogleAdsGoogleadsV25Resources__KeywordThemeConstant:
       description: A Smart Campaign keyword theme constant.
       type: object

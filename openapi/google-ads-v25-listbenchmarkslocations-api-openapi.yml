@@ -125,26 +125,6 @@ paths:
         - https://www.googleapis.com/auth/adwords
 components:
   schemas:
-    GoogleAdsGoogleadsV25Services__ListBenchmarksLocationsRequest:
-      type: object
-      properties:
-        applicationInfo:
-          description: Additional information on the application issuing the request.
-          $ref: '#/components/schemas/GoogleAdsGoogleadsV25Common__AdditionalApplicationInfo'
-      description: Request message for BenchmarksService.ListBenchmarksLocations.
-    GoogleAdsGoogleadsV25Services__BenchmarksLocation:
-      description: A location that supports benchmarks data.
-      type: object
-      properties:
-        locationType:
-          description: The location's type. Location types correspond to target_type returned by searching location type in GoogleAdsService.Search/SearchStream.
-          type: string
-        locationInfo:
-          description: Information on the geographic location, including the location ID.
-          $ref: '#/components/schemas/GoogleAdsGoogleadsV25Common__LocationInfo'
-        locationName:
-          description: The unique location name in English.
-          type: string
     GoogleAdsGoogleadsV25Common__LocationInfo:
       type: object
       properties:
@@ -181,6 +161,26 @@ components:
           - UNKNOWN
           - DEVELOPMENT_AND_TESTING
           - PRODUCTION
+    GoogleAdsGoogleadsV25Services__BenchmarksLocation:
+      description: A location that supports benchmarks data.
+      type: object
+      properties:
+        locationType:
+          description: The location's type. Location types correspond to target_type returned by searching location type in GoogleAdsService.Search/SearchStream.
+          type: string
+        locationInfo:
+          description: Information on the geographic location, including the location ID.
+          $ref: '#/components/schemas/GoogleAdsGoogleadsV25Common__LocationInfo'
+        locationName:
+          description: The unique location name in English.
+          type: string
+    GoogleAdsGoogleadsV25Services__ListBenchmarksLocationsRequest:
+      type: object
+      properties:
+        applicationInfo:
+          description: Additional information on the application issuing the request.
+          $ref: '#/components/schemas/GoogleAdsGoogleadsV25Common__AdditionalApplicationInfo'
+      description: Request message for BenchmarksService.ListBenchmarksLocations.
   securitySchemes:
     oauth2:
       type: oauth2

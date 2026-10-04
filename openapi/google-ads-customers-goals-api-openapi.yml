@@ -133,6 +133,33 @@ paths:
         - https://www.googleapis.com/auth/adwords
 components:
   schemas:
+    GoogleAdsGoogleadsV25Common_GoalSetting_NewCustomerAcquisitionGoal:
+      description: New Customer Acquisition goal settings.
+      type: object
+      properties:
+        valueSettings:
+          $ref: '#/components/schemas/GoogleAdsGoogleadsV25Common__CustomerLifecycleOptimizationValueSettings'
+          description: New Customer Acquisition goal value settings.
+    GoogleAdsGoogleadsV25Common__CustomerLifecycleOptimizationValueSettings:
+      type: object
+      properties:
+        valueMultiplier:
+          format: double
+          type: number
+          description: Conversion value multiplier.
+        additionalValue:
+          description: Incremental conversion value.
+          type: number
+          format: double
+        additionalHighLifetimeValue:
+          description: Incremental high lifetime conversion value.
+          type: number
+          format: double
+        highLifetimeValueMultiplier:
+          format: double
+          type: number
+          description: High lifetime conversion value multiplier.
+      description: Lifecycle goal optimization value settings.
     GoogleAdsGoogleadsV25Common_GoalSetting_LoyaltyRetentionGoal:
       type: object
       properties:
@@ -140,39 +167,6 @@ components:
           $ref: '#/components/schemas/GoogleAdsGoogleadsV25Common__CustomerLifecycleOptimizationValueSettings'
           description: Loyalty retention goal value settings.
       description: Loyalty retention goal settings.
-    GoogleAdsGoogleadsV25Common_GoalSetting_RetentionGoal:
-      type: object
-      properties:
-        valueSettings:
-          description: Retention goal value settings.
-          $ref: '#/components/schemas/GoogleAdsGoogleadsV25Common__CustomerLifecycleOptimizationValueSettings'
-      description: Retention goal settings.
-    GoogleAdsGoogleadsV25Services__MutateGoalsResponse:
-      type: object
-      properties:
-        results:
-          description: All results for the mutate.
-          items:
-            $ref: '#/components/schemas/GoogleAdsGoogleadsV25Services__MutateGoalResult'
-          type: array
-        partialFailureError:
-          $ref: '#/components/schemas/GoogleRpc__Status'
-          description: Errors that pertain to operation failures in the partial failure mode.
-      description: Response message for a goal mutate.
-    GoogleAdsGoogleadsV25Services__GoalOperation:
-      description: A single mutate operation on the goal.
-      type: object
-      properties:
-        updateMask:
-          type: string
-          description: FieldMask that determines which resource fields are modified in an update.
-          format: google-fieldmask
-        create:
-          $ref: '#/components/schemas/GoogleAdsGoogleadsV25Resources__Goal'
-          description: Create a new goal.
-        update:
-          description: Update an existing goal.
-          $ref: '#/components/schemas/GoogleAdsGoogleadsV25Resources__Goal'
     GoogleAdsGoogleadsV25Services__MutateGoalsRequest:
       description: Request message for GoalService.MutateGoals.
       type: object
@@ -213,13 +207,20 @@ components:
         resourceName:
           type: string
           description: Returned for successful operations.
-    GoogleAdsGoogleadsV25Common_GoalSetting_NewCustomerAcquisitionGoal:
-      description: New Customer Acquisition goal settings.
+    GoogleAdsGoogleadsV25Services__GoalOperation:
+      description: A single mutate operation on the goal.
       type: object
       properties:
-        valueSettings:
-          $ref: '#/components/schemas/GoogleAdsGoogleadsV25Common__CustomerLifecycleOptimizationValueSettings'
-          description: New Customer Acquisition goal value settings.
+        updateMask:
+          type: string
+          description: FieldMask that determines which resource fields are modified in an update.
+          format: google-fieldmask
+        create:
+          $ref: '#/components/schemas/GoogleAdsGoogleadsV25Resources__Goal'
+          description: Create a new goal.
+        update:
+          description: Update an existing goal.
+          $ref: '#/components/schemas/GoogleAdsGoogleadsV25Resources__Goal'
     GoogleAdsGoogleadsV25Resources__Goal:
       type: object
       properties:
@@ -271,26 +272,25 @@ components:
           description: Output only. The ID of this goal.
           format: int64
       description: Representation of goals.
-    GoogleAdsGoogleadsV25Common__CustomerLifecycleOptimizationValueSettings:
+    GoogleAdsGoogleadsV25Services__MutateGoalsResponse:
       type: object
       properties:
-        valueMultiplier:
-          format: double
-          type: number
-          description: Conversion value multiplier.
-        additionalValue:
-          description: Incremental conversion value.
-          type: number
-          format: double
-        additionalHighLifetimeValue:
-          description: Incremental high lifetime conversion value.
-          type: number
-          format: double
-        highLifetimeValueMultiplier:
-          format: double
-          type: number
-          description: High lifetime conversion value multiplier.
-      description: Lifecycle goal optimization value settings.
+        results:
+          description: All results for the mutate.
+          items:
+            $ref: '#/components/schemas/GoogleAdsGoogleadsV25Services__MutateGoalResult'
+          type: array
+        partialFailureError:
+          $ref: '#/components/schemas/GoogleRpc__Status'
+          description: Errors that pertain to operation failures in the partial failure mode.
+      description: Response message for a goal mutate.
+    GoogleAdsGoogleadsV25Common_GoalSetting_RetentionGoal:
+      type: object
+      properties:
+        valueSettings:
+          description: Retention goal value settings.
+          $ref: '#/components/schemas/GoogleAdsGoogleadsV25Common__CustomerLifecycleOptimizationValueSettings'
+      description: Retention goal settings.
   securitySchemes:
     oauth2:
       type: oauth2

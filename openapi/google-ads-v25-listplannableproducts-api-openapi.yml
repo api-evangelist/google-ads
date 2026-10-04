@@ -125,18 +125,78 @@ paths:
         - https://www.googleapis.com/auth/adwords
 components:
   schemas:
-    GoogleAdsGoogleadsV25Services__YouTubeSelectLineUpTargeting:
-      description: Targetable YouTube Select Lineups for the ad product and the default Lineup.
+    GoogleAdsGoogleadsV25Common__DeviceInfo:
+      description: A device criterion.
       type: object
       properties:
-        youtubeSelectLineups:
-          type: array
-          description: Targetable YouTube Select Lineups for the ad product.
-          items:
-            $ref: '#/components/schemas/GoogleAdsGoogleadsV25Services__YouTubeSelectLineUp'
-        defaultYoutubeSelectLineup:
-          description: The default YouTube Select Lineup for the ad product if available.
-          $ref: '#/components/schemas/GoogleAdsGoogleadsV25Services__YouTubeSelectLineUp'
+        type:
+          x-enumDescriptions:
+          - Not specified.
+          - The value is unknown in this version.
+          - Mobile devices with full browsers.
+          - Tablets with full browsers.
+          - Computers.
+          - Smart TVs and game consoles.
+          - Other device types.
+          enum:
+          - UNSPECIFIED
+          - UNKNOWN
+          - MOBILE
+          - TABLET
+          - DESKTOP
+          - CONNECTED_TV
+          - OTHER
+          description: Type of the device.
+          type: string
+    GoogleAdsGoogleadsV25Services__ProductCoreAttributes:
+      description: A collection of attributes that offer more information about a specific product.
+      type: object
+      properties:
+        marketingObjective:
+          x-enumDescriptions:
+          - Not specified.
+          - The value is unknown in this version.
+          - The objective is to maximize brand visibility and reach as many relevant people as possible, making potential customers aware of the brand or product.
+          - The objective is to encourage potential customers to learn more about the brand or products and consider them for a future purchase.
+          - The objective is to persuade potential customers to take a specific, valuable action, such as making a purchase, signing up for a newsletter, or generating a lead.
+          enum:
+          - UNSPECIFIED
+          - UNKNOWN
+          - AWARENESS
+          - CONSIDERATION
+          - ACTION
+          type: string
+          description: A specific, measurable goal that a company wants to achieve through its marketing efforts.
+        buyingMethod:
+          x-enumDescriptions:
+          - Not specified.
+          - The value is unknown in this version.
+          - Bidding on ads with a target CPM.
+          - Buying method that encompasses deal-based and instant reserve pricing.
+          enum:
+          - UNSPECIFIED
+          - UNKNOWN
+          - AUCTION
+          - RESERVATION
+          description: The method of buying this product. For example, Auction pricing is dynamic and Reservation is booked at a fixed price.
+          type: string
+        costModel:
+          description: How an advertiser pays for their ad campaign.
+          type: string
+          x-enumDescriptions:
+          - Not specified.
+          - The value is unknown in this version.
+          - Cost per mille (thousand impressions).
+          - Cost per view.
+          - Cost per click.
+          - Cost per action (conversion).
+          enum:
+          - UNSPECIFIED
+          - UNKNOWN
+          - CPM
+          - CPV
+          - CPC
+          - CPA
     GoogleAdsGoogleadsV25Services__SurfaceTargeting:
       type: object
       properties:
@@ -170,34 +230,6 @@ components:
             - GOOGLE_DISPLAY_NETWORK
             - IN_STREAM_NON_SKIPPABLE_THIRTY_SECONDS
       description: Container for surfaces for a product. Surfaces refer to the available types of ad inventories such as In-Feed, In-Stream, and Shorts.
-    GoogleAdsGoogleadsV25Services__ProductMetadata:
-      type: object
-      properties:
-        plannableProductDescription:
-          type: string
-          description: 'The plain-text description of the ad product. For example: "Video view campaign allows you to plan for a configurable mix of skippable in-stream, in-feed, and Shorts video ads in a single campaign designed to drive more views."'
-        plannableTargeting:
-          description: The allowed plannable targeting for this product.
-          $ref: '#/components/schemas/GoogleAdsGoogleadsV25Services__PlannableTargeting'
-        plannableProductCode:
-          description: 'The code associated with the ad product. For example: "VIDEO_VIEW_CAMPAIGN". To list the available plannable product codes use ReachPlanService.ListPlannableProducts.'
-          type: string
-        plannableProductName:
-          description: 'The name associated with the ad product. For example: "Video View Campaign".'
-          type: string
-        plannableProductCoreAttributes:
-          $ref: '#/components/schemas/GoogleAdsGoogleadsV25Services__ProductCoreAttributes'
-          description: Descriptive attributes of the ad product to further describe its capabilities.
-      description: The metadata associated with an available plannable product.
-    GoogleAdsGoogleadsV25Services__ListPlannableProductsResponse:
-      type: object
-      properties:
-        productMetadata:
-          type: array
-          description: The list of products available for planning and related targeting metadata.
-          items:
-            $ref: '#/components/schemas/GoogleAdsGoogleadsV25Services__ProductMetadata'
-      description: A response with all available products.
     GoogleAdsGoogleadsV25Common__AdditionalApplicationInfo:
       description: Additional information about the application/tool issuing the request. This field is only used by ContentCreatorInsightsService, AudienceInsightsService, and ReachPlanService APIs.
       type: object
@@ -218,16 +250,6 @@ components:
           - UNKNOWN
           - DEVELOPMENT_AND_TESTING
           - PRODUCTION
-    GoogleAdsGoogleadsV25Services__ListPlannableProductsRequest:
-      description: Request to list available products in a given location.
-      type: object
-      properties:
-        plannableLocationId:
-          description: Required. The ID of the selected location for planning. To list the available plannable location IDs use ReachPlanService.ListPlannableLocations.
-          type: string
-        reachApplicationInfo:
-          $ref: '#/components/schemas/GoogleAdsGoogleadsV25Common__AdditionalApplicationInfo'
-          description: Optional. Additional information on the application issuing the request.
     GoogleAdsGoogleadsV25Common__GenderInfo:
       type: object
       properties:
@@ -247,29 +269,45 @@ components:
           - FEMALE
           - UNDETERMINED
       description: A gender criterion.
-    GoogleAdsGoogleadsV25Common__DeviceInfo:
-      description: A device criterion.
+    GoogleAdsGoogleadsV25Services__ListPlannableProductsResponse:
       type: object
       properties:
-        type:
-          x-enumDescriptions:
-          - Not specified.
-          - The value is unknown in this version.
-          - Mobile devices with full browsers.
-          - Tablets with full browsers.
-          - Computers.
-          - Smart TVs and game consoles.
-          - Other device types.
-          enum:
-          - UNSPECIFIED
-          - UNKNOWN
-          - MOBILE
-          - TABLET
-          - DESKTOP
-          - CONNECTED_TV
-          - OTHER
-          description: Type of the device.
+        productMetadata:
+          type: array
+          description: The list of products available for planning and related targeting metadata.
+          items:
+            $ref: '#/components/schemas/GoogleAdsGoogleadsV25Services__ProductMetadata'
+      description: A response with all available products.
+    GoogleAdsGoogleadsV25Services__ProductMetadata:
+      type: object
+      properties:
+        plannableProductDescription:
           type: string
+          description: 'The plain-text description of the ad product. For example: "Video view campaign allows you to plan for a configurable mix of skippable in-stream, in-feed, and Shorts video ads in a single campaign designed to drive more views."'
+        plannableTargeting:
+          description: The allowed plannable targeting for this product.
+          $ref: '#/components/schemas/GoogleAdsGoogleadsV25Services__PlannableTargeting'
+        plannableProductCode:
+          description: 'The code associated with the ad product. For example: "VIDEO_VIEW_CAMPAIGN". To list the available plannable product codes use ReachPlanService.ListPlannableProducts.'
+          type: string
+        plannableProductName:
+          description: 'The name associated with the ad product. For example: "Video View Campaign".'
+          type: string
+        plannableProductCoreAttributes:
+          $ref: '#/components/schemas/GoogleAdsGoogleadsV25Services__ProductCoreAttributes'
+          description: Descriptive attributes of the ad product to further describe its capabilities.
+      description: The metadata associated with an available plannable product.
+    GoogleAdsGoogleadsV25Services__YouTubeSelectLineUp:
+      description: A Plannable YouTube Select Lineup for product targeting.
+      type: object
+      properties:
+        lineupName:
+          type: string
+          description: The unique name of the YouTube Select Lineup.
+        lineupId:
+          format: int64
+          type: string
+          description: The ID of the YouTube Select Lineup.
     GoogleAdsGoogleadsV25Services__SurfaceTargetingCombinations:
       description: The surface targeting combinations available for an ad product.
       type: object
@@ -282,6 +320,18 @@ components:
           description: Available surface target combinations for the ad product.
           items:
             $ref: '#/components/schemas/GoogleAdsGoogleadsV25Services__SurfaceTargeting'
+    GoogleAdsGoogleadsV25Services__YouTubeSelectLineUpTargeting:
+      description: Targetable YouTube Select Lineups for the ad product and the default Lineup.
+      type: object
+      properties:
+        youtubeSelectLineups:
+          type: array
+          description: Targetable YouTube Select Lineups for the ad product.
+          items:
+            $ref: '#/components/schemas/GoogleAdsGoogleadsV25Services__YouTubeSelectLineUp'
+        defaultYoutubeSelectLineup:
+          description: The default YouTube Select Lineup for the ad product if available.
+          $ref: '#/components/schemas/GoogleAdsGoogleadsV25Services__YouTubeSelectLineUp'
     GoogleAdsGoogleadsV25Services__PlannableTargeting:
       description: The targeting for which traffic metrics will be reported.
       type: object
@@ -392,66 +442,16 @@ components:
             - YOUTUBE_AND_GOOGLE_VIDEO_PARTNERS
             type: string
           type: array
-    GoogleAdsGoogleadsV25Services__YouTubeSelectLineUp:
-      description: A Plannable YouTube Select Lineup for product targeting.
+    GoogleAdsGoogleadsV25Services__ListPlannableProductsRequest:
+      description: Request to list available products in a given location.
       type: object
       properties:
-        lineupName:
+        plannableLocationId:
+          description: Required. The ID of the selected location for planning. To list the available plannable location IDs use ReachPlanService.ListPlannableLocations.
           type: string
-          description: The unique name of the YouTube Select Lineup.
-        lineupId:
-          format: int64
-          type: string
-          description: The ID of the YouTube Select Lineup.
-    GoogleAdsGoogleadsV25Services__ProductCoreAttributes:
-      description: A collection of attributes that offer more information about a specific product.
-      type: object
-      properties:
-        marketingObjective:
-          x-enumDescriptions:
-          - Not specified.
-          - The value is unknown in this version.
-          - The objective is to maximize brand visibility and reach as many relevant people as possible, making potential customers aware of the brand or product.
-          - The objective is to encourage potential customers to learn more about the brand or products and consider them for a future purchase.
-          - The objective is to persuade potential customers to take a specific, valuable action, such as making a purchase, signing up for a newsletter, or generating a lead.
-          enum:
-          - UNSPECIFIED
-          - UNKNOWN
-          - AWARENESS
-          - CONSIDERATION
-          - ACTION
-          type: string
-          description: A specific, measurable goal that a company wants to achieve through its marketing efforts.
-        buyingMethod:
-          x-enumDescriptions:
-          - Not specified.
-          - The value is unknown in this version.
-          - Bidding on ads with a target CPM.
-          - Buying method that encompasses deal-based and instant reserve pricing.
-          enum:
-          - UNSPECIFIED
-          - UNKNOWN
-          - AUCTION
-          - RESERVATION
-          description: The method of buying this product. For example, Auction pricing is dynamic and Reservation is booked at a fixed price.
-          type: string
-        costModel:
-          description: How an advertiser pays for their ad campaign.
-          type: string
-          x-enumDescriptions:
-          - Not specified.
-          - The value is unknown in this version.
-          - Cost per mille (thousand impressions).
-          - Cost per view.
-          - Cost per click.
-          - Cost per action (conversion).
-          enum:
-          - UNSPECIFIED
-          - UNKNOWN
-          - CPM
-          - CPV
-          - CPC
-          - CPA
+        reachApplicationInfo:
+          $ref: '#/components/schemas/GoogleAdsGoogleadsV25Common__AdditionalApplicationInfo'
+          description: Optional. Additional information on the application issuing the request.
   securitySchemes:
     oauth2:
       type: oauth2

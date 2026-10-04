@@ -133,6 +133,16 @@ paths:
         - https://www.googleapis.com/auth/adwords
 components:
   schemas:
+    GoogleAdsGoogleadsV25Services__AdGroupAssetSetOperation:
+      description: A single operation (create, remove) on an ad group asset set.
+      type: object
+      properties:
+        create:
+          description: 'Create operation: No resource name is expected for the new ad group asset set.'
+          $ref: '#/components/schemas/GoogleAdsGoogleadsV25Resources__AdGroupAssetSet'
+        remove:
+          type: string
+          description: 'Remove operation: A resource name for the removed ad group asset set is expected, in this format: `customers/{customer_id}/adGroupAssetSets/{ad_group_id}~{asset_set_id}`'
     GoogleAdsGoogleadsV25Services__MutateAdGroupAssetSetsResponse:
       description: Response message for an ad group asset set mutate.
       type: object
@@ -145,26 +155,6 @@ components:
           description: All results for the mutate.
           items:
             $ref: '#/components/schemas/GoogleAdsGoogleadsV25Services__MutateAdGroupAssetSetResult'
-    GoogleAdsGoogleadsV25Services__AdGroupAssetSetOperation:
-      description: A single operation (create, remove) on an ad group asset set.
-      type: object
-      properties:
-        create:
-          description: 'Create operation: No resource name is expected for the new ad group asset set.'
-          $ref: '#/components/schemas/GoogleAdsGoogleadsV25Resources__AdGroupAssetSet'
-        remove:
-          type: string
-          description: 'Remove operation: A resource name for the removed ad group asset set is expected, in this format: `customers/{customer_id}/adGroupAssetSets/{ad_group_id}~{asset_set_id}`'
-    GoogleAdsGoogleadsV25Services__MutateAdGroupAssetSetResult:
-      description: The result for the ad group asset set mutate.
-      type: object
-      properties:
-        resourceName:
-          type: string
-          description: Returned for successful operations.
-        adGroupAssetSet:
-          $ref: '#/components/schemas/GoogleAdsGoogleadsV25Resources__AdGroupAssetSet'
-          description: The mutated ad group asset set with only mutable fields after mutate. The field will only be returned when response_content_type is set to "MUTABLE_RESOURCE".
     GoogleAdsGoogleadsV25Services__MutateAdGroupAssetSetsRequest:
       description: Request message for AdGroupAssetSetService.MutateAdGroupAssetSets.
       type: object
@@ -191,6 +181,34 @@ components:
         partialFailure:
           type: boolean
           description: If true, successful operations will be carried out and invalid operations will return errors. If false, all operations will be carried out in one transaction if and only if they are all valid. Default is false.
+    GoogleRpc__Status:
+      description: 'The `Status` type defines a logical error model that is suitable for different programming environments, including REST APIs and RPC APIs. It is used by [gRPC](https://github.com/grpc). Each `Status` message contains three pieces of data: error code, error message, and error details. You can find out more about this error model and how to work with it in the [API Design Guide](https://cloud.google.com/apis/design/errors).'
+      type: object
+      properties:
+        message:
+          description: A developer-facing error message, which should be in English. Any user-facing error message should be localized and sent in the google.rpc.Status.details field, or localized by the client.
+          type: string
+        code:
+          type: integer
+          description: The status code, which should be an enum value of google.rpc.Code.
+          format: int32
+        details:
+          type: array
+          description: A list of messages that carry the error details. There is a common set of message types for APIs to use.
+          items:
+            type: object
+            additionalProperties:
+              description: Properties of the object. Contains field @type with type URL.
+    GoogleAdsGoogleadsV25Services__MutateAdGroupAssetSetResult:
+      description: The result for the ad group asset set mutate.
+      type: object
+      properties:
+        resourceName:
+          type: string
+          description: Returned for successful operations.
+        adGroupAssetSet:
+          $ref: '#/components/schemas/GoogleAdsGoogleadsV25Resources__AdGroupAssetSet'
+          description: The mutated ad group asset set with only mutable fields after mutate. The field will only be returned when response_content_type is set to "MUTABLE_RESOURCE".
     GoogleAdsGoogleadsV25Resources__AdGroupAssetSet:
       type: object
       properties:
@@ -217,24 +235,6 @@ components:
           - ENABLED
           - REMOVED
       description: AdGroupAssetSet is the linkage between an ad group and an asset set. Creating an AdGroupAssetSet links an asset set with an ad group.
-    GoogleRpc__Status:
-      description: 'The `Status` type defines a logical error model that is suitable for different programming environments, including REST APIs and RPC APIs. It is used by [gRPC](https://github.com/grpc). Each `Status` message contains three pieces of data: error code, error message, and error details. You can find out more about this error model and how to work with it in the [API Design Guide](https://cloud.google.com/apis/design/errors).'
-      type: object
-      properties:
-        message:
-          description: A developer-facing error message, which should be in English. Any user-facing error message should be localized and sent in the google.rpc.Status.details field, or localized by the client.
-          type: string
-        code:
-          type: integer
-          description: The status code, which should be an enum value of google.rpc.Code.
-          format: int32
-        details:
-          type: array
-          description: A list of messages that carry the error details. There is a common set of message types for APIs to use.
-          items:
-            type: object
-            additionalProperties:
-              description: Properties of the object. Contains field @type with type URL.
   securitySchemes:
     oauth2:
       type: oauth2
