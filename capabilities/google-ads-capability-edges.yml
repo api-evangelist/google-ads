@@ -12,7 +12,7 @@ capability_model:
   attribution: Turbo EA Capabilities by Vincent Verdet — Turbo EA, https://github.com/vincentmakes/turbo-ea-capabilities,
     CC BY 4.0
   notice: NOTICE
-edge_count: 71
+edge_count: 75
 edges:
 - tag: customers.adGroupAds
   spec_file: google-ads-customers-adgroupads-api-openapi.yml
@@ -172,6 +172,16 @@ edges:
   evidence: POST /v18/customers/{customerId}/biddingStrategies:mutate 'Create, Update, or Remove Bidding
     Strategies'; TargetCpa, TargetRoas
   reason: Paid media bidding configuration sits within digital marketing (paid media) management.
+- tag: V25:listPlannableProducts
+  spec_file: google-ads-v25-listplannableproducts-api-openapi.yml
+  capability_id: BC-400.60
+  capability_id_l1: BC-400
+  capability_name: Digital Marketing Management
+  confidence: 0.8
+  evidence: '"Returns the list of per-location plannable YouTube ad formats with allowed…" / schemas YouTubeSelectLineUpTargeting,
+    PlannableTargeting'
+  reason: Enumerates plannable YouTube ad formats and targeting options for media plans — clearly paid
+    digital media planning rather than any product-catalogue capability.
 - tag: customers.adGroupAssetSets
   spec_file: google-ads-customers-adgroupassetsets-api-openapi.yml
   capability_id: BC-400.60
@@ -515,6 +525,34 @@ edges:
   evidence: '"Creates or removes campaign shared sets", GoogleAdsGoogleadsV25Resources__CampaignSharedSet'
   reason: Shared sets (e.g. negative keyword/placement lists) attached to campaigns are paid-search targeting
     exclusions — digital marketing execution.
+- tag: V25:generateConversionRates
+  spec_file: google-ads-v25-generateconversionrates-api-openapi.yml
+  capability_id: BC-400.60
+  capability_id_l1: BC-400
+  capability_name: Digital Marketing Management
+  confidence: 0.7
+  evidence: '"Returns a collection of conversion rate suggestions for supported plannable…"; GoogleAdsGoogleadsV25Services__ConversionRateSuggestion,
+    SurfaceTargeting'
+  reason: Google Ads planning service returning conversion-rate suggestions for plannable ad surfaces
+    — paid-media campaign planning, squarely Digital Marketing Management.
+- tag: V25:listPlannableLocations
+  spec_file: google-ads-v25-listplannablelocations-api-openapi.yml
+  capability_id: BC-400.60
+  capability_id_l1: BC-400
+  capability_name: Digital Marketing Management
+  confidence: 0.7
+  evidence: '"Returns the list of plannable locations (for example, countries)" / schema PlannableLocation'
+  reason: 'Part of the Google Ads reach-planning surface: enumerating geographies available for media
+    plan construction. This is paid digital media planning, i.e. Digital Marketing Management.'
+- tag: V25:listPlannableUserInterests
+  spec_file: google-ads-v25-listplannableuserinterests-api-openapi.yml
+  capability_id: BC-400.60
+  capability_id_l1: BC-400
+  capability_name: Digital Marketing Management
+  confidence: 0.7
+  evidence: '"Returns the list of plannable user interests" / schema UserInterestInfo'
+  reason: Audience interest taxonomy used to build media plans and ad targeting; belongs to digital/paid
+    media management. Could also be read as segmentation, but the context is ad planning.
 - tag: audienceInsights
   spec_file: google-ads-audience-insights-api-openapi.yml
   reanchored_from: google-ads-audienceinsights-api-openapi.yml
