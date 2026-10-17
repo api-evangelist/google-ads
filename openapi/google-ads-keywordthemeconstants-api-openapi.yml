@@ -138,15 +138,6 @@ components:
         languageCode:
           type: string
           description: The two letter language code for get corresponding keyword theme for refining the scope of the query, default to 'en' if not set.
-    GoogleAdsGoogleadsV25Services__SuggestKeywordThemeConstantsResponse:
-      type: object
-      properties:
-        keywordThemeConstants:
-          type: array
-          description: Smart Campaign keyword theme suggestions.
-          items:
-            $ref: '#/components/schemas/GoogleAdsGoogleadsV25Resources__KeywordThemeConstant'
-      description: Response message for KeywordThemeConstantService.SuggestKeywordThemeConstants.
     GoogleAdsGoogleadsV25Resources__KeywordThemeConstant:
       description: A Smart Campaign keyword theme constant.
       type: object
@@ -163,6 +154,15 @@ components:
         languageCode:
           description: Output only. The ISO-639-1 language code with 2 letters of the constant, eg. "en". To display and query matching purpose, the keyword theme needs to be localized.
           type: string
+    GoogleAdsGoogleadsV25Services__SuggestKeywordThemeConstantsResponse:
+      type: object
+      properties:
+        keywordThemeConstants:
+          type: array
+          description: Smart Campaign keyword theme suggestions.
+          items:
+            $ref: '#/components/schemas/GoogleAdsGoogleadsV25Resources__KeywordThemeConstant'
+      description: Response message for KeywordThemeConstantService.SuggestKeywordThemeConstants.
   securitySchemes:
     oauth2:
       type: oauth2

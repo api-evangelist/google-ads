@@ -125,15 +125,24 @@ paths:
         - https://www.googleapis.com/auth/adwords
 components:
   schemas:
-    GoogleAdsGoogleadsV25Services_SuggestGeoTargetConstantsRequest_LocationNames:
-      description: A list of location names.
+    GoogleAdsGoogleadsV25Services_SuggestGeoTargetConstantsRequest_GeoTargets:
+      description: A list of geo target constant resource names.
       type: object
       properties:
-        names:
+        geoTargetConstants:
           type: array
-          description: A list of location names.
+          description: A list of geo target constant resource names.
           items:
             type: string
+    GoogleAdsGoogleadsV25Services__SuggestGeoTargetConstantsResponse:
+      description: Response message for GeoTargetConstantService.SuggestGeoTargetConstants.
+      type: object
+      properties:
+        geoTargetConstantSuggestions:
+          type: array
+          description: Geo target constant suggestions.
+          items:
+            $ref: '#/components/schemas/GoogleAdsGoogleadsV25Services__GeoTargetConstantSuggestion'
     GoogleAdsGoogleadsV25Services__SuggestGeoTargetConstantsRequest:
       description: Request message for GeoTargetConstantService.SuggestGeoTargetConstants.
       type: object
@@ -172,15 +181,15 @@ components:
           items:
             $ref: '#/components/schemas/GoogleAdsGoogleadsV25Resources__GeoTargetConstant'
       description: A geo target constant suggestion.
-    GoogleAdsGoogleadsV25Services__SuggestGeoTargetConstantsResponse:
-      description: Response message for GeoTargetConstantService.SuggestGeoTargetConstants.
+    GoogleAdsGoogleadsV25Services_SuggestGeoTargetConstantsRequest_LocationNames:
+      description: A list of location names.
       type: object
       properties:
-        geoTargetConstantSuggestions:
+        names:
           type: array
-          description: Geo target constant suggestions.
+          description: A list of location names.
           items:
-            $ref: '#/components/schemas/GoogleAdsGoogleadsV25Services__GeoTargetConstantSuggestion'
+            type: string
     GoogleAdsGoogleadsV25Resources__GeoTargetConstant:
       description: A geo target constant.
       type: object
@@ -220,15 +229,6 @@ components:
         parentGeoTarget:
           type: string
           description: 'Output only. The resource name of the parent geo target constant. Geo target constant resource names have the form: `geoTargetConstants/{parent_geo_target_constant_id}`'
-    GoogleAdsGoogleadsV25Services_SuggestGeoTargetConstantsRequest_GeoTargets:
-      description: A list of geo target constant resource names.
-      type: object
-      properties:
-        geoTargetConstants:
-          type: array
-          description: A list of geo target constant resource names.
-          items:
-            type: string
   securitySchemes:
     oauth2:
       type: oauth2

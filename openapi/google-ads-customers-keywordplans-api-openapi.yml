@@ -133,13 +133,63 @@ paths:
         - https://www.googleapis.com/auth/adwords
 components:
   schemas:
-    GoogleAdsGoogleadsV25Services__MutateKeywordPlansResult:
+    GoogleAdsGoogleadsV25Services__MutateKeywordPlansResponse:
+      description: Response message for a keyword plan mutate.
+      type: object
+      properties:
+        results:
+          description: All results for the mutate.
+          items:
+            $ref: '#/components/schemas/GoogleAdsGoogleadsV25Services__MutateKeywordPlansResult'
+          type: array
+        partialFailureError:
+          description: Errors that pertain to operation failures in the partial failure mode. Returned only when partial_failure = true and all errors occur inside the operations. If any errors occur outside the operations (for example, auth errors), we return an RPC level error.
+          $ref: '#/components/schemas/GoogleRpc__Status'
+    GoogleRpc__Status:
+      description: 'The `Status` type defines a logical error model that is suitable for different programming environments, including REST APIs and RPC APIs. It is used by [gRPC](https://github.com/grpc). Each `Status` message contains three pieces of data: error code, error message, and error details. You can find out more about this error model and how to work with it in the [API Design Guide](https://cloud.google.com/apis/design/errors).'
+      type: object
+      properties:
+        message:
+          description: A developer-facing error message, which should be in English. Any user-facing error message should be localized and sent in the google.rpc.Status.details field, or localized by the client.
+          type: string
+        code:
+          type: integer
+          description: The status code, which should be an enum value of google.rpc.Code.
+          format: int32
+        details:
+          type: array
+          description: A list of messages that carry the error details. There is a common set of message types for APIs to use.
+          items:
+            type: object
+            additionalProperties:
+              description: Properties of the object. Contains field @type with type URL.
+    GoogleAdsGoogleadsV25Common__DateRange:
+      type: object
+      properties:
+        startDate:
+          type: string
+          description: The start date, in yyyy-mm-dd format. This date is inclusive.
+        endDate:
+          description: The end date, in yyyy-mm-dd format. This date is inclusive.
+          type: string
+      description: A date range.
+    GoogleAdsGoogleadsV25Resources__KeywordPlan:
+      description: 'A Keyword Planner plan. Max number of saved keyword plans: 10000. It''s possible to remove plans if limit is reached.'
       type: object
       properties:
         resourceName:
-          description: Returned for successful operations.
           type: string
-      description: The result for the keyword plan mutate.
+          description: 'Immutable. The resource name of the Keyword Planner plan. KeywordPlan resource names have the form: `customers/{customer_id}/keywordPlans/{kp_plan_id}`'
+        forecastPeriod:
+          description: The date period used for forecasting the plan.
+          $ref: '#/components/schemas/GoogleAdsGoogleadsV25Resources__KeywordPlanForecastPeriod'
+        id:
+          format: int64
+          description: Output only. The ID of the keyword plan.
+          type: string
+        name:
+          description: The name of the keyword plan. This field is required and should not be empty when creating new keyword plans.
+          type: string
     GoogleAdsGoogleadsV25Resources__KeywordPlanForecastPeriod:
       description: The forecasting period associated with the keyword plan.
       type: object
@@ -162,46 +212,6 @@ components:
         dateRange:
           description: The custom date range used for forecasting. It cannot be greater than a year. The start and end dates must be in the future. Otherwise, an error will be returned when the forecasting action is performed. The start and end dates are inclusive.
           $ref: '#/components/schemas/GoogleAdsGoogleadsV25Common__DateRange'
-    GoogleAdsGoogleadsV25Services__MutateKeywordPlansResponse:
-      description: Response message for a keyword plan mutate.
-      type: object
-      properties:
-        results:
-          description: All results for the mutate.
-          items:
-            $ref: '#/components/schemas/GoogleAdsGoogleadsV25Services__MutateKeywordPlansResult'
-          type: array
-        partialFailureError:
-          description: Errors that pertain to operation failures in the partial failure mode. Returned only when partial_failure = true and all errors occur inside the operations. If any errors occur outside the operations (for example, auth errors), we return an RPC level error.
-          $ref: '#/components/schemas/GoogleRpc__Status'
-    GoogleAdsGoogleadsV25Common__DateRange:
-      type: object
-      properties:
-        startDate:
-          type: string
-          description: The start date, in yyyy-mm-dd format. This date is inclusive.
-        endDate:
-          description: The end date, in yyyy-mm-dd format. This date is inclusive.
-          type: string
-      description: A date range.
-    GoogleRpc__Status:
-      description: 'The `Status` type defines a logical error model that is suitable for different programming environments, including REST APIs and RPC APIs. It is used by [gRPC](https://github.com/grpc). Each `Status` message contains three pieces of data: error code, error message, and error details. You can find out more about this error model and how to work with it in the [API Design Guide](https://cloud.google.com/apis/design/errors).'
-      type: object
-      properties:
-        message:
-          description: A developer-facing error message, which should be in English. Any user-facing error message should be localized and sent in the google.rpc.Status.details field, or localized by the client.
-          type: string
-        code:
-          type: integer
-          description: The status code, which should be an enum value of google.rpc.Code.
-          format: int32
-        details:
-          type: array
-          description: A list of messages that carry the error details. There is a common set of message types for APIs to use.
-          items:
-            type: object
-            additionalProperties:
-              description: Properties of the object. Contains field @type with type URL.
     GoogleAdsGoogleadsV25Services__MutateKeywordPlansRequest:
       description: Request message for KeywordPlanService.MutateKeywordPlans.
       type: object
@@ -217,6 +227,13 @@ components:
         validateOnly:
           type: boolean
           description: If true, the request is validated but not executed. Only errors are returned, not results.
+    GoogleAdsGoogleadsV25Services__MutateKeywordPlansResult:
+      type: object
+      properties:
+        resourceName:
+          description: Returned for successful operations.
+          type: string
+      description: The result for the keyword plan mutate.
     GoogleAdsGoogleadsV25Services__KeywordPlanOperation:
       type: object
       properties:
@@ -234,23 +251,6 @@ components:
           description: 'Create operation: No resource name is expected for the new keyword plan.'
           $ref: '#/components/schemas/GoogleAdsGoogleadsV25Resources__KeywordPlan'
       description: A single operation (create, update, remove) on a keyword plan.
-    GoogleAdsGoogleadsV25Resources__KeywordPlan:
-      description: 'A Keyword Planner plan. Max number of saved keyword plans: 10000. It''s possible to remove plans if limit is reached.'
-      type: object
-      properties:
-        resourceName:
-          type: string
-          description: 'Immutable. The resource name of the Keyword Planner plan. KeywordPlan resource names have the form: `customers/{customer_id}/keywordPlans/{kp_plan_id}`'
-        forecastPeriod:
-          description: The date period used for forecasting the plan.
-          $ref: '#/components/schemas/GoogleAdsGoogleadsV25Resources__KeywordPlanForecastPeriod'
-        id:
-          format: int64
-          description: Output only. The ID of the keyword plan.
-          type: string
-        name:
-          description: The name of the keyword plan. This field is required and should not be empty when creating new keyword plans.
-          type: string
   securitySchemes:
     oauth2:
       type: oauth2

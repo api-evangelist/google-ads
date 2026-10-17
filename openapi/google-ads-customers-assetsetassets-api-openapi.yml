@@ -133,15 +133,15 @@ paths:
         - https://www.googleapis.com/auth/adwords
 components:
   schemas:
-    GoogleAdsGoogleadsV25Services__MutateAssetSetAssetResult:
-      description: The result for the asset set asset mutate.
+    GoogleAdsGoogleadsV25Services__AssetSetAssetOperation:
+      description: A single operation (create, remove) on an asset set asset.
       type: object
       properties:
-        assetSetAsset:
-          description: The mutated asset set asset with only mutable fields after mutate. The field will only be returned when response_content_type is set to "MUTABLE_RESOURCE".
+        create:
+          description: 'Create operation: No resource name is expected for the new asset set asset'
           $ref: '#/components/schemas/GoogleAdsGoogleadsV25Resources__AssetSetAsset'
-        resourceName:
-          description: Returned for successful operations.
+        remove:
+          description: 'Remove operation: A resource name for the removed asset set asset is expected, in this format: `customers/{customer_id}/assetSetAssets/{asset_set_id}~{asset_id}`'
           type: string
     GoogleAdsGoogleadsV25Services__MutateAssetSetAssetsResponse:
       description: Response message for an asset set asset mutate.
@@ -173,16 +173,6 @@ components:
             type: object
             additionalProperties:
               description: Properties of the object. Contains field @type with type URL.
-    GoogleAdsGoogleadsV25Services__AssetSetAssetOperation:
-      description: A single operation (create, remove) on an asset set asset.
-      type: object
-      properties:
-        create:
-          description: 'Create operation: No resource name is expected for the new asset set asset'
-          $ref: '#/components/schemas/GoogleAdsGoogleadsV25Resources__AssetSetAsset'
-        remove:
-          description: 'Remove operation: A resource name for the removed asset set asset is expected, in this format: `customers/{customer_id}/assetSetAssets/{asset_set_id}~{asset_id}`'
-          type: string
     GoogleAdsGoogleadsV25Resources__AssetSetAsset:
       description: AssetSetAsset is the link between an asset and an asset set. Adding an AssetSetAsset links an asset with an asset set.
       type: object
@@ -235,6 +225,16 @@ components:
           - UNSPECIFIED
           - RESOURCE_NAME_ONLY
           - MUTABLE_RESOURCE
+    GoogleAdsGoogleadsV25Services__MutateAssetSetAssetResult:
+      description: The result for the asset set asset mutate.
+      type: object
+      properties:
+        assetSetAsset:
+          description: The mutated asset set asset with only mutable fields after mutate. The field will only be returned when response_content_type is set to "MUTABLE_RESOURCE".
+          $ref: '#/components/schemas/GoogleAdsGoogleadsV25Resources__AssetSetAsset'
+        resourceName:
+          description: Returned for successful operations.
+          type: string
   securitySchemes:
     oauth2:
       type: oauth2

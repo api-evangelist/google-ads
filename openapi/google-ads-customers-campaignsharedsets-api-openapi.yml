@@ -133,52 +133,6 @@ paths:
         - https://www.googleapis.com/auth/adwords
 components:
   schemas:
-    GoogleAdsGoogleadsV25Services__MutateCampaignSharedSetsRequest:
-      description: Request message for CampaignSharedSetService.MutateCampaignSharedSets.
-      type: object
-      properties:
-        partialFailure:
-          type: boolean
-          description: If true, successful operations will be carried out and invalid operations will return errors. If false, all operations will be carried out in one transaction if and only if they are all valid. Default is false.
-        validateOnly:
-          type: boolean
-          description: If true, the request is validated but not executed. Only errors are returned, not results.
-        responseContentType:
-          description: The response content type setting. Determines whether the mutable resource or just the resource name should be returned post mutation.
-          type: string
-          x-enumDescriptions:
-          - Not specified. Will return the resource name only in the response.
-          - The mutate response will be the resource name.
-          - The mutate response will contain the resource name and the resource with mutable fields if possible. Otherwise, only the resource name will be returned.
-          enum:
-          - UNSPECIFIED
-          - RESOURCE_NAME_ONLY
-          - MUTABLE_RESOURCE
-        operations:
-          description: Required. The list of operations to perform on individual campaign shared sets.
-          items:
-            $ref: '#/components/schemas/GoogleAdsGoogleadsV25Services__CampaignSharedSetOperation'
-          type: array
-    GoogleAdsGoogleadsV25Services__MutateCampaignSharedSetResult:
-      type: object
-      properties:
-        resourceName:
-          type: string
-          description: Returned for successful operations.
-        campaignSharedSet:
-          description: The mutated campaign shared set with only mutable fields after mutate. The field will only be returned when response_content_type is set to "MUTABLE_RESOURCE".
-          $ref: '#/components/schemas/GoogleAdsGoogleadsV25Resources__CampaignSharedSet'
-      description: The result for the campaign shared set mutate.
-    GoogleAdsGoogleadsV25Services__CampaignSharedSetOperation:
-      description: A single operation (create, remove) on a campaign shared set.
-      type: object
-      properties:
-        create:
-          description: 'Create operation: No resource name is expected for the new campaign shared set.'
-          $ref: '#/components/schemas/GoogleAdsGoogleadsV25Resources__CampaignSharedSet'
-        remove:
-          description: 'Remove operation: A resource name for the removed campaign shared set is expected, in this format: `customers/{customer_id}/campaignSharedSets/{campaign_id}~{shared_set_id}`'
-          type: string
     GoogleRpc__Status:
       description: 'The `Status` type defines a logical error model that is suitable for different programming environments, including REST APIs and RPC APIs. It is used by [gRPC](https://github.com/grpc). Each `Status` message contains three pieces of data: error code, error message, and error details. You can find out more about this error model and how to work with it in the [API Design Guide](https://cloud.google.com/apis/design/errors).'
       type: object
@@ -235,6 +189,52 @@ components:
           - Used for return value only. Represents value unknown in this version.
           - The campaign shared set is enabled.
           - The campaign shared set is removed and can no longer be used.
+    GoogleAdsGoogleadsV25Services__CampaignSharedSetOperation:
+      description: A single operation (create, remove) on a campaign shared set.
+      type: object
+      properties:
+        create:
+          description: 'Create operation: No resource name is expected for the new campaign shared set.'
+          $ref: '#/components/schemas/GoogleAdsGoogleadsV25Resources__CampaignSharedSet'
+        remove:
+          description: 'Remove operation: A resource name for the removed campaign shared set is expected, in this format: `customers/{customer_id}/campaignSharedSets/{campaign_id}~{shared_set_id}`'
+          type: string
+    GoogleAdsGoogleadsV25Services__MutateCampaignSharedSetResult:
+      type: object
+      properties:
+        resourceName:
+          type: string
+          description: Returned for successful operations.
+        campaignSharedSet:
+          description: The mutated campaign shared set with only mutable fields after mutate. The field will only be returned when response_content_type is set to "MUTABLE_RESOURCE".
+          $ref: '#/components/schemas/GoogleAdsGoogleadsV25Resources__CampaignSharedSet'
+      description: The result for the campaign shared set mutate.
+    GoogleAdsGoogleadsV25Services__MutateCampaignSharedSetsRequest:
+      description: Request message for CampaignSharedSetService.MutateCampaignSharedSets.
+      type: object
+      properties:
+        partialFailure:
+          type: boolean
+          description: If true, successful operations will be carried out and invalid operations will return errors. If false, all operations will be carried out in one transaction if and only if they are all valid. Default is false.
+        validateOnly:
+          type: boolean
+          description: If true, the request is validated but not executed. Only errors are returned, not results.
+        responseContentType:
+          description: The response content type setting. Determines whether the mutable resource or just the resource name should be returned post mutation.
+          type: string
+          x-enumDescriptions:
+          - Not specified. Will return the resource name only in the response.
+          - The mutate response will be the resource name.
+          - The mutate response will contain the resource name and the resource with mutable fields if possible. Otherwise, only the resource name will be returned.
+          enum:
+          - UNSPECIFIED
+          - RESOURCE_NAME_ONLY
+          - MUTABLE_RESOURCE
+        operations:
+          description: Required. The list of operations to perform on individual campaign shared sets.
+          items:
+            $ref: '#/components/schemas/GoogleAdsGoogleadsV25Services__CampaignSharedSetOperation'
+          type: array
   securitySchemes:
     oauth2:
       type: oauth2

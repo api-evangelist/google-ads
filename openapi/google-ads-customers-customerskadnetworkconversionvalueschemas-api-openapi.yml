@@ -133,6 +133,19 @@ paths:
         - https://www.googleapis.com/auth/adwords
 components:
   schemas:
+    GoogleAdsGoogleadsV25Services__MutateCustomerSkAdNetworkConversionValueSchemaRequest:
+      type: object
+      properties:
+        operation:
+          description: The operation to perform.
+          $ref: '#/components/schemas/GoogleAdsGoogleadsV25Services__CustomerSkAdNetworkConversionValueSchemaOperation'
+        validateOnly:
+          type: boolean
+          description: If true, the request is validated but not executed. Only errors are returned, not results.
+        enableWarnings:
+          description: Optional. If true, enables returning warnings. Warnings return error messages and error codes without blocking the execution of the mutate operation.
+          type: boolean
+      description: Request message for CustomerSkAdNetworkConversionValueSchemaService.MutateCustomerSkAdNetworkConversionValueSchema.
     GoogleAdsGoogleadsV25Resources_CustomerSkAdNetworkConversionValueSchemaSkAdNetworkConversionValueSchema_Event:
       description: Defines a Google conversion event that the conversion value is mapped to.
       type: object
@@ -157,19 +170,54 @@ components:
         mappedEventName:
           type: string
           description: Output only. Google event name represented by this conversion value.
-    GoogleAdsGoogleadsV25Services__MutateCustomerSkAdNetworkConversionValueSchemaRequest:
+    ? GoogleAdsGoogleadsV25Resources_CustomerSkAdNetworkConversionValueSchemaSkAdNetworkConversionValueSchema_FineGrainedConversionValueMappings
+    : description: Mappings for fine grained conversion value.
       type: object
       properties:
-        operation:
-          description: The operation to perform.
-          $ref: '#/components/schemas/GoogleAdsGoogleadsV25Services__CustomerSkAdNetworkConversionValueSchemaOperation'
-        validateOnly:
-          type: boolean
-          description: If true, the request is validated but not executed. Only errors are returned, not results.
-        enableWarnings:
-          description: Optional. If true, enables returning warnings. Warnings return error messages and error codes without blocking the execution of the mutate operation.
-          type: boolean
-      description: Request message for CustomerSkAdNetworkConversionValueSchemaService.MutateCustomerSkAdNetworkConversionValueSchema.
+        fineGrainedConversionValue:
+          description: Output only. Fine grained conversion value. Valid values are in the inclusive range [0,63].
+          type: integer
+          format: int32
+        conversionValueMapping:
+          $ref: '#/components/schemas/GoogleAdsGoogleadsV25Resources_CustomerSkAdNetworkConversionValueSchemaSkAdNetworkConversionValueSchema_ConversionValueMapping'
+          description: Output only. Conversion events the fine grained conversion value maps to.
+    GoogleAdsGoogleadsV25Resources_CustomerSkAdNetworkConversionValueSchemaSkAdNetworkConversionValueSchema_PostbackMapping:
+      type: object
+      properties:
+        coarseGrainedConversionValueMappings:
+          $ref: '#/components/schemas/GoogleAdsGoogleadsV25Resources_CustomerSkAdNetworkConversionValueSchemaSkAdNetworkConversionValueSchema_CoarseGrainedConversionValueMappings'
+          description: Output only. Conversion value mappings for all coarse grained conversion values.
+        lockWindowCoarseConversionValue:
+          enum:
+          - UNSPECIFIED
+          - UNKNOWN
+          - UNAVAILABLE
+          - LOW
+          - MEDIUM
+          - HIGH
+          - NONE
+          type: string
+          description: Output only. Coarse grained conversion value that triggers conversion window lock.
+          x-enumDescriptions:
+          - Not specified.
+          - The value is unknown in this version.
+          - The value was not present in the postback or we do not have this data for other reasons.
+          - A low coarse conversion value.
+          - A medium coarse conversion value.
+          - A high coarse conversion value.
+          - A coarse conversion value was not configured.
+        lockWindowFineConversionValue:
+          format: int32
+          type: integer
+          description: Output only. Fine grained conversion value that triggers conversion window lock.
+        lockWindowEvent:
+          description: Output only. Event name that triggers conversion window lock.
+          type: string
+        postbackSequenceIndex:
+          description: Output only. 0-based index that indicates the order of postback. Valid values are in the inclusive range [0,2].
+          type: integer
+          format: int32
+      description: Mappings for each postback in multiple conversion windows.
     GoogleAdsGoogleadsV25Services__MutateCustomerSkAdNetworkConversionValueSchemaResponse:
       type: object
       properties:
@@ -215,6 +263,28 @@ components:
             type: object
             additionalProperties:
               description: Properties of the object. Contains field @type with type URL.
+    ? GoogleAdsGoogleadsV25Resources_CustomerSkAdNetworkConversionValueSchemaSkAdNetworkConversionValueSchemaEvent_EventOccurrenceRange
+    : description: Defines a range for event counter values.
+      type: object
+      properties:
+        minEventCount:
+          type: string
+          description: Output only. For event counter ranges, the minimum of the defined range. A value of 0 will be treated as unset.
+          format: int64
+        maxEventCount:
+          type: string
+          description: Output only. For event counter ranges, the maximum of the defined range. A value of 0 will be treated as unset.
+          format: int64
+    GoogleAdsGoogleadsV25Services__MutateCustomerSkAdNetworkConversionValueSchemaResult:
+      type: object
+      properties:
+        resourceName:
+          description: Resource name of the customer that was modified.
+          type: string
+        appId:
+          description: App ID of the SkanConversionValue modified.
+          type: string
+      description: The result for the CustomerSkAdNetworkConversionValueSchema mutate.
     ? GoogleAdsGoogleadsV25Resources_CustomerSkAdNetworkConversionValueSchemaSkAdNetworkConversionValueSchema_CoarseGrainedConversionValueMappings
     : description: Mappings for coarse grained conversion values.
       type: object
@@ -228,23 +298,16 @@ components:
         mediumConversionValueMapping:
           description: Output only. Mapping for "medium" coarse conversion value.
           $ref: '#/components/schemas/GoogleAdsGoogleadsV25Resources_CustomerSkAdNetworkConversionValueSchemaSkAdNetworkConversionValueSchema_ConversionValueMapping'
-    GoogleAdsGoogleadsV25Services__CustomerSkAdNetworkConversionValueSchemaOperation:
-      type: object
-      properties:
-        update:
-          description: 'Update operation: The schema is expected to have a valid resource name.'
-          $ref: '#/components/schemas/GoogleAdsGoogleadsV25Resources__CustomerSkAdNetworkConversionValueSchema'
-      description: A single update operation for a CustomerSkAdNetworkConversionValueSchema.
-    GoogleAdsGoogleadsV25Services__MutateCustomerSkAdNetworkConversionValueSchemaResult:
+    GoogleAdsGoogleadsV25Resources__CustomerSkAdNetworkConversionValueSchema:
+      description: A CustomerSkAdNetworkConversionValueSchema.
       type: object
       properties:
         resourceName:
-          description: Resource name of the customer that was modified.
           type: string
-        appId:
-          description: App ID of the SkanConversionValue modified.
-          type: string
-      description: The result for the CustomerSkAdNetworkConversionValueSchema mutate.
+          description: 'Output only. The resource name of the schema. CustomerSkAdNetworkConversionValueSchema resource names have the form: customers/{customer_id}/customerSkAdNetworkConversionValueSchemas/{account_link_id}'
+        schema:
+          $ref: '#/components/schemas/GoogleAdsGoogleadsV25Resources_CustomerSkAdNetworkConversionValueSchema_SkAdNetworkConversionValueSchema'
+          description: Output only. The schema for the specified resource.
     GoogleAdsGoogleadsV25Resources_CustomerSkAdNetworkConversionValueSchema_SkAdNetworkConversionValueSchema:
       type: object
       properties:
@@ -278,76 +341,13 @@ components:
           format: double
           description: Output only. For revenue ranges, the maximum value in `currency_code` for which this conversion value would be updated. A value of 0 will be treated as unset.
           type: number
-    ? GoogleAdsGoogleadsV25Resources_CustomerSkAdNetworkConversionValueSchemaSkAdNetworkConversionValueSchema_FineGrainedConversionValueMappings
-    : description: Mappings for fine grained conversion value.
+    GoogleAdsGoogleadsV25Services__CustomerSkAdNetworkConversionValueSchemaOperation:
       type: object
       properties:
-        fineGrainedConversionValue:
-          description: Output only. Fine grained conversion value. Valid values are in the inclusive range [0,63].
-          type: integer
-          format: int32
-        conversionValueMapping:
-          $ref: '#/components/schemas/GoogleAdsGoogleadsV25Resources_CustomerSkAdNetworkConversionValueSchemaSkAdNetworkConversionValueSchema_ConversionValueMapping'
-          description: Output only. Conversion events the fine grained conversion value maps to.
-    GoogleAdsGoogleadsV25Resources__CustomerSkAdNetworkConversionValueSchema:
-      description: A CustomerSkAdNetworkConversionValueSchema.
-      type: object
-      properties:
-        resourceName:
-          type: string
-          description: 'Output only. The resource name of the schema. CustomerSkAdNetworkConversionValueSchema resource names have the form: customers/{customer_id}/customerSkAdNetworkConversionValueSchemas/{account_link_id}'
-        schema:
-          $ref: '#/components/schemas/GoogleAdsGoogleadsV25Resources_CustomerSkAdNetworkConversionValueSchema_SkAdNetworkConversionValueSchema'
-          description: Output only. The schema for the specified resource.
-    ? GoogleAdsGoogleadsV25Resources_CustomerSkAdNetworkConversionValueSchemaSkAdNetworkConversionValueSchemaEvent_EventOccurrenceRange
-    : description: Defines a range for event counter values.
-      type: object
-      properties:
-        minEventCount:
-          type: string
-          description: Output only. For event counter ranges, the minimum of the defined range. A value of 0 will be treated as unset.
-          format: int64
-        maxEventCount:
-          type: string
-          description: Output only. For event counter ranges, the maximum of the defined range. A value of 0 will be treated as unset.
-          format: int64
-    GoogleAdsGoogleadsV25Resources_CustomerSkAdNetworkConversionValueSchemaSkAdNetworkConversionValueSchema_PostbackMapping:
-      type: object
-      properties:
-        coarseGrainedConversionValueMappings:
-          $ref: '#/components/schemas/GoogleAdsGoogleadsV25Resources_CustomerSkAdNetworkConversionValueSchemaSkAdNetworkConversionValueSchema_CoarseGrainedConversionValueMappings'
-          description: Output only. Conversion value mappings for all coarse grained conversion values.
-        lockWindowCoarseConversionValue:
-          enum:
-          - UNSPECIFIED
-          - UNKNOWN
-          - UNAVAILABLE
-          - LOW
-          - MEDIUM
-          - HIGH
-          - NONE
-          type: string
-          description: Output only. Coarse grained conversion value that triggers conversion window lock.
-          x-enumDescriptions:
-          - Not specified.
-          - The value is unknown in this version.
-          - The value was not present in the postback or we do not have this data for other reasons.
-          - A low coarse conversion value.
-          - A medium coarse conversion value.
-          - A high coarse conversion value.
-          - A coarse conversion value was not configured.
-        lockWindowFineConversionValue:
-          format: int32
-          type: integer
-          description: Output only. Fine grained conversion value that triggers conversion window lock.
-        lockWindowEvent:
-          description: Output only. Event name that triggers conversion window lock.
-          type: string
-        postbackSequenceIndex:
-          description: Output only. 0-based index that indicates the order of postback. Valid values are in the inclusive range [0,2].
-          type: integer
-          format: int32
-      description: Mappings for each postback in multiple conversion windows.
+        update:
+          description: 'Update operation: The schema is expected to have a valid resource name.'
+          $ref: '#/components/schemas/GoogleAdsGoogleadsV25Resources__CustomerSkAdNetworkConversionValueSchema'
+      description: A single update operation for a CustomerSkAdNetworkConversionValueSchema.
   securitySchemes:
     oauth2:
       type: oauth2

@@ -159,58 +159,6 @@ components:
           items:
             $ref: '#/components/schemas/GoogleAdsGoogleadsV25Services__MutateCustomAudienceResult'
           type: array
-    GoogleAdsGoogleadsV25Resources__CustomAudience:
-      description: 'A custom audience. This is a list of users by interest. The unique key of a custom audience consists of the following fields: name. Violating the unique key constraint produces error: CustomAudienceError.NAME_ALREADY_USED'
-      type: object
-      properties:
-        type:
-          type: string
-          description: Type of the custom audience. ("INTEREST" OR "PURCHASE_INTENT" is not allowed for newly created custom audience but kept for existing audiences)
-          x-enumDescriptions:
-          - Not specified.
-          - Used for return value only. Represents value unknown in this version.
-          - Google Ads will auto-select the best interpretation at serving time.
-          - Matches users by their interests.
-          - Matches users by topics they are researching or products they are considering for purchase.
-          - Matches users by what they searched on Google Search.
-          enum:
-          - UNSPECIFIED
-          - UNKNOWN
-          - AUTO
-          - INTEREST
-          - PURCHASE_INTENT
-          - SEARCH
-        id:
-          description: Output only. ID of the custom audience.
-          type: string
-          format: int64
-        status:
-          x-enumDescriptions:
-          - Not specified.
-          - Used for return value only. Represents value unknown in this version.
-          - Enabled status - custom audience is enabled and can be targeted.
-          - Removed status - custom audience is removed and cannot be used for targeting.
-          enum:
-          - UNSPECIFIED
-          - UNKNOWN
-          - ENABLED
-          - REMOVED
-          type: string
-          description: Output only. Status of this custom audience. Indicates whether the custom audience is enabled or removed.
-        description:
-          type: string
-          description: Description of this custom audience.
-        members:
-          description: List of custom audience members that this custom audience is composed of. Members can be added during CustomAudience creation. If members are presented in UPDATE operation, existing members will be overridden.
-          items:
-            $ref: '#/components/schemas/GoogleAdsGoogleadsV25Resources__CustomAudienceMember'
-          type: array
-        name:
-          description: Name of the custom audience. It should be unique for all custom audiences created by a customer. This field is required for creating operations.
-          type: string
-        resourceName:
-          type: string
-          description: 'Immutable. The resource name of the custom audience. Custom audience resource names have the form: `customers/{customer_id}/customAudiences/{custom_audience_id}`'
     GoogleAdsGoogleadsV25Services__MutateCustomAudienceResult:
       type: object
       properties:
@@ -264,6 +212,58 @@ components:
         url:
           type: string
           description: An HTTP URL, protocol-included — at most 2048 characters, which includes contents users have interests in.
+    GoogleAdsGoogleadsV25Resources__CustomAudience:
+      description: 'A custom audience. This is a list of users by interest. The unique key of a custom audience consists of the following fields: name. Violating the unique key constraint produces error: CustomAudienceError.NAME_ALREADY_USED'
+      type: object
+      properties:
+        type:
+          type: string
+          description: Type of the custom audience. ("INTEREST" OR "PURCHASE_INTENT" is not allowed for newly created custom audience but kept for existing audiences)
+          x-enumDescriptions:
+          - Not specified.
+          - Used for return value only. Represents value unknown in this version.
+          - Google Ads will auto-select the best interpretation at serving time.
+          - Matches users by their interests.
+          - Matches users by topics they are researching or products they are considering for purchase.
+          - Matches users by what they searched on Google Search.
+          enum:
+          - UNSPECIFIED
+          - UNKNOWN
+          - AUTO
+          - INTEREST
+          - PURCHASE_INTENT
+          - SEARCH
+        id:
+          description: Output only. ID of the custom audience.
+          type: string
+          format: int64
+        status:
+          x-enumDescriptions:
+          - Not specified.
+          - Used for return value only. Represents value unknown in this version.
+          - Enabled status - custom audience is enabled and can be targeted.
+          - Removed status - custom audience is removed and cannot be used for targeting.
+          enum:
+          - UNSPECIFIED
+          - UNKNOWN
+          - ENABLED
+          - REMOVED
+          type: string
+          description: Output only. Status of this custom audience. Indicates whether the custom audience is enabled or removed.
+        description:
+          type: string
+          description: Description of this custom audience.
+        members:
+          description: List of custom audience members that this custom audience is composed of. Members can be added during CustomAudience creation. If members are presented in UPDATE operation, existing members will be overridden.
+          items:
+            $ref: '#/components/schemas/GoogleAdsGoogleadsV25Resources__CustomAudienceMember'
+          type: array
+        name:
+          description: Name of the custom audience. It should be unique for all custom audiences created by a customer. This field is required for creating operations.
+          type: string
+        resourceName:
+          type: string
+          description: 'Immutable. The resource name of the custom audience. Custom audience resource names have the form: `customers/{customer_id}/customAudiences/{custom_audience_id}`'
   securitySchemes:
     oauth2:
       type: oauth2

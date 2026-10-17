@@ -133,13 +133,16 @@ paths:
         - https://www.googleapis.com/auth/adwords
 components:
   schemas:
-    GoogleAdsGoogleadsV25Services__MutateCustomerLabelResult:
+    GoogleAdsGoogleadsV25Services__CustomerLabelOperation:
+      description: A single operation (create, remove) on a customer-label relationship.
       type: object
       properties:
-        resourceName:
-          description: Returned for successful operations.
+        create:
+          $ref: '#/components/schemas/GoogleAdsGoogleadsV25Resources__CustomerLabel'
+          description: 'Create operation: No resource name is expected for the new customer-label relationship.'
+        remove:
+          description: 'Remove operation: A resource name for the customer-label relationship being removed, in this format: `customers/{customer_id}/customerLabels/{label_id}`'
           type: string
-      description: The result for a customer label mutate.
     GoogleRpc__Status:
       description: 'The `Status` type defines a logical error model that is suitable for different programming environments, including REST APIs and RPC APIs. It is used by [gRPC](https://github.com/grpc). Each `Status` message contains three pieces of data: error code, error message, and error details. You can find out more about this error model and how to work with it in the [API Design Guide](https://cloud.google.com/apis/design/errors).'
       type: object
@@ -158,29 +161,6 @@ components:
             type: object
             additionalProperties:
               description: Properties of the object. Contains field @type with type URL.
-    GoogleAdsGoogleadsV25Resources__CustomerLabel:
-      type: object
-      properties:
-        resourceName:
-          type: string
-          description: 'Immutable. Name of the resource. Customer label resource names have the form: `customers/{customer_id}/customerLabels/{label_id}`'
-        customer:
-          type: string
-          description: Output only. The resource name of the customer to which the label is attached. This field should not be set when creating a new `CustomerLabel`.
-        label:
-          description: 'Output only. The resource name of the label assigned to the customer. This field should not be set when creating a new `CustomerLabel`. Note: the Customer ID portion of the label resource name is not validated when creating a new `CustomerLabel`.'
-          type: string
-      description: Represents a relationship between a customer and a label. This customer may not have access to all the labels attached to it. Additional CustomerLabels may be returned by increasing permissions with login-customer-id.
-    GoogleAdsGoogleadsV25Services__CustomerLabelOperation:
-      description: A single operation (create, remove) on a customer-label relationship.
-      type: object
-      properties:
-        create:
-          $ref: '#/components/schemas/GoogleAdsGoogleadsV25Resources__CustomerLabel'
-          description: 'Create operation: No resource name is expected for the new customer-label relationship.'
-        remove:
-          description: 'Remove operation: A resource name for the customer-label relationship being removed, in this format: `customers/{customer_id}/customerLabels/{label_id}`'
-          type: string
     GoogleAdsGoogleadsV25Services__MutateCustomerLabelsRequest:
       description: Request message for CustomerLabelService.MutateCustomerLabels. A single `MutateCustomerLabelsRequest` can only modify labels for the single customer account specified in the request. To apply a label to multiple different accounts, separate `MutateCustomerLabelsRequest` calls must be made.
       type: object
@@ -196,6 +176,26 @@ components:
         partialFailure:
           description: If true, successful operations will be carried out and invalid operations will return errors. If false, all operations will be carried out in one transaction if and only if they are all valid. Default is false.
           type: boolean
+    GoogleAdsGoogleadsV25Services__MutateCustomerLabelResult:
+      type: object
+      properties:
+        resourceName:
+          description: Returned for successful operations.
+          type: string
+      description: The result for a customer label mutate.
+    GoogleAdsGoogleadsV25Resources__CustomerLabel:
+      type: object
+      properties:
+        resourceName:
+          type: string
+          description: 'Immutable. Name of the resource. Customer label resource names have the form: `customers/{customer_id}/customerLabels/{label_id}`'
+        customer:
+          type: string
+          description: Output only. The resource name of the customer to which the label is attached. This field should not be set when creating a new `CustomerLabel`.
+        label:
+          description: 'Output only. The resource name of the label assigned to the customer. This field should not be set when creating a new `CustomerLabel`. Note: the Customer ID portion of the label resource name is not validated when creating a new `CustomerLabel`.'
+          type: string
+      description: Represents a relationship between a customer and a label. This customer may not have access to all the labels attached to it. Additional CustomerLabels may be returned by increasing permissions with login-customer-id.
     GoogleAdsGoogleadsV25Services__MutateCustomerLabelsResponse:
       type: object
       properties:

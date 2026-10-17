@@ -133,6 +133,24 @@ paths:
         - https://www.googleapis.com/auth/adwords
 components:
   schemas:
+    GoogleAdsGoogleadsV25Services__MutateCustomerConversionGoalResult:
+      type: object
+      properties:
+        resourceName:
+          type: string
+          description: Returned for successful operations.
+      description: The result for the customer conversion goal mutate.
+    GoogleAdsGoogleadsV25Services__CustomerConversionGoalOperation:
+      type: object
+      properties:
+        update:
+          description: 'Update operation: The customer conversion goal is expected to have a valid resource name.'
+          $ref: '#/components/schemas/GoogleAdsGoogleadsV25Resources__CustomerConversionGoal'
+        updateMask:
+          format: google-fieldmask
+          description: FieldMask that determines which resource fields are modified in an update.
+          type: string
+      description: A single operation (update) on a customer conversion goal.
     GoogleAdsGoogleadsV25Resources__CustomerConversionGoal:
       type: object
       properties:
@@ -219,13 +237,6 @@ components:
           type: boolean
           description: The biddability of the customer conversion goal.
       description: Biddability control for conversion actions with a matching category and origin.
-    GoogleAdsGoogleadsV25Services__MutateCustomerConversionGoalResult:
-      type: object
-      properties:
-        resourceName:
-          type: string
-          description: Returned for successful operations.
-      description: The result for the customer conversion goal mutate.
     GoogleAdsGoogleadsV25Services__MutateCustomerConversionGoalsRequest:
       type: object
       properties:
@@ -247,17 +258,6 @@ components:
           description: All results for the mutate.
           items:
             $ref: '#/components/schemas/GoogleAdsGoogleadsV25Services__MutateCustomerConversionGoalResult'
-    GoogleAdsGoogleadsV25Services__CustomerConversionGoalOperation:
-      type: object
-      properties:
-        update:
-          description: 'Update operation: The customer conversion goal is expected to have a valid resource name.'
-          $ref: '#/components/schemas/GoogleAdsGoogleadsV25Resources__CustomerConversionGoal'
-        updateMask:
-          format: google-fieldmask
-          description: FieldMask that determines which resource fields are modified in an update.
-          type: string
-      description: A single operation (update) on a customer conversion goal.
   securitySchemes:
     oauth2:
       type: oauth2

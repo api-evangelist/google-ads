@@ -133,26 +133,6 @@ paths:
         - https://www.googleapis.com/auth/adwords
 components:
   schemas:
-    GoogleAdsGoogleadsV25Services__ConversionGoalCampaignConfigOperation:
-      description: A single operation (update) on a conversion goal campaign config.
-      type: object
-      properties:
-        updateMask:
-          format: google-fieldmask
-          description: FieldMask that determines which resource fields are modified in an update.
-          type: string
-        update:
-          $ref: '#/components/schemas/GoogleAdsGoogleadsV25Resources__ConversionGoalCampaignConfig'
-          description: 'Update operation: The conversion goal campaign config is expected to have a valid resource name.'
-    GoogleAdsGoogleadsV25Services__MutateConversionGoalCampaignConfigsResponse:
-      type: object
-      properties:
-        results:
-          type: array
-          description: All results for the mutate.
-          items:
-            $ref: '#/components/schemas/GoogleAdsGoogleadsV25Services__MutateConversionGoalCampaignConfigResult'
-      description: Response message for a conversion goal campaign config mutate.
     GoogleAdsGoogleadsV25Resources__ConversionGoalCampaignConfig:
       description: Conversion goal settings for a Campaign.
       type: object
@@ -179,16 +159,17 @@ components:
         customConversionGoal:
           type: string
           description: The custom conversion goal the campaign is using for optimization.
-    GoogleAdsGoogleadsV25Services__MutateConversionGoalCampaignConfigResult:
-      description: The result for the conversion goal campaign config mutate.
+    GoogleAdsGoogleadsV25Services__ConversionGoalCampaignConfigOperation:
+      description: A single operation (update) on a conversion goal campaign config.
       type: object
       properties:
-        resourceName:
-          description: Returned for successful operations.
+        updateMask:
+          format: google-fieldmask
+          description: FieldMask that determines which resource fields are modified in an update.
           type: string
-        conversionGoalCampaignConfig:
+        update:
           $ref: '#/components/schemas/GoogleAdsGoogleadsV25Resources__ConversionGoalCampaignConfig'
-          description: The mutated ConversionGoalCampaignConfig with only mutable fields after mutate. The field will only be returned when response_content_type is set to "MUTABLE_RESOURCE".
+          description: 'Update operation: The conversion goal campaign config is expected to have a valid resource name.'
     GoogleAdsGoogleadsV25Services__MutateConversionGoalCampaignConfigsRequest:
       type: object
       properties:
@@ -212,6 +193,25 @@ components:
           type: string
           description: The response content type setting. Determines whether the mutable resource or just the resource name should be returned post mutation.
       description: Request message for ConversionGoalCampaignConfigService.MutateConversionGoalCampaignConfigs.
+    GoogleAdsGoogleadsV25Services__MutateConversionGoalCampaignConfigResult:
+      description: The result for the conversion goal campaign config mutate.
+      type: object
+      properties:
+        resourceName:
+          description: Returned for successful operations.
+          type: string
+        conversionGoalCampaignConfig:
+          $ref: '#/components/schemas/GoogleAdsGoogleadsV25Resources__ConversionGoalCampaignConfig'
+          description: The mutated ConversionGoalCampaignConfig with only mutable fields after mutate. The field will only be returned when response_content_type is set to "MUTABLE_RESOURCE".
+    GoogleAdsGoogleadsV25Services__MutateConversionGoalCampaignConfigsResponse:
+      type: object
+      properties:
+        results:
+          type: array
+          description: All results for the mutate.
+          items:
+            $ref: '#/components/schemas/GoogleAdsGoogleadsV25Services__MutateConversionGoalCampaignConfigResult'
+      description: Response message for a conversion goal campaign config mutate.
   securitySchemes:
     oauth2:
       type: oauth2

@@ -247,15 +247,13 @@ paths:
         - https://www.googleapis.com/auth/adwords
 components:
   schemas:
-    GoogleAdsGoogleadsV25Services__RemoveYouTubeVideoUploadResponse:
+    GoogleAdsGoogleadsV25Services__UpdateYouTubeVideoUploadResponse:
+      description: Response message for YouTubeVideoUploadService.UpdateYouTubeVideoUpload.
       type: object
       properties:
-        resourceNames:
-          description: The resource names of the successfully removed YouTube video uploads.
-          items:
-            type: string
-          type: array
-      description: Response message for YouTubeVideoUploadService.RemoveYouTubeVideoUpload.
+        resourceName:
+          description: The resource name of the successfully updated YouTube video upload.
+          type: string
     GoogleAdsGoogleadsV25Services__RemoveYouTubeVideoUploadRequest:
       description: Request message for YouTubeVideoUploadService.RemoveYouTubeVideoUpload.
       type: object
@@ -265,13 +263,26 @@ components:
           items:
             type: string
           type: array
-    GoogleAdsGoogleadsV25Services__UpdateYouTubeVideoUploadResponse:
-      description: Response message for YouTubeVideoUploadService.UpdateYouTubeVideoUpload.
+    GoogleAdsGoogleadsV25Services__RemoveYouTubeVideoUploadResponse:
       type: object
       properties:
-        resourceName:
-          description: The resource name of the successfully updated YouTube video upload.
+        resourceNames:
+          description: The resource names of the successfully removed YouTube video uploads.
+          items:
+            type: string
+          type: array
+      description: Response message for YouTubeVideoUploadService.RemoveYouTubeVideoUpload.
+    GoogleAdsGoogleadsV25Services__UpdateYouTubeVideoUploadRequest:
+      description: Request message for YouTubeVideoUploadService.UpdateYouTubeVideoUpload.
+      type: object
+      properties:
+        youTubeVideoUpload:
+          $ref: '#/components/schemas/GoogleAdsGoogleadsV25Resources__YouTubeVideoUpload'
+          description: Required. The YouTube video upload resource to be updated. It's expected to have a valid resource name. Required.
+        updateMask:
+          description: Required. FieldMask that determines which resource fields are modified in an update.
           type: string
+          format: google-fieldmask
     GoogleAdsGoogleadsV25Resources__YouTubeVideoUpload:
       description: Represents a video upload to YouTube using the Google Ads API.
       type: object
@@ -329,17 +340,6 @@ components:
         videoDescription:
           type: string
           description: Input only. Immutable. The description of the video. Only mutable on YouTube video upload creation. Immutable after creation.
-    GoogleAdsGoogleadsV25Services__UpdateYouTubeVideoUploadRequest:
-      description: Request message for YouTubeVideoUploadService.UpdateYouTubeVideoUpload.
-      type: object
-      properties:
-        youTubeVideoUpload:
-          $ref: '#/components/schemas/GoogleAdsGoogleadsV25Resources__YouTubeVideoUpload'
-          description: Required. The YouTube video upload resource to be updated. It's expected to have a valid resource name. Required.
-        updateMask:
-          description: Required. FieldMask that determines which resource fields are modified in an update.
-          type: string
-          format: google-fieldmask
   securitySchemes:
     oauth2:
       type: oauth2
