@@ -113,6 +113,12 @@ artifacts:
   heartbeat/2026-11-02.yml:
     method: unknown
     evidence: no authorship recorded
+  heartbeat/2026-11-06.yml:
+    method: unknown
+    evidence: no authorship recorded
+  hosts/google-ads-hosts.yml:
+    method: derived
+    evidence: declared in the artifact
   integrations/_index.yml:
     method: generated
     evidence: carries an API Evangelist house phrase
@@ -123,6 +129,843 @@ artifacts:
     method: unknown
     evidence: no authorship recorded
   json-schema/google-ads-campaign-schema.json:
+    method: unknown
+    evidence: no authorship recorded
+  json-schema/google-ads-google-ads-googleads-v25-resources-google-ads-field-schema.json:
+    method: unknown
+    evidence: no authorship recorded
+  json-schema/google-ads-google-ads-googleads-v25-services-add-batch-job-operations-request-schema.json:
+    method: unknown
+    evidence: no authorship recorded
+  json-schema/google-ads-google-ads-googleads-v25-services-add-batch-job-operations-response-schema.json:
+    method: unknown
+    evidence: no authorship recorded
+  json-schema/google-ads-google-ads-googleads-v25-services-add-offline-user-data-job-operations-request-schema.json:
+    method: unknown
+    evidence: no authorship recorded
+  json-schema/google-ads-google-ads-googleads-v25-services-add-offline-user-data-job-operations-response-schema.json:
+    method: unknown
+    evidence: no authorship recorded
+  json-schema/google-ads-google-ads-googleads-v25-services-append-lead-conversation-request-schema.json:
+    method: unknown
+    evidence: no authorship recorded
+  json-schema/google-ads-google-ads-googleads-v25-services-append-lead-conversation-response-schema.json:
+    method: unknown
+    evidence: no authorship recorded
+  json-schema/google-ads-google-ads-googleads-v25-services-apply-incentive-request-schema.json:
+    method: unknown
+    evidence: no authorship recorded
+  json-schema/google-ads-google-ads-googleads-v25-services-apply-incentive-response-schema.json:
+    method: unknown
+    evidence: no authorship recorded
+  json-schema/google-ads-google-ads-googleads-v25-services-apply-recommendation-request-schema.json:
+    method: unknown
+    evidence: no authorship recorded
+  json-schema/google-ads-google-ads-googleads-v25-services-apply-recommendation-response-schema.json:
+    method: unknown
+    evidence: no authorship recorded
+  json-schema/google-ads-google-ads-googleads-v25-services-book-campaigns-request-schema.json:
+    method: unknown
+    evidence: no authorship recorded
+  json-schema/google-ads-google-ads-googleads-v25-services-book-campaigns-response-schema.json:
+    method: unknown
+    evidence: no authorship recorded
+  json-schema/google-ads-google-ads-googleads-v25-services-create-account-link-request-schema.json:
+    method: unknown
+    evidence: no authorship recorded
+  json-schema/google-ads-google-ads-googleads-v25-services-create-account-link-response-schema.json:
+    method: unknown
+    evidence: no authorship recorded
+  json-schema/google-ads-google-ads-googleads-v25-services-create-data-link-request-schema.json:
+    method: unknown
+    evidence: no authorship recorded
+  json-schema/google-ads-google-ads-googleads-v25-services-create-data-link-response-schema.json:
+    method: unknown
+    evidence: no authorship recorded
+  json-schema/google-ads-google-ads-googleads-v25-services-create-offline-user-data-job-request-schema.json:
+    method: unknown
+    evidence: no authorship recorded
+  json-schema/google-ads-google-ads-googleads-v25-services-create-offline-user-data-job-response-schema.json:
+    method: unknown
+    evidence: no authorship recorded
+  json-schema/google-ads-google-ads-googleads-v25-services-create-product-link-invitation-request-schema.json:
+    method: unknown
+    evidence: no authorship recorded
+  json-schema/google-ads-google-ads-googleads-v25-services-create-product-link-invitation-response-schema.json:
+    method: unknown
+    evidence: no authorship recorded
+  json-schema/google-ads-google-ads-googleads-v25-services-create-product-link-request-schema.json:
+    method: unknown
+    evidence: no authorship recorded
+  json-schema/google-ads-google-ads-googleads-v25-services-create-product-link-response-schema.json:
+    method: unknown
+    evidence: no authorship recorded
+  json-schema/google-ads-google-ads-googleads-v25-services-create-you-tube-video-upload-request-schema.json:
+    method: unknown
+    evidence: no authorship recorded
+  json-schema/google-ads-google-ads-googleads-v25-services-create-you-tube-video-upload-response-schema.json:
+    method: unknown
+    evidence: no authorship recorded
+  json-schema/google-ads-google-ads-googleads-v25-services-dismiss-recommendation-request-schema.json:
+    method: unknown
+    evidence: no authorship recorded
+  json-schema/google-ads-google-ads-googleads-v25-services-dismiss-recommendation-response-schema.json:
+    method: unknown
+    evidence: no authorship recorded
+  json-schema/google-ads-google-ads-googleads-v25-services-enable-pmax-brand-guidelines-request-schema.json:
+    method: unknown
+    evidence: no authorship recorded
+  json-schema/google-ads-google-ads-googleads-v25-services-enable-pmax-brand-guidelines-response-schema.json:
+    method: unknown
+    evidence: no authorship recorded
+  json-schema/google-ads-google-ads-googleads-v25-services-fetch-incentive-response-schema.json:
+    method: unknown
+    evidence: no authorship recorded
+  json-schema/google-ads-google-ads-googleads-v25-services-generate-audience-composition-insights-request-schema.json:
+    method: unknown
+    evidence: no authorship recorded
+  json-schema/google-ads-google-ads-googleads-v25-services-generate-conversion-rates-request-schema.json:
+    method: unknown
+    evidence: no authorship recorded
+  json-schema/google-ads-google-ads-googleads-v25-services-generate-conversion-rates-response-schema.json:
+    method: unknown
+    evidence: no authorship recorded
+  json-schema/google-ads-google-ads-googleads-v25-services-generate-creator-insights-request-schema.json:
+    method: unknown
+    evidence: no authorship recorded
+  json-schema/google-ads-google-ads-googleads-v25-services-generate-images-request-schema.json:
+    method: unknown
+    evidence: no authorship recorded
+  json-schema/google-ads-google-ads-googleads-v25-services-generate-images-response-schema.json:
+    method: unknown
+    evidence: no authorship recorded
+  json-schema/google-ads-google-ads-googleads-v25-services-generate-keyword-ideas-request-schema.json:
+    method: unknown
+    evidence: no authorship recorded
+  json-schema/google-ads-google-ads-googleads-v25-services-generate-reach-forecast-request-schema.json:
+    method: unknown
+    evidence: no authorship recorded
+  json-schema/google-ads-google-ads-googleads-v25-services-generate-recommendations-request-schema.json:
+    method: unknown
+    evidence: no authorship recorded
+  json-schema/google-ads-google-ads-googleads-v25-services-generate-recommendations-response-schema.json:
+    method: unknown
+    evidence: no authorship recorded
+  json-schema/google-ads-google-ads-googleads-v25-services-generate-text-request-schema.json:
+    method: unknown
+    evidence: no authorship recorded
+  json-schema/google-ads-google-ads-googleads-v25-services-generate-text-response-schema.json:
+    method: unknown
+    evidence: no authorship recorded
+  json-schema/google-ads-google-ads-googleads-v25-services-generate-trending-insights-request-schema.json:
+    method: unknown
+    evidence: no authorship recorded
+  json-schema/google-ads-google-ads-googleads-v25-services-get-smart-campaign-status-response-schema.json:
+    method: unknown
+    evidence: no authorship recorded
+  json-schema/google-ads-google-ads-googleads-v25-services-graduate-experiment-request-schema.json:
+    method: unknown
+    evidence: no authorship recorded
+  json-schema/google-ads-google-ads-googleads-v25-services-list-audience-insights-attributes-request-schema.json:
+    method: unknown
+    evidence: no authorship recorded
+  json-schema/google-ads-google-ads-googleads-v25-services-list-batch-job-results-response-schema.json:
+    method: unknown
+    evidence: no authorship recorded
+  json-schema/google-ads-google-ads-googleads-v25-services-list-benchmarks-available-dates-request-schema.json:
+    method: unknown
+    evidence: no authorship recorded
+  json-schema/google-ads-google-ads-googleads-v25-services-list-benchmarks-available-dates-response-schema.json:
+    method: unknown
+    evidence: no authorship recorded
+  json-schema/google-ads-google-ads-googleads-v25-services-list-benchmarks-locations-request-schema.json:
+    method: unknown
+    evidence: no authorship recorded
+  json-schema/google-ads-google-ads-googleads-v25-services-list-benchmarks-locations-response-schema.json:
+    method: unknown
+    evidence: no authorship recorded
+  json-schema/google-ads-google-ads-googleads-v25-services-list-benchmarks-products-request-schema.json:
+    method: unknown
+    evidence: no authorship recorded
+  json-schema/google-ads-google-ads-googleads-v25-services-list-benchmarks-products-response-schema.json:
+    method: unknown
+    evidence: no authorship recorded
+  json-schema/google-ads-google-ads-googleads-v25-services-list-benchmarks-sources-request-schema.json:
+    method: unknown
+    evidence: no authorship recorded
+  json-schema/google-ads-google-ads-googleads-v25-services-list-benchmarks-sources-response-schema.json:
+    method: unknown
+    evidence: no authorship recorded
+  json-schema/google-ads-google-ads-googleads-v25-services-list-campaign-draft-async-errors-response-schema.json:
+    method: unknown
+    evidence: no authorship recorded
+  json-schema/google-ads-google-ads-googleads-v25-services-list-experiment-async-errors-response-schema.json:
+    method: unknown
+    evidence: no authorship recorded
+  json-schema/google-ads-google-ads-googleads-v25-services-list-insights-eligible-dates-request-schema.json:
+    method: unknown
+    evidence: no authorship recorded
+  json-schema/google-ads-google-ads-googleads-v25-services-list-insights-eligible-dates-response-schema.json:
+    method: unknown
+    evidence: no authorship recorded
+  json-schema/google-ads-google-ads-googleads-v25-services-list-invoices-response-schema.json:
+    method: unknown
+    evidence: no authorship recorded
+  json-schema/google-ads-google-ads-googleads-v25-services-list-payments-accounts-response-schema.json:
+    method: unknown
+    evidence: no authorship recorded
+  json-schema/google-ads-google-ads-googleads-v25-services-list-plannable-locations-request-schema.json:
+    method: unknown
+    evidence: no authorship recorded
+  json-schema/google-ads-google-ads-googleads-v25-services-list-plannable-locations-response-schema.json:
+    method: unknown
+    evidence: no authorship recorded
+  json-schema/google-ads-google-ads-googleads-v25-services-list-plannable-products-request-schema.json:
+    method: unknown
+    evidence: no authorship recorded
+  json-schema/google-ads-google-ads-googleads-v25-services-list-plannable-products-response-schema.json:
+    method: unknown
+    evidence: no authorship recorded
+  json-schema/google-ads-google-ads-googleads-v25-services-list-plannable-user-interests-request-schema.json:
+    method: unknown
+    evidence: no authorship recorded
+  json-schema/google-ads-google-ads-googleads-v25-services-list-plannable-user-interests-response-schema.json:
+    method: unknown
+    evidence: no authorship recorded
+  json-schema/google-ads-google-ads-googleads-v25-services-list-plannable-user-lists-request-schema.json:
+    method: unknown
+    evidence: no authorship recorded
+  json-schema/google-ads-google-ads-googleads-v25-services-list-plannable-user-lists-response-schema.json:
+    method: unknown
+    evidence: no authorship recorded
+  json-schema/google-ads-google-ads-googleads-v25-services-move-manager-link-request-schema.json:
+    method: unknown
+    evidence: no authorship recorded
+  json-schema/google-ads-google-ads-googleads-v25-services-move-manager-link-response-schema.json:
+    method: unknown
+    evidence: no authorship recorded
+  json-schema/google-ads-google-ads-googleads-v25-services-mutate-account-budget-proposal-request-schema.json:
+    method: unknown
+    evidence: no authorship recorded
+  json-schema/google-ads-google-ads-googleads-v25-services-mutate-account-budget-proposal-response-schema.json:
+    method: unknown
+    evidence: no authorship recorded
+  json-schema/google-ads-google-ads-googleads-v25-services-mutate-account-link-request-schema.json:
+    method: unknown
+    evidence: no authorship recorded
+  json-schema/google-ads-google-ads-googleads-v25-services-mutate-account-link-response-schema.json:
+    method: unknown
+    evidence: no authorship recorded
+  json-schema/google-ads-google-ads-googleads-v25-services-mutate-ad-group-ad-labels-request-schema.json:
+    method: unknown
+    evidence: no authorship recorded
+  json-schema/google-ads-google-ads-googleads-v25-services-mutate-ad-group-ad-labels-response-schema.json:
+    method: unknown
+    evidence: no authorship recorded
+  json-schema/google-ads-google-ads-googleads-v25-services-mutate-ad-group-ads-request-schema.json:
+    method: unknown
+    evidence: no authorship recorded
+  json-schema/google-ads-google-ads-googleads-v25-services-mutate-ad-group-ads-response-schema.json:
+    method: unknown
+    evidence: no authorship recorded
+  json-schema/google-ads-google-ads-googleads-v25-services-mutate-ad-group-asset-sets-request-schema.json:
+    method: unknown
+    evidence: no authorship recorded
+  json-schema/google-ads-google-ads-googleads-v25-services-mutate-ad-group-asset-sets-response-schema.json:
+    method: unknown
+    evidence: no authorship recorded
+  json-schema/google-ads-google-ads-googleads-v25-services-mutate-ad-group-assets-request-schema.json:
+    method: unknown
+    evidence: no authorship recorded
+  json-schema/google-ads-google-ads-googleads-v25-services-mutate-ad-group-assets-response-schema.json:
+    method: unknown
+    evidence: no authorship recorded
+  json-schema/google-ads-google-ads-googleads-v25-services-mutate-ad-group-bid-modifiers-request-schema.json:
+    method: unknown
+    evidence: no authorship recorded
+  json-schema/google-ads-google-ads-googleads-v25-services-mutate-ad-group-bid-modifiers-response-schema.json:
+    method: unknown
+    evidence: no authorship recorded
+  json-schema/google-ads-google-ads-googleads-v25-services-mutate-ad-group-criteria-request-schema.json:
+    method: unknown
+    evidence: no authorship recorded
+  json-schema/google-ads-google-ads-googleads-v25-services-mutate-ad-group-criteria-response-schema.json:
+    method: unknown
+    evidence: no authorship recorded
+  json-schema/google-ads-google-ads-googleads-v25-services-mutate-ad-group-criterion-customizers-request-schema.json:
+    method: unknown
+    evidence: no authorship recorded
+  json-schema/google-ads-google-ads-googleads-v25-services-mutate-ad-group-criterion-customizers-response-schema.json:
+    method: unknown
+    evidence: no authorship recorded
+  json-schema/google-ads-google-ads-googleads-v25-services-mutate-ad-group-criterion-labels-request-schema.json:
+    method: unknown
+    evidence: no authorship recorded
+  json-schema/google-ads-google-ads-googleads-v25-services-mutate-ad-group-criterion-labels-response-schema.json:
+    method: unknown
+    evidence: no authorship recorded
+  json-schema/google-ads-google-ads-googleads-v25-services-mutate-ad-group-customizers-request-schema.json:
+    method: unknown
+    evidence: no authorship recorded
+  json-schema/google-ads-google-ads-googleads-v25-services-mutate-ad-group-customizers-response-schema.json:
+    method: unknown
+    evidence: no authorship recorded
+  json-schema/google-ads-google-ads-googleads-v25-services-mutate-ad-group-labels-request-schema.json:
+    method: unknown
+    evidence: no authorship recorded
+  json-schema/google-ads-google-ads-googleads-v25-services-mutate-ad-group-labels-response-schema.json:
+    method: unknown
+    evidence: no authorship recorded
+  json-schema/google-ads-google-ads-googleads-v25-services-mutate-ad-groups-request-schema.json:
+    method: unknown
+    evidence: no authorship recorded
+  json-schema/google-ads-google-ads-googleads-v25-services-mutate-ad-groups-response-schema.json:
+    method: unknown
+    evidence: no authorship recorded
+  json-schema/google-ads-google-ads-googleads-v25-services-mutate-ad-parameters-request-schema.json:
+    method: unknown
+    evidence: no authorship recorded
+  json-schema/google-ads-google-ads-googleads-v25-services-mutate-ad-parameters-response-schema.json:
+    method: unknown
+    evidence: no authorship recorded
+  json-schema/google-ads-google-ads-googleads-v25-services-mutate-ads-request-schema.json:
+    method: unknown
+    evidence: no authorship recorded
+  json-schema/google-ads-google-ads-googleads-v25-services-mutate-ads-response-schema.json:
+    method: unknown
+    evidence: no authorship recorded
+  json-schema/google-ads-google-ads-googleads-v25-services-mutate-asset-group-assets-request-schema.json:
+    method: unknown
+    evidence: no authorship recorded
+  json-schema/google-ads-google-ads-googleads-v25-services-mutate-asset-group-assets-response-schema.json:
+    method: unknown
+    evidence: no authorship recorded
+  json-schema/google-ads-google-ads-googleads-v25-services-mutate-asset-group-listing-group-filters-request-schema.json:
+    method: unknown
+    evidence: no authorship recorded
+  json-schema/google-ads-google-ads-googleads-v25-services-mutate-asset-group-listing-group-filters-response-schema.json:
+    method: unknown
+    evidence: no authorship recorded
+  json-schema/google-ads-google-ads-googleads-v25-services-mutate-asset-group-signals-request-schema.json:
+    method: unknown
+    evidence: no authorship recorded
+  json-schema/google-ads-google-ads-googleads-v25-services-mutate-asset-group-signals-response-schema.json:
+    method: unknown
+    evidence: no authorship recorded
+  json-schema/google-ads-google-ads-googleads-v25-services-mutate-asset-groups-request-schema.json:
+    method: unknown
+    evidence: no authorship recorded
+  json-schema/google-ads-google-ads-googleads-v25-services-mutate-asset-groups-response-schema.json:
+    method: unknown
+    evidence: no authorship recorded
+  json-schema/google-ads-google-ads-googleads-v25-services-mutate-asset-set-assets-request-schema.json:
+    method: unknown
+    evidence: no authorship recorded
+  json-schema/google-ads-google-ads-googleads-v25-services-mutate-asset-set-assets-response-schema.json:
+    method: unknown
+    evidence: no authorship recorded
+  json-schema/google-ads-google-ads-googleads-v25-services-mutate-asset-sets-request-schema.json:
+    method: unknown
+    evidence: no authorship recorded
+  json-schema/google-ads-google-ads-googleads-v25-services-mutate-asset-sets-response-schema.json:
+    method: unknown
+    evidence: no authorship recorded
+  json-schema/google-ads-google-ads-googleads-v25-services-mutate-assets-request-schema.json:
+    method: unknown
+    evidence: no authorship recorded
+  json-schema/google-ads-google-ads-googleads-v25-services-mutate-assets-response-schema.json:
+    method: unknown
+    evidence: no authorship recorded
+  json-schema/google-ads-google-ads-googleads-v25-services-mutate-audiences-request-schema.json:
+    method: unknown
+    evidence: no authorship recorded
+  json-schema/google-ads-google-ads-googleads-v25-services-mutate-audiences-response-schema.json:
+    method: unknown
+    evidence: no authorship recorded
+  json-schema/google-ads-google-ads-googleads-v25-services-mutate-batch-job-request-schema.json:
+    method: unknown
+    evidence: no authorship recorded
+  json-schema/google-ads-google-ads-googleads-v25-services-mutate-batch-job-response-schema.json:
+    method: unknown
+    evidence: no authorship recorded
+  json-schema/google-ads-google-ads-googleads-v25-services-mutate-bidding-data-exclusions-request-schema.json:
+    method: unknown
+    evidence: no authorship recorded
+  json-schema/google-ads-google-ads-googleads-v25-services-mutate-bidding-data-exclusions-response-schema.json:
+    method: unknown
+    evidence: no authorship recorded
+  json-schema/google-ads-google-ads-googleads-v25-services-mutate-bidding-seasonality-adjustments-request-schema.json:
+    method: unknown
+    evidence: no authorship recorded
+  json-schema/google-ads-google-ads-googleads-v25-services-mutate-bidding-seasonality-adjustments-response-schema.json:
+    method: unknown
+    evidence: no authorship recorded
+  json-schema/google-ads-google-ads-googleads-v25-services-mutate-bidding-strategies-request-schema.json:
+    method: unknown
+    evidence: no authorship recorded
+  json-schema/google-ads-google-ads-googleads-v25-services-mutate-bidding-strategies-response-schema.json:
+    method: unknown
+    evidence: no authorship recorded
+  json-schema/google-ads-google-ads-googleads-v25-services-mutate-billing-setup-request-schema.json:
+    method: unknown
+    evidence: no authorship recorded
+  json-schema/google-ads-google-ads-googleads-v25-services-mutate-billing-setup-response-schema.json:
+    method: unknown
+    evidence: no authorship recorded
+  json-schema/google-ads-google-ads-googleads-v25-services-mutate-campaign-asset-sets-request-schema.json:
+    method: unknown
+    evidence: no authorship recorded
+  json-schema/google-ads-google-ads-googleads-v25-services-mutate-campaign-asset-sets-response-schema.json:
+    method: unknown
+    evidence: no authorship recorded
+  json-schema/google-ads-google-ads-googleads-v25-services-mutate-campaign-assets-request-schema.json:
+    method: unknown
+    evidence: no authorship recorded
+  json-schema/google-ads-google-ads-googleads-v25-services-mutate-campaign-assets-response-schema.json:
+    method: unknown
+    evidence: no authorship recorded
+  json-schema/google-ads-google-ads-googleads-v25-services-mutate-campaign-bid-modifiers-request-schema.json:
+    method: unknown
+    evidence: no authorship recorded
+  json-schema/google-ads-google-ads-googleads-v25-services-mutate-campaign-bid-modifiers-response-schema.json:
+    method: unknown
+    evidence: no authorship recorded
+  json-schema/google-ads-google-ads-googleads-v25-services-mutate-campaign-budgets-request-schema.json:
+    method: unknown
+    evidence: no authorship recorded
+  json-schema/google-ads-google-ads-googleads-v25-services-mutate-campaign-budgets-response-schema.json:
+    method: unknown
+    evidence: no authorship recorded
+  json-schema/google-ads-google-ads-googleads-v25-services-mutate-campaign-conversion-goals-request-schema.json:
+    method: unknown
+    evidence: no authorship recorded
+  json-schema/google-ads-google-ads-googleads-v25-services-mutate-campaign-conversion-goals-response-schema.json:
+    method: unknown
+    evidence: no authorship recorded
+  json-schema/google-ads-google-ads-googleads-v25-services-mutate-campaign-criteria-request-schema.json:
+    method: unknown
+    evidence: no authorship recorded
+  json-schema/google-ads-google-ads-googleads-v25-services-mutate-campaign-criteria-response-schema.json:
+    method: unknown
+    evidence: no authorship recorded
+  json-schema/google-ads-google-ads-googleads-v25-services-mutate-campaign-customizers-request-schema.json:
+    method: unknown
+    evidence: no authorship recorded
+  json-schema/google-ads-google-ads-googleads-v25-services-mutate-campaign-customizers-response-schema.json:
+    method: unknown
+    evidence: no authorship recorded
+  json-schema/google-ads-google-ads-googleads-v25-services-mutate-campaign-drafts-request-schema.json:
+    method: unknown
+    evidence: no authorship recorded
+  json-schema/google-ads-google-ads-googleads-v25-services-mutate-campaign-drafts-response-schema.json:
+    method: unknown
+    evidence: no authorship recorded
+  json-schema/google-ads-google-ads-googleads-v25-services-mutate-campaign-goal-configs-request-schema.json:
+    method: unknown
+    evidence: no authorship recorded
+  json-schema/google-ads-google-ads-googleads-v25-services-mutate-campaign-goal-configs-response-schema.json:
+    method: unknown
+    evidence: no authorship recorded
+  json-schema/google-ads-google-ads-googleads-v25-services-mutate-campaign-groups-request-schema.json:
+    method: unknown
+    evidence: no authorship recorded
+  json-schema/google-ads-google-ads-googleads-v25-services-mutate-campaign-groups-response-schema.json:
+    method: unknown
+    evidence: no authorship recorded
+  json-schema/google-ads-google-ads-googleads-v25-services-mutate-campaign-labels-request-schema.json:
+    method: unknown
+    evidence: no authorship recorded
+  json-schema/google-ads-google-ads-googleads-v25-services-mutate-campaign-labels-response-schema.json:
+    method: unknown
+    evidence: no authorship recorded
+  json-schema/google-ads-google-ads-googleads-v25-services-mutate-campaign-shared-sets-request-schema.json:
+    method: unknown
+    evidence: no authorship recorded
+  json-schema/google-ads-google-ads-googleads-v25-services-mutate-campaign-shared-sets-response-schema.json:
+    method: unknown
+    evidence: no authorship recorded
+  json-schema/google-ads-google-ads-googleads-v25-services-mutate-campaigns-request-schema.json:
+    method: unknown
+    evidence: no authorship recorded
+  json-schema/google-ads-google-ads-googleads-v25-services-mutate-campaigns-response-schema.json:
+    method: unknown
+    evidence: no authorship recorded
+  json-schema/google-ads-google-ads-googleads-v25-services-mutate-conversion-actions-request-schema.json:
+    method: unknown
+    evidence: no authorship recorded
+  json-schema/google-ads-google-ads-googleads-v25-services-mutate-conversion-actions-response-schema.json:
+    method: unknown
+    evidence: no authorship recorded
+  json-schema/google-ads-google-ads-googleads-v25-services-mutate-conversion-custom-variables-request-schema.json:
+    method: unknown
+    evidence: no authorship recorded
+  json-schema/google-ads-google-ads-googleads-v25-services-mutate-conversion-custom-variables-response-schema.json:
+    method: unknown
+    evidence: no authorship recorded
+  json-schema/google-ads-google-ads-googleads-v25-services-mutate-conversion-goal-campaign-configs-request-schema.json:
+    method: unknown
+    evidence: no authorship recorded
+  json-schema/google-ads-google-ads-googleads-v25-services-mutate-conversion-goal-campaign-configs-response-schema.json:
+    method: unknown
+    evidence: no authorship recorded
+  json-schema/google-ads-google-ads-googleads-v25-services-mutate-conversion-value-rule-sets-request-schema.json:
+    method: unknown
+    evidence: no authorship recorded
+  json-schema/google-ads-google-ads-googleads-v25-services-mutate-conversion-value-rule-sets-response-schema.json:
+    method: unknown
+    evidence: no authorship recorded
+  json-schema/google-ads-google-ads-googleads-v25-services-mutate-conversion-value-rules-request-schema.json:
+    method: unknown
+    evidence: no authorship recorded
+  json-schema/google-ads-google-ads-googleads-v25-services-mutate-conversion-value-rules-response-schema.json:
+    method: unknown
+    evidence: no authorship recorded
+  json-schema/google-ads-google-ads-googleads-v25-services-mutate-custom-audiences-request-schema.json:
+    method: unknown
+    evidence: no authorship recorded
+  json-schema/google-ads-google-ads-googleads-v25-services-mutate-custom-audiences-response-schema.json:
+    method: unknown
+    evidence: no authorship recorded
+  json-schema/google-ads-google-ads-googleads-v25-services-mutate-custom-conversion-goals-request-schema.json:
+    method: unknown
+    evidence: no authorship recorded
+  json-schema/google-ads-google-ads-googleads-v25-services-mutate-custom-conversion-goals-response-schema.json:
+    method: unknown
+    evidence: no authorship recorded
+  json-schema/google-ads-google-ads-googleads-v25-services-mutate-custom-interests-request-schema.json:
+    method: unknown
+    evidence: no authorship recorded
+  json-schema/google-ads-google-ads-googleads-v25-services-mutate-custom-interests-response-schema.json:
+    method: unknown
+    evidence: no authorship recorded
+  json-schema/google-ads-google-ads-googleads-v25-services-mutate-customer-asset-sets-request-schema.json:
+    method: unknown
+    evidence: no authorship recorded
+  json-schema/google-ads-google-ads-googleads-v25-services-mutate-customer-asset-sets-response-schema.json:
+    method: unknown
+    evidence: no authorship recorded
+  json-schema/google-ads-google-ads-googleads-v25-services-mutate-customer-assets-request-schema.json:
+    method: unknown
+    evidence: no authorship recorded
+  json-schema/google-ads-google-ads-googleads-v25-services-mutate-customer-assets-response-schema.json:
+    method: unknown
+    evidence: no authorship recorded
+  json-schema/google-ads-google-ads-googleads-v25-services-mutate-customer-client-link-request-schema.json:
+    method: unknown
+    evidence: no authorship recorded
+  json-schema/google-ads-google-ads-googleads-v25-services-mutate-customer-client-link-response-schema.json:
+    method: unknown
+    evidence: no authorship recorded
+  json-schema/google-ads-google-ads-googleads-v25-services-mutate-customer-conversion-goals-request-schema.json:
+    method: unknown
+    evidence: no authorship recorded
+  json-schema/google-ads-google-ads-googleads-v25-services-mutate-customer-conversion-goals-response-schema.json:
+    method: unknown
+    evidence: no authorship recorded
+  json-schema/google-ads-google-ads-googleads-v25-services-mutate-customer-customizers-request-schema.json:
+    method: unknown
+    evidence: no authorship recorded
+  json-schema/google-ads-google-ads-googleads-v25-services-mutate-customer-customizers-response-schema.json:
+    method: unknown
+    evidence: no authorship recorded
+  json-schema/google-ads-google-ads-googleads-v25-services-mutate-customer-labels-request-schema.json:
+    method: unknown
+    evidence: no authorship recorded
+  json-schema/google-ads-google-ads-googleads-v25-services-mutate-customer-labels-response-schema.json:
+    method: unknown
+    evidence: no authorship recorded
+  json-schema/google-ads-google-ads-googleads-v25-services-mutate-customer-manager-link-request-schema.json:
+    method: unknown
+    evidence: no authorship recorded
+  json-schema/google-ads-google-ads-googleads-v25-services-mutate-customer-manager-link-response-schema.json:
+    method: unknown
+    evidence: no authorship recorded
+  json-schema/google-ads-google-ads-googleads-v25-services-mutate-customer-negative-criteria-request-schema.json:
+    method: unknown
+    evidence: no authorship recorded
+  json-schema/google-ads-google-ads-googleads-v25-services-mutate-customer-negative-criteria-response-schema.json:
+    method: unknown
+    evidence: no authorship recorded
+  ? json-schema/google-ads-google-ads-googleads-v25-services-mutate-customer-sk-ad-network-conversion-value-schema-request-schema.json
+  : method: unknown
+    evidence: no authorship recorded
+  ? json-schema/google-ads-google-ads-googleads-v25-services-mutate-customer-sk-ad-network-conversion-value-schema-response-schema.json
+  : method: unknown
+    evidence: no authorship recorded
+  json-schema/google-ads-google-ads-googleads-v25-services-mutate-customer-user-access-invitation-request-schema.json:
+    method: unknown
+    evidence: no authorship recorded
+  json-schema/google-ads-google-ads-googleads-v25-services-mutate-customer-user-access-invitation-response-schema.json:
+    method: unknown
+    evidence: no authorship recorded
+  json-schema/google-ads-google-ads-googleads-v25-services-mutate-customer-user-access-request-schema.json:
+    method: unknown
+    evidence: no authorship recorded
+  json-schema/google-ads-google-ads-googleads-v25-services-mutate-customer-user-access-response-schema.json:
+    method: unknown
+    evidence: no authorship recorded
+  json-schema/google-ads-google-ads-googleads-v25-services-mutate-customizer-attributes-request-schema.json:
+    method: unknown
+    evidence: no authorship recorded
+  json-schema/google-ads-google-ads-googleads-v25-services-mutate-customizer-attributes-response-schema.json:
+    method: unknown
+    evidence: no authorship recorded
+  json-schema/google-ads-google-ads-googleads-v25-services-mutate-experiment-arms-request-schema.json:
+    method: unknown
+    evidence: no authorship recorded
+  json-schema/google-ads-google-ads-googleads-v25-services-mutate-experiment-arms-response-schema.json:
+    method: unknown
+    evidence: no authorship recorded
+  json-schema/google-ads-google-ads-googleads-v25-services-mutate-experiments-request-schema.json:
+    method: unknown
+    evidence: no authorship recorded
+  json-schema/google-ads-google-ads-googleads-v25-services-mutate-experiments-response-schema.json:
+    method: unknown
+    evidence: no authorship recorded
+  json-schema/google-ads-google-ads-googleads-v25-services-mutate-goals-request-schema.json:
+    method: unknown
+    evidence: no authorship recorded
+  json-schema/google-ads-google-ads-googleads-v25-services-mutate-goals-response-schema.json:
+    method: unknown
+    evidence: no authorship recorded
+  json-schema/google-ads-google-ads-googleads-v25-services-mutate-google-ads-request-schema.json:
+    method: unknown
+    evidence: no authorship recorded
+  json-schema/google-ads-google-ads-googleads-v25-services-mutate-keyword-plan-ad-group-keywords-request-schema.json:
+    method: unknown
+    evidence: no authorship recorded
+  json-schema/google-ads-google-ads-googleads-v25-services-mutate-keyword-plan-ad-group-keywords-response-schema.json:
+    method: unknown
+    evidence: no authorship recorded
+  json-schema/google-ads-google-ads-googleads-v25-services-mutate-keyword-plan-ad-groups-request-schema.json:
+    method: unknown
+    evidence: no authorship recorded
+  json-schema/google-ads-google-ads-googleads-v25-services-mutate-keyword-plan-ad-groups-response-schema.json:
+    method: unknown
+    evidence: no authorship recorded
+  json-schema/google-ads-google-ads-googleads-v25-services-mutate-keyword-plan-campaign-keywords-request-schema.json:
+    method: unknown
+    evidence: no authorship recorded
+  json-schema/google-ads-google-ads-googleads-v25-services-mutate-keyword-plan-campaign-keywords-response-schema.json:
+    method: unknown
+    evidence: no authorship recorded
+  json-schema/google-ads-google-ads-googleads-v25-services-mutate-keyword-plan-campaigns-request-schema.json:
+    method: unknown
+    evidence: no authorship recorded
+  json-schema/google-ads-google-ads-googleads-v25-services-mutate-keyword-plan-campaigns-response-schema.json:
+    method: unknown
+    evidence: no authorship recorded
+  json-schema/google-ads-google-ads-googleads-v25-services-mutate-keyword-plans-request-schema.json:
+    method: unknown
+    evidence: no authorship recorded
+  json-schema/google-ads-google-ads-googleads-v25-services-mutate-keyword-plans-response-schema.json:
+    method: unknown
+    evidence: no authorship recorded
+  json-schema/google-ads-google-ads-googleads-v25-services-mutate-labels-request-schema.json:
+    method: unknown
+    evidence: no authorship recorded
+  json-schema/google-ads-google-ads-googleads-v25-services-mutate-labels-response-schema.json:
+    method: unknown
+    evidence: no authorship recorded
+  json-schema/google-ads-google-ads-googleads-v25-services-mutate-recommendation-subscription-request-schema.json:
+    method: unknown
+    evidence: no authorship recorded
+  json-schema/google-ads-google-ads-googleads-v25-services-mutate-recommendation-subscription-response-schema.json:
+    method: unknown
+    evidence: no authorship recorded
+  json-schema/google-ads-google-ads-googleads-v25-services-mutate-remarketing-actions-request-schema.json:
+    method: unknown
+    evidence: no authorship recorded
+  json-schema/google-ads-google-ads-googleads-v25-services-mutate-remarketing-actions-response-schema.json:
+    method: unknown
+    evidence: no authorship recorded
+  json-schema/google-ads-google-ads-googleads-v25-services-mutate-shared-criteria-request-schema.json:
+    method: unknown
+    evidence: no authorship recorded
+  json-schema/google-ads-google-ads-googleads-v25-services-mutate-shared-criteria-response-schema.json:
+    method: unknown
+    evidence: no authorship recorded
+  json-schema/google-ads-google-ads-googleads-v25-services-mutate-shared-sets-request-schema.json:
+    method: unknown
+    evidence: no authorship recorded
+  json-schema/google-ads-google-ads-googleads-v25-services-mutate-shared-sets-response-schema.json:
+    method: unknown
+    evidence: no authorship recorded
+  json-schema/google-ads-google-ads-googleads-v25-services-mutate-smart-campaign-settings-request-schema.json:
+    method: unknown
+    evidence: no authorship recorded
+  json-schema/google-ads-google-ads-googleads-v25-services-mutate-smart-campaign-settings-response-schema.json:
+    method: unknown
+    evidence: no authorship recorded
+  json-schema/google-ads-google-ads-googleads-v25-services-mutate-user-list-customer-types-request-schema.json:
+    method: unknown
+    evidence: no authorship recorded
+  json-schema/google-ads-google-ads-googleads-v25-services-mutate-user-list-customer-types-response-schema.json:
+    method: unknown
+    evidence: no authorship recorded
+  json-schema/google-ads-google-ads-googleads-v25-services-mutate-user-lists-request-schema.json:
+    method: unknown
+    evidence: no authorship recorded
+  json-schema/google-ads-google-ads-googleads-v25-services-mutate-user-lists-response-schema.json:
+    method: unknown
+    evidence: no authorship recorded
+  json-schema/google-ads-google-ads-googleads-v25-services-promote-campaign-draft-request-schema.json:
+    method: unknown
+    evidence: no authorship recorded
+  json-schema/google-ads-google-ads-googleads-v25-services-provide-lead-feedback-request-schema.json:
+    method: unknown
+    evidence: no authorship recorded
+  json-schema/google-ads-google-ads-googleads-v25-services-provide-lead-feedback-response-schema.json:
+    method: unknown
+    evidence: no authorship recorded
+  json-schema/google-ads-google-ads-googleads-v25-services-quote-campaigns-request-schema.json:
+    method: unknown
+    evidence: no authorship recorded
+  json-schema/google-ads-google-ads-googleads-v25-services-quote-campaigns-response-schema.json:
+    method: unknown
+    evidence: no authorship recorded
+  json-schema/google-ads-google-ads-googleads-v25-services-regenerate-shareable-link-id-request-schema.json:
+    method: unknown
+    evidence: no authorship recorded
+  json-schema/google-ads-google-ads-googleads-v25-services-regenerate-shareable-link-id-response-schema.json:
+    method: unknown
+    evidence: no authorship recorded
+  json-schema/google-ads-google-ads-googleads-v25-services-remove-automatically-created-assets-request-schema.json:
+    method: unknown
+    evidence: no authorship recorded
+  json-schema/google-ads-google-ads-googleads-v25-services-remove-data-link-request-schema.json:
+    method: unknown
+    evidence: no authorship recorded
+  json-schema/google-ads-google-ads-googleads-v25-services-remove-data-link-response-schema.json:
+    method: unknown
+    evidence: no authorship recorded
+  json-schema/google-ads-google-ads-googleads-v25-services-remove-product-link-invitation-request-schema.json:
+    method: unknown
+    evidence: no authorship recorded
+  json-schema/google-ads-google-ads-googleads-v25-services-remove-product-link-invitation-response-schema.json:
+    method: unknown
+    evidence: no authorship recorded
+  json-schema/google-ads-google-ads-googleads-v25-services-remove-product-link-request-schema.json:
+    method: unknown
+    evidence: no authorship recorded
+  json-schema/google-ads-google-ads-googleads-v25-services-remove-product-link-response-schema.json:
+    method: unknown
+    evidence: no authorship recorded
+  json-schema/google-ads-google-ads-googleads-v25-services-remove-you-tube-video-upload-request-schema.json:
+    method: unknown
+    evidence: no authorship recorded
+  json-schema/google-ads-google-ads-googleads-v25-services-remove-you-tube-video-upload-response-schema.json:
+    method: unknown
+    evidence: no authorship recorded
+  json-schema/google-ads-google-ads-googleads-v25-services-resolve-multi-party-auth-review-request-schema.json:
+    method: unknown
+    evidence: no authorship recorded
+  json-schema/google-ads-google-ads-googleads-v25-services-resolve-multi-party-auth-review-response-schema.json:
+    method: unknown
+    evidence: no authorship recorded
+  json-schema/google-ads-google-ads-googleads-v25-services-run-offline-user-data-job-request-schema.json:
+    method: unknown
+    evidence: no authorship recorded
+  json-schema/google-ads-google-ads-googleads-v25-services-search-google-ads-fields-request-schema.json:
+    method: unknown
+    evidence: no authorship recorded
+  json-schema/google-ads-google-ads-googleads-v25-services-search-google-ads-fields-response-schema.json:
+    method: unknown
+    evidence: no authorship recorded
+  json-schema/google-ads-google-ads-googleads-v25-services-search-google-ads-response-schema.json:
+    method: unknown
+    evidence: no authorship recorded
+  json-schema/google-ads-google-ads-googleads-v25-services-suggest-geo-target-constants-request-schema.json:
+    method: unknown
+    evidence: no authorship recorded
+  json-schema/google-ads-google-ads-googleads-v25-services-suggest-geo-target-constants-response-schema.json:
+    method: unknown
+    evidence: no authorship recorded
+  json-schema/google-ads-google-ads-googleads-v25-services-suggest-keyword-theme-constants-request-schema.json:
+    method: unknown
+    evidence: no authorship recorded
+  json-schema/google-ads-google-ads-googleads-v25-services-suggest-keyword-theme-constants-response-schema.json:
+    method: unknown
+    evidence: no authorship recorded
+  json-schema/google-ads-google-ads-googleads-v25-services-update-data-link-request-schema.json:
+    method: unknown
+    evidence: no authorship recorded
+  json-schema/google-ads-google-ads-googleads-v25-services-update-data-link-response-schema.json:
+    method: unknown
+    evidence: no authorship recorded
+  json-schema/google-ads-google-ads-googleads-v25-services-update-product-link-invitation-request-schema.json:
+    method: unknown
+    evidence: no authorship recorded
+  json-schema/google-ads-google-ads-googleads-v25-services-update-product-link-invitation-response-schema.json:
+    method: unknown
+    evidence: no authorship recorded
+  json-schema/google-ads-google-ads-googleads-v25-services-update-you-tube-video-upload-request-schema.json:
+    method: unknown
+    evidence: no authorship recorded
+  json-schema/google-ads-google-ads-googleads-v25-services-update-you-tube-video-upload-response-schema.json:
+    method: unknown
+    evidence: no authorship recorded
+  json-schema/google-ads-google-longrunning-cancel-operation-request-schema.json:
+    method: unknown
+    evidence: no authorship recorded
+  json-schema/google-ads-google-longrunning-list-operations-response-schema.json:
+    method: unknown
+    evidence: no authorship recorded
+  json-schema/google-ads-google-longrunning-operation-schema.json:
+    method: unknown
+    evidence: no authorship recorded
+  json-schema/google-ads-google-longrunning-wait-operation-request-schema.json:
+    method: unknown
+    evidence: no authorship recorded
+  json-schema/google-ads-google-protobuf-empty-schema.json:
+    method: unknown
+    evidence: no authorship recorded
+  json-schema/google-ads-mutate-ad-group-ads-request-schema.json:
+    method: unknown
+    evidence: no authorship recorded
+  json-schema/google-ads-mutate-ad-group-ads-response-schema.json:
+    method: unknown
+    evidence: no authorship recorded
+  json-schema/google-ads-mutate-ad-group-criteria-request-schema.json:
+    method: unknown
+    evidence: no authorship recorded
+  json-schema/google-ads-mutate-ad-group-criteria-response-schema.json:
+    method: unknown
+    evidence: no authorship recorded
+  json-schema/google-ads-mutate-ad-groups-request-schema.json:
+    method: unknown
+    evidence: no authorship recorded
+  json-schema/google-ads-mutate-ad-groups-response-schema.json:
+    method: unknown
+    evidence: no authorship recorded
+  json-schema/google-ads-mutate-bidding-strategies-request-schema.json:
+    method: unknown
+    evidence: no authorship recorded
+  json-schema/google-ads-mutate-bidding-strategies-response-schema.json:
+    method: unknown
+    evidence: no authorship recorded
+  json-schema/google-ads-mutate-campaign-budgets-request-schema.json:
+    method: unknown
+    evidence: no authorship recorded
+  json-schema/google-ads-mutate-campaign-budgets-response-schema.json:
+    method: unknown
+    evidence: no authorship recorded
+  json-schema/google-ads-mutate-campaigns-request-schema.json:
+    method: unknown
+    evidence: no authorship recorded
+  json-schema/google-ads-mutate-campaigns-response-schema.json:
+    method: unknown
+    evidence: no authorship recorded
+  json-schema/google-ads-search-google-ads-request-schema.json:
+    method: unknown
+    evidence: no authorship recorded
+  json-schema/google-ads-search-google-ads-response-schema.json:
+    method: unknown
+    evidence: no authorship recorded
+  json-schema/google-ads-search-google-ads-stream-request-schema.json:
+    method: unknown
+    evidence: no authorship recorded
+  json-schema/google-ads-search-google-ads-stream-response-schema.json:
     method: unknown
     evidence: no authorship recorded
   kin/checks-2026-10-23T222754.yml:
@@ -197,6 +1040,9 @@ artifacts:
   lifecycle/google-ads-lifecycle.yml:
     method: searched
     evidence: declared in the artifact
+  llms/google-ads-llms-provenance.yml:
+    method: searched
+    evidence: 'derive-llms-provenance.py: harvested'
   llms/google-ads-llms.txt:
     method: generated
     evidence: declared in the artifact
@@ -937,6 +1783,9 @@ artifacts:
   packages/google-ads-packages.yml:
     method: searched
     evidence: declared in the artifact
+  patterns/google-ads-patterns.yml:
+    method: derived
+    evidence: declared in the artifact
   plans/google-ads-plans-pricing.yml:
     method: searched
     evidence: declared in the artifact
@@ -965,6 +1814,9 @@ artifacts:
     method: searched
     evidence: declared in the artifact
   rules/google-ads-jsonschema-spectral-rules.yml:
+    method: generated
+    evidence: declared in the artifact
+  rules/google-ads-rules.yml:
     method: generated
     evidence: declared in the artifact
   sandbox/google-ads-sandbox.yml:
@@ -999,6 +1851,12 @@ artifacts:
     evidence: declared in the artifact
   sla/google-ads-sla.yml:
     method: generated
+    evidence: declared in the artifact
+  vendors/google-ads-vendors.yml:
+    method: unknown
+    evidence: no authorship recorded
+  vocabulary/google-ads-vocabulary.yml:
+    method: derived
     evidence: declared in the artifact
   well-known/google-ads-oauth-authorization-server.json:
     method: unknown
