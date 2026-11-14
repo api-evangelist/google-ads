@@ -1,0 +1,1358 @@
+aid: google-ads
+name: Google Ads
+description: The Google Ads API is the modern programmatic interface to Google Ads and the next generation of the AdWords API. It enables developers
+  to interact directly with the Google Ads platform, vastly increasing the efficiency of managing large or complex Google Ads accounts and campaigns.
+type: Index
+deliveryModel:
+  model: saas
+  open_source: false
+  commercial: true
+  callable_host: true
+  label: Hosted service · you call their endpoint
+  confidence: high
+  source:
+  - openapi
+  - pricing
+  generated: '2026-08-28'
+  method: derived
+accessModel:
+  pricing: freemium
+  onboarding: self-serve
+  trial: false
+  try_now: true
+  public: false
+  gated: none
+  gated_source:
+  - onboarding
+  label: Freemium · Self-serve signup
+  confidence: high
+  source:
+  - plans
+  - authentication
+  - scopes
+  - rate-limits
+  - security
+  - sandbox
+  generated: '2026-11-13'
+  method: derived
+image: https://www.gstatic.com/images/branding/product/1x/google_ads_64dp.png
+url: https://raw.githubusercontent.com/api-evangelist/google-ads/refs/heads/main/apis.yml
+created: '2024-01-01'
+modified: '2026-09-16'
+specificationVersion: '0.23'
+tags:
+- Advertising
+- Campaign Management
+- Digital Advertising
+- Google
+- Marketing
+- PPC
+- Google Ads
+- AdTech
+maintainers:
+- FN: Kin Lane
+  email: kin@apievangelist.com
+  url: https://apievangelist.com
+common:
+- type: Spectral
+  url: rules/google-ads-rules.yml
+- type: Spectral
+  url: rules/google-ads-jsonschema-spectral-rules.yml
+- type: Vocabulary
+  url: vocabulary/google-ads-vocabulary.yml
+- type: Protobuf
+  url: grpc/google-ads-google-ads-field-service.proto
+- type: Protobuf
+  url: grpc/google-ads-errors.proto
+- type: Protobuf
+  url: grpc/google-ads-customer-service.proto
+- type: Protobuf
+  url: grpc/google-ads-campaign-service.proto
+- type: Protobuf
+  url: grpc/google-ads-ad-group-service.proto
+- type: Hosts
+  url: hosts/google-ads-hosts.yml
+- type: IntegrationEdges
+  url: integrations/google-ads-integration-edges.yml
+- type: Login
+  url: https://accounts.google.com/v3/signin/identifier?continue=https://docs.google.com/&emr=1&followup=https://docs.google.com/&osid=1&passive=1209600&flowName=GlifWebSignIn&flowEntry=ServiceLogin&dsh=S1242415125:1793808266951534
+- type: Website
+  url: https://ads.google.com/
+- type: CapabilityMap
+  url: capabilities/google-ads-capability-edges.yml
+  name: Google Ads Business Capability Map
+- type: Overlay
+  url: overlays/google-ads-api-v25-overlay.yaml
+- type: PostmanWorkspace
+  url: https://www.postman.com/kinlaneapi/google-ads/overview
+- type: AgenticAccess
+  url: agentic-access/google-ads-agentic-access.yml
+- type: VulnerabilityDisclosure
+  url: security/google-ads-vulnerability-disclosure.yml
+- type: DomainSecurity
+  url: security/google-ads-domain-security.yml
+- type: Authentication
+  url: authentication/google-ads-authentication.yml
+- type: OAuthScopes
+  url: scopes/google-ads-scopes.yml
+- type: LinkedIn
+  url: https://www.linkedin.com/showcase/google-ads-
+- type: Portal
+  url: https://developers.google.com/google-ads/api
+- type: GettingStarted
+  url: https://developers.google.com/google-ads/api/docs/first-call/overview
+- type: Authentication
+  url: https://developers.google.com/google-ads/api/docs/oauth/overview
+- type: TermsOfService
+  url: https://developers.google.com/terms
+- type: PrivacyPolicy
+  url: https://policies.google.com/privacy
+- type: StatusPage
+  url: https://status.cloud.google.com/
+- type: Blog
+  url: https://ads-developers.googleblog.com/
+- type: Support
+  url: https://developers.google.com/google-ads/api/support
+- type: SDKs
+  url: https://developers.google.com/google-ads/api/docs/client-libs
+- type: GitHubOrganization
+  url: https://github.com/googleads
+- type: StackOverflow
+  url: https://stackoverflow.com/questions/tagged/google-ads-api
+- type: Community
+  url: https://groups.google.com/g/adwords-api
+- type: Console
+  url: https://ads.google.com/
+- type: Signup
+  url: https://ads.google.com/signup
+- type: Developer Tools
+  url: https://developers.google.com/google-ads/api/docs/developer-toolkit/ai-assistant
+- type: JSONSchema
+  url: json-schema/google-ads-campaign-schema.json
+- type: JSONLD
+  url: json-ld/google-ads-context.jsonld
+- name: MCP Server
+  url: https://github.com/googleads/google-ads-mcp
+  type: MCPServer
+- type: MCPServer
+  url: mcp/google-ads-mcp.yml
+- type: ToolCrosswalk
+  url: mcp/google-ads-tool-crosswalk.yml
+- type: AgentSkill
+  url: skills/_index.yml
+- type: LLMsTxt
+  url: llms/google-ads-llms.txt
+- type: Packages
+  url: packages/google-ads-packages.yml
+- type: SDKs
+  url: packages/google-ads-packages.yml
+- type: CLI
+  url: cli/google-ads-cli.yml
+- type: Conventions
+  url: conventions/google-ads-conventions.yml
+- type: ErrorCatalog
+  url: errors/google-ads-problem-types.yml
+- type: Lifecycle
+  url: lifecycle/google-ads-lifecycle.yml
+- type: Deprecation
+  url: lifecycle/google-ads-lifecycle.yml
+- type: ChangeLog
+  url: changelog/google-ads-changelog.yml
+- type: Conformance
+  url: conformance/google-ads-conformance.yml
+- type: DataModel
+  url: data-model/google-ads-data-model.yml
+- type: Sandbox
+  url: sandbox/google-ads-sandbox.yml
+- type: Plans
+  url: plans/google-ads-plans-pricing.yml
+- type: RateLimits
+  url: rate-limits/google-ads-rate-limits.yml
+- type: WellKnown
+  url: well-known/google-ads-well-known.yml
+- type: SecurityTxt
+  url: well-known/google-ads-security.txt
+- type: Security
+  url: security/google-ads-vulnerability-disclosure.yml
+- type: Protobuf
+  url: grpc/google-ads-google-ads-service.proto
+- type: Discovery
+  url: discovery/google-ads-api-v25-discovery.json
+- type: FinOps
+  url: finops/google-ads-finops.yml
+- type: SpectralRules
+  url: rules/google-ads-jsonschema-spectral-rules.yml
+- type: APIReference
+  url: https://developers.google.com/google-ads/api/reference/rpc/latest/overview
+- type: Documentation
+  url: https://developers.google.com/google-ads/api/docs/start
+- type: Deprecation
+  url: https://developers.google.com/google-ads/api/docs/sunset-dates
+- type: UsageTerms
+  url: terms/google-ads-terms-of-service.yml
+- type: Eligibility
+  url: eligibility/google-ads-eligibility.yml
+- type: DataLicense
+  url: data-license/google-ads-data-license.yml
+apis:
+- aid: google-ads:google-ads-scripts
+  name: Google Ads Scripts
+  description: >-
+    JavaScript-based scripting interface for programmatically managing and querying Google Ads data directly
+    in a browser-based IDE. Scripts enable automated changes to campaigns, ad groups, and reporting without
+    requiring a full API integration.
+  image: https://www.gstatic.com/images/branding/product/1x/google_ads_64dp.png
+  humanURL: https://developers.google.com/google-ads/scripts/docs/start
+  baseURL: https://googleads.googleapis.com
+  tags:
+  - Automation
+  - Campaign Management
+  - JavaScript
+  - Scripts
+  properties:
+  - type: Documentation
+    url: https://developers.google.com/google-ads/scripts/docs/start
+  - type: GettingStarted
+    url: https://developers.google.com/google-ads/scripts/docs/getting-started
+  - type: Reference
+    url: https://developers.google.com/google-ads/scripts/docs/examples
+- aid: google-ads:google-ads-adevents-api
+  name: Google Ads Ad Events API
+  description: The AdEvents API from Google Ads — 1 operation(s) for adevents.
+  humanURL: https://developers.google.com/google-ads/scripts/docs/start
+  baseURL: https://datamanager.googleapis.com
+  tags:
+  - AdEvents
+  properties:
+  - type: OpenAPI
+    url: openapi/google-ads-adevents-api-openapi.yml
+  - type: Documentation
+    url: https://developers.google.com/google-ads/api/docs/start
+  - type: Authentication
+    url: https://developers.google.com/google-ads/api/docs/oauth/overview
+  - type: SDKs
+    url: https://developers.google.com/google-ads/api/docs/client-libs
+  - type: Migration Guide
+    url: https://developers.google.com/google-ads/api/docs/migration
+  - type: Best Practices
+    url: https://developers.google.com/google-ads/api/docs/best-practices
+  - type: RateLimits
+    url: https://developers.google.com/google-ads/api/docs/rate-limits
+  - type: ReleaseNotes
+    url: https://developers.google.com/google-ads/api/docs/release-notes
+  - type: Support
+    url: https://developers.google.com/google-ads/api/support
+  - type: Forums
+    url: https://groups.google.com/g/adwords-api
+  - type: Client Libraries
+    url: https://developers.google.com/google-ads/api/docs/client-libs
+  - type: ChangeLog
+    url: https://developers.google.com/google-ads/api/docs/release-notes
+  - type: GettingStarted
+    url: https://developers.google.com/google-ads/api/docs/first-call/overview
+  - type: Discovery
+    url: discovery/google-ads-api-v25-discovery.json
+  - type: Protobuf
+    url: grpc/google-ads-google-ads-service.proto
+  - type: DataModel
+    url: data-model/google-ads-data-model.yml
+  - type: APIReference
+    url: https://developers.google.com/google-ads/api/reference/rpc/latest/overview
+  - type: RateLimits
+    url: https://developers.google.com/google-ads/api/docs/best-practices/quotas
+  - type: Deprecation
+    url: https://developers.google.com/google-ads/api/docs/sunset-dates
+  - type: JSONSchema
+    url: json-schema/google-ads-ingest-ad-events-request-schema.json
+  - type: JSONSchema
+    url: json-schema/google-ads-ingest-ad-events-response-schema.json
+- aid: google-ads:google-ads-audienceinsights-api
+  name: Google Ads Audience Insights API
+  description: The AudienceInsights API from Google Ads — 1 operation(s) for audienceinsights.
+  humanURL: https://developers.google.com/google-ads/scripts/docs/start
+  baseURL: https://googleads.googleapis.com
+  tags:
+  - Audience Insights
+  tags_raw:
+  - AudienceInsights
+  properties:
+  - type: OpenAPI
+    url: openapi/google-ads-audienceinsights-api-openapi.yml
+  - type: Documentation
+    url: https://developers.google.com/google-ads/api/docs/start
+  - type: Authentication
+    url: https://developers.google.com/google-ads/api/docs/oauth/overview
+  - type: SDKs
+    url: https://developers.google.com/google-ads/api/docs/client-libs
+  - type: Migration Guide
+    url: https://developers.google.com/google-ads/api/docs/migration
+  - type: Best Practices
+    url: https://developers.google.com/google-ads/api/docs/best-practices
+  - type: RateLimits
+    url: https://developers.google.com/google-ads/api/docs/rate-limits
+  - type: ReleaseNotes
+    url: https://developers.google.com/google-ads/api/docs/release-notes
+  - type: Support
+    url: https://developers.google.com/google-ads/api/support
+  - type: Forums
+    url: https://groups.google.com/g/adwords-api
+  - type: Client Libraries
+    url: https://developers.google.com/google-ads/api/docs/client-libs
+  - type: ChangeLog
+    url: https://developers.google.com/google-ads/api/docs/release-notes
+  - type: GettingStarted
+    url: https://developers.google.com/google-ads/api/docs/first-call/overview
+  - type: Discovery
+    url: discovery/google-ads-api-v25-discovery.json
+  - type: Protobuf
+    url: grpc/google-ads-google-ads-service.proto
+  - type: DataModel
+    url: data-model/google-ads-data-model.yml
+  - type: APIReference
+    url: https://developers.google.com/google-ads/api/reference/rpc/latest/overview
+  - type: RateLimits
+    url: https://developers.google.com/google-ads/api/docs/best-practices/quotas
+  - type: Deprecation
+    url: https://developers.google.com/google-ads/api/docs/sunset-dates
+  - type: JSONSchema
+    url: >-
+      json-schema/google-ads-google-ads-googleads-v26-services-list-insights-eligible-dates-response-schema.json
+  - type: JSONSchema
+    url: >-
+      json-schema/google-ads-google-ads-googleads-v26-services-list-insights-eligible-dates-request-schema.json
+- aid: google-ads:google-ads-audiencemembers-api
+  name: Google Ads Audience Members API
+  description: The AudienceMembers API from Google Ads — 3 operation(s) for audiencemembers.
+  humanURL: https://developers.google.com/google-ads/scripts/docs/start
+  baseURL: https://datamanager.googleapis.com
+  tags:
+  - AudienceMembers
+  properties:
+  - type: OpenAPI
+    url: openapi/google-ads-audiencemembers-api-openapi.yml
+  - type: Documentation
+    url: https://developers.google.com/google-ads/api/docs/start
+  - type: Authentication
+    url: https://developers.google.com/google-ads/api/docs/oauth/overview
+  - type: SDKs
+    url: https://developers.google.com/google-ads/api/docs/client-libs
+  - type: Migration Guide
+    url: https://developers.google.com/google-ads/api/docs/migration
+  - type: Best Practices
+    url: https://developers.google.com/google-ads/api/docs/best-practices
+  - type: RateLimits
+    url: https://developers.google.com/google-ads/api/docs/rate-limits
+  - type: ReleaseNotes
+    url: https://developers.google.com/google-ads/api/docs/release-notes
+  - type: Support
+    url: https://developers.google.com/google-ads/api/support
+  - type: Forums
+    url: https://groups.google.com/g/adwords-api
+  - type: Client Libraries
+    url: https://developers.google.com/google-ads/api/docs/client-libs
+  - type: ChangeLog
+    url: https://developers.google.com/google-ads/api/docs/release-notes
+  - type: GettingStarted
+    url: https://developers.google.com/google-ads/api/docs/first-call/overview
+  - type: Discovery
+    url: discovery/google-ads-api-v25-discovery.json
+  - type: Protobuf
+    url: grpc/google-ads-google-ads-service.proto
+  - type: DataModel
+    url: data-model/google-ads-data-model.yml
+  - type: APIReference
+    url: https://developers.google.com/google-ads/api/reference/rpc/latest/overview
+  - type: RateLimits
+    url: https://developers.google.com/google-ads/api/docs/best-practices/quotas
+  - type: Deprecation
+    url: https://developers.google.com/google-ads/api/docs/sunset-dates
+  - type: JSONSchema
+    url: json-schema/google-ads-ingest-audience-members-request-schema.json
+  - type: JSONSchema
+    url: json-schema/google-ads-remove-audience-members-request-schema.json
+  - type: JSONSchema
+    url: json-schema/google-ads-remove-all-audience-members-request-schema.json
+  - type: JSONSchema
+    url: json-schema/google-ads-ingest-audience-members-response-schema.json
+  - type: JSONSchema
+    url: json-schema/google-ads-remove-all-audience-members-response-schema.json
+  - type: JSONSchema
+    url: json-schema/google-ads-remove-audience-members-response-schema.json
+- aid: google-ads:google-ads-customers-api
+  name: Google Ads Customers API
+  description: The Customers API from Google Ads — 160 operation(s) for customers.
+  humanURL: https://developers.google.com/google-ads/scripts/docs/start
+  baseURL: https://googleads.googleapis.com
+  tags:
+  - Customers
+  properties:
+  - type: OpenAPI
+    url: openapi/google-ads-customers-api-openapi.yml
+  - type: Documentation
+    url: https://developers.google.com/google-ads/api/docs/start
+  - type: Authentication
+    url: https://developers.google.com/google-ads/api/docs/oauth/overview
+  - type: SDKs
+    url: https://developers.google.com/google-ads/api/docs/client-libs
+  - type: Migration Guide
+    url: https://developers.google.com/google-ads/api/docs/migration
+  - type: Best Practices
+    url: https://developers.google.com/google-ads/api/docs/best-practices
+  - type: RateLimits
+    url: https://developers.google.com/google-ads/api/docs/rate-limits
+  - type: ReleaseNotes
+    url: https://developers.google.com/google-ads/api/docs/release-notes
+  - type: Support
+    url: https://developers.google.com/google-ads/api/support
+  - type: Forums
+    url: https://groups.google.com/g/adwords-api
+  - type: Client Libraries
+    url: https://developers.google.com/google-ads/api/docs/client-libs
+  - type: ChangeLog
+    url: https://developers.google.com/google-ads/api/docs/release-notes
+  - type: GettingStarted
+    url: https://developers.google.com/google-ads/api/docs/first-call/overview
+  - type: Discovery
+    url: discovery/google-ads-api-v25-discovery.json
+  - type: Protobuf
+    url: grpc/google-ads-google-ads-service.proto
+  - type: DataModel
+    url: data-model/google-ads-data-model.yml
+  - type: APIReference
+    url: https://developers.google.com/google-ads/api/reference/rpc/latest/overview
+  - type: RateLimits
+    url: https://developers.google.com/google-ads/api/docs/best-practices/quotas
+  - type: Deprecation
+    url: https://developers.google.com/google-ads/api/docs/sunset-dates
+  - type: JSONSchema
+    url: json-schema/google-ads-google-protobuf-empty-schema.json
+  - type: JSONSchema
+    url: json-schema/google-ads-google-longrunning-operation-schema.json
+  - type: JSONSchema
+    url: json-schema/google-ads-google-longrunning-list-operations-response-schema.json
+  - type: JSONSchema
+    url: json-schema/google-ads-google-longrunning-wait-operation-request-schema.json
+  - type: JSONSchema
+    url: json-schema/google-ads-google-longrunning-cancel-operation-request-schema.json
+- aid: google-ads:google-ads-events-api
+  name: Google Ads Events API
+  description: The Events API from Google Ads — 1 operation(s) for events.
+  humanURL: https://developers.google.com/google-ads/scripts/docs/start
+  baseURL: https://datamanager.googleapis.com
+  tags:
+  - Event
+  tags_raw:
+  - Events
+  properties:
+  - type: OpenAPI
+    url: openapi/google-ads-events-api-openapi.yml
+  - type: Documentation
+    url: https://developers.google.com/google-ads/api/docs/start
+  - type: Authentication
+    url: https://developers.google.com/google-ads/api/docs/oauth/overview
+  - type: SDKs
+    url: https://developers.google.com/google-ads/api/docs/client-libs
+  - type: Migration Guide
+    url: https://developers.google.com/google-ads/api/docs/migration
+  - type: Best Practices
+    url: https://developers.google.com/google-ads/api/docs/best-practices
+  - type: RateLimits
+    url: https://developers.google.com/google-ads/api/docs/rate-limits
+  - type: ReleaseNotes
+    url: https://developers.google.com/google-ads/api/docs/release-notes
+  - type: Support
+    url: https://developers.google.com/google-ads/api/support
+  - type: Forums
+    url: https://groups.google.com/g/adwords-api
+  - type: Client Libraries
+    url: https://developers.google.com/google-ads/api/docs/client-libs
+  - type: ChangeLog
+    url: https://developers.google.com/google-ads/api/docs/release-notes
+  - type: GettingStarted
+    url: https://developers.google.com/google-ads/api/docs/first-call/overview
+  - type: Discovery
+    url: discovery/google-ads-api-v25-discovery.json
+  - type: Protobuf
+    url: grpc/google-ads-google-ads-service.proto
+  - type: DataModel
+    url: data-model/google-ads-data-model.yml
+  - type: APIReference
+    url: https://developers.google.com/google-ads/api/reference/rpc/latest/overview
+  - type: RateLimits
+    url: https://developers.google.com/google-ads/api/docs/best-practices/quotas
+  - type: Deprecation
+    url: https://developers.google.com/google-ads/api/docs/sunset-dates
+  - type: JSONSchema
+    url: json-schema/google-ads-ingest-events-request-schema.json
+  - type: JSONSchema
+    url: json-schema/google-ads-ingest-events-response-schema.json
+- aid: google-ads:google-ads-geotargetconstants-api
+  name: Google Ads Geo Target Constants API
+  description: The GeoTargetConstants API from Google Ads — 1 operation(s) for geotargetconstants.
+  humanURL: https://developers.google.com/google-ads/scripts/docs/start
+  baseURL: https://googleads.googleapis.com
+  tags:
+  - GeoTargetConstants
+  properties:
+  - type: OpenAPI
+    url: openapi/google-ads-geotargetconstants-api-openapi.yml
+  - type: Documentation
+    url: https://developers.google.com/google-ads/api/docs/start
+  - type: Authentication
+    url: https://developers.google.com/google-ads/api/docs/oauth/overview
+  - type: SDKs
+    url: https://developers.google.com/google-ads/api/docs/client-libs
+  - type: Migration Guide
+    url: https://developers.google.com/google-ads/api/docs/migration
+  - type: Best Practices
+    url: https://developers.google.com/google-ads/api/docs/best-practices
+  - type: RateLimits
+    url: https://developers.google.com/google-ads/api/docs/rate-limits
+  - type: ReleaseNotes
+    url: https://developers.google.com/google-ads/api/docs/release-notes
+  - type: Support
+    url: https://developers.google.com/google-ads/api/support
+  - type: Forums
+    url: https://groups.google.com/g/adwords-api
+  - type: Client Libraries
+    url: https://developers.google.com/google-ads/api/docs/client-libs
+  - type: ChangeLog
+    url: https://developers.google.com/google-ads/api/docs/release-notes
+  - type: GettingStarted
+    url: https://developers.google.com/google-ads/api/docs/first-call/overview
+  - type: Discovery
+    url: discovery/google-ads-api-v25-discovery.json
+  - type: Protobuf
+    url: grpc/google-ads-google-ads-service.proto
+  - type: DataModel
+    url: data-model/google-ads-data-model.yml
+  - type: APIReference
+    url: https://developers.google.com/google-ads/api/reference/rpc/latest/overview
+  - type: RateLimits
+    url: https://developers.google.com/google-ads/api/docs/best-practices/quotas
+  - type: Deprecation
+    url: https://developers.google.com/google-ads/api/docs/sunset-dates
+  - type: JSONSchema
+    url: >-
+      json-schema/google-ads-google-ads-googleads-v26-services-suggest-geo-target-constants-request-schema.json
+  - type: JSONSchema
+    url: >-
+      json-schema/google-ads-google-ads-googleads-v26-services-suggest-geo-target-constants-response-schema.json
+- aid: google-ads:google-ads-googleadsfields-api
+  name: Google Ads Google Ads Fields API
+  description: The GoogleAdsFields API from Google Ads — 2 operation(s) for googleadsfields.
+  humanURL: https://developers.google.com/google-ads/scripts/docs/start
+  baseURL: https://googleads.googleapis.com
+  tags:
+  - GoogleAdsFields
+  properties:
+  - type: OpenAPI
+    url: openapi/google-ads-googleadsfields-api-openapi.yml
+  - type: Documentation
+    url: https://developers.google.com/google-ads/api/docs/start
+  - type: Authentication
+    url: https://developers.google.com/google-ads/api/docs/oauth/overview
+  - type: SDKs
+    url: https://developers.google.com/google-ads/api/docs/client-libs
+  - type: Migration Guide
+    url: https://developers.google.com/google-ads/api/docs/migration
+  - type: Best Practices
+    url: https://developers.google.com/google-ads/api/docs/best-practices
+  - type: RateLimits
+    url: https://developers.google.com/google-ads/api/docs/rate-limits
+  - type: ReleaseNotes
+    url: https://developers.google.com/google-ads/api/docs/release-notes
+  - type: Support
+    url: https://developers.google.com/google-ads/api/support
+  - type: Forums
+    url: https://groups.google.com/g/adwords-api
+  - type: Client Libraries
+    url: https://developers.google.com/google-ads/api/docs/client-libs
+  - type: ChangeLog
+    url: https://developers.google.com/google-ads/api/docs/release-notes
+  - type: GettingStarted
+    url: https://developers.google.com/google-ads/api/docs/first-call/overview
+  - type: Discovery
+    url: discovery/google-ads-api-v25-discovery.json
+  - type: Protobuf
+    url: grpc/google-ads-google-ads-service.proto
+  - type: DataModel
+    url: data-model/google-ads-data-model.yml
+  - type: APIReference
+    url: https://developers.google.com/google-ads/api/reference/rpc/latest/overview
+  - type: RateLimits
+    url: https://developers.google.com/google-ads/api/docs/best-practices/quotas
+  - type: Deprecation
+    url: https://developers.google.com/google-ads/api/docs/sunset-dates
+  - type: JSONSchema
+    url: json-schema/google-ads-google-ads-googleads-v26-resources-google-ads-field-schema.json
+  - type: JSONSchema
+    url: >-
+      json-schema/google-ads-google-ads-googleads-v26-services-search-google-ads-fields-response-schema.json
+  - type: JSONSchema
+    url: >-
+      json-schema/google-ads-google-ads-googleads-v26-services-search-google-ads-fields-request-schema.json
+- aid: google-ads:google-ads-incentives-api
+  name: Google Ads Incentives API
+  description: The Incentives API from Google Ads — 1 operation(s) for incentives.
+  humanURL: https://developers.google.com/google-ads/scripts/docs/start
+  baseURL: https://googleads.googleapis.com
+  tags:
+  - Incentives
+  properties:
+  - type: OpenAPI
+    url: openapi/google-ads-incentives-api-openapi.yml
+  - type: Documentation
+    url: https://developers.google.com/google-ads/api/docs/start
+  - type: Authentication
+    url: https://developers.google.com/google-ads/api/docs/oauth/overview
+  - type: SDKs
+    url: https://developers.google.com/google-ads/api/docs/client-libs
+  - type: Migration Guide
+    url: https://developers.google.com/google-ads/api/docs/migration
+  - type: Best Practices
+    url: https://developers.google.com/google-ads/api/docs/best-practices
+  - type: RateLimits
+    url: https://developers.google.com/google-ads/api/docs/rate-limits
+  - type: ReleaseNotes
+    url: https://developers.google.com/google-ads/api/docs/release-notes
+  - type: Support
+    url: https://developers.google.com/google-ads/api/support
+  - type: Forums
+    url: https://groups.google.com/g/adwords-api
+  - type: Client Libraries
+    url: https://developers.google.com/google-ads/api/docs/client-libs
+  - type: ChangeLog
+    url: https://developers.google.com/google-ads/api/docs/release-notes
+  - type: GettingStarted
+    url: https://developers.google.com/google-ads/api/docs/first-call/overview
+  - type: Discovery
+    url: discovery/google-ads-api-v25-discovery.json
+  - type: Protobuf
+    url: grpc/google-ads-google-ads-service.proto
+  - type: DataModel
+    url: data-model/google-ads-data-model.yml
+  - type: APIReference
+    url: https://developers.google.com/google-ads/api/reference/rpc/latest/overview
+  - type: RateLimits
+    url: https://developers.google.com/google-ads/api/docs/best-practices/quotas
+  - type: Deprecation
+    url: https://developers.google.com/google-ads/api/docs/sunset-dates
+  - type: JSONSchema
+    url: >-
+      json-schema/google-ads-google-ads-googleads-v26-services-fetch-incentive-response-schema.json
+- aid: google-ads:google-ads-keywordthemeconstants-api
+  name: Google Ads Keyword Theme Constants API
+  description: >-
+    The KeywordThemeConstants API from Google Ads — 1 operation(s) for keywordthemeconstants.
+  humanURL: https://developers.google.com/google-ads/scripts/docs/start
+  baseURL: https://googleads.googleapis.com
+  tags:
+  - KeywordThemeConstants
+  properties:
+  - type: OpenAPI
+    url: openapi/google-ads-keywordthemeconstants-api-openapi.yml
+  - type: Documentation
+    url: https://developers.google.com/google-ads/api/docs/start
+  - type: Authentication
+    url: https://developers.google.com/google-ads/api/docs/oauth/overview
+  - type: SDKs
+    url: https://developers.google.com/google-ads/api/docs/client-libs
+  - type: Migration Guide
+    url: https://developers.google.com/google-ads/api/docs/migration
+  - type: Best Practices
+    url: https://developers.google.com/google-ads/api/docs/best-practices
+  - type: RateLimits
+    url: https://developers.google.com/google-ads/api/docs/rate-limits
+  - type: ReleaseNotes
+    url: https://developers.google.com/google-ads/api/docs/release-notes
+  - type: Support
+    url: https://developers.google.com/google-ads/api/support
+  - type: Forums
+    url: https://groups.google.com/g/adwords-api
+  - type: Client Libraries
+    url: https://developers.google.com/google-ads/api/docs/client-libs
+  - type: ChangeLog
+    url: https://developers.google.com/google-ads/api/docs/release-notes
+  - type: GettingStarted
+    url: https://developers.google.com/google-ads/api/docs/first-call/overview
+  - type: Discovery
+    url: discovery/google-ads-api-v25-discovery.json
+  - type: Protobuf
+    url: grpc/google-ads-google-ads-service.proto
+  - type: DataModel
+    url: data-model/google-ads-data-model.yml
+  - type: APIReference
+    url: https://developers.google.com/google-ads/api/reference/rpc/latest/overview
+  - type: RateLimits
+    url: https://developers.google.com/google-ads/api/docs/best-practices/quotas
+  - type: Deprecation
+    url: https://developers.google.com/google-ads/api/docs/sunset-dates
+  - type: JSONSchema
+    url: >-
+      json-schema/google-ads-google-ads-googleads-v26-services-suggest-keyword-theme-constants-request-schema.json
+  - type: JSONSchema
+    url: >-
+      json-schema/google-ads-google-ads-googleads-v26-services-suggest-keyword-theme-constants-response-schema.json
+- aid: google-ads:google-ads-media-api
+  name: Google Ads Media API
+  description: The Media API from Google Ads — 1 operation(s) for media.
+  humanURL: https://developers.google.com/google-ads/scripts/docs/start
+  baseURL: https://googleads.googleapis.com
+  tags:
+  - Media
+  properties:
+  - type: OpenAPI
+    url: openapi/google-ads-media-api-openapi.yml
+  - type: Documentation
+    url: https://developers.google.com/google-ads/api/docs/start
+  - type: Authentication
+    url: https://developers.google.com/google-ads/api/docs/oauth/overview
+  - type: SDKs
+    url: https://developers.google.com/google-ads/api/docs/client-libs
+  - type: Migration Guide
+    url: https://developers.google.com/google-ads/api/docs/migration
+  - type: Best Practices
+    url: https://developers.google.com/google-ads/api/docs/best-practices
+  - type: RateLimits
+    url: https://developers.google.com/google-ads/api/docs/rate-limits
+  - type: ReleaseNotes
+    url: https://developers.google.com/google-ads/api/docs/release-notes
+  - type: Support
+    url: https://developers.google.com/google-ads/api/support
+  - type: Forums
+    url: https://groups.google.com/g/adwords-api
+  - type: Client Libraries
+    url: https://developers.google.com/google-ads/api/docs/client-libs
+  - type: ChangeLog
+    url: https://developers.google.com/google-ads/api/docs/release-notes
+  - type: GettingStarted
+    url: https://developers.google.com/google-ads/api/docs/first-call/overview
+  - type: Discovery
+    url: discovery/google-ads-api-v25-discovery.json
+  - type: Protobuf
+    url: grpc/google-ads-google-ads-service.proto
+  - type: DataModel
+    url: data-model/google-ads-data-model.yml
+  - type: APIReference
+    url: https://developers.google.com/google-ads/api/reference/rpc/latest/overview
+  - type: RateLimits
+    url: https://developers.google.com/google-ads/api/docs/best-practices/quotas
+  - type: Deprecation
+    url: https://developers.google.com/google-ads/api/docs/sunset-dates
+  - type: JSONSchema
+    url: >-
+      json-schema/google-ads-google-ads-googleads-v26-services-create-you-tube-video-upload-request-schema.json
+  - type: JSONSchema
+    url: >-
+      json-schema/google-ads-google-ads-googleads-v26-services-create-you-tube-video-upload-response-schema.json
+- aid: google-ads:google-ads-users-api
+  name: Google Ads Users API
+  description: The Users API from Google Ads — 2 operation(s) for users.
+  humanURL: https://developers.google.com/google-ads/scripts/docs/start
+  baseURL: https://datamanager.googleapis.com
+  tags:
+  - User
+  tags_raw:
+  - Users
+  properties:
+  - type: OpenAPI
+    url: openapi/google-ads-users-api-openapi.yml
+  - type: Documentation
+    url: https://developers.google.com/google-ads/api/docs/start
+  - type: Authentication
+    url: https://developers.google.com/google-ads/api/docs/oauth/overview
+  - type: SDKs
+    url: https://developers.google.com/google-ads/api/docs/client-libs
+  - type: Migration Guide
+    url: https://developers.google.com/google-ads/api/docs/migration
+  - type: Best Practices
+    url: https://developers.google.com/google-ads/api/docs/best-practices
+  - type: RateLimits
+    url: https://developers.google.com/google-ads/api/docs/rate-limits
+  - type: ReleaseNotes
+    url: https://developers.google.com/google-ads/api/docs/release-notes
+  - type: Support
+    url: https://developers.google.com/google-ads/api/support
+  - type: Forums
+    url: https://groups.google.com/g/adwords-api
+  - type: Client Libraries
+    url: https://developers.google.com/google-ads/api/docs/client-libs
+  - type: ChangeLog
+    url: https://developers.google.com/google-ads/api/docs/release-notes
+  - type: GettingStarted
+    url: https://developers.google.com/google-ads/api/docs/first-call/overview
+  - type: Discovery
+    url: discovery/google-ads-api-v25-discovery.json
+  - type: Protobuf
+    url: grpc/google-ads-google-ads-service.proto
+  - type: DataModel
+    url: data-model/google-ads-data-model.yml
+  - type: APIReference
+    url: https://developers.google.com/google-ads/api/reference/rpc/latest/overview
+  - type: RateLimits
+    url: https://developers.google.com/google-ads/api/docs/best-practices/quotas
+  - type: Deprecation
+    url: https://developers.google.com/google-ads/api/docs/sunset-dates
+  - type: JSONSchema
+    url: json-schema/google-ads-remove-users-request-schema.json
+  - type: JSONSchema
+    url: json-schema/google-ads-ingest-users-request-schema.json
+  - type: JSONSchema
+    url: json-schema/google-ads-ingest-users-response-schema.json
+  - type: JSONSchema
+    url: json-schema/google-ads-remove-users-response-schema.json
+- aid: google-ads:google-ads-v26-generateconversionrates-api
+  name: Google Ads V26:generate Conversion Rates API
+  description: >-
+    The V26:generateConversionRates API from Google Ads — 1 operation(s) for v26:generateconversionrates.
+  humanURL: https://developers.google.com/google-ads/scripts/docs/start
+  baseURL: https://googleads.googleapis.com
+  tags:
+  - V26:generateConversionRates
+  properties:
+  - type: OpenAPI
+    url: openapi/google-ads-v26-generateconversionrates-api-openapi.yml
+  - type: Documentation
+    url: https://developers.google.com/google-ads/api/docs/start
+  - type: Authentication
+    url: https://developers.google.com/google-ads/api/docs/oauth/overview
+  - type: SDKs
+    url: https://developers.google.com/google-ads/api/docs/client-libs
+  - type: Migration Guide
+    url: https://developers.google.com/google-ads/api/docs/migration
+  - type: Best Practices
+    url: https://developers.google.com/google-ads/api/docs/best-practices
+  - type: RateLimits
+    url: https://developers.google.com/google-ads/api/docs/rate-limits
+  - type: ReleaseNotes
+    url: https://developers.google.com/google-ads/api/docs/release-notes
+  - type: Support
+    url: https://developers.google.com/google-ads/api/support
+  - type: Forums
+    url: https://groups.google.com/g/adwords-api
+  - type: Client Libraries
+    url: https://developers.google.com/google-ads/api/docs/client-libs
+  - type: ChangeLog
+    url: https://developers.google.com/google-ads/api/docs/release-notes
+  - type: GettingStarted
+    url: https://developers.google.com/google-ads/api/docs/first-call/overview
+  - type: Discovery
+    url: discovery/google-ads-api-v25-discovery.json
+  - type: Protobuf
+    url: grpc/google-ads-google-ads-service.proto
+  - type: DataModel
+    url: data-model/google-ads-data-model.yml
+  - type: APIReference
+    url: https://developers.google.com/google-ads/api/reference/rpc/latest/overview
+  - type: RateLimits
+    url: https://developers.google.com/google-ads/api/docs/best-practices/quotas
+  - type: Deprecation
+    url: https://developers.google.com/google-ads/api/docs/sunset-dates
+  - type: JSONSchema
+    url: >-
+      json-schema/google-ads-google-ads-googleads-v26-services-generate-conversion-rates-request-schema.json
+- aid: google-ads:google-ads-v26-listbenchmarksavailabledates-api
+  name: Google Ads V26:list Benchmarks Available Dates API
+  description: >-
+    The V26:listBenchmarksAvailableDates API from Google Ads — 1 operation(s) for v26:listbenchmarksavailabledates.
+  humanURL: https://developers.google.com/google-ads/scripts/docs/start
+  baseURL: https://googleads.googleapis.com
+  tags:
+  - V26:listBenchmarksAvailableDates
+  properties:
+  - type: OpenAPI
+    url: openapi/google-ads-v26-listbenchmarksavailabledates-api-openapi.yml
+  - type: Documentation
+    url: https://developers.google.com/google-ads/api/docs/start
+  - type: Authentication
+    url: https://developers.google.com/google-ads/api/docs/oauth/overview
+  - type: SDKs
+    url: https://developers.google.com/google-ads/api/docs/client-libs
+  - type: Migration Guide
+    url: https://developers.google.com/google-ads/api/docs/migration
+  - type: Best Practices
+    url: https://developers.google.com/google-ads/api/docs/best-practices
+  - type: RateLimits
+    url: https://developers.google.com/google-ads/api/docs/rate-limits
+  - type: ReleaseNotes
+    url: https://developers.google.com/google-ads/api/docs/release-notes
+  - type: Support
+    url: https://developers.google.com/google-ads/api/support
+  - type: Forums
+    url: https://groups.google.com/g/adwords-api
+  - type: Client Libraries
+    url: https://developers.google.com/google-ads/api/docs/client-libs
+  - type: ChangeLog
+    url: https://developers.google.com/google-ads/api/docs/release-notes
+  - type: GettingStarted
+    url: https://developers.google.com/google-ads/api/docs/first-call/overview
+  - type: Discovery
+    url: discovery/google-ads-api-v25-discovery.json
+  - type: Protobuf
+    url: grpc/google-ads-google-ads-service.proto
+  - type: DataModel
+    url: data-model/google-ads-data-model.yml
+  - type: APIReference
+    url: https://developers.google.com/google-ads/api/reference/rpc/latest/overview
+  - type: RateLimits
+    url: https://developers.google.com/google-ads/api/docs/best-practices/quotas
+  - type: Deprecation
+    url: https://developers.google.com/google-ads/api/docs/sunset-dates
+  - type: JSONSchema
+    url: >-
+      json-schema/google-ads-google-ads-googleads-v26-services-list-benchmarks-available-dates-response-schema.json
+- aid: google-ads:google-ads-v26-listbenchmarkslocations-api
+  name: Google Ads V26:list Benchmarks Locations API
+  description: >-
+    The V26:listBenchmarksLocations API from Google Ads — 1 operation(s) for v26:listbenchmarkslocations.
+  humanURL: https://developers.google.com/google-ads/scripts/docs/start
+  baseURL: https://googleads.googleapis.com
+  tags:
+  - V26:listBenchmarksLocations
+  properties:
+  - type: OpenAPI
+    url: openapi/google-ads-v26-listbenchmarkslocations-api-openapi.yml
+  - type: Documentation
+    url: https://developers.google.com/google-ads/api/docs/start
+  - type: Authentication
+    url: https://developers.google.com/google-ads/api/docs/oauth/overview
+  - type: SDKs
+    url: https://developers.google.com/google-ads/api/docs/client-libs
+  - type: Migration Guide
+    url: https://developers.google.com/google-ads/api/docs/migration
+  - type: Best Practices
+    url: https://developers.google.com/google-ads/api/docs/best-practices
+  - type: RateLimits
+    url: https://developers.google.com/google-ads/api/docs/rate-limits
+  - type: ReleaseNotes
+    url: https://developers.google.com/google-ads/api/docs/release-notes
+  - type: Support
+    url: https://developers.google.com/google-ads/api/support
+  - type: Forums
+    url: https://groups.google.com/g/adwords-api
+  - type: Client Libraries
+    url: https://developers.google.com/google-ads/api/docs/client-libs
+  - type: ChangeLog
+    url: https://developers.google.com/google-ads/api/docs/release-notes
+  - type: GettingStarted
+    url: https://developers.google.com/google-ads/api/docs/first-call/overview
+  - type: Discovery
+    url: discovery/google-ads-api-v25-discovery.json
+  - type: Protobuf
+    url: grpc/google-ads-google-ads-service.proto
+  - type: DataModel
+    url: data-model/google-ads-data-model.yml
+  - type: APIReference
+    url: https://developers.google.com/google-ads/api/reference/rpc/latest/overview
+  - type: RateLimits
+    url: https://developers.google.com/google-ads/api/docs/best-practices/quotas
+  - type: Deprecation
+    url: https://developers.google.com/google-ads/api/docs/sunset-dates
+- aid: google-ads:google-ads-v26-listbenchmarksproducts-api
+  name: Google Ads V26:list Benchmarks Products API
+  description: >-
+    The V26:listBenchmarksProducts API from Google Ads — 1 operation(s) for v26:listbenchmarksproducts.
+  humanURL: https://developers.google.com/google-ads/scripts/docs/start
+  baseURL: https://googleads.googleapis.com
+  tags:
+  - V26:listBenchmarksProducts
+  properties:
+  - type: OpenAPI
+    url: openapi/google-ads-v26-listbenchmarksproducts-api-openapi.yml
+  - type: Documentation
+    url: https://developers.google.com/google-ads/api/docs/start
+  - type: Authentication
+    url: https://developers.google.com/google-ads/api/docs/oauth/overview
+  - type: SDKs
+    url: https://developers.google.com/google-ads/api/docs/client-libs
+  - type: Migration Guide
+    url: https://developers.google.com/google-ads/api/docs/migration
+  - type: Best Practices
+    url: https://developers.google.com/google-ads/api/docs/best-practices
+  - type: RateLimits
+    url: https://developers.google.com/google-ads/api/docs/rate-limits
+  - type: ReleaseNotes
+    url: https://developers.google.com/google-ads/api/docs/release-notes
+  - type: Support
+    url: https://developers.google.com/google-ads/api/support
+  - type: Forums
+    url: https://groups.google.com/g/adwords-api
+  - type: Client Libraries
+    url: https://developers.google.com/google-ads/api/docs/client-libs
+  - type: ChangeLog
+    url: https://developers.google.com/google-ads/api/docs/release-notes
+  - type: GettingStarted
+    url: https://developers.google.com/google-ads/api/docs/first-call/overview
+  - type: Discovery
+    url: discovery/google-ads-api-v25-discovery.json
+  - type: Protobuf
+    url: grpc/google-ads-google-ads-service.proto
+  - type: DataModel
+    url: data-model/google-ads-data-model.yml
+  - type: APIReference
+    url: https://developers.google.com/google-ads/api/reference/rpc/latest/overview
+  - type: RateLimits
+    url: https://developers.google.com/google-ads/api/docs/best-practices/quotas
+  - type: Deprecation
+    url: https://developers.google.com/google-ads/api/docs/sunset-dates
+- aid: google-ads:google-ads-v26-listbenchmarkssources-api
+  name: Google Ads V26:list Benchmarks Sources API
+  description: >-
+    The V26:listBenchmarksSources API from Google Ads — 1 operation(s) for v26:listbenchmarkssources.
+  humanURL: https://developers.google.com/google-ads/scripts/docs/start
+  baseURL: https://googleads.googleapis.com
+  tags:
+  - V26:listBenchmarksSources
+  properties:
+  - type: OpenAPI
+    url: openapi/google-ads-v26-listbenchmarkssources-api-openapi.yml
+  - type: Documentation
+    url: https://developers.google.com/google-ads/api/docs/start
+  - type: Authentication
+    url: https://developers.google.com/google-ads/api/docs/oauth/overview
+  - type: SDKs
+    url: https://developers.google.com/google-ads/api/docs/client-libs
+  - type: Migration Guide
+    url: https://developers.google.com/google-ads/api/docs/migration
+  - type: Best Practices
+    url: https://developers.google.com/google-ads/api/docs/best-practices
+  - type: RateLimits
+    url: https://developers.google.com/google-ads/api/docs/rate-limits
+  - type: ReleaseNotes
+    url: https://developers.google.com/google-ads/api/docs/release-notes
+  - type: Support
+    url: https://developers.google.com/google-ads/api/support
+  - type: Forums
+    url: https://groups.google.com/g/adwords-api
+  - type: Client Libraries
+    url: https://developers.google.com/google-ads/api/docs/client-libs
+  - type: ChangeLog
+    url: https://developers.google.com/google-ads/api/docs/release-notes
+  - type: GettingStarted
+    url: https://developers.google.com/google-ads/api/docs/first-call/overview
+  - type: Discovery
+    url: discovery/google-ads-api-v25-discovery.json
+  - type: Protobuf
+    url: grpc/google-ads-google-ads-service.proto
+  - type: DataModel
+    url: data-model/google-ads-data-model.yml
+  - type: APIReference
+    url: https://developers.google.com/google-ads/api/reference/rpc/latest/overview
+  - type: RateLimits
+    url: https://developers.google.com/google-ads/api/docs/best-practices/quotas
+  - type: Deprecation
+    url: https://developers.google.com/google-ads/api/docs/sunset-dates
+  - type: JSONSchema
+    url: >-
+      json-schema/google-ads-google-ads-googleads-v26-services-list-benchmarks-sources-request-schema.json
+- aid: google-ads:google-ads-v26-listplannablelocations-api
+  name: Google Ads V26:list Plannable Locations API
+  description: >-
+    The V26:listPlannableLocations API from Google Ads — 1 operation(s) for v26:listplannablelocations.
+  humanURL: https://developers.google.com/google-ads/scripts/docs/start
+  baseURL: https://googleads.googleapis.com
+  tags:
+  - V26:listPlannableLocations
+  properties:
+  - type: OpenAPI
+    url: openapi/google-ads-v26-listplannablelocations-api-openapi.yml
+  - type: Documentation
+    url: https://developers.google.com/google-ads/api/docs/start
+  - type: Authentication
+    url: https://developers.google.com/google-ads/api/docs/oauth/overview
+  - type: SDKs
+    url: https://developers.google.com/google-ads/api/docs/client-libs
+  - type: Migration Guide
+    url: https://developers.google.com/google-ads/api/docs/migration
+  - type: Best Practices
+    url: https://developers.google.com/google-ads/api/docs/best-practices
+  - type: RateLimits
+    url: https://developers.google.com/google-ads/api/docs/rate-limits
+  - type: ReleaseNotes
+    url: https://developers.google.com/google-ads/api/docs/release-notes
+  - type: Support
+    url: https://developers.google.com/google-ads/api/support
+  - type: Forums
+    url: https://groups.google.com/g/adwords-api
+  - type: Client Libraries
+    url: https://developers.google.com/google-ads/api/docs/client-libs
+  - type: ChangeLog
+    url: https://developers.google.com/google-ads/api/docs/release-notes
+  - type: GettingStarted
+    url: https://developers.google.com/google-ads/api/docs/first-call/overview
+  - type: Discovery
+    url: discovery/google-ads-api-v25-discovery.json
+  - type: Protobuf
+    url: grpc/google-ads-google-ads-service.proto
+  - type: DataModel
+    url: data-model/google-ads-data-model.yml
+  - type: APIReference
+    url: https://developers.google.com/google-ads/api/reference/rpc/latest/overview
+  - type: RateLimits
+    url: https://developers.google.com/google-ads/api/docs/best-practices/quotas
+  - type: Deprecation
+    url: https://developers.google.com/google-ads/api/docs/sunset-dates
+- aid: google-ads:google-ads-v26-listplannableproducts-api
+  name: Google Ads V26:list Plannable Products API
+  description: >-
+    The V26:listPlannableProducts API from Google Ads — 1 operation(s) for v26:listplannableproducts.
+  humanURL: https://developers.google.com/google-ads/scripts/docs/start
+  baseURL: https://googleads.googleapis.com
+  tags:
+  - V26:listPlannableProducts
+  properties:
+  - type: OpenAPI
+    url: openapi/google-ads-v26-listplannableproducts-api-openapi.yml
+  - type: Documentation
+    url: https://developers.google.com/google-ads/api/docs/start
+  - type: Authentication
+    url: https://developers.google.com/google-ads/api/docs/oauth/overview
+  - type: SDKs
+    url: https://developers.google.com/google-ads/api/docs/client-libs
+  - type: Migration Guide
+    url: https://developers.google.com/google-ads/api/docs/migration
+  - type: Best Practices
+    url: https://developers.google.com/google-ads/api/docs/best-practices
+  - type: RateLimits
+    url: https://developers.google.com/google-ads/api/docs/rate-limits
+  - type: ReleaseNotes
+    url: https://developers.google.com/google-ads/api/docs/release-notes
+  - type: Support
+    url: https://developers.google.com/google-ads/api/support
+  - type: Forums
+    url: https://groups.google.com/g/adwords-api
+  - type: Client Libraries
+    url: https://developers.google.com/google-ads/api/docs/client-libs
+  - type: ChangeLog
+    url: https://developers.google.com/google-ads/api/docs/release-notes
+  - type: GettingStarted
+    url: https://developers.google.com/google-ads/api/docs/first-call/overview
+  - type: Discovery
+    url: discovery/google-ads-api-v25-discovery.json
+  - type: Protobuf
+    url: grpc/google-ads-google-ads-service.proto
+  - type: DataModel
+    url: data-model/google-ads-data-model.yml
+  - type: APIReference
+    url: https://developers.google.com/google-ads/api/reference/rpc/latest/overview
+  - type: RateLimits
+    url: https://developers.google.com/google-ads/api/docs/best-practices/quotas
+  - type: Deprecation
+    url: https://developers.google.com/google-ads/api/docs/sunset-dates
+  - type: JSONSchema
+    url: >-
+      json-schema/google-ads-google-ads-googleads-v26-services-list-plannable-products-request-schema.json
+- aid: google-ads:google-ads-v26-listplannableuserinterests-api
+  name: Google Ads V26:list Plannable User Interests API
+  description: >-
+    The V26:listPlannableUserInterests API from Google Ads — 1 operation(s) for v26:listplannableuserinterests.
+  humanURL: https://developers.google.com/google-ads/scripts/docs/start
+  baseURL: https://googleads.googleapis.com
+  tags:
+  - V26:listPlannableUserInterests
+  properties:
+  - type: OpenAPI
+    url: openapi/google-ads-v26-listplannableuserinterests-api-openapi.yml
+  - type: Documentation
+    url: https://developers.google.com/google-ads/api/docs/start
+  - type: Authentication
+    url: https://developers.google.com/google-ads/api/docs/oauth/overview
+  - type: SDKs
+    url: https://developers.google.com/google-ads/api/docs/client-libs
+  - type: Migration Guide
+    url: https://developers.google.com/google-ads/api/docs/migration
+  - type: Best Practices
+    url: https://developers.google.com/google-ads/api/docs/best-practices
+  - type: RateLimits
+    url: https://developers.google.com/google-ads/api/docs/rate-limits
+  - type: ReleaseNotes
+    url: https://developers.google.com/google-ads/api/docs/release-notes
+  - type: Support
+    url: https://developers.google.com/google-ads/api/support
+  - type: Forums
+    url: https://groups.google.com/g/adwords-api
+  - type: Client Libraries
+    url: https://developers.google.com/google-ads/api/docs/client-libs
+  - type: ChangeLog
+    url: https://developers.google.com/google-ads/api/docs/release-notes
+  - type: GettingStarted
+    url: https://developers.google.com/google-ads/api/docs/first-call/overview
+  - type: Discovery
+    url: discovery/google-ads-api-v25-discovery.json
+  - type: Protobuf
+    url: grpc/google-ads-google-ads-service.proto
+  - type: DataModel
+    url: data-model/google-ads-data-model.yml
+  - type: APIReference
+    url: https://developers.google.com/google-ads/api/reference/rpc/latest/overview
+  - type: RateLimits
+    url: https://developers.google.com/google-ads/api/docs/best-practices/quotas
+  - type: Deprecation
+    url: https://developers.google.com/google-ads/api/docs/sunset-dates
+  - type: JSONSchema
+    url: >-
+      json-schema/google-ads-google-ads-googleads-v26-services-list-plannable-user-interests-request-schema.json
+- aid: google-ads:google-ads-v26-listplannableuserlists-api
+  name: Google Ads V26:list Plannable User Lists API
+  description: >-
+    The V26:listPlannableUserLists API from Google Ads — 1 operation(s) for v26:listplannableuserlists.
+  humanURL: https://developers.google.com/google-ads/scripts/docs/start
+  baseURL: https://googleads.googleapis.com
+  tags:
+  - V26:listPlannableUserLists
+  properties:
+  - type: OpenAPI
+    url: openapi/google-ads-v26-listplannableuserlists-api-openapi.yml
+  - type: Documentation
+    url: https://developers.google.com/google-ads/api/docs/start
+  - type: Authentication
+    url: https://developers.google.com/google-ads/api/docs/oauth/overview
+  - type: SDKs
+    url: https://developers.google.com/google-ads/api/docs/client-libs
+  - type: Migration Guide
+    url: https://developers.google.com/google-ads/api/docs/migration
+  - type: Best Practices
+    url: https://developers.google.com/google-ads/api/docs/best-practices
+  - type: RateLimits
+    url: https://developers.google.com/google-ads/api/docs/rate-limits
+  - type: ReleaseNotes
+    url: https://developers.google.com/google-ads/api/docs/release-notes
+  - type: Support
+    url: https://developers.google.com/google-ads/api/support
+  - type: Forums
+    url: https://groups.google.com/g/adwords-api
+  - type: Client Libraries
+    url: https://developers.google.com/google-ads/api/docs/client-libs
+  - type: ChangeLog
+    url: https://developers.google.com/google-ads/api/docs/release-notes
+  - type: GettingStarted
+    url: https://developers.google.com/google-ads/api/docs/first-call/overview
+  - type: Discovery
+    url: discovery/google-ads-api-v25-discovery.json
+  - type: Protobuf
+    url: grpc/google-ads-google-ads-service.proto
+  - type: DataModel
+    url: data-model/google-ads-data-model.yml
+  - type: APIReference
+    url: https://developers.google.com/google-ads/api/reference/rpc/latest/overview
+  - type: RateLimits
+    url: https://developers.google.com/google-ads/api/docs/best-practices/quotas
+  - type: Deprecation
+    url: https://developers.google.com/google-ads/api/docs/sunset-dates
+  - type: JSONSchema
+    url: >-
+      json-schema/google-ads-google-ads-googleads-v26-services-list-plannable-user-lists-request-schema.json
+- aid: google-ads:google-ads-account-types-api
+  name: Google Ads Account Types API
+  description: The Account Types API from Google Ads — 12 operation(s) for account types.
+  humanURL: https://developers.google.com/google-ads/scripts/docs/start
+  baseURL: https://datamanager.googleapis.com
+  tags:
+  - Account Types
+  properties:
+  - type: OpenAPI
+    url: openapi/google-ads-account-types-api-openapi.yml
+  - type: Documentation
+    url: https://developers.google.com/google-ads/api/docs/start
+  - type: Authentication
+    url: https://developers.google.com/google-ads/api/docs/oauth/overview
+  - type: SDKs
+    url: https://developers.google.com/google-ads/api/docs/client-libs
+  - type: Migration Guide
+    url: https://developers.google.com/google-ads/api/docs/migration
+  - type: Best Practices
+    url: https://developers.google.com/google-ads/api/docs/best-practices
+  - type: RateLimits
+    url: https://developers.google.com/google-ads/api/docs/rate-limits
+  - type: ReleaseNotes
+    url: https://developers.google.com/google-ads/api/docs/release-notes
+  - type: Support
+    url: https://developers.google.com/google-ads/api/support
+  - type: Forums
+    url: https://groups.google.com/g/adwords-api
+  - type: Client Libraries
+    url: https://developers.google.com/google-ads/api/docs/client-libs
+  - type: ChangeLog
+    url: https://developers.google.com/google-ads/api/docs/release-notes
+  - type: GettingStarted
+    url: https://developers.google.com/google-ads/api/docs/first-call/overview
+  - type: Discovery
+    url: discovery/google-ads-api-v25-discovery.json
+  - type: Protobuf
+    url: grpc/google-ads-google-ads-service.proto
+  - type: DataModel
+    url: data-model/google-ads-data-model.yml
+  - type: APIReference
+    url: https://developers.google.com/google-ads/api/reference/rpc/latest/overview
+  - type: RateLimits
+    url: https://developers.google.com/google-ads/api/docs/best-practices/quotas
+  - type: Deprecation
+    url: https://developers.google.com/google-ads/api/docs/sunset-dates
+  - type: JSONSchema
+    url: json-schema/google-ads-user-list-direct-license-schema.json
+  - type: JSONSchema
+    url: json-schema/google-ads-user-list-schema.json
+  - type: JSONSchema
+    url: json-schema/google-ads-user-list-global-license-schema.json
+  - type: JSONSchema
+    url: json-schema/google-ads-partner-link-schema.json
+  - type: JSONSchema
+    url: json-schema/google-ads-list-user-list-global-license-customer-infos-response-schema.json
+  - type: JSONSchema
+    url: json-schema/google-ads-retrieve-partner-match-report-response-schema.json
+- aid: google-ads:google-ads-request-status-api
+  name: Google Ads Request Status API
+  description: The Request Status API from Google Ads — 1 operation(s) for request status.
+  humanURL: https://developers.google.com/google-ads/scripts/docs/start
+  baseURL: https://datamanager.googleapis.com
+  tags:
+  - Request Status
+  properties:
+  - type: OpenAPI
+    url: openapi/google-ads-request-status-api-openapi.yml
+  - type: Documentation
+    url: https://developers.google.com/google-ads/api/docs/start
+  - type: Authentication
+    url: https://developers.google.com/google-ads/api/docs/oauth/overview
+  - type: SDKs
+    url: https://developers.google.com/google-ads/api/docs/client-libs
+  - type: Migration Guide
+    url: https://developers.google.com/google-ads/api/docs/migration
+  - type: Best Practices
+    url: https://developers.google.com/google-ads/api/docs/best-practices
+  - type: RateLimits
+    url: https://developers.google.com/google-ads/api/docs/rate-limits
+  - type: ReleaseNotes
+    url: https://developers.google.com/google-ads/api/docs/release-notes
+  - type: Support
+    url: https://developers.google.com/google-ads/api/support
+  - type: Forums
+    url: https://groups.google.com/g/adwords-api
+  - type: Client Libraries
+    url: https://developers.google.com/google-ads/api/docs/client-libs
+  - type: ChangeLog
+    url: https://developers.google.com/google-ads/api/docs/release-notes
+  - type: GettingStarted
+    url: https://developers.google.com/google-ads/api/docs/first-call/overview
+  - type: Discovery
+    url: discovery/google-ads-api-v25-discovery.json
+  - type: Protobuf
+    url: grpc/google-ads-google-ads-service.proto
+  - type: DataModel
+    url: data-model/google-ads-data-model.yml
+  - type: APIReference
+    url: https://developers.google.com/google-ads/api/reference/rpc/latest/overview
+  - type: RateLimits
+    url: https://developers.google.com/google-ads/api/docs/best-practices/quotas
+  - type: Deprecation
+    url: https://developers.google.com/google-ads/api/docs/sunset-dates
+  - type: JSONSchema
+    url: json-schema/google-ads-retrieve-request-status-response-schema.json
+x-enrichment:
+  date: '2026-11-12'
+  status: enriched
+  artifacts_added: 1
+  pass: local-v6
+x-parent: google
+x-relationship: product

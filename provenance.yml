@@ -11,6 +11,12 @@ artifacts:
   capabilities/google-ads-capability-edges.yml:
     method: unknown
     evidence: no authorship recorded
+  certification/observations-2026-11-11.jsonl:
+    method: unknown
+    evidence: no authorship recorded
+  certification/status.yml:
+    method: unknown
+    evidence: no authorship recorded
   changelog/google-ads-changelog.yml:
     method: searched
     evidence: declared in the artifact
@@ -18,17 +24,17 @@ artifacts:
     method: searched
     evidence: declared in the artifact
   collections/google-ads-ad-groups-api.opencollection.json:
-    method: derived
-    evidence: openapi/google-ads-ad-groups-api
+    method: unknown
+    evidence: no authorship recorded
   collections/google-ads-ad-groups-api.postman_collection.json:
-    method: derived
-    evidence: openapi/google-ads-ad-groups-api
+    method: unknown
+    evidence: no authorship recorded
   collections/google-ads-ads-api.opencollection.json:
-    method: derived
-    evidence: openapi/google-ads-ads-api
+    method: unknown
+    evidence: no authorship recorded
   collections/google-ads-ads-api.postman_collection.json:
-    method: derived
-    evidence: openapi/google-ads-ads-api
+    method: unknown
+    evidence: no authorship recorded
   collections/google-ads-api-v25.opencollection.json:
     method: unknown
     evidence: no authorship recorded
@@ -42,17 +48,17 @@ artifacts:
     method: unknown
     evidence: no authorship recorded
   collections/google-ads-bidding-strategies-api.opencollection.json:
-    method: derived
-    evidence: openapi/google-ads-bidding-strategies-api
+    method: unknown
+    evidence: no authorship recorded
   collections/google-ads-bidding-strategies-api.postman_collection.json:
-    method: derived
-    evidence: openapi/google-ads-bidding-strategies-api
+    method: unknown
+    evidence: no authorship recorded
   collections/google-ads-campaigns-api.opencollection.json:
-    method: derived
-    evidence: openapi/google-ads-campaigns-api
+    method: unknown
+    evidence: no authorship recorded
   collections/google-ads-campaigns-api.postman_collection.json:
-    method: derived
-    evidence: openapi/google-ads-campaigns-api
+    method: unknown
+    evidence: no authorship recorded
   collections/google-ads-customers-api.opencollection.json:
     method: derived
     evidence: openapi/google-ads-customers-api
@@ -60,29 +66,43 @@ artifacts:
     method: derived
     evidence: openapi/google-ads-customers-api
   collections/google-ads-keywords-api.opencollection.json:
-    method: derived
-    evidence: openapi/google-ads-keywords-api
+    method: unknown
+    evidence: no authorship recorded
   collections/google-ads-keywords-api.postman_collection.json:
-    method: derived
-    evidence: openapi/google-ads-keywords-api
+    method: unknown
+    evidence: no authorship recorded
   collections/google-ads-reporting-api.opencollection.json:
-    method: derived
-    evidence: openapi/google-ads-reporting-api
+    method: unknown
+    evidence: no authorship recorded
   collections/google-ads-reporting-api.postman_collection.json:
-    method: derived
-    evidence: openapi/google-ads-reporting-api
+    method: unknown
+    evidence: no authorship recorded
   conformance/google-ads-conformance.yml:
     method: derived
     evidence: declared in the artifact
   conventions/google-ads-conventions.yml:
     method: searched
     evidence: declared in the artifact
+  data-license/google-ads-data-license.yml:
+    method: harvested
+    evidence: declared in the artifact
   data-model/google-ads-data-model.yml:
     method: derived
     evidence: declared in the artifact
+  discovery/datamanager-v1.json:
+    method: harvested
+    evidence: byte-identical to https://datamanager.googleapis.com/$discovery/rest?version=v1 (sha256
+      d5ced5561c0e, fetched 2026-11-12T01:31:42+00:00)
   discovery/google-ads-api-v25-discovery.json:
     method: unknown
     evidence: no authorship recorded
+  discovery/googleads-v26.json:
+    method: harvested
+    evidence: byte-identical to https://googleads.googleapis.com/$discovery/rest?version=v26 (sha256 dcf8b274debc,
+      fetched 2026-11-12T01:31:41+00:00)
+  eligibility/google-ads-eligibility.yml:
+    method: harvested
+    evidence: declared in the artifact
   errors/google-ads-problem-types.yml:
     method: searched
     evidence: declared in the artifact
@@ -114,6 +134,9 @@ artifacts:
     method: unknown
     evidence: no authorship recorded
   heartbeat/2026-11-06.yml:
+    method: unknown
+    evidence: no authorship recorded
+  heartbeat/2026-11-13.yml:
     method: unknown
     evidence: no authorship recorded
   hosts/google-ads-hosts.yml:
@@ -905,6 +928,60 @@ artifacts:
   json-schema/google-ads-google-ads-googleads-v25-services-update-you-tube-video-upload-response-schema.json:
     method: unknown
     evidence: no authorship recorded
+  json-schema/google-ads-google-ads-googleads-v26-resources-google-ads-field-schema.json:
+    method: unknown
+    evidence: no authorship recorded
+  json-schema/google-ads-google-ads-googleads-v26-services-create-you-tube-video-upload-request-schema.json:
+    method: unknown
+    evidence: no authorship recorded
+  json-schema/google-ads-google-ads-googleads-v26-services-create-you-tube-video-upload-response-schema.json:
+    method: unknown
+    evidence: no authorship recorded
+  json-schema/google-ads-google-ads-googleads-v26-services-fetch-incentive-response-schema.json:
+    method: unknown
+    evidence: no authorship recorded
+  json-schema/google-ads-google-ads-googleads-v26-services-generate-conversion-rates-request-schema.json:
+    method: unknown
+    evidence: no authorship recorded
+  json-schema/google-ads-google-ads-googleads-v26-services-list-benchmarks-available-dates-response-schema.json:
+    method: unknown
+    evidence: no authorship recorded
+  json-schema/google-ads-google-ads-googleads-v26-services-list-benchmarks-sources-request-schema.json:
+    method: unknown
+    evidence: no authorship recorded
+  json-schema/google-ads-google-ads-googleads-v26-services-list-insights-eligible-dates-request-schema.json:
+    method: unknown
+    evidence: no authorship recorded
+  json-schema/google-ads-google-ads-googleads-v26-services-list-insights-eligible-dates-response-schema.json:
+    method: unknown
+    evidence: no authorship recorded
+  json-schema/google-ads-google-ads-googleads-v26-services-list-plannable-products-request-schema.json:
+    method: unknown
+    evidence: no authorship recorded
+  json-schema/google-ads-google-ads-googleads-v26-services-list-plannable-user-interests-request-schema.json:
+    method: unknown
+    evidence: no authorship recorded
+  json-schema/google-ads-google-ads-googleads-v26-services-list-plannable-user-lists-request-schema.json:
+    method: unknown
+    evidence: no authorship recorded
+  json-schema/google-ads-google-ads-googleads-v26-services-search-google-ads-fields-request-schema.json:
+    method: unknown
+    evidence: no authorship recorded
+  json-schema/google-ads-google-ads-googleads-v26-services-search-google-ads-fields-response-schema.json:
+    method: unknown
+    evidence: no authorship recorded
+  json-schema/google-ads-google-ads-googleads-v26-services-suggest-geo-target-constants-request-schema.json:
+    method: unknown
+    evidence: no authorship recorded
+  json-schema/google-ads-google-ads-googleads-v26-services-suggest-geo-target-constants-response-schema.json:
+    method: unknown
+    evidence: no authorship recorded
+  json-schema/google-ads-google-ads-googleads-v26-services-suggest-keyword-theme-constants-request-schema.json:
+    method: unknown
+    evidence: no authorship recorded
+  json-schema/google-ads-google-ads-googleads-v26-services-suggest-keyword-theme-constants-response-schema.json:
+    method: unknown
+    evidence: no authorship recorded
   json-schema/google-ads-google-longrunning-cancel-operation-request-schema.json:
     method: unknown
     evidence: no authorship recorded
@@ -918,6 +995,33 @@ artifacts:
     method: unknown
     evidence: no authorship recorded
   json-schema/google-ads-google-protobuf-empty-schema.json:
+    method: unknown
+    evidence: no authorship recorded
+  json-schema/google-ads-ingest-ad-events-request-schema.json:
+    method: unknown
+    evidence: no authorship recorded
+  json-schema/google-ads-ingest-ad-events-response-schema.json:
+    method: unknown
+    evidence: no authorship recorded
+  json-schema/google-ads-ingest-audience-members-request-schema.json:
+    method: unknown
+    evidence: no authorship recorded
+  json-schema/google-ads-ingest-audience-members-response-schema.json:
+    method: unknown
+    evidence: no authorship recorded
+  json-schema/google-ads-ingest-events-request-schema.json:
+    method: unknown
+    evidence: no authorship recorded
+  json-schema/google-ads-ingest-events-response-schema.json:
+    method: unknown
+    evidence: no authorship recorded
+  json-schema/google-ads-ingest-users-request-schema.json:
+    method: unknown
+    evidence: no authorship recorded
+  json-schema/google-ads-ingest-users-response-schema.json:
+    method: unknown
+    evidence: no authorship recorded
+  json-schema/google-ads-list-user-list-global-license-customer-infos-response-schema.json:
     method: unknown
     evidence: no authorship recorded
   json-schema/google-ads-mutate-ad-group-ads-request-schema.json:
@@ -956,6 +1060,33 @@ artifacts:
   json-schema/google-ads-mutate-campaigns-response-schema.json:
     method: unknown
     evidence: no authorship recorded
+  json-schema/google-ads-partner-link-schema.json:
+    method: unknown
+    evidence: no authorship recorded
+  json-schema/google-ads-remove-all-audience-members-request-schema.json:
+    method: unknown
+    evidence: no authorship recorded
+  json-schema/google-ads-remove-all-audience-members-response-schema.json:
+    method: unknown
+    evidence: no authorship recorded
+  json-schema/google-ads-remove-audience-members-request-schema.json:
+    method: unknown
+    evidence: no authorship recorded
+  json-schema/google-ads-remove-audience-members-response-schema.json:
+    method: unknown
+    evidence: no authorship recorded
+  json-schema/google-ads-remove-users-request-schema.json:
+    method: unknown
+    evidence: no authorship recorded
+  json-schema/google-ads-remove-users-response-schema.json:
+    method: unknown
+    evidence: no authorship recorded
+  json-schema/google-ads-retrieve-partner-match-report-response-schema.json:
+    method: unknown
+    evidence: no authorship recorded
+  json-schema/google-ads-retrieve-request-status-response-schema.json:
+    method: unknown
+    evidence: no authorship recorded
   json-schema/google-ads-search-google-ads-request-schema.json:
     method: unknown
     evidence: no authorship recorded
@@ -968,10 +1099,19 @@ artifacts:
   json-schema/google-ads-search-google-ads-stream-response-schema.json:
     method: unknown
     evidence: no authorship recorded
+  json-schema/google-ads-user-list-direct-license-schema.json:
+    method: unknown
+    evidence: no authorship recorded
+  json-schema/google-ads-user-list-global-license-schema.json:
+    method: unknown
+    evidence: no authorship recorded
+  json-schema/google-ads-user-list-schema.json:
+    method: unknown
+    evidence: no authorship recorded
   kin/checks-2026-10-23T222754.yml:
     method: generated
     evidence: Kin Score snapshot written by score.rb
-  kin/checks-2026-11-02T082323.yml:
+  kin/checks-2026-11-06T143934.yml:
     method: generated
     evidence: Kin Score snapshot written by score.rb
   kin/score-2026-09-23T000603.yml:
@@ -1037,6 +1177,9 @@ artifacts:
   kin/score-2026-11-02T082323.yml:
     method: generated
     evidence: Kin Score snapshot written by score.rb
+  kin/score-2026-11-06T143934.yml:
+    method: generated
+    evidence: Kin Score snapshot written by score.rb
   lifecycle/google-ads-lifecycle.yml:
     method: searched
     evidence: declared in the artifact
@@ -1052,312 +1195,78 @@ artifacts:
   mcp/google-ads-tool-crosswalk.yml:
     method: derived
     evidence: declared in the artifact
-  openapi/_original/google-ads-api-openapi.yml:
+  openapi/_original/google-ads-datamanager-account-types-api-openapi.yml:
     method: harvested
     evidence: found in openapi/_original/; the fetch URL and bytes were not recorded, so byte-identity
       to the provider's source is unverified
-  openapi/_original/google-ads-api-v25-openapi.yml:
+  openapi/_original/google-ads-datamanager-ad-events-api-openapi.yml:
     method: harvested
     evidence: found in openapi/_original/; the fetch URL and bytes were not recorded, so byte-identity
       to the provider's source is unverified
-  openapi/google-ads-ad-groups-api-openapi.yml:
+  openapi/_original/google-ads-datamanager-audience-members-api-openapi.yml:
+    method: harvested
+    evidence: found in openapi/_original/; the fetch URL and bytes were not recorded, so byte-identity
+      to the provider's source is unverified
+  openapi/_original/google-ads-datamanager-events-api-openapi.yml:
+    method: harvested
+    evidence: found in openapi/_original/; the fetch URL and bytes were not recorded, so byte-identity
+      to the provider's source is unverified
+  openapi/_original/google-ads-datamanager-request-status-api-openapi.yml:
+    method: harvested
+    evidence: found in openapi/_original/; the fetch URL and bytes were not recorded, so byte-identity
+      to the provider's source is unverified
+  openapi/_original/google-ads-datamanager-users-api-openapi.yml:
+    method: harvested
+    evidence: found in openapi/_original/; the fetch URL and bytes were not recorded, so byte-identity
+      to the provider's source is unverified
+  openapi/_original/google-ads-googleads-audience-insights-api-openapi.yml:
+    method: harvested
+    evidence: found in openapi/_original/; the fetch URL and bytes were not recorded, so byte-identity
+      to the provider's source is unverified
+  openapi/_original/google-ads-googleads-customers-api-openapi.yml:
+    method: harvested
+    evidence: found in openapi/_original/; the fetch URL and bytes were not recorded, so byte-identity
+      to the provider's source is unverified
+  openapi/_original/google-ads-googleads-geo-target-constants-api-openapi.yml:
+    method: harvested
+    evidence: found in openapi/_original/; the fetch URL and bytes were not recorded, so byte-identity
+      to the provider's source is unverified
+  openapi/_original/google-ads-googleads-google-ads-fields-api-openapi.yml:
+    method: harvested
+    evidence: found in openapi/_original/; the fetch URL and bytes were not recorded, so byte-identity
+      to the provider's source is unverified
+  openapi/_original/google-ads-googleads-incentives-api-openapi.yml:
+    method: harvested
+    evidence: found in openapi/_original/; the fetch URL and bytes were not recorded, so byte-identity
+      to the provider's source is unverified
+  openapi/_original/google-ads-googleads-keyword-theme-constants-api-openapi.yml:
+    method: harvested
+    evidence: found in openapi/_original/; the fetch URL and bytes were not recorded, so byte-identity
+      to the provider's source is unverified
+  openapi/_original/google-ads-googleads-media-api-openapi.yml:
+    method: harvested
+    evidence: found in openapi/_original/; the fetch URL and bytes were not recorded, so byte-identity
+      to the provider's source is unverified
+  openapi/_original/google-ads-googleads-v26-api-openapi.yml:
+    method: harvested
+    evidence: found in openapi/_original/; the fetch URL and bytes were not recorded, so byte-identity
+      to the provider's source is unverified
+  openapi/google-ads-account-types-api-openapi.yml:
     method: derived
     evidence: paths are a subset of openapi/_original/ (split from the harvested spec)
-  openapi/google-ads-ads-api-openapi.yml:
+  openapi/google-ads-adevents-api-openapi.yml:
     method: derived
     evidence: paths are a subset of openapi/_original/ (split from the harvested spec)
-  openapi/google-ads-audience-insights-api-openapi.yml:
+  openapi/google-ads-audienceinsights-api-openapi.yml:
     method: derived
     evidence: paths are a subset of openapi/_original/ (split from the harvested spec)
-  openapi/google-ads-bidding-strategies-api-openapi.yml:
-    method: derived
-    evidence: paths are a subset of openapi/_original/ (split from the harvested spec)
-  openapi/google-ads-campaigns-api-openapi.yml:
-    method: derived
-    evidence: paths are a subset of openapi/_original/ (split from the harvested spec)
-  openapi/google-ads-customers-accountbudgetproposals-api-openapi.yml:
-    method: derived
-    evidence: paths are a subset of openapi/_original/ (split from the harvested spec)
-  openapi/google-ads-customers-accountlinks-api-openapi.yml:
-    method: derived
-    evidence: paths are a subset of openapi/_original/ (split from the harvested spec)
-  openapi/google-ads-customers-adgroupadlabels-api-openapi.yml:
-    method: derived
-    evidence: paths are a subset of openapi/_original/ (split from the harvested spec)
-  openapi/google-ads-customers-adgroupads-api-openapi.yml:
-    method: derived
-    evidence: paths are a subset of openapi/_original/ (split from the harvested spec)
-  openapi/google-ads-customers-adgroupassets-api-openapi.yml:
-    method: derived
-    evidence: paths are a subset of openapi/_original/ (split from the harvested spec)
-  openapi/google-ads-customers-adgroupassetsets-api-openapi.yml:
-    method: derived
-    evidence: paths are a subset of openapi/_original/ (split from the harvested spec)
-  openapi/google-ads-customers-adgroupbidmodifiers-api-openapi.yml:
-    method: derived
-    evidence: paths are a subset of openapi/_original/ (split from the harvested spec)
-  openapi/google-ads-customers-adgroupcriteria-api-openapi.yml:
-    method: derived
-    evidence: paths are a subset of openapi/_original/ (split from the harvested spec)
-  openapi/google-ads-customers-adgroupcriterioncustomizers-api-openapi.yml:
-    method: derived
-    evidence: paths are a subset of openapi/_original/ (split from the harvested spec)
-  openapi/google-ads-customers-adgroupcriterionlabels-api-openapi.yml:
-    method: derived
-    evidence: paths are a subset of openapi/_original/ (split from the harvested spec)
-  openapi/google-ads-customers-adgroupcustomizers-api-openapi.yml:
-    method: derived
-    evidence: paths are a subset of openapi/_original/ (split from the harvested spec)
-  openapi/google-ads-customers-adgrouplabels-api-openapi.yml:
-    method: derived
-    evidence: paths are a subset of openapi/_original/ (split from the harvested spec)
-  openapi/google-ads-customers-adgroups-api-openapi.yml:
-    method: derived
-    evidence: paths are a subset of openapi/_original/ (split from the harvested spec)
-  openapi/google-ads-customers-adparameters-api-openapi.yml:
-    method: derived
-    evidence: paths are a subset of openapi/_original/ (split from the harvested spec)
-  openapi/google-ads-customers-ads-api-openapi.yml:
+  openapi/google-ads-audiencemembers-api-openapi.yml:
     method: derived
     evidence: paths are a subset of openapi/_original/ (split from the harvested spec)
   openapi/google-ads-customers-api-openapi.yml:
     method: derived
     evidence: paths are a subset of openapi/_original/ (split from the harvested spec)
-  openapi/google-ads-customers-assetgenerations-api-openapi.yml:
-    method: derived
-    evidence: paths are a subset of openapi/_original/ (split from the harvested spec)
-  openapi/google-ads-customers-assetgroupassets-api-openapi.yml:
-    method: derived
-    evidence: paths are a subset of openapi/_original/ (split from the harvested spec)
-  openapi/google-ads-customers-assetgrouplistinggroupfilters-api-openapi.yml:
-    method: derived
-    evidence: paths are a subset of openapi/_original/ (split from the harvested spec)
-  openapi/google-ads-customers-assetgroups-api-openapi.yml:
-    method: derived
-    evidence: paths are a subset of openapi/_original/ (split from the harvested spec)
-  openapi/google-ads-customers-assetgroupsignals-api-openapi.yml:
-    method: derived
-    evidence: paths are a subset of openapi/_original/ (split from the harvested spec)
-  openapi/google-ads-customers-assets-api-openapi.yml:
-    method: derived
-    evidence: paths are a subset of openapi/_original/ (split from the harvested spec)
-  openapi/google-ads-customers-assetsetassets-api-openapi.yml:
-    method: derived
-    evidence: paths are a subset of openapi/_original/ (split from the harvested spec)
-  openapi/google-ads-customers-assetsets-api-openapi.yml:
-    method: derived
-    evidence: paths are a subset of openapi/_original/ (split from the harvested spec)
-  openapi/google-ads-customers-audiences-api-openapi.yml:
-    method: derived
-    evidence: paths are a subset of openapi/_original/ (split from the harvested spec)
-  openapi/google-ads-customers-batchjobs-api-openapi.yml:
-    method: derived
-    evidence: paths are a subset of openapi/_original/ (split from the harvested spec)
-  openapi/google-ads-customers-biddingdataexclusions-api-openapi.yml:
-    method: derived
-    evidence: paths are a subset of openapi/_original/ (split from the harvested spec)
-  openapi/google-ads-customers-biddingseasonalityadjustments-api-openapi.yml:
-    method: derived
-    evidence: paths are a subset of openapi/_original/ (split from the harvested spec)
-  openapi/google-ads-customers-biddingstrategies-api-openapi.yml:
-    method: derived
-    evidence: paths are a subset of openapi/_original/ (split from the harvested spec)
-  openapi/google-ads-customers-billingsetups-api-openapi.yml:
-    method: derived
-    evidence: paths are a subset of openapi/_original/ (split from the harvested spec)
-  openapi/google-ads-customers-campaignassets-api-openapi.yml:
-    method: derived
-    evidence: paths are a subset of openapi/_original/ (split from the harvested spec)
-  openapi/google-ads-customers-campaignassetsets-api-openapi.yml:
-    method: derived
-    evidence: paths are a subset of openapi/_original/ (split from the harvested spec)
-  openapi/google-ads-customers-campaignbidmodifiers-api-openapi.yml:
-    method: derived
-    evidence: paths are a subset of openapi/_original/ (split from the harvested spec)
-  openapi/google-ads-customers-campaignbudgets-api-openapi.yml:
-    method: derived
-    evidence: paths are a subset of openapi/_original/ (split from the harvested spec)
-  openapi/google-ads-customers-campaignconversiongoals-api-openapi.yml:
-    method: derived
-    evidence: paths are a subset of openapi/_original/ (split from the harvested spec)
-  openapi/google-ads-customers-campaigncriteria-api-openapi.yml:
-    method: derived
-    evidence: paths are a subset of openapi/_original/ (split from the harvested spec)
-  openapi/google-ads-customers-campaigncustomizers-api-openapi.yml:
-    method: derived
-    evidence: paths are a subset of openapi/_original/ (split from the harvested spec)
-  openapi/google-ads-customers-campaigndrafts-api-openapi.yml:
-    method: derived
-    evidence: paths are a subset of openapi/_original/ (split from the harvested spec)
-  openapi/google-ads-customers-campaigngoalconfigs-api-openapi.yml:
-    method: derived
-    evidence: paths are a subset of openapi/_original/ (split from the harvested spec)
-  openapi/google-ads-customers-campaigngroups-api-openapi.yml:
-    method: derived
-    evidence: paths are a subset of openapi/_original/ (split from the harvested spec)
-  openapi/google-ads-customers-campaignlabels-api-openapi.yml:
-    method: derived
-    evidence: paths are a subset of openapi/_original/ (split from the harvested spec)
-  openapi/google-ads-customers-campaigns-api-openapi.yml:
-    method: derived
-    evidence: paths are a subset of openapi/_original/ (split from the harvested spec)
-  openapi/google-ads-customers-campaignsharedsets-api-openapi.yml:
-    method: derived
-    evidence: paths are a subset of openapi/_original/ (split from the harvested spec)
-  openapi/google-ads-customers-conversionactions-api-openapi.yml:
-    method: derived
-    evidence: paths are a subset of openapi/_original/ (split from the harvested spec)
-  openapi/google-ads-customers-conversioncustomvariables-api-openapi.yml:
-    method: derived
-    evidence: paths are a subset of openapi/_original/ (split from the harvested spec)
-  openapi/google-ads-customers-conversiongoalcampaignconfigs-api-openapi.yml:
-    method: derived
-    evidence: paths are a subset of openapi/_original/ (split from the harvested spec)
-  openapi/google-ads-customers-conversionvaluerules-api-openapi.yml:
-    method: derived
-    evidence: paths are a subset of openapi/_original/ (split from the harvested spec)
-  openapi/google-ads-customers-conversionvaluerulesets-api-openapi.yml:
-    method: derived
-    evidence: paths are a subset of openapi/_original/ (split from the harvested spec)
-  openapi/google-ads-customers-customaudiences-api-openapi.yml:
-    method: derived
-    evidence: paths are a subset of openapi/_original/ (split from the harvested spec)
-  openapi/google-ads-customers-customconversiongoals-api-openapi.yml:
-    method: derived
-    evidence: paths are a subset of openapi/_original/ (split from the harvested spec)
-  openapi/google-ads-customers-customerassets-api-openapi.yml:
-    method: derived
-    evidence: paths are a subset of openapi/_original/ (split from the harvested spec)
-  openapi/google-ads-customers-customerassetsets-api-openapi.yml:
-    method: derived
-    evidence: paths are a subset of openapi/_original/ (split from the harvested spec)
-  openapi/google-ads-customers-customerclientlinks-api-openapi.yml:
-    method: derived
-    evidence: paths are a subset of openapi/_original/ (split from the harvested spec)
-  openapi/google-ads-customers-customerconversiongoals-api-openapi.yml:
-    method: derived
-    evidence: paths are a subset of openapi/_original/ (split from the harvested spec)
-  openapi/google-ads-customers-customercustomizers-api-openapi.yml:
-    method: derived
-    evidence: paths are a subset of openapi/_original/ (split from the harvested spec)
-  openapi/google-ads-customers-customerlabels-api-openapi.yml:
-    method: derived
-    evidence: paths are a subset of openapi/_original/ (split from the harvested spec)
-  openapi/google-ads-customers-customermanagerlinks-api-openapi.yml:
-    method: derived
-    evidence: paths are a subset of openapi/_original/ (split from the harvested spec)
-  openapi/google-ads-customers-customernegativecriteria-api-openapi.yml:
-    method: derived
-    evidence: paths are a subset of openapi/_original/ (split from the harvested spec)
-  openapi/google-ads-customers-customerskadnetworkconversionvalueschemas-api-openapi.yml:
-    method: derived
-    evidence: paths are a subset of openapi/_original/ (split from the harvested spec)
-  openapi/google-ads-customers-customeruseraccesses-api-openapi.yml:
-    method: derived
-    evidence: paths are a subset of openapi/_original/ (split from the harvested spec)
-  openapi/google-ads-customers-customeruseraccessinvitations-api-openapi.yml:
-    method: derived
-    evidence: paths are a subset of openapi/_original/ (split from the harvested spec)
-  openapi/google-ads-customers-custominterests-api-openapi.yml:
-    method: derived
-    evidence: paths are a subset of openapi/_original/ (split from the harvested spec)
-  openapi/google-ads-customers-customizerattributes-api-openapi.yml:
-    method: derived
-    evidence: paths are a subset of openapi/_original/ (split from the harvested spec)
-  openapi/google-ads-customers-datalinks-api-openapi.yml:
-    method: derived
-    evidence: paths are a subset of openapi/_original/ (split from the harvested spec)
-  openapi/google-ads-customers-experimentarms-api-openapi.yml:
-    method: derived
-    evidence: paths are a subset of openapi/_original/ (split from the harvested spec)
-  openapi/google-ads-customers-experiments-api-openapi.yml:
-    method: derived
-    evidence: paths are a subset of openapi/_original/ (split from the harvested spec)
-  openapi/google-ads-customers-goals-api-openapi.yml:
-    method: derived
-    evidence: paths are a subset of openapi/_original/ (split from the harvested spec)
-  openapi/google-ads-customers-googleads-api-openapi.yml:
-    method: derived
-    evidence: paths are a subset of openapi/_original/ (split from the harvested spec)
-  openapi/google-ads-customers-incentives-api-openapi.yml:
-    method: derived
-    evidence: paths are a subset of openapi/_original/ (split from the harvested spec)
-  openapi/google-ads-customers-invoices-api-openapi.yml:
-    method: derived
-    evidence: paths are a subset of openapi/_original/ (split from the harvested spec)
-  openapi/google-ads-customers-keywordplanadgroupkeywords-api-openapi.yml:
-    method: derived
-    evidence: paths are a subset of openapi/_original/ (split from the harvested spec)
-  openapi/google-ads-customers-keywordplanadgroups-api-openapi.yml:
-    method: derived
-    evidence: paths are a subset of openapi/_original/ (split from the harvested spec)
-  openapi/google-ads-customers-keywordplancampaignkeywords-api-openapi.yml:
-    method: derived
-    evidence: paths are a subset of openapi/_original/ (split from the harvested spec)
-  openapi/google-ads-customers-keywordplancampaigns-api-openapi.yml:
-    method: derived
-    evidence: paths are a subset of openapi/_original/ (split from the harvested spec)
-  openapi/google-ads-customers-keywordplans-api-openapi.yml:
-    method: derived
-    evidence: paths are a subset of openapi/_original/ (split from the harvested spec)
-  openapi/google-ads-customers-labels-api-openapi.yml:
-    method: derived
-    evidence: paths are a subset of openapi/_original/ (split from the harvested spec)
-  openapi/google-ads-customers-localservices-api-openapi.yml:
-    method: derived
-    evidence: paths are a subset of openapi/_original/ (split from the harvested spec)
-  openapi/google-ads-customers-localservicesleads-api-openapi.yml:
-    method: derived
-    evidence: paths are a subset of openapi/_original/ (split from the harvested spec)
-  openapi/google-ads-customers-multipartyauthreview-api-openapi.yml:
-    method: derived
-    evidence: paths are a subset of openapi/_original/ (split from the harvested spec)
-  openapi/google-ads-customers-offlineuserdatajobs-api-openapi.yml:
-    method: derived
-    evidence: paths are a subset of openapi/_original/ (split from the harvested spec)
-  openapi/google-ads-customers-operations-api-openapi.yml:
-    method: derived
-    evidence: paths are a subset of openapi/_original/ (split from the harvested spec)
-  openapi/google-ads-customers-paymentsaccounts-api-openapi.yml:
-    method: derived
-    evidence: paths are a subset of openapi/_original/ (split from the harvested spec)
-  openapi/google-ads-customers-productlinkinvitations-api-openapi.yml:
-    method: derived
-    evidence: paths are a subset of openapi/_original/ (split from the harvested spec)
-  openapi/google-ads-customers-productlinks-api-openapi.yml:
-    method: derived
-    evidence: paths are a subset of openapi/_original/ (split from the harvested spec)
-  openapi/google-ads-customers-recommendations-api-openapi.yml:
-    method: derived
-    evidence: paths are a subset of openapi/_original/ (split from the harvested spec)
-  openapi/google-ads-customers-recommendationsubscriptions-api-openapi.yml:
-    method: derived
-    evidence: paths are a subset of openapi/_original/ (split from the harvested spec)
-  openapi/google-ads-customers-remarketingactions-api-openapi.yml:
-    method: derived
-    evidence: paths are a subset of openapi/_original/ (split from the harvested spec)
-  openapi/google-ads-customers-reservations-api-openapi.yml:
-    method: derived
-    evidence: paths are a subset of openapi/_original/ (split from the harvested spec)
-  openapi/google-ads-customers-sharedcriteria-api-openapi.yml:
-    method: derived
-    evidence: paths are a subset of openapi/_original/ (split from the harvested spec)
-  openapi/google-ads-customers-sharedsets-api-openapi.yml:
-    method: derived
-    evidence: paths are a subset of openapi/_original/ (split from the harvested spec)
-  openapi/google-ads-customers-smartcampaignsettings-api-openapi.yml:
-    method: derived
-    evidence: paths are a subset of openapi/_original/ (split from the harvested spec)
-  openapi/google-ads-customers-thirdpartyappanalyticslinks-api-openapi.yml:
-    method: derived
-    evidence: paths are a subset of openapi/_original/ (split from the harvested spec)
-  openapi/google-ads-customers-userlistcustomertypes-api-openapi.yml:
-    method: derived
-    evidence: paths are a subset of openapi/_original/ (split from the harvested spec)
-  openapi/google-ads-customers-userlists-api-openapi.yml:
-    method: derived
-    evidence: paths are a subset of openapi/_original/ (split from the harvested spec)
-  openapi/google-ads-customers-youtubevideouploads-api-openapi.yml:
+  openapi/google-ads-events-api-openapi.yml:
     method: derived
     evidence: paths are a subset of openapi/_original/ (split from the harvested spec)
   openapi/google-ads-geotargetconstants-api-openapi.yml:
@@ -1369,43 +1278,43 @@ artifacts:
   openapi/google-ads-incentives-api-openapi.yml:
     method: derived
     evidence: paths are a subset of openapi/_original/ (split from the harvested spec)
-  openapi/google-ads-keywords-api-openapi.yml:
-    method: derived
-    evidence: paths are a subset of openapi/_original/ (split from the harvested spec)
   openapi/google-ads-keywordthemeconstants-api-openapi.yml:
     method: derived
     evidence: paths are a subset of openapi/_original/ (split from the harvested spec)
   openapi/google-ads-media-api-openapi.yml:
     method: derived
     evidence: paths are a subset of openapi/_original/ (split from the harvested spec)
-  openapi/google-ads-reporting-api-openapi.yml:
+  openapi/google-ads-request-status-api-openapi.yml:
     method: derived
     evidence: paths are a subset of openapi/_original/ (split from the harvested spec)
-  openapi/google-ads-v25-generateconversionrates-api-openapi.yml:
+  openapi/google-ads-users-api-openapi.yml:
     method: derived
     evidence: paths are a subset of openapi/_original/ (split from the harvested spec)
-  openapi/google-ads-v25-listbenchmarksavailabledates-api-openapi.yml:
+  openapi/google-ads-v26-generateconversionrates-api-openapi.yml:
     method: derived
     evidence: paths are a subset of openapi/_original/ (split from the harvested spec)
-  openapi/google-ads-v25-listbenchmarkslocations-api-openapi.yml:
+  openapi/google-ads-v26-listbenchmarksavailabledates-api-openapi.yml:
     method: derived
     evidence: paths are a subset of openapi/_original/ (split from the harvested spec)
-  openapi/google-ads-v25-listbenchmarksproducts-api-openapi.yml:
+  openapi/google-ads-v26-listbenchmarkslocations-api-openapi.yml:
     method: derived
     evidence: paths are a subset of openapi/_original/ (split from the harvested spec)
-  openapi/google-ads-v25-listbenchmarkssources-api-openapi.yml:
+  openapi/google-ads-v26-listbenchmarksproducts-api-openapi.yml:
     method: derived
     evidence: paths are a subset of openapi/_original/ (split from the harvested spec)
-  openapi/google-ads-v25-listplannablelocations-api-openapi.yml:
+  openapi/google-ads-v26-listbenchmarkssources-api-openapi.yml:
     method: derived
     evidence: paths are a subset of openapi/_original/ (split from the harvested spec)
-  openapi/google-ads-v25-listplannableproducts-api-openapi.yml:
+  openapi/google-ads-v26-listplannablelocations-api-openapi.yml:
     method: derived
     evidence: paths are a subset of openapi/_original/ (split from the harvested spec)
-  openapi/google-ads-v25-listplannableuserinterests-api-openapi.yml:
+  openapi/google-ads-v26-listplannableproducts-api-openapi.yml:
     method: derived
     evidence: paths are a subset of openapi/_original/ (split from the harvested spec)
-  openapi/google-ads-v25-listplannableuserlists-api-openapi.yml:
+  openapi/google-ads-v26-listplannableuserinterests-api-openapi.yml:
+    method: derived
+    evidence: paths are a subset of openapi/_original/ (split from the harvested spec)
+  openapi/google-ads-v26-listplannableuserlists-api-openapi.yml:
     method: derived
     evidence: paths are a subset of openapi/_original/ (split from the harvested spec)
   overlays/google-ads-ad-groups-api-overlay.yaml:
@@ -1790,27 +1699,30 @@ artifacts:
     method: searched
     evidence: declared in the artifact
   postman/google-ads-ad-groups-api.postman_collection.json:
-    method: derived
-    evidence: openapi/google-ads-ad-groups-api
+    method: unknown
+    evidence: no authorship recorded
   postman/google-ads-ads-api.postman_collection.json:
-    method: derived
-    evidence: openapi/google-ads-ads-api
+    method: unknown
+    evidence: no authorship recorded
   postman/google-ads-bidding-strategies-api.postman_collection.json:
-    method: derived
-    evidence: openapi/google-ads-bidding-strategies-api
+    method: unknown
+    evidence: no authorship recorded
   postman/google-ads-campaigns-api.postman_collection.json:
-    method: derived
-    evidence: openapi/google-ads-campaigns-api
+    method: unknown
+    evidence: no authorship recorded
   postman/google-ads-customers-api.postman_collection.json:
     method: derived
     evidence: openapi/google-ads-customers-api
   postman/google-ads-keywords-api.postman_collection.json:
-    method: derived
-    evidence: openapi/google-ads-keywords-api
+    method: unknown
+    evidence: no authorship recorded
   postman/google-ads-reporting-api.postman_collection.json:
-    method: derived
-    evidence: openapi/google-ads-reporting-api
+    method: unknown
+    evidence: no authorship recorded
   rate-limits/google-ads-rate-limits.yml:
+    method: searched
+    evidence: declared in the artifact
+  regulatory/google-ads-regulatory-posture.yml:
     method: searched
     evidence: declared in the artifact
   rules/google-ads-jsonschema-spectral-rules.yml:
@@ -1851,6 +1763,9 @@ artifacts:
     evidence: declared in the artifact
   sla/google-ads-sla.yml:
     method: generated
+    evidence: declared in the artifact
+  terms/google-ads-terms-of-service.yml:
+    method: harvested
     evidence: declared in the artifact
   vendors/google-ads-vendors.yml:
     method: unknown
