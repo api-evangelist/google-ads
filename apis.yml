@@ -33,7 +33,7 @@ accessModel:
   - rate-limits
   - security
   - sandbox
-  generated: '2026-11-13'
+  generated: '2026-11-20'
   method: derived
 image: https://www.gstatic.com/images/branding/product/1x/google_ads_64dp.png
 url: https://raw.githubusercontent.com/api-evangelist/google-ads/refs/heads/main/apis.yml
